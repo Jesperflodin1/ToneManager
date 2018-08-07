@@ -1,5 +1,21 @@
 #import "ToneHelper.h"
 
+// TODO: 
+// Edit "Add to favorites" and hook its target to send message to springboard when download is finished 
+// (perhaps need to hook something else so the message is sent when download is finished)
+//
+// Edit "Install" button to reflect "installed" status or not if tone not present in library
+// - Option to uninstall tone? (Perhaps in a pref bundle?)
+// Remove the itunes guide and replace with installation message (uialert?)
+//
+// Test if spaces in file names will be a problem? (for ringtones)
+//
+// Make sure to hook correct classes depending on bundle for current app
+//
+// Add support for zedge ringtones
+//
+// Test with both Audiko Lite and Pro
+
 %hook AUSelectedRingtoneViewController
 
 -(void)viewDidLoad {
