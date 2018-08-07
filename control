@@ -1,0 +1,9 @@
+Package: fi.flodin.tonehelper
+Name: ToneHelper
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Jesper Flodin <jesper@flodin.fi>
+Author: Jesper Flodin <jesper@flodin.fi>
+Section: Tweaks
