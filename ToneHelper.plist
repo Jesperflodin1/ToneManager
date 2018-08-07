@@ -1,8 +1,15 @@
 {
 	Filter = {
+		Mode = Any;
+		Executables = (
+			MobilePhone,
+			Preferences,
+			Contacts,
+		);
 		Bundles = (
 			"com.908.AudikoFree",
 			"com.apple.springboard",
+			"com.apple.ToneKit",
 		);
 	};
 }
