@@ -9,6 +9,8 @@ FINALPACKAGE = 0
 TWEAK_NAME = ToneHelper
 ToneHelper_FILES = Tweak.xm
 
+ToneHelper_FRAMEWORKS = UIKit
+
 include $(THEOS_MAKE_PATH)/tweak.mk
 
 

@@ -3,7 +3,7 @@ Name: ToneHelper
 Depends: mobilesubstrate
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
+Description: Automatically adds ringtones from Audiko to device
 Maintainer: Jesper Flodin <jesper@flodin.fi>
 Author: Jesper Flodin <jesper@flodin.fi>
 Section: Tweaks
