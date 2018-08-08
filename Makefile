@@ -7,9 +7,12 @@ DEBUG = 1
 FINALPACKAGE = 0
 
 TWEAK_NAME = ToneHelper
-ToneHelper_FILES = Tweak.xm
+ToneHelper_FILES = Tweak.xm $(wildcard JGProgressHUD/*.m)
 
-ToneHelper_FRAMEWORKS = UIKit ToneKit
+ToneHelper_CFLAGS = -fobjc-arc
+
+ToneHelper_FRAMEWORKS = UIKit QuartzCore
+ToneHelper_PRIVATEFRAMEWORKS = ToneKit
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 

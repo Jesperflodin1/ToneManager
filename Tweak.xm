@@ -1,4 +1,5 @@
 #import "ToneHelper.h"
+#import "JGProgressHUD/JGProgressHUD.h"
 
 // TODO: 
 // Edit "Add to favorites" and hook its target to send message to springboard when download is finished 
@@ -15,78 +16,32 @@
 // Add support for zedge ringtones
 //
 // Test with both Audiko Lite and Pro
-
-%hook AUSelectedRingtoneViewController
+%group tonehelpermain
+/*
+%hook TKTonePickerViewController
 
 -(void)viewDidLoad {
-	%orig;
-	UIAlertController* alert = [UIAlertController 
-		alertControllerWithTitle:@"DEBUG"
-                         message:@"This is an alert. Thanks"
-                  preferredStyle:UIAlertControllerStyleAlert
-	];
- 
-	UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK..." 
-															style:UIAlertActionStyleDefault
-														  handler:^(UIAlertAction * action) {}
-	];
-	
-	[alert addAction:defaultAction];
-	[self presentViewController:alert animated:YES completion:nil];
+	JGProgressHUD *HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+	HUD.textLabel.text = @"Loading ToneHelper Loading ToneHelper Loading ToneHelper Loading ToneHelper Loading ToneHelper";
+	[HUD showInView:self.view];
+	[HUD dismissAfterDelay:3.0];
 }
 
-%end
-
-%group IOS7
-
-%hook TKToneTableController
-
-- (id)loadRingtonesFromPlist
-{
-    NSDictionary *original = %orig;
-    
-    NSMutableDictionary *allRingtones = [NSMutableDictionary dictionary];
-    NSMutableArray *classicRingtones = [NSMutableArray arrayWithArray:[original objectForKey:@"classic"]];
-    NSMutableArray *modernRingtones = [NSMutableArray arrayWithArray:[original objectForKey:@"modern"]];
-    
-    NSString *tonesDirectory = @"/Library/Ringtones";
-    NSFileManager *localFileManager = [[NSFileManager alloc] init];
-    NSDirectoryEnumerator *dirEnum  = [localFileManager enumeratorAtPath:tonesDirectory];
-    
-    NSString *file;
-    while ((file = [dirEnum nextObject]))
-    {
-        if ([[file pathExtension] isEqualToString: @"m4r"])
-        {
-            NSString *properToneIdentifier = [NSString stringWithFormat:@"system:%@",[file stringByDeletingPathExtension]];
-            BOOL isClassicTone = [classicRingtones containsObject:properToneIdentifier];
-            BOOL isModernTone  = [modernRingtones containsObject:properToneIdentifier];
-            
-            if(!isClassicTone && !isModernTone)
-            {
-                [modernRingtones addObject:properToneIdentifier];
-            }
-        }
-    }
-    
-    [allRingtones setObject:classicRingtones forKey:@"classic"];
-    [allRingtones setObject:modernRingtones  forKey:@"modern"];
-    
-    return allRingtones;
-}
-%end
-
-%end
-
-%group IOS8
-
+%end*/
 
 %hook TKTonePickerController
 
 - (id)_loadTonesFromPlistNamed:(id)arg1 {
-    %log;
+	NSLog(@"DEBUG: _loadTonesFromPlistNamed arg1=%@", arg1);
+	JGProgressHUD *HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+	HUD.textLabel.text = @"Loading ToneHelper Loading ToneHelper Loading ToneHelper Loading ToneHelper Loading ToneHelper";
+	//NSLog(@"DEBUG: %@",);
+	//[HUD showInView:[[self delegate] tableView]];
+	//[HUD dismissAfterDelay:3.0];
+
     if ([arg1 isEqualToString:@"TKRingtones"]) {
         NSDictionary *original = %orig;
+		NSLog(@"orig = %@", original);
         NSMutableDictionary *allRingtones = [NSMutableDictionary dictionary];
         NSMutableArray *classicRingtones = [NSMutableArray arrayWithArray:[original objectForKey:@"classic"]];
         NSMutableArray *modernRingtones = [NSMutableArray arrayWithArray:[original objectForKey:@"modern"]];
@@ -129,19 +84,17 @@
 #define XPCObjects "/System/Library/PrivateFrameworks/ToneKit.framework/ToneKit"
 
 %ctor {
-    
     if (![[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.mobilesafari"]) {
-        if (!NSClassFromString(@"TKTonePickerController") && !NSClassFromString(@"TKToneTableController")) {
+        if (!NSClassFromString(@"TKTonePickerController")) {
             //load the framework if it does not exist
             dlopen(XPCObjects, RTLD_LAZY);
+			NSLog(@"DEBUG: Loading ToneKit Framework");
         }
         
         if (NSClassFromString(@"TKTonePickerController")) {
-            NSLog(@"ToneEnabler iOS 8");
-            %init(IOS8);
-        } else if (NSClassFromString(@"TKToneTableController")) {
-            NSLog(@"ToneEnabler iOS 7");
-            %init(IOS7);
-        }
+            NSLog(@"ToneHelper initializing...");
+            %init(tonehelpermain);
+        } else
+			NSLog(@"DEBUG: ToneHelper not initializing...");
     }
 }
