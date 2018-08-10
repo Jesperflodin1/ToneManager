@@ -11,9 +11,12 @@ ToneHelper_FILES = Tweak.xm $(wildcard JGProgressHUD/*.m)
 
 ToneHelper_CFLAGS = -fobjc-arc
 
-ToneHelper_FRAMEWORKS = UIKit QuartzCore
-ToneHelper_PRIVATEFRAMEWORKS = ToneKit
+ToneHelper_FRAMEWORKS = UIKit QuartzCore MobileCoreServices
+ToneHelper_PRIVATEFRAMEWORKS = ToneKit FrontBoard
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
 
+SUBPROJECTS += thprefsbundle
+SUBPROJECTS += tonehelperd
+include $(THEOS_MAKE_PATH)/aggregate.mk
