@@ -32,10 +32,45 @@
 
 %hook TKTonePickerController
 
+
+
+%new
+- (NSString *)JFTH_RandomizedRingtoneParameter:(JFTHRingtoneParameterType)Type {
+    int length;
+    NSString *alphabet;
+    NSString *result = @"";
+    switch (Type) {
+        case JFTHRingtonePID:
+            length = 18;
+            result = @"-";
+            alphabet = @"0123456789";
+            break;
+        case JFTHRingtoneGUID:
+            alphabet = @"ABCDEFG0123456789";
+            length = 16;
+            break;
+        case JFTHRingtoneFileName:
+            alphabet = @"ABCDEFGHIJKLMNOPQRSTUVWXZ";
+            length = 4;
+            break;
+        default:
+            return nil;
+            break;
+    }
+    NSMutableString *s = [NSMutableString stringWithCapacity:length];
+    for (NSUInteger i = 0U; i < length; i++) {
+        u_int32_t r = arc4random() % [alphabet length];
+        unichar c = [alphabet characterAtIndex:r];
+        [s appendFormat:@"%C", c];
+    }
+    return [result stringByAppendingString:s];
+}
+
 - (id)_loadTonesFromPlistNamed:(id)arg1 {
 	NSLog(@"DEBUG: _loadTonesFromPlistNamed arg1=%@", arg1);
     JGProgressHUD *HUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleExtraLight];
 
+    // TODO: Get apps from preferences. Check if app exist and if folder exists.
     FBApplicationInfo *appInfo = [LSApplicationProxy applicationProxyForIdentifier: @"com.908.AudikoFree"];
 
     if ([arg1 isEqualToString:@"TKRingtones"]) {
@@ -45,25 +80,28 @@
         HUD.textLabel.text = @"Loading";
         [HUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
         [HUD setProgress:0.2f animated:YES];
-
-        NSError *error;
+        
+        NSFileManager *localFileManager = [[NSFileManager alloc] init];
+        
         NSString *oldDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:@"Documents"];
-        NSString *newDirectory = @"/Library/Application Support/ToneHelper/Ringtones/";
-        NSFileManager *fm = [NSFileManager defaultManager];
-
-        // Get all the files at ~/Documents/user
-        NSArray *files = [fm contentsOfDirectoryAtPath:oldDirectory error:&error];
-
-        for (NSString *file in files) {
-            NSLog(@"Copying to path (%@) with extension (%@)",newDirectory,[file pathExtension]);
-            if ([[file pathExtension] isEqualToString: @"m4r"]) {
-            BOOL success = [fm copyItemAtPath:[oldDirectory stringByAppendingPathComponent:file]
-                        toPath:[newDirectory stringByAppendingPathComponent:file]
-                        error:&error];
-            if (!success)
-                NSLog(@"File copy (%@) failed: %@",file,error);
-            else 
-                NSLog(@"File copy success: %@",file);
+        NSString *newDirectory = @"/var/mobile/Media/iTunes_Control/Ringtones";
+        NSDirectoryEnumerator *appDirEnum  = [localFileManager enumeratorAtPath:oldDirectory];
+        NSString *appDirFile;
+        // Get all the files at application documents folder
+        //TODO: List folders for multiple applications, if they exist
+        
+        while ((appDirFile = [appDirEnum nextObject])) { 
+            if ([[appDirFile pathExtension] isEqualToString: @"m4r"]) {
+                NSLog(@"Copying to path (%@) with extension (%@)",newDirectory,[appDirFile pathExtension]);
+                NSError *error;
+                NSString *newFile = [self JFTH_RandomizedRingtoneParameter:JFTHRingtoneFileName];
+                if (![localFileManager copyItemAtPath:[oldDirectory stringByAppendingPathComponent:appDirFile]
+                            toPath:[newDirectory stringByAppendingPathComponent:newFile]
+                            error:&error]) {
+                    NSLog(@"File copy (%@) failed: %@",appDirFile,error);
+                } else {
+                    NSLog(@"File copy success: %@",appDirFile);
+                }
             }
         }
         [HUD setProgress:0.7f animated:YES];
@@ -76,7 +114,6 @@
         NSMutableArray *modernRingtones = [NSMutableArray arrayWithArray:[original objectForKey:@"modern"]];
         
         NSString *tonesDirectory = @"/Library/Ringtones";
-        NSFileManager *localFileManager = [[NSFileManager alloc] init];
         NSDirectoryEnumerator *dirEnum  = [localFileManager enumeratorAtPath:tonesDirectory];
         
         NSString *file;

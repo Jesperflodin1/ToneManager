@@ -18,5 +18,4 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 
 SUBPROJECTS += thprefsbundle
-SUBPROJECTS += tonehelperd
 include $(THEOS_MAKE_PATH)/aggregate.mk
