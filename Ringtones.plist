@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Ringtones</key>
+	<dict>
+		<key>CDAQ.m4r</key>
+		<dict>
+			<key>GUID</key>
+			<string>A272CF58F3F82306</string>
+			<key>Name</key>
+			<string>The Walking Dead Original Soundtrack  Theme Song HD</string>
+			<key>PID</key>
+			<integer>-605298358344767270</integer>
+			<key>Protected Content</key>
+			<false/>
+		</dict>
+		<key>HEJI.m4r</key>
+		<dict>
+			<key>GUID</key>
+			<string>F6799C2EA6EAA969</string>
+			<key>Name</key>
+			<string>unknown - The Walking Dead Original Soundtrack  Theme Song HD_34079568</string>
+			<key>PID</key>
+			<integer>-251254999762910109</integer>
+			<key>Protected Content</key>
+			<false/>
+		</dict>
+	</dict>
+</dict>
+</plist>

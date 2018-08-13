@@ -18,28 +18,16 @@
 // Test with both Audiko Lite and Pro
 %group inToneKit
 
-%hook TKTonePickerViewController
-
--(void)viewDidLoad {
-    NSLog(@"DEBUG: viewDidLoad in TKTonePickerViewController");
-	/*JGProgressHUD *HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
-	HUD.textLabel.text = @"Loading ToneHelper Loading ToneHelper Loading ToneHelper Loading ToneHelper Loading ToneHelper";
-	[HUD showInView:self.view];
-	[HUD dismissAfterDelay:3.0];*/
-}
-
-%end
-
 %hook TKTonePickerController
 
-
-
+// Generates filename, PID and GUID needed to import ringtone
 %new
 - (NSString *)JFTH_RandomizedRingtoneParameter:(JFTHRingtoneParameterType)Type {
     int length;
     NSString *alphabet;
     NSString *result = @"";
-    switch (Type) {
+    switch (Type) 
+    {
         case JFTHRingtonePID:
             length = 18;
             result = @"-";
@@ -76,35 +64,46 @@
     if ([arg1 isEqualToString:@"TKRingtones"]) {
         HUD.indicatorView = [[JGProgressHUDPieIndicatorView alloc] init];
         HUD.detailTextLabel.text = @"0% Complete";
-        
-        HUD.textLabel.text = @"Loading";
+        HUD.textLabel.text = @"Importing Ringtones";
         [HUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
-        [HUD setProgress:0.2f animated:YES];
+        [HUD setProgress:0.0f animated:NO];
         
         NSFileManager *localFileManager = [[NSFileManager alloc] init];
         
         NSString *oldDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:@"Documents"];
         NSString *newDirectory = @"/var/mobile/Media/iTunes_Control/Ringtones";
-        NSDirectoryEnumerator *appDirEnum  = [localFileManager enumeratorAtPath:oldDirectory];
-        NSString *appDirFile;
-        // Get all the files at application documents folder
-        //TODO: List folders for multiple applications, if they exist
-        
-        while ((appDirFile = [appDirEnum nextObject])) { 
-            if ([[appDirFile pathExtension] isEqualToString: @"m4r"]) {
-                NSLog(@"Copying to path (%@) with extension (%@)",newDirectory,[appDirFile pathExtension]);
-                NSError *error;
-                NSString *newFile = [self JFTH_RandomizedRingtoneParameter:JFTHRingtoneFileName];
-                if (![localFileManager copyItemAtPath:[oldDirectory stringByAppendingPathComponent:appDirFile]
-                            toPath:[newDirectory stringByAppendingPathComponent:newFile]
-                            error:&error]) {
-                    NSLog(@"File copy (%@) failed: %@",appDirFile,error);
-                } else {
-                    NSLog(@"File copy success: %@",appDirFile);
+        NSError *appDirError;
+        NSArray *appDirFiles = [localFileManager contentsOfDirectoryAtPath:oldDirectory error:&appDirError];
+        if (appDirFiles)
+        {
+            NSInteger fileCount = [appDirFiles count];
+            double progress = 95.0/fileCount;
+            // Get all the files at application documents folder
+            //TODO: List folders for multiple applications, if they exist
+            
+            for (NSString *appDirFile in appDirFiles) 
+            { 
+                if ([[appDirFile pathExtension] isEqualToString: @"m4r"]) 
+                {
+                    NSLog(@"Copying to path (%@) with extension (%@)",newDirectory,[appDirFile pathExtension]);
+                    NSError *error;
+                    NSString *newFile = [self JFTH_RandomizedRingtoneParameter:JFTHRingtoneFileName];
+                    if ([localFileManager copyItemAtPath:[oldDirectory stringByAppendingPathComponent:appDirFile]
+                                toPath:[newDirectory stringByAppendingPathComponent:newFile]
+                                error:&error]) 
+                    {
+                        NSLog(@"File copy success: %@",appDirFile);
+                    } else {
+                        NSLog(@"File copy (%@) failed: %@",appDirFile,error);
+                    }
+                    [HUD setProgress:progress animated:NO];
+                    progress += 95.0/fileCount;
                 }
             }
         }
-        [HUD setProgress:0.7f animated:YES];
+        [HUD setProgress:0.95f animated:YES];
+        HUD.textLabel.text = @"Loading Ringtones";
+
 
         // Enumerate ringtones in ringtones folder and add to return dictionary
         NSDictionary *original = %orig;
@@ -115,9 +114,9 @@
         
         NSString *tonesDirectory = @"/Library/Ringtones";
         NSDirectoryEnumerator *dirEnum  = [localFileManager enumeratorAtPath:tonesDirectory];
+        NSArray *systemToneFiles = [dirEnum allObjects];
         
-        NSString *file;
-        while ((file = [dirEnum nextObject]))
+        while (NSString *file in systemToneFiles)
         {
             if ([[file pathExtension] isEqualToString: @"m4r"])
             {
@@ -134,11 +133,12 @@
         
         [allRingtones setObject:classicRingtones forKey:@"classic"];
         [allRingtones setObject:modernRingtones  forKey:@"modern"];
+        [HUD setProgress:1.0f animated:NO];
         [HUD dismissAfterDelay:1.0];
         return allRingtones;
         
     } else {
-        [HUD dismissAfterDelay:1.0];
+        [HUD dismissAfterDelay:0.3];
         return %orig;
     }
 }
@@ -231,6 +231,6 @@
             NSLog(@"ToneHelper initializing...");
             %init(inToneKit);
         } else
-            NSLog(@"DEBUG: ToneHelper not initializing...");
+            NSLog(@"DEBUG: ToneHelper not initializing. What is happening?!");
     }
 }
