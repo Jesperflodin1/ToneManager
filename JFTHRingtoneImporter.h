@@ -12,8 +12,9 @@ typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
 
 @property (nonatomic) JGProgressHUD* progressHUD;
 
-+ (NSString *)JFTH_RandomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
++ (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
 + (NSArray *)getRingtoneFilesFromApp:(NSString *)bundleID withSubfolder:(NSString *)folder;
++ (NSArray *)getRingtoneFilesFromApp:(NSString *)bundleID; //Uses "Documents" as folder, default
 - (void)initHUD;
 - (void)showProgressHUD;
 - (void)showSuccessHUD;

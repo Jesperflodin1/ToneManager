@@ -1,10 +1,12 @@
 #import "JFTHRingtoneImporter.h"
 
+NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist";
+NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
 
 @implementation JFTHRingtoneImporter
 
 // Generates filename, PID and GUID needed to import ringtone
-+ (NSString *)JFTH_RandomizedRingtoneParameter:(JFTHRingtoneParameterType)Type {
++ (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type {
     int length;
     NSString *alphabet;
     NSString *result = @"";
@@ -40,15 +42,16 @@
     FBApplicationInfo *appInfo = [LSApplicationProxy applicationProxyForIdentifier:bundleID];
 
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
-    
     NSString *appDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:folder];
-    NSError *appDirError;
-    NSArray *appDirFiles = [localFileManager contentsOfDirectoryAtPath:appDirectory error:&appDirError];
+    NSArray *appDirFiles = [localFileManager contentsOfDirectoryAtPath:appDirectory error:nil];
     if (appDirFiles) {
         return appDirFiles;
     } else {
         return nil; //Application unavailable (or documents folder non-existent)
     }
+}
++ (NSArray *)getRingtoneFilesFromApp:(NSString *)bundleID {
+    return [JFTHRingtoneImporter getRingtoneFilesFromApp:bundleID withSubfolder:@"Documents"];
 }
 
 - (instancetype)init {

@@ -1,8 +1,7 @@
 #import "ToneHelper.h"
 #import "JGProgressHUD/JGProgressHUD.h"
 #import "JFTHRingtoneImporter.h"
-NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist";
-NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
+
 // TODO: 
 //
 // Add support for zedge ringtones
@@ -10,35 +9,10 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
 // Test with both Audiko Lite and Pro
 %group inToneKit
 
-%hook SpringBoard
--(void) applicationDidFinishLaunching:(id)arg {
-	%orig(arg);
-    NSLog(@"Logging works!!");
-    NSFileManager *localFileManager = [[NSFileManager alloc] init];
-    FBApplicationInfo *appInfo = [LSApplicationProxy applicationProxyForIdentifier: @"com.908.AudikoFree"];
-    NSString *appDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:@"Documents"];
-    NSError *appDirError;
-    NSArray *appDirFiles = [localFileManager contentsOfDirectoryAtPath:appDirectory error:&appDirError];
-    if (appDirFiles) {
-        UIAlertView *lookWhatWorks = [[UIAlertView alloc]
-                                  initWithTitle:@"simject Example Tweak"
-                                        message:[NSString stringWithFormat:@"%@",appDirFiles]
-                                        delegate:self
-                                        cancelButtonTitle:@"OK"
-                                        otherButtonTitles:nil];
-	    [lookWhatWorks show];
-    } else {
-        NSLog(@"null");
-    }
-	
-}
-%end
-
 %hook TKTonePickerController
 
-
-
 - (id)_loadTonesFromPlistNamed:(id)arg1 {
+    JFTHRingtoneImporter *importer = [[JFTHRingtoneImporter alloc] init];
 	NSLog(@"DEBUG: _loadTonesFromPlistNamed arg1=%@", arg1);
     JGProgressHUD *HUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleExtraLight];
 

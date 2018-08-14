@@ -6,8 +6,7 @@
 			Contacts,
 		);
 		Bundles = (
-			"com.apple.ToneKit",
-			"com.apple.springboard",
+			"com.apple.ToneKit"
 		);
 		Mode = Any;
 	};
