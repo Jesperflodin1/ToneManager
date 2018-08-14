@@ -8,17 +8,10 @@
 #include "stdio.h"
 #include "dlfcn.h"
 
-typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
-    JFTHRingtoneFileName,
-    JFTHRingtoneGUID,
-    JFTHRingtonePID
-};
-
 @interface TKTonePickerViewController : UITableViewController
 @end
 
 @interface TKTonePickerController : NSObject
-- (NSString *)JFTH_RandomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
 @end
 
 @interface LSApplicationProxy

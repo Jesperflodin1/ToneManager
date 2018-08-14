@@ -1,6 +1,6 @@
 include $(THEOS)/makefiles/common.mk
 
-export TARGET = iphone:clang:11.2:11.0
+export TARGET = iphone:clang:11.2:8.0
 ARCHS = arm64
 
 BUNDLE_NAME = THPrefsBundle
@@ -8,7 +8,7 @@ THPrefsBundle_FILES = JFTHRootListController.m
 THPrefsBundle_INSTALL_PATH = /Library/PreferenceBundles
 THPrefsBundle_FRAMEWORKS = UIKit
 THPrefsBundle_PRIVATE_FRAMEWORKS = Preferences
-ToneHelper_CFLAGS = -fobjc-arc
+THPrefsBundle_EXTRA_FRAMEWORKS += cepheiprefs
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 

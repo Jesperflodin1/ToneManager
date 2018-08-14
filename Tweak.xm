@@ -1,6 +1,8 @@
 #import "ToneHelper.h"
 #import "JGProgressHUD/JGProgressHUD.h"
-
+#import "JFTHRingtoneImporter.h"
+NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist";
+NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
 // TODO: 
 //
 // Add support for zedge ringtones
@@ -8,41 +10,33 @@
 // Test with both Audiko Lite and Pro
 %group inToneKit
 
+%hook SpringBoard
+-(void) applicationDidFinishLaunching:(id)arg {
+	%orig(arg);
+    NSLog(@"Logging works!!");
+    NSFileManager *localFileManager = [[NSFileManager alloc] init];
+    FBApplicationInfo *appInfo = [LSApplicationProxy applicationProxyForIdentifier: @"com.908.AudikoFree"];
+    NSString *appDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:@"Documents"];
+    NSError *appDirError;
+    NSArray *appDirFiles = [localFileManager contentsOfDirectoryAtPath:appDirectory error:&appDirError];
+    if (appDirFiles) {
+        UIAlertView *lookWhatWorks = [[UIAlertView alloc]
+                                  initWithTitle:@"simject Example Tweak"
+                                        message:[NSString stringWithFormat:@"%@",appDirFiles]
+                                        delegate:self
+                                        cancelButtonTitle:@"OK"
+                                        otherButtonTitles:nil];
+	    [lookWhatWorks show];
+    } else {
+        NSLog(@"null");
+    }
+	
+}
+%end
+
 %hook TKTonePickerController
 
-// Generates filename, PID and GUID needed to import ringtone
-%new
-- (NSString *)JFTH_RandomizedRingtoneParameter:(JFTHRingtoneParameterType)Type {
-    int length;
-    NSString *alphabet;
-    NSString *result = @"";
-    switch (Type) 
-    {
-        case JFTHRingtonePID:
-            length = 18;
-            result = @"-";
-            alphabet = @"0123456789";
-            break;
-        case JFTHRingtoneGUID:
-            alphabet = @"ABCDEFG0123456789";
-            length = 16;
-            break;
-        case JFTHRingtoneFileName:
-            alphabet = @"ABCDEFGHIJKLMNOPQRSTUVWXZ";
-            length = 4;
-            break;
-        default:
-            return nil;
-            break;
-    }
-    NSMutableString *s = [NSMutableString stringWithCapacity:length];
-    for (NSUInteger i = 0U; i < length; i++) {
-        u_int32_t r = arc4random() % [alphabet length];
-        unichar c = [alphabet characterAtIndex:r];
-        [s appendFormat:@"%C", c];
-    }
-    return [result stringByAppendingString:s];
-}
+
 
 - (id)_loadTonesFromPlistNamed:(id)arg1 {
 	NSLog(@"DEBUG: _loadTonesFromPlistNamed arg1=%@", arg1);
@@ -53,54 +47,90 @@
 
     if ([arg1 isEqualToString:@"TKRingtones"]) {
         HUD.indicatorView = [[JGProgressHUDPieIndicatorView alloc] init];
+        HUD.interactionType = JGProgressHUDInteractionTypeBlockTouchesOnHUDView;
+        HUD.animation = [JGProgressHUDFadeZoomAnimation animation];
+        HUD.shadow = [JGProgressHUDShadow shadowWithColor:[UIColor blackColor] offset:CGSizeZero radius:5.0 opacity:0.3f];
+        HUD.vibrancyEnabled = YES;
         HUD.detailTextLabel.text = @"0% Complete";
-        HUD.textLabel.text = @"Importing Ringtones";
+        HUD.textLabel.text = @"Loading";
         [HUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
-        [HUD setProgress:0.0f animated:NO];
+        [HUD setProgress:0.0f animated:YES];
         
         NSFileManager *localFileManager = [[NSFileManager alloc] init];
         
         NSString *oldDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:@"Documents"];
-        NSString *newDirectory = @"/var/mobile/Media/iTunes_Control/Ringtones";
         NSError *appDirError;
         NSArray *appDirFiles = [localFileManager contentsOfDirectoryAtPath:oldDirectory error:&appDirError];
-        if (appDirFiles)
+        //TODO: Check if new files that need copying exist ?
+        if (appDirFiles) //if folder exists
         {
-            NSInteger fileCount = [appDirFiles count];
-            double progress = 95.0/fileCount;
+            HUD.textLabel.text = [NSString stringWithFormat:@"Importing %@ Ringtones",[NSNumber numberWithUnsignedLong:[appDirFiles count]]];
+            double progress = 100.0/[appDirFiles count];
             // Get all the files at application documents folder
             //TODO: List folders for multiple applications, if they exist
-            
+
+            NSData *plistData = [NSData dataWithContentsOfFile:RINGTONE_PLIST_PATH];
+            NSMutableDictionary *plist;
+            NSMutableDictionary *ringtones;
+            if (plistData) { //if plist exists, read it
+                plist = [NSPropertyListSerialization propertyListWithData:plistData
+                                                                    options:NSPropertyListMutableContainers
+                                                                    format:nil error:nil];
+                ringtones = [plist objectForKey:@"Ringtones"];
+                NSLog(@"%@",plist);
+            } else { //create new plist
+                ringtones = [[NSMutableDictionary alloc] init];
+                [plist setObject:ringtones forKey:@"Ringtones"];
+            }
             for (NSString *appDirFile in appDirFiles) 
             { 
                 if ([[appDirFile pathExtension] isEqualToString: @"m4r"]) 
                 {
-                    NSLog(@"Copying to path (%@) with extension (%@)",newDirectory,[appDirFile pathExtension]);
+                    NSLog(@"Copying to path (%@) with extension (%@)",RINGTONE_DIRECTORY,[appDirFile pathExtension]);
                     NSError *error;
-                    NSString *newFile = [[self JFTH_RandomizedRingtoneParameter:JFTHRingtoneFileName] stringByAppendingString:@".m4r"];
+                    NSString *newFile = [[JFTHRingtoneImporter JFTH_RandomizedRingtoneParameter:JFTHRingtoneFileName] stringByAppendingString:@".m4r"];
                     if ([localFileManager copyItemAtPath:[oldDirectory stringByAppendingPathComponent:appDirFile]
-                                toPath:[newDirectory stringByAppendingPathComponent:newFile]
+                                toPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:newFile]
                                 error:&error]) 
                     {
-                        NSLog(@"File copy success: %@",appDirFile);
+                        // Create Ringtone Name to show in ringtone picker list. Remove "ugly" characters first
+                        NSString *baseName = [appDirFile stringByDeletingPathExtension];
+                        NSCharacterSet *doNotWant = [[NSCharacterSet characterSetWithCharactersInString:@" ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖabcdefghijklmnopqrstuvwxyzåäö0123456789._-"] invertedSet];
+                        baseName = [[baseName componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @""];
                         //Plist data
-                        NSString *guid = [self JFTH_RandomizedRingtoneParameter:JFTHRingtoneGUID];
-                        long long pid = [[self JFTH_RandomizedRingtoneParameter:JFTHRingtonePID] longLongValue];
-
+                        NSMutableDictionary *currentTone = [[NSMutableDictionary alloc] init];
+                        [currentTone setObject:[JFTHRingtoneImporter JFTH_RandomizedRingtoneParameter:JFTHRingtoneGUID] forKey:@"GUID"];
+                        [currentTone setObject:baseName forKey:@"Name"];
+                        [currentTone setObject:[NSNumber numberWithLongLong:[[JFTHRingtoneImporter JFTH_RandomizedRingtoneParameter:JFTHRingtonePID] longLongValue]] forKey:@"PID"];
+                        [currentTone setObject:[NSNumber numberWithBool:NO] forKey:@"Protected Content"];
+                        [ringtones setObject:currentTone forKey:[[JFTHRingtoneImporter JFTH_RandomizedRingtoneParameter:JFTHRingtoneFileName] stringByAppendingString:@".m4r"]];
+                        NSLog(@"File copy success: %@",appDirFile);
                     } else {
                         NSLog(@"File copy (%@) failed: %@",appDirFile,error);
                     }
-                    [HUD setProgress:progress animated:NO];
-                    progress += 95.0/fileCount;
+                    [HUD setProgress:progress/100.0f animated:NO];
+                    progress += 100.0/[appDirFiles count];
                 }
-            }
+            } // for loop end 
+            //Write plist
+            NSData *newData = [NSPropertyListSerialization dataWithPropertyList: plist
+                                                    format: NSPropertyListXMLFormat_v1_0
+                                                    options: 0
+                                                        error: nil];
+            NSLog(@"Writing plist: %@", RINGTONE_PLIST_PATH);
+            [newData writeToFile:RINGTONE_PLIST_PATH atomically:YES];
         }
-        [HUD setProgress:0.95f animated:YES];
-        HUD.textLabel.text = @"Loading Ringtones";
+        
+        [HUD setProgress:1.0f animated:YES];
+        HUD.indicatorView = [[JGProgressHUDSuccessIndicatorView alloc] init];
+        HUD.square = YES;
+        HUD.textLabel.text = @"Done";
+        [HUD dismissAfterDelay:0.3f animated:YES];
 
 
         // Enumerate ringtones in ringtones folder and add to return dictionary
-        NSDictionary *original = %orig;
+        // This may be unneccessary??? (because im basically doing an itunes import)
+        /*NSDictionary *original = %orig;
 		NSLog(@"orig = %@", original);
         NSMutableDictionary *allRingtones = [NSMutableDictionary dictionary];
         NSMutableArray *classicRingtones = [NSMutableArray arrayWithArray:[original objectForKey:@"classic"]];
@@ -110,7 +140,7 @@
         NSDirectoryEnumerator *dirEnum  = [localFileManager enumeratorAtPath:tonesDirectory];
         NSArray *systemToneFiles = [dirEnum allObjects];
         
-        while (NSString *file in systemToneFiles)
+        for (NSString *file in systemToneFiles)
         {
             if ([[file pathExtension] isEqualToString: @"m4r"])
             {
@@ -129,10 +159,10 @@
         [allRingtones setObject:modernRingtones  forKey:@"modern"];
         [HUD setProgress:1.0f animated:NO];
         [HUD dismissAfterDelay:1.0];
-        return allRingtones;
+        return allRingtones;*/
+        return %orig;
         
     } else {
-        [HUD dismissAfterDelay:0.3];
         return %orig;
     }
 }
@@ -144,7 +174,8 @@
 #define XPCObjects "/System/Library/PrivateFrameworks/ToneKit.framework/ToneKit"
 
 %ctor {
-    if (![[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.mobilesafari"]) {
+    %init(inToneKit);
+    /*if (![[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.mobilesafari"]) {
         if (!NSClassFromString(@"TKTonePickerController")) {
             //load the framework if it does not exist
             dlopen(XPCObjects, RTLD_LAZY);
@@ -156,5 +187,5 @@
             %init(inToneKit);
         } else
             NSLog(@"DEBUG: ToneHelper not initializing. What is happening?!");
-    }
+    }*/
 }
