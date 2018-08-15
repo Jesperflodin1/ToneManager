@@ -31,8 +31,9 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
         return;
 
     //Prepare to enter loop when we decide to import or not
-    if (!md5ExistingRingtones)
-        NSSet *md5ExistingRingtones = [self getMD5ForExistingRingtones];
+    if (!md5ExistingRingtones) {
+        md5ExistingRingtones = [self getMD5ForExistingRingtones];
+    }
 
     for (NSString *file in appDirFiles) {
         if ([[file pathExtension] isEqualToString: @"m4r"]) {
@@ -165,7 +166,7 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
 // MD5 for ringtones in itunes folder. To be used when deciding if ringtone found in app already is imported or not
 // Store these in a plist so we wont have to recalculate every time? Would be nice.
 - (NSSet *)getMD5ForExistingRingtones {
-    NSMutableSet *md5Ringtones = [NSSet new];
+    NSMutableSet *md5Ringtones = [NSMutableSet new];
 
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
     NSArray *m4rFiles = [localFileManager contentsOfDirectoryAtPath:RINGTONE_DIRECTORY error:nil];
@@ -208,10 +209,10 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
     HUD.vibrancyEnabled = NO;
     HUD.indicatorView = nil;
     
-    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName : [UIColor greenColor], NSFontAttributeName: [UIFont systemFontOfSize:15.0]}];
+    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName : [UIColor greenColor], NSFontAttributeName: [UIFont systemFontOfSize:15.0]}];
     //[text appendAttributedString:[[NSAttributedString alloc] initWithString:@" Text" attributes:@{NSForegroundColorAttributeName : [UIColor greenColor], NSFontAttributeName: [UIFont systemFontOfSize:11.0]}]];
     
-    HUD.textLabel.attributedText = text;
+    HUD.textLabel.attributedText = attrText;
     HUD.position = JGProgressHUDPositionBottomCenter;
     [HUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
     [HUD dismissAfterDelay:5.0];
