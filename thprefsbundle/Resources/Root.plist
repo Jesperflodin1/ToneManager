@@ -7,23 +7,93 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+			<key>headerCellClass</key>
+			<string>HBPackageNameHeaderCell</string>
+			<key>icon</key>
+			<string>icon.png</string>
+			<key>packageIdentifier</key>
+			<string>fi.flodin.tonehelper</string>
+			<key>titleColor</key>
+			<string>#ffffff</string>
+			<key>subtitleColor</key>
+			<string>#aaaaaa</string>
+		</dict>
+		<key>cell</key>
+			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>THPrefsBundle First Page</string>
+			<string>Main settings</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<true/>
+			<false/>
 			<key>defaults</key>
-			<string>fi.flodin.thprefsbundle</string>
+			<string>fi.flodin.tonehelper</string>
 			<key>key</key>
-			<string>AwesomeSwitch1</string>
+			<string>kEnabled</string>
 			<key>label</key>
-			<string>Awesome Switch 1</string>
+			<string>Enable</string>
+		</dict>
+		<dict>
+		<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Imports ringtones from chosen apps if enabled. Open the ringtone picker in Preferences to trigger the import.</string>
+		</dict>
+		<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Ringtone import settings</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>fi.flodin.tonehelper</string>
+			<key>key</key>
+			<string>kAudikoLiteEnabled</string>
+			<key>label</key>
+			<string>Import from Audiko Lite</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>fi.flodin.tonehelper</string>
+			<key>key</key>
+			<string>kAudikoPaidEnabled</string>
+			<key>label</key>
+			<string>Import from Audiko (Paid version)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>fi.flodin.tonehelper</string>
+			<key>key</key>
+			<string>kAudikoLiteEnabled</string>
+			<key>label</key>
+			<string>Import from Zedge Ringtones</string>
+		</dict>
+		<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Imports from the above apps when the respective setting above is enabled. Restart Preferences app to apply.</string>
+		</dict>
+		<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Note: Enabling all apps above or/and importing large amounts of ringtones may cause lag when opening the ringtone picker.</string>
 		</dict>
 	</array>
 	<key>title</key>
-	<string>THPrefsBundle</string>
+	<string>ToneHelper</string>
 </dict>
 </plist>
