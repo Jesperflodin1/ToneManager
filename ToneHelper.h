@@ -8,6 +8,15 @@
 #include "stdio.h"
 #include "dlfcn.h"
 
+#ifdef DEBUG
+#   define NSLog(...) NSLog(__VA_ARGS__)
+#else 
+#   define NSLog(...) (void)0
+#endif
+@interface TLToneManager : NSObject 
+-(void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
+@end
+
 @interface TKTonePickerViewController : UITableViewController
 @end
 

@@ -7,18 +7,21 @@ typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
 };
 
 @interface JFTHRingtoneImporter : NSObject {
-    int progress;
+    NSMutableDictionary *plist; //ringtones.plist
+    NSMutableDictionary *ringtonesToImport;
+    BOOL shouldImportRingtones;
 }
 
-@property (nonatomic) JGProgressHUD* progressHUD;
-
 + (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
-+ (NSArray *)getRingtoneFilesFromApp:(NSString *)bundleID withSubfolder:(NSString *)folder;
-+ (NSArray *)getRingtoneFilesFromApp:(NSString *)bundleID; //Uses "Documents" as folder, default
-- (void)initHUD;
-- (void)showProgressHUD;
-- (void)showSuccessHUD;
-- (void)setProgress:(int)p;
+- (void)getRingtoneFilesFromApp:(NSString *)bundleID; //Uses "Documents" as folder, default
+
+- (void)showSuccessHUDText:(NSString*)text;
+- (void)showErrorHUDText:(NSString *)text;
+
+- (BOOL)shouldImportRingtones;
+- (void)setShouldImportRingtones:(BOOL)b;
+- (void)saveRingtonesPlist;
+- (void)importNewRingtones;
 
 
 @end

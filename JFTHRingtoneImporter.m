@@ -37,63 +37,149 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
     }
     return [result stringByAppendingString:s];
 }
-+ (NSArray *)getRingtoneFilesFromApp:(NSString *)bundleID withSubfolder:(NSString *)folder {
+- (void)getRingtoneFilesFromApp:(NSString *)bundleID {
+    NSLog(@"Ringtone Importer: listing app folder for bundle: %@",bundleID);
     // TODO: Get apps from preferences. Check if app exist and if folder exists.
     FBApplicationInfo *appInfo = [LSApplicationProxy applicationProxyForIdentifier:bundleID];
 
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
-    NSString *appDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:folder];
+    NSString *appDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:@"Documents"];
     NSArray *appDirFiles = [localFileManager contentsOfDirectoryAtPath:appDirectory error:nil];
+    NSMutableArray *m4rFiles = [[NSMutableArray alloc] init];
     if (appDirFiles) {
-        return appDirFiles;
-    } else {
-        return nil; //Application unavailable (or documents folder non-existent)
-    }
-}
-+ (NSArray *)getRingtoneFilesFromApp:(NSString *)bundleID {
-    return [JFTHRingtoneImporter getRingtoneFilesFromApp:bundleID withSubfolder:@"Documents"];
+        if ([appDirFiles count] > 0) {
+            for (NSString *file in appDirFiles) {
+                if ([[file pathExtension] isEqualToString: @"m4r"]) {
+                    [m4rFiles addObject:file];
+                }
+            }
+            if ([m4rFiles count] > 0) {
+                // Add files to dict
+                NSLog(@"Ringtone Importer: Found ringtones");
+                [ringtonesToImport setObject:m4rFiles forKey:bundleID];
+                self.shouldImportRingtones = YES;
+            }
+        }
+    } // App unavailable or folder unavailable, not adding
 }
 
 - (instancetype)init {
     if (self = [super init]) {
-        [self initHUD];
+        NSLog(@"Ringtone Importer: Init");
+        ringtonesToImport = [[NSMutableDictionary alloc] init];
+        shouldImportRingtones = NO;
     }
     return self;
 }
-- (void)initHUD {
-    self.progressHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleExtraLight];
-    self.progressHUD.interactionType = JGProgressHUDInteractionTypeBlockTouchesOnHUDView;
-    self.progressHUD.animation = [JGProgressHUDFadeZoomAnimation animation];
-    self.progressHUD.vibrancyEnabled = YES;
-    self.progressHUD.shadow = [JGProgressHUDShadow shadowWithColor:[UIColor blackColor] offset:CGSizeZero radius:5.0 opacity:0.3f];
+- (void)showSuccessHUDText:(NSString *)text { //Dismisses itself
+    JGProgressHUD *HUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleExtraLight];
+    //self.progressHUD.square = YES;
+    HUD.textLabel.text = text;
+    [HUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
+    [HUD dismissAfterDelay:2.0 animated:YES];
 }
-- (void)showProgressHUD {
-    if (!self.progressHUD) {
-        [self initHUD];
+- (void)showErrorHUDText:(NSString *)text {
+    JGProgressHUD *HUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleExtraLight];
+    HUD.textLabel.text = text;
+    HUD.indicatorView = [[JGProgressHUDErrorIndicatorView alloc] init];
+    //self.progressHUD.square = YES;
+    [HUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
+    [HUD dismissAfterDelay:4.0 animated:YES];
+}
+- (void)showTextHUD {
+    JGProgressHUD *HUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleExtraLight];
+    HUD.interactionType = JGProgressHUDInteractionTypeBlockTouchesOnHUDView;
+    HUD.animation = [JGProgressHUDFadeZoomAnimation animation];
+    HUD.vibrancyEnabled = YES;
+    HUD.indicatorView = nil;
+    
+    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"Importing new ringtones" attributes:@{NSForegroundColorAttributeName : [UIColor greenColor], NSFontAttributeName: [UIFont systemFontOfSize:15.0]}];
+    //[text appendAttributedString:[[NSAttributedString alloc] initWithString:@" Text" attributes:@{NSForegroundColorAttributeName : [UIColor greenColor], NSFontAttributeName: [UIFont systemFontOfSize:11.0]}]];
+    
+    HUD.textLabel.attributedText = text;
+    HUD.position = JGProgressHUDPositionBottomCenter;
+    [HUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
+    [HUD dismissAfterDelay:4.0];
+}
+
+
+- (BOOL)shouldImportRingtones {
+    //Check if new ringtones exist
+    NSLog(@"Ringtone Importer: shouldImport called");
+    return shouldImportRingtones;
+}
+- (void)setShouldImportRingtones:(BOOL)b {
+    shouldImportRingtones = b;
+}
+- (void)saveRingtonesPlist {
+    //Write plist
+    NSData *newData = [NSPropertyListSerialization dataWithPropertyList: plist
+                                            format: NSPropertyListXMLFormat_v1_0
+                                            options: 0
+                                                error: nil];
+    [newData writeToFile:RINGTONE_PLIST_PATH atomically:YES];
+}
+- (void)importNewRingtones {
+    // Read ringtones.plist
+    NSLog(@"Ringtone Importer: Import called");
+    NSData *plistData = [NSData dataWithContentsOfFile:RINGTONE_PLIST_PATH];
+    NSMutableDictionary *ringtones;
+    if (plistData) { //if plist exists, read it
+        plist = [NSPropertyListSerialization propertyListWithData:plistData
+                                                            options:NSPropertyListMutableContainers
+                                                            format:nil error:nil];
+        ringtones = [plist objectForKey:@"Ringtones"];
+    } else { //create new plist
+        ringtones = [[NSMutableDictionary alloc] init];
+        plist = [[NSMutableDictionary alloc] init];
+        [plist setObject:ringtones forKey:@"Ringtones"];
     }
-    self.progressHUD.indicatorView = [[JGProgressHUDPieIndicatorView alloc] init];
-    self.progressHUD.detailTextLabel.text = @"0% Complete";
-    self.progressHUD.textLabel.text = @"Loading";
-    [self.progressHUD setProgress:0.0f animated:YES];
-    [self.progressHUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
-}
-- (void)showSuccessHUD { //Dismisses itself
-    if (!self.progressHUD) {
-        [self initHUD];
+
+
+    // Loop through files
+    NSFileManager *localFileManager = [[NSFileManager alloc] init];
+    int importedCount = 0;
+    int failedCount = 0;
+    for (NSString *bundleID in ringtonesToImport) // loop through all bundle ids
+    { 
+        FBApplicationInfo *appInfo = [LSApplicationProxy applicationProxyForIdentifier:bundleID];
+        NSString *oldDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:@"Documents"];
+        for (NSString *appDirFile in [ringtonesToImport objectForKey:bundleID]) //loop through nsarray
+        {
+            NSError *error;
+            // Create new filename
+            NSString *newFile = [[JFTHRingtoneImporter randomizedRingtoneParameter:JFTHRingtoneFileName] stringByAppendingString:@".m4r"];
+            if ([localFileManager moveItemAtPath:[oldDirectory stringByAppendingPathComponent:appDirFile]
+                        toPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:newFile]
+                        error:&error]) 
+            {
+                // Create Ringtone Name to show in ringtone picker list. Remove "ugly" characters first
+                NSString *baseName = [appDirFile stringByDeletingPathExtension];
+                NSCharacterSet *doNotWant = [[NSCharacterSet characterSetWithCharactersInString:@" ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖabcdefghijklmnopqrstuvwxyzåäö0123456789._-"] invertedSet];
+                baseName = [[baseName componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @""];
+                //Plist data
+                NSMutableDictionary *currentTone = [[NSMutableDictionary alloc] init];
+                [currentTone setObject:[JFTHRingtoneImporter randomizedRingtoneParameter:JFTHRingtoneGUID] forKey:@"GUID"];
+                [currentTone setObject:baseName forKey:@"Name"];
+                [currentTone setObject:[NSNumber numberWithLongLong:[[JFTHRingtoneImporter randomizedRingtoneParameter:JFTHRingtonePID] longLongValue]] forKey:@"PID"];
+                [currentTone setObject:[NSNumber numberWithBool:NO] forKey:@"Protected Content"];
+                // Add entry to nsmutabledict (plist)
+                [[plist objectForKey:@"Ringtones"] setObject:currentTone forKey:newFile];
+                //NSLog(@"File copy success: %@",appDirFile);
+                importedCount++;
+            } else {
+                failedCount++;
+                NSLog(@"File copy (%@) failed: %@",appDirFile,error);
+            }
+        }
+    } // for loop end 
+    [self saveRingtonesPlist];
+    if (failedCount < 1) {
+        [self showSuccessHUDText:[NSString stringWithFormat:@"Imported %d tones", importedCount]];
+    } else {
+        [self showErrorHUDText:@"Error when importing tones"];
     }
-    self.progressHUD.indicatorView = [[JGProgressHUDSuccessIndicatorView alloc] init];
-    self.progressHUD.square = YES;
-    self.progressHUD.textLabel.text = @"Done";
-    [self.progressHUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
-    [self.progressHUD dismissAfterDelay:0.3f animated:YES];
+    
 }
-- (void)setProgress:(int)p {
-    progress = p;
-    [self.progressHUD setProgress:progress/100.0f animated:YES];
-    self.progressHUD.detailTextLabel.text = [NSString stringWithFormat:@"%d Complete", progress];
-}
-
-
-
 
 @end
