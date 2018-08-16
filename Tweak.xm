@@ -2,6 +2,8 @@
 #import "JGProgressHUD/JGProgressHUD.h"
 #import "JFTHRingtoneImporter.h"
 
+#import <objc/runtime.h>
+
 // TODO: 
 //
 // Add support for zedge ringtones

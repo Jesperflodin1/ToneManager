@@ -122,6 +122,7 @@ static CGRect keyboardFrame = (CGRect){{0.0, 0.0}, {0.0, 0.0}};
  
  */
 - (instancetype)initWithStyle:(JGProgressHUDStyle)style {
+    
     self = [super initWithFrame:CGRectZero];
     
     if (self) {

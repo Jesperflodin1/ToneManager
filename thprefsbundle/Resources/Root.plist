@@ -14,10 +14,11 @@
 			<key>packageIdentifier</key>
 			<string>fi.flodin.tonehelper</string>
 			<key>titleColor</key>
-			<string>#ffffff</string>
+			<string>#688500</string>
 			<key>subtitleColor</key>
 			<string>#aaaaaa</string>
 		</dict>
+		<dict>
 		<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
@@ -41,6 +42,7 @@
 			<key>footerText</key>
 			<string>Imports ringtones from chosen apps if enabled. Open the ringtone picker in Preferences to trigger the import.</string>
 		</dict>
+		<dict>
 		<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
@@ -82,15 +84,27 @@
 			<key>label</key>
 			<string>Import from Zedge Ringtones</string>
 		</dict>
+		<dict>
 		<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>footerText</key>
 			<string>Imports from the above apps when the respective setting above is enabled. Restart Preferences app to apply.</string>
 		</dict>
+		<dict>
 		<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>footerText</key>
 			<string>Note: Enabling all apps above or/and importing large amounts of ringtones may cause lag when opening the ringtone picker.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>detail</key>
+			<string>JFTHRingtonetListController</string>
+			<key>isController</key>
+			<true/>
+			<key>label</key>
+			<string>Imported Ringtones</string>
 		</dict>
 	</array>
 	<key>title</key>
