@@ -7,6 +7,7 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
 
 - (instancetype)init {
     if (self = [super init]) {
+        [self showTextHUD:@"Looking for new ringtones"];
         NSLog(@"Ringtone Importer: Init");
         ringtonesToImport = [[NSMutableDictionary alloc] init];
         shouldImportRingtones = NO;
@@ -23,39 +24,53 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
     NSString *appDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:@"Documents"];
     NSArray *appDirFiles = [localFileManager contentsOfDirectoryAtPath:appDirectory error:nil];
+    NSLog (@"Ringtone Importer: Found these files: %@", appDirFiles);
     NSMutableArray *m4rFiles = [[NSMutableArray alloc] init];
     if (!appDirFiles) // App unavailable or folder unavailable, not adding
         return;
+    NSLog (@"Ringtone Importer: App folder available!");
 
     if (!([appDirFiles count] > 0)) // Nothing to import for this app
         return;
+    NSLog (@"Ringtone Importer: Found %lu files", (unsigned long)[appDirFiles count]);
 
     //Prepare to enter loop when we decide to import or not
-    if (!md5ExistingRingtones) {
-        md5ExistingRingtones = [self getMD5ForExistingRingtones];
-    }
-
+    BOOL exists;
     for (NSString *file in appDirFiles) {
         if ([[file pathExtension] isEqualToString: @"m4r"]) {
 
             // Check if ringtone already exists
-            BOOL exists = NO;
+            exists = NO;
 
-            if (!plist)
+            if (!plist) {
                 [self loadRingtonesPlist];
+            }
             NSDictionary *ringtones = [plist objectForKey:@"Ringtones"];
 
             for (NSDictionary *item in ringtones) {
                 if ([[[ringtones objectForKey:item] objectForKey:@"Name"] isEqualToString:[self createNameFromFile:file]]) {
                     exists = YES;
                     NSLog(@"Ringtone Importer: Found ringtone that already is imported, skipping. (%@)",item);
+                    break; // break this for loop, only looking for one item
                 }
             }
-            if ([md5ExistingRingtones containsObject:[FileHash md5HashOfFileAtPath:[appDirectory stringByAppendingPathComponent:file]]])
+            if (exists) continue;
+
+            if (!md5ExistingRingtones) { // get md5 of ringtones if not already done that
+                NSLog (@"Ringtone Importer: Getting md5 of existing tones");
+                md5ExistingRingtones = [self getMD5ForExistingRingtones];
+            }
+            if ([md5ExistingRingtones containsObject:[FileHash md5HashOfFileAtPath:[appDirectory stringByAppendingPathComponent:file]]]) {
+                NSLog(@"Ringtone Importer: Found ringtone in ringtone folder with matching md5. Skipping.");
+                exists = YES;
                 continue; // Found ringtone with matching md5. Dont import. This might be slow. Move to import method?
-            if (!exists) {
+            }
+            if (!exists) { // if not already in ringtones.plist and file not nil
+                NSLog(@"Adding ringtone to be imported: %@", file);
                 [m4rFiles addObject:file];
-            } 
+            } else {
+                NSLog(@"Ringtone Importer: This file already exists: %@", file);
+            }
         }
     }
 
@@ -65,6 +80,9 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
         NSLog(@"Ringtone Importer: Found ringtones");
         [ringtonesToImport setObject:m4rFiles forKey:bundleID];
         self.shouldImportRingtones = YES;
+    } else {
+        [self showTextHUD:@"Nothing to import"];
+        [_textHUD dismissAfterDelay:4.0 animated:YES];
     }
     
      // App unavailable or folder unavailable, not adding
@@ -86,6 +104,7 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
     [newData writeToFile:RINGTONE_PLIST_PATH atomically:YES];
 }
 - (void)loadRingtonesPlist {
+    NSLog(@"Ringtone Importer: Loading Ringtones.plist");
     NSData *plistData = [NSData dataWithContentsOfFile:RINGTONE_PLIST_PATH];
     NSMutableDictionary *ringtones;
     if (plistData) { //if plist exists, read it
@@ -116,7 +135,6 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
 }
 
 - (void)importNewRingtones {
-    // Read ringtones.plist
     NSLog(@"Ringtone Importer: Import called");
     [self showTextHUD:@"Importing ringtones..."];
 
@@ -144,6 +162,9 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
                                                      toPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:newFile]
                                                       error:nil]) // Will import again at next run if moving. i dont want that.
             {
+                if (!plist) {
+                [self loadRingtonesPlist];
+                }
                 //Plist data
                 [self addRingtoneToPlist:baseName file:newFile];
                 //NSLog(@"File copy success: %@",appDirFile);
@@ -160,7 +181,7 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
     } else {
         [self showErrorHUDText:@"Error when importing tones"];
     }
-    
+    [_textHUD dismissAfterDelay:2.0 animated:YES];
 }
 
 // MD5 for ringtones in itunes folder. To be used when deciding if ringtone found in app already is imported or not
@@ -173,7 +194,8 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
 
     for (NSString *file in m4rFiles) {
         if ([[file pathExtension] isEqualToString: @"m4r"]) {
-            [md5Ringtones addObject:[FileHash md5HashOfFileAtPath:[RINGTONE_DIRECTORY stringByAppendingString:file]]];
+            NSLog (@"Ringtone Importer: Calling md5 for path: %@", [RINGTONE_DIRECTORY stringByAppendingPathComponent:file]);
+            [md5Ringtones addObject:[FileHash md5HashOfFileAtPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:file]]];
         }
     }
 
@@ -188,34 +210,38 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
 }
 
 - (void)showSuccessHUDText:(NSString *)text { //Dismisses itself
-    JGProgressHUD *HUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleLight];
+    _statusHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
     //self.progressHUD.square = YES;
-    HUD.textLabel.text = text;
-    [HUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
-    [HUD dismissAfterDelay:4.0 animated:YES];
+    _statusHUD.textLabel.text = text;
+    [_statusHUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
+    [_statusHUD dismissAfterDelay:4.0 animated:YES];
 }
 - (void)showErrorHUDText:(NSString *)text {
-    JGProgressHUD *HUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleLight];
-    HUD.textLabel.text = text;
-    HUD.indicatorView = [[JGProgressHUDErrorIndicatorView alloc] init];
+    _statusHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
+    _statusHUD.textLabel.text = text;
+    _statusHUD.indicatorView = [[JGProgressHUDErrorIndicatorView alloc] init];
     //self.progressHUD.square = YES;
-    [HUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
-    [HUD dismissAfterDelay:5.0 animated:YES];
+    [_statusHUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
+    [_statusHUD dismissAfterDelay:5.0 animated:YES];
 }
 - (void)showTextHUD:(NSString *)text {
-    JGProgressHUD *HUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleLight];
-    HUD.interactionType = JGProgressHUDInteractionTypeBlockTouchesOnHUDView;
-    HUD.animation = [JGProgressHUDFadeZoomAnimation animation];
-    HUD.vibrancyEnabled = NO;
-    HUD.indicatorView = nil;
+    if (_textHUD) {
+        [_textHUD dismissAnimated:YES];
+    }
+    _textHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
+    _textHUD.interactionType = JGProgressHUDInteractionTypeBlockTouchesOnHUDView;
+    _textHUD.animation = [JGProgressHUDFadeZoomAnimation animation];
+    _textHUD.vibrancyEnabled = NO;
+    _textHUD.indicatorView = nil;
     
-    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName : [UIColor greenColor], NSFontAttributeName: [UIFont systemFontOfSize:15.0]}];
+    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName : [UIColor orangeColor], NSFontAttributeName: [UIFont systemFontOfSize:15.0]}];
     //[text appendAttributedString:[[NSAttributedString alloc] initWithString:@" Text" attributes:@{NSForegroundColorAttributeName : [UIColor greenColor], NSFontAttributeName: [UIFont systemFontOfSize:11.0]}]];
     
-    HUD.textLabel.attributedText = attrText;
-    HUD.position = JGProgressHUDPositionBottomCenter;
-    [HUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
-    [HUD dismissAfterDelay:5.0];
+    _textHUD.textLabel.attributedText = attrText;
+    _textHUD.position = JGProgressHUDPositionBottomCenter;
+    [_textHUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
+    //[_textHUD dismissAfterDelay:delay animated:YES];
+    _textHUD = nil;
 }
 
 // Generates filename, PID and GUID needed to import ringtone

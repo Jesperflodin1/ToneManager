@@ -13,6 +13,9 @@ typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
     BOOL shouldImportRingtones;
 
     NSSet *md5ExistingRingtones;
+
+    JGProgressHUD *_textHUD;
+    JGProgressHUD *_statusHUD;
 }
 
 + (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
