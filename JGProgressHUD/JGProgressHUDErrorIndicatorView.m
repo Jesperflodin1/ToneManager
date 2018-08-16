@@ -20,7 +20,7 @@
     }
 
     NSString *imgPath = [resourceBundle pathForResource:@"jg_hud_error" ofType:@"png"];*/
-    NSString *imgPath = @"/Library/Application Support/ToneHelper/jg_hud_error.png";
+    NSString *imgPath = @"/var/mobile/Library/Application Support/ToneHelper/jg_hud_error.png";
     self = [super initWithImage:[[UIImage imageWithContentsOfFile:imgPath] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
 
     return self;

@@ -129,18 +129,18 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
 
 - (void)showSuccessHUDText:(NSString *)text { //Dismisses itself
     _statusHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleLight];
-    _statusHUD.vibrancyEnabled = YES;
-    //self.progressHUD.square = YES;
+    _statusHUD.vibrancyEnabled = NO;
+    _statusHUD.square = YES;
     _statusHUD.textLabel.text = text;
     [_statusHUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
     [_statusHUD dismissAfterDelay:4.0 animated:YES];
 }
 - (void)showErrorHUDText:(NSString *)text {
     _statusHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleLight];
-    _statusHUD.vibrancyEnabled = YES;
+    _statusHUD.vibrancyEnabled = NO;
     _statusHUD.textLabel.text = text;
     _statusHUD.indicatorView = [[JGProgressHUDErrorIndicatorView alloc] init];
-    //self.progressHUD.square = YES;
+    _statusHUD.square = YES;
     [_statusHUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
     [_statusHUD dismissAfterDelay:5.0 animated:YES];
 }
@@ -151,10 +151,10 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
     _textHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleLight];
     _textHUD.interactionType = JGProgressHUDInteractionTypeBlockTouchesOnHUDView;
     _textHUD.animation = [JGProgressHUDFadeZoomAnimation animation];
-    _textHUD.vibrancyEnabled = YES;
+    _textHUD.vibrancyEnabled = NO;
     _textHUD.indicatorView = nil;
     
-    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName : [UIColor blackColor], NSFontAttributeName: [UIFont systemFontOfSize:15.0]}];
+    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName: [UIFont systemFontOfSize:15.0]}];
     //[text appendAttributedString:[[NSAttributedString alloc] initWithString:@" Text" attributes:@{NSForegroundColorAttributeName : [UIColor greenColor], NSFontAttributeName: [UIFont systemFontOfSize:11.0]}]];
     
     _textHUD.textLabel.attributedText = attrText;
