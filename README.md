@@ -1,5 +1,7 @@
 # ToneHelper
-Automatic installation of ringtones from popular ringtone apps on iOS. More info coming soon!
+Automatic installation of ringtones from popular ringtone apps on iOS. Have only been tested on iOS 11.3.1 and i can't really test it in the simulator because it doesn't even seem to have a ringtone picker. Should work on ios 11.0 and up, possibly on ios 10, 9 and maybe even older depending on if the way the system handled ringtones synced from iTunes has changed.
+
+More info coming soon!
 
 # License
 MIT License
