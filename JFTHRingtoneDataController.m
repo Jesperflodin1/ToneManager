@@ -2,7 +2,7 @@
 #import "JFTHRingtoneImporter.h"
 
 NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist";
-NSString * const TONEHELPERDATA_PLIST_PATH = @"/Library/Application Support/ToneHelper/ToneHelperData.plist";
+NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application Support/ToneHelper/ToneHelperData.plist";
 
 @interface JFTHRingtoneDataController () {
     NSMutableDictionary *_importedRingtonesPlist; 
