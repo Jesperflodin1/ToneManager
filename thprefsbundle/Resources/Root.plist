@@ -35,6 +35,8 @@
 			<string>fi.flodin.tonehelper</string>
 			<key>key</key>
 			<string>kEnabled</string>
+			<key>PostNotifcation</key>
+			<string>fi.flodin.tonehelper/PrefsReload</string>
 			<key>label</key>
 			<string>Enable</string>
 		</dict>
@@ -55,6 +57,8 @@
 			<string>fi.flodin.tonehelper</string>
 			<key>key</key>
 			<string>kAudikoLiteEnabled</string>
+			<key>PostNotifcation</key>
+			<string>fi.flodin.tonehelper/PrefsReload</string>
 			<key>label</key>
 			<string>Import from Audiko Lite</string>
 		</dict>
@@ -67,6 +71,8 @@
 			<string>fi.flodin.tonehelper</string>
 			<key>key</key>
 			<string>kAudikoPaidEnabled</string>
+			<key>PostNotifcation</key>
+			<string>fi.flodin.tonehelper/PrefsReload</string>
 			<key>label</key>
 			<string>Import from Audiko (Paid version)</string>
 		</dict>
@@ -78,12 +84,14 @@
 			<key>defaults</key>
 			<string>fi.flodin.tonehelper</string>
 			<key>key</key>
-			<string>kAudikoLiteEnabled</string>
+			<string>kZedgeEnabled</string>
+			<key>PostNotifcation</key>
+			<string>fi.flodin.tonehelper/PrefsReload</string>
 			<key>label</key>
 			<string>Import from Zedge Ringtones</string>
 		</dict>
 		<dict>
-		<key>cell</key>
+			<key>cell</key>
 			<string>PSGroupCell</string>
 		</dict>
 		<dict>
@@ -97,8 +105,24 @@
 			<string>Imported Ringtones</string>
 		</dict>
 		<dict>
-				<key>cell</key>
+			<key>cell</key>
 			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Advanced Settings</string>
+			<key>footerText</key>
+			<string>Makes imported ringtones work in non-jailbroken mode by writing metadata to Ringtones.plist required for iOS to find ringtones imported by this tweak.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>fi.flodin.tonehelper</string>
+			<key>key</key>
+			<string>kWriteITunesRingtonePlist</string>
+			<key>label</key>
+			<string>Enable in non-jailbroken mode</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -109,6 +133,36 @@
 			<true/>
 			<key>label</key>
 			<string>DEMO</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>NOTE: This option enables modification of Ringtones.plist in /var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Respring</string>
+			<key>footerText</key>
+			<string>To apply changes please respring.</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBTintedTableCell</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>action</key>
+			<string>respring</string>
+			<key>label</key>
+			<string>Respring</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>© 2018 Jesper Flodin. Source code licensed under the MIT license.</string>
 		</dict>
 	</array>
 	<key>title</key>

@@ -57,8 +57,8 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
         [ringtonesToImport setObject:m4rFiles forKey:bundleID];
         self.shouldImportRingtones = YES;
     } else {
-        [self showTextHUD:@"Nothing to import"];
-        [_textHUD dismissAfterDelay:4.0 animated:YES];
+        [self showTextHUD:@"No ringtones to import"];
+        [_textHUD dismissAfterDelay:3.0 animated:YES];
     }
 }
 
@@ -90,7 +90,7 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
             NSString *baseName = [self createNameFromFile:appDirFile];
 
             // Create new filename
-            NSString *newFile = [[JFTHRingtoneImporter randomizedRingtoneParameter:JFTHRingtoneFileName] stringByAppendingString:@".m4r"];
+            NSString *newFile = [[_ringtoneData randomizedRingtoneParameter:JFTHRingtoneFileName] stringByAppendingString:@".m4r"];
 
             // Calculate MD5
             NSString *m4rFileMD5Hash = [FileHash md5HashOfFileAtPath:[oldDirectory stringByAppendingPathComponent:appDirFile]];
@@ -117,7 +117,8 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
     } else {
         [self showErrorHUDText:@"Error when importing tones"];
     }
-    [_textHUD dismissAfterDelay:2.0 animated:YES];
+    [_textHUD dismissAfterDelay:2.5 animated:YES];
+    [_statusHUD dismissAfterDelay:1.5 animated:YES];
 }
 
 - (NSString *)createNameFromFile:(NSString *)file {
@@ -128,72 +129,48 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
 }
 
 - (void)showSuccessHUDText:(NSString *)text { //Dismisses itself
-    _statusHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleLight];
+if (_statusHUD) {
+        if ([_statusHud isVisible]) 
+            [_statusHUD dismissAnimated:NO];
+    }
+    _statusHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
     _statusHUD.vibrancyEnabled = NO;
     _statusHUD.square = YES;
     _statusHUD.textLabel.text = text;
     [_statusHUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
-    [_statusHUD dismissAfterDelay:4.0 animated:YES];
+    //[_statusHUD dismissAfterDelay:2.0 animated:YES];
 }
 - (void)showErrorHUDText:(NSString *)text {
-    _statusHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleLight];
+    if (_statusHUD) {
+        if ([_statusHud isVisible]) 
+            [_statusHUD dismissAnimated:NO];
+    }
+    _statusHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
     _statusHUD.vibrancyEnabled = NO;
     _statusHUD.textLabel.text = text;
     _statusHUD.indicatorView = [[JGProgressHUDErrorIndicatorView alloc] init];
     _statusHUD.square = YES;
     [_statusHUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
-    [_statusHUD dismissAfterDelay:5.0 animated:YES];
+    //[_statusHUD dismissAfterDelay:3.0 animated:YES];
 }
 - (void)showTextHUD:(NSString *)text {
     if (_textHUD) {
-        [_textHUD dismissAnimated:NO];
+        if ([_textHud isVisible]) 
+            [_textHUD dismissAnimated:NO];
     }
-    _textHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleLight];
+    _textHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
     _textHUD.interactionType = JGProgressHUDInteractionTypeBlockTouchesOnHUDView;
     _textHUD.animation = [JGProgressHUDFadeZoomAnimation animation];
     _textHUD.vibrancyEnabled = NO;
     _textHUD.indicatorView = nil;
     
-    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName: [UIFont systemFontOfSize:15.0]}];
+    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:15.0]}];
     //[text appendAttributedString:[[NSAttributedString alloc] initWithString:@" Text" attributes:@{NSForegroundColorAttributeName : [UIColor greenColor], NSFontAttributeName: [UIFont systemFontOfSize:11.0]}]];
     
     _textHUD.textLabel.attributedText = attrText;
     _textHUD.position = JGProgressHUDPositionBottomCenter;
     [_textHUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
     //[_textHUD dismissAfterDelay:delay animated:YES];
-}
-
-// Generates filename, PID and GUID needed to import ringtone
-+ (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type {
-    int length;
-    NSString *alphabet;
-    NSString *result = @"";
-    switch (Type) 
-    {
-        case JFTHRingtonePID:
-            length = 18;
-            result = @"-";
-            alphabet = @"0123456789";
-            break;
-        case JFTHRingtoneGUID:
-            alphabet = @"ABCDEFG0123456789";
-            length = 16;
-            break;
-        case JFTHRingtoneFileName:
-            alphabet = @"ABCDEFGHIJKLMNOPQRSTUVWXZ";
-            length = 4;
-            break;
-        default:
-            return nil;
-            break;
-    }
-    NSMutableString *s = [NSMutableString stringWithCapacity:length];
-    for (NSUInteger i = 0U; i < length; i++) {
-        u_int32_t r = arc4random() % [alphabet length];
-        unichar c = [alphabet characterAtIndex:r];
-        [s appendFormat:@"%C", c];
-    }
-    return [result stringByAppendingString:s];
 }
 
 @end

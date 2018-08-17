@@ -2,6 +2,12 @@
 #import <Foundation/Foundation.h>
 
 
+typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
+    JFTHRingtoneFileName,
+    JFTHRingtoneGUID,
+    JFTHRingtonePID
+};
+
 
 
 @interface JFTHRingtoneDataController : NSObject {
@@ -23,5 +29,6 @@
 - (NSDictionary *)getItunesRingtones;
 - (NSDictionary *)getImportedRingtones;
 
+- (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
 
 @end

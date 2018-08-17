@@ -2,12 +2,6 @@
 #import "JFTHRingtoneDataController.h"
 #include "FileHash.h"
 
-typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
-    JFTHRingtoneFileName,
-    JFTHRingtoneGUID,
-    JFTHRingtonePID
-};
-
 @interface JFTHRingtoneImporter : NSObject {
     
     NSMutableDictionary *ringtonesToImport;
@@ -21,7 +15,6 @@ typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
     JFTHRingtoneDataController *_ringtoneData;
 }
 
-+ (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
 - (NSString *)createNameFromFile:(NSString *)file;
 - (void)getRingtoneFilesFromApp:(NSString *)bundleID; //Uses "Documents" as folder, default
 //- (NSSet *)getMD5ForExistingRingtones;

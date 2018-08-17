@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <Cephei/HBPreferences.h>
 #import "JGProgressHUD/JGProgressHUD.h"
 
 #import <FrontBoard/FBApplicationInfo.h>
@@ -8,13 +9,23 @@
 #include "stdio.h"
 #include "dlfcn.h"
 
-#ifdef DEBUG
-#   define NSLog(...) NSLog(__VA_ARGS__)
-#else 
-#   define NSLog(...) (void)0
-#endif
-@interface TLToneManager : NSObject 
+
+
+
+/*@interface TLToneManager : NSObject 
 -(void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
+@end*/
+
+@interface NSPathStore2 : NSString 
+@end
+
+@interface TLITunesTone : NSObject
+-(id)initWithPropertyListRepresentation:(id)arg1 filePath:(id)arg2;
+@end
+
+@interface TLToneManager : NSObject
+-(void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
+-(NSMutableArray *)_tonesFromManifestPath:(NSPathStore2 *)arg1 mediaDirectoryPath:(NSPathStore2 *)arg2;
 @end
 
 @interface TKTonePickerViewController : UITableViewController

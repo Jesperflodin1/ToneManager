@@ -14,7 +14,7 @@ ToneHelper_FILES = Tweak.xm $(wildcard *.m) $(wildcard JGProgressHUD/*.m)
 ToneHelper_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 
 ToneHelper_FRAMEWORKS = UIKit QuartzCore MobileCoreServices
-ToneHelper_PRIVATEFRAMEWORKS = ToneKit FrontBoard
+ToneHelper_PRIVATEFRAMEWORKS = ToneKit ToneLibrary FrontBoard
 ToneHelper_EXTRA_FRAMEWORKS += cephei
 
 include $(THEOS_MAKE_PATH)/tweak.mk
