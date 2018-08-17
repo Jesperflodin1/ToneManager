@@ -6,13 +6,14 @@
 + (NSString *)hb_specifierPlist {
 	return @"Root";
 }
-
-
-
-
-
-- (void)respring {
-	DLog(@"respring tapped");
++ (NSString *)hb_shareText {
+	return nil;
 }
+
++ (NSURL *)hb_shareURL {
+	return nil;
+}
+
+
 
 @end

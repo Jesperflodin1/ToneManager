@@ -7,7 +7,7 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
 
 - (instancetype)init {
     if (self = [super init]) {
-        [self showTextHUD:@"Looking for new ringtones"];
+        //[self showTextHUD:@"Looking for new ringtones"];
         NSLog(@"Ringtone Importer: Init");
         ringtonesToImport = [[NSMutableDictionary alloc] init];
         shouldImportRingtones = NO;
@@ -57,7 +57,7 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
         [ringtonesToImport setObject:m4rFiles forKey:bundleID];
         self.shouldImportRingtones = YES;
     } else {
-        [self showTextHUD:@"No ringtones to import"];
+        [self showTextHUD:@"No new ringtones to import"];
         [_textHUD dismissAfterDelay:3.0 animated:YES];
     }
 }
@@ -130,7 +130,7 @@ NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Rington
 
 - (void)showSuccessHUDText:(NSString *)text { //Dismisses itself
 if (_statusHUD) {
-        if ([_statusHud isVisible]) 
+        if ([_statusHUD isVisible]) 
             [_statusHUD dismissAnimated:NO];
     }
     _statusHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
@@ -142,7 +142,7 @@ if (_statusHUD) {
 }
 - (void)showErrorHUDText:(NSString *)text {
     if (_statusHUD) {
-        if ([_statusHud isVisible]) 
+        if ([_statusHUD isVisible]) 
             [_statusHUD dismissAnimated:NO];
     }
     _statusHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
@@ -155,7 +155,7 @@ if (_statusHUD) {
 }
 - (void)showTextHUD:(NSString *)text {
     if (_textHUD) {
-        if ([_textHud isVisible]) 
+        if ([_textHUD isVisible]) 
             [_textHUD dismissAnimated:NO];
     }
     _textHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];

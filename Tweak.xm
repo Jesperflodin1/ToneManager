@@ -12,7 +12,7 @@ BOOL kEnabled;
 BOOL kAudikoLiteEnabled;
 BOOL kAudikoPaidEnabled;
 BOOL kZedgeEnabled;
-HBPreferences *preferences;
+
 
 
 // TODO: 
@@ -37,7 +37,12 @@ HBPreferences *preferences;
 
         //Apps to look for ringtones in (in Documents folder)
         NSMutableArray *apps = [[NSMutableArray alloc] init];
-        [apps addObject:@"com.908.AudikoFree"];
+        if (kAudikoLiteEnabled)
+            [apps addObject:@"com.908.AudikoFree"];
+        if (kZedgeEnabled)
+            [apps addObject:@"com.zedge.Zedge"];
+        if (kAudikoLiteEnabled)
+            [apps addObject:@"com.908.Audiko"];
 
         for (NSString *app in apps) {
             [importer getRingtoneFilesFromApp:app];
@@ -90,6 +95,7 @@ HBPreferences *preferences;
 %end
 
 extern NSString *const HBPreferencesDidChangeNotification;
+HBPreferences *preferences;
 
 %ctor {
     DLog(@"Initializing ToneHelper")
@@ -99,6 +105,12 @@ extern NSString *const HBPreferencesDidChangeNotification;
     [preferences registerBool:&kAudikoLiteEnabled default:NO forKey:@"kAudikoLiteEnabled"];
     [preferences registerBool:&kAudikoPaidEnabled default:NO forKey:@"kAudikoPaidEnabled"];
     [preferences registerBool:&kZedgeEnabled default:NO forKey:@"kZedgeEnabled"];
+
+    HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCopying> _Nullable newValue) {
+        DLog(@"key=%@ newValue=%@",key,newValue);
+    };
+
+    [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
 
     %init(ios11);
 }
