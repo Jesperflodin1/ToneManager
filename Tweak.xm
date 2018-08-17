@@ -1,10 +1,9 @@
 #import "ToneHelper.h"
-#import "JGProgressHUD/JGProgressHUD.h"
 #import "JFTHRingtoneImporter.h"
 
 #import <objc/runtime.h>
 
-#import "Log.h"
+
 
 NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist";
 NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";

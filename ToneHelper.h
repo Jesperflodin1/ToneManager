@@ -9,7 +9,7 @@
 #include "stdio.h"
 #include "dlfcn.h"
 
-
+#import "Log.h"
 
 
 /*@interface TLToneManager : NSObject 
