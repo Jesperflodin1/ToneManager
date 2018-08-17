@@ -8,7 +8,7 @@ THPrefsBundle_FILES = $(wildcard *.m)
 THPrefsBundle_INSTALL_PATH = /Library/PreferenceBundles
 THPrefsBundle_FRAMEWORKS = UIKit
 THPrefsBundle_PRIVATE_FRAMEWORKS = Preferences
-THPrefsBundle_EXTRA_FRAMEWORKS += cepheiprefs
+THPrefsBundle_EXTRA_FRAMEWORKS += cephei cepheiprefs
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 

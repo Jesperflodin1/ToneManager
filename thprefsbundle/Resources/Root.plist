@@ -143,7 +143,7 @@ NOTE: This option enables modification of Ringtones.plist in /var/mobile/Media/i
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>action</key>
-			<string>hb_respringAndReturn</string>
+			<string>respring</string>
 			<key>label</key>
 			<string>Respring</string>
 		</dict>
