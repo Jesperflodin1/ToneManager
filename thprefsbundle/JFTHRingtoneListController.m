@@ -1,5 +1,5 @@
 #import "JFTHRingtoneListController.h"
-#import "../UIAlertController+Window.m"
+
 
 
 
@@ -27,6 +27,10 @@
 			//extern NSString* PSDeletionActionKey;
 			// Set selector to call when removing specifier
 			[tone setProperty:NSStringFromSelector(@selector(removedSpecifier:)) forKey:PSDeletionActionKey];
+			[tone setProperty:@YES forKey:@"enabled"];
+			[tone setProperty:@YES forKey:@"hasIcon"];
+			[tone setProperty:[UIImage imageWithContentsOfFile:[[NSBundle bundleWithIdentifier:@"fi.flodin.thprefsbundle"] pathForResource:@"AudikoLite" ofType:@"png"]] forKey:@"iconImage"];
+			//[tone setupIconImageWithPath:[[NSBundle bundleWithIdentifier:@"fi.flodin.thprefsbundle"] pathForResource:@"AudikoLite" ofType:@"png"]];
 			[_specifiers addObject:tone];
 
 		}
@@ -45,8 +49,8 @@
 
 -(void)removedSpecifier:(PSSpecifier*)specifier{
 	
-	
-	
+	ULog(@"%@",[NSBundle bundleWithIdentifier:@"fi.flodin.thprefsbundle"]);
+	ULog(@"%@",[[NSBundle bundleWithIdentifier:@"fi.flodin.thprefsbundle"] pathForResource:@"AudikoLite" ofType:@"png"]);
 	DLog(@"removing specifier: %@",specifier);
 }
 
