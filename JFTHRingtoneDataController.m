@@ -48,7 +48,11 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
 }
 - (void)loadRingtonesPlist {
     NSLog(@"Ringtone Importer: Loading Ringtones.plist");
-    NSData *plistData = [NSData dataWithContentsOfFile:RINGTONE_PLIST_PATH];
+    
+    NSError *dataError;
+    NSData *plistData = [NSData dataWithContentsOfFile:RINGTONE_PLIST_PATH options:0 error:&dataError];
+    if (!plistData)
+        DLog(@"Failed to read itunes plist file: %@",dataError);
     
     if (plistData) { //if plist exists, read it
         _ringtonesPlist = [NSPropertyListSerialization propertyListWithData:plistData
@@ -59,6 +63,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
         _ringtonesPlist = [[NSMutableDictionary alloc] init];
         [_ringtonesPlist setObject:ringtones forKey:@"Ringtones"];
     }
+    DLog(@"Read itunes plist: %@",_ringtonesPlist);
 }
 - (void)saveTweakPlist {
     NSData *newData = [NSPropertyListSerialization dataWithPropertyList: _importedRingtonesPlist
@@ -145,9 +150,10 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
 }
 - (NSDictionary *)getITunesRingtoneWithGUID:(NSString *)guid {
     NSDictionary *ringtones = [self getItunesRingtones];
+    DLog(@"Read itunes plist: %@",ringtones);
     for (NSString *item in ringtones) {
         if ([[[ringtones objectForKey:item] objectForKey:@"GUID"] isEqualToString:guid]) {
-            NSLog(@"Ringtone Importer: Found ringtone that already is imported based on filename, skipping. (%@)",item);
+            NSLog(@"Ringtone Importer: Found ringtone that already is imported based on GUID, skipping. (%@)",item);
             return [ringtones objectForKey:item];
         }
     }
@@ -195,37 +201,39 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
 }
 
 + (void)syncPlists:(BOOL)currentITunesWriteStatus {
-    DLog(@"Syncing plists with currentITunesWriteStatus = %d",currentITunesWriteStatus);
-    JFTHRingtoneDataController *toneData = [[JFTHRingtoneDataController alloc] init];
+    @autoreleasepool { 
+        DLog(@"Syncing plists with currentITunesWriteStatus = %d",currentITunesWriteStatus);
+        JFTHRingtoneDataController *toneData = [[JFTHRingtoneDataController alloc] init];
 
-    // Need write access to itunes plist
-    [toneData enableITunesRingtonePlistEditing];
+        // Need write access to itunes plist
+        [toneData enableITunesRingtonePlistEditing];
 
-    NSDictionary *importedTones = [toneData getImportedRingtones];
+        NSDictionary *importedTones = [toneData getImportedRingtones];
 
-    for (NSString *file in importedTones) {
-        if ([toneData getITunesRingtoneWithGUID:[[importedTones objectForKey:file] objectForKey:@"GUID"]]) {
-            // this ringtone exists in itunes plist
-            if (!currentITunesWriteStatus) {
-                // and it should not exist there
-                DLog(@"Deleting ringtone from itunes plist: %@",[importedTones objectForKey:file]);
-                [toneData deleteRingtoneFromITunesPlist:file];
+        for (NSString *file in importedTones) {
+            if ([toneData getITunesRingtoneWithGUID:[[importedTones objectForKey:file] objectForKey:@"GUID"]]) {
+                // this ringtone exists in itunes plist
+                if (!currentITunesWriteStatus) {
+                    // and it should not exist there
+                    DLog(@"Deleting ringtone from itunes plist: %@",[importedTones objectForKey:file]);
+                    [toneData deleteRingtoneFromITunesPlist:file];
+                }
+            } else if (currentITunesWriteStatus) {
+                // does not exist in itunes plist
+                // and it should exist there. Add it
+                DLog(@"Adding ringtone to itunes plist: %@",[importedTones objectForKey:file]);
+                NSMutableDictionary *currentTone = [[NSMutableDictionary alloc] init];
+                [currentTone setObject:[[importedTones objectForKey:file] objectForKey:@"GUID"] forKey:@"GUID"];
+                [currentTone setObject:[[importedTones objectForKey:file] objectForKey:@"Name"] forKey:@"Name"];
+                [currentTone setObject:[[importedTones objectForKey:file] objectForKey:@"PID"] forKey:@"PID"];
+                [currentTone setObject:[NSNumber numberWithBool:NO] forKey:@"Protected Content"];
+                // Add entry to nsmutabledict (plist)
+                [toneData addRingtoneToITunesPlist:currentTone fileName:file];
             }
-        } else if (currentITunesWriteStatus) {
-            // does not exist in itunes plist
-            // and it should exist there. Add it
-            DLog(@"Adding ringtone to itunes plist: %@",[importedTones objectForKey:file]);
-            NSMutableDictionary *currentTone = [[NSMutableDictionary alloc] init];
-            [currentTone setObject:[[importedTones objectForKey:file] objectForKey:@"GUID"] forKey:@"GUID"];
-            [currentTone setObject:[[importedTones objectForKey:file] objectForKey:@"Name"] forKey:@"Name"];
-            [currentTone setObject:[[importedTones objectForKey:file] objectForKey:@"PID"] forKey:@"PID"];
-            [currentTone setObject:[NSNumber numberWithBool:NO] forKey:@"Protected Content"];
-            // Add entry to nsmutabledict (plist)
-            [toneData addRingtoneToITunesPlist:currentTone fileName:file];
         }
+        [toneData saveRingtonesPlist];
+        toneData = nil;
     }
-    [toneData saveRingtonesPlist];
-
 }
 
 @end

@@ -12,8 +12,16 @@ BOOL kEnabled;
 BOOL kAudikoLiteEnabled;
 BOOL kAudikoPaidEnabled;
 BOOL kZedgeEnabled;
-BOOL kWriteITunesRingtonePlist;
-
+//BOOL kWriteITunesRingtonePlist;
+extern NSString *const HBPreferencesDidChangeNotification;
+HBPreferences *preferences;
+HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCopying> _Nullable newValue) {
+    BOOL value = [[(NSNumber *)newValue copy] boolValue];
+    DLog(@"Notification received for key:%@ with value:%d",key,value);
+    if ([key isEqualToString:@"kWriteITunesRingtonePlist"]) {
+        [JFTHRingtoneDataController syncPlists:value];
+    }
+};
 
 
 // TODO: 
@@ -21,52 +29,45 @@ BOOL kWriteITunesRingtonePlist;
 // Add support for zedge ringtones
 //
 // Test with both Audiko Lite and Pro
-%group inRingtonePicker
+%group ToneHelper
 
-%hook PSUISoundsPrefController
+%hook TLToneManager
 
 //Gets called once when opening the ringtone settings
-//-(void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1 {
-- (void)viewWillAppear:(BOOL)arg1 {
-    DLog(@"In preferences");
-    if (!kEnabled) {
-        DLog(@"Disabled");
-        return %orig;
-    }
-    DLog(@"Enabled");
-    //We're in preferences app, lets look for new ringtones to import
-    JFTHRingtoneImporter *importer = [[JFTHRingtoneImporter alloc] init];
+-(void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1 {
+    if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
+        DLog(@"In preferences");
+        if (!kEnabled) {
+            DLog(@"Disabled");
+            return %orig;
+        }
+        DLog(@"Enabled");
+        //We're in preferences app, lets look for new ringtones to import
+        JFTHRingtoneImporter *importer = [[JFTHRingtoneImporter alloc] init];
 
-    //Apps to look for ringtones in (in Documents folder)
-    NSMutableArray *apps = [[NSMutableArray alloc] init];
-    if (kAudikoLiteEnabled)
-        [apps addObject:@"com.908.AudikoFree"];
-    if (kZedgeEnabled)
-        [apps addObject:@"com.zedge.Zedge"];
-    if (kAudikoLiteEnabled)
-        [apps addObject:@"com.908.Audiko"];
+        //Apps to look for ringtones in (in Documents folder)
+        NSMutableArray *apps = [[NSMutableArray alloc] init];
+        if (kAudikoLiteEnabled)
+            [apps addObject:@"com.908.AudikoFree"];
+        if (kZedgeEnabled)
+            [apps addObject:@"com.zedge.Zedge"];
+        if (kAudikoLiteEnabled)
+            [apps addObject:@"com.908.Audiko"];
 
-    for (NSString *app in apps) {
-        [importer getRingtoneFilesFromApp:app];
-    }
-    //Found something new to import?
-    if ([importer shouldImportRingtones]) {
-        [importer importNewRingtones];
+        for (NSString *app in apps) {
+            [importer getRingtoneFilesFromApp:app];
+        }
+        //Found something new to import?
+        if ([importer shouldImportRingtones]) {
+            [importer importNewRingtones];
+        }
     }
     return %orig;
 }
 
-%end
-
-%end
-
-%group ToneManager
-
-%hook TLToneManager
-
 
 -(NSMutableArray *)_tonesFromManifestPath:(NSPathStore2 *)arg1 mediaDirectoryPath:(NSPathStore2 *)arg2 {
-    if (!kEnabled || kWriteITunesRingtonePlist) {
+    if (!kEnabled || [preferences boolForKey:@"kWriteITunesRingtonePlist"]) {
         // kWriteITunesRingtonePlist enabled => disable runtime injection of ringtones
         DLog(@"Disabled");
         return %orig;
@@ -107,30 +108,30 @@ BOOL kWriteITunesRingtonePlist;
 
 %end
 
-extern NSString *const HBPreferencesDidChangeNotification;
-HBPreferences *preferences;
+
 
 %ctor {
-    DLog(@"Initializing ToneHelper");
-    preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
+    NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
+    DLog(@"Trying to initialize ToneHelper in bundleid: %@",[[NSBundle mainBundle] bundleIdentifier]);
+    if ([bundleID isEqualToString:@"com.apple.Preferences"] ||
+        [bundleID isEqualToString:@"com.apple.springboard"]) {
+        DLog(@"Initializing ToneHelper");
+        preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
 
-	[preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
-    [preferences registerBool:&kAudikoLiteEnabled default:NO forKey:@"kAudikoLiteEnabled"];
-    [preferences registerBool:&kAudikoPaidEnabled default:NO forKey:@"kAudikoPaidEnabled"];
-    [preferences registerBool:&kZedgeEnabled default:NO forKey:@"kZedgeEnabled"];
-    [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
+        [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
+        [preferences registerBool:&kAudikoLiteEnabled default:NO forKey:@"kAudikoLiteEnabled"];
+        [preferences registerBool:&kAudikoPaidEnabled default:NO forKey:@"kAudikoPaidEnabled"];
+        [preferences registerBool:&kZedgeEnabled default:NO forKey:@"kZedgeEnabled"];
+        //[preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
+        [preferences registerDefaults:@{
+ 			@"kWriteITunesRingtonePlist": @NO
+  		}];
 
-    HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCopying> _Nullable newValue) {
-        if ([key isEqualToString:@"kWriteITunesRingtonePlist"]) {
-            [JFTHRingtoneDataController syncPlists:newValue];
-        }
-    };
+        [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
 
-    [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
-
-    if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
-        %init(inRingtonePicker);
+        //if () {
+        %init(ToneHelper);
+        //}
     }
-
-    %init(ToneManager);
+    
 }

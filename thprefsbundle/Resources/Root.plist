@@ -124,8 +124,6 @@ NOTE: This option enables modification of Ringtones.plist in /var/mobile/Media/i
 			<string>kWriteITunesRingtonePlist</string>
 			<key>PostNotifcation</key>
 			<string>fi.flodin.tonehelper/PrefsReload</string>
-			<key>action</key>
-			<string>test</string>
 			<key>label</key>
 			<string>Enable in non-jailbroken mode</string>
 		</dict>
