@@ -27,10 +27,10 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
 }
 
 - (NSDictionary *)getItunesRingtones {
-    return [_ringtonesPlist objectForKey:@"Ringtones"];
+    return [[_ringtonesPlist objectForKey:@"Ringtones"] copy];
 }
 - (NSDictionary *)getImportedRingtones {
-    return [_importedRingtonesPlist objectForKey:@"Ringtones"];
+    return [[_importedRingtonesPlist objectForKey:@"Ringtones"] copy];
 }
 
 - (void)loadTweakPlist {
@@ -238,6 +238,19 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
         [toneData saveRingtonesPlist];
         toneData = nil;
     }
+}
+
++ (NSArray *)getImportedRingtones {
+    JFTHRingtoneDataController *toneData = [[JFTHRingtoneDataController alloc] init];
+
+    NSMutableArray *tonesArray = [[NSMutableArray alloc] init];
+    NSDictionary *importedTones = [toneData getImportedRingtones];
+
+    for (NSString *file in importedTones) {
+        [tonesArray addObject:file];
+    }
+
+    return tonesArray; 
 }
 
 @end
