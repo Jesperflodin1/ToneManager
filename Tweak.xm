@@ -109,14 +109,17 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
 %end
 
 
-
 %ctor {
-    //NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
+    NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
     DLog(@"Trying to initialize ToneHelper in bundleid: %@",[[NSBundle mainBundle] bundleIdentifier]);
-   // if ([bundleID isEqualToString:@"com.apple.Preferences"] ||
-   //     [bundleID isEqualToString:@"com.apple.springboard"] ||
-   //     [bundleID isEqualToString:@"com.apple.InCallService"] ||
-   //     [bundleID isEqualToString:@"com.apple.MobileSMS"]) {
+    if ([bundleID isEqualToString:@"com.apple.Preferences"] ||
+        [bundleID isEqualToString:@"com.apple.springboard"] ||
+        [bundleID isEqualToString:@"com.apple.InCallService"] ||
+        [bundleID isEqualToString:@"com.apple.MobileSMS"] ||
+        [bundleID isEqualToString:@"com.apple.mobilephone"] ||
+        [bundleID isEqualToString:@"com.apple.MobileAddressBook"] ||
+        [bundleID isEqualToString:@"com.apple.mobilemail"] ||
+        [bundleID isEqualToString:@"com.apple.mobiletimer"]) {
         DLog(@"Initializing ToneHelper");
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
 
@@ -132,6 +135,6 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
         //if () {
         %init(ToneHelper);
         //}
-    //}
+    }
     
 }
