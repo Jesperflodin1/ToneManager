@@ -13,14 +13,20 @@ typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
 @interface JFTHRingtoneDataController : NSObject {
     
 }
+
+@property (nonatomic) BOOL shouldWriteITunesRingtonePlist;
+
 - (void)saveRingtonesPlist;
 - (void)loadRingtonesPlist;
+
+- (void)enableITunesRingtonePlistEditing;
 
 - (void)addRingtoneToPlist:(NSString *)name file:(NSString *)fileName oldFileName:(NSString *)oldFile importedFrom:(NSString *)bundleID hash:(NSString *)md5;
 - (void)deleteRingtoneWithFilename:(NSString *)filename;
 //- (NSDictionary *)getRingtoneWithFilename:(NSString *)filename;
 - (NSDictionary *)getRingtoneWithName:(NSString *)name;
 - (NSDictionary *)getRingtoneWithHash:(NSString *)md5;
+- (NSDictionary *)getITunesRingtoneWithGUID:(NSString *)guid;
 
 - (void)loadTweakPlist;
 - (void)saveTweakPlist;
@@ -30,5 +36,9 @@ typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
 - (NSDictionary *)getImportedRingtones;
 
 - (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
+
++ (void)syncPlists:(BOOL)currentITunesWriteStatus;
+- (void)deleteRingtoneFromITunesPlist:(NSString *)file;
+- (void)addRingtoneToITunesPlist:(NSDictionary *)tone fileName:(NSString *)file;
 
 @end

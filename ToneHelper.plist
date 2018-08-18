@@ -1,13 +1,8 @@
 {
 	Filter = {
-		Executables = (
-			MobilePhone,
-			Preferences,
-			Contacts,
-		);
 		Bundles = (
-			"com.apple.ToneLibrary"
+			"com.apple.ToneLibrary",
+			"com.apple.preferences",
 		);
-		Mode = Any;
 	};
 }
