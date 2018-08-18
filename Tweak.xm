@@ -12,7 +12,7 @@ BOOL kEnabled;
 BOOL kAudikoLiteEnabled;
 BOOL kAudikoPaidEnabled;
 BOOL kZedgeEnabled;
-//BOOL kWriteITunesRingtonePlist;
+BOOL kWriteITunesRingtonePlist;
 extern NSString *const HBPreferencesDidChangeNotification;
 HBPreferences *preferences;
 HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCopying> _Nullable newValue) {
@@ -67,7 +67,7 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
 
 
 -(NSMutableArray *)_tonesFromManifestPath:(NSPathStore2 *)arg1 mediaDirectoryPath:(NSPathStore2 *)arg2 {
-    if (!kEnabled || [preferences boolForKey:@"kWriteITunesRingtonePlist"]) {
+    if (!kEnabled || kWriteITunesRingtonePlist) {
         // kWriteITunesRingtonePlist enabled => disable runtime injection of ringtones
         DLog(@"Disabled");
         return %orig;
@@ -111,10 +111,12 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
 
 
 %ctor {
-    NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
+    //NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
     DLog(@"Trying to initialize ToneHelper in bundleid: %@",[[NSBundle mainBundle] bundleIdentifier]);
-    if ([bundleID isEqualToString:@"com.apple.Preferences"] ||
-        [bundleID isEqualToString:@"com.apple.springboard"]) {
+   // if ([bundleID isEqualToString:@"com.apple.Preferences"] ||
+   //     [bundleID isEqualToString:@"com.apple.springboard"] ||
+   //     [bundleID isEqualToString:@"com.apple.InCallService"] ||
+   //     [bundleID isEqualToString:@"com.apple.MobileSMS"]) {
         DLog(@"Initializing ToneHelper");
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
 
@@ -122,16 +124,14 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
         [preferences registerBool:&kAudikoLiteEnabled default:NO forKey:@"kAudikoLiteEnabled"];
         [preferences registerBool:&kAudikoPaidEnabled default:NO forKey:@"kAudikoPaidEnabled"];
         [preferences registerBool:&kZedgeEnabled default:NO forKey:@"kZedgeEnabled"];
-        //[preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
-        [preferences registerDefaults:@{
- 			@"kWriteITunesRingtonePlist": @NO
-  		}];
+        [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
+        
 
         [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
 
         //if () {
         %init(ToneHelper);
         //}
-    }
+    //}
     
 }

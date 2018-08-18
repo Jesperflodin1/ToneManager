@@ -21,9 +21,9 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
     return self;
 }
 
-- (void)enableITunesRingtonePlistEditing {
+- (BOOL)enableITunesRingtonePlistEditing {
     self.shouldWriteITunesRingtonePlist = YES;
-    [self loadRingtonesPlist];
+    return [self loadRingtonesPlist];
 }
 
 - (NSDictionary *)getItunesRingtones {
@@ -46,13 +46,15 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
     }
 
 }
-- (void)loadRingtonesPlist {
+- (BOOL)loadRingtonesPlist {
     NSLog(@"Ringtone Importer: Loading Ringtones.plist");
     
     NSError *dataError;
     NSData *plistData = [NSData dataWithContentsOfFile:RINGTONE_PLIST_PATH options:0 error:&dataError];
-    if (!plistData)
+    if (!plistData) {
         DLog(@"Failed to read itunes plist file: %@",dataError);
+        return NO;
+    }
     
     if (plistData) { //if plist exists, read it
         _ringtonesPlist = [NSPropertyListSerialization propertyListWithData:plistData
@@ -64,6 +66,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
         [_ringtonesPlist setObject:ringtones forKey:@"Ringtones"];
     }
     DLog(@"Read itunes plist: %@",_ringtonesPlist);
+    return YES;
 }
 - (void)saveTweakPlist {
     NSData *newData = [NSPropertyListSerialization dataWithPropertyList: _importedRingtonesPlist
@@ -206,7 +209,8 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
         JFTHRingtoneDataController *toneData = [[JFTHRingtoneDataController alloc] init];
 
         // Need write access to itunes plist
-        [toneData enableITunesRingtonePlistEditing];
+        if (![toneData enableITunesRingtonePlistEditing])
+            return; // injected into process which cant write to the file
 
         NSDictionary *importedTones = [toneData getImportedRingtones];
 

@@ -2,7 +2,7 @@
 	Filter = {
 		Bundles = (
 			"com.apple.ToneLibrary",
-			"com.apple.preferences",
+			"com.apple.Preferences",
 		);
 		Mode = Any;
 	};
