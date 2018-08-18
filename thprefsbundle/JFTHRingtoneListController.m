@@ -9,9 +9,9 @@
     if(_specifiers == nil) {
         // Loads specifiers from Name.plist from the bundle we're a part of.
         _specifiers = [self loadSpecifiersFromPlistName:@"Ringtones" target:self];
-		DLog(@"Read specifiers from plist: %@",_specifiers);
+
 		NSDictionary *ringtones = [_toneData getImportedRingtones];
-		DLog(@"Found ringtones: %@", ringtones);
+
 		for (NSString *fileName in ringtones) {
 			DLog(@"Adding ringtone: %@",[ringtones objectForKey:fileName]);
 			PSSpecifier* tone = [PSSpecifier preferenceSpecifierNamed:[[ringtones objectForKey:fileName] objectForKey:@"Name"]
@@ -35,7 +35,7 @@
 	DLog(@"Initializing ringtone list");
 	self = [super init];
 	_toneData = [[JFTHRingtoneDataController alloc] init];
-	DLog(@"Initializing tonedata: %@",_toneData);
+
 	return self;
 }
 
