@@ -1,5 +1,6 @@
 #import "JFTHRingtoneListController.h"
-#import "../Log.h"
+#import "../UIAlertController+Window.m"
+
 
 
 
@@ -17,12 +18,15 @@
 			PSSpecifier* tone = [PSSpecifier preferenceSpecifierNamed:[[ringtones objectForKey:fileName] objectForKey:@"Name"]
 									    target:self
 									       set:NULL
-									       get:@selector(readTestValue:)
+									       get:NULL
 									    detail:Nil
 									      cell:PSListItemCell
 									      edit:Nil];
 			[tone setProperty:@YES forKey:@"enabled"];
 			DLog(@"Adding specifier: %@", tone);
+			//extern NSString* PSDeletionActionKey;
+			// Set selector to call when removing specifier
+			[tone setProperty:NSStringFromSelector(@selector(removedSpecifier:)) forKey:PSDeletionActionKey];
 			[_specifiers addObject:tone];
 
 		}
@@ -39,9 +43,11 @@
 	return self;
 }
 
-- (id)readTestValue:(PSSpecifier *)specifier {
-	DLog(@"specifier: %@",specifier);
-	return @"test success!";
+-(void)removedSpecifier:(PSSpecifier*)specifier{
+	
+	
+	
+	DLog(@"removing specifier: %@",specifier);
 }
 
 @end

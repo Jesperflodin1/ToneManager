@@ -4,6 +4,7 @@
 #import <CepheiPrefs/HBTwitterCell.h>
 #import <CepheiPrefs/HBImageTableCell.h>
 #import <CepheiPrefs/HBPackageNameHeaderCell.h>
+#import "../Log.h"
 
 @interface JFTHRootListController : HBRootListController
 

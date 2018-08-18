@@ -5,13 +5,12 @@
 #import <Preferences/PSListController.h>
 #import <Preferences/PSSpecifier.h>
 #import "../JFTHRingtoneDataController.h"
+#import "../Log.h"
 
 @interface PSEditableListController : PSListController
 @end
 @interface JFTHRingtoneListController : PSEditableListController {
     JFTHRingtoneDataController *_toneData;
 }
-
-- (id)readTestValue:(PSSpecifier*)specifier;
 
 @end
