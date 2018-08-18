@@ -17,6 +17,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
     if (self = [super init]) {
         [self loadTweakPlist];
         self.shouldWriteITunesRingtonePlist = NO;
+        DLog(@"Initialized");
     }
     return self;
 }
@@ -30,6 +31,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
     return [[_ringtonesPlist objectForKey:@"Ringtones"] copy];
 }
 - (NSDictionary *)getImportedRingtones {
+    DLog(@"Ringtones: %@",[_importedRingtonesPlist objectForKey:@"Ringtones"]);
     return [[_importedRingtonesPlist objectForKey:@"Ringtones"] copy];
 }
 
@@ -39,6 +41,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
         _importedRingtonesPlist = [NSPropertyListSerialization propertyListWithData:plistData
                                                             options:NSPropertyListMutableContainers
                                                             format:nil error:nil];
+        DLog(@"Read tweak plist: %@",_importedRingtonesPlist);
     } else { //create new plist
         _importedRingtonesPlist = [[NSMutableDictionary alloc] init];
         NSMutableDictionary *importedRingtones = [[NSMutableDictionary alloc] init];
@@ -47,7 +50,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
 
 }
 - (BOOL)loadRingtonesPlist {
-    NSLog(@"Ringtone Importer: Loading Ringtones.plist");
+    DLog(@"Ringtone Importer: Loading Ringtones.plist");
     
     NSError *dataError;
     NSData *plistData = [NSData dataWithContentsOfFile:RINGTONE_PLIST_PATH options:0 error:&dataError];
@@ -135,7 +138,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
     NSDictionary *ringtones = [self getImportedRingtones];
     for (NSString *item in ringtones) {
         if ([[[ringtones objectForKey:item] objectForKey:@"Name"] isEqualToString:name]) {
-            NSLog(@"Ringtone Importer: Found ringtone that already is imported based on filename, skipping. (%@)",item);
+            DLog(@"Ringtone Importer: Found ringtone that already is imported based on filename, skipping. (%@)",item);
             return [ringtones objectForKey:item];
         }
     }
@@ -145,7 +148,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
     NSDictionary *ringtones = [self getImportedRingtones];
     for (NSString *item in ringtones) {
         if ([[[ringtones objectForKey:item] objectForKey:@"Hash"] isEqualToString:md5]) {
-            NSLog(@"Ringtone Importer: Found ringtone that already is imported based on hash, skipping. (%@)",item);
+            DLog(@"Ringtone Importer: Found ringtone that already is imported based on hash, skipping. (%@)",item);
             return [ringtones objectForKey:item];
         }
     }
@@ -156,7 +159,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
     DLog(@"Read itunes plist: %@",ringtones);
     for (NSString *item in ringtones) {
         if ([[[ringtones objectForKey:item] objectForKey:@"GUID"] isEqualToString:guid]) {
-            NSLog(@"Ringtone Importer: Found ringtone that already is imported based on GUID, skipping. (%@)",item);
+            DLog(@"Ringtone Importer: Found ringtone that already is imported based on GUID, skipping. (%@)",item);
             return [ringtones objectForKey:item];
         }
     }
@@ -238,19 +241,6 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
         [toneData saveRingtonesPlist];
         toneData = nil;
     }
-}
-
-+ (NSArray *)getImportedRingtones {
-    JFTHRingtoneDataController *toneData = [[JFTHRingtoneDataController alloc] init];
-
-    NSMutableArray *tonesArray = [[NSMutableArray alloc] init];
-    NSDictionary *importedTones = [toneData getImportedRingtones];
-
-    for (NSString *file in importedTones) {
-        [tonesArray addObject:file];
-    }
-
-    return tonesArray; 
 }
 
 @end

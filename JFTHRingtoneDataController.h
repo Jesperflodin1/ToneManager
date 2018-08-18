@@ -37,7 +37,6 @@ typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
 
 - (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
 
-+ (NSArray *)getImportedRingtones;
 + (void)syncPlists:(BOOL)currentITunesWriteStatus;
 - (void)deleteRingtoneFromITunesPlist:(NSString *)file;
 - (void)addRingtoneToITunesPlist:(NSDictionary *)tone fileName:(NSString *)file;

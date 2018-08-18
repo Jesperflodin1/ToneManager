@@ -10,6 +10,8 @@ THPrefsBundle_FRAMEWORKS = UIKit
 THPrefsBundle_PRIVATE_FRAMEWORKS = Preferences
 THPrefsBundle_EXTRA_FRAMEWORKS += cephei cepheiprefs
 
+THPrefsBundle_CFLAGS = -fobjc-arc
+
 include $(THEOS_MAKE_PATH)/bundle.mk
 
 internal-stage::

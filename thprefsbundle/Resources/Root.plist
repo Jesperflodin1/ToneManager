@@ -102,7 +102,7 @@
 			<key>isController</key>
 			<true/>
 			<key>label</key>
-			<string>Imported Ringtones</string>
+			<string>List imported Ringtones</string>
 		</dict>
 		<dict>
 			<key>cell</key>
