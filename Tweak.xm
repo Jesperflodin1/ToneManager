@@ -1,4 +1,4 @@
-#import "ToneHelper.h"
+#import "JFTHHeaders.h"
 #import "JFTHRingtoneImporter.h"
 
 #import <objc/runtime.h>

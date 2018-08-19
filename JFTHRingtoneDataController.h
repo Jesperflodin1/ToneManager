@@ -1,5 +1,6 @@
 
-#import <Foundation/Foundation.h>
+#import "JFTHHeaders.h"
+#import "JFTHRingtoneImporter.h"
 
 
 typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {

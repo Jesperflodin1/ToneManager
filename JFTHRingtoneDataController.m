@@ -1,5 +1,4 @@
 #import "JFTHRingtoneDataController.h"
-#import "JFTHRingtoneImporter.h"
 
 NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist";
 NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application Support/ToneHelper/ToneHelperData.plist";

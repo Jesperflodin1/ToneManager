@@ -1,6 +1,10 @@
-#import "ToneHelper.h"
+#import "JFTHHeaders.h"
 #import "JFTHRingtoneDataController.h"
+
+//For md5 calculations
 #include "FileHash.h"
+
+@class JFTHRingtoneDataController;
 
 @interface JFTHRingtoneImporter : NSObject {
     
