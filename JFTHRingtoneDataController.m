@@ -3,6 +3,7 @@
 
 NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist";
 NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application Support/ToneHelper/ToneHelperData.plist";
+//NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
 
 @interface JFTHRingtoneDataController () {
     NSMutableDictionary *_importedRingtonesPlist; 
@@ -128,8 +129,25 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
 
 
 
-- (void)deleteRingtoneWithFilename:(NSString *)filename {
+- (void)deleteRingtoneWithGUID:(NSString *)guid {
+    NSDictionary *ringtones = [self getImportedRingtones];
+    // find the ringtone
+    for (NSString *item in ringtones) {
+        if ([[[ringtones objectForKey:item] objectForKey:@"GUID"] isEqualToString:guid]) {
 
+            DLog(@"Deleting ringtone: %@",item);
+
+            NSFileManager *localFileManager = [[NSFileManager alloc] init];
+            [localFileManager removeItemAtPath:[@"/var/mobile/Media/iTunes_Control/Ringtones" stringByAppendingPathComponent:item] error:nil];
+            [[_importedRingtonesPlist objectForKey:@"Ringtones"] removeObjectForKey:item];
+            [self saveTweakPlist];
+
+            //Also try to delete from itunes plist
+            [self loadRingtonesPlist];
+            [self deleteRingtoneFromITunesPlist:item];
+            [self saveRingtonesPlist];
+        }
+    }
 }
 /*- (NSDictionary *)getRingtoneWithFilename:(NSString *)filename {
 

@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
 - (BOOL)enableITunesRingtonePlistEditing;
 
 - (void)addRingtoneToPlist:(NSString *)name file:(NSString *)fileName oldFileName:(NSString *)oldFile importedFrom:(NSString *)bundleID hash:(NSString *)md5;
-- (void)deleteRingtoneWithFilename:(NSString *)filename;
+- (void)deleteRingtoneWithGUID:(NSString *)guid;
 //- (NSDictionary *)getRingtoneWithFilename:(NSString *)filename;
 - (NSDictionary *)getRingtoneWithName:(NSString *)name;
 - (NSDictionary *)getRingtoneWithHash:(NSString *)md5;

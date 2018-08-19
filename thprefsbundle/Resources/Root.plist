@@ -111,7 +111,8 @@
 			<string>Advanced Settings</string>
 			<key>footerText</key>
 			<string>Makes imported ringtones work in non-jailbroken mode by writing metadata to Ringtones.plist required for iOS to find ringtones imported by this tweak. 
-NOTE: This option enables modification of Ringtones.plist in /var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist.</string>
+NOTE: This option enables modification of Ringtones.plist in /var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist.
+Requires Respring!</string>
 		</dict>
 		<dict>
 			<key>cell</key>

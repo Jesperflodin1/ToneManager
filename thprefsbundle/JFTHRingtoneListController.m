@@ -1,9 +1,5 @@
 #import "JFTHRingtoneListController.h"
 
-
-
-
-
 @implementation JFTHRingtoneListController
 
 - (id)specifiers {
@@ -14,8 +10,9 @@
 		NSDictionary *ringtones = [_toneData getImportedRingtones];
 
 		for (NSString *fileName in ringtones) {
+			NSDictionary *currentTone = [ringtones objectForKey:fileName];
 			DLog(@"Adding ringtone: %@",[ringtones objectForKey:fileName]);
-			PSSpecifier* tone = [PSSpecifier preferenceSpecifierNamed:[[ringtones objectForKey:fileName] objectForKey:@"Name"]
+			PSSpecifier* tone = [PSSpecifier preferenceSpecifierNamed:[currentTone objectForKey:@"Name"]
 									    target:self
 									       set:NULL
 									       get:NULL
@@ -27,10 +24,24 @@
 			//extern NSString* PSDeletionActionKey;
 			// Set selector to call when removing specifier
 			[tone setProperty:NSStringFromSelector(@selector(removedSpecifier:)) forKey:PSDeletionActionKey];
-			[tone setProperty:@YES forKey:@"enabled"];
-			[tone setProperty:@YES forKey:@"hasIcon"];
-			[tone setProperty:[UIImage imageWithContentsOfFile:[[NSBundle bundleWithIdentifier:@"fi.flodin.thprefsbundle"] pathForResource:@"AudikoLite" ofType:@"png"]] forKey:@"iconImage"];
-			//[tone setupIconImageWithPath:[[NSBundle bundleWithIdentifier:@"fi.flodin.thprefsbundle"] pathForResource:@"AudikoLite" ofType:@"png"]];
+			//[tone setProperty:@YES forKey:@"enabled"];
+
+			//Set GUID so we can identify the ringtone if user chooses to delete it
+			[tone setProperty:[currentTone objectForKey:@"GUID"] forKey:@"key"];
+
+			NSBundle *prefBundle = [NSBundle bundleWithIdentifier:@"fi.flodin.thprefsbundle"];
+			NSString *importedFrom = [currentTone objectForKey:@"ImportedFromBundleID"];
+			if (importedFrom) {
+				[tone setProperty:@YES forKey:@"hasIcon"];
+				if ([importedFrom isEqualToString:@"com.908.AudikoFree"])
+					[tone setProperty:[UIImage imageWithContentsOfFile:[prefBundle pathForResource:@"AudikoLite" ofType:@"png"]] forKey:@"iconImage"];
+				else if ([importedFrom isEqualToString:@"com.908.Audiko"])
+					[tone setProperty:[UIImage imageWithContentsOfFile:[prefBundle pathForResource:@"AudikoPro" ofType:@"png"]] forKey:@"iconImage"];
+				else if ([importedFrom isEqualToString:@"com.zedge.Zedge"])
+					[tone setProperty:[UIImage imageWithContentsOfFile:[prefBundle pathForResource:@"Zedge" ofType:@"png"]] forKey:@"iconImage"];
+
+			}
+			
 			[_specifiers addObject:tone];
 
 		}
@@ -48,10 +59,8 @@
 }
 
 -(void)removedSpecifier:(PSSpecifier*)specifier{
-	
-	ULog(@"%@",[NSBundle bundleWithIdentifier:@"fi.flodin.thprefsbundle"]);
-	ULog(@"%@",[[NSBundle bundleWithIdentifier:@"fi.flodin.thprefsbundle"] pathForResource:@"AudikoLite" ofType:@"png"]);
-	DLog(@"removing specifier: %@",specifier);
+	[_toneData deleteRingtoneWithGUID:[specifier propertyForKey:@"key"]];
+	//NSString *guid = [specifier ]
 }
 
 @end
