@@ -4,11 +4,12 @@ export TARGET = iphone:clang:11.2:8.0
 ARCHS = arm64
 
 BUNDLE_NAME = THPrefsBundle
-THPrefsBundle_FILES = $(wildcard *.m) ../JFTHRingtoneDataController.m ../UIAlertController+Window.m
+THPrefsBundle_FILES = $(wildcard *.m) $(wildcard *.x) ../JFTHRingtoneDataController.m ../UIAlertController+Window.m
 THPrefsBundle_INSTALL_PATH = /Library/PreferenceBundles
-THPrefsBundle_FRAMEWORKS = UIKit
+THPrefsBundle_FRAMEWORKS = UIKit MessageUI
 THPrefsBundle_PRIVATE_FRAMEWORKS = Preferences
 THPrefsBundle_EXTRA_FRAMEWORKS += cephei cepheiprefs
+THPrefsBundle_LDFLAGS = -lMobileGestalt
 
 THPrefsBundle_CFLAGS = -fobjc-arc
 

@@ -149,8 +149,18 @@ Requires Respring!</string>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Contact info</string>
 			<key>footerText</key>
 			<string>© 2018 Jesper Flodin. Source code licensed under the MIT license.</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBTwitterCell</string>
+			<key>label</key>
+			<string>Jesper Flodin</string>
+			<key>user</key>
+			<string>JesperFlodin</string>
 		</dict>
 	</array>
 	<key>title</key>
