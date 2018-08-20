@@ -88,6 +88,7 @@
 }
 
 - (void)respring:(PSSpecifier *)specifier {
+	ALog(@"Respring tapped");
 	PSTableCell *cell = [self cachedCellForSpecifier:specifier];
 
 	// disable the cell, in case it takes a moment

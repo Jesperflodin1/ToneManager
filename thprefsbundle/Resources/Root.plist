@@ -142,7 +142,7 @@ Requires Respring!</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>action</key>
-			<string>respring</string>
+			<string>respring:</string>
 			<key>label</key>
 			<string>Respring</string>
 		</dict>

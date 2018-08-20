@@ -17,7 +17,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
     if (self = [super init]) {
         [self loadTweakPlist];
         self.shouldWriteITunesRingtonePlist = NO;
-        DLog(@"Initialized");
+        ALog(@"Initialized");
     }
     return self;
 }
@@ -50,14 +50,10 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
 
 }
 - (BOOL)loadRingtonesPlist {
-    DLog(@"Ringtone Importer: Loading Ringtones.plist");
+    ALog(@"Ringtone Importer: Loading Ringtones.plist");
     
     NSError *dataError;
     NSData *plistData = [NSData dataWithContentsOfFile:RINGTONE_PLIST_PATH options:0 error:&dataError];
-    if (!plistData) {
-        DLog(@"Failed to read itunes plist file: %@",dataError);
-        return NO;
-    }
     
     if (plistData) { //if plist exists, read it
         _ringtonesPlist = [NSPropertyListSerialization propertyListWithData:plistData
@@ -67,6 +63,9 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
         NSMutableDictionary *ringtones = [[NSMutableDictionary alloc] init];
         _ringtonesPlist = [[NSMutableDictionary alloc] init];
         [_ringtonesPlist setObject:ringtones forKey:@"Ringtones"];
+
+        DLog(@"Failed to read itunes plist file (creating new file): %@",dataError);
+        return NO;
     }
     DLog(@"Read itunes plist: %@",_ringtonesPlist);
     return YES;
@@ -79,6 +78,12 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
     [newData writeToFile:TONEHELPERDATA_PLIST_PATH atomically:YES];
 }
 - (void)saveRingtonesPlist {
+    // Folder may not exist, try to create it
+    NSFileManager *localFileManager = [[NSFileManager alloc] init];
+    [localFileManager createDirectoryAtPath:@"/var/mobile/Media/iTunes_Control/iTunes/"
+                                withIntermediateDirectories:YES
+                                                 attributes:nil
+                                                      error:nil];
     //Write plist
     NSData *newData = [NSPropertyListSerialization dataWithPropertyList: _ringtonesPlist
                                                                  format: NSPropertyListXMLFormat_v1_0
@@ -87,6 +92,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
     [newData writeToFile:RINGTONE_PLIST_PATH atomically:YES];
 }
 - (void)save {
+    ALog(@"Saving plists");
     [self saveTweakPlist];
     if (self.shouldWriteITunesRingtonePlist)
         [self saveRingtonesPlist];
@@ -134,7 +140,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
     for (NSString *item in ringtones) {
         if ([[[ringtones objectForKey:item] objectForKey:@"GUID"] isEqualToString:guid]) {
 
-            DLog(@"Deleting ringtone: %@",item);
+            ALog(@"Deleting ringtone: %@",item);
 
             NSFileManager *localFileManager = [[NSFileManager alloc] init];
             [localFileManager removeItemAtPath:[@"/var/mobile/Media/iTunes_Control/Ringtones" stringByAppendingPathComponent:item] error:nil];
@@ -225,7 +231,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
 
 + (void)syncPlists:(BOOL)currentITunesWriteStatus {
     @autoreleasepool { 
-        DLog(@"Syncing plists with currentITunesWriteStatus = %d",currentITunesWriteStatus);
+        ALog(@"Syncing plists with currentITunesWriteStatus = %d",currentITunesWriteStatus);
         JFTHRingtoneDataController *toneData = [[JFTHRingtoneDataController alloc] init];
 
         // Need write access to itunes plist

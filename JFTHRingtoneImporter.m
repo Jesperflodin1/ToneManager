@@ -11,7 +11,7 @@ BOOL kWriteITunesRingtonePlist;
 - (instancetype)init {
     if (self = [super init]) {
         //[self showTextHUD:@"Looking for new ringtones"];
-        DLog(@"Ringtone Importer: Init");
+        ALog(@"Ringtone Importer: Init");
         ringtonesToImport = [[NSMutableDictionary alloc] init];
         shouldImportRingtones = NO;
 
@@ -30,7 +30,7 @@ BOOL kWriteITunesRingtonePlist;
 
 
 - (void)getRingtoneFilesFromApp:(NSString *)bundleID {
-    DLog(@"Ringtone Importer: listing app folder for bundle: %@",bundleID);
+    ALog(@"Ringtone Importer: listing app folder for bundle: %@",bundleID);
     // TODO: Get apps from preferences. Check if app exist and if folder exists.
     FBApplicationInfo *appInfo = [LSApplicationProxy applicationProxyForIdentifier:bundleID];
 
@@ -64,10 +64,11 @@ BOOL kWriteITunesRingtonePlist;
 
     if ([m4rFiles count] > 0) {
         // Add files to dict
-        DLog(@"Ringtone Importer: Found ringtones");
+        ALog(@"Ringtone Importer: Found ringtones");
         [ringtonesToImport setObject:m4rFiles forKey:bundleID];
         self.shouldImportRingtones = YES;
     } else {
+        ALog(@"Found 0 ringtones to import");
         [self showTextHUD:@"No new ringtones to import"];
         [_textHUD dismissAfterDelay:3.0 animated:YES];
     }
@@ -83,7 +84,7 @@ BOOL kWriteITunesRingtonePlist;
 
 
 - (void)importNewRingtones {
-    DLog(@"Ringtone Importer: Import called");
+    ALog(@"Ringtone Importer: Import called");
     [self showTextHUD:@"Importing ringtones..."];
 
     // Loop through files
@@ -105,31 +106,56 @@ BOOL kWriteITunesRingtonePlist;
 
             // Calculate MD5
             NSString *m4rFileMD5Hash = [FileHash md5HashOfFileAtPath:[oldDirectory stringByAppendingPathComponent:appDirFile]];
-
+            NSError *fileCopyError;
             if ([localFileManager copyItemAtPath:[
                 oldDirectory stringByAppendingPathComponent:appDirFile]
                                                      toPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:newFile]
-                                                      error:nil]) // Will import again at next run if moving. i dont want that.
+                                                      error:&fileCopyError]) // Will import again at next run if moving. i dont want that.
             {
 
                 //Plist data
                 [_ringtoneData addRingtoneToPlist:baseName file:newFile oldFileName:appDirFile importedFrom:bundleID hash:m4rFileMD5Hash];
                 DLog(@"File copy success: %@",appDirFile);
                 importedCount++;
+            } else if ([localFileManager fileExistsAtPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:newFile]]) {
+                    DLog(@"File already exists, skipping file");
             } else {
-                failedCount++;
-                DLog(@"File copy (%@) failed",appDirFile);
+                ALog(@"File copy (%@) failed and it does not exist in target folder: %@",appDirFile, fileCopyError);
+                // Directory may not exist, try to create it
+                NSError *dirError;
+                if ([localFileManager createDirectoryAtPath:RINGTONE_DIRECTORY
+                                withIntermediateDirectories:YES
+                                                 attributes:nil
+                                                      error:&dirError]) {
+                    ALog(@"Ringtone folder created");
+                    if ([localFileManager copyItemAtPath:[ // Lets try again
+                        oldDirectory stringByAppendingPathComponent:appDirFile]
+                                                            toPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:newFile]
+                                                            error:nil]) // Will import again at next run if moving. i dont want that.
+                    {
+
+                        //Plist data
+                        [_ringtoneData addRingtoneToPlist:baseName file:newFile oldFileName:appDirFile importedFrom:bundleID hash:m4rFileMD5Hash];
+                        DLog(@"File copy success: %@",appDirFile);
+                        importedCount++;
+                    }
+                } else {
+                    ALog(@"Failed to create directory: %@", dirError);
+                    failedCount++;
+                }
+                
             }
         }
     } // for loop end 
     [_ringtoneData save];
-    if (failedCount == 0) {
+    if ((failedCount == 0) && (importedCount > 0)) {
         [self showSuccessHUDText:[NSString stringWithFormat:@"Imported %d tones", importedCount]];
-    } else {
+        [_statusHUD dismissAfterDelay:1.5 animated:YES];
+    } else if (failedCount > 0) {
         [self showErrorHUDText:@"Error when importing tones"];
+        [_statusHUD dismissAfterDelay:1.5 animated:YES];
     }
     [_textHUD dismissAfterDelay:2.5 animated:YES];
-    [_statusHUD dismissAfterDelay:1.5 animated:YES];
 }
 
 - (NSString *)createNameFromFile:(NSString *)file {

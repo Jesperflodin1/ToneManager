@@ -51,7 +51,7 @@
 }
 
 - (instancetype)init {
-	DLog(@"Initializing ringtone list");
+	ALog(@"Initializing ringtone list");
 	self = [super init];
 	_toneData = [[JFTHRingtoneDataController alloc] init];
 

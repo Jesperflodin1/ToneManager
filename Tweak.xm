@@ -31,17 +31,17 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
 // Test with both Audiko Lite and Pro
 %group ToneHelper
 
-%hook TLToneManager
+%hook PSUISoundsPrefController
 
 //Gets called once when opening the ringtone settings
--(void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1 {
+-(id)init {
     if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
         DLog(@"In preferences");
         if (!kEnabled) {
             DLog(@"Disabled");
             return %orig;
         }
-        DLog(@"Enabled");
+        ALog(@"Enabled");
         //We're in preferences app, lets look for new ringtones to import
         JFTHRingtoneImporter *importer = [[JFTHRingtoneImporter alloc] init];
 
@@ -64,7 +64,8 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
     }
     return %orig;
 }
-
+%end
+%hook TLToneManager
 
 -(NSMutableArray *)_tonesFromManifestPath:(NSPathStore2 *)arg1 mediaDirectoryPath:(NSPathStore2 *)arg2 {
     if (!kEnabled || kWriteITunesRingtonePlist) {
@@ -120,7 +121,7 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
         [bundleID isEqualToString:@"com.apple.MobileAddressBook"] ||
         [bundleID isEqualToString:@"com.apple.mobilemail"] ||
         [bundleID isEqualToString:@"com.apple.mobiletimer"]) {
-        DLog(@"Initializing ToneHelper");
+        ALog(@"Initializing ToneHelper");
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
 
         [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
