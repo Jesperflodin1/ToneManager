@@ -1,9 +1,7 @@
 #import "JFTHHeaders.h"
 #import "JFTHRingtoneImporter.h"
 
-#import <objc/runtime.h>
-
-
+%group ToneHelper
 
 NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist";
 NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
@@ -22,14 +20,6 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
         [JFTHRingtoneDataController syncPlists:value];
     }
 };
-
-
-// TODO: 
-//
-// Add support for zedge ringtones
-//
-// Test with both Audiko Lite and Pro
-%group ToneHelper
 
 %hook PSUISoundsPrefController
 
@@ -121,7 +111,12 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
         [bundleID isEqualToString:@"com.apple.MobileAddressBook"] ||
         [bundleID isEqualToString:@"com.apple.mobilemail"] ||
         [bundleID isEqualToString:@"com.apple.mobiletimer"]) {
+        if (!NSClassFromString(@"TLToneManager")) {
+            DLog(@"TLToneManager missing, loading framework");
+            dlopen("/System/Library/PrivateFrameworks/ToneLibrary.framework/ToneLibrary", RTLD_LAZY);
+        }
         ALog(@"Initializing ToneHelper");
+        
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
 
         [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];

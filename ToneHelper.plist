@@ -1,7 +1,6 @@
 {
 	Filter = {
 		Bundles = (
-			"com.apple.ToneLibrary",
 			"com.apple.InCallService",
 			"com.apple.Preferences",
 			"com.apple.mobilephone",
@@ -9,6 +8,7 @@
 			"com.apple.MobileSMS",
 			"com.apple.MobileAddressBook",
 			"com.apple.mobilemail",
+			"com.apple.mobiletimer",
 		);
 		Mode = Any;
 	};
