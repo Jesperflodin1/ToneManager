@@ -3,6 +3,7 @@
 
 NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
 BOOL kWriteITunesRingtonePlist;
+BOOL kFirstRun;
 extern NSString *const HBPreferencesDidChangeNotification;
 HBPreferences *preferences;
 
@@ -19,11 +20,15 @@ HBPreferences *preferences;
 
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
         [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
+        [preferences registerBool:&kWriteITunesRingtonePlist default:YES forKey:@"kFirstRun"];
 
         _ringtoneData = [[JFTHRingtoneDataController alloc] init];
         
         if (kWriteITunesRingtonePlist)
             [_ringtoneData enableITunesRingtonePlistEditing];
+
+        ALog(@"First run: %d",kFirstRun);
+        DLog(@"kWriteITunesRingtonePlist: %d",kWriteITunesRingtonePlist);
 
         
     }
@@ -126,6 +131,7 @@ HBPreferences *preferences;
                 importedCount++;
             } else if ([localFileManager fileExistsAtPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:newFile]]) {
                     DLog(@"File already exists, skipping file");
+                    // this is wrong: filename will be random every time
             } else {
                 ALog(@"File copy (%@) failed and it does not exist in target folder: %@",appDirFile, fileCopyError);
                 // Directory may not exist, try to create it

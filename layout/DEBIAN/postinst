@@ -7,4 +7,7 @@ mv /var/mobile/Library/Application\ Support/ToneHelper/ToneHelperData.plist /var
 chown -R mobile:mobile /var/mobile/Library/ToneHelper
 chmod -R 777 /var/mobile/Library/ToneHelper
 
+# remove leftover files from previous version
+rm -r /var/mobile/Library/Application\ Support/ToneHelper/
+
 exit 0

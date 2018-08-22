@@ -145,11 +145,11 @@
 + (nullable NSArray <TSIncludeInstruction *> *)hb_supportInstructions {
 	NSMutableArray *includeInstructions = [NSMutableArray new];
 
-    [includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"ToneHelperData\" plist /var/mobile/Library/Application Support/ToneHelper/ToneHelperData.plist"]];
+    [includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"ToneHelperData\" plist /var/mobile/Library/ToneHelper/ToneHelperData.plist"]];
 	[includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"Ringtones\" plist /var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist"]];
 	
-	[includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"File list AppSupport\" command /bin/ls -al /var/mobile/Library/Application\\ Support/"]];
-	[includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"File list ToneHelperAppSupport\" command /bin/ls -al /var/mobile/Library/Application\\ Support/ToneHelper"]];
+	[includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"File list AppSupport\" command /bin/ls -al /var/mobile/Library/"]];
+	[includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"File list ToneHelperAppSupport\" command /bin/ls -al /var/mobile/Library/ToneHelper"]];
 	[includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"File list Ringtones\" command /bin/ls -al /var/mobile/Media/iTunes_Control/Ringtones"]];
 	
 	

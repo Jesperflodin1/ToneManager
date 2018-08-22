@@ -1,7 +1,7 @@
 #import "JFTHRingtoneDataController.h"
 
 NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist";
-NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application Support/ToneHelper/ToneHelperData.plist";
+NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/ToneHelper/ToneHelperData.plist";
 //NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
 
 @interface JFTHRingtoneDataController () {
@@ -11,13 +11,25 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
 
 @end
 
+BOOL kFirstRun;
+extern NSString *const HBPreferencesDidChangeNotification;
+HBPreferences *preferences;
+
 @implementation JFTHRingtoneDataController
 
 - (instancetype)init {
     if (self = [super init]) {
+        
+        preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
+        [preferences registerBool:&kWriteITunesRingtonePlist default:YES forKey:@"kFirstRun"];
+        ALog(@"First run: %d",kFirstRun);
+
         [self loadTweakPlist];
         [self loadRingtonesPlist];
         self.shouldWriteITunesRingtonePlist = NO;
+
+        if (kFirstRun)
+            [self firstRun];
         ALog(@"Initialized");
     }
     return self;
@@ -25,6 +37,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
 
 - (BOOL)enableITunesRingtonePlistEditing {
     self.shouldWriteITunesRingtonePlist = YES;
+    DLog(@"shouldWriteITunesRingtonePlist = %d",self.shouldWriteITunesRingtonePlist);
     return [self loadRingtonesPlist];
 }
 
@@ -58,6 +71,29 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
     } else
         ALog(@"Success ringtones folder");
 
+    // make sure the files exist
+    [self saveRingtonesPlist];
+    [self saveTweakPlist];
+
+    //fix duplicates in itunes plist
+    NSFileManager *localFileManager = [[NSFileManager alloc] init];
+
+    NSDictionary *ringtones = [[self getItunesRingtones] copy];
+    DLog(@"Read itunes plist: %@",ringtones);
+    for (NSString *item in ringtones) {
+        if ([[[ringtones objectForKey:item] objectForKey:@"Name"] isEqualToString:name]) {
+
+            DLog(@"Found duplicate in itunes plist: (%@)",item);
+            [[_ringtonesPlist objectForKey:@"Ringtones"] removeObjectForKey:item];
+            DLog(@"Removing duplicate file");
+            NSError *error;
+            if (![localFileManager removeItemAtPath:[@"/var/mobile/Media/iTunes_Control/Ringtones" stringByAppendingPathComponent:item] error:&error])
+                ALog(@"Failed to remove item: %@", error);
+        }
+    }
+
+    //firstrun done, dont run again
+    [preferences setBool:NO forKey:@"kFirstRun"];
 }
 
 - (void)loadTweakPlist {
@@ -75,8 +111,6 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
         NSMutableDictionary *importedRingtones = [[NSMutableDictionary alloc] init];
         [_importedRingtonesPlist setObject:importedRingtones forKey:@"Ringtones"];
         DLog(@"Creating new tweak plist");
-        [self saveTweakPlist];
-        [self firstRun];
     }
 
 }
