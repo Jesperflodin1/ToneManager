@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
 - (NSDictionary *)getRingtoneWithName:(NSString *)name;
 - (NSDictionary *)getRingtoneWithHash:(NSString *)md5;
 - (NSDictionary *)getITunesRingtoneWithGUID:(NSString *)guid;
+- (NSDictionary *)getITunesRingtoneWithName:(NSString *)name;
 
 - (void)loadTweakPlist;
 - (void)saveTweakPlist;
@@ -41,5 +42,7 @@ typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
 + (void)syncPlists:(BOOL)currentITunesWriteStatus;
 - (void)deleteRingtoneFromITunesPlist:(NSString *)file;
 - (void)addRingtoneToITunesPlist:(NSDictionary *)tone fileName:(NSString *)file;
+
+- (void)firstRun;
 
 @end

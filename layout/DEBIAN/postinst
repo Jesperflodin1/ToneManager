@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Try to move plist if exists from old folder if exists
+mv /var/mobile/Library/Application\ Support/ToneHelper/ToneHelperData.plist /var/mobile/Library/ToneHelper/
+
+# make sure its owned by mobile:mobile
+chown -R mobile:mobile /var/mobile/Library/ToneHelper
+chmod -R 777 /var/mobile/Library/ToneHelper
+
+exit 0

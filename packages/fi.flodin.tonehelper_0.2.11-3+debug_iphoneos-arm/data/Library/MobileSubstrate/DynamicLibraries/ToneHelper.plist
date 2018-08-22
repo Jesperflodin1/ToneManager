@@ -1,0 +1,15 @@
+{
+	Filter = {
+		Bundles = (
+			"com.apple.InCallService",
+			"com.apple.Preferences",
+			"com.apple.mobilephone",
+			"com.apple.springboard",
+			"com.apple.MobileSMS",
+			"com.apple.MobileAddressBook",
+			"com.apple.mobilemail",
+			"com.apple.mobiletimer",
+		);
+		Mode = Any;
+	};
+}

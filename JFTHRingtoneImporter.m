@@ -3,8 +3,8 @@
 
 NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
 BOOL kWriteITunesRingtonePlist;
-
-    HBPreferences *preferences;
+extern NSString *const HBPreferencesDidChangeNotification;
+HBPreferences *preferences;
 
 
 
@@ -17,12 +17,8 @@ BOOL kWriteITunesRingtonePlist;
         ringtonesToImport = [[NSMutableDictionary alloc] init];
         shouldImportRingtones = NO;
 
-        #if TARGET_OS_SIMULATOR
-            kWriteITunesRingtonePlist = YES;
-        #else
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
         [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
-        #endif
 
         _ringtoneData = [[JFTHRingtoneDataController alloc] init];
         
@@ -106,6 +102,11 @@ BOOL kWriteITunesRingtonePlist;
 
             // Create name
             NSString *baseName = [self createNameFromFile:appDirFile];
+
+            // Does this name already exist in itunes plist?
+            if (_ringtoneData getITunesRingtoneWithName:baseName)
+                continue;
+
 
             // Create new filename
             NSString *newFile = [[_ringtoneData randomizedRingtoneParameter:JFTHRingtoneFileName] stringByAppendingString:@".m4r"];
