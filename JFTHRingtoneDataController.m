@@ -162,8 +162,8 @@ HBPreferences *preferences;
     NSData *newData = [NSPropertyListSerialization dataWithPropertyList: _importedRingtonesPlist
                                                                  format: NSPropertyListXMLFormat_v1_0
                                                                 options: 0
-                                                                  error: &serError];
-    DLog(@"Error serializing tweak plist: %@",serError);
+    if (!newData)                                                              error: &serError];
+        DLog(@"Error serializing tweak plist: %@",serError);
     NSError *writeError;
     if (![newData writeToFile:TONEHELPERDATA_PLIST_PATH options:NSDataWritingAtomic error:&writeError])
         DLog(@"Error writing tweak plist: %@",writeError);

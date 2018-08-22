@@ -1,13 +1,19 @@
 #!/bin/bash
 
+echo "Removing leftover files from previous version."
 # Try to move plist if exists from old folder if exists
-mv /var/mobile/Library/Application\ Support/ToneHelper/ToneHelperData.plist /var/mobile/Library/ToneHelper/
 
+if [ -f "/var/mobile/Library/Application Support/ToneHelper/ToneHelperData.plist" ]
+then
+	echo "$file found. Moving to new path."
+	mv $file /var/mobile/Library/ToneHelper/
+	rm -r "/var/mobile/Library/Application Support/ToneHelper/"
+fi
+
+echo "Fixing permissions of ToneHelper data files"
 # make sure its owned by mobile:mobile
 chown -R mobile:mobile /var/mobile/Library/ToneHelper
 chmod -R 777 /var/mobile/Library/ToneHelper
 
-# remove leftover files from previous version
-rm -r /var/mobile/Library/Application\ Support/ToneHelper/
 
 exit 0
