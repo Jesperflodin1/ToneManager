@@ -23,14 +23,14 @@ HBPreferences *preferences;
     if (self = [super init]) {
         
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
-        [preferences registerBool:&kFirstRun default:YES forKey:@"kFirstRun"];
-        ALog(@"First run: %d",kFirstRun);
+        [preferences registerBool:&kFirstRun default:NO forKey:@"kFirstRun"];
+        ALog(@"First run: %d",kFirstRun); // YES = first run done.
 
         [self loadTweakPlist];
         [self loadRingtonesPlist];
         self.shouldWriteITunesRingtonePlist = NO;
 
-        if (kFirstRun)
+        if (!kFirstRun)
             [self firstRun];
         ALog(@"Initialized");
     }
@@ -87,7 +87,7 @@ HBPreferences *preferences;
     [self saveTweakPlist];
     ALog(@"Firstrun done");
     //firstrun done, dont run again
-    [preferences setBool:NO forKey:@"kFirstRun"];
+    [preferences setBool:YES forKey:@"kFirstRun"];
 }
 
 - (void)removeDuplicatesInItunesPlistOf:(NSString *)name {
@@ -162,7 +162,8 @@ HBPreferences *preferences;
     NSData *newData = [NSPropertyListSerialization dataWithPropertyList: _importedRingtonesPlist
                                                                  format: NSPropertyListXMLFormat_v1_0
                                                                 options: 0
-    if (!newData)                                                              error: &serError];
+                                                                  error: &serError];
+    if (!newData)    
         DLog(@"Error serializing tweak plist: %@",serError);
     NSError *writeError;
     if (![newData writeToFile:TONEHELPERDATA_PLIST_PATH options:NSDataWritingAtomic error:&writeError])

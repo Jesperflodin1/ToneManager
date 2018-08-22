@@ -108,6 +108,24 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
+			<string>Respring</string>
+			<key>footerText</key>
+			<string>To apply changes please respring.</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBTintedTableCell</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>action</key>
+			<string>respring:</string>
+			<key>label</key>
+			<string>Respring</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
 			<string>Advanced Settings</string>
 			<key>footerText</key>
 			<string>Makes imported ringtones work in non-jailbroken mode by writing metadata to Ringtones.plist required for iOS to find ringtones imported by this tweak. 
@@ -151,22 +169,14 @@ Requires Respring!</string>
 			<string>Enable logging to file</string>
 		</dict>
 		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Respring</string>
-			<key>footerText</key>
-			<string>To apply changes please respring.</string>
-		</dict>
-		<dict>
 			<key>cellClass</key>
 			<string>HBTintedTableCell</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>action</key>
-			<string>respring:</string>
+			<string>cleanLogs:</string>
 			<key>label</key>
-			<string>Respring</string>
+			<string>Delete all logs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
