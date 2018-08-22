@@ -8,10 +8,10 @@ THPrefsBundle_FILES = $(wildcard *.m) $(wildcard *.x) ../JFTHRingtoneDataControl
 THPrefsBundle_INSTALL_PATH = /Library/PreferenceBundles
 THPrefsBundle_FRAMEWORKS = UIKit MessageUI
 THPrefsBundle_PRIVATE_FRAMEWORKS = Preferences
-THPrefsBundle_EXTRA_FRAMEWORKS += cephei cepheiprefs
-THPrefsBundle_LDFLAGS = -lMobileGestalt
+THPrefsBundle_EXTRA_FRAMEWORKS += cephei cepheiprefs TechSupport
+THPrefsBundle_LDFLAGS = -lMobileGestalt 
 
-THPrefsBundle_CFLAGS = -fobjc-arc
+THPrefsBundle_CFLAGS = -fobjc-arc -F$(TECHSUPPORT_FRAMEWORK)
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 

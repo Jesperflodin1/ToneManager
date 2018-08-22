@@ -143,7 +143,11 @@
 }
 
 + (nullable NSArray <TSIncludeInstruction *> *)hb_supportInstructions {
-	return nil;
+	NSMutableArray *includeInstructions = [NSMutableArray new];
+
+    [includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"ToneHelperData\" plist /var/mobile/Library/Application Support/ToneHelper/ToneHelperData.plist"]];
+	[includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"Ringtones\" plist /var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist"]];
+	return includeInstructions;
 }
 
 - (void)hb_sendSupportEmail {

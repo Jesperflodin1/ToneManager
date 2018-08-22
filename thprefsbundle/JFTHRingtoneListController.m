@@ -6,7 +6,6 @@
     if(_specifiers == nil) {
         // Loads specifiers from Name.plist from the bundle we're a part of.
         _specifiers = [self loadSpecifiersFromPlistName:@"Ringtones" target:self];
-
 		NSDictionary *ringtones = [_toneData getImportedRingtones];
 
 		for (NSString *fileName in ringtones) {

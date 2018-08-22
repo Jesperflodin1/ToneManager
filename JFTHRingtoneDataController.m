@@ -71,25 +71,41 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/Application S
     return YES;
 }
 - (void)saveTweakPlist {
+    DLog(@"Saving tweak plist");
+    NSError *serError;
     NSData *newData = [NSPropertyListSerialization dataWithPropertyList: _importedRingtonesPlist
                                                                  format: NSPropertyListBinaryFormat_v1_0
                                                                 options: 0
-                                                                  error: nil];
-    [newData writeToFile:TONEHELPERDATA_PLIST_PATH atomically:YES];
+                                                                  error: &serError];
+    DLog("Error serializing tweak plist: %@",serError);
+    NSError *writeError;
+    if (![newData writeToFile:TONEHELPERDATA_PLIST_PATH options:NSDataWritingAtomic error:&writeError])
+        DLog(@"Error writing tweak plist: %@",writeError);
 }
 - (void)saveRingtonesPlist {
     // Folder may not exist, try to create it
+    DLog(@"Saving Ringtones.plist");
+    NSError *dirError;
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
-    [localFileManager createDirectoryAtPath:@"/var/mobile/Media/iTunes_Control/iTunes/"
+    if (![localFileManager createDirectoryAtPath:@"/var/mobile/Media/iTunes_Control/iTunes/"
                                 withIntermediateDirectories:YES
                                                  attributes:nil
-                                                      error:nil];
+                                                      error:&dirError]) {
+        DLog(@"Error creating ringtones folder: %@",dirError);
+    }
+    
     //Write plist
+    NSError *serError;
     NSData *newData = [NSPropertyListSerialization dataWithPropertyList: _ringtonesPlist
                                                                  format: NSPropertyListXMLFormat_v1_0
                                                                 options: 0
-                                                                  error: nil];
-    [newData writeToFile:RINGTONE_PLIST_PATH atomically:YES];
+                                                                  error: &serError];
+    if (!newData)
+        DLog("Error serializing ringtones plist: %@",serError);
+
+    NSError *writeError;
+    if (![newData writeToFile:RINGTONE_PLIST_PATH options:NSDataWritingAtomic error:&writeError])
+        DLog(@"Error writing ringtone plist: %@",writeError);
 }
 - (void)save {
     ALog(@"Saving plists");

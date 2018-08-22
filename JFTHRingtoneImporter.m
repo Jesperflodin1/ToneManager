@@ -2,8 +2,10 @@
 
 
 NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
-HBPreferences *preferences;
 BOOL kWriteITunesRingtonePlist;
+
+    HBPreferences *preferences;
+
 
 
 @implementation JFTHRingtoneImporter
@@ -15,8 +17,12 @@ BOOL kWriteITunesRingtonePlist;
         ringtonesToImport = [[NSMutableDictionary alloc] init];
         shouldImportRingtones = NO;
 
+        #if TARGET_OS_SIMULATOR
+            kWriteITunesRingtonePlist = YES;
+        #else
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
         [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
+        #endif
 
         _ringtoneData = [[JFTHRingtoneDataController alloc] init];
         

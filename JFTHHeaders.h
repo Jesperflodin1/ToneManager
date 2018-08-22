@@ -24,6 +24,7 @@
 @end
 
 @interface TLToneManager : NSObject
++(id)sharedToneManager;
 -(void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
 -(NSMutableArray *)_tonesFromManifestPath:(NSPathStore2 *)arg1 mediaDirectoryPath:(NSPathStore2 *)arg2;
 @end

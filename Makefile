@@ -15,7 +15,7 @@ ToneHelper_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 
 ToneHelper_FRAMEWORKS = UIKit QuartzCore MobileCoreServices
 ToneHelper_PRIVATEFRAMEWORKS = ToneKit ToneLibrary FrontBoard
-ToneHelper_EXTRA_FRAMEWORKS += cephei
+ToneHelper_EXTRA_FRAMEWORKS += cephei cepheiprefs TechSupport
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 

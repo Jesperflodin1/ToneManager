@@ -1,8 +1,6 @@
 #import "JFTHHeaders.h"
 #import "JFTHRingtoneImporter.h"
 
-%group ToneHelper
-
 NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist";
 NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
 
@@ -11,15 +9,20 @@ BOOL kAudikoLiteEnabled;
 BOOL kAudikoPaidEnabled;
 BOOL kZedgeEnabled;
 BOOL kWriteITunesRingtonePlist;
-extern NSString *const HBPreferencesDidChangeNotification;
-HBPreferences *preferences;
-HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCopying> _Nullable newValue) {
+
+
+    extern NSString *const HBPreferencesDidChangeNotification;
+    HBPreferences *preferences;
+    HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCopying> _Nullable newValue) {
     BOOL value = [[(NSNumber *)newValue copy] boolValue];
     DLog(@"Notification received for key:%@ with value:%d",key,value);
     if ([key isEqualToString:@"kWriteITunesRingtonePlist"]) {
         [JFTHRingtoneDataController syncPlists:value];
     }
 };
+
+
+%group IOS11
 
 %hook PSUISoundsPrefController
 
@@ -56,6 +59,20 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
 }
 %end
 %hook TLToneManager
+
+
+
+/*
+-(id)_copyITunesRingtonesFromManifestPath:(id)arg1 mediaDirectoryPath:(id)arg2 {
+    UIAlertView *lookWhatWorks = [[UIAlertView alloc]
+                                    initWithTitle:@"simject Example Tweak"
+                                            message:@"ctor"
+                                            delegate:self
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+        [lookWhatWorks show];
+    return %orig;
+}*/
 
 -(NSMutableArray *)_tonesFromManifestPath:(NSPathStore2 *)arg1 mediaDirectoryPath:(NSPathStore2 *)arg2 {
     if (!kEnabled || kWriteITunesRingtonePlist) {
@@ -116,20 +133,20 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
             dlopen("/System/Library/PrivateFrameworks/ToneLibrary.framework/ToneLibrary", RTLD_LAZY);
         }
         ALog(@"Initializing ToneHelper");
-        
-        preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
 
-        [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
-        [preferences registerBool:&kAudikoLiteEnabled default:NO forKey:@"kAudikoLiteEnabled"];
-        [preferences registerBool:&kAudikoPaidEnabled default:NO forKey:@"kAudikoPaidEnabled"];
-        [preferences registerBool:&kZedgeEnabled default:NO forKey:@"kZedgeEnabled"];
-        [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
-        
+            preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
 
-        [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
+            [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
+            [preferences registerBool:&kAudikoLiteEnabled default:NO forKey:@"kAudikoLiteEnabled"];
+            [preferences registerBool:&kAudikoPaidEnabled default:NO forKey:@"kAudikoPaidEnabled"];
+            [preferences registerBool:&kZedgeEnabled default:NO forKey:@"kZedgeEnabled"];
+            [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
+            
+            [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
+
 
         //if () {
-        %init(ToneHelper);
+        %init(IOS11);
         //}
     }
     
