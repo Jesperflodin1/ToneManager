@@ -13,7 +13,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/ToneHelper/To
 @end
 
 BOOL kFirstRun;
-BOOL kWriteITunesRingtonePlist;
+
 extern NSString *const HBPreferencesDidChangeNotification;
 HBPreferences *preferences;
 
@@ -23,7 +23,7 @@ HBPreferences *preferences;
     if (self = [super init]) {
         
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
-        [preferences registerBool:&kWriteITunesRingtonePlist default:YES forKey:@"kFirstRun"];
+        [preferences registerBool:&kFirstRun default:YES forKey:@"kFirstRun"];
         ALog(@"First run: %d",kFirstRun);
 
         [self loadTweakPlist];
@@ -72,6 +72,7 @@ HBPreferences *preferences;
         ALog(@"Error creating Ringtone folder:%@",ITdirError);
     } else
         ALog(@"Success ringtones folder");
+
 
     //fix duplicates in itunes plist
 
