@@ -25,10 +25,9 @@ BOOL kDebugLogging;
 
 %group IOS11
 
-%hook PSUISoundsPrefController
+ %hook PSUISoundsPrefController
 
-//Gets called once when opening the ringtone settings
--(id)init {
+- (id)init {
     if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
         DLog(@"In preferences");
         if (!kEnabled) {
@@ -58,10 +57,9 @@ BOOL kDebugLogging;
     }
     return %orig;
 }
+
 %end
 %hook TLToneManager
-
-
 
 /*
 -(id)_copyITunesRingtonesFromManifestPath:(id)arg1 mediaDirectoryPath:(id)arg2 {
@@ -128,7 +126,8 @@ BOOL kDebugLogging;
         [bundleID isEqualToString:@"com.apple.mobilephone"] ||
         [bundleID isEqualToString:@"com.apple.MobileAddressBook"] ||
         [bundleID isEqualToString:@"com.apple.mobilemail"] ||
-        [bundleID isEqualToString:@"com.apple.mobiletimer"]) {
+        [bundleID isEqualToString:@"com.apple.mobiletimer"] ||
+        [bundleID isEqualToString:@"com.apple.ToneLibrary"]) {
 
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
 
@@ -137,19 +136,19 @@ BOOL kDebugLogging;
         [preferences registerBool:&kAudikoPaidEnabled default:NO forKey:@"kAudikoPaidEnabled"];
         [preferences registerBool:&kZedgeEnabled default:NO forKey:@"kZedgeEnabled"];
         [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
-        [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kDebugLogging"];
+        [preferences registerBool:&kDebugLogging default:NO forKey:@"kDebugLogging"];
         
         [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
 
         if (kDebugLogging) {
-            NSString *logPath = [@"/var/mobile/Library/ToneHelper" stringByAppendingPathComponent:@"logfile.txt"];
+            NSString *logPath = [@"/var/mobile/Library/ToneHelper/" stringByAppendingPathComponent:@"logfile.txt"];
             freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
             DLog(@"Logfile opened");
         }
 
         if (!NSClassFromString(@"TLToneManager")) {
             DLog(@"TLToneManager missing, loading framework");
-            dlopen("/System/Library/PrivateFrameworks/ToneLibrary.framework/ToneLibrary", RTLD_LAZY);
+            //dlopen("/System/Library/PrivateFrameworks/ToneLibrary.framework/ToneLibrary", RTLD_LAZY);
         }
         ALog(@"Initializing ToneHelper");
 
