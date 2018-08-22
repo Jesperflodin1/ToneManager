@@ -1,7 +1,6 @@
 #include "JFTHRootListController.h"
 #import <Cephei/HBRespringController.h>
 #include <version.h>
-#import "../Log.h"
 
 @implementation JFTHRootListController
 

@@ -9,6 +9,7 @@ BOOL kAudikoLiteEnabled;
 BOOL kAudikoPaidEnabled;
 BOOL kZedgeEnabled;
 BOOL kWriteITunesRingtonePlist;
+BOOL kDebugLogging;
 
 
     extern NSString *const HBPreferencesDidChangeNotification;
@@ -128,22 +129,29 @@ BOOL kWriteITunesRingtonePlist;
         [bundleID isEqualToString:@"com.apple.MobileAddressBook"] ||
         [bundleID isEqualToString:@"com.apple.mobilemail"] ||
         [bundleID isEqualToString:@"com.apple.mobiletimer"]) {
+
+        preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
+
+        [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
+        [preferences registerBool:&kAudikoLiteEnabled default:NO forKey:@"kAudikoLiteEnabled"];
+        [preferences registerBool:&kAudikoPaidEnabled default:NO forKey:@"kAudikoPaidEnabled"];
+        [preferences registerBool:&kZedgeEnabled default:NO forKey:@"kZedgeEnabled"];
+        [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
+        [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kDebugLogging"];
+        
+        [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
+
+        if (kDebugLogging) {
+            NSString *logPath = [@"/var/mobile/Library/ToneHelper" stringByAppendingPathComponent:@"logfile.txt"];
+            freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
+            DLog(@"Logfile opened");
+        }
+
         if (!NSClassFromString(@"TLToneManager")) {
             DLog(@"TLToneManager missing, loading framework");
             dlopen("/System/Library/PrivateFrameworks/ToneLibrary.framework/ToneLibrary", RTLD_LAZY);
         }
         ALog(@"Initializing ToneHelper");
-
-            preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
-
-            [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
-            [preferences registerBool:&kAudikoLiteEnabled default:NO forKey:@"kAudikoLiteEnabled"];
-            [preferences registerBool:&kAudikoPaidEnabled default:NO forKey:@"kAudikoPaidEnabled"];
-            [preferences registerBool:&kZedgeEnabled default:NO forKey:@"kZedgeEnabled"];
-            [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
-            
-            [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
-
 
         //if () {
         %init(IOS11);

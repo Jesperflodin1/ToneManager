@@ -130,6 +130,14 @@ Requires Respring!</string>
 		</dict>
 		<dict>
 			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Debug Logging</string>
+			<key>footerText</key>
+			<string>Enable to save logs to a file. REQUIRES RESPRING. Send the logs to the Developer using send email below.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
 			<false/>

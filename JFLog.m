@@ -1,7 +1,7 @@
-#import "Log.h"
+#import "JFLog.h"
+/*
 
-
-@implementation Log
+@implementation JFLog
 void append(NSString *msg){
     // get path to Documents/somefile.txt
     NSString *documentsDirectory = @"/var/mobile/Library/ToneHelper";
@@ -27,4 +27,4 @@ void _Log(NSString *prefix, const char *file, int lineNumber, const char *funcNa
     append(msg);
     //[msg release];
 }
-@end
+@end*/

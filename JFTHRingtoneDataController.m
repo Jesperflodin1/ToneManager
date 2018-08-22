@@ -12,6 +12,7 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/ToneHelper/To
 @end
 
 BOOL kFirstRun;
+BOOL kWriteITunesRingtonePlist;
 extern NSString *const HBPreferencesDidChangeNotification;
 HBPreferences *preferences;
 
@@ -72,7 +73,6 @@ HBPreferences *preferences;
         ALog(@"Success ringtones folder");
 
     //fix duplicates in itunes plist
-    NSFileManager *localFileManager = [[NSFileManager alloc] init];
 
     NSDictionary *ringtones = [[self getItunesRingtones] copy];
     DLog(@"Read itunes plist: %@",ringtones);
@@ -88,9 +88,9 @@ HBPreferences *preferences;
     [preferences setBool:NO forKey:@"kFirstRun"];
 }
 
-- (void)removeDuplicatesInItunesPlistOf:(NSString *name) {
+- (void)removeDuplicatesInItunesPlistOf:(NSString *)name {
     int count = 0;
-    NSMutableArray itemsToDelete = [[NSMutableArray alloc] init];
+    NSMutableArray *itemsToDelete = [[NSMutableArray alloc] init];
 
     NSDictionary *ringtones = [[self getItunesRingtones] copy];
     DLog(@"Read itunes plist: %@",ringtones);
@@ -100,7 +100,7 @@ HBPreferences *preferences;
             [itemsToDelete addObject:item];
         }
     }
-
+    NSFileManager *localFileManager = [[NSFileManager alloc] init];
     if (count > 1) {
         for (NSString *item in itemsToDelete) {
             DLog(@"Found duplicate in itunes plist: (%@)",item);
