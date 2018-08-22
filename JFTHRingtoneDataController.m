@@ -1,5 +1,6 @@
 #import "JFTHRingtoneDataController.h"
 
+
 NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist";
 NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/ToneHelper/ToneHelperData.plist";
 //NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
@@ -161,7 +162,7 @@ HBPreferences *preferences;
                                                                  format: NSPropertyListXMLFormat_v1_0
                                                                 options: 0
                                                                   error: &serError];
-    DLog("Error serializing tweak plist: %@",serError);
+    DLog(@"Error serializing tweak plist: %@",serError);
     NSError *writeError;
     if (![newData writeToFile:TONEHELPERDATA_PLIST_PATH options:NSDataWritingAtomic error:&writeError])
         DLog(@"Error writing tweak plist: %@",writeError);
@@ -177,7 +178,7 @@ HBPreferences *preferences;
                                                                 options: 0
                                                                   error: &serError];
     if (!newData)
-        DLog("Error serializing ringtones plist: %@",serError);
+        DLog(@"Error serializing ringtones plist: %@",serError);
 
     NSError *writeError;
     if (![newData writeToFile:RINGTONE_PLIST_PATH options:NSDataWritingAtomic error:&writeError])

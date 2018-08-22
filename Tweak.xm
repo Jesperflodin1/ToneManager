@@ -1,5 +1,7 @@
 #import "JFTHHeaders.h"
+
 #import "JFTHRingtoneImporter.h"
+
 
 NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist";
 NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
@@ -9,7 +11,6 @@ BOOL kAudikoLiteEnabled;
 BOOL kAudikoPaidEnabled;
 BOOL kZedgeEnabled;
 BOOL kWriteITunesRingtonePlist;
-BOOL kDebugLogging;
 
 
     extern NSString *const HBPreferencesDidChangeNotification;
@@ -136,15 +137,8 @@ BOOL kDebugLogging;
         [preferences registerBool:&kAudikoPaidEnabled default:NO forKey:@"kAudikoPaidEnabled"];
         [preferences registerBool:&kZedgeEnabled default:NO forKey:@"kZedgeEnabled"];
         [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
-        [preferences registerBool:&kDebugLogging default:NO forKey:@"kDebugLogging"];
         
         [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
-
-        if (kDebugLogging) {
-            NSString *logPath = [@"/var/mobile/Library/ToneHelper/" stringByAppendingPathComponent:@"logfile.txt"];
-            freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
-            DLog(@"Logfile opened");
-        }
 
         if (!NSClassFromString(@"TLToneManager")) {
             DLog(@"TLToneManager missing, loading framework");
