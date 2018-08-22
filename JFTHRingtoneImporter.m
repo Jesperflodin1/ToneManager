@@ -59,6 +59,12 @@ HBPreferences *preferences;
             if ([_ringtoneData getRingtoneWithName:[self createNameFromFile:file]]) {
                 continue;
             }
+            // Does this name already exist in itunes plist?
+            NSString *baseName = [self createNameFromFile:appDirFile];
+            if ([_ringtoneData getITunesRingtoneWithName:baseName]) {
+                ALog(@"Ringtone is already in itunes plist, name: %@", baseName);
+                continue;
+            }
             if ([_ringtoneData getRingtoneWithHash:[FileHash md5HashOfFileAtPath:[appDirectory stringByAppendingPathComponent:file]]]) {
                 continue;
             }
