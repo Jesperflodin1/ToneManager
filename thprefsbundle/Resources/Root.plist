@@ -130,6 +130,20 @@ Requires Respring!</string>
 		</dict>
 		<dict>
 			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>fi.flodin.tonehelper</string>
+			<key>key</key>
+			<string>kDebugLogging</string>
+			<key>PostNotifcation</key>
+			<string>fi.flodin.tonehelper/PrefsReload</string>
+			<key>label</key>
+			<string>Enable logging to file</string>
+		</dict>
+		<dict>
+			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Respring</string>

@@ -71,18 +71,38 @@ HBPreferences *preferences;
     } else
         ALog(@"Success ringtones folder");
 
-    // make sure the files exist
-    [self saveRingtonesPlist];
-    [self saveTweakPlist];
-
     //fix duplicates in itunes plist
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
 
     NSDictionary *ringtones = [[self getItunesRingtones] copy];
     DLog(@"Read itunes plist: %@",ringtones);
     for (NSString *item in ringtones) {
-        if ([[[ringtones objectForKey:item] objectForKey:@"Name"] isEqualToString:name]) {
+        [self removeDuplicatesInItunesPlistOf:[[ringtones objectForKey:item] objectForKey:@"Name"]];
+    }
 
+    // make sure the files exist
+    [self saveRingtonesPlist];
+    [self saveTweakPlist];
+    ALog(@"Firstrun done");
+    //firstrun done, dont run again
+    [preferences setBool:NO forKey:@"kFirstRun"];
+}
+
+- (void)removeDuplicatesInItunesPlistOf:(NSString *name) {
+    int count = 0;
+    NSMutableArray itemsToDelete = [[NSMutableArray alloc] init];
+
+    NSDictionary *ringtones = [[self getItunesRingtones] copy];
+    DLog(@"Read itunes plist: %@",ringtones);
+    for (NSString *item in ringtones) {
+        if ([[[ringtones objectForKey:item] objectForKey:@"Name"] isEqualToString:name]) {
+            count++;
+            [itemsToDelete addObject:item];
+        }
+    }
+
+    if (count > 1) {
+        for (NSString *item in itemsToDelete) {
             DLog(@"Found duplicate in itunes plist: (%@)",item);
             [[_ringtonesPlist objectForKey:@"Ringtones"] removeObjectForKey:item];
             DLog(@"Removing duplicate file");
@@ -91,10 +111,7 @@ HBPreferences *preferences;
                 ALog(@"Failed to remove item: %@", error);
         }
     }
-
-    //firstrun done, dont run again
-    [preferences setBool:NO forKey:@"kFirstRun"];
-}
+}    
 
 - (void)loadTweakPlist {
     ALog(@"Loading tweak plist");

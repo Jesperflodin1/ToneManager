@@ -3,7 +3,7 @@
 
 NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
 BOOL kWriteITunesRingtonePlist;
-BOOL kFirstRun;
+
 extern NSString *const HBPreferencesDidChangeNotification;
 HBPreferences *preferences;
 
@@ -20,14 +20,12 @@ HBPreferences *preferences;
 
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
         [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
-        [preferences registerBool:&kWriteITunesRingtonePlist default:YES forKey:@"kFirstRun"];
 
         _ringtoneData = [[JFTHRingtoneDataController alloc] init];
         
         if (kWriteITunesRingtonePlist)
             [_ringtoneData enableITunesRingtonePlistEditing];
 
-        ALog(@"First run: %d",kFirstRun);
         DLog(@"kWriteITunesRingtonePlist: %d",kWriteITunesRingtonePlist);
 
         
