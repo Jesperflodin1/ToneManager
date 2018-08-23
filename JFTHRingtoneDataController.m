@@ -129,7 +129,7 @@ HBPreferences *preferences;
         _importedRingtonesPlist = [[NSMutableDictionary alloc] init];
         NSMutableDictionary *importedRingtones = [[NSMutableDictionary alloc] init];
         [_importedRingtonesPlist setObject:importedRingtones forKey:@"Ringtones"];
-        DLog(@"Creating new tweak plist");
+        ALog(@"Creating new tweak plist");
     }
 
 }
@@ -157,21 +157,21 @@ HBPreferences *preferences;
     return YES;
 }
 - (void)saveTweakPlist {
-    DLog(@"Saving tweak plist");
+    ALog(@"Saving tweak plist");
     NSError *serError;
     NSData *newData = [NSPropertyListSerialization dataWithPropertyList: _importedRingtonesPlist
                                                                  format: NSPropertyListXMLFormat_v1_0
                                                                 options: 0
                                                                   error: &serError];
     if (!newData)    
-        DLog(@"Error serializing tweak plist: %@",serError);
+        ALog(@"Error serializing tweak plist: %@",serError);
     NSError *writeError;
     if (![newData writeToFile:TONEHELPERDATA_PLIST_PATH options:NSDataWritingAtomic error:&writeError])
-        DLog(@"Error writing tweak plist: %@",writeError);
+        ALog(@"Error writing tweak plist: %@",writeError);
 }
 - (void)saveRingtonesPlist {
     // Folder may not exist, try to create it
-    DLog(@"Saving Ringtones.plist");
+    ALog(@"Saving Ringtones.plist");
     
     //Write plist
     NSError *serError;
@@ -180,11 +180,11 @@ HBPreferences *preferences;
                                                                 options: 0
                                                                   error: &serError];
     if (!newData)
-        DLog(@"Error serializing ringtones plist: %@",serError);
+        ALog(@"Error serializing ringtones plist: %@",serError);
 
     NSError *writeError;
     if (![newData writeToFile:RINGTONE_PLIST_PATH options:NSDataWritingAtomic error:&writeError])
-        DLog(@"Error writing ringtone plist: %@",writeError);
+        ALog(@"Error writing ringtone plist: %@",writeError);
 }
 - (void)save {
     ALog(@"Saving plists");
@@ -206,7 +206,7 @@ HBPreferences *preferences;
     NSNumber *tonePID = [NSNumber numberWithLongLong:[[self randomizedRingtoneParameter:JFTHRingtonePID] longLongValue]];
 
     if (self.shouldWriteITunesRingtonePlist) {
-        DLog(@"Adding ringtone i itunes plist: %@", name);
+        ALog(@"Adding ringtone i itunes plist: %@", name);
         // Does this ringtone already exist in itunes ringtone plist?
 
 
@@ -261,7 +261,7 @@ HBPreferences *preferences;
     NSDictionary *ringtones = [self getImportedRingtones];
     for (NSString *item in ringtones) {
         if ([[[ringtones objectForKey:item] objectForKey:@"Name"] isEqualToString:name]) {
-            DLog(@"Ringtone Importer: Found ringtone that already is imported based on filename, skipping. (%@)",item);
+            ALog(@"Ringtone Importer: Found ringtone that already is imported based on filename, skipping. (%@)",item);
             return [ringtones objectForKey:item];
         }
     }
@@ -271,7 +271,7 @@ HBPreferences *preferences;
     NSDictionary *ringtones = [self getImportedRingtones];
     for (NSString *item in ringtones) {
         if ([[[ringtones objectForKey:item] objectForKey:@"Hash"] isEqualToString:md5]) {
-            DLog(@"Ringtone Importer: Found ringtone that already is imported based on hash, skipping. (%@)",item);
+            ALog(@"Ringtone Importer: Found ringtone that already is imported based on hash, skipping. (%@)",item);
             return [ringtones objectForKey:item];
         }
     }
@@ -282,7 +282,7 @@ HBPreferences *preferences;
     DLog(@"Read itunes plist: %@",ringtones);
     for (NSString *item in ringtones) {
         if ([[[ringtones objectForKey:item] objectForKey:@"GUID"] isEqualToString:guid]) {
-            DLog(@"Ringtone Importer: Found ringtone that already is imported based on GUID, skipping. (%@)",item);
+            ALog(@"Ringtone Importer: Found ringtone that already is imported based on GUID, skipping. (%@)",item);
             return [ringtones objectForKey:item];
         }
     }
@@ -293,7 +293,7 @@ HBPreferences *preferences;
     DLog(@"Read itunes plist: %@",ringtones);
     for (NSString *item in ringtones) {
         if ([[[ringtones objectForKey:item] objectForKey:@"Name"] isEqualToString:name]) {
-            DLog(@"Ringtone Importer: Found ringtone in itunes plist that already is imported based on Name, skipping. (%@)",item);
+            ALog(@"Ringtone Importer: Found ringtone in itunes plist that already is imported based on Name, skipping. (%@)",item);
             return [ringtones objectForKey:item];
         }
     }
@@ -356,13 +356,13 @@ HBPreferences *preferences;
                 // this ringtone exists in itunes plist
                 if (!currentITunesWriteStatus) {
                     // and it should not exist there
-                    DLog(@"Deleting ringtone from itunes plist: %@",[importedTones objectForKey:file]);
+                    ALog(@"Deleting ringtone from itunes plist: %@",[importedTones objectForKey:file]);
                     [toneData deleteRingtoneFromITunesPlist:file];
                 }
             } else if (currentITunesWriteStatus) {
                 // does not exist in itunes plist
                 // and it should exist there. Add it
-                DLog(@"Adding ringtone to itunes plist: %@",[importedTones objectForKey:file]);
+                ALog(@"Adding ringtone to itunes plist: %@",[importedTones objectForKey:file]);
                 NSMutableDictionary *currentTone = [[NSMutableDictionary alloc] init];
                 [currentTone setObject:[[importedTones objectForKey:file] objectForKey:@"GUID"] forKey:@"GUID"];
                 [currentTone setObject:[[importedTones objectForKey:file] objectForKey:@"Name"] forKey:@"Name"];

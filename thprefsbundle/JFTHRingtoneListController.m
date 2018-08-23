@@ -10,7 +10,7 @@
 
 		for (NSString *fileName in ringtones) {
 			NSDictionary *currentTone = [ringtones objectForKey:fileName];
-			DLog(@"Adding ringtone: %@",[ringtones objectForKey:fileName]);
+			ALog(@"Adding ringtone: %@",[ringtones objectForKey:fileName]);
 			PSSpecifier* tone = [PSSpecifier preferenceSpecifierNamed:[currentTone objectForKey:@"Name"]
 									    target:self
 									       set:NULL

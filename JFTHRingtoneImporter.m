@@ -46,11 +46,11 @@ HBPreferences *preferences;
     NSMutableArray *m4rFiles = [[NSMutableArray alloc] init];
     if (!appDirFiles) // App unavailable or folder unavailable, not adding
         return;
-    DLog (@"Ringtone Importer: App folder available!");
+    ALog (@"Ringtone Importer: App folder available!");
 
     if (!([appDirFiles count] > 0)) // Nothing to import for this app
         return;
-    DLog (@"Ringtone Importer: Found %lu files", (unsigned long)[appDirFiles count]);
+    ALog (@"Ringtone Importer: Found %lu files", (unsigned long)[appDirFiles count]);
 
     for (NSString *file in appDirFiles) {
         if ([[file pathExtension] isEqualToString: @"m4r"]) {
@@ -60,7 +60,7 @@ HBPreferences *preferences;
                 continue;
             }
             // Does this name already exist in itunes plist?
-            NSString *baseName = [self createNameFromFile:appDirFile];
+            NSString *baseName = [self createNameFromFile:file];
             if ([_ringtoneData getITunesRingtoneWithName:baseName]) {
                 ALog(@"Ringtone is already in itunes plist, name: %@", baseName);
                 continue;
@@ -68,7 +68,7 @@ HBPreferences *preferences;
             if ([_ringtoneData getRingtoneWithHash:[FileHash md5HashOfFileAtPath:[appDirectory stringByAppendingPathComponent:file]]]) {
                 continue;
             }
-            DLog(@"Adding ringtone to be imported: %@", file);
+            ALog(@"Adding ringtone to be imported: %@", file);
             [m4rFiles addObject:file];
         }
     }
