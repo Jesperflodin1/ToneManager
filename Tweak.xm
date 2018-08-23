@@ -2,8 +2,6 @@
 
 #import "JFTHRingtoneImporter.h"
 
-#import "xctheos.h"
-
 
 NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist";
 NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
