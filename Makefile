@@ -9,7 +9,7 @@ DEBUG = 1
 FINALPACKAGE = 0
 
 TWEAK_NAME = ToneHelper
-ToneHelper_FILES = Tweak.xm $(wildcard *.m) $(wildcard JGProgressHUD/*.m) 
+ToneHelper_FILES = Tweak.xm $(wildcard *.m) $(wildcard JGProgressHUD/*.m) $(wildcard CocoaLumberjack/*.m) 
 
 ToneHelper_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 

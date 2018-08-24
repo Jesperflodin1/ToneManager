@@ -19,6 +19,8 @@
     JFTHRingtoneDataController *_ringtoneData;
 }
 
+@property int importedCount;
+
 - (NSString *)createNameFromFile:(NSString *)file;
 - (void)getRingtoneFilesFromApp:(NSString *)bundleID; //Uses "Documents" as folder, default
 //- (NSSet *)getMD5ForExistingRingtones;

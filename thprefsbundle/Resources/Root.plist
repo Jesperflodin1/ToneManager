@@ -24,7 +24,7 @@
 			<key>label</key>
 			<string>Main settings</string>
 			<key>footerText</key>
-			<string>Imports ringtones from chosen apps if enabled. Open the ringtone picker in Preferences to trigger the import.</string>
+			<string>Imports ringtones from Audiko and/or Zedge App if installed.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -43,56 +43,8 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Ringtone import settings</string>
-			<key>footerText</key>
-			<string>Imports from the above apps when the respective setting above is enabled. Restart Preferences app to apply. Note: Enabling all apps above or/and importing large amounts of ringtones may cause lag when opening the ringtone picker.</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>fi.flodin.tonehelper</string>
-			<key>key</key>
-			<string>kAudikoLiteEnabled</string>
-			<key>PostNotifcation</key>
-			<string>fi.flodin.tonehelper/PrefsReload</string>
-			<key>label</key>
-			<string>Import from Audiko Lite</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>fi.flodin.tonehelper</string>
-			<key>key</key>
-			<string>kAudikoPaidEnabled</string>
-			<key>PostNotifcation</key>
-			<string>fi.flodin.tonehelper/PrefsReload</string>
-			<key>label</key>
-			<string>Import from Audiko (Paid version)</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>fi.flodin.tonehelper</string>
-			<key>key</key>
-			<string>kZedgeEnabled</string>
-			<key>PostNotifcation</key>
-			<string>fi.flodin.tonehelper/PrefsReload</string>
-			<key>label</key>
-			<string>Import from Zedge Ringtones</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
+            <key>label</key>
+            <string>Imported Ringtones</string>
 		</dict>
 		<dict>
 			<key>cell</key>

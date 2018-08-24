@@ -7,59 +7,70 @@ NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes
 NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
 
 BOOL kEnabled;
-BOOL kAudikoLiteEnabled;
-BOOL kAudikoPaidEnabled;
-BOOL kZedgeEnabled;
 BOOL kWriteITunesRingtonePlist;
 
 
-    extern NSString *const HBPreferencesDidChangeNotification;
-    HBPreferences *preferences;
-    HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCopying> _Nullable newValue) {
-    BOOL value = [[(NSNumber *)newValue copy] boolValue];
-    DLog(@"Notification received for key:%@ with value:%d",key,value);
-    if ([key isEqualToString:@"kWriteITunesRingtonePlist"]) {
-        [JFTHRingtoneDataController syncPlists:value];
-    }
-};
+extern NSString *const HBPreferencesDidChangeNotification;
+HBPreferences *preferences;
 
 
 %group IOS11
 
- %hook PSUISoundsPrefController
+%hook PreferencesAppController
 
-- (id)init {
+- (void)applicationWillEnterForeground:(id)arg1 {
     if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
         DLog(@"In preferences");
+        if (NSClassFromString(@"TLToneManager"))
+            DLog(@"TLToneManager loaded");
         if (!kEnabled) {
             DLog(@"Disabled");
             return %orig;
         }
         ALog(@"Enabled");
-        //We're in preferences app, lets look for new ringtones to import
-        JFTHRingtoneImporter *importer = [[JFTHRingtoneImporter alloc] init];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            @autoreleasepool {
+                //We're in preferences app, lets look for new ringtones to import
+                JFTHRingtoneImporter *importer = [[JFTHRingtoneImporter alloc] init];
 
-        //Apps to look for ringtones in (in Documents folder)
-        NSMutableArray *apps = [[NSMutableArray alloc] init];
-        if (kAudikoLiteEnabled)
-            [apps addObject:@"com.908.AudikoFree"];
-        if (kZedgeEnabled)
-            [apps addObject:@"com.zedge.Zedge"];
-        if (kAudikoLiteEnabled)
-            [apps addObject:@"com.908.Audiko"];
+                //Apps to look for ringtones in (in Documents folder)
+                NSMutableArray *apps = [[NSMutableArray alloc] init];
+                [apps addObject:@"com.908.AudikoFree"];
+                [apps addObject:@"com.zedge.Zedge"];
+                [apps addObject:@"com.908.Audiko"];
 
-        for (NSString *app in apps) {
-            [importer getRingtoneFilesFromApp:app];
-        }
-        //Found something new to import?
-        if ([importer shouldImportRingtones]) {
-            [importer importNewRingtones];
-        }
+                for (NSString *app in apps) {
+                    [importer getRingtoneFilesFromApp:app];
+                }
+                //Found something new to import?
+                if ([importer shouldImportRingtones]) {
+                    [importer importNewRingtones];
+                }
+                // imported something?
+                if ([importer importedCount] > 0) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        DLog(@"trying to reload tones");
+                        
+                        if (NSClassFromString(@"TLToneManager")) {
+                            
+                            DLog(@"TLTonemanager loaded, reloading tones");
+                            // _reloadTonesAfterExternalChange IOS 11 only
+                            if ([%c(TLToneManager) sharedToneManager] respondsToSelector:@selector(_reloadTonesAfterExternalChange))
+                                [[%c(TLToneManager) sharedToneManager] _reloadTonesAfterExternalChange]; // IOS 11
+                            
+                            else if ([%c(TLToneManager) sharedToneManager] respondsToSelector:@selector(_reloadITunesRingtonesAfterExternalChange))
+                                [[%c(TLToneManager) sharedToneManager] _reloadITunesRingtonesAfterExternalChange]; // IOS 10
+                        }
+                        //[[self valueForKey:@"_tonePickerController"] _reloadMediaItems];
+                    });
+                }
+            }
+        });
     }
     return %orig;
 }
-
 %end
+
 %hook TLToneManager
 
 /*
@@ -129,22 +140,32 @@ BOOL kWriteITunesRingtonePlist;
         [bundleID isEqualToString:@"com.apple.mobilemail"] ||
         [bundleID isEqualToString:@"com.apple.mobiletimer"] ||
         [bundleID isEqualToString:@"com.apple.ToneLibrary"]) {
+        
+        HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCopying> _Nullable newValue) {
+            BOOL value = [[(NSNumber *)newValue copy] boolValue];
+            DLog(@"Notification received for key:%@ with value:%d",key,value);
+            if ([key isEqualToString:@"kWriteITunesRingtonePlist"]) {
+                [JFTHRingtoneDataController syncPlists:value];
+            }
+        };
 
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
 
         [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
-        [preferences registerBool:&kAudikoLiteEnabled default:NO forKey:@"kAudikoLiteEnabled"];
-        [preferences registerBool:&kAudikoPaidEnabled default:NO forKey:@"kAudikoPaidEnabled"];
-        [preferences registerBool:&kZedgeEnabled default:NO forKey:@"kZedgeEnabled"];
         [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
         
         [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
 
         if (!NSClassFromString(@"TLToneManager")) {
             DLog(@"TLToneManager missing, loading framework");
-            //dlopen("/System/Library/PrivateFrameworks/ToneLibrary.framework/ToneLibrary", RTLD_LAZY);
+            dlopen("/System/Library/PrivateFrameworks/ToneLibrary.framework/ToneLibrary", RTLD_LAZY);
+        }
+        if (!NSClassFromString(@"TKTonePickerController")) {
+            DLog(@"Loading ToneKit");
+            dlopen("/System/Library/PrivateFrameworks/ToneKit.framework/ToneKit", RTLD_LAZY);
         }
         ALog(@"Initializing ToneHelper");
+        DLog(@"%@",[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0]);
 
         //if () {
         %init(IOS11);

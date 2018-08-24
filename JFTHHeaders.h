@@ -29,14 +29,20 @@
 @interface TLToneManager : NSObject
 +(id)sharedToneManager;
 -(void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
+-(void)_reloadTonesAfterExternalChange;
 -(NSMutableArray *)_tonesFromManifestPath:(NSPathStore2 *)arg1 mediaDirectoryPath:(NSPathStore2 *)arg2;
 @end
 
-@interface TKTonePickerViewController : UITableViewController
+@interface TKTonePickerController : NSObject
+-(void)_reloadTones;
+-(void)_reloadMediaItems;
+@end
+@interface TKTonePickerViewController : UITableViewController {
+    TKTonePickerController* _tonePickerController;
+}
 @end
 
-@interface TKTonePickerController : NSObject
-@end
+
 
 @interface LSApplicationProxy
 /*MobileCoreServices*/
@@ -44,6 +50,8 @@
 + (id)applicationProxyForIdentifier:(NSString *)arg1;
 + (id)applicationProxyForBundleURL:(NSURL *)arg1;
 @end
+
+
 /*
 @interface SpringBoard : UIApplication {
     dispatch_source_t _source;
