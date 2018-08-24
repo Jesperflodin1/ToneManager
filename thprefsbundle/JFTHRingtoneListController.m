@@ -56,7 +56,7 @@ BOOL kDebugLogging;
 - (instancetype)init {
 	//ALog(@"Initializing ringtone list");
 	self = [super init];
-    
+    /*
     HBPreferences *preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
     [preferences registerBool:&kDebugLogging default:NO forKey:@"kDebugLogging"];
     if (kDebugLogging) {
@@ -69,7 +69,9 @@ BOOL kDebugLogging;
         logglyLogger.saveInterval = 15;
         
         [DDLog addLogger:logglyLogger];
-    }
+    }*/
+    
+    //[DDLog addLogger:[DDASLLogger sharedInstance]];
     
 	_toneData = [[JFTHRingtoneDataController alloc] init];
 

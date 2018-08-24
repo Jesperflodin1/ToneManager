@@ -104,7 +104,7 @@ Requires Respring!</string>
 			<key>label</key>
 			<string>Debug Logging</string>
 			<key>footerText</key>
-			<string>Enable to save logs to a file. REQUIRES RESPRING. Send the logs to the Developer using send email below.</string>
+			<string>Enable to automatically send logs to developer.</string>
 		</dict>
 		<dict>
 			<key>cell</key>

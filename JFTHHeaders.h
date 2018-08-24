@@ -5,6 +5,8 @@
 #import <FrontBoard/FBApplicationInfo.h>
 #import <SpringBoard/SpringBoard.h>
 
+#import <version.h>
+
 #include "stdio.h"
 #include "dlfcn.h"
 
