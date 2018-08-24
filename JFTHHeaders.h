@@ -30,6 +30,7 @@
 +(id)sharedToneManager;
 -(void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
 -(void)_reloadTonesAfterExternalChange;
+-(void)_reloadITunesRingtonesAfterExternalChange; // ios 10
 -(NSMutableArray *)_tonesFromManifestPath:(NSPathStore2 *)arg1 mediaDirectoryPath:(NSPathStore2 *)arg2;
 @end
 

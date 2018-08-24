@@ -1,7 +1,7 @@
 Package: fi.flodin.tonehelper
 Name: ToneHelper
 Depends: mobilesubstrate, ws.hbang.common (>= 1.12)
-Version: 0.3.2
+Version: 0.3.3
 Architecture: iphoneos-arm
 Description: Automatically adds ringtones from Audiko to device
 Maintainer: Jesper Flodin <jesper@flodin.fi>

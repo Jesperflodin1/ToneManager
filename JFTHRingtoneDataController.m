@@ -36,9 +36,7 @@ HBPreferences *preferences;
     }
     return self;
 }
-- (void)dealloc {
-    DLog(@"Deallocating ringtonedatacontroller");
-}
+
 
 - (BOOL)enableITunesRingtonePlistEditing {
     self.shouldWriteITunesRingtonePlist = YES;

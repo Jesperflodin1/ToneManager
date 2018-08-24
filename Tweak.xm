@@ -21,8 +21,6 @@ HBPreferences *preferences;
 - (void)applicationWillEnterForeground:(id)arg1 {
     if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
         DLog(@"In preferences");
-        if (NSClassFromString(@"TLToneManager"))
-            DLog(@"TLToneManager loaded");
         if (!kEnabled) {
             DLog(@"Disabled");
             return %orig;
@@ -49,16 +47,16 @@ HBPreferences *preferences;
                 // imported something?
                 if ([importer importedCount] > 0) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        DLog(@"trying to reload tones");
+                        ALog(@"trying to reload tones");
                         
                         if (NSClassFromString(@"TLToneManager")) {
                             
-                            DLog(@"TLTonemanager loaded, reloading tones");
+                            ALog(@"TLTonemanager loaded, reloading tones");
                             // _reloadTonesAfterExternalChange IOS 11 only
-                            if ([%c(TLToneManager) sharedToneManager] respondsToSelector:@selector(_reloadTonesAfterExternalChange))
+                            if ([[%c(TLToneManager) sharedToneManager] respondsToSelector:@selector(_reloadTonesAfterExternalChange)])
                                 [[%c(TLToneManager) sharedToneManager] _reloadTonesAfterExternalChange]; // IOS 11
                             
-                            else if ([%c(TLToneManager) sharedToneManager] respondsToSelector:@selector(_reloadITunesRingtonesAfterExternalChange))
+                            else if ([[%c(TLToneManager) sharedToneManager] respondsToSelector:@selector(_reloadITunesRingtonesAfterExternalChange)])
                                 [[%c(TLToneManager) sharedToneManager] _reloadITunesRingtonesAfterExternalChange]; // IOS 10
                         }
                         //[[self valueForKey:@"_tonePickerController"] _reloadMediaItems];
@@ -86,41 +84,43 @@ HBPreferences *preferences;
 }*/
 
 -(NSMutableArray *)_tonesFromManifestPath:(NSPathStore2 *)arg1 mediaDirectoryPath:(NSPathStore2 *)arg2 {
-    if (!kEnabled || kWriteITunesRingtonePlist) {
-        // kWriteITunesRingtonePlist enabled => disable runtime injection of ringtones
-        DLog(@"Disabled");
-        return %orig;
-    }
-    DLog(@"Enabled");
-    DLog(@"In tonemanager");
-    if ([arg1 isEqualToString:RINGTONE_PLIST_PATH]) {
-        //Save the ringtones array so we can modify it
-        NSMutableArray *tones = %orig;
-
-        //Read the ringtone metadata from our own plist
-        JFTHRingtoneDataController *toneData = [[JFTHRingtoneDataController alloc] init];
-        NSDictionary *importedTones = [toneData getImportedRingtones];
-
-        for (NSString *file in importedTones) {
-            // Create TLItunesTone object and put it into the array
-
-            TLITunesTone *tone = [[%c(TLITunesTone) alloc] initWithPropertyListRepresentation:@{
-                @"GUID": [[importedTones objectForKey:file] objectForKey:@"GUID"],
-                @"Name": [[importedTones objectForKey:file] objectForKey:@"Name"],
-                @"PID": [[importedTones objectForKey:file] objectForKey:@"PID"],
-                @"Protected Content" : @NO
-
-            } filePath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:file]];
-            
-            [tones addObject:tone];
+    @autoreleasepool {
+        if (!kEnabled || kWriteITunesRingtonePlist) {
+            // kWriteITunesRingtonePlist enabled => disable runtime injection of ringtones
+            DLog(@"Disabled");
+            return %orig;
         }
-        //Return the array with the ringtones the system found and the ringtones we have found
-        DLog(@"Read available ringtones");
-        return tones;
-    } else {
-        // Not looking for the ringtones array we're interested in modifying
-        DLog(@"Not reading ringtones");
-        return %orig;
+        DLog(@"Enabled");
+        DLog(@"In tonemanager");
+        if ([arg1 isEqualToString:RINGTONE_PLIST_PATH]) {
+            //Save the ringtones array so we can modify it
+            NSMutableArray *tones = %orig;
+
+            //Read the ringtone metadata from our own plist
+            JFTHRingtoneDataController *toneData = [[JFTHRingtoneDataController alloc] init];
+            NSDictionary *importedTones = [toneData getImportedRingtones];
+
+            for (NSString *file in importedTones) {
+                // Create TLItunesTone object and put it into the array
+
+                TLITunesTone *tone = [[%c(TLITunesTone) alloc] initWithPropertyListRepresentation:@{
+                    @"GUID": [[importedTones objectForKey:file] objectForKey:@"GUID"],
+                    @"Name": [[importedTones objectForKey:file] objectForKey:@"Name"],
+                    @"PID": [[importedTones objectForKey:file] objectForKey:@"PID"],
+                    @"Protected Content" : @NO
+
+                } filePath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:file]];
+                
+                [tones addObject:tone];
+            }
+            //Return the array with the ringtones the system found and the ringtones we have found
+            DLog(@"Read available ringtones");
+            return tones;
+        } else {
+            // Not looking for the ringtones array we're interested in modifying
+            DLog(@"Not reading ringtones");
+            return %orig;
+        }
     }
 }
 %end

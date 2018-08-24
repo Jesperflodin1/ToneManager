@@ -26,14 +26,11 @@ HBPreferences *preferences;
         if (kWriteITunesRingtonePlist)
             [_ringtoneData enableITunesRingtonePlistEditing];
 
-        DLog(@"kWriteITunesRingtonePlist: %d",kWriteITunesRingtonePlist);
+        ALog(@"kWriteITunesRingtonePlist: %d",kWriteITunesRingtonePlist);
 
         
     }
     return self;
-}
-- (void)dealloc {
-    DLog(@"Deallocating ringtoneimporter");
 }
 
 
