@@ -14,13 +14,14 @@ HBPreferences *preferences;
 - (instancetype)init {
     if (self = [super init]) {
         DDLogInfo(@"Ringtone Importer: Init");
+        _ringtoneData = [[JFTHRingtoneDataController alloc] init];
+        
         ringtonesToImport = [[NSMutableDictionary alloc] init];
         shouldImportRingtones = NO;
 
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
         [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
 
-        _ringtoneData = [[JFTHRingtoneDataController alloc] init];
         self.importedCount = 0;
         
         if (kWriteITunesRingtonePlist)

@@ -32,6 +32,17 @@ HBPreferences *preferences;
 
         if (!kFirstRun)
             [self firstRun];
+        
+        // check folder existence
+        NSFileManager *localFileManager = [[NSFileManager alloc] init];
+        if (![localFileManager fileExistsAtPath:@"/var/mobile/Library/ToneHelper"]) {
+            // somethings wrong, run fisrtrun again
+            DDLogError(@"Tweak folder non-existent. Running firstrun again");
+            [self firstRun];
+        } else
+            DDLogInfo(@"Tweak folder exists.");
+
+            
         DDLogDebug(@"Initialized");
     }
     return self;
@@ -73,6 +84,15 @@ HBPreferences *preferences;
         DDLogError(@"Error creating Ringtone folder:%@",ITdirError);
     } else
         DDLogWarn(@"Success ringtones folder");
+    
+    NSError *tweakdirError;
+    if (![localFileManager createDirectoryAtPath:@"/var/mobile/Library/ToneHelper/"
+                     withIntermediateDirectories:YES
+                                      attributes:nil
+                                           error:&tweakdirError]) {
+        DDLogError(@"Error creating ringtones folder: %@",tweakdirError);
+    } else
+        DDLogWarn(@"Success creating tweak folder");
 
 
     //fix duplicates in itunes plist
@@ -131,6 +151,7 @@ HBPreferences *preferences;
         NSMutableDictionary *importedRingtones = [[NSMutableDictionary alloc] init];
         [_importedRingtonesPlist setObject:importedRingtones forKey:@"Ringtones"];
         DDLogInfo(@"Creating new tweak plist");
+        [self saveTweakPlist];
     }
 
 }
