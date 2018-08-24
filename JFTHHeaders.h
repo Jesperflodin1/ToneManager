@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <Cephei/HBPreferences.h>
-#import "JGProgressHUD/JGProgressHUD.h"
+#import "CocoaLumberjack/CocoaLumberjack.h"
 
 #import <FrontBoard/FBApplicationInfo.h>
 #import <SpringBoard/SpringBoard.h>

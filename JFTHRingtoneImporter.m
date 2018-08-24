@@ -188,49 +188,4 @@ HBPreferences *preferences;
     return [[baseName componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @""];
 }
 
-- (void)showSuccessHUDText:(NSString *)text { //Dismisses itself
-if (_statusHUD) {
-        if ([_statusHUD isVisible]) 
-            [_statusHUD dismissAnimated:NO];
-    }
-    _statusHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
-    _statusHUD.vibrancyEnabled = NO;
-    _statusHUD.square = YES;
-    _statusHUD.textLabel.text = text;
-    [_statusHUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
-    //[_statusHUD dismissAfterDelay:2.0 animated:YES];
-}
-- (void)showErrorHUDText:(NSString *)text {
-    if (_statusHUD) {
-        if ([_statusHUD isVisible]) 
-            [_statusHUD dismissAnimated:NO];
-    }
-    _statusHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
-    _statusHUD.vibrancyEnabled = NO;
-    _statusHUD.textLabel.text = text;
-    _statusHUD.indicatorView = [[JGProgressHUDErrorIndicatorView alloc] init];
-    _statusHUD.square = YES;
-    [_statusHUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
-    //[_statusHUD dismissAfterDelay:3.0 animated:YES];
-}
-- (void)showTextHUD:(NSString *)text {
-    if (_textHUD) {
-        if ([_textHUD isVisible]) 
-            [_textHUD dismissAnimated:NO];
-    }
-    _textHUD = [[JGProgressHUD alloc] initWithStyle:JGProgressHUDStyleDark];
-    _textHUD.interactionType = JGProgressHUDInteractionTypeBlockTouchesOnHUDView;
-    _textHUD.animation = [JGProgressHUDFadeZoomAnimation animation];
-    _textHUD.vibrancyEnabled = NO;
-    _textHUD.indicatorView = nil;
-    
-    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:15.0]}];
-    //[text appendAttributedString:[[NSAttributedString alloc] initWithString:@" Text" attributes:@{NSForegroundColorAttributeName : [UIColor greenColor], NSFontAttributeName: [UIFont systemFontOfSize:11.0]}]];
-    
-    _textHUD.textLabel.attributedText = attrText;
-    _textHUD.position = JGProgressHUDPositionBottomCenter;
-    [_textHUD showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
-    //[_textHUD dismissAfterDelay:delay animated:YES];
-}
-
 @end

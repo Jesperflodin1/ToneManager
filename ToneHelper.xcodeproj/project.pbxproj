@@ -16,7 +16,8 @@
 		241EC9A0212EC14D00476FFD /* thprefsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 241EC99F212EC14C00476FFD /* thprefsbundle */; };
 		241EC9A2212EC17700476FFD /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 241EC9A1212EC17700476FFD /* Makefile */; };
 		241EC9A4212EC19800476FFD /* layout in Resources */ = {isa = PBXBuildFile; fileRef = 241EC9A3212EC19800476FFD /* layout */; };
-		241EC9C1212EC1CB00476FFD /* JGProgressHUD in Resources */ = {isa = PBXBuildFile; fileRef = 241EC9C0212EC1CA00476FFD /* JGProgressHUD */; };
+		2459E89E213027AD00E3EE1A /* CocoaLumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 2459E89C213027AD00E3EE1A /* CocoaLumberjack */; };
+		2459E89F213027AD00E3EE1A /* LogglyLogger-CocoaLumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 2459E89D213027AD00E3EE1A /* LogglyLogger-CocoaLumberjack */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +37,8 @@
 		241EC99F212EC14C00476FFD /* thprefsbundle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = thprefsbundle; sourceTree = SOURCE_ROOT; };
 		241EC9A1212EC17700476FFD /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = SOURCE_ROOT; };
 		241EC9A3212EC19800476FFD /* layout */ = {isa = PBXFileReference; lastKnownFileType = folder; path = layout; sourceTree = SOURCE_ROOT; };
-		241EC9C0212EC1CA00476FFD /* JGProgressHUD */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JGProgressHUD; sourceTree = SOURCE_ROOT; };
+		2459E89C213027AD00E3EE1A /* CocoaLumberjack */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CocoaLumberjack; sourceTree = SOURCE_ROOT; };
+		2459E89D213027AD00E3EE1A /* LogglyLogger-CocoaLumberjack */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "LogglyLogger-CocoaLumberjack"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +85,8 @@
 				241EC990212EBFB900476FFD /* UIAlertController+Window.h */,
 				241EC996212EBFBA00476FFD /* UIAlertController+Window.m */,
 				241EC9A1212EC17700476FFD /* Makefile */,
-				241EC9C0212EC1CA00476FFD /* JGProgressHUD */,
+				2459E89C213027AD00E3EE1A /* CocoaLumberjack */,
+				2459E89D213027AD00E3EE1A /* LogglyLogger-CocoaLumberjack */,
 				241EC9A3212EC19800476FFD /* layout */,
 			);
 			path = ToneHelper;
@@ -148,9 +151,10 @@
 			files = (
 				241EC9A4212EC19800476FFD /* layout in Resources */,
 				241EC99A212EBFBA00476FFD /* ToneHelper.plist in Resources */,
+				2459E89F213027AD00E3EE1A /* LogglyLogger-CocoaLumberjack in Resources */,
 				241EC9A0212EC14D00476FFD /* thprefsbundle in Resources */,
+				2459E89E213027AD00E3EE1A /* CocoaLumberjack in Resources */,
 				241EC999212EBFBA00476FFD /* Tweak.xm in Resources */,
-				241EC9C1212EC1CB00476FFD /* JGProgressHUD in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
