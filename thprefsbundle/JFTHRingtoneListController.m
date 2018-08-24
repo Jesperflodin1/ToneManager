@@ -1,5 +1,7 @@
 #import "JFTHRingtoneListController.h"
 
+BOOL kDebugLogging;
+
 @implementation JFTHRingtoneListController
 
 - (id)specifiers {
@@ -54,6 +56,21 @@
 - (instancetype)init {
 	//ALog(@"Initializing ringtone list");
 	self = [super init];
+    
+    HBPreferences *preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
+    [preferences registerBool:&kDebugLogging default:NO forKey:@"kDebugLogging"];
+    if (kDebugLogging) {
+        LogglyLogger *logglyLogger = [[LogglyLogger alloc] init];
+        [logglyLogger setLogFormatter:[[LogglyFormatter alloc] init]];
+        logglyLogger.logglyKey = @"f962c4f9-899b-4d18-8f84-1da5d19e1184";
+        
+        // Set posting interval every 15 seconds, just for testing this out, but the default value of 600 seconds is better in apps
+        // that normally don't access the network very often. When the user suspends the app, the logs will always be posted.
+        logglyLogger.saveInterval = 15;
+        
+        [DDLog addLogger:logglyLogger];
+    }
+    
 	_toneData = [[JFTHRingtoneDataController alloc] init];
 
 	return self;

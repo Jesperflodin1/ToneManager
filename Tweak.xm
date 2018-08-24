@@ -18,56 +18,69 @@ HBPreferences *preferences;
 %group IOS11
 
 %hook PreferencesAppController
-
-- (void)applicationWillEnterForeground:(id)arg1 {
+- (_Bool)application:(id)arg1 didFinishLaunchingWithOptions:(id)arg2 {
     if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
-        DDLogDebug(@"In preferences");
-        if (!kEnabled) {
-            DDLogDebug(@"Disabled");
-            return %orig;
-        }
-        DDLogInfo(@"Enabled");
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            @autoreleasepool {
-                //We're in preferences app, lets look for new ringtones to import
-                JFTHRingtoneImporter *importer = [[JFTHRingtoneImporter alloc] init];
-
-                //Apps to look for ringtones in (in Documents folder)
-                NSMutableArray *apps = [[NSMutableArray alloc] init];
-                [apps addObject:@"com.908.AudikoFree"];
-                [apps addObject:@"com.zedge.Zedge"];
-                [apps addObject:@"com.908.Audiko"];
-
-                for (NSString *app in apps) {
-                    [importer getRingtoneFilesFromApp:app];
-                }
-                //Found something new to import?
-                if ([importer shouldImportRingtones]) {
-                    [importer importNewRingtones];
-                }
-                // imported something?
-                if ([importer importedCount] > 0) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        DDLogDebug(@"trying to reload tones");
-                        
-                        if (NSClassFromString(@"TLToneManager")) {
-                            
-                            DDLogDebug(@"TLTonemanager loaded, reloading tones");
-                            // _reloadTonesAfterExternalChange IOS 11 only
-                            if ([[%c(TLToneManager) sharedToneManager] respondsToSelector:@selector(_reloadTonesAfterExternalChange)])
-                                [[%c(TLToneManager) sharedToneManager] _reloadTonesAfterExternalChange]; // IOS 11
-                            
-                            else if ([[%c(TLToneManager) sharedToneManager] respondsToSelector:@selector(_reloadITunesRingtonesAfterExternalChange)])
-                                [[%c(TLToneManager) sharedToneManager] _reloadITunesRingtonesAfterExternalChange]; // IOS 10
-                        }
-                        //[[self valueForKey:@"_tonePickerController"] _reloadMediaItems];
-                    });
-                }
-            }
-        });
+        [self performSelector:@selector(doImportRingtones)];
     }
     return %orig;
 }
+
+- (void)applicationWillEnterForeground:(id)arg1 {
+    if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
+        [self performSelector:@selector(doImportRingtones)];
+    }
+    return %orig;
+}
+
+%new
+- (void)doImportRingtones {
+    NSLog(@" JFDEBUG starting");
+    DDLogDebug(@"In preferences");
+    if (!kEnabled) {
+        DDLogDebug(@"Disabled");
+        return;
+    }
+    DDLogInfo(@"Enabled");
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        @autoreleasepool {
+            //We're in preferences app, lets look for new ringtones to import
+            JFTHRingtoneImporter *importer = [[JFTHRingtoneImporter alloc] init];
+            
+            //Apps to look for ringtones in (in Documents folder)
+            NSMutableArray *apps = [[NSMutableArray alloc] init];
+            [apps addObject:@"com.908.AudikoFree"];
+            [apps addObject:@"com.zedge.Zedge"];
+            [apps addObject:@"com.908.Audiko"];
+            
+            for (NSString *app in apps) {
+                [importer getRingtoneFilesFromApp:app];
+            }
+            //Found something new to import?
+            if ([importer shouldImportRingtones]) {
+                [importer importNewRingtones];
+            }
+            // imported something?
+            if ([importer importedCount] > 0) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    DDLogDebug(@"trying to reload tones");
+                    
+                    if (NSClassFromString(@"TLToneManager")) {
+                        
+                        DDLogDebug(@"TLTonemanager loaded, reloading tones");
+                        // _reloadTonesAfterExternalChange IOS 11 only
+                        if ([[%c(TLToneManager) sharedToneManager] respondsToSelector:@selector(_reloadTonesAfterExternalChange)])
+                            [[%c(TLToneManager) sharedToneManager] _reloadTonesAfterExternalChange]; // IOS 11
+                        
+                        else if ([[%c(TLToneManager) sharedToneManager] respondsToSelector:@selector(_reloadITunesRingtonesAfterExternalChange)])
+                            [[%c(TLToneManager) sharedToneManager] _reloadITunesRingtonesAfterExternalChange]; // IOS 10
+                    }
+                    //[[self valueForKey:@"_tonePickerController"] _reloadMediaItems];
+                });
+            }
+        }
+    });
+}
+
 %end
 
 %hook TLToneManager
@@ -142,7 +155,7 @@ HBPreferences *preferences;
         
         HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCopying> _Nullable newValue) {
             BOOL value = [[(NSNumber *)newValue copy] boolValue];
-            DLog(@"Notification received for key:%@ with value:%d",key,value);
+            DDLogDebug(@"Notification received for key:%@ with value:%d",key,value);
             if ([key isEqualToString:@"kWriteITunesRingtonePlist"]) {
                 [JFTHRingtoneDataController syncPlists:value];
             }
@@ -153,10 +166,9 @@ HBPreferences *preferences;
 
         [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
         [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
-        [preferences registerBool:&kDebugLogging default:NO forKey:@"kDebugLogging"];
-        
         [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
         
+        [preferences registerBool:&kDebugLogging default:NO forKey:@"kDebugLogging"];
         if (kDebugLogging) {
             LogglyLogger *logglyLogger = [[LogglyLogger alloc] init];
             [logglyLogger setLogFormatter:[[LogglyFormatter alloc] init]];
@@ -164,12 +176,9 @@ HBPreferences *preferences;
             
             // Set posting interval every 15 seconds, just for testing this out, but the default value of 600 seconds is better in apps
             // that normally don't access the network very often. When the user suspends the app, the logs will always be posted.
-            logglyLogger.saveInterval = 15;
+            logglyLogger.saveInterval = 600;
             
             [DDLog addLogger:logglyLogger];
-            
-            // Do some logging
-            DDLogVerbose(@"{\"myJsonKey\":\"some verbose json value\"}");
         }
         DDLogInfo(@"Trying to initialize ToneHelper in bundleid: %@",[[NSBundle mainBundle] bundleIdentifier]);
         if (!NSClassFromString(@"TLToneManager")) {

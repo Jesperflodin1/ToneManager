@@ -12,9 +12,8 @@
 
 
 
-/*@interface TLToneManager : NSObject 
--(void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
-@end*/
+@interface PreferencesAppController : UIApplication
+@end
 
 @interface NSPathStore2 : NSString 
 @end
