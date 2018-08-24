@@ -7,6 +7,7 @@ NSString * const RINGTONE_PLIST_PATH = @"/var/mobile/Media/iTunes_Control/iTunes
 NSString * const RINGTONE_DIRECTORY = @"/var/mobile/Media/iTunes_Control/Ringtones";
 
 BOOL kEnabled;
+BOOL kDebugLogging;
 BOOL kWriteITunesRingtonePlist;
 
 
@@ -20,12 +21,12 @@ HBPreferences *preferences;
 
 - (void)applicationWillEnterForeground:(id)arg1 {
     if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
-        DLog(@"In preferences");
+        DDLogDebug(@"In preferences");
         if (!kEnabled) {
-            DLog(@"Disabled");
+            DDLogDebug(@"Disabled");
             return %orig;
         }
-        ALog(@"Enabled");
+        DDLogInfo(@"Enabled");
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             @autoreleasepool {
                 //We're in preferences app, lets look for new ringtones to import
@@ -47,11 +48,11 @@ HBPreferences *preferences;
                 // imported something?
                 if ([importer importedCount] > 0) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        ALog(@"trying to reload tones");
+                        DDLogDebug(@"trying to reload tones");
                         
                         if (NSClassFromString(@"TLToneManager")) {
                             
-                            ALog(@"TLTonemanager loaded, reloading tones");
+                            DDLogDebug(@"TLTonemanager loaded, reloading tones");
                             // _reloadTonesAfterExternalChange IOS 11 only
                             if ([[%c(TLToneManager) sharedToneManager] respondsToSelector:@selector(_reloadTonesAfterExternalChange)])
                                 [[%c(TLToneManager) sharedToneManager] _reloadTonesAfterExternalChange]; // IOS 11
@@ -87,11 +88,10 @@ HBPreferences *preferences;
     @autoreleasepool {
         if (!kEnabled || kWriteITunesRingtonePlist) {
             // kWriteITunesRingtonePlist enabled => disable runtime injection of ringtones
-            DLog(@"Disabled");
+            DDLogInfo(@"Disabled");
             return %orig;
         }
-        DLog(@"Enabled");
-        DLog(@"In tonemanager");
+        DDLogInfo(@"Enabled");
         if ([arg1 isEqualToString:RINGTONE_PLIST_PATH]) {
             //Save the ringtones array so we can modify it
             NSMutableArray *tones = %orig;
@@ -114,11 +114,11 @@ HBPreferences *preferences;
                 [tones addObject:tone];
             }
             //Return the array with the ringtones the system found and the ringtones we have found
-            DLog(@"Read available ringtones");
+            DDLogInfo(@"Read available ringtones");
             return tones;
         } else {
             // Not looking for the ringtones array we're interested in modifying
-            DLog(@"Not reading ringtones");
+            DDLogVerbose(@"Not reading ringtones");
             return %orig;
         }
     }
@@ -130,7 +130,6 @@ HBPreferences *preferences;
 
 %ctor {
     NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
-    DLog(@"Trying to initialize ToneHelper in bundleid: %@",[[NSBundle mainBundle] bundleIdentifier]);
     if ([bundleID isEqualToString:@"com.apple.Preferences"] ||
         [bundleID isEqualToString:@"com.apple.springboard"] ||
         [bundleID isEqualToString:@"com.apple.InCallService"] ||
@@ -148,24 +147,39 @@ HBPreferences *preferences;
                 [JFTHRingtoneDataController syncPlists:value];
             }
         };
-
+        
+        
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
 
         [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
         [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
+        [preferences registerBool:&kDebugLogging default:NO forKey:@"kDebugLogging"];
         
         [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
-
+        
+        if (kDebugLogging) {
+            LogglyLogger *logglyLogger = [[LogglyLogger alloc] init];
+            [logglyLogger setLogFormatter:[[LogglyFormatter alloc] init]];
+            logglyLogger.logglyKey = @"f962c4f9-899b-4d18-8f84-1da5d19e1184";
+            
+            // Set posting interval every 15 seconds, just for testing this out, but the default value of 600 seconds is better in apps
+            // that normally don't access the network very often. When the user suspends the app, the logs will always be posted.
+            logglyLogger.saveInterval = 15;
+            
+            [DDLog addLogger:logglyLogger];
+            
+            // Do some logging
+            DDLogVerbose(@"{\"myJsonKey\":\"some verbose json value\"}");
+        }
+        DDLogInfo(@"Trying to initialize ToneHelper in bundleid: %@",[[NSBundle mainBundle] bundleIdentifier]);
         if (!NSClassFromString(@"TLToneManager")) {
-            DLog(@"TLToneManager missing, loading framework");
+            DDLogDebug(@"TLToneManager missing, loading framework");
             dlopen("/System/Library/PrivateFrameworks/ToneLibrary.framework/ToneLibrary", RTLD_LAZY);
         }
         if (!NSClassFromString(@"TKTonePickerController")) {
-            DLog(@"Loading ToneKit");
+            DDLogDebug(@"Loading ToneKit");
             dlopen("/System/Library/PrivateFrameworks/ToneKit.framework/ToneKit", RTLD_LAZY);
         }
-        ALog(@"Initializing ToneHelper");
-        DLog(@"%@",[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0]);
 
         //if () {
         %init(IOS11);

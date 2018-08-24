@@ -10,7 +10,8 @@
 
 		for (NSString *fileName in ringtones) {
 			NSDictionary *currentTone = [ringtones objectForKey:fileName];
-			ALog(@"Adding ringtone: %@",[ringtones objectForKey:fileName]);
+			//ALog(@"Adding ringtone: %@",[ringtones objectForKey:fileName]);
+            
 			PSSpecifier* tone = [PSSpecifier preferenceSpecifierNamed:[currentTone objectForKey:@"Name"]
 									    target:self
 									       set:NULL
@@ -19,7 +20,8 @@
 									      cell:PSListItemCell
 									      edit:Nil];
 			[tone setProperty:@YES forKey:@"enabled"];
-			DLog(@"Adding specifier: %@", tone);
+            
+			//DLog(@"Adding specifier: %@", tone);
 			//extern NSString* PSDeletionActionKey;
 			// Set selector to call when removing specifier
 			[tone setProperty:NSStringFromSelector(@selector(removedSpecifier:)) forKey:PSDeletionActionKey];
@@ -50,7 +52,7 @@
 }
 
 - (instancetype)init {
-	ALog(@"Initializing ringtone list");
+	//ALog(@"Initializing ringtone list");
 	self = [super init];
 	_toneData = [[JFTHRingtoneDataController alloc] init];
 

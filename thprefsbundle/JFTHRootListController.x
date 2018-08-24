@@ -86,17 +86,8 @@
     return _specifiers;
 }
 
-- (void)cleanLogs:(PSSpecifier *)specifier {
-	ALog(@"Clean logs tapped");
-	PSTableCell *cell = [self cachedCellForSpecifier:specifier];
-	cell.cellEnabled = NO;
-
-	NSFileManager *localFileManager = [[NSFileManager alloc] init];
-	[localFileManager removeItemAtPath:@"/var/mobile/Library/ToneHelper/logfile.txt" error:nil];
-}
-
 - (void)respring:(PSSpecifier *)specifier {
-	ALog(@"Respring tapped");
+	//ALog(@"Respring tapped");
 	PSTableCell *cell = [self cachedCellForSpecifier:specifier];
 
 	// disable the cell, in case it takes a moment
@@ -155,7 +146,7 @@
 
     [includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"ToneHelperData\" plist /var/mobile/Library/ToneHelper/ToneHelperData.plist"]];
 	[includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"Ringtones\" plist /var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist"]];
-	[includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"logfile\" file /var/mobile/Library/ToneHelper/logfile.txt"]];
+	//[includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"logfile\" file /var/mobile/Library/ToneHelper/logfile.txt"]];
 
 	//[includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"File list AppSupport\" command /bin/ls -al /var/mobile/Library/"]];
 	//[includeInstructions addObject:[TSIncludeInstruction instructionWithString:@"include as \"File list ToneHelperAppSupport\" command /bin/ls -al /var/mobile/Library/ToneHelper"]];
@@ -166,12 +157,12 @@
 }
 
 - (void)hb_sendSupportEmail {
-	DLog(@"sendsupportemail called");
+	//DLog(@"sendsupportemail called");
 	[self hb_sendSupportEmail:nil];
 }
 
 - (void)hb_sendSupportEmail:(nullable PSSpecifier *)specifier {
-	DLog(@"sendsupportemail:specifier called");
+	//DLog(@"sendsupportemail:specifier called");
 	TSContactViewController *viewController = [HBSupportController supportViewControllerForBundle:[NSBundle bundleForClass:self.class] preferencesIdentifier:specifier.properties[@"defaults"] linkInstruction:[self.class hb_linkInstruction] supportInstructions:[self.class hb_supportInstructions]];
 
 	if ([viewController respondsToSelector:@selector(tintColor)]) {

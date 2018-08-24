@@ -15,8 +15,6 @@
 #import <SafariServices/SFSafariViewController.h>
 #import <TechSupport/TechSupport.h>
 
-#include "../JFLog.h"
-
 @interface NSTask : NSObject
 
 - (id)init;

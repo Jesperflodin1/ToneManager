@@ -1,7 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <Cephei/HBPreferences.h>
-#import "CocoaLumberjack/CocoaLumberjack.h"
 
 #import <FrontBoard/FBApplicationInfo.h>
 #import <SpringBoard/SpringBoard.h>
@@ -10,8 +9,6 @@
 #include "dlfcn.h"
 
 #import "JFLog.h"
-
-
 
 
 

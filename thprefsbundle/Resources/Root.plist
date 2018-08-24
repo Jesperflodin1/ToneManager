@@ -118,17 +118,7 @@ Requires Respring!</string>
 			<key>PostNotifcation</key>
 			<string>fi.flodin.tonehelper/PrefsReload</string>
 			<key>label</key>
-			<string>Enable logging to file</string>
-		</dict>
-		<dict>
-			<key>cellClass</key>
-			<string>HBTintedTableCell</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>action</key>
-			<string>cleanLogs:</string>
-			<key>label</key>
-			<string>Delete all logs</string>
+			<string>Automatically send logs to developer</string>
 		</dict>
 		<dict>
 			<key>cell</key>
