@@ -1,6 +1,9 @@
 #import "JFTHRingtoneListController.h"
 
-BOOL kDebugLogging;
+extern NSString *const HBPreferencesDidChangeNotification;
+HBPreferences *preferences;
+
+NSDictionary *_ringtonesImported;
 
 @implementation JFTHRingtoneListController
 
@@ -8,10 +11,11 @@ BOOL kDebugLogging;
     if(_specifiers == nil) {
         // Loads specifiers from Name.plist from the bundle we're a part of.
         _specifiers = [self loadSpecifiersFromPlistName:@"Ringtones" target:self];
-		NSDictionary *ringtones = [_toneData getImportedRingtones];
-
-		for (NSString *fileName in ringtones) {
-			NSDictionary *currentTone = [ringtones objectForKey:fileName];
+        NSLog(@"Got ringtones: %@",_ringtonesImported);
+		for (NSString *fileName in _ringtonesImported) {
+            
+			NSDictionary *currentTone = [_ringtonesImported objectForKey:fileName];
+            NSLog(@"Loaded tone: %@",currentTone);
 			//ALog(@"Adding ringtone: %@",[ringtones objectForKey:fileName]);
             
 			PSSpecifier* tone = [PSSpecifier preferenceSpecifierNamed:[currentTone objectForKey:@"Name"]
@@ -54,33 +58,23 @@ BOOL kDebugLogging;
 }
 
 - (instancetype)init {
-	//ALog(@"Initializing ringtone list");
 	self = [super init];
-    /*
-    HBPreferences *preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
-    [preferences registerBool:&kDebugLogging default:NO forKey:@"kDebugLogging"];
-    if (kDebugLogging) {
-        LogglyLogger *logglyLogger = [[LogglyLogger alloc] init];
-        [logglyLogger setLogFormatter:[[LogglyFormatter alloc] init]];
-        logglyLogger.logglyKey = @"f962c4f9-899b-4d18-8f84-1da5d19e1184";
-        
-        // Set posting interval every 15 seconds, just for testing this out, but the default value of 600 seconds is better in apps
-        // that normally don't access the network very often. When the user suspends the app, the logs will always be posted.
-        logglyLogger.saveInterval = 15;
-        
-        [DDLog addLogger:logglyLogger];
-    }*/
     
-    //[DDLog addLogger:[DDASLLogger sharedInstance]];
-    
-	_toneData = [[JFTHRingtoneDataController alloc] init];
+    preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
+    [preferences registerObject:&_ringtonesImported default:[[NSDictionary alloc] init] forKey:@"Ringtones"];
 
 	return self;
 }
 
 -(void)removedSpecifier:(PSSpecifier*)specifier{
-	[_toneData deleteRingtoneWithGUID:[specifier propertyForKey:@"key"]];
-	//NSString *guid = [specifier ]
+    
+    if (NSClassFromString(@"TLToneManager")) {
+        NSLog(@"TLToneManager loaded JFDEBUG");
+    } else {
+        NSLog(@"TLToneManager NOT loaded JFDEBUG");
+    }
+    
+	//[_toneData deleteRingtoneWithGUID:[specifier propertyForKey:@"key"]];
 }
 
 @end

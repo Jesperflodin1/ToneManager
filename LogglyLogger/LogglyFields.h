@@ -9,4 +9,8 @@
 //@property (strong, nonatomic) NSString *appversion;
 //@property (strong, nonatomic) NSString *userid;
 //@property (strong, nonatomic) NSString *sessionid;
+
+- (void)setUserid:(NSString *)userid;
+- (void)setSessionid:(NSString *)sessionid;
+- (void)setAppversion:(NSString *)appversion;
 @end

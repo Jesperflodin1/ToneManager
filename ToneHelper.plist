@@ -1,20 +1,7 @@
 {
 	Filter = {
-        Executeables = (
-            nanomediaremotelinkagent
-        );
 		Bundles = (
-			"com.apple.TelephonyUtilities",
-			"com.apple.InCallService",
-			"com.apple.Preferences",
-			"com.apple.mobilephone",
-			"com.apple.springboard",
-			"com.apple.MobileSMS",
-			"com.apple.MobileAddressBook",
-			"com.apple.mobilemail",
-			"com.apple.mobiletimer",
-			"nanomediaremotelinkagent",
+			"com.apple.ToneLibrary",
 		);
-		Mode = Any;
 	};
 }

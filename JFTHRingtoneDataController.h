@@ -1,15 +1,9 @@
 
 #import "JFTHHeaders.h"
-//#import "JFTHRingtoneImporter.h"
-
-
-typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
-    JFTHRingtoneFileName,
-    JFTHRingtoneGUID,
-    JFTHRingtonePID
-};
-
-
+#import "JFTHRingtoneData.h"
+#import "JFTHiTunesRingtoneData.h"
+#import "JFTHUtilities.h"
+#import "JFTHiOSHeaders.h"
 
 @interface JFTHRingtoneDataController : NSObject {
     
@@ -17,33 +11,19 @@ typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
 
 @property (nonatomic) BOOL shouldWriteITunesRingtonePlist;
 
-- (void)saveRingtonesPlist;
-- (BOOL)loadRingtonesPlist;
-
+- (void)migratePlistData;
 - (BOOL)enableITunesRingtonePlistEditing;
-- (void)removeDuplicatesInItunesPlistOf:(NSString *)name;
 
 - (void)addRingtoneToPlist:(NSString *)name file:(NSString *)fileName oldFileName:(NSString *)oldFile importedFrom:(NSString *)bundleID hash:(NSString *)md5;
+- (void)addRingtoneToPlist:(JFTHRingtone *)newtone;
 - (void)deleteRingtoneWithGUID:(NSString *)guid;
-//- (NSDictionary *)getRingtoneWithFilename:(NSString *)filename;
-- (NSDictionary *)getRingtoneWithName:(NSString *)name;
-- (NSDictionary *)getRingtoneWithHash:(NSString *)md5;
-- (NSDictionary *)getITunesRingtoneWithGUID:(NSString *)guid;
-- (NSDictionary *)getITunesRingtoneWithName:(NSString *)name;
 
-- (void)loadTweakPlist;
-- (void)saveTweakPlist;
-- (void)save;
+- (NSDictionary *)importedTones;
 
-- (NSDictionary *)getItunesRingtones;
-- (NSDictionary *)getImportedRingtones;
+- (BOOL)isImportedRingtoneWithName:(NSString *)name;
+- (BOOL)isITunesRingtoneWithName:(NSString *)name;
+- (BOOL)isImportedRingtoneWithHash:(NSString *)hash;
 
-- (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
-
-+ (void)syncPlists:(BOOL)currentITunesWriteStatus;
-- (void)deleteRingtoneFromITunesPlist:(NSString *)file;
-- (void)addRingtoneToITunesPlist:(NSDictionary *)tone fileName:(NSString *)file;
-
-- (void)firstRun;
+- (void)syncPlists:(BOOL)currentITunesWriteStatus;
 
 @end

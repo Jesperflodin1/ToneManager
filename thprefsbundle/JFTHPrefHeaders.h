@@ -8,9 +8,10 @@
 #import <CepheiPrefs/HBRootListController.h>
 #import <CepheiPrefs/HBLinkTableCell.h>
 #import <CepheiPrefs/HBTwitterCell.h>
-#import <CepheiPrefs/HBImageTableCell.h>
 #import <CepheiPrefs/HBPackageNameHeaderCell.h>
 #import <CepheiPrefs/HBSupportController.h>
+
+#import <Cephei/HBPreferences.h>
 
 #import <SafariServices/SFSafariViewController.h>
 #import <TechSupport/TechSupport.h>

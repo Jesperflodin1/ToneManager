@@ -11,13 +11,17 @@
 		241EC99A212EBFBA00476FFD /* ToneHelper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 241EC98F212EBFB900476FFD /* ToneHelper.plist */; };
 		241EC99B212EBFBA00476FFD /* JFTHRingtoneImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 241EC991212EBFB900476FFD /* JFTHRingtoneImporter.m */; };
 		241EC99C212EBFBA00476FFD /* JFTHRingtoneDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 241EC994212EBFB900476FFD /* JFTHRingtoneDataController.m */; };
-		241EC99D212EBFBA00476FFD /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 241EC996212EBFBA00476FFD /* UIAlertController+Window.m */; };
 		241EC99E212EBFBA00476FFD /* FileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 241EC998212EBFBA00476FFD /* FileHash.m */; };
 		241EC9A0212EC14D00476FFD /* thprefsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 241EC99F212EC14C00476FFD /* thprefsbundle */; };
 		241EC9A2212EC17700476FFD /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 241EC9A1212EC17700476FFD /* Makefile */; };
 		241EC9A4212EC19800476FFD /* layout in Resources */ = {isa = PBXBuildFile; fileRef = 241EC9A3212EC19800476FFD /* layout */; };
 		2459E89E213027AD00E3EE1A /* CocoaLumberjack in Resources */ = {isa = PBXBuildFile; fileRef = 2459E89C213027AD00E3EE1A /* CocoaLumberjack */; };
 		2459E8A8213028D500E3EE1A /* LogglyLogger in Resources */ = {isa = PBXBuildFile; fileRef = 2459E8A7213028D500E3EE1A /* LogglyLogger */; };
+		2459E8AB2131272D00E3EE1A /* JFTHRingtoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2459E8AA2131272D00E3EE1A /* JFTHRingtoneData.m */; };
+		2459E8AE21312CC100E3EE1A /* JFTHRingtone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2459E8AD21312CC100E3EE1A /* JFTHRingtone.m */; };
+		2459E8B121314F3400E3EE1A /* JFTHUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2459E8B021314F3400E3EE1A /* JFTHUtilities.m */; };
+		2459E8B421315CF500E3EE1A /* JFTHiTunesRingtoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2459E8B321315CF500E3EE1A /* JFTHiTunesRingtoneData.m */; };
+		2459E8B82131DAA700E3EE1A /* JFTHConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2459E8B72131DAA700E3EE1A /* JFTHConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,20 +29,28 @@
 		241EC98D212EBFB900476FFD /* FileHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHash.h; sourceTree = SOURCE_ROOT; };
 		241EC98E212EBFB900476FFD /* Tweak.xm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tweak.xm; sourceTree = SOURCE_ROOT; };
 		241EC98F212EBFB900476FFD /* ToneHelper.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = ToneHelper.plist; sourceTree = SOURCE_ROOT; };
-		241EC990212EBFB900476FFD /* UIAlertController+Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Window.h"; sourceTree = SOURCE_ROOT; };
 		241EC991212EBFB900476FFD /* JFTHRingtoneImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTHRingtoneImporter.m; sourceTree = SOURCE_ROOT; };
 		241EC992212EBFB900476FFD /* JFTHHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTHHeaders.h; sourceTree = SOURCE_ROOT; };
 		241EC993212EBFB900476FFD /* JFTHRingtoneImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTHRingtoneImporter.h; sourceTree = SOURCE_ROOT; };
 		241EC994212EBFB900476FFD /* JFTHRingtoneDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTHRingtoneDataController.m; sourceTree = SOURCE_ROOT; };
 		241EC995212EBFB900476FFD /* JFTHRingtoneDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTHRingtoneDataController.h; sourceTree = SOURCE_ROOT; };
-		241EC996212EBFBA00476FFD /* UIAlertController+Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Window.m"; sourceTree = SOURCE_ROOT; };
-		241EC997212EBFBA00476FFD /* JFLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLog.h; sourceTree = SOURCE_ROOT; };
 		241EC998212EBFBA00476FFD /* FileHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHash.m; sourceTree = SOURCE_ROOT; };
 		241EC99F212EC14C00476FFD /* thprefsbundle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = thprefsbundle; sourceTree = SOURCE_ROOT; };
 		241EC9A1212EC17700476FFD /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = SOURCE_ROOT; };
 		241EC9A3212EC19800476FFD /* layout */ = {isa = PBXFileReference; lastKnownFileType = folder; path = layout; sourceTree = SOURCE_ROOT; };
 		2459E89C213027AD00E3EE1A /* CocoaLumberjack */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CocoaLumberjack; sourceTree = SOURCE_ROOT; };
 		2459E8A7213028D500E3EE1A /* LogglyLogger */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LogglyLogger; sourceTree = SOURCE_ROOT; };
+		2459E8A92131272D00E3EE1A /* JFTHRingtoneData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFTHRingtoneData.h; sourceTree = SOURCE_ROOT; };
+		2459E8AA2131272D00E3EE1A /* JFTHRingtoneData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFTHRingtoneData.m; sourceTree = SOURCE_ROOT; };
+		2459E8AC21312CC100E3EE1A /* JFTHRingtone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFTHRingtone.h; sourceTree = SOURCE_ROOT; };
+		2459E8AD21312CC100E3EE1A /* JFTHRingtone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFTHRingtone.m; sourceTree = SOURCE_ROOT; };
+		2459E8AF21314F3400E3EE1A /* JFTHUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFTHUtilities.h; sourceTree = SOURCE_ROOT; };
+		2459E8B021314F3400E3EE1A /* JFTHUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFTHUtilities.m; sourceTree = SOURCE_ROOT; };
+		2459E8B221315CF500E3EE1A /* JFTHiTunesRingtoneData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFTHiTunesRingtoneData.h; sourceTree = SOURCE_ROOT; };
+		2459E8B321315CF500E3EE1A /* JFTHiTunesRingtoneData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFTHiTunesRingtoneData.m; sourceTree = SOURCE_ROOT; };
+		2459E8B52131CE0F00E3EE1A /* JFTHiOSHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFTHiOSHeaders.h; sourceTree = SOURCE_ROOT; };
+		2459E8B62131DAA700E3EE1A /* JFTHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFTHConstants.h; sourceTree = SOURCE_ROOT; };
+		2459E8B72131DAA700E3EE1A /* JFTHConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFTHConstants.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,16 +86,24 @@
 				241EC99F212EC14C00476FFD /* thprefsbundle */,
 				241EC98D212EBFB900476FFD /* FileHash.h */,
 				241EC998212EBFBA00476FFD /* FileHash.m */,
-				241EC997212EBFBA00476FFD /* JFLog.h */,
 				241EC992212EBFB900476FFD /* JFTHHeaders.h */,
+				2459E8B62131DAA700E3EE1A /* JFTHConstants.h */,
+				2459E8B72131DAA700E3EE1A /* JFTHConstants.m */,
+				2459E8B52131CE0F00E3EE1A /* JFTHiOSHeaders.h */,
 				241EC995212EBFB900476FFD /* JFTHRingtoneDataController.h */,
 				241EC994212EBFB900476FFD /* JFTHRingtoneDataController.m */,
+				2459E8B221315CF500E3EE1A /* JFTHiTunesRingtoneData.h */,
+				2459E8B321315CF500E3EE1A /* JFTHiTunesRingtoneData.m */,
+				2459E8AF21314F3400E3EE1A /* JFTHUtilities.h */,
+				2459E8B021314F3400E3EE1A /* JFTHUtilities.m */,
+				2459E8A92131272D00E3EE1A /* JFTHRingtoneData.h */,
+				2459E8AA2131272D00E3EE1A /* JFTHRingtoneData.m */,
+				2459E8AC21312CC100E3EE1A /* JFTHRingtone.h */,
+				2459E8AD21312CC100E3EE1A /* JFTHRingtone.m */,
 				241EC993212EBFB900476FFD /* JFTHRingtoneImporter.h */,
 				241EC991212EBFB900476FFD /* JFTHRingtoneImporter.m */,
 				241EC98F212EBFB900476FFD /* ToneHelper.plist */,
 				241EC98E212EBFB900476FFD /* Tweak.xm */,
-				241EC990212EBFB900476FFD /* UIAlertController+Window.h */,
-				241EC996212EBFBA00476FFD /* UIAlertController+Window.m */,
 				241EC9A1212EC17700476FFD /* Makefile */,
 				2459E8A7213028D500E3EE1A /* LogglyLogger */,
 				2459E89C213027AD00E3EE1A /* CocoaLumberjack */,
@@ -167,9 +187,13 @@
 			files = (
 				241EC9A2212EC17700476FFD /* Makefile in Sources */,
 				241EC99B212EBFBA00476FFD /* JFTHRingtoneImporter.m in Sources */,
+				2459E8B121314F3400E3EE1A /* JFTHUtilities.m in Sources */,
+				2459E8AE21312CC100E3EE1A /* JFTHRingtone.m in Sources */,
 				241EC99E212EBFBA00476FFD /* FileHash.m in Sources */,
 				241EC99C212EBFBA00476FFD /* JFTHRingtoneDataController.m in Sources */,
-				241EC99D212EBFBA00476FFD /* UIAlertController+Window.m in Sources */,
+				2459E8B421315CF500E3EE1A /* JFTHiTunesRingtoneData.m in Sources */,
+				2459E8AB2131272D00E3EE1A /* JFTHRingtoneData.m in Sources */,
+				2459E8B82131DAA700E3EE1A /* JFTHConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

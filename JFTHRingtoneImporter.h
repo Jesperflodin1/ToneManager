@@ -1,5 +1,6 @@
 #import "JFTHHeaders.h"
 #import "JFTHRingtoneDataController.h"
+#import "JFTHiOSHeaders.h"
 
 //For md5 calculations
 #include "FileHash.h"
@@ -8,10 +9,6 @@
 
 @interface JFTHRingtoneImporter : NSObject {
     
-    NSMutableDictionary *ringtonesToImport;
-    BOOL shouldImportRingtones;
-    
-    JFTHRingtoneDataController *_ringtoneData;
 }
 
 @property (nonatomic) int importedCount;
@@ -20,8 +17,6 @@
 - (void)getRingtoneFilesFromApp:(NSString *)bundleID; //Uses "Documents" as folder, default
 
 - (BOOL)shouldImportRingtones;
-- (void)setShouldImportRingtones:(BOOL)b;
-
 
 - (void)importNewRingtones;
 

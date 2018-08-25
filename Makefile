@@ -13,6 +13,8 @@ ToneHelper_FILES = Tweak.xm $(wildcard *.m) $(wildcard JGProgressHUD/*.m) $(wild
 
 ToneHelper_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 
+Tweak.xm_CFLAGS = -fno-objc-arc
+
 ToneHelper_FRAMEWORKS = UIKit QuartzCore MobileCoreServices
 ToneHelper_PRIVATEFRAMEWORKS = ToneKit ToneLibrary FrontBoard
 ToneHelper_EXTRA_FRAMEWORKS += cephei
@@ -22,6 +24,9 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 SUBPROJECTS += thprefsbundle
 include $(THEOS_MAKE_PATH)/aggregate.mk
+
+after-install::
+	install.exec "killall -9 SpringBoard"
 
 ifneq (,$(filter x86_64 i386,$(ARCHS)))
 setup:: clean all
