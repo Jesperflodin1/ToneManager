@@ -8,16 +8,10 @@
 
 #import "JFTHHeaders.h"
 
-typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
-    JFTHRingtoneFileName,
-    JFTHRingtoneGUID,
-    JFTHRingtonePID
-};
-
 
 @interface JFTHUtilities : NSObject
 
 + (void)createFolders;
-+ (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
+
 
 @end

@@ -3,7 +3,6 @@
 #import "JFTHRingtoneData.h"
 #import "JFTHiTunesRingtoneData.h"
 #import "JFTHUtilities.h"
-#import "JFTHiOSHeaders.h"
 
 @interface JFTHRingtoneDataController : NSObject {
     

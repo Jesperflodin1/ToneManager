@@ -207,9 +207,9 @@ HBPreferences *preferences;
     if ([self enableITunesRingtonePlistEditing]) {
     
         NSDictionary *importedTones = [_importedTonesData importedTones]; // dict of JFTHRingtones
-        NSLog(@"2");
+
         for (NSString *file in importedTones) {
-            NSLog(@"loop");
+
             JFTHRingtone *currentTone = [importedTones objectForKey:file];
             if ([_iTunesRingtoneData getITunesRingtoneWithGUID:[currentTone guid]]) {
                 // this ringtone exists in itunes plist

@@ -2,9 +2,6 @@
 #import <Foundation/Foundation.h>
 #import <Cephei/HBPreferences.h>
 
-#import <FrontBoard/FBApplicationInfo.h>
-#import <SpringBoard/SpringBoard.h>
-
 #include "stdio.h"
 #include "dlfcn.h"
 
