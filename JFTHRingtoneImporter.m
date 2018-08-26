@@ -121,7 +121,7 @@ HBPreferences *preferences;
                 NSString *baseName = [self createNameFromFile:appDirFile];
 
                 // Create new filename
-                NSString *newFile = [[JFTHUtilities randomizedRingtoneParameter:JFTHRingtoneFileName] stringByAppendingString:@".m4r"];
+                NSString *newFile = [[JFTHRingtone randomizedRingtoneParameter:JFTHRingtoneFileName] stringByAppendingString:@".m4r"];
 
                 NSError *fileCopyError;
                 if ([localFileManager copyItemAtPath:[

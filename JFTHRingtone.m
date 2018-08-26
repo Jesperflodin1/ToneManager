@@ -18,7 +18,7 @@
 @end
 
 @implementation JFTHRingtone
-
+#pragma mark - Init methods
 - (instancetype)init {
     if (!(self = [super init]))
         return self;
@@ -44,14 +44,23 @@
     [_ringtone setObject:md5 forKey:@"Hash"];
     [_ringtone setObject:oldFileName forKey:@"OldFileName"];
     [_ringtone setObject:bundleID forKey:@"ImportedFromBundleID"];
-    [_ringtone setObject:[JFTHUtilities randomizedRingtoneParameter:JFTHRingtonePID] forKey:@"PID"];
-    [_ringtone setObject:[JFTHUtilities randomizedRingtoneParameter:JFTHRingtoneGUID] forKey:@"GUID"];
+    [_ringtone setObject:[JFTHRingtone randomizedRingtoneParameter:JFTHRingtonePID] forKey:@"PID"];
+    [_ringtone setObject:[JFTHRingtone randomizedRingtoneParameter:JFTHRingtoneGUID] forKey:@"GUID"];
     
     DDLogVerbose(@"{\"Ringtone init\":\"init tone with data: %@\"}", _ringtone);
     
     return self;
 }
 
+- (void)initWithDictionary:(NSMutableDictionary *)dict {
+    if (dict) {
+        if (![dict objectForKey:@"Total Time"]) {
+            // TODO: Get total time
+        }
+        _ringtone = dict;
+    }
+}
+#pragma mark - Setters Getters
 - (void)setName:(NSString *)name {
     [_ringtone setObject:name forKey:@"Name"];
 }
@@ -107,7 +116,14 @@
 - (NSString *)guid {
     return [_ringtone objectForKey:@"GUID"];
 }
+- (void)setTotalTime:(NSString *)totalTime {
+    [_ringtone setObject:totalTime forKey:@"Total Time"];
+}
+- (NSString *)totalTime {
+    return [_ringtone objectForKey:@"Total Time"];
+}
 
+#pragma mark - Converts to format ToneLibrary understands
 - (NSDictionary *)iTunesPlistRepresentation {
     NSMutableDictionary *tone;
     [tone setObject:[self guid] forKey:@"GUID"];
@@ -117,14 +133,50 @@
     
     return tone;
 }
+
+#pragma mark - Dictionary representation for sending to storage
 - (NSDictionary *)dictionaryRepresentation {
     DDLogVerbose(@"{\"Ringtone init\":\"sending dict repr: %@\"}", _ringtone);
     return _ringtone;
 }
-- (void)initWithDictionary:(NSMutableDictionary *)dict {
-    if (dict) {
-        _ringtone = dict;
-    }
+
+#pragma mark - Methods for calculated values
++ (int)totalTimeForRingtoneFilePath:(NSString *)filePath {
+    // TODO: CODE
 }
+
+// Generates filename, PID and GUID needed to import ringtone
++ (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type {
+    int length;
+    NSString *alphabet;
+    NSString *result = @"";
+    switch (Type)
+    {
+        case JFTHRingtonePID:
+            length = 18;
+            result = @"-";
+            alphabet = @"0123456789";
+            break;
+        case JFTHRingtoneGUID:
+            alphabet = @"ABCDEFG0123456789";
+            length = 16;
+            break;
+        case JFTHRingtoneFileName:
+            alphabet = @"ABCDEFGHIJKLMNOPQRSTUVWXZ";
+            length = 4;
+            break;
+        default:
+            return nil;
+            break;
+    }
+    NSMutableString *s = [NSMutableString stringWithCapacity:length];
+    for (NSUInteger i = 0U; i < length; i++) {
+        u_int32_t r = arc4random() % [alphabet length];
+        unichar c = [alphabet characterAtIndex:r];
+        [s appendFormat:@"%C", c];
+    }
+    return [result stringByAppendingString:s];
+}
+
 
 @end

@@ -11,7 +11,7 @@ BOOL kDebugLogging;
 BOOL kWriteITunesRingtonePlist;
 
 
-extern NSString *const HBPreferencesDidChangeNotification;
+
 HBPreferences *preferences;
 
 
@@ -86,7 +86,7 @@ HBPreferences *preferences;
 #pragma mark - TLToneManager IOS 11
 %hook TLToneManager
 
--(NSMutableArray *)_tonesFromManifestPath:(NSPathStore2 *)arg1 mediaDirectoryPath:(NSPathStore2 *)arg2 {
+-(NSMutableArray *)_tonesFromManifestPath:(id *)arg1 mediaDirectoryPath:(id *)arg2 {
     DDLogVerbose(@"{\"Hooks\":\"TLToneManager bundleid=%@\"}",[[NSBundle mainBundle] bundleIdentifier]);
     if (!kEnabled || kWriteITunesRingtonePlist) {
         // kWriteITunesRingtonePlist enabled => disable runtime injection of ringtones
@@ -262,21 +262,23 @@ HBPreferences *preferences;
 
 
 HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCopying> _Nullable newValue) {
-    
-    if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"] ||
-        [[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.springboard"]) {
+    NSLog(@"{\"PrefValueChangeCallback\":\"Called in bundle: %@\"}", bundleID);
+    if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) { // ||
+        //[[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.springboard"]) {
         // only run in springboard or preferences
         
         BOOL value = [[(NSNumber *)newValue copy] boolValue];
         DDLogDebug(@"{\"Preferences\":\"Notification received for key:%@ with value:%d\"}",key,value);
 
         if ([key isEqualToString:@"kWriteITunesRingtonePlist"]) {
-
-            [[[JFTHRingtoneDataController alloc] init] syncPlists:value];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [[[JFTHRingtoneDataController alloc] init] syncPlists:value];
+            });
         }
     }
 };
 
+extern NSString *const HBPreferencesDidChangeNotification;
 
 #pragma mark - Constructor
 //------------- Constructor ------------
@@ -288,7 +290,7 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
         [bundleID isEqualToString:@"com.apple.InCallService"] ||
         [bundleID isEqualToString:@"com.apple.Preferences"] ||
         [bundleID isEqualToString:@"com.apple.mobilephone"] ||
-        [bundleID isEqualToString:@"com.apple.springboard"] ||
+        //[bundleID isEqualToString:@"com.apple.springboard"] ||
         [bundleID isEqualToString:@"com.apple.MobileSMS"] ||
         [bundleID isEqualToString:@"com.apple.mobilemail"] ||
         [bundleID isEqualToString:@"com.apple.mobiletimer"] ||
@@ -298,6 +300,11 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
         
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
         [preferences registerBool:&kDebugLogging default:NO forKey:@"kDebugLogging"];
+        [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
+        [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
+        if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
+            [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
+        }
 
         if (kDebugLogging) {
             
@@ -308,30 +315,24 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
             
             LogglyLogger *logglyLogger = [[LogglyLogger alloc] init];
             [logglyLogger setLogFormatter:[[LogglyFormatter alloc] initWithLogglyFieldsDelegate:logglyFields]];
-            
-            
             logglyLogger.logglyKey = @"f962c4f9-899b-4d18-8f84-1da5d19e1184";
             
             logglyLogger.saveInterval = 600;
             
             [DDLog addLogger:logglyLogger];
+            [DDLog addLogger:[DDASLLogger sharedInstance]];
             [logglyFields release];
             [logglyLogger release];
-            [DDLog addLogger:[DDASLLogger sharedInstance]];
+            
         }
-        [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
-        [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
-        [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
+        
+        [preferences release];
         
         DDLogInfo(@"{\"Constructor\":\"Trying to initialize ToneHelper in bundleid: %@\"}",[[NSBundle mainBundle] bundleIdentifier]);
         if (!NSClassFromString(@"TLToneManager")) {
             DDLogInfo(@"{\"Constructor\":\"TLToneManager missing, loading framework\"}");
             dlopen("/System/Library/PrivateFrameworks/ToneLibrary.framework/ToneLibrary", RTLD_LAZY);
         }
-        /*if (!NSClassFromString(@"TKTonePickerController")) {
-            DDLogInfo(@"Loading ToneKit");
-            dlopen("/System/Library/PrivateFrameworks/ToneKit.framework/ToneKit", RTLD_LAZY);
-        }*/
         if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_11_0) {
             DDLogInfo(@"{\"Constructor\":\"Init IOS 11\"}");
             %init(IOS11);

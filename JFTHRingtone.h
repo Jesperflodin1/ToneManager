@@ -7,6 +7,12 @@
 //
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
+    JFTHRingtoneFileName,
+    JFTHRingtoneGUID,
+    JFTHRingtonePID
+};
+
 @interface JFTHRingtone : NSObject
 
 - (instancetype)initWithName:(NSString *)name
@@ -38,5 +44,8 @@
 - (NSDictionary *)iTunesPlistRepresentation;
 - (NSDictionary *)dictionaryRepresentation;
 - (void)initWithDictionary:(NSMutableDictionary *)dict;
+
++ (int)totalTimeForRingtoneFilePath:(NSString *)filePath;
++ (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
 
 @end

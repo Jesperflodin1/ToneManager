@@ -8,7 +8,8 @@
 
 #import "JFTHRingtoneData.h"
 
-NSDictionary *_ringtonesImported;
+// TODO: Change to property?
+NSDictionary *_ringtonesImported; // TODO: Shouldnt this be an array of JFTHRingtone objects?
 
 extern NSString *const HBPreferencesDidChangeNotification;
 HBPreferences *preferences;
@@ -36,7 +37,7 @@ HBPreferences *preferences;
     DDLogVerbose(@"{\"Ringtone info\":\"Tone to be imported: %@\"}", ringtone);
     DDLogVerbose(@"{\"Ringtone info\":\"Tone to be imported dictrepr: %@\"}", [ringtone dictionaryRepresentation]);
     DDLogVerbose(@"{\"Ringtone info\":\"Tone to be imported filename: %@\"}", [ringtone fileName]);
-    [tones setObject:[ringtone dictionaryRepresentation] forKey:[ringtone fileName]];
+    [tones setObject:[ringtone dictionaryRepresentation] forKey:[ringtone fileName]]; // TODO Store JFTHRingtone in an array
     
     [preferences setObject:tones forKey:@"Ringtones"];
     DDLogDebug(@"{\"Ringtone info\":\"Adding ringtone: %@\"}", ringtone);
@@ -80,9 +81,12 @@ HBPreferences *preferences;
 
 
 #pragma mark - Getters
+//TODO: Return objectEnumerator of NSArray (https://developer.apple.com/documentation/foundation/nsarray/1416048-objectenumerator?language=objc)
+// Seems dumb to use this instead of the instance variable in this class...
 - (NSMutableDictionary *)importedTones {
     return [_ringtonesImported mutableCopy];
 }
+
 - (JFTHRingtone *)getRingtoneWithName:(NSString *)name {
     NSDictionary *ringtones = [self importedTones];
     

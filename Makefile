@@ -15,8 +15,8 @@ ToneHelper_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 
 Tweak.xm_CFLAGS = -fno-objc-arc
 
-ToneHelper_FRAMEWORKS = UIKit QuartzCore MobileCoreServices
-ToneHelper_PRIVATEFRAMEWORKS = ToneKit ToneLibrary FrontBoard
+ToneHelper_FRAMEWORKS = MobileCoreServices
+ToneHelper_PRIVATEFRAMEWORKS = ToneLibrary FrontBoard
 ToneHelper_EXTRA_FRAMEWORKS += cephei
 
 include $(THEOS_MAKE_PATH)/tweak.mk

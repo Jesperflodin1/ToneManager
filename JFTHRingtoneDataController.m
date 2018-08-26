@@ -84,6 +84,11 @@ HBPreferences *preferences;
             
             for (NSString *file in ringtones) {
                 NSDictionary *curTone = [ringtones objectForKey:file];
+                if ([self isImportedRingtoneWithName:[curTone objectForKey:@"Name"]]) {
+                    DDLogDebug(@"{\"Plist Migration\":\"Tone is already migrated %@\"}", file);
+                    continue;
+                }
+                
                 DDLogInfo(@"{\"Plist Migration\":\"Migrating tone: %@\"}", curTone);
                 DDLogDebug(@"{\"Plist Migration\":\"Tone has filename %@\"}", file);
                 
@@ -99,6 +104,11 @@ HBPreferences *preferences;
                 DDLogInfo(@"{\"Plist Migration\":\"Adding tone: %@\"}", tone);
                 
                 [_importedTonesData addRingtone:tone];
+            }
+            NSError *deleteError;
+            NSFileManager *localFileManager = [[NSFileManager alloc] init];
+            if (![localFileManager removeItemAtPath:TONEHELPERDATA_PLIST_PATH error:&deleteError]) {
+                DDLogError(@"{\"Plist Migration\":\"Failed to delete tweak plist\"}");
             }
         } else {
             DDLogError(@"{\"Plist Migration\":\"Failed to serialize tweak plist: %@\"}",serError);
@@ -197,9 +207,9 @@ HBPreferences *preferences;
     if ([self enableITunesRingtonePlistEditing]) {
     
         NSDictionary *importedTones = [_importedTonesData importedTones]; // dict of JFTHRingtones
-        NSLog(@"2");
+
         for (NSString *file in importedTones) {
-            NSLog(@"loop");
+
             JFTHRingtone *currentTone = [importedTones objectForKey:file];
             if ([_iTunesRingtoneData getITunesRingtoneWithGUID:[currentTone guid]]) {
                 // this ringtone exists in itunes plist

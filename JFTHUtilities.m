@@ -34,38 +34,4 @@
     
     DDLogVerbose(@"{\"Foldercreator\":\"Firstrun done\"}");
 }
-
-// Generates filename, PID and GUID needed to import ringtone
-+ (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type {
-    int length;
-    NSString *alphabet;
-    NSString *result = @"";
-    switch (Type)
-    {
-        case JFTHRingtonePID:
-            length = 18;
-            result = @"-";
-            alphabet = @"0123456789";
-            break;
-        case JFTHRingtoneGUID:
-            alphabet = @"ABCDEFG0123456789";
-            length = 16;
-            break;
-        case JFTHRingtoneFileName:
-            alphabet = @"ABCDEFGHIJKLMNOPQRSTUVWXZ";
-            length = 4;
-            break;
-        default:
-            return nil;
-            break;
-    }
-    NSMutableString *s = [NSMutableString stringWithCapacity:length];
-    for (NSUInteger i = 0U; i < length; i++) {
-        u_int32_t r = arc4random() % [alphabet length];
-        unichar c = [alphabet characterAtIndex:r];
-        [s appendFormat:@"%C", c];
-    }
-    return [result stringByAppendingString:s];
-}
-
 @end

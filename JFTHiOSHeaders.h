@@ -6,10 +6,9 @@
 //  Copyright © 2018 Jesper Flodin. All rights reserved.
 //
 
-@interface PreferencesAppController : UIApplication
-@end
+#import <UIKit/UIKit.h>
 
-@interface NSPathStore2 : NSString
+@interface PreferencesAppController : UIApplication
 @end
 
 @interface TLITunesTone : NSObject
@@ -21,19 +20,8 @@
 -(void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
 -(void)_reloadTonesAfterExternalChange;
 -(void)_reloadITunesRingtonesAfterExternalChange; // ios 10
--(NSMutableArray *)_tonesFromManifestPath:(NSPathStore2 *)arg1 mediaDirectoryPath:(NSPathStore2 *)arg2;
+-(NSMutableArray *)_tonesFromManifestPath:(id *)arg1 mediaDirectoryPath:(id *)arg2;
 @end
-
-@interface TKTonePickerController : NSObject
--(void)_reloadTones;
--(void)_reloadMediaItems;
-@end
-@interface TKTonePickerViewController : UITableViewController {
-    TKTonePickerController* _tonePickerController;
-}
-@end
-
-
 
 @interface LSApplicationProxy
 /*MobileCoreServices*/
@@ -42,16 +30,8 @@
 + (id)applicationProxyForBundleURL:(NSURL *)arg1;
 @end
 
-
-/*
- @interface SpringBoard : UIApplication {
- dispatch_source_t _source;
- NSArray* mFiles;
- NSString* mPath;
- }
- @end*/
-
-/*@interface FBApplicationInfo : NSObject
+@interface FBApplicationInfo : NSObject
+/*FrontBoard*/
  - (NSURL *)dataContainerURL;
  - (NSURL *)bundleURL;
  - (NSString *)bundleIdentifier;
@@ -59,4 +39,4 @@
  - (NSString *)bundleVersion;
  - (NSString *)displayName;
  - (id)initWithApplicationProxy:(id)arg1;
- @end*/
+ @end
