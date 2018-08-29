@@ -141,11 +141,11 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[messagesString dataUsingEncoding:NSUTF8StringEncoding]];
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (!self->_hasLoggedFirstLogglyPost) {
-            self->_hasLoggedFirstLogglyPost = YES;
+        if (!_hasLoggedFirstLogglyPost) {
+            _hasLoggedFirstLogglyPost = YES;
             if (error) {
                 NSLog(@"LOGGLY ERROR: Error object = %@. This was the last NSLog statement you will see from LogglyLogger. The rest of the posts to Loggly will be done silently",error);
-            } else if (data && self->_outputFirstResponse) {
+            } else if (data && _outputFirstResponse) {
                 NSString *responseString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
                 NSLog(@"LOGGLY: Response = %@  This was the last NSLog statement you will see from LogglyLogger. The rest of the posts to Loggly will be done silently.",responseString);
             }

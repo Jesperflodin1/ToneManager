@@ -6,7 +6,10 @@
 //  Copyright © 2018 Jesper Flodin. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <UIKit/UIApplication.h>
+
+@interface NSPathStore2 : NSString
+@end
 
 @interface PreferencesAppController : UIApplication
 @end

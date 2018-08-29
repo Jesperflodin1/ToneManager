@@ -1,9 +1,18 @@
 #import "JFTHRingtoneImporter.h"
+#import "JFTHCommonHeaders.h"
+#import "JFTHRingtoneDataController.h"
+#import "JFTHiOSHeaders.h"
+#import "JFTHRingtone.h"
 
-BOOL kWriteITunesRingtonePlist;
+#import "JFTHConstants.h"
+
+//For md5 calculations
+#include "FileHash.h"
+
+//BOOL kWriteITunesRingtonePlist;
 
 extern NSString *const HBPreferencesDidChangeNotification;
-HBPreferences *preferences;
+//HBPreferences *preferences;
 
 @interface JFTHRingtoneImporter () {
     NSMutableDictionary *_ringtonesToImport;
@@ -41,12 +50,21 @@ HBPreferences *preferences;
 
 #pragma mark - Search app method
 - (void)getRingtoneFilesFromApp:(NSString *)bundleID {
-    DDLogInfo(@"{\"Ringtone Import\":\"listing app folder for bundle: %@\"}",bundleID);
-    
-    FBApplicationInfo *appInfo = [LSApplicationProxy applicationProxyForIdentifier:bundleID];
-
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
-    NSString *appDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:@"Documents"];
+    NSString *appDirectory;
+    
+    if (![bundleID isEqualToString:@"fi.flodin.tonehelperdebugging"]) {
+        DDLogInfo(@"{\"Ringtone Import\":\"listing app folder for bundle: %@\"}",bundleID);
+        
+        FBApplicationInfo *appInfo = [LSApplicationProxy applicationProxyForIdentifier:bundleID];
+
+        
+        appDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:@"Documents"];
+    } else {
+        appDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Downloads"];
+        DDLogWarn(@"{\"Ringtone Import\":\"Debug folder loaded: %@\"}",appDirectory);
+    }
+    
     NSArray *appDirFiles = [localFileManager contentsOfDirectoryAtPath:appDirectory error:nil];
     
     DDLogInfo(@"{\"Ringtone Import\":\"Found these files: %@\"}", appDirFiles);

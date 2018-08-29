@@ -1,9 +1,16 @@
 #import "JFTHRingtoneDataController.h"
 
+#import "JFTHCommonHeaders.h"
+#import "JFTHiTunesRingtoneData.h"
+#import "JFTHRingtone.h"
+#import "FileHash.h"
+#import "JFTHConstants.h"
+
+
 NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/ToneHelper/ToneHelperData.plist";
 
 @interface JFTHRingtoneDataController () {
-    JFTHRingtoneData *_importedTonesData;
+    NSMutableSet<JFTHRingtone *> *_importedRingtonesSet;
     JFTHiTunesRingtoneData *_iTunesRingtoneData;
 }
 
@@ -12,23 +19,26 @@ NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/ToneHelper/To
 BOOL kFirstRun;
 
 extern NSString *const HBPreferencesDidChangeNotification;
-HBPreferences *preferences;
+//HBPreferences *preferences;
 
 @implementation JFTHRingtoneDataController
 
 #pragma mark - Init methods
 - (instancetype)init {
-    if (self = [super init]) {
-        
-        preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
+    if ((self = [super init])) {
+        if (!preferences) {
+            preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
+            DDLogWarn(@"{\"Preferences\":\"Initializing preferences in datacontroller.\"}");
+        }
         [preferences registerBool:&kFirstRun default:NO forKey:@"kFirstRun"];
         
-        DDLogInfo(@"{\"Preference\":\"First run done status: %d\"}",kFirstRun); // YES = first run done
+        [self loadImportedRingtones];
+        
+        DDLogInfo(@"{\"Preferences\":\"First run done status: %d\"}",kFirstRun); // YES = first run done
         if (!kFirstRun) {
-            [JFTHUtilities createFolders];
+            [JFTHRingtoneDataController createFolders];
         }
         
-        _importedTonesData = [[JFTHRingtoneData alloc] init];
         _iTunesRingtoneData = [[JFTHiTunesRingtoneData alloc] init];
         
         self.shouldWriteITunesRingtonePlist = NO;
@@ -37,17 +47,15 @@ HBPreferences *preferences;
             [self firstRun];
         }
         
-        // if plist exists, migrate settings!
+        // if plist exists, migrate settings from old version!
         NSFileManager *localFileManager = [[NSFileManager alloc] init];
         if ([localFileManager fileExistsAtPath:TONEHELPERDATA_PLIST_PATH]) {
             DDLogWarn(@"{\"First run\":\"Tweak plist exists, run firstrun again and migrate settings\"}");
-            [JFTHUtilities createFolders];
+            [JFTHRingtoneDataController createFolders];
             [self firstRun];
             [self migratePlistData];
-            
         }
 
-            
         DDLogInfo(@"{\"General\":\"Initialized data controller\"}");
     }
     return self;
@@ -93,12 +101,12 @@ HBPreferences *preferences;
                 DDLogDebug(@"{\"Plist Migration\":\"Tone has filename %@\"}", file);
                 
                 JFTHRingtone *tone = [[JFTHRingtone alloc] init];
-                [tone setGUID:[curTone objectForKey:@"GUID"]];
+                [tone setGuid:[curTone objectForKey:@"GUID"]];
                 [tone setMd5:[curTone objectForKey:@"Hash"]];
                 [tone setBundleID:[curTone objectForKey:@"ImportedFromBundleID"]];
                 [tone setName:[curTone objectForKey:@"Name"]];
                 [tone setOldFileName:[curTone objectForKey:@"OldFileName"]];
-                [tone setPID:[curTone objectForKey:@"PID"]];
+                [tone setPid:[curTone objectForKey:@"PID"]];
                 [tone setFileName:file];
                 
                 DDLogInfo(@"{\"Plist Migration\":\"Adding tone: %@\"}", tone);
@@ -118,6 +126,35 @@ HBPreferences *preferences;
     }
 
 }
+#pragma mark - Imported ringtones array data handling
+- (void)loadImportedRingtones {
+    DDLogInfo(@"{\"Preferences\":\"Start loading ringtones from preferences\"}");
+    
+    // Read ringtones array from preferences
+    NSData *importedRingtonesData = [preferences objectForKey:@"Ringtones" default:[NSMutableSet new]];
+    _importedRingtonesSet = nil;
+    
+    if (importedRingtonesData) {
+        DDLogDebug(@"{\"Preferences\":\"Unarchiving ringtone data\"}");
+        
+        NSSet *ringtones = [NSKeyedUnarchiver unarchiveObjectWithData:importedRingtonesData];
+        if (ringtones) {
+            DDLogDebug(@"{\"Preferences\":\"Loaded and unarchived ringtone data: %@\"}", ringtones);
+            _importedRingtonesSet = [[NSMutableSet alloc] initWithSet:ringtones];
+        } else {
+            DDLogDebug(@"{\"Preferences\":\"No ringtone data found. Creating new...\"}");
+            _importedRingtonesSet = [NSMutableSet set];
+        }
+    }
+}
+- (void)saveImportedRingtones {
+    DDLogInfo(@"{\"Preferences\":\"Saving ringtones to preferences\"}");
+    
+    [preferences setObject:[NSKeyedArchiver archivedDataWithRootObject:_importedRingtonesSet] forKey:@"Ringtones"];
+    [preferences synchronize];
+}
+
+
 #pragma mark - Getters
 - (NSDictionary *)importedTones {
     return [_importedTonesData importedTones];
@@ -128,10 +165,8 @@ HBPreferences *preferences;
 - (void)addRingtoneToPlist:(NSString *)name 
                       file:(NSString *)fileName 
                oldFileName:(NSString *)oldFile 
-              importedFrom:(NSString *)bundleID 
-                      hash:(NSString *)md5 {
+              importedFrom:(NSString *)bundleID {
     // Ringtone needs to have been copied before calling this
-    
     // create ringtone object
     JFTHRingtone *newtone = [[JFTHRingtone alloc] initWithName:name
                                                       fileName:fileName
@@ -140,10 +175,10 @@ HBPreferences *preferences;
     
     [self addRingtoneToPlist:newtone];
 }
-
 - (void)addRingtoneToPlist:(JFTHRingtone *)newtone {
-    DDLogDebug(@"{\"Tweakdata:\":\"Adding ringtone to tweak data: %@\"}", newtone);
-    [_importedTonesData addRingtone:newtone];
+    DDLogDebug(@"{\"Preferences:\":\"Adding ringtone to tweak data: %@\"}", newtone);
+    [_importedRingtonesSet addObject:newtone];
+    [self saveImportedRingtones]; // Calling this too often?
     
     if (self.shouldWriteITunesRingtonePlist && _iTunesRingtoneData.isWritable) {
         
@@ -154,7 +189,31 @@ HBPreferences *preferences;
 }
 
 - (void)deleteRingtoneWithGUID:(NSString *)toneGUID {
-    JFTHRingtone *toneToDelete = [_importedTonesData deleteRingtoneWithGuid:toneGUID];
+    // Find ringtone
+    JFTHRingtone *toneToDelete;
+    for (JFTHRingtone *curTone in _importedRingtonesSet) {
+        if ([curTone.guid isEqualToString:toneGUID]) {
+            
+            toneToDelete = curTone;
+            DDLogInfo(@"{\"Preferences:\":\"Found tone to delete: %@\"}", curTone.name);
+        }
+    }
+    // Delete it if found
+    if (toneToDelete) {
+        NSError *error;
+        NSFileManager *localFileManager = [[NSFileManager alloc] init];
+        if ([localFileManager removeItemAtPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:toneToDelete.fileName] error:&error]) {
+            
+            [_importedRingtonesSet removeObject:toneToDelete];
+            [self saveImportedRingtones];
+            
+            DDLogDebug(@"{\"Ringtone info\":\"Deleting ringtone from filesystem: %@\"}", toneToDelete.fileName);
+            DDLogVerbose(@"{\"Ringtone info\":\"Currently imported tones: %@\"}", _importedRingtonesSet);
+        } else {
+            DDLogError(@"{\"Ringtone info\":\"Failed to delete ringtone with error: %@\"}", error);
+            return;
+        }
+    }
     
     //Also try to delete from itunes plist
     if (self.shouldWriteITunesRingtonePlist && _iTunesRingtoneData.isWritable && (toneToDelete)) {
@@ -230,6 +289,31 @@ HBPreferences *preferences;
             }
         }
     }
+}
+
++ (void)createFolders {
+    DDLogDebug(@"{\"Foldercreator\":\"Preparing folders\"}");
+    
+    NSError *dirError;
+    NSFileManager *localFileManager = [[NSFileManager alloc] init];
+    if (![localFileManager createDirectoryAtPath:@"/var/mobile/Media/iTunes_Control/iTunes/"
+                     withIntermediateDirectories:YES
+                                      attributes:nil
+                                           error:&dirError]) {
+        DDLogError(@"{\"Foldercreator\":\"Error creating ringtones folder: %@\"}",dirError);
+    } else
+        DDLogDebug(@"{\"Foldercreator\":\"Success itunes folder\"}");
+    
+    NSError *ITdirError;
+    if (![localFileManager createDirectoryAtPath:@"/var/mobile/Media/iTunes_Control/Ringtones"
+                     withIntermediateDirectories:YES
+                                      attributes:nil
+                                           error:&ITdirError]) {
+        DDLogError(@"{\"Foldercreator\":\"Error creating Ringtone folder:%@\"}",ITdirError);
+    } else
+        DDLogDebug(@"{\"Foldercreator\":\"Success ringtones folder\"}");
+    
+    DDLogVerbose(@"{\"Foldercreator\":\"Firstrun done\"}");
 }
 
 @end

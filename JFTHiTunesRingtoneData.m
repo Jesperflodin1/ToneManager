@@ -7,6 +7,8 @@
 //
 
 #import "JFTHiTunesRingtoneData.h"
+#import "JFTHCommonHeaders.h"
+#import "JFTHConstants.h"
 
 @interface JFTHiTunesRingtoneData () {
     NSMutableDictionary *_ringtonesPlist; //ringtones.plist
@@ -70,8 +72,6 @@
 - (void)saveRingtonesPlist {
     // Folder may not exist, try to create it
     DDLogDebug(@"{\"iTunes plist:\":\"Saving Ringtones.plist\"}");
-    
-    [JFTHUtilities createFolders];
     
     //Write plist
     NSError *serError;

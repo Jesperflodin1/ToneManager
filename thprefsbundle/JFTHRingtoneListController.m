@@ -1,7 +1,7 @@
 #import "JFTHRingtoneListController.h"
 
 extern NSString *const HBPreferencesDidChangeNotification;
-HBPreferences *preferences;
+//HBPreferences *preferences;
 
 NSDictionary *_ringtonesImported;
 

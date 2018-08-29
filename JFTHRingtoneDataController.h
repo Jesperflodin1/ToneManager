@@ -1,8 +1,7 @@
 
-#import "JFTHHeaders.h"
-#import "JFTHRingtoneData.h"
-#import "JFTHiTunesRingtoneData.h"
-#import "JFTHUtilities.h"
+#import <Foundation/Foundation.h>
+
+@class JFTHRingtone;
 
 @interface JFTHRingtoneDataController : NSObject {
     
@@ -13,7 +12,10 @@
 - (void)migratePlistData;
 - (BOOL)enableITunesRingtonePlistEditing;
 
-- (void)addRingtoneToPlist:(NSString *)name file:(NSString *)fileName oldFileName:(NSString *)oldFile importedFrom:(NSString *)bundleID hash:(NSString *)md5;
+- (void)loadImportedRingtones;
+- (void)saveImportedRingtones;
+
+- (void)addRingtoneToPlist:(NSString *)name file:(NSString *)fileName oldFileName:(NSString *)oldFile importedFrom:(NSString *)bundleID;
 - (void)addRingtoneToPlist:(JFTHRingtone *)newtone;
 - (void)deleteRingtoneWithGUID:(NSString *)guid;
 
@@ -24,5 +26,7 @@
 - (BOOL)isImportedRingtoneWithHash:(NSString *)hash;
 
 - (void)syncPlists:(BOOL)currentITunesWriteStatus;
+
++ (void)createFolders;
 
 @end

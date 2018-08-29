@@ -1,9 +1,4 @@
-#import "JFTHHeaders.h"
-#import "JFTHRingtoneDataController.h"
-#import "JFTHiOSHeaders.h"
-
-//For md5 calculations
-#include "FileHash.h"
+#import <Foundation/Foundation.h>
 
 @class JFTHRingtoneDataController;
 

@@ -9,3 +9,5 @@
 
 extern NSString * const RINGTONE_DIRECTORY;
 extern NSString * const RINGTONE_PLIST_PATH;
+
+#define TONEHELPER_VERSION @"0.4.0"

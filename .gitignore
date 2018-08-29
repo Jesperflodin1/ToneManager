@@ -1,6 +1,13 @@
 
 # Created by https://www.gitignore.io/api/theos-tweak,objective-c
 
+#####
+# OS X temporary files that should never be committed
+.DS_Store
+*.swp
+*.lock
+profile
+
 ### Objective-C ###
 # Xcode
 #

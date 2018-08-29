@@ -7,23 +7,15 @@
 //
 
 #import "JFTHRingtone.h"
-#import "JFTHUtilities.h"
-#import "JFTHHeaders.h"
+#import "JFTHCommonHeaders.h"
 #import "FileHash.h"
 #import "JFTHConstants.h"
-
-@interface JFTHRingtone () {
-    NSMutableDictionary *_ringtone;
-}
-@end
 
 @implementation JFTHRingtone
 #pragma mark - Init methods
 - (instancetype)init {
     if (!(self = [super init]))
         return self;
-    
-    _ringtone = [NSMutableDictionary dictionary];
     
     return self;
 }
@@ -35,19 +27,20 @@
 {
     if (!(self = [super init]))
         return self;
+    //TODO: Get total time
+    _name = name;
+    _fileName = fileName;
     
-    _ringtone = [NSMutableDictionary dictionary];
-    [_ringtone setObject:name forKey:@"Name"];
-    [_ringtone setObject:fileName forKey:@"FileName"];
+    _md5 = [FileHash md5HashOfFileAtPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:fileName]];
     
-    NSString *md5 = [FileHash md5HashOfFileAtPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:fileName]];
-    [_ringtone setObject:md5 forKey:@"Hash"];
-    [_ringtone setObject:oldFileName forKey:@"OldFileName"];
-    [_ringtone setObject:bundleID forKey:@"ImportedFromBundleID"];
-    [_ringtone setObject:[JFTHRingtone randomizedRingtoneParameter:JFTHRingtonePID] forKey:@"PID"];
-    [_ringtone setObject:[JFTHRingtone randomizedRingtoneParameter:JFTHRingtoneGUID] forKey:@"GUID"];
+    _oldFileName = oldFileName;
+    _bundleID = bundleID;
+    NSNumberFormatter * numberFormatter = [[NSNumberFormatter alloc]init];
+    NSNumber *  number = [numberFormatter numberFromString:[JFTHRingtone randomizedRingtoneParameter:JFTHRingtonePID]];
+    _pid = number.longLongValue;
+    _guid = [JFTHRingtone randomizedRingtoneParameter:JFTHRingtoneGUID];
     
-    DDLogVerbose(@"{\"Ringtone init\":\"init tone with data: %@\"}", _ringtone);
+    DDLogVerbose(@"{\"Ringtone init\":\"tone initialized: %@\"}", self.fileName);
     
     return self;
 }
@@ -57,92 +50,77 @@
         if (![dict objectForKey:@"Total Time"]) {
             // TODO: Get total time
         }
-        _ringtone = dict;
+        //_ringtone = dict;
     }
 }
-#pragma mark - Setters Getters
-- (void)setName:(NSString *)name {
-    [_ringtone setObject:name forKey:@"Name"];
+#pragma mark - NSCoding methods
+- (id)initWithCoder:(NSCoder *)coder;{
+    if ((self = [super init]))
+    {
+        _name = [coder decodeObjectForKey:@"name"];
+        _fileName = [coder decodeObjectForKey:@"fileName"];
+        _oldFileName = [coder decodeObjectForKey:@"oldFileName"];
+        _bundleID = [coder decodeObjectForKey:@"bundleID"];
+        _md5 = [coder decodeObjectForKey:@"md5"];
+        _pid = [coder decodeInt64ForKey:@"pid"];
+        _guid = [coder decodeObjectForKey:@"guid"];
+        _totalTime = [coder decodeIntegerForKey:@"totalTime"];
+    }
+    return self;
 }
-- (NSString *)name {
-    return [_ringtone objectForKey:@"Name"];
+- (void)encodeWithCoder:(NSCoder *)coder;{
+    [coder encodeObject:_name forKey:@"name"];
+    [coder encodeObject:_fileName forKey:@"fileName"];
+    [coder encodeObject:_oldFileName forKey:@"oldFileName"];
+    [coder encodeObject:_bundleID forKey:@"bundleID"];
+    [coder encodeObject:_md5 forKey:@"md5"];
+    [coder encodeInt64:_pid forKey:@"pid"];
+    [coder encodeObject:_guid forKey:@"guid"];
+    [coder encodeInteger:_totalTime forKey:@"totalTime"];
 }
 
+#pragma mark - Comparisons
+- (BOOL)isEqual:(id)object {
+    
+}
+-(NSUInteger) hash
+{
+    return [self.md5 hash];
+}
+
+
+#pragma mark - Setters
 - (void)setFileName:(NSString *)fileName {
-    [_ringtone setObject:fileName forKey:@"FileName"];
+    _fileName = fileName;
     
     DDLogVerbose(@"{\"Ringtone init\":\"init tone with file: %@\"}", fileName);
     NSString *md5 = [FileHash md5HashOfFileAtPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:fileName]];
     DDLogVerbose(@"{\"Ringtone init\":\"init tone with hash: %@\"}", md5);
-    [_ringtone setObject:md5 forKey:@"Hash"];
-    DDLogVerbose(@"{\"Ringtone init\":\"init tone with hash: %@\"}", [self md5]);
-    DDLogVerbose(@"{\"Ringtone init\":\"init tone with hash: %@\"}", [_ringtone objectForKey:@"Hash"]);
+    _md5 = md5;
+    DDLogVerbose(@"{\"Ringtone init\":\"init tone with hash: %@\"}", self.md5);
 }
+
+#pragma mark - Getters
 - (NSString *)fileName {
-    return [_ringtone objectForKey:@"FileName"];
-}
-
-- (void)setOldFileName:(NSString *)oldFileName {
-    [_ringtone setObject:oldFileName forKey:@"OldFileName"];
-}
-- (NSString *)oldFileName {
-    return [_ringtone objectForKey:@"OldFileName"];
-}
-
-- (void)setBundleID:(NSString *)bundleID {
-    [_ringtone setObject:bundleID forKey:@"ImportedFromBundleID"];
-}
-- (NSString *)bundleID {
-    return [_ringtone objectForKey:@"ImportedFromBundleID"];
-}
-
-- (void)setMd5:(NSString *)md5 {
-    [_ringtone setObject:md5 forKey:@"Hash"];
-}
-- (NSString *)md5 {
-    return [_ringtone objectForKey:@"Hash"];
-}
-
-- (void)setPID:(NSNumber *)pid {
-    [_ringtone setObject:pid forKey:@"PID"];
-}
-- (NSNumber *)pid {
-    return [_ringtone objectForKey:@"PID"];
-}
-
-- (void)setGUID:(NSString *)guid {
-    [_ringtone setObject:guid forKey:@"GUID"];
-}
-- (NSString *)guid {
-    return [_ringtone objectForKey:@"GUID"];
-}
-- (void)setTotalTime:(NSString *)totalTime {
-    [_ringtone setObject:totalTime forKey:@"Total Time"];
-}
-- (NSString *)totalTime {
-    return [_ringtone objectForKey:@"Total Time"];
+    return _fileName;
 }
 
 #pragma mark - Converts to format ToneLibrary understands
 - (NSDictionary *)iTunesPlistRepresentation {
     NSMutableDictionary *tone;
-    [tone setObject:[self guid] forKey:@"GUID"];
-    [tone setObject:[self name] forKey:@"Name"];
-    [tone setObject:[self pid] forKey:@"PID"];
+    [tone setObject:self.guid forKey:@"GUID"];
+    [tone setObject:self.name forKey:@"Name"];
+    [tone setObject:[NSNumber numberWithLongLong:self.pid] forKey:@"PID"];
+    [tone setObject:[NSNumber numberWithLong:self.totalTime] forKey:@"Total Time"]; //callservicesd craps itself if this is missing
     [tone setObject:[NSNumber numberWithBool:NO] forKey:@"Protected Content"];
     
     return tone;
 }
 
-#pragma mark - Dictionary representation for sending to storage
-- (NSDictionary *)dictionaryRepresentation {
-    DDLogVerbose(@"{\"Ringtone init\":\"sending dict repr: %@\"}", _ringtone);
-    return _ringtone;
-}
-
 #pragma mark - Methods for calculated values
 + (int)totalTimeForRingtoneFilePath:(NSString *)filePath {
     // TODO: CODE
+    return 1;
 }
 
 // Generates filename, PID and GUID needed to import ringtone

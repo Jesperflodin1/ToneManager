@@ -13,39 +13,33 @@ typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
     JFTHRingtonePID
 };
 
-@interface JFTHRingtone : NSObject
+@interface JFTHRingtone : NSObject<NSCoding> {
+    NSString *_fileName;
+}
+
+@property (nonatomic) NSString *name;
+@property (nonatomic) NSString *fileName;
+@property (nonatomic) NSString *oldFileName;
+@property (nonatomic) NSString *bundleID;
+@property (nonatomic) NSString *md5;
+@property (nonatomic) int64_t pid;
+@property (nonatomic) NSString *guid;
+@property (nonatomic) long totalTime;
 
 - (instancetype)initWithName:(NSString *)name
                     fileName:(NSString *)fileName
                  oldFileName:(NSString *)oldFileName
                     bundleID:(NSString *)bundleID;
 
-- (void)setName:(NSString *)name;
-- (NSString *)name;
-
 - (void)setFileName:(NSString *)fileName;
 - (NSString *)fileName;
 
-- (void)setOldFileName:(NSString *)oldFileName;
-- (NSString *)oldFileName;
-
-- (void)setBundleID:(NSString *)bundleID;
-- (NSString *)bundleID;
-
-- (void)setMd5:(NSString *)md5;
-- (NSString *)md5;
-
-- (void)setPID:(NSNumber *)pid;
-- (NSNumber *)pid;
-
-- (void)setGUID:(NSString *)guid;
-- (NSString *)guid;
-
 - (NSDictionary *)iTunesPlistRepresentation;
-- (NSDictionary *)dictionaryRepresentation;
 - (void)initWithDictionary:(NSMutableDictionary *)dict;
 
 + (int)totalTimeForRingtoneFilePath:(NSString *)filePath;
 + (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
+
+//- (BOOL)isEqual:(id)object;
 
 @end

@@ -6,9 +6,7 @@
 //  Copyright © 2018 Jesper Flodin. All rights reserved.
 //
 
-#import "JFTHHeaders.h"
-#import "JFTHUtilities.h"
-#import "JFTHConstants.h"
+#import <Foundation/Foundation.h>
 
 @interface JFTHiTunesRingtoneData : NSObject
 
