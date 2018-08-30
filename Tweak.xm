@@ -106,12 +106,11 @@ HBPreferences *preferences;
      DDLogError(@"arg2(NSDictionary?) %@",arg2);
      DDLogError(@"arg3(__Block): %@",arg3block);
      
-     id (^myBlock)() = ^id() {
+     void (^myBlock)() = ^() {
          DDLogError(@"MY BLOCK WAS CALLED OMG OMG !!");
          //DDLogError(@"MY BLOCK param1: %@ param2: %@",[(id)p1 class],[(id)p2 class]);
          //DDLogError(@"MY BLOCK param1: %@ param2: %@",p1,p2);
          DDLogError(@"MY BLOCK returns: %@",arg3block());
-         return 1;
      };
      %orig(arg1,arg2,myBlock);
      
