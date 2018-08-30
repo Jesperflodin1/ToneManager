@@ -1,7 +1,11 @@
 {
 	Filter = {
+		Mode = Any;
 		Bundles = (
 			"com.apple.ToneLibrary",
+			"com.apple.mobilegarageband",
+			"com.apple.Preferences",
+			"com.908.AudikoFree",
 		);
 	};
 }

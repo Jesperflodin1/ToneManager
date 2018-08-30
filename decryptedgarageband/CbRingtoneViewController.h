@@ -1,0 +1,68 @@
+@interface CbRingToneViewController: UIViewController <CbExporterTitleCellDelegate,UITableViewDataSource,UITableViewDelegate> 
+{
+	UITableView *_tableView;
+	UIView *_tonesHeader;
+	UILabel *_warningLabel;
+	UIBarButtonItem *_startExportButton;
+	CbExportRingtone *_publisher;
+	UIBarButtonItem *_leftItem;
+	UIBarButtonItem *_rightItem;
+	double _maxLabelWidth;
+	BOOL _tonesHeaderInitialized;
+	UILabel *tonesHeaderLabel;
+	UIButton *tonesHeaderButton;
+}
+
+@property (retain, non-atomic) UITableView * tableView;
+@property (retain, non-atomic) UILabel * warningLabel;
+@property (__weak, non-atomic) CbExportRingtone * publisher;
+@property (retain, non-atomic) UIBarButtonItem * startExportButton;
+@property (retain, non-atomic) UIView * tonesHeader;
+@property (retain, non-atomic) UILabel * tonesHeaderLabel;
+@property (retain, non-atomic) UIButton * tonesHeaderButton;
+@property (retain, non-atomic) UIBarButtonItem * leftItem;
+@property (retain, non-atomic) UIBarButtonItem * rightItem;
+@property (readonly) unsigned long long hash;
+@property (readonly) class superclass;
+@property (readonly, copy) NSString * description;
+@property (readonly, copy) NSString * debugDescription;
+@end
+ -(void)titleCellDidStartEditing:(id)arg1;
+ -(void)titleCellDidEndEditing:(id)arg1;
+ -(void)titleCellTextDidChange:(id)arg1;
+ -(double)maxLabelWidthWithFont:(id)arg1;
+ -(void)setStartExportButton:(id)arg1;
+ -(void)setTonesHeader:(id)arg1;
+ -(void)setTonesHeaderButton:(id)arg1;
+ -(void)setTonesHeaderLabel:(id)arg1;
+ -(id)startExportButton;
+ -(id)tonesHeader;
+ -(id)tonesHeaderLabel;
+ -(id)tonesHeaderButton;
+ -(void)cancel:(id)arg1;
+ -(void).cxx_destruct;
+ -(void)dealloc;
+ -(id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
+ -(void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+ -(long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+ -(id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+ -(long long)numberOfSectionsInTableView:(id)arg1;
+ -(id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+ -(unsigned long long)supportedInterfaceOrientations;
+ -(id)initWithNibName:(id)arg1 bundle:(id)arg2;
+ -(void)setTableView:(id)arg1;
+ -(id)tableView;
+ -(void)viewDidLoad;
+ -(void)viewDidUnload;
+ -(void)viewWillAppear:(BOOL)arg1;
+ -(BOOL)disablesAutomaticKeyboardDismissal;
+ -(void)cleanup;
+ -(id)leftItem;
+ -(void)setLeftItem:(id)arg1;
+ -(id)rightItem;
+ -(void)setRightItem:(id)arg1;
+ -(void)start:(id)arg1;
+ -(id)publisher;
+ -(void)setPublisher:(id)arg1;
+ -(id)warningLabel;
+ -(void)setWarningLabel:(id)arg1;

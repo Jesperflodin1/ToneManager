@@ -1,0 +1,485 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		246A18B22136BFB300E1E596 /* tonehelpersim.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18B12136BFB300E1E596 /* tonehelpersim.m */; };
+		246A18EC2136C08600E1E596 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18BB2136C08500E1E596 /* DDTTYLogger.m */; };
+		246A18ED2136C08600E1E596 /* DDOSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18BE2136C08500E1E596 /* DDOSLogger.m */; };
+		246A18EE2136C08600E1E596 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18C22136C08500E1E596 /* DDASLLogger.m */; };
+		246A18EF2136C08600E1E596 /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18C42136C08500E1E596 /* CLIColor.m */; };
+		246A18F02136C08600E1E596 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18C82136C08500E1E596 /* DDContextFilterLogFormatter.m */; };
+		246A18F12136C08600E1E596 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18C92136C08500E1E596 /* DDDispatchQueueLogFormatter.m */; };
+		246A18F22136C08600E1E596 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18CC2136C08500E1E596 /* DDMultiFormatter.m */; };
+		246A18F32136C08600E1E596 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18CE2136C08500E1E596 /* DDLog.m */; };
+		246A18F42136C08600E1E596 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18D42136C08500E1E596 /* DDAbstractDatabaseLogger.m */; };
+		246A18F52136C08600E1E596 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18D52136C08500E1E596 /* DDFileLogger.m */; };
+		246A18F62136C08600E1E596 /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18D72136C08500E1E596 /* DDASLLogCapture.m */; };
+		246A18F72136C08600E1E596 /* JFTHRingtoneDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18D92136C08500E1E596 /* JFTHRingtoneDataController.m */; };
+		246A18F82136C08600E1E596 /* JFTHiTunesRingtoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18DE2136C08600E1E596 /* JFTHiTunesRingtoneData.m */; };
+		246A18F92136C08600E1E596 /* JFTHRingtoneImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18E02136C08600E1E596 /* JFTHRingtoneImporter.m */; };
+		246A18FA2136C08600E1E596 /* JFTHRingtone.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18E22136C08600E1E596 /* JFTHRingtone.m */; };
+		246A18FB2136C08600E1E596 /* LogglyFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18E42136C08600E1E596 /* LogglyFields.m */; };
+		246A18FC2136C08600E1E596 /* LogglyFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18E62136C08600E1E596 /* LogglyFormatter.m */; };
+		246A18FD2136C08600E1E596 /* LogglyLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18E82136C08600E1E596 /* LogglyLogger.m */; };
+		246A18FE2136C08600E1E596 /* FileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18EA2136C08600E1E596 /* FileHash.m */; };
+		246A18FF2136C08600E1E596 /* JFTHConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A18EB2136C08600E1E596 /* JFTHConstants.m */; };
+		246A19022136C19A00E1E596 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A19012136C19A00E1E596 /* MobileCoreServices.framework */; };
+		246A19042136C1C800E1E596 /* Cephei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A19032136C1C800E1E596 /* Cephei.framework */; };
+		246A19062136C1F000E1E596 /* ToneLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A19052136C1F000E1E596 /* ToneLibrary.framework */; };
+		246A19082136C23500E1E596 /* FrontBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A19072136C23500E1E596 /* FrontBoard.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		246A18AD2136BFB300E1E596 /* tonehelpersim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = tonehelpersim; sourceTree = BUILT_PRODUCTS_DIR; };
+		246A18B12136BFB300E1E596 /* tonehelpersim.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tonehelpersim.m; sourceTree = "<group>"; };
+		246A18B92136C08500E1E596 /* JFTHiTunesRingtoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHiTunesRingtoneData.h; path = ../../JFTHiTunesRingtoneData.h; sourceTree = "<group>"; };
+		246A18BB2136C08500E1E596 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		246A18BC2136C08500E1E596 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		246A18BD2136C08500E1E596 /* DDLegacyMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLegacyMacros.h; sourceTree = "<group>"; };
+		246A18BE2136C08500E1E596 /* DDOSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDOSLogger.m; sourceTree = "<group>"; };
+		246A18BF2136C08500E1E596 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		246A18C02136C08500E1E596 /* DDLogMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLogMacros.h; sourceTree = "<group>"; };
+		246A18C12136C08500E1E596 /* DDASLLogCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogCapture.h; sourceTree = "<group>"; };
+		246A18C22136C08500E1E596 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		246A18C42136C08500E1E596 /* CLIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLIColor.m; sourceTree = "<group>"; };
+		246A18C52136C08500E1E596 /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
+		246A18C62136C08500E1E596 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		246A18C82136C08500E1E596 /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		246A18C92136C08500E1E596 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		246A18CA2136C08500E1E596 /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
+		246A18CB2136C08500E1E596 /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		246A18CC2136C08500E1E596 /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
+		246A18CD2136C08500E1E596 /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		246A18CE2136C08500E1E596 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		246A18CF2136C08500E1E596 /* CocoaLumberjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack.h; sourceTree = "<group>"; };
+		246A18D02136C08500E1E596 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		246A18D12136C08500E1E596 /* DDAssertMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAssertMacros.h; sourceTree = "<group>"; };
+		246A18D22136C08500E1E596 /* DDOSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDOSLogger.h; sourceTree = "<group>"; };
+		246A18D32136C08500E1E596 /* DDLog+LOGV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDLog+LOGV.h"; sourceTree = "<group>"; };
+		246A18D42136C08500E1E596 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		246A18D52136C08500E1E596 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		246A18D62136C08500E1E596 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		246A18D72136C08500E1E596 /* DDASLLogCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogCapture.m; sourceTree = "<group>"; };
+		246A18D82136C08500E1E596 /* JFTHRingtoneImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHRingtoneImporter.h; path = ../../JFTHRingtoneImporter.h; sourceTree = "<group>"; };
+		246A18D92136C08500E1E596 /* JFTHRingtoneDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFTHRingtoneDataController.m; path = ../../JFTHRingtoneDataController.m; sourceTree = "<group>"; };
+		246A18DA2136C08500E1E596 /* JFTHiOSHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHiOSHeaders.h; path = ../../JFTHiOSHeaders.h; sourceTree = "<group>"; };
+		246A18DB2136C08500E1E596 /* JFTHRingtoneDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHRingtoneDataController.h; path = ../../JFTHRingtoneDataController.h; sourceTree = "<group>"; };
+		246A18DC2136C08600E1E596 /* JFTHRingtone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHRingtone.h; path = ../../JFTHRingtone.h; sourceTree = "<group>"; };
+		246A18DD2136C08600E1E596 /* FileHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileHash.h; path = ../../FileHash.h; sourceTree = "<group>"; };
+		246A18DE2136C08600E1E596 /* JFTHiTunesRingtoneData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFTHiTunesRingtoneData.m; path = ../../JFTHiTunesRingtoneData.m; sourceTree = "<group>"; };
+		246A18DF2136C08600E1E596 /* JFTHConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHConstants.h; path = ../../JFTHConstants.h; sourceTree = "<group>"; };
+		246A18E02136C08600E1E596 /* JFTHRingtoneImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFTHRingtoneImporter.m; path = ../../JFTHRingtoneImporter.m; sourceTree = "<group>"; };
+		246A18E12136C08600E1E596 /* JFTHCommonHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHCommonHeaders.h; path = ../../JFTHCommonHeaders.h; sourceTree = "<group>"; };
+		246A18E22136C08600E1E596 /* JFTHRingtone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFTHRingtone.m; path = ../../JFTHRingtone.m; sourceTree = "<group>"; };
+		246A18E42136C08600E1E596 /* LogglyFields.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogglyFields.m; sourceTree = "<group>"; };
+		246A18E52136C08600E1E596 /* LogglyLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogglyLogger.h; sourceTree = "<group>"; };
+		246A18E62136C08600E1E596 /* LogglyFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogglyFormatter.m; sourceTree = "<group>"; };
+		246A18E72136C08600E1E596 /* LogglyFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogglyFormatter.h; sourceTree = "<group>"; };
+		246A18E82136C08600E1E596 /* LogglyLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogglyLogger.m; sourceTree = "<group>"; };
+		246A18E92136C08600E1E596 /* LogglyFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogglyFields.h; sourceTree = "<group>"; };
+		246A18EA2136C08600E1E596 /* FileHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileHash.m; path = ../../FileHash.m; sourceTree = "<group>"; };
+		246A18EB2136C08600E1E596 /* JFTHConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFTHConstants.m; path = ../../JFTHConstants.m; sourceTree = "<group>"; };
+		246A19012136C19A00E1E596 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		246A19032136C1C800E1E596 /* Cephei.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cephei.framework; path = ../../Simulator/Simulatorfiles/Library/Frameworks/Cephei.framework; sourceTree = "<group>"; };
+		246A19052136C1F000E1E596 /* ToneLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToneLibrary.framework; path = ../../../../../theos/sdks/iPhoneOS11.2.sdk/System/Library/PrivateFrameworks/ToneLibrary.framework; sourceTree = "<group>"; };
+		246A19072136C23500E1E596 /* FrontBoard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FrontBoard.framework; path = ../../../../../theos/sdks/iPhoneOS11.2.sdk/System/Library/PrivateFrameworks/FrontBoard.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		246A18AA2136BFB300E1E596 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				246A19082136C23500E1E596 /* FrontBoard.framework in Frameworks */,
+				246A19062136C1F000E1E596 /* ToneLibrary.framework in Frameworks */,
+				246A19042136C1C800E1E596 /* Cephei.framework in Frameworks */,
+				246A19022136C19A00E1E596 /* MobileCoreServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		246A18A42136BFB300E1E596 = {
+			isa = PBXGroup;
+			children = (
+				246A18AF2136BFB300E1E596 /* tonehelpersim */,
+				246A18AE2136BFB300E1E596 /* Products */,
+				246A19002136C19900E1E596 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		246A18AE2136BFB300E1E596 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				246A18AD2136BFB300E1E596 /* tonehelpersim */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		246A18AF2136BFB300E1E596 /* tonehelpersim */ = {
+			isa = PBXGroup;
+			children = (
+				246A18BA2136C08500E1E596 /* CocoaLumberjack */,
+				246A18DD2136C08600E1E596 /* FileHash.h */,
+				246A18EA2136C08600E1E596 /* FileHash.m */,
+				246A18E12136C08600E1E596 /* JFTHCommonHeaders.h */,
+				246A18DF2136C08600E1E596 /* JFTHConstants.h */,
+				246A18EB2136C08600E1E596 /* JFTHConstants.m */,
+				246A18DA2136C08500E1E596 /* JFTHiOSHeaders.h */,
+				246A18B92136C08500E1E596 /* JFTHiTunesRingtoneData.h */,
+				246A18DE2136C08600E1E596 /* JFTHiTunesRingtoneData.m */,
+				246A18DC2136C08600E1E596 /* JFTHRingtone.h */,
+				246A18E22136C08600E1E596 /* JFTHRingtone.m */,
+				246A18DB2136C08500E1E596 /* JFTHRingtoneDataController.h */,
+				246A18D92136C08500E1E596 /* JFTHRingtoneDataController.m */,
+				246A18D82136C08500E1E596 /* JFTHRingtoneImporter.h */,
+				246A18E02136C08600E1E596 /* JFTHRingtoneImporter.m */,
+				246A18E32136C08600E1E596 /* LogglyLogger */,
+				246A18B12136BFB300E1E596 /* tonehelpersim.m */,
+			);
+			path = tonehelpersim;
+			sourceTree = "<group>";
+		};
+		246A18BA2136C08500E1E596 /* CocoaLumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				246A18BB2136C08500E1E596 /* DDTTYLogger.m */,
+				246A18BC2136C08500E1E596 /* DDLog.h */,
+				246A18BD2136C08500E1E596 /* DDLegacyMacros.h */,
+				246A18BE2136C08500E1E596 /* DDOSLogger.m */,
+				246A18BF2136C08500E1E596 /* DDAbstractDatabaseLogger.h */,
+				246A18C02136C08500E1E596 /* DDLogMacros.h */,
+				246A18C12136C08500E1E596 /* DDASLLogCapture.h */,
+				246A18C22136C08500E1E596 /* DDASLLogger.m */,
+				246A18C32136C08500E1E596 /* CLI */,
+				246A18C62136C08500E1E596 /* DDFileLogger.h */,
+				246A18C72136C08500E1E596 /* Extensions */,
+				246A18CE2136C08500E1E596 /* DDLog.m */,
+				246A18CF2136C08500E1E596 /* CocoaLumberjack.h */,
+				246A18D02136C08500E1E596 /* DDTTYLogger.h */,
+				246A18D12136C08500E1E596 /* DDAssertMacros.h */,
+				246A18D22136C08500E1E596 /* DDOSLogger.h */,
+				246A18D32136C08500E1E596 /* DDLog+LOGV.h */,
+				246A18D42136C08500E1E596 /* DDAbstractDatabaseLogger.m */,
+				246A18D52136C08500E1E596 /* DDFileLogger.m */,
+				246A18D62136C08500E1E596 /* DDASLLogger.h */,
+				246A18D72136C08500E1E596 /* DDASLLogCapture.m */,
+			);
+			name = CocoaLumberjack;
+			path = ../../CocoaLumberjack;
+			sourceTree = "<group>";
+		};
+		246A18C32136C08500E1E596 /* CLI */ = {
+			isa = PBXGroup;
+			children = (
+				246A18C42136C08500E1E596 /* CLIColor.m */,
+				246A18C52136C08500E1E596 /* CLIColor.h */,
+			);
+			path = CLI;
+			sourceTree = "<group>";
+		};
+		246A18C72136C08500E1E596 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				246A18C82136C08500E1E596 /* DDContextFilterLogFormatter.m */,
+				246A18C92136C08500E1E596 /* DDDispatchQueueLogFormatter.m */,
+				246A18CA2136C08500E1E596 /* DDMultiFormatter.h */,
+				246A18CB2136C08500E1E596 /* DDContextFilterLogFormatter.h */,
+				246A18CC2136C08500E1E596 /* DDMultiFormatter.m */,
+				246A18CD2136C08500E1E596 /* DDDispatchQueueLogFormatter.h */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		246A18E32136C08600E1E596 /* LogglyLogger */ = {
+			isa = PBXGroup;
+			children = (
+				246A18E42136C08600E1E596 /* LogglyFields.m */,
+				246A18E52136C08600E1E596 /* LogglyLogger.h */,
+				246A18E62136C08600E1E596 /* LogglyFormatter.m */,
+				246A18E72136C08600E1E596 /* LogglyFormatter.h */,
+				246A18E82136C08600E1E596 /* LogglyLogger.m */,
+				246A18E92136C08600E1E596 /* LogglyFields.h */,
+			);
+			name = LogglyLogger;
+			path = ../../LogglyLogger;
+			sourceTree = "<group>";
+		};
+		246A19002136C19900E1E596 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				246A19072136C23500E1E596 /* FrontBoard.framework */,
+				246A19052136C1F000E1E596 /* ToneLibrary.framework */,
+				246A19032136C1C800E1E596 /* Cephei.framework */,
+				246A19012136C19A00E1E596 /* MobileCoreServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		246A18AC2136BFB300E1E596 /* tonehelpersim */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 246A18B62136BFB300E1E596 /* Build configuration list for PBXNativeTarget "tonehelpersim" */;
+			buildPhases = (
+				246A18A92136BFB300E1E596 /* Sources */,
+				246A18AA2136BFB300E1E596 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tonehelpersim;
+			productName = tonehelpersim;
+			productReference = 246A18AD2136BFB300E1E596 /* tonehelpersim */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		246A18A52136BFB300E1E596 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Jesper Flodin";
+				TargetAttributes = {
+					246A18AC2136BFB300E1E596 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 246A18A82136BFB300E1E596 /* Build configuration list for PBXProject "tonehelpersim" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 246A18A42136BFB300E1E596;
+			productRefGroup = 246A18AE2136BFB300E1E596 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				246A18AC2136BFB300E1E596 /* tonehelpersim */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		246A18A92136BFB300E1E596 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				246A18FC2136C08600E1E596 /* LogglyFormatter.m in Sources */,
+				246A18EE2136C08600E1E596 /* DDASLLogger.m in Sources */,
+				246A18F82136C08600E1E596 /* JFTHiTunesRingtoneData.m in Sources */,
+				246A18F52136C08600E1E596 /* DDFileLogger.m in Sources */,
+				246A18FD2136C08600E1E596 /* LogglyLogger.m in Sources */,
+				246A18FE2136C08600E1E596 /* FileHash.m in Sources */,
+				246A18B22136BFB300E1E596 /* tonehelpersim.m in Sources */,
+				246A18F72136C08600E1E596 /* JFTHRingtoneDataController.m in Sources */,
+				246A18F12136C08600E1E596 /* DDDispatchQueueLogFormatter.m in Sources */,
+				246A18ED2136C08600E1E596 /* DDOSLogger.m in Sources */,
+				246A18F42136C08600E1E596 /* DDAbstractDatabaseLogger.m in Sources */,
+				246A18FF2136C08600E1E596 /* JFTHConstants.m in Sources */,
+				246A18F62136C08600E1E596 /* DDASLLogCapture.m in Sources */,
+				246A18F22136C08600E1E596 /* DDMultiFormatter.m in Sources */,
+				246A18F02136C08600E1E596 /* DDContextFilterLogFormatter.m in Sources */,
+				246A18FA2136C08600E1E596 /* JFTHRingtone.m in Sources */,
+				246A18F92136C08600E1E596 /* JFTHRingtoneImporter.m in Sources */,
+				246A18F32136C08600E1E596 /* DDLog.m in Sources */,
+				246A18EF2136C08600E1E596 /* CLIColor.m in Sources */,
+				246A18FB2136C08600E1E596 /* LogglyFields.m in Sources */,
+				246A18EC2136C08600E1E596 /* DDTTYLogger.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		246A18B42136BFB300E1E596 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		246A18B52136BFB300E1E596 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		246A18B72136BFB300E1E596 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6VG5GK3UD7;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Users/jesper/theos/sdks/iPhoneSimulator11.4.sdk/System/Library/PrivateFrameworks,
+					"/Users/jesper/theos/libsim/**",
+				);
+				HEADER_SEARCH_PATHS = "/Users/jesper/theos/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		246A18B82136BFB300E1E596 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6VG5GK3UD7;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Users/jesper/theos/sdks/iPhoneSimulator11.4.sdk/System/Library/PrivateFrameworks,
+					"/Users/jesper/theos/libsim/**",
+				);
+				HEADER_SEARCH_PATHS = "/Users/jesper/theos/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		246A18A82136BFB300E1E596 /* Build configuration list for PBXProject "tonehelpersim" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				246A18B42136BFB300E1E596 /* Debug */,
+				246A18B52136BFB300E1E596 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		246A18B62136BFB300E1E596 /* Build configuration list for PBXNativeTarget "tonehelpersim" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				246A18B72136BFB300E1E596 /* Debug */,
+				246A18B82136BFB300E1E596 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 246A18A52136BFB300E1E596 /* Project object */;
+}
