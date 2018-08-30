@@ -9,7 +9,7 @@ DEBUG = 1
 FINALPACKAGE = 0
 
 TWEAK_NAME = ToneHelper
-ToneHelper_FILES = Tweak.xm $(wildcard *.m) $(wildcard CocoaLumberjack/*.m) $(wildcard LogglyLogger/*.m) 
+ToneHelper_FILES = Tweak.xm $(wildcard *.m) $(wildcard JGProgressHUD/*.m) $(wildcard CocoaLumberjack/*.m) $(wildcard LogglyLogger/*.m) 
 
 ToneHelper_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 
@@ -22,11 +22,11 @@ ToneHelper_EXTRA_FRAMEWORKS += cephei
 include $(THEOS_MAKE_PATH)/tweak.mk
 
 
-#SUBPROJECTS += thprefsbundle
+SUBPROJECTS += thprefsbundle
 include $(THEOS_MAKE_PATH)/aggregate.mk
 
-#after-install::
-#	install.exec "killall -9 SpringBoard"
+after-install::
+	install.exec "killall -9 SpringBoard"
 
 ifneq (,$(filter x86_64 i386,$(ARCHS)))
 setup:: clean all

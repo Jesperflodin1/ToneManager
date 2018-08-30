@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		246F1FFB2133C552006063BC /* tonehelpersimtest.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F1FFA2133C552006063BC /* tonehelpersimtest.m */; };
+		246F20222133C8E0006063BC /* JFTHRingtoneDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F20132133C8DE006063BC /* JFTHRingtoneDataController.m */; };
+		246F20242133C8E0006063BC /* JFTHiTunesRingtoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F20192133C8DF006063BC /* JFTHiTunesRingtoneData.m */; };
+		246F20262133C8E0006063BC /* JFTHRingtoneImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F201C2133C8DF006063BC /* JFTHRingtoneImporter.m */; };
+		246F20272133C8E0006063BC /* JFTHRingtone.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F201E2133C8DF006063BC /* JFTHRingtone.m */; };
+		246F20282133C8E0006063BC /* FileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F20202133C8DF006063BC /* FileHash.m */; };
+		246F20292133C8E0006063BC /* JFTHConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F20212133C8DF006063BC /* JFTHConstants.m */; };
+		246F20302133CAB1006063BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F202F2133CAB1006063BC /* MobileCoreServices.framework */; };
+		246F20322133CB05006063BC /* FrontBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F20312133CB05006063BC /* FrontBoard.framework */; };
+		246F20342133CB0C006063BC /* ToneLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F20332133CB0C006063BC /* ToneLibrary.framework */; };
+		246F20642133EBF5006063BC /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F20402133EBF5006063BC /* DDTTYLogger.m */; };
+		246F20652133EBF5006063BC /* DDOSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F20432133EBF5006063BC /* DDOSLogger.m */; };
+		246F20662133EBF5006063BC /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F20472133EBF5006063BC /* DDASLLogger.m */; };
+		246F20672133EBF5006063BC /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F20492133EBF5006063BC /* CLIColor.m */; };
+		246F20682133EBF5006063BC /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F204D2133EBF5006063BC /* DDContextFilterLogFormatter.m */; };
+		246F20692133EBF5006063BC /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F204E2133EBF5006063BC /* DDDispatchQueueLogFormatter.m */; };
+		246F206A2133EBF5006063BC /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F20512133EBF5006063BC /* DDMultiFormatter.m */; };
+		246F206B2133EBF5006063BC /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F20532133EBF5006063BC /* DDLog.m */; };
+		246F206C2133EBF5006063BC /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F20592133EBF5006063BC /* DDAbstractDatabaseLogger.m */; };
+		246F206D2133EBF5006063BC /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F205A2133EBF5006063BC /* DDFileLogger.m */; };
+		246F206E2133EBF5006063BC /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F205C2133EBF5006063BC /* DDASLLogCapture.m */; };
+		246F206F2133EBF5006063BC /* LogglyFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F205E2133EBF5006063BC /* LogglyFields.m */; };
+		246F20702133EBF5006063BC /* LogglyFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F20602133EBF5006063BC /* LogglyFormatter.m */; };
+		246F20712133EBF5006063BC /* LogglyLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246F20622133EBF5006063BC /* LogglyLogger.m */; };
+		24DE61FC2136859B00576D48 /* Cephei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DE61FB2136859B00576D48 /* Cephei.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		246F1FF62133C552006063BC /* tonehelpersimtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = tonehelpersimtest; sourceTree = BUILT_PRODUCTS_DIR; };
+		246F1FFA2133C552006063BC /* tonehelpersimtest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tonehelpersimtest.m; sourceTree = "<group>"; };
+		246F200E2133C8DD006063BC /* JFTHiTunesRingtoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHiTunesRingtoneData.h; path = ../JFTHiTunesRingtoneData.h; sourceTree = "<group>"; };
+		246F20112133C8DE006063BC /* JFTHCommonHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHCommonHeaders.h; path = ../JFTHCommonHeaders.h; sourceTree = "<group>"; };
+		246F20122133C8DE006063BC /* JFTHRingtoneImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHRingtoneImporter.h; path = ../JFTHRingtoneImporter.h; sourceTree = "<group>"; };
+		246F20132133C8DE006063BC /* JFTHRingtoneDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFTHRingtoneDataController.m; path = ../JFTHRingtoneDataController.m; sourceTree = "<group>"; };
+		246F20142133C8DE006063BC /* JFTHiOSHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHiOSHeaders.h; path = ../JFTHiOSHeaders.h; sourceTree = "<group>"; };
+		246F20152133C8DE006063BC /* JFTHRingtoneDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHRingtoneDataController.h; path = ../JFTHRingtoneDataController.h; sourceTree = "<group>"; };
+		246F20162133C8DE006063BC /* JFTHRingtone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHRingtone.h; path = ../JFTHRingtone.h; sourceTree = "<group>"; };
+		246F20182133C8DE006063BC /* FileHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileHash.h; path = ../FileHash.h; sourceTree = "<group>"; };
+		246F20192133C8DF006063BC /* JFTHiTunesRingtoneData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFTHiTunesRingtoneData.m; path = ../JFTHiTunesRingtoneData.m; sourceTree = "<group>"; };
+		246F201B2133C8DF006063BC /* JFTHConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFTHConstants.h; path = ../JFTHConstants.h; sourceTree = "<group>"; };
+		246F201C2133C8DF006063BC /* JFTHRingtoneImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFTHRingtoneImporter.m; path = ../JFTHRingtoneImporter.m; sourceTree = "<group>"; };
+		246F201E2133C8DF006063BC /* JFTHRingtone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFTHRingtone.m; path = ../JFTHRingtone.m; sourceTree = "<group>"; };
+		246F20202133C8DF006063BC /* FileHash.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = FileHash.m; path = ../FileHash.m; sourceTree = "<group>"; };
+		246F20212133C8DF006063BC /* JFTHConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFTHConstants.m; path = ../JFTHConstants.m; sourceTree = "<group>"; };
+		246F202F2133CAB1006063BC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		246F20312133CB05006063BC /* FrontBoard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FrontBoard.framework; path = /Users/jesper/theos/sdks/iPhoneOS11.2.sdk/System/Library/PrivateFrameworks/FrontBoard.framework; sourceTree = "<absolute>"; };
+		246F20332133CB0C006063BC /* ToneLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToneLibrary.framework; path = /Users/jesper/theos/sdks/iPhoneOS11.2.sdk/System/Library/PrivateFrameworks/ToneLibrary.framework; sourceTree = "<absolute>"; };
+		246F20402133EBF5006063BC /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		246F20412133EBF5006063BC /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		246F20422133EBF5006063BC /* DDLegacyMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLegacyMacros.h; sourceTree = "<group>"; };
+		246F20432133EBF5006063BC /* DDOSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDOSLogger.m; sourceTree = "<group>"; };
+		246F20442133EBF5006063BC /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		246F20452133EBF5006063BC /* DDLogMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLogMacros.h; sourceTree = "<group>"; };
+		246F20462133EBF5006063BC /* DDASLLogCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogCapture.h; sourceTree = "<group>"; };
+		246F20472133EBF5006063BC /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		246F20492133EBF5006063BC /* CLIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLIColor.m; sourceTree = "<group>"; };
+		246F204A2133EBF5006063BC /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
+		246F204B2133EBF5006063BC /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		246F204D2133EBF5006063BC /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		246F204E2133EBF5006063BC /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		246F204F2133EBF5006063BC /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
+		246F20502133EBF5006063BC /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		246F20512133EBF5006063BC /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
+		246F20522133EBF5006063BC /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		246F20532133EBF5006063BC /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		246F20542133EBF5006063BC /* CocoaLumberjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack.h; sourceTree = "<group>"; };
+		246F20552133EBF5006063BC /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		246F20562133EBF5006063BC /* DDAssertMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAssertMacros.h; sourceTree = "<group>"; };
+		246F20572133EBF5006063BC /* DDOSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDOSLogger.h; sourceTree = "<group>"; };
+		246F20582133EBF5006063BC /* DDLog+LOGV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDLog+LOGV.h"; sourceTree = "<group>"; };
+		246F20592133EBF5006063BC /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		246F205A2133EBF5006063BC /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		246F205B2133EBF5006063BC /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		246F205C2133EBF5006063BC /* DDASLLogCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogCapture.m; sourceTree = "<group>"; };
+		246F205E2133EBF5006063BC /* LogglyFields.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogglyFields.m; sourceTree = "<group>"; };
+		246F205F2133EBF5006063BC /* LogglyLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogglyLogger.h; sourceTree = "<group>"; };
+		246F20602133EBF5006063BC /* LogglyFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogglyFormatter.m; sourceTree = "<group>"; };
+		246F20612133EBF5006063BC /* LogglyFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogglyFormatter.h; sourceTree = "<group>"; };
+		246F20622133EBF5006063BC /* LogglyLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogglyLogger.m; sourceTree = "<group>"; };
+		246F20632133EBF5006063BC /* LogglyFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogglyFields.h; sourceTree = "<group>"; };
+		24DE61FB2136859B00576D48 /* Cephei.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cephei.framework; path = ../../Simulator/Simulatorfiles/usr/lib/Cephei.framework; sourceTree = "<group>"; };
+		24F9A79D213417F5008335D2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		246F1FF32133C552006063BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24DE61FC2136859B00576D48 /* Cephei.framework in Frameworks */,
+				246F20302133CAB1006063BC /* MobileCoreServices.framework in Frameworks */,
+				246F20322133CB05006063BC /* FrontBoard.framework in Frameworks */,
+				246F20342133CB0C006063BC /* ToneLibrary.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		246F1FED2133C552006063BC = {
+			isa = PBXGroup;
+			children = (
+				24F9A79D213417F5008335D2 /* Info.plist */,
+				246F20182133C8DE006063BC /* FileHash.h */,
+				246F20202133C8DF006063BC /* FileHash.m */,
+				246F201B2133C8DF006063BC /* JFTHConstants.h */,
+				246F20212133C8DF006063BC /* JFTHConstants.m */,
+				246F20112133C8DE006063BC /* JFTHCommonHeaders.h */,
+				246F20142133C8DE006063BC /* JFTHiOSHeaders.h */,
+				246F200E2133C8DD006063BC /* JFTHiTunesRingtoneData.h */,
+				246F20192133C8DF006063BC /* JFTHiTunesRingtoneData.m */,
+				246F20162133C8DE006063BC /* JFTHRingtone.h */,
+				246F201E2133C8DF006063BC /* JFTHRingtone.m */,
+				246F20152133C8DE006063BC /* JFTHRingtoneDataController.h */,
+				246F20132133C8DE006063BC /* JFTHRingtoneDataController.m */,
+				246F20122133C8DE006063BC /* JFTHRingtoneImporter.h */,
+				246F201C2133C8DF006063BC /* JFTHRingtoneImporter.m */,
+				246F203F2133EBF5006063BC /* CocoaLumberjack */,
+				246F205D2133EBF5006063BC /* LogglyLogger */,
+				246F1FF82133C552006063BC /* tonehelpersimtest */,
+				246F1FF72133C552006063BC /* Products */,
+				246F202A2133CA9A006063BC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		246F1FF72133C552006063BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				246F1FF62133C552006063BC /* tonehelpersimtest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		246F1FF82133C552006063BC /* tonehelpersimtest */ = {
+			isa = PBXGroup;
+			children = (
+				246F1FFA2133C552006063BC /* tonehelpersimtest.m */,
+			);
+			path = tonehelpersimtest;
+			sourceTree = "<group>";
+		};
+		246F202A2133CA9A006063BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24DE61FB2136859B00576D48 /* Cephei.framework */,
+				246F20332133CB0C006063BC /* ToneLibrary.framework */,
+				246F20312133CB05006063BC /* FrontBoard.framework */,
+				246F202F2133CAB1006063BC /* MobileCoreServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		246F203F2133EBF5006063BC /* CocoaLumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				246F20402133EBF5006063BC /* DDTTYLogger.m */,
+				246F20412133EBF5006063BC /* DDLog.h */,
+				246F20422133EBF5006063BC /* DDLegacyMacros.h */,
+				246F20432133EBF5006063BC /* DDOSLogger.m */,
+				246F20442133EBF5006063BC /* DDAbstractDatabaseLogger.h */,
+				246F20452133EBF5006063BC /* DDLogMacros.h */,
+				246F20462133EBF5006063BC /* DDASLLogCapture.h */,
+				246F20472133EBF5006063BC /* DDASLLogger.m */,
+				246F20482133EBF5006063BC /* CLI */,
+				246F204B2133EBF5006063BC /* DDFileLogger.h */,
+				246F204C2133EBF5006063BC /* Extensions */,
+				246F20532133EBF5006063BC /* DDLog.m */,
+				246F20542133EBF5006063BC /* CocoaLumberjack.h */,
+				246F20552133EBF5006063BC /* DDTTYLogger.h */,
+				246F20562133EBF5006063BC /* DDAssertMacros.h */,
+				246F20572133EBF5006063BC /* DDOSLogger.h */,
+				246F20582133EBF5006063BC /* DDLog+LOGV.h */,
+				246F20592133EBF5006063BC /* DDAbstractDatabaseLogger.m */,
+				246F205A2133EBF5006063BC /* DDFileLogger.m */,
+				246F205B2133EBF5006063BC /* DDASLLogger.h */,
+				246F205C2133EBF5006063BC /* DDASLLogCapture.m */,
+			);
+			name = CocoaLumberjack;
+			path = ../CocoaLumberjack;
+			sourceTree = "<group>";
+		};
+		246F20482133EBF5006063BC /* CLI */ = {
+			isa = PBXGroup;
+			children = (
+				246F20492133EBF5006063BC /* CLIColor.m */,
+				246F204A2133EBF5006063BC /* CLIColor.h */,
+			);
+			path = CLI;
+			sourceTree = "<group>";
+		};
+		246F204C2133EBF5006063BC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				246F204D2133EBF5006063BC /* DDContextFilterLogFormatter.m */,
+				246F204E2133EBF5006063BC /* DDDispatchQueueLogFormatter.m */,
+				246F204F2133EBF5006063BC /* DDMultiFormatter.h */,
+				246F20502133EBF5006063BC /* DDContextFilterLogFormatter.h */,
+				246F20512133EBF5006063BC /* DDMultiFormatter.m */,
+				246F20522133EBF5006063BC /* DDDispatchQueueLogFormatter.h */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		246F205D2133EBF5006063BC /* LogglyLogger */ = {
+			isa = PBXGroup;
+			children = (
+				246F205E2133EBF5006063BC /* LogglyFields.m */,
+				246F205F2133EBF5006063BC /* LogglyLogger.h */,
+				246F20602133EBF5006063BC /* LogglyFormatter.m */,
+				246F20612133EBF5006063BC /* LogglyFormatter.h */,
+				246F20622133EBF5006063BC /* LogglyLogger.m */,
+				246F20632133EBF5006063BC /* LogglyFields.h */,
+			);
+			name = LogglyLogger;
+			path = ../LogglyLogger;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		246F1FF52133C552006063BC /* tonehelpersimtest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 246F1FFF2133C552006063BC /* Build configuration list for PBXNativeTarget "tonehelpersimtest" */;
+			buildPhases = (
+				246F1FF22133C552006063BC /* Sources */,
+				246F1FF32133C552006063BC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tonehelpersimtest;
+			productName = tonehelpersimtest;
+			productReference = 246F1FF62133C552006063BC /* tonehelpersimtest */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		246F1FEE2133C552006063BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Jesper Flodin";
+				TargetAttributes = {
+					246F1FF52133C552006063BC = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 246F1FF12133C552006063BC /* Build configuration list for PBXProject "tonehelpersimtest" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 246F1FED2133C552006063BC;
+			productRefGroup = 246F1FF72133C552006063BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				246F1FF52133C552006063BC /* tonehelpersimtest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		246F1FF22133C552006063BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				246F20642133EBF5006063BC /* DDTTYLogger.m in Sources */,
+				246F20702133EBF5006063BC /* LogglyFormatter.m in Sources */,
+				246F20692133EBF5006063BC /* DDDispatchQueueLogFormatter.m in Sources */,
+				246F20282133C8E0006063BC /* FileHash.m in Sources */,
+				246F206D2133EBF5006063BC /* DDFileLogger.m in Sources */,
+				246F206A2133EBF5006063BC /* DDMultiFormatter.m in Sources */,
+				246F20652133EBF5006063BC /* DDOSLogger.m in Sources */,
+				246F206B2133EBF5006063BC /* DDLog.m in Sources */,
+				246F1FFB2133C552006063BC /* tonehelpersimtest.m in Sources */,
+				246F20272133C8E0006063BC /* JFTHRingtone.m in Sources */,
+				246F20712133EBF5006063BC /* LogglyLogger.m in Sources */,
+				246F20672133EBF5006063BC /* CLIColor.m in Sources */,
+				246F20222133C8E0006063BC /* JFTHRingtoneDataController.m in Sources */,
+				246F20682133EBF5006063BC /* DDContextFilterLogFormatter.m in Sources */,
+				246F206E2133EBF5006063BC /* DDASLLogCapture.m in Sources */,
+				246F206F2133EBF5006063BC /* LogglyFields.m in Sources */,
+				246F20662133EBF5006063BC /* DDASLLogger.m in Sources */,
+				246F206C2133EBF5006063BC /* DDAbstractDatabaseLogger.m in Sources */,
+				246F20242133C8E0006063BC /* JFTHiTunesRingtoneData.m in Sources */,
+				246F20262133C8E0006063BC /* JFTHRingtoneImporter.m in Sources */,
+				246F20292133C8E0006063BC /* JFTHConstants.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		246F1FFD2133C552006063BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		246F1FFE2133C552006063BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		246F20002133C552006063BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALTERNATE_GROUP = 501;
+				ALTERNATE_OWNER = 501;
+				ALTERNATE_PERMISSIONS_FILES = "+s";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_STYLE = Automatic;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				DEPLOYMENT_LOCATION = NO;
+				DEVELOPMENT_TEAM = 6VG5GK3UD7;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_EXTENSION = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"/Users/jesper/theos/libsim/**",
+					/Users/jesper/theos/sdks/iPhoneSimulator11.4.sdk/System/Library/PrivateFrameworks,
+				);
+				GENERATE_PKGINFO_FILE = NO;
+				HEADER_SEARCH_PATHS = "/Users/jesper/theos/include/**";
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				INFOPLIST_PREPROCESS = YES;
+				INSTALL_GROUP = 501;
+				INSTALL_MODE_FLAG = "u+w,go-w,a+rX";
+				INSTALL_OWNER = 501;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.tonehelper;
+				PRODUCT_MODULE_NAME = tonehelpersimtest;
+				PRODUCT_NAME = tonehelpersimtest;
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		246F20012133C552006063BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALTERNATE_GROUP = 501;
+				ALTERNATE_OWNER = 501;
+				ALTERNATE_PERMISSIONS_FILES = "+s";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_STYLE = Automatic;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				DEPLOYMENT_LOCATION = NO;
+				DEVELOPMENT_TEAM = 6VG5GK3UD7;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_EXTENSION = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"/Users/jesper/theos/libsim/**",
+					/Users/jesper/theos/sdks/iPhoneSimulator11.4.sdk/System/Library/PrivateFrameworks,
+				);
+				GENERATE_PKGINFO_FILE = NO;
+				HEADER_SEARCH_PATHS = "/Users/jesper/theos/include/**";
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				INFOPLIST_PREPROCESS = YES;
+				INSTALL_GROUP = 501;
+				INSTALL_MODE_FLAG = "u+w,go-w,a+rX";
+				INSTALL_OWNER = 501;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.tonehelper;
+				PRODUCT_MODULE_NAME = tonehelpersimtest;
+				PRODUCT_NAME = tonehelpersimtest;
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		246F1FF12133C552006063BC /* Build configuration list for PBXProject "tonehelpersimtest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				246F1FFD2133C552006063BC /* Debug */,
+				246F1FFE2133C552006063BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		246F1FFF2133C552006063BC /* Build configuration list for PBXNativeTarget "tonehelpersimtest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				246F20002133C552006063BC /* Debug */,
+				246F20012133C552006063BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 246F1FEE2133C552006063BC /* Project object */;
+}

@@ -1,6 +1,8 @@
-#import "JFTHCommonHeaders.h"
+#import "JFTHHeaders.h"
 #import "JFTHiOSHeaders.h"
 #import "JFTHRingtoneImporter.h"
+#import "JFTHRingtoneDataController.h"
+#import "JFTHRingtone.h"
 #import "JFTHConstants.h"
 
 #import <version.h>
@@ -9,20 +11,7 @@
 
 BOOL kEnabled;
 BOOL kDebugLogging;
-
-/* TLToneManager:
- -(BOOL)toneWithIdentifierIsValid:(id)arg1 ;
- does identifier arg1 exist? (is it imported?)
- 
- -(void)removeImportedToneWithIdentifier:(id)arg1 ;
- remove tone with identifier
- 
- -(void)importTone:(id)arg1 metadata:(id)arg2 completionBlock:(BLOCK)arg3 ;
-arg1 (NSData) ringtone
-arg2 (NSMutable?Dictionary) keys="Name","Total Time","Purchased"=false,"Protected Content"=false
-arg3 (code block) receives arguments? probably toneidentifier that TLToneManager set for the imported tone.
- 
- */
+BOOL kWriteITunesRingtonePlist;
 
 
 
@@ -38,7 +27,7 @@ HBPreferences *preferences;
 - (_Bool)application:(id)arg1 didFinishLaunchingWithOptions:(id)arg2 {
     if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
         DDLogVerbose(@"{\"Hooks\":\"didFinishLaunching called\"}");
-        //[self performSelector:@selector(doImportRingtones)];
+        [self performSelector:@selector(doImportRingtones)];
     }
     return %orig;
 }
@@ -46,7 +35,7 @@ HBPreferences *preferences;
 - (void)applicationWillEnterForeground:(id)arg1 {
     if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
         DDLogVerbose(@"{\"Hooks\":\"applicationWillEnterForeground called\"}");
-        //[self performSelector:@selector(doImportRingtones)];
+        [self performSelector:@selector(doImportRingtones)];
     }
     return %orig;
 }
@@ -100,6 +89,7 @@ HBPreferences *preferences;
 #pragma mark - TLToneManager IOS 11
 %hook TLToneManager
 
+<<<<<<< HEAD
  -(void)importTone:(id)arg1 metadata:(id)arg2 completionBlock:(id)arg3block {
      DDLogError(@"importTone called! ");
      DDLogError(@"arg1(NSDATA?): %@",[arg1 class]);
@@ -114,6 +104,56 @@ HBPreferences *preferences;
      };
      %orig(arg1,arg2,myBlock);
      
+=======
+-(NSMutableArray *)_tonesFromManifestPath:(id)arg1 mediaDirectoryPath:(id)arg2 {
+    DDLogVerbose(@"{\"Hooks\":\"TLToneManager bundleid=%@\"}",[[NSBundle mainBundle] bundleIdentifier]);
+    if (!kEnabled || kWriteITunesRingtonePlist) {
+        // kWriteITunesRingtonePlist enabled => disable runtime injection of ringtones
+        DDLogInfo(@"{\"Hooks\":\"TLToneManager runtime injection disabled\"}");
+        return %orig;
+    }
+    DDLogInfo(@"{\"Hooks\":\"TLToneManager runtime injection enabled\"}");
+    
+    if ([arg1 isEqualToString:RINGTONE_PLIST_PATH]) {
+        //Save the ringtones array so we can modify it
+        NSMutableArray *tones;
+        if (!(tones = %orig)) {
+            // got an empty object
+            tones = [[NSMutableArray alloc] init];
+        }
+        
+        DDLogVerbose(@"{\"Hooks\":\"TLToneManager got tones array: %@\"}",tones);
+        
+        //Read the ringtone metadata from our own plist
+        JFTHRingtoneDataController *toneData = [[JFTHRingtoneDataController alloc] init];
+        NSDictionary *importedTones = [toneData importedTones];
+
+        for (NSString *file in importedTones) {
+            // Create TLItunesTone object and put it into the array
+            JFTHRingtone *curTone = [importedTones objectForKey:file];
+            DDLogDebug(@"{\"Hooks\":\"TLToneManager created JFTHRingtone: %@\"}",curTone);
+            
+            TLITunesTone *tone = [[%c(TLITunesTone) alloc]
+                                  initWithPropertyListRepresentation:[curTone iTunesPlistRepresentation]
+                                                            filePath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:[curTone fileName]]];
+            DDLogDebug(@"{\"Hooks\":\"TLToneManager created TLItunesTone: %@\"}",tone);
+            
+            [curTone release];
+            [tones addObject:tone];
+            [tone release];
+        }
+        
+        [toneData release];
+        [importedTones release];
+        //Return the array with the ringtones the system found and the ringtones we have found
+        DDLogInfo(@"{\"Hooks\":\"TLToneManager Read available ringtones\"}");
+        return [tones autorelease];
+    } else {
+        // Not looking for the ringtones array we're interested in modifying
+        DDLogVerbose(@"{\"Hooks\":\"TLToneManager Not reading ringtones\"}");
+        return %orig;
+    }
+>>>>>>> parent of 34ea308... more reverse engineering...
 }
 %end
 
@@ -126,14 +166,14 @@ HBPreferences *preferences;
 %hook PreferencesAppController
 - (_Bool)application:(id)arg1 didFinishLaunchingWithOptions:(id)arg2 {
     if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
-        //[self performSelector:@selector(doImportRingtones)];
+        [self performSelector:@selector(doImportRingtones)];
     }
     return %orig;
 }
 
 - (void)applicationWillEnterForeground:(id)arg1 {
     if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
-        //[self performSelector:@selector(doImportRingtones)];
+        [self performSelector:@selector(doImportRingtones)];
     }
     return %orig;
 }
@@ -184,10 +224,63 @@ HBPreferences *preferences;
 }
 
 %end
+#pragma mark - TLToneManager IOS 10
+%hook TLToneManager
+
+-(id)_copyITunesRingtonesFromManifestPath:(id)arg1 mediaDirectoryPath:(id)arg2 {
+    DDLogVerbose(@"{\"Hooks\":\"TLToneManager bundleid=%@\"}",[[NSBundle mainBundle] bundleIdentifier]);
+    if (!kEnabled || kWriteITunesRingtonePlist) {
+        // kWriteITunesRingtonePlist enabled => disable runtime injection of ringtones
+        DDLogInfo(@"{\"Hooks\":\"TLToneManager runtime injection disabled\"}");
+        return %orig;
+    }
+    DDLogInfo(@"{\"Hooks\":\"TLToneManager runtime injection enabled\"}");
+    
+    if ([arg1 isEqualToString:RINGTONE_PLIST_PATH]) {
+        //Save the ringtones array so we can modify it
+        NSMutableArray *tones;
+        if (!(tones = %orig)) {
+            // got an empty object
+            tones = [[NSMutableArray alloc] init];
+        }
+        
+        DDLogVerbose(@"{\"Hooks\":\"TLToneManager got tones array: %@\"}",tones);
+        
+        //Read the ringtone metadata from our own plist
+        JFTHRingtoneDataController *toneData = [[JFTHRingtoneDataController alloc] init];
+        NSDictionary *importedTones = [toneData importedTones];
+        
+        for (NSString *file in importedTones) {
+            // Create TLItunesTone object and put it into the array
+            JFTHRingtone *curTone = [importedTones objectForKey:file];
+            DDLogDebug(@"{\"Hooks\":\"TLToneManager created JFTHRingtone: %@\"}",curTone);
+            
+            TLITunesTone *tone = [[%c(TLITunesTone) alloc]
+                                  initWithPropertyListRepresentation:[curTone iTunesPlistRepresentation]
+                                  filePath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:[curTone fileName]]];
+            DDLogDebug(@"{\"Hooks\":\"TLToneManager created TLItunesTone: %@\"}",tone);
+            
+            [curTone release];
+            [tones addObject:tone];
+            [tone release];
+        }
+        
+        [toneData release];
+        [importedTones release];
+        //Return the array with the ringtones the system found and the ringtones we have found
+        DDLogInfo(@"{\"Hooks\":\"TLToneManager Read available ringtones\"}");
+        return [tones autorelease];
+    } else {
+        // Not looking for the ringtones array we're interested in modifying
+        DDLogVerbose(@"{\"Hooks\":\"TLToneManager Not reading ringtones\"}");
+        return %orig;
+    }
+}
+%end
 
 %end
 
-/*
+
 HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCopying> _Nullable newValue) {
     NSLog(@"{\"PrefValueChangeCallback\":\"Called in bundle: %@\"}", [[NSBundle mainBundle] bundleIdentifier]);
     if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) { // ||
@@ -203,7 +296,7 @@ HBPreferencesValueChangeCallback updateRingtonePlist = ^(NSString *key, id<NSCop
             });
         }
     }
-};*/
+};
 
 extern NSString *const HBPreferencesDidChangeNotification;
 NSSet *_ringtonesImported;
@@ -214,23 +307,31 @@ NSSet *_ringtonesImported;
     NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
     NSLog(@"{\"Constructor\":\"Loaded in bundle: %@\"}", bundleID);
     
-    //if ([bundleID isEqualToString:@"com.apple.Preferences"]) {
+    if ([bundleID isEqualToString:@"com.apple.TelephonyUtilities"] ||
+        [bundleID isEqualToString:@"com.apple.InCallService"] ||
+        [bundleID isEqualToString:@"com.apple.Preferences"] ||
+        [bundleID isEqualToString:@"com.apple.mobilephone"] ||
+        //[bundleID isEqualToString:@"com.apple.springboard"] ||
+        [bundleID isEqualToString:@"com.apple.MobileSMS"] ||
+        [bundleID isEqualToString:@"com.apple.mobilemail"] ||
+        [bundleID isEqualToString:@"com.apple.mobiletimer"] ||
+        [bundleID isEqualToString:@"nanomediaremotelinkagent"]) {
 
         [bundleID release];
         
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
         [preferences registerBool:&kDebugLogging default:NO forKey:@"kDebugLogging"];
         [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
-        //[preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
+        [preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
         
         // TESTING
         [preferences registerObject:&_ringtonesImported default:[NSSet set] forKey:@"Ringtones"];
         
         
         
-        /*if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
+        if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
             [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
-        }*/
+        }
 
         if (kDebugLogging) {
             
@@ -254,18 +355,20 @@ NSSet *_ringtonesImported;
         
         [preferences release];
         
-        DDLogInfo(@"{\"Constructor\":\"Trying to initialize ToneHelper in bundleid: %@\"}",[[NSBundle mainBundle] bundleIdentifier]);
-        if (!NSClassFromString(@"TLToneManager")) {
-            DDLogInfo(@"{\"Constructor\":\"TLToneManager missing, loading framework\"}");
-            dlopen("/System/Library/PrivateFrameworks/ToneLibrary.framework/ToneLibrary", RTLD_LAZY);
-        }
-        if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_11_0) {
-            DDLogInfo(@"{\"Constructor\":\"Init IOS 11\"}");
-            %init(IOS11);
-        } else {
-            DDLogInfo(@"{\"Constructor\":\"Init IOS 10\"}");
-            %init(IOS10);
+        if (NO) { // TEMP
+            DDLogInfo(@"{\"Constructor\":\"Trying to initialize ToneHelper in bundleid: %@\"}",[[NSBundle mainBundle] bundleIdentifier]);
+            if (!NSClassFromString(@"TLToneManager")) {
+                DDLogInfo(@"{\"Constructor\":\"TLToneManager missing, loading framework\"}");
+                dlopen("/System/Library/PrivateFrameworks/ToneLibrary.framework/ToneLibrary", RTLD_LAZY);
+            }
+            if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_11_0) {
+                DDLogInfo(@"{\"Constructor\":\"Init IOS 11\"}");
+                %init(IOS11);
+            } else {
+                DDLogInfo(@"{\"Constructor\":\"Init IOS 10\"}");
+                %init(IOS10);
+            }
         }
 
-    //}
+    }
 }

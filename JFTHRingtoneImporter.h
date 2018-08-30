@@ -3,11 +3,12 @@
 @class JFTHRingtoneDataController;
 
 @interface JFTHRingtoneImporter : NSObject {
+    
 }
 
 @property (nonatomic) int importedCount;
-@property (nonatomic, retain) JFTHRingtoneDataController *ringtoneDataController;
 
+- (NSString *)createNameFromFile:(NSString *)file;
 - (void)getRingtoneFilesFromApp:(NSString *)bundleID; //Uses "Documents" as folder, default
 
 - (BOOL)shouldImportRingtones;

@@ -13,5 +13,6 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 #endif
 
+static HBPreferences *preferences;
 
-
+static BOOL kWriteITunesRingtonePlist;
