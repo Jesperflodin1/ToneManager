@@ -22,37 +22,74 @@
 
 - (instancetype)initWithName:(NSString *)name
                     fileName:(NSString *)fileName
+                         md5:(NSString *)md5
                  oldFileName:(NSString *)oldFileName
                     bundleID:(NSString *)bundleID
+                         pid:(int64_t)pid
+                        guid:(NSString *)guid
 {
     if (!(self = [super init]))
         return self;
-    //TODO: Get total time
+    
+    //TODO: nsfilemanager contentsequalatpath faster than md5?
     _name = name;
     _fileName = fileName;
-    
-    _md5 = [FileHash md5HashOfFileAtPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:fileName]];
-    
+    _md5 = md5;
     _oldFileName = oldFileName;
     _bundleID = bundleID;
-    NSNumberFormatter * numberFormatter = [[NSNumberFormatter alloc]init];
-    NSNumber *  number = [numberFormatter numberFromString:[JFTHRingtone randomizedRingtoneParameter:JFTHRingtonePID]];
-    _pid = number.longLongValue;
-    _guid = [JFTHRingtone randomizedRingtoneParameter:JFTHRingtoneGUID];
+    _pid = pid;
+    _guid = guid;
+    
+    //TODO: Get total time
+    _totalTime = [JFTHRingtone totalTimeForRingtoneFilePath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:fileName]];
     
     DDLogVerbose(@"{\"Ringtone init\":\"tone initialized: %@\"}", self.fileName);
-    
     return self;
 }
 
-- (void)initWithDictionary:(NSMutableDictionary *)dict {
-    if (dict) {
-        if (![dict objectForKey:@"Total Time"]) {
-            // TODO: Get total time
-        }
-        //_ringtone = dict;
-    }
+- (instancetype)initWithName:(NSString *)name
+                    fileName:(NSString *)fileName
+                         md5:(NSString *)md5
+                 oldFileName:(NSString *)oldFileName
+                    bundleID:(NSString *)bundleID
+{
+    
+    NSNumberFormatter * numberFormatter = [[NSNumberFormatter alloc]init];
+    NSNumber *  number = [numberFormatter numberFromString:[JFTHRingtone randomizedRingtoneParameter:JFTHRingtonePID]];
+    int64_t pid = number.longLongValue;
+    NSString *guid = [JFTHRingtone randomizedRingtoneParameter:JFTHRingtoneGUID];
+    
+    return [self initWithName:name
+                     fileName:fileName
+                          md5:md5
+                  oldFileName:oldFileName
+                     bundleID:bundleID
+                          pid:pid
+                         guid:guid];
 }
+
+- (instancetype)initWithName:(NSString *)name
+                    fileName:(NSString *)fileName
+                 oldFileName:(NSString *)oldFileName
+                    bundleID:(NSString *)bundleID
+{
+    NSString *md5 = [FileHash md5HashOfFileAtPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:fileName]];
+    return [self initWithName:name
+                     fileName:fileName
+                          md5:md5
+                  oldFileName:oldFileName
+                     bundleID:bundleID];
+}
+
+- (instancetype)initWithName:(NSString *)name
+                    fileName:(NSString *)fileName
+{
+    return [self initWithName:name
+                     fileName:fileName
+                  oldFileName:nil
+                     bundleID:nil];
+}
+
 #pragma mark - NSCoding methods
 - (id)initWithCoder:(NSCoder *)coder;{
     if ((self = [super init]))
@@ -81,28 +118,25 @@
 
 #pragma mark - Comparisons
 - (BOOL)isEqual:(id)object {
+    if (self == object)
+        return YES;
     
+    if (![object isKindOfClass:[NSArray class]]) {
+        return NO;
+    }
+    
+    return [self isEqualToJFTHRingtone:object];
+}
+- (BOOL)isEqualToRingtone:(JFTHRingtone *)tone {
+    return [self isEqualToJFTHRingtone:tone];
+}
+- (BOOL)isEqualToJFTHRingtone:(JFTHRingtone *)tone {
+    DDLogVerbose(@"{\"Ringtone info\":\"comparing ringtone parameters: self. %@\"}", self.fileName);
+    return [self.guid isEqualToString:tone.guid];
 }
 -(NSUInteger) hash
 {
-    return [self.md5 hash];
-}
-
-
-#pragma mark - Setters
-- (void)setFileName:(NSString *)fileName {
-    _fileName = fileName;
-    
-    DDLogVerbose(@"{\"Ringtone init\":\"init tone with file: %@\"}", fileName);
-    NSString *md5 = [FileHash md5HashOfFileAtPath:[RINGTONE_DIRECTORY stringByAppendingPathComponent:fileName]];
-    DDLogVerbose(@"{\"Ringtone init\":\"init tone with hash: %@\"}", md5);
-    _md5 = md5;
-    DDLogVerbose(@"{\"Ringtone init\":\"init tone with hash: %@\"}", self.md5);
-}
-
-#pragma mark - Getters
-- (NSString *)fileName {
-    return _fileName;
+    return [self.guid hash];
 }
 
 #pragma mark - Converts to format ToneLibrary understands
@@ -118,9 +152,12 @@
 }
 
 #pragma mark - Methods for calculated values
-+ (int)totalTimeForRingtoneFilePath:(NSString *)filePath {
++ (long)totalTimeForRingtoneFilePath:(NSString *)filePath {
     // TODO: CODE
-    return 1;
+    return 123456;
+}
++ (NSString *)md5ForRingtoneFilePath:(NSString *)filePath {
+    return [FileHash md5HashOfFileAtPath:filePath];
 }
 
 // Generates filename, PID and GUID needed to import ringtone
@@ -156,5 +193,15 @@
     return [result stringByAppendingString:s];
 }
 
++ (NSString *)createNameFromFile:(NSString *)file {
+    // Create Ringtone Name to show in ringtone picker list. Remove "ugly" characters first
+    NSString *baseName = [file stringByDeletingPathExtension];
+    NSCharacterSet *doNotWant = [[NSCharacterSet characterSetWithCharactersInString:@" ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖabcdefghijklmnopqrstuvwxyzåäö0123456789._-"] invertedSet];
+    return [[baseName componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @""];
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<JFTHRingtone: %@ file: %@ oldFileName:%@ pid: %lld guid:%@",_name,_fileName,_oldFileName,_pid,_guid];
+}
 
 @end
