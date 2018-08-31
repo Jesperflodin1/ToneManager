@@ -24,6 +24,10 @@
 -(void)_reloadTonesAfterExternalChange;
 -(void)_reloadITunesRingtonesAfterExternalChange; // ios 10
 -(NSMutableArray *)_tonesFromManifestPath:(id *)arg1 mediaDirectoryPath:(id *)arg2;
+
+-(void)importTone:(NSData *)data metadata:(NSDictionary *)dict completionBlock:(void (^)(BOOL success, NSString *toneIdentifier))completionBlock;
+-(void)removeImportedToneWithIdentifier:(NSString *)toneIdentifier;
+-(BOOL)toneWithIdentifierIsValid:(NSString *)toneIdentifier;
 @end
 
 @interface LSApplicationProxy

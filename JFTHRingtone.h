@@ -7,55 +7,31 @@
 //
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, JFTHRingtoneParameterType) {
-    JFTHRingtoneFileName,
-    JFTHRingtoneGUID,
-    JFTHRingtonePID
-};
-
-@interface JFTHRingtone : NSObject<NSCoding> {
-    NSString *_fileName;
-}
+@interface JFTHRingtone : NSObject<NSCoding>
 
 @property (nonatomic, readonly) NSString *name;
-@property (nonatomic, readonly) NSString *fileName;
-@property (nonatomic, readonly) NSString *oldFileName;
+@property (nonatomic) NSString *toneIdentifier;
+@property (nonatomic, readonly) NSString *filePath;
 @property (nonatomic, readonly) NSString *bundleID;
 @property (nonatomic, readonly) NSString *md5;
-@property (nonatomic, readonly) int64_t pid;
-@property (nonatomic, readonly) NSString *guid;
 @property (nonatomic, readonly) long totalTime;
 
-- (instancetype)initWithName:(NSString *)name
-                    fileName:(NSString *)fileName
-                         md5:(NSString *)md5
-                 oldFileName:(NSString *)oldFileName
-                    bundleID:(NSString *)bundleID
-                         pid:(int64_t)pid
-                        guid:(NSString *)guid;
+@property (nonatomic, readonly) BOOL isValid;
 
 - (instancetype)initWithName:(NSString *)name
-                    fileName:(NSString *)fileName
+                    filePath:(NSString *)filePath
                          md5:(NSString *)md5
-                 oldFileName:(NSString *)oldFileName
                     bundleID:(NSString *)bundleID;
 
 - (instancetype)initWithName:(NSString *)name
-                    fileName:(NSString *)fileName
-                 oldFileName:(NSString *)oldFileName
+                    filePath:(NSString *)filePath
                     bundleID:(NSString *)bundleID;
-
-- (instancetype)initWithName:(NSString *)name
-                    fileName:(NSString *)fileName;
 
 - (BOOL)isEqualToRingtone:(JFTHRingtone *)tone;
 - (BOOL)isEqualToJFTHRingtone:(JFTHRingtone *)tone;
 
-- (NSDictionary *)iTunesPlistRepresentation;
-
 + (long)totalTimeForRingtoneFilePath:(NSString *)filePath;
 + (NSString *)md5ForRingtoneFilePath:(NSString *)filePath;
-+ (NSString *)randomizedRingtoneParameter:(JFTHRingtoneParameterType)Type;
 + (NSString *)createNameFromFile:(NSString *)file;
 
 //- (BOOL)isEqual:(id)object;

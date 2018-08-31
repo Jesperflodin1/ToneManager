@@ -7,6 +7,8 @@
 #import "LogglyLogger/LogglyFormatter.h"
 #import "LogglyLogger/LogglyFields.h"
 
+#include <dlfcn.h>
+
 #ifdef DEBUG
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 #else

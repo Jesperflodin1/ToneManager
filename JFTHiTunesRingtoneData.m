@@ -8,7 +8,6 @@
 
 #import "JFTHiTunesRingtoneData.h"
 #import "JFTHCommonHeaders.h"
-#import "JFTHConstants.h"
 
 @interface JFTHiTunesRingtoneData () {
     NSMutableDictionary *_ringtonesPlist; //ringtones.plist

@@ -8,25 +8,18 @@
 
 }
 
-@property (nonatomic) BOOL shouldWriteITunesRingtonePlist;
-
 - (void)migratePlistData;
 
-- (void)loadImportedRingtones;
-- (void)saveImportedRingtones;
+- (void)_loadImportedRingtones;
+- (void)_saveImportedRingtones;
 
-- (void)addRingtoneToPlist:(NSString *)name file:(NSString *)fileName oldFileName:(NSString *)oldFile importedFrom:(NSString *)bundleID;
-- (void)addRingtoneToPlist:(JFTHRingtone *)newtone;
-- (void)deleteRingtoneWithGUID:(NSString *)guid;
+- (void)addRingtoneWithName:(NSString *)name
+                   filePath:(NSString *)filePath
+               importedFrom:(NSString *)bundleID;
+- (void)addRingtone:(JFTHRingtone *)newtone;
+- (void)deleteRingtoneWithIdentifier:(NSString *)toneIdentifier;
 
 - (BOOL)isImportedRingtoneWithName:(NSString *)name;
-- (BOOL)isITunesRingtoneWithName:(NSString *)name;
 - (BOOL)isImportedRingtoneWithHash:(NSString *)hash;
-
-- (void)syncPlists:(BOOL)currentITunesWriteStatus;
-- (BOOL)enableITunesRingtonePlistEditing;
-- (void)disableiTunesRingtonePlistEditing;
-
-+ (void)createFolders;
 
 @end
