@@ -8,26 +8,7 @@
 
 #import <UIKit/UIApplication.h>
 
-@interface NSPathStore2 : NSString
-@end
-
 @interface PreferencesAppController : UIApplication
-@end
-
-@interface TLITunesTone : NSObject
--(id)initWithPropertyListRepresentation:(id)arg1 filePath:(id)arg2;
-@end
-
-@interface TLToneManager : NSObject
-+(id)sharedToneManager;
--(void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
--(void)_reloadTonesAfterExternalChange;
--(void)_reloadITunesRingtonesAfterExternalChange; // ios 10
--(NSMutableArray *)_tonesFromManifestPath:(id *)arg1 mediaDirectoryPath:(id *)arg2;
-
--(void)importTone:(NSData *)data metadata:(NSDictionary *)dict completionBlock:(void (^)(BOOL success, NSString *toneIdentifier))completionBlock;
--(void)removeImportedToneWithIdentifier:(NSString *)toneIdentifier;
--(BOOL)toneWithIdentifierIsValid:(NSString *)toneIdentifier;
 @end
 
 @interface LSApplicationProxy

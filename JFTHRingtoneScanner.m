@@ -41,6 +41,9 @@ extern NSString *const HBPreferencesDidChangeNotification;
 }
 
 #pragma mark - Search app method
+- (void)importNewRingtonesFromSubfoldersInApps:(NSDictionary *)apps {
+    
+}
 - (void)getRingtoneFilesFromApp:(NSString *)bundleID {
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
     NSString *appDirectory;

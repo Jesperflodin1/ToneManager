@@ -50,6 +50,21 @@
                           md5:[JFTHRingtone md5ForRingtoneFilePath:filePath]
                      bundleID:bundleID];
 }
+#pragma mark - Setters
+
+- (void)setNilValueForKey:(NSString *)key {
+    if ([key isEqualToString:@"isValid"]) {
+        [self setValue:@NO forKey:@"isValid"];
+    } else {
+        [super setNilValueForKey:key];
+    }
+}
+
+
+#pragma mark - Getters
+
+
+
 
 #pragma mark - NSCoding methods
 - (id)initWithCoder:(NSCoder *)coder;{

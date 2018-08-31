@@ -10,6 +10,7 @@
 
 // Uses documents folder in each app
 - (void)importNewRingtonesFromApps:(NSArray *)apps;
+- (void)importNewRingtonesFromSubfoldersInApps:(NSDictionary *)apps;
 
 - (BOOL)_shouldImportRingtones;
 

@@ -2,13 +2,13 @@
 
 #import "JFTHCommonHeaders.h"
 #import "JFTHiTunesRingtoneData.h"
-#import "JFTHRingtone.h"
 #import "FileHash.h"
 
 NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/ToneHelper/ToneHelperData.plist";
 
 @interface JFTHRingtoneDataController () {
     NSMutableSet<JFTHRingtone *> *_importedRingtonesSet;
+    // change to regular nsdict? remove ringtone class.
     
     HBPreferences *preferences;
 }
@@ -21,27 +21,23 @@ extern NSString *const HBPreferencesDidChangeNotification;
 
 #pragma mark - Init methods
 - (instancetype)init {
-    DDLogWarn(@"{\"Preferences\":\"Initializing222\"}");
     if (self = [super init]) {
-        if (!preferences) {
-            preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
-            DDLogWarn(@"{\"Preferences\":\"Initializing preferences in datacontroller.\"}");
-        }
-        
-        [self _loadImportedRingtones];
+        preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
+        DDLogDebug(@"{\"Preferences\":\"Initializing preferences in datacontroller.\"}");
+        [preferences registerObject:&_ringtones default:[NSMutableArray array] forKey:@"Ringtones"];
         
         // if plist exists, migrate settings from old version!
         NSFileManager *localFileManager = [[NSFileManager alloc] init];
         if ([localFileManager fileExistsAtPath:TONEHELPERDATA_PLIST_PATH]) {
             DDLogWarn(@"{\"First run\":\"Tweak plist exists, run firstrun again and migrate settings\"}");
-            [self migratePlistData];
+            [self _migratePlistData];
         }
         DDLogInfo(@"{\"General\":\"Initialized data controller\"}");
     }
     return self;
 }
 
-- (void)migratePlistData { // TODO: Add check so we dont get duplicates
+- (void)_migratePlistData { // TODO: Add check so we dont get duplicates
     DDLogInfo(@"{\"Plist Migration\":\"Migrating plist data to preferences\"}");
     NSError *readError;
     NSData *plistData = [NSData dataWithContentsOfFile:TONEHELPERDATA_PLIST_PATH options:0 error:&readError];
@@ -90,43 +86,27 @@ extern NSString *const HBPreferencesDidChangeNotification;
 
 }
 #pragma mark - Imported ringtones array data handling
-- (void)_loadImportedRingtones {
-    DDLogInfo(@"{\"Preferences\":\"Start loading ringtones from preferences\"}");
+- (void)_saveRingtonesData {
+    DDLogDebug(@"{\"Preferences\":\"Saving ringtones to preferences\"}");
     
-    // Read ringtones array from preferences
-    NSData *importedRingtonesData = [preferences objectForKey:@"Ringtones" default:nil];
-    _importedRingtonesSet = nil;
-    
-    if (importedRingtonesData) {
-        DDLogDebug(@"{\"Preferences\":\"Unarchiving ringtone data\"}");
-        NSSet *ringtones = [NSKeyedUnarchiver unarchiveObjectWithData:importedRingtonesData];
-        if (ringtones) {
-            DDLogDebug(@"{\"Preferences\":\"Loaded and unarchived ringtone data: %@\"}", ringtones);
-            _importedRingtonesSet = [[NSMutableSet alloc] initWithSet:ringtones];
-            return;
-        }
-    }
-    DDLogDebug(@"{\"Preferences\":\"No ringtone data found. Creating new...\"}");
-    _importedRingtonesSet = [NSMutableSet set];
-}
-- (void)_saveImportedRingtones {
-    DDLogInfo(@"{\"Preferences\":\"Saving ringtones to preferences\"}");
-    
-    [preferences setObject:[NSKeyedArchiver archivedDataWithRootObject:_importedRingtonesSet] forKey:@"Ringtones"];
+    [preferences setObject:self.ringtonesData forKey:@"Ringtones"];
     [preferences synchronize];
 }
 
 #pragma mark - Add/Remove ringtones
 - (void)addRingtoneWithName:(NSString *)name
+             toneIdentifier:(NSString *)toneIdentifier
                    filePath:(NSString *)filePath
+                        md5:(NSString *)md5
+                  totalTime:(long)totalTime
                importedFrom:(NSString *)bundleID {
     // Ringtone needs to have been copied before calling this
     // create ringtone object
-    JFTHRingtone *newtone = [[JFTHRingtone alloc] initWithName:name
-                                                      filePath:filePath
-                                                      bundleID:bundleID];
-    
-    [self addRingtone:newtone];
+    NSDictionary *tone = @{
+                @"name":name,
+                @"toneIdentifier":toneIdentifier,
+                
+                           }
 }
 - (void)addRingtone:(JFTHRingtone *)newtone {
     DDLogDebug(@"{\"Preferences:\":\"Adding ringtone to tweak data: %@\"}", newtone);
@@ -152,6 +132,8 @@ extern NSString *const HBPreferencesDidChangeNotification;
     DDLogVerbose(@"{\"Ringtone info\":\"Currently imported tones: %@\"}", _importedRingtonesSet);
 }
 #pragma mark - Ringtone checks
+
+
 - (BOOL)isImportedRingtoneWithName:(NSString *)name {
     NSArray *names = [_importedRingtonesSet valueForKey:@"name"];
     

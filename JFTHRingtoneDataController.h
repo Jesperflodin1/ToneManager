@@ -4,14 +4,13 @@
 
 @class JFTHRingtone;
 
-@interface JFTHRingtoneDataController : NSObject {
+@interface JFTHRingtoneDataController : NSObject
 
-}
+@property (nonatomic, copy) NSMutableArray *ringtones;
 
-- (void)migratePlistData;
+- (void)_migratePlistData;
 
-- (void)_loadImportedRingtones;
-- (void)_saveImportedRingtones;
+- (void)_saveRingtonesData;
 
 - (void)addRingtoneWithName:(NSString *)name
                    filePath:(NSString *)filePath

@@ -2,7 +2,6 @@
 #import "JFTHiOSHeaders.h"
 #import "JFTHRingtoneImporter.h"
 #import "JFTHConstants.h"
-#import "VTPG_Common.h"
 
 
 #import <version.h>
@@ -12,19 +11,7 @@
 BOOL kEnabled;
 BOOL kDebugLogging;
 
-/* TLToneManager:
- -(BOOL)toneWithIdentifierIsValid:(id)arg1 ;
- does identifier arg1 exist? (is it imported?)
- 
- -(void)removeImportedToneWithIdentifier:(id)arg1 ;
- remove tone with identifier
- 
--(void)importTone:(NSData *)data metadata:(NSDictionary *)dict completionBlock:(void (^)(BOOL success, NSString *toneIdentifier))completionBlock
- data: (NSData) ringtone data from file
- dict: (NSMutable?Dictionary) keys="Name","Total Time","Purchased"=false,"Protected Content"=false
- block: (code block) receives arguments BOOL success and NSString toneIdentifier
- 
- */
+
 
 
 
@@ -233,16 +220,7 @@ NSSet *_ringtonesImported;
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
         [preferences registerBool:&kDebugLogging default:NO forKey:@"kDebugLogging"];
         [preferences registerBool:&kEnabled default:NO forKey:@"kEnabled"];
-        //[preferences registerBool:&kWriteITunesRingtonePlist default:NO forKey:@"kWriteITunesRingtonePlist"];
-        
-        // TESTING
-        [preferences registerObject:&_ringtonesImported default:[NSSet set] forKey:@"Ringtones"];
-        
-        
-        
-        /*if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.Preferences"]) {
-            [preferences registerPreferenceChangeBlock:(HBPreferencesValueChangeCallback)updateRingtonePlist forKey:@"kWriteITunesRingtonePlist"];
-        }*/
+
 
         if (kDebugLogging) {
             
