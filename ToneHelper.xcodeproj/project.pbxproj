@@ -20,6 +20,7 @@
 		2459E8AE21312CC100E3EE1A /* JFTHRingtone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2459E8AD21312CC100E3EE1A /* JFTHRingtone.m */; };
 		2459E8B421315CF500E3EE1A /* JFTHiTunesRingtoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2459E8B321315CF500E3EE1A /* JFTHiTunesRingtoneData.m */; };
 		2459E8B82131DAA700E3EE1A /* JFTHConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2459E8B72131DAA700E3EE1A /* JFTHConstants.m */; };
+		246822362139487200C02DE5 /* VTPG_Common.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246822352139487200C02DE5 /* VTPG_Common.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		2459E8B52131CE0F00E3EE1A /* JFTHiOSHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFTHiOSHeaders.h; sourceTree = SOURCE_ROOT; };
 		2459E8B62131DAA700E3EE1A /* JFTHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFTHConstants.h; sourceTree = SOURCE_ROOT; };
 		2459E8B72131DAA700E3EE1A /* JFTHConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFTHConstants.m; sourceTree = SOURCE_ROOT; };
+		246822352139487200C02DE5 /* VTPG_Common.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VTPG_Common.mm; sourceTree = SOURCE_ROOT; };
 		24F9A79C2134080E008335D2 /* JFTHCommonHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTHCommonHeaders.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 				2459E8AC21312CC100E3EE1A /* JFTHRingtone.h */,
 				2459E8AD21312CC100E3EE1A /* JFTHRingtone.m */,
 				241EC993212EBFB900476FFD /* JFTHRingtoneImporter.h */,
+				246822352139487200C02DE5 /* VTPG_Common.mm */,
 				241EC991212EBFB900476FFD /* JFTHRingtoneImporter.m */,
 				241EC98F212EBFB900476FFD /* ToneHelper.plist */,
 				241EC98E212EBFB900476FFD /* Tweak.xm */,
@@ -182,6 +185,7 @@
 				241EC99C212EBFBA00476FFD /* JFTHRingtoneDataController.m in Sources */,
 				2459E8B421315CF500E3EE1A /* JFTHiTunesRingtoneData.m in Sources */,
 				2459E8B82131DAA700E3EE1A /* JFTHConstants.m in Sources */,
+				246822362139487200C02DE5 /* VTPG_Common.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

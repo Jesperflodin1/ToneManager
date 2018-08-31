@@ -2,6 +2,8 @@
 #import "JFTHiOSHeaders.h"
 #import "JFTHRingtoneImporter.h"
 #import "JFTHConstants.h"
+#import "VTPG_Common.h"
+
 
 #import <version.h>
 // TODO: Add ringtone maker (or applist)
@@ -17,10 +19,10 @@ BOOL kDebugLogging;
  -(void)removeImportedToneWithIdentifier:(id)arg1 ;
  remove tone with identifier
  
- -(void)importTone:(id)arg1 metadata:(id)arg2 completionBlock:(BLOCK)arg3 ;
-arg1 (NSData) ringtone
-arg2 (NSMutable?Dictionary) keys="Name","Total Time","Purchased"=false,"Protected Content"=false
-arg3 (code block) receives arguments? probably toneidentifier that TLToneManager set for the imported tone.
+-(void)importTone:(NSData *)data metadata:(NSDictionary *)dict completionBlock:(void (^)(BOOL success, NSString *toneIdentifier))completionBlock
+ data: (NSData) ringtone data from file
+ dict: (NSMutable?Dictionary) keys="Name","Total Time","Purchased"=false,"Protected Content"=false
+ block: (code block) receives arguments BOOL success and NSString toneIdentifier
  
  */
 
@@ -100,19 +102,29 @@ HBPreferences *preferences;
 #pragma mark - TLToneManager IOS 11
 %hook TLToneManager
 
- -(void)importTone:(id)arg1 metadata:(id)arg2 completionBlock:(id)arg3block {
+ -(void)importTone:(NSData *)data metadata:(NSDictionary *)dict completionBlock:(void (^)(BOOL success, NSString *toneIdentifier))arg3block {
      DDLogError(@"importTone called! ");
-     DDLogError(@"arg1(NSDATA?): %@",[arg1 class]);
-     DDLogError(@"arg2(NSDictionary?) %@",arg2);
+     DDLogError(@"arg1(NSDATA?): %@",[data class]);
+     DDLogError(@"arg2(NSDictionary?) %@",dict);
      DDLogError(@"arg3(__Block): %@",arg3block);
      
-     void (^myBlock)() = ^() {
+     void (^myBlock)(BOOL success, NSString *toneIdentifier) =^(BOOL success, NSString *toneIdentifier) {
+        // if (success) {
+             DDLogError(@"MY BLOCK WAS CALLED OMG OMG !!");
+             DDLogError(@"MY BLOCK param1: %d",success);
+             DDLogError(@"MY BLOCK param2: %@",toneIdentifier);
+             NSLog(@"MY BLOCK param1: %d",success);
+             NSLog(@"MY BLOCK param2: %@",toneIdentifier);
+         //}
+         
+         
+         //NSLog(@"MY BLOCK param3: %@",[(id)i class]);
          DDLogError(@"MY BLOCK WAS CALLED OMG OMG !!");
-         //DDLogError(@"MY BLOCK param1: %@ param2: %@",[(id)p1 class],[(id)p2 class]);
          //DDLogError(@"MY BLOCK param1: %@ param2: %@",p1,p2);
-         DDLogError(@"MY BLOCK returns: %@",arg3block());
+         DDLogError(@"CALLING ARG3BLOCK");
+         //arg3block(success,toneIdentifier);
      };
-     %orig(arg1,arg2,myBlock);
+     %orig(data,dict,myBlock);
      
 }
 %end
