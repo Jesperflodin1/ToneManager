@@ -5,13 +5,8 @@ then
     echo "Removing leftover files from previous version."
     # Try to move plist if exists from old folder if exists
 	echo "file found. Moving to new path."
-	mv "/var/mobile/Library/Application Support/ToneHelper/ToneHelperData.plist" /var/mobile/Library/ToneHelper/
+	mv "/var/mobile/Library/Application Support/ToneHelper/ToneHelperData.plist" "/var/mobile/Library/ToneHelper/"
 	rm -r "/var/mobile/Library/Application Support/ToneHelper/"
-    echo "Fixing permissions of ToneHelper data files"
 fi
-
-# make sure its owned by mobile:mobile
-chown -R mobile:mobile /var/mobile/Library/ToneHelper
-chmod -R 777 /var/mobile/Library/ToneHelper
 
 exit 0

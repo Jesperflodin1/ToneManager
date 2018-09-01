@@ -43,14 +43,14 @@ HBPreferences *preferences;
     DDLogInfo(@"{\"Hooks\":\"in preferences, Enabled\"}");
     //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //We're in preferences app, lets look for new ringtones to import
-        JFTHRingtoneScanner *scanner = [JFTHRingtoneImporter new];
+        JFTHRingtoneScanner *scanner = [JFTHRingtoneScanner new];
         
         //Apps to look for ringtones in (in Documents folder)
-        NSDictionary *apps = @[
+        NSDictionary *apps = @{
                         @"com.908.AudikoFree":@"Documents",
                         @"com.zedge.Zedge":@"Documents",
                         @"com.908.Audiko":@"Documents"
-                        ];
+                        };
         
         [scanner importNewRingtonesFromSubfoldersInApps:apps];
         [apps release];
@@ -95,7 +95,7 @@ extern NSString *const HBPreferencesDidChangeNotification;
 
         //if (kDebugLogging) {
             LogglyFields *logglyFields = [[LogglyFields alloc] init];
-            [logglyFields setAppversion:@"0.4.0"];
+            [logglyFields setAppversion:@"0.4.2"];
             
             [logglyFields setUserid:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
             
@@ -113,11 +113,11 @@ extern NSString *const HBPreferencesDidChangeNotification;
         
         [preferences release];
         
-        DDLogInfo(@"{\"Constructor\":\"Trying to initialize ToneHelper in bundleid: %@\"}",[[NSBundle mainBundle] bundleIdentifier]);
+        /*DDLogInfo(@"{\"Constructor\":\"Trying to initialize ToneHelper in bundleid: %@\"}",[[NSBundle mainBundle] bundleIdentifier]);
         if (!NSClassFromString(@"TLToneManager")) {
             DDLogInfo(@"{\"Constructor\":\"TLToneManager missing, loading framework\"}");
             dlopen("/System/Library/PrivateFrameworks/ToneLibrary.framework/ToneLibrary", RTLD_LAZY);
-        }
+        }*/
         %init(IOS11);
         /*if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_11_0) {
             DDLogInfo(@"{\"Constructor\":\"Init IOS 11\"}");

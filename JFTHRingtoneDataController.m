@@ -1,8 +1,9 @@
 #import "JFTHRingtoneDataController.h"
 #import <Cephei/HBPreferences.h>
 #import "JFTHCommonHeaders.h"
+//#import "FileHash.h"
 
-NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/ToneHelper/ToneHelperData.plist";
+//NSString * const TONEHELPERDATA_PLIST_PATH = @"/var/mobile/Library/ToneHelper/ToneHelperData.plist";
 
 @interface JFTHRingtoneDataController () {
     HBPreferences *preferences;
@@ -19,10 +20,12 @@ extern NSString *const HBPreferencesDidChangeNotification;
     if (self = [super init]) {
         preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
         DDLogDebug(@"{\"Preferences\":\"Initializing preferences in datacontroller.\"}");
-        [preferences registerObject:&_ringtones default:[NSMutableSet set] forKey:@"Ringtones"];
+        [preferences registerObject:&_ringtones default:[NSMutableArray array] forKey:@"Ringtones"];
         
-        //check if all toneidentifiers are valid, if not: remove from set
+        _toneManager = nil;
         
+        // TODO: check if all toneidentifiers are valid, if not: remove from set
+        // TODO: Migration
         // if plist exists, migrate settings from old version!
         /*NSFileManager *localFileManager = [[NSFileManager alloc] init];
         if ([localFileManager fileExistsAtPath:TONEHELPERDATA_PLIST_PATH]) {
@@ -38,27 +41,31 @@ extern NSString *const HBPreferencesDidChangeNotification;
 - (void)_addRingtone:(NSDictionary *)newTone {
     @synchronized(self) {
         DDLogDebug(@"{\"Preferences:\":\"Adding ringtone to tweak data: %@\"}", newTone);
-        NSMutableSet *allTones = [_ringtones mutableCopy];
+        NSMutableArray *allTones = [_ringtones mutableCopy];
         [allTones addObject:newTone];
         DDLogDebug(@"{\"Preferences\":\"Saving ringtones to preferences\"}");
         [preferences setObject:allTones forKey:@"Ringtones"];
         [preferences synchronize];
     }
 }
-- (void)importTone:(NSString *)filePath fromBundleID:(NSString *)bundleID {
+- (void)importTone:(NSString *)filePath fromBundleID:(NSString *)bundleID toneName:( NSString * _Nullable )toneName {
     DDLogInfo(@"{\"Ringtone Import\":\"Trying to import, current tones: %@\"}",_ringtones);
     if (self.toneManager) {
         NSString *fileName = [[filePath lastPathComponent] stringByDeletingPathExtension];
+        NSString *name;
+        if (toneName)
+            name = toneName;
+        else
+            name = [JFTHRingtoneDataController createNameFromFile:fileName];
         
         NSDictionary *currentTone = @{
-                 @"Name":[JFTHRingtoneDataController createNameFromFile:fileName],
+                 @"Name":name,
                  @"Total Time":[NSNumber numberWithLong:[JFTHRingtoneDataController totalTimeForRingtoneFilePath:filePath]],
                  @"Purchased":@NO,
                  @"Protected Content":@NO
                  };
         NSMutableDictionary *localMetaData = [[NSMutableDictionary alloc] initWithDictionary:currentTone];
         [localMetaData setObject:filePath forKey:@"Filepath"];
-        [localMetaData setObject:[JFTHRingtoneDataController md5ForRingtoneFilePath:filePath] forKey:@"md5"];
         [localMetaData setObject:bundleID forKey:@"Imported From"];
         
         NSData *toneData = [NSData dataWithContentsOfFile:filePath];
@@ -88,7 +95,7 @@ extern NSString *const HBPreferencesDidChangeNotification;
     // Find ringtone
     @synchronized(self) {
         NSDictionary *toneToDelete;
-        NSMutableSet *allTones = [_ringtones mutableCopy];
+        NSMutableArray *allTones = [_ringtones mutableCopy];
         for (NSDictionary *curTone in allTones) {
             if ([[curTone objectForKey:@"Identifier"] isEqualToString:toneIdentifier]) {
                 
@@ -108,32 +115,22 @@ extern NSString *const HBPreferencesDidChangeNotification;
 
 - (BOOL)isImportedRingtoneWithName:(NSString *)name {
     @synchronized(self) {
-    NSSet *names = [self.ringtones valueForKey:@"Name"];
-    
-    DDLogVerbose(@"{\"Ringtone Checks\":\"Got ringtone list: %@\"}", names);
-    DDLogVerbose(@"{\"Ringtone Checks\":\"Comparing with: %@ result:%d\"}", name, [names containsObject:name]);
-    
-    return [names containsObject:name];
+        NSSet *names = [NSSet setWithArray:[self.ringtones valueForKey:@"Name"]];
+        
+        DDLogVerbose(@"{\"Ringtone Checks\":\"Got ringtone list: %@\"}", names);
+        DDLogVerbose(@"{\"Ringtone Checks\":\"Comparing with: %@ result:%d\"}", name, [names containsObject:name]);
+        
+        return [names containsObject:name];
     }
 }
 - (BOOL)isImportedRingtoneWithFilePath:(NSString *)filePath {
     @synchronized(self) {
-        NSSet *filepaths = [self.ringtones valueForKey:@"Filepath"];
+        NSSet *filepaths = [NSSet setWithArray:[self.ringtones valueForKey:@"Filepath"]];
         
         DDLogVerbose(@"{\"Ringtone Checks\":\"Got ringtone list: %@\"}", filepaths);
         DDLogVerbose(@"{\"Ringtone Checks\":\"Comparing with: %@ result:%d\"}", filePath, [filepaths containsObject:filePath]);
         
         return [filepaths containsObject:filePath];
-    }
-}
-- (BOOL)isImportedRingtoneWithHash:(NSString *)hash { //TODO: See JFTHRingtone todo about md5
-    @synchronized(self) {
-        NSSet *hashes = [self.ringtones valueForKey:@"md5"];
-    
-        DDLogVerbose(@"{\"Ringtone Checks\":\"Got ringtone md5 list: %@\"}", hashes);
-        DDLogVerbose(@"{\"Ringtone Checks\":\"Comparing with: %@ resukt:%d\"}", hash, [hashes containsObject:hash]);
-        
-        return [hashes containsObject:hash];
     }
 }
 
@@ -185,9 +182,6 @@ extern NSString *const HBPreferencesDidChangeNotification;
 + (long)totalTimeForRingtoneFilePath:(NSString *)filePath {
     // TODO: CODE
     return 0;
-}
-+ (NSString *)md5ForRingtoneFilePath:(NSString *)filePath {
-    return [FileHash md5HashOfFileAtPath:filePath];
 }
 
 + (NSString *)createNameFromFile:(NSString *)file {
