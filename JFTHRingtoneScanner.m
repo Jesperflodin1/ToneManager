@@ -2,7 +2,6 @@
 #import "JFTHRingtoneDataController.h"
 #import "JFTHCommonHeaders.h"
 #import "JFTHiOSHeaders.h"
-#import "JFTHRingtone.h"
 
 //For md5 calculations
 #include "FileHash.h"
@@ -30,11 +29,9 @@ extern NSString *const HBPreferencesDidChangeNotification;
             preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
             DDLogWarn(@"{\"Preferences\":\"Initializing preferences in importer.\"}");
         }
-        _ringtoneDataController = [[JFTHRingtoneDataController alloc] init];
-        
-        _ringtonesToImport = [[NSMutableDictionary alloc] init];
+        _ringtoneDataController = [JFTHRingtoneDataController new];
+        _ringtonesToImport = [NSMutableDictionary dictionary];
         _shouldImportRingtones = NO;
-
         self.importedCount = 0;
     }
     return self;
@@ -42,17 +39,18 @@ extern NSString *const HBPreferencesDidChangeNotification;
 
 #pragma mark - Search app method
 - (void)importNewRingtonesFromSubfoldersInApps:(NSDictionary *)apps {
-    
+    for (NSString *bundleID in apps) {
+        [self _getNewRingtoneFilesFromApp:bundleID withSubfolder:[apps objectForKey:bundleID]];
+    }
 }
-- (void)getRingtoneFilesFromApp:(NSString *)bundleID {
+- (void)_getNewRingtoneFilesFromApp:(NSString *)bundleID withSubfolder:(NSString *)subfolder {
     NSFileManager *localFileManager = [[NSFileManager alloc] init];
     NSString *appDirectory;
 
     FBApplicationInfo *appInfo = [LSApplicationProxy applicationProxyForIdentifier:bundleID];
-    appDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:@"Documents"];
+    appDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:subfolder];
     DDLogInfo(@"{\"Ringtone Import\":\"listing app folder for bundle: %@\"}",bundleID);
 
-    
     NSArray *appDirFiles = [localFileManager contentsOfDirectoryAtPath:appDirectory error:nil];
     
     DDLogInfo(@"{\"Ringtone Import\":\"Found these files: %@\"}", appDirFiles);
@@ -71,20 +69,15 @@ extern NSString *const HBPreferencesDidChangeNotification;
     for (NSString *file in appDirFiles) {
         if ([[file pathExtension] isEqualToString: @"m4r"]) {
             
-            NSString *baseName = [JFTHRingtone createNameFromFile:file];
+            //NSString *baseName = [JFTHRingtoneDataController createNameFromFile:file];
             // Check if ringtone already exists
-            if ([_ringtoneDataController isImportedRingtoneWithName:baseName]) {
+            if ([_ringtoneDataController isImportedRingtoneWithFilePath:[appDirectory stringByAppendingPathComponent:file]]) {
                 continue;
             }
             
-            // Does this name already exist in itunes plist?
-            if ([_ringtoneDataController isITunesRingtoneWithName:baseName]) {
-                DDLogWarn(@"{\"Ringtone Import\":\"Ringtone is already in itunes plist, name: %@\"}", baseName);
+            /*if ([_ringtoneDataController isImportedRingtoneWithHash:[FileHash md5HashOfFileAtPath:[appDirectory stringByAppendingPathComponent:file]]]) {
                 continue;
-            }
-            if ([_ringtoneDataController isImportedRingtoneWithHash:[FileHash md5HashOfFileAtPath:[appDirectory stringByAppendingPathComponent:file]]]) {
-                continue;
-            }
+            }*/
             DDLogInfo(@"{\"Ringtone Import\":\"Adding ringtone to be imported: %@\"}", file);
             [m4rFiles addObject:file];
         }

@@ -1,24 +1,29 @@
 
 #import <Foundation/Foundation.h>
-#import <Cephei/HBPreferences.h>
 
-@class JFTHRingtone;
+#import "iOSHeaders/TLToneManager.h"
 
-@interface JFTHRingtoneDataController : NSObject
+@interface JFTHRingtoneDataController : NSObject {
+    TLToneManager *_toneManager;
+}
 
-@property (nonatomic, copy) NSMutableArray *ringtones;
+@property (nonatomic, readonly) TLToneManager *toneManager;
+@property (nonatomic, copy) NSMutableSet<NSDictionary *> *ringtones;
 
-- (void)_migratePlistData;
-
-- (void)_saveRingtonesData;
-
-- (void)addRingtoneWithName:(NSString *)name
-                   filePath:(NSString *)filePath
-               importedFrom:(NSString *)bundleID;
-- (void)addRingtone:(JFTHRingtone *)newtone;
+- (void)_addRingtone:(NSDictionary *)newTone;
 - (void)deleteRingtoneWithIdentifier:(NSString *)toneIdentifier;
 
+- (void)importTone:(NSString *)filePath fromBundleID:(NSString *)bundleID;
+
 - (BOOL)isImportedRingtoneWithName:(NSString *)name;
+- (BOOL)isImportedRingtoneWithFilePath:(NSString *)filePath;
 - (BOOL)isImportedRingtoneWithHash:(NSString *)hash;
+
++ (Class __nullable)toneManagerClass;
++ (BOOL)canImport;
+
++ (NSString *)createNameFromFile:(NSString *)file;
++ (NSString *)md5ForRingtoneFilePath:(NSString *)filePath;
++ (long)totalTimeForRingtoneFilePath:(NSString *)filePath;
 
 @end

@@ -6,11 +6,13 @@
 }
 
 @property (nonatomic) int importedCount;
-@property (nonatomic, retain) JFTHRingtoneDataController *ringtoneDataController;
+@property (nonatomic) JFTHRingtoneDataController *ringtoneDataController;
 
 // Uses documents folder in each app
-- (void)importNewRingtonesFromApps:(NSArray *)apps;
+
 - (void)importNewRingtonesFromSubfoldersInApps:(NSDictionary *)apps;
+
+- (void)_getNewRingtoneFilesFromApp:(NSString *)bundleID withSubfolder:(NSString *)subfolder;
 
 - (BOOL)_shouldImportRingtones;
 
