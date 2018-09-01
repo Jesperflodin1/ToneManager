@@ -19,11 +19,9 @@ extern NSString *const HBPreferencesDidChangeNotification;
 #pragma mark - Init methods
 - (instancetype)init {
     if (self = [super init]) {
-        DDLogInfo(@"{\"Ringtone Import\":\"Init\"}");
-        if (!preferences) {
-            preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
-            DDLogDebug(@"{\"Preferences\":\"Initializing preferences in importer.\"}");
-        }
+        DDLogDebug(@"{\"Ringtone Import\":\"Init\"}");
+        preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
+        DDLogVerbose(@"{\"Preferences\":\"Initializing preferences in importer.\"}");
         _ringtoneDataController = [JFTHRingtoneDataController new];
         _ringtonesToImport = [NSMutableDictionary dictionary];
     }
@@ -66,7 +64,7 @@ extern NSString *const HBPreferencesDidChangeNotification;
     for (NSString *file in appDirFiles) {
         if ([[file pathExtension] isEqualToString: @"m4r"]) {
             // Check if ringtone already exists
-            // TODO: If filename equals, check if bundleid equals/path equals. If filename equals but not filepath == different file (probably). Append something random to name and import
+            // TODO: If filename equals, check if bundleid equals/path equals. If filename equals but not filepath == different file (probably). Append something random (or appname?) to name and import
             if ([_ringtoneDataController isImportedRingtoneWithFilePath:[appDirectory stringByAppendingPathComponent:file]]) {
                 DDLogDebug(@"{\"Ringtone Import\":\"File already imported based on path: %@\"}",file);
                 continue;
