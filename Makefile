@@ -15,7 +15,7 @@ ToneHelper_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 
 Tweak.xm_CFLAGS = -fno-objc-arc
 
-ToneHelper_FRAMEWORKS = MobileCoreServices
+ToneHelper_FRAMEWORKS = MobileCoreServices AVFoundation
 ToneHelper_PRIVATEFRAMEWORKS = ToneLibrary FrontBoard
 ToneHelper_EXTRA_FRAMEWORKS += cephei
 

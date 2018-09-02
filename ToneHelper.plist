@@ -2,6 +2,8 @@
 	Filter = {
 		Mode = Any;
 		Bundles = (
+			"com.apple.springboard",
+			"com.908.AudikoFree",
 			"com.apple.Preferences",
 		);
 	};

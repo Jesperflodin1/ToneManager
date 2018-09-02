@@ -28,3 +28,6 @@
  - (NSString *)displayName;
  - (id)initWithApplicationProxy:(id)arg1;
  @end
+@interface SpringBoard : UIApplication
+@end
+

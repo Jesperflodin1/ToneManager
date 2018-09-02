@@ -8,7 +8,9 @@
 }
 
 @property (nonatomic, readonly) TLToneManager *toneManager;
-@property (nonatomic, copy) NSMutableArray<NSDictionary *> *ringtones;
+@property (nonatomic) NSMutableArray<NSDictionary *> *ringtones;
+
+- (NSMutableArray *)ringtones;
 
 - (void)_addRingtone:(NSDictionary *)newTone;
 - (void)deleteRingtoneWithIdentifier:(NSString *)toneIdentifier;
@@ -18,11 +20,13 @@
 - (BOOL)isImportedRingtoneWithName:(NSString *)name;
 - (BOOL)isImportedRingtoneWithFilePath:(NSString *)filePath;
 
+- (void)verifyAllToneIdentifiers;
+
 + (Class __nullable)toneManagerClass;
 - (TLToneManager *)toneManager;
 + (BOOL)canImport;
 
 + (NSString *)createNameFromFile:(NSString *)file;
-+ (long)totalTimeForRingtoneFilePath:(NSString *)filePath;
++ (int)totalTimeForRingtoneFilePath:(NSString *)filePath;
 
 @end
