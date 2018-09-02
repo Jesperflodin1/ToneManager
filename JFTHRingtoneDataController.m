@@ -48,6 +48,7 @@
 
 #pragma mark - Adding ringtone
 - (void)_addRingtone:(NSDictionary *)newTone {
+    DDLogVerbose(@"{\"Ringtone Import\":\"addRingtone called, newTone=%@\"}",newTone);
     if ([newTone objectForKey:@"Identifier"]) { // Existing identifier is required for import
         @synchronized(self) {
             DDLogDebug(@"{\"Preferences:\":\"Adding ringtone to tweak data: %@\"}", newTone);
@@ -71,12 +72,12 @@
         else
             name = [JFTHRingtoneDataController createNameFromFile:fileName];
         
-        NSDictionary *currentTone = @{
-                 @"Name":name,
-                 @"Total Time":[NSNumber numberWithInt:[JFTHRingtoneDataController totalTimeForRingtoneFilePath:filePath]],
-                 @"Purchased":@NO,
-                 @"Protected Content":@NO
-                 };
+        NSMutableDictionary *currentTone = [NSMutableDictionary dictionary];
+        [currentTone setObject:name forKey:@"Name"];
+        [currentTone setObject:[NSNumber numberWithInt:[JFTHRingtoneDataController totalTimeForRingtoneFilePath:filePath]] forKey:@"Total Time"];
+        [currentTone setObject:@NO forKey:@"Purchased"];
+        [currentTone setObject:@NO forKey:@"Protected Content"];
+        
         NSMutableDictionary *localMetaData = [[NSMutableDictionary alloc] initWithDictionary:currentTone];
         [localMetaData setObject:filePath forKey:@"Filepath"];
         [localMetaData setObject:bundleID forKey:@"Imported From"];
@@ -84,6 +85,7 @@
         NSData *toneData = [NSData dataWithContentsOfFile:filePath];
         
         __block NSMutableDictionary *metaData = [localMetaData mutableCopy];
+        
         void (^importCompleteBlock)(BOOL success, NSString *toneIdentifier) =^(BOOL success, NSString *toneIdentifier) {
             if (success && (toneIdentifier)) {
                 DDLogWarn(@"{\"Ringtone Import\":\"Ringtone import success in completionblock, got identifier: %@\"}", toneIdentifier);
@@ -95,7 +97,9 @@
             }
         };
         DDLogInfo(@"{\"Ringtone Import\":\"Calling import for tone with metadata: %@\"}", currentTone);
-        [self.toneManager importTone:toneData metadata:currentTone completionBlock:importCompleteBlock];
+        @synchronized(self) {
+            [self.toneManager importTone:toneData metadata:currentTone completionBlock:importCompleteBlock];
+        }
     
     } else {
         DDLogWarn(@"{\"Ringtone Import\":\"Ringtone import failed because TLToneManager does not exist...\"}");

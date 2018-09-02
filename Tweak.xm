@@ -53,7 +53,8 @@ HBPreferences *preferences;
 %group AudikoLiteHook
 %hook AppDelegate
 
-- (_Bool)application:(id)arg1 didFinishLaunchingWithOptions:(id)arg2 {
+- (void)applicationDidBecomeActive:(id)arg1 {
+    %orig;
     DDLogVerbose(@"{\"Hooks\":\"didFinishLaunching called, registering for notifications\"}");
     /*UIApplication *app = [UIApplication sharedApplication];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -66,7 +67,6 @@ HBPreferences *preferences;
                                                object:app];
     [app release];*/
     [self performSelector:@selector(importAllRingtones)];
-    return %orig;
 }
 
 %new
