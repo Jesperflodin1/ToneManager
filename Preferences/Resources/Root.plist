@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>headerCellClass</key>
+			<string>HBPackageNameHeaderCell</string>
+			<key>icon</key>
+			<string>icon.png</string>
+			<key>packageIdentifier</key>
+			<string>fi.flodin.tonemanager</string>
+			<key>titleColor</key>
+			<string>#688500</string>
+			<key>subtitleColor</key>
+			<string>#aaaaaa</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Main settings</string>
+			<key>footerText</key>
+			<string>Imports ringtones from Audiko and/or Zedge App if installed.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>fi.flodin.tonemanager</string>
+			<key>key</key>
+			<string>kEnabled</string>
+			<key>PostNotifcation</key>
+			<string>fi.flodin.tonemanager/PrefsReload</string>
+			<key>label</key>
+			<string>Enable</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+            <key>label</key>
+            <string>Imported Ringtones</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>detail</key>
+			<string>JFTHRingtoneListController</string>
+			<key>isController</key>
+			<true/>
+			<key>label</key>
+			<string>List imported Ringtones</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Respring</string>
+			<key>footerText</key>
+			<string>To apply changes please respring.</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBTintedTableCell</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>action</key>
+			<string>respring:</string>
+			<key>label</key>
+			<string>Respring</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Advanced Settings</string>
+			<key>footerText</key>
+			<string>Makes imported ringtones work in non-jailbroken mode by writing metadata to Ringtones.plist required for iOS to find ringtones imported by this tweak.
+NOTE: This option enables modification of Ringtones.plist in /var/mobile/Media/iTunes_Control/iTunes/Ringtones.plist.
+Requires Respring!</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>fi.flodin.tonemanager</string>
+			<key>key</key>
+			<string>kWriteITunesRingtonePlist</string>
+			<key>PostNotifcation</key>
+			<string>fi.flodin.tonemanager/PrefsReload</string>
+			<key>label</key>
+			<string>Enable in non-jailbroken mode</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Debug Logging</string>
+			<key>footerText</key>
+			<string>Enable to automatically send logs to developer.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>fi.flodin.tonemanager</string>
+			<key>key</key>
+			<string>kDebugLogging</string>
+			<key>PostNotifcation</key>
+			<string>fi.flodin.tonemanager/PrefsReload</string>
+			<key>label</key>
+			<string>Automatically send logs to developer</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Contact info</string>
+			<key>footerText</key>
+			<string>© 2018 Jesper Flodin. Source code licensed under the MIT license.</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBTwitterCell</string>
+			<key>label</key>
+			<string>Jesper Flodin</string>
+			<key>user</key>
+			<string>JesperFlodin</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>tonemanager</string>
+</dict>
+</plist>

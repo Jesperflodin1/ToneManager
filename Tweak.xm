@@ -1,6 +1,6 @@
-#import "JFTHCommonHeaders.h"
-#import "JFTHiOSHeaders.h"
-#import "JFTHRingtoneInstaller.h"
+#import "JFTMCommonHeaders.h"
+#import "JFTMiOSHeaders.h"
+#import "JFTMRingtoneInstaller.h"
 
 #import <version.h>
 // TODO: Add ringtone maker (or applist)
@@ -32,7 +32,7 @@ HBPreferences *preferences;
     }
     DDLogInfo(@"{\"Hooks\":\"importAll called, Enabled\"}");
     //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        JFTHRingtoneScanner *scanner = [JFTHRingtoneScanner new];
+        JFTMRingtoneScanner *scanner = [JFTMRingtoneScanner new];
         
         //Apps to look for ringtones in (in Documents folder)
         NSDictionary *apps = @{
@@ -77,7 +77,7 @@ HBPreferences *preferences;
     }
     DDLogInfo(@"{\"Hooks\":\"importAll called, Enabled\"}");
     //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-    JFTHRingtoneInstaller *installer = [JFTHRingtoneInstaller new];
+    JFTMRingtoneInstaller *installer = [JFTMRingtoneInstaller new];
     
     //Apps to look for ringtones in (in Documents folder)
     /*NSDictionary *apps = @{
@@ -89,6 +89,8 @@ HBPreferences *preferences;
     //[apps release];
     [installer release];
     //});
+    
+    NSLog(@"%@",[NSData dataWithContentsOfFile:@"/var/mobile/Containers/Data/Application/82A20452-426E-4769-9CFE-D689EA9ABC5C/Documents/frog.m4r"]);
 }
 
 %end

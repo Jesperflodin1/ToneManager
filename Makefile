@@ -8,21 +8,21 @@ ARCHS = arm64
 DEBUG = 1
 FINALPACKAGE = 0
 
-TWEAK_NAME = ToneHelper
-ToneHelper_FILES = Tweak.xm $(wildcard *.mm) $(wildcard *.m) $(wildcard CocoaLumberjack/*.m) $(wildcard LogglyLogger/*.m) 
+TWEAK_NAME = ToneManager
+ToneManager_FILES = Tweak.xm $(wildcard *.mm) $(wildcard *.m) $(wildcard CocoaLumberjack/*.m) $(wildcard LogglyLogger/*.m) 
 
-ToneHelper_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
+ToneManager_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 
 Tweak.xm_CFLAGS = -fno-objc-arc
 
-ToneHelper_FRAMEWORKS = MobileCoreServices AVFoundation
-ToneHelper_PRIVATEFRAMEWORKS = ToneLibrary FrontBoard
-ToneHelper_EXTRA_FRAMEWORKS += cephei
+ToneManager_FRAMEWORKS = MobileCoreServices AVFoundation
+ToneManager_PRIVATEFRAMEWORKS = ToneLibrary FrontBoard
+ToneManager_EXTRA_FRAMEWORKS += cephei
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
 
-#SUBPROJECTS += thprefsbundle
+#SUBPROJECTS += Preferences
 include $(THEOS_MAKE_PATH)/aggregate.mk
 
 #after-install::
