@@ -1,18 +1,8 @@
 #import "JFTHRingtoneScanner.h"
 #import "JFTHRingtoneDataController.h"
+#import "JFTHRingtoneInstaller.h"
 #import "JFTHCommonHeaders.h"
 #import "JFTHiOSHeaders.h"
-
-
-extern NSString *const HBPreferencesDidChangeNotification;
-
-@interface JFTHRingtoneScanner () {
-    NSMutableDictionary *_ringtonesToImport;
-    HBPreferences *preferences;
-}
-@property (nonatomic) JFTHRingtoneDataController *ringtoneDataController;
-
-@end
 
 @implementation JFTHRingtoneScanner
 
@@ -20,13 +10,14 @@ extern NSString *const HBPreferencesDidChangeNotification;
 - (instancetype)init {
     if (self = [super init]) {
         DDLogDebug(@"{\"Ringtone Import\":\"Init\"}");
-        preferences = [[HBPreferences alloc] initWithIdentifier:@"fi.flodin.tonehelper"];
-        DDLogVerbose(@"{\"Preferences\":\"Initializing preferences in importer.\"}");
-        _ringtoneDataController = [JFTHRingtoneDataController new];
-        _ringtonesToImport = [NSMutableDictionary dictionary];
     }
     return self;
 }
+
+- (void)dealloc {
+    DDLogDebug(@"{\"Ringtone Import\":\"Deallocating\"}");
+}
+
 
 #pragma mark - Search app methods
 - (void)importNewRingtonesFromSubfoldersInApps:(NSDictionary *)apps {
@@ -34,6 +25,7 @@ extern NSString *const HBPreferencesDidChangeNotification;
         for (NSString *bundleID in apps) {
             [self _getNewRingtoneFilesFromApp:bundleID withSubfolder:[apps objectForKey:bundleID]];
         }
+        [[self installer] scanDone];
     } else
         DDLogError(@"{\"Ringtone Import\":\"Something is wrong, we cant import ringtones. Aborting.\"}");
 }
@@ -63,13 +55,13 @@ extern NSString *const HBPreferencesDidChangeNotification;
     for (NSString *file in appDirFiles) {
         if ([[file pathExtension] isEqualToString: @"m4r"]) {
             // Check if ringtone already exists
-            if ([_ringtoneDataController isImportedRingtoneWithFilePath:[appDirectory stringByAppendingPathComponent:file]]) {
+            if ([[[self installer] dataController] isImportedRingtoneWithFilePath:[appDirectory stringByAppendingPathComponent:file]]) {
                 DDLogDebug(@"{\"Ringtone Import\":\"File already imported based on path: %@\"}",file);
                 continue;
             }
             
             NSString *toneName = [JFTHRingtoneDataController createNameFromFile:[file stringByDeletingPathExtension]];
-            if ([_ringtoneDataController isImportedRingtoneWithName:toneName]) {
+            if ([[[self installer] dataController] isImportedRingtoneWithName:toneName]) {
                 // filename equals but is from another path(=app)
                 DDLogDebug(@"{\"Ringtone Import\":\"Filename exists but is from another app, forcing import: %@\"}",file);
                 
@@ -77,7 +69,12 @@ extern NSString *const HBPreferencesDidChangeNotification;
             }
             
             DDLogInfo(@"{\"Ringtone Import\":\"Adding ringtone to be imported: %@\"}", file);
-            [_ringtoneDataController importTone:[appDirectory stringByAppendingPathComponent:file] fromBundleID:bundleID toneName:toneName];
+            NSMutableDictionary *ringtone = [NSMutableDictionary new];
+            [ringtone setObject:bundleID forKey:@"BundleID"];
+            [ringtone setObject:toneName forKey:@"Name"];
+            [ringtone setObject:[appDirectory stringByAppendingPathComponent:file] forKey:@"FullPath"];
+            [[self installer] addRingtoneToImport:ringtone];
+            //[_ringtoneDataController importTone:[appDirectory stringByAppendingPathComponent:file] fromBundleID:bundleID toneName:toneName];
         }
     }
 }

@@ -3,15 +3,23 @@
 
 #import "iOSHeaders/TLToneManager.h"
 
+@class JFTHRingtoneInstaller;
+
 @interface JFTHRingtoneDataController : NSObject {
     TLToneManager *_toneManager;
 }
 
 @property (nonatomic, readonly) TLToneManager *toneManager;
 @property (nonatomic) NSMutableArray<NSDictionary *> *ringtones;
+@property (nonatomic, weak) JFTHRingtoneInstaller *installer;
+
+@property (nonatomic) NSMutableArray<NSDictionary *> *ringtonesToImport;
 
 - (NSMutableArray *)ringtones;
 
+- (void)startImport;
+- (void)importNextTone;
+- (void)saveMetaData;
 - (void)_addRingtone:(NSDictionary *)newTone;
 - (void)deleteRingtoneWithIdentifier:(NSString *)toneIdentifier;
 

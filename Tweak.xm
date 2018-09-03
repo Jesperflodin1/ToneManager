@@ -1,6 +1,6 @@
 #import "JFTHCommonHeaders.h"
 #import "JFTHiOSHeaders.h"
-#import "JFTHRingtoneScanner.h"
+#import "JFTHRingtoneInstaller.h"
 
 #import <version.h>
 // TODO: Add ringtone maker (or applist)
@@ -77,16 +77,17 @@ HBPreferences *preferences;
     }
     DDLogInfo(@"{\"Hooks\":\"importAll called, Enabled\"}");
     //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-    JFTHRingtoneScanner *scanner = [JFTHRingtoneScanner new];
+    JFTHRingtoneInstaller *installer = [JFTHRingtoneInstaller new];
     
     //Apps to look for ringtones in (in Documents folder)
-    NSDictionary *apps = @{
+    /*NSDictionary *apps = @{
                            @"com.908.AudikoFree":@"Documents"
                            };
     
-    [scanner importNewRingtonesFromSubfoldersInApps:apps];
+    [installer installAllNewRingtonesFromAppsWithSubdirs:apps];*/
+    [installer installRingtone:@"/var/mobile/Containers/Data/Application/21EFB592-D000-4CAB-8190-AD2684B8BFF4/Documents/Stiftelsen - Vart jag än går_24770249.m4r"];
     [apps release];
-    [scanner release];
+    [installer release];
     //});
 }
 

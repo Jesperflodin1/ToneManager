@@ -18,6 +18,7 @@
 		2459E8A8213028D500E3EE1A /* LogglyLogger in Resources */ = {isa = PBXBuildFile; fileRef = 2459E8A7213028D500E3EE1A /* LogglyLogger */; };
 		246822392139704400C02DE5 /* JFTHRingtoneScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822382139704400C02DE5 /* JFTHRingtoneScanner.m */; };
 		246822462139E55500C02DE5 /* JFTHMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822452139E55500C02DE5 /* JFTHMigrator.m */; };
+		2468225F213D0DAF00C02DE5 /* JFTHRingtoneInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2468225E213D0DAF00C02DE5 /* JFTHRingtoneInstaller.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		246822432139DBC600C02DE5 /* TLITunesTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLITunesTone.h; sourceTree = "<group>"; };
 		246822442139E55500C02DE5 /* JFTHMigrator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFTHMigrator.h; sourceTree = SOURCE_ROOT; };
 		246822452139E55500C02DE5 /* JFTHMigrator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFTHMigrator.m; sourceTree = SOURCE_ROOT; };
+		2468225D213D0DAF00C02DE5 /* JFTHRingtoneInstaller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFTHRingtoneInstaller.h; sourceTree = SOURCE_ROOT; };
+		2468225E213D0DAF00C02DE5 /* JFTHRingtoneInstaller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFTHRingtoneInstaller.m; sourceTree = SOURCE_ROOT; };
 		24F9A79C2134080E008335D2 /* JFTHCommonHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTHCommonHeaders.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -85,6 +88,8 @@
 				246822452139E55500C02DE5 /* JFTHMigrator.m */,
 				246822372139704400C02DE5 /* JFTHRingtoneScanner.h */,
 				246822382139704400C02DE5 /* JFTHRingtoneScanner.m */,
+				2468225D213D0DAF00C02DE5 /* JFTHRingtoneInstaller.h */,
+				2468225E213D0DAF00C02DE5 /* JFTHRingtoneInstaller.m */,
 				241EC98F212EBFB900476FFD /* ToneHelper.plist */,
 				241EC98E212EBFB900476FFD /* Tweak.xm */,
 				241EC9A1212EC17700476FFD /* Makefile */,
@@ -181,6 +186,7 @@
 				246822462139E55500C02DE5 /* JFTHMigrator.m in Sources */,
 				241EC99E212EBFBA00476FFD /* FileHash.m in Sources */,
 				241EC99C212EBFBA00476FFD /* JFTHRingtoneDataController.m in Sources */,
+				2468225F213D0DAF00C02DE5 /* JFTHRingtoneInstaller.m in Sources */,
 				246822392139704400C02DE5 /* JFTHRingtoneScanner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

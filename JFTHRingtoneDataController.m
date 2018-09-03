@@ -1,4 +1,5 @@
 #import "JFTHRingtoneDataController.h"
+#import "JFTHRingtoneInstaller.h"
 #import "JFTHCommonHeaders.h"
 #import <AVFoundation/AVAsset.h>
 
@@ -23,6 +24,7 @@
         
         DDLogDebug(@"{\"Preferences\":\"Got these ringtones from prefs: %@.\"}", _ringtones);
         _toneManager = nil;
+        _ringtonesToImport = [NSMutableArray array];
         
         [self verifyAllToneIdentifiers];
         // TODO: Migration
@@ -39,14 +41,39 @@
 #pragma mark - Getters
 - (NSMutableArray *)ringtones {
     @synchronized(self) {
-        [preferences synchronize];
-        _ringtones = [preferences objectForKey:@"Ringtones" default:[NSMutableArray array]];
-        [self verifyAllToneIdentifiers];
+        //[preferences synchronize];
+        //_ringtones = [preferences objectForKey:@"Ringtones" default:[NSMutableArray array]];
         return [_ringtones mutableCopy];
     }
 }
 
 #pragma mark - Adding ringtone
+- (void)startImport {
+    NSDictionary *tone = [_ringtonesToImport firstObject];
+    [self importTone:[tone objectForKey:@"FullPath"] fromBundleID:[tone objectForKey:@"BundleID"] toneName:[tone objectForKey:@"Name"]];
+    [_ringtonesToImport removeObject:tone];
+}
+- (void)importNextTone {
+    if ([_ringtonesToImport count] > 0) {
+        DDLogDebug(@"{\"Ringtone Import\":\"Import done, calling import for next tone.\"}");
+        NSDictionary *tone = [_ringtonesToImport firstObject];
+        [self importTone:[tone objectForKey:@"FullPath"] fromBundleID:[tone objectForKey:@"BundleID"] toneName:[tone objectForKey:@"Name"]];
+        [_ringtonesToImport removeObject:tone];
+    } else {
+        DDLogDebug(@"{\"Ringtone Import\":\"Import done, no more tones left to import. Calling saveMetaData\"}");
+        [self saveMetaData];
+    }
+}
+- (void)saveMetaData {
+    DDLogDebug(@"{\"Preferences\":\"Saving ringtones to preferences\"}");
+    @synchronized(self) {
+        [preferences synchronize];
+        [preferences setObject:self.ringtones forKey:@"Ringtones"];
+        [preferences synchronize];
+    }
+}
+
+// called from completionblock
 - (void)_addRingtone:(NSDictionary *)newTone {
     DDLogVerbose(@"{\"Ringtone Import\":\"addRingtone called, newTone=%@\"}",newTone);
     if ([newTone objectForKey:@"Identifier"]) { // Existing identifier is required for import
@@ -55,9 +82,8 @@
             NSMutableArray *allTones = self.ringtones;
             [allTones addObject:newTone];
             self.ringtones = allTones;
-            DDLogDebug(@"{\"Preferences\":\"Saving ringtones to preferences\"}");
-            [preferences setObject:allTones forKey:@"Ringtones"];
-            [preferences synchronize];
+            
+            [self importNextTone];
         }
     } else
         DDLogWarn(@"{\"Ringtone import\":\"Identifier missing for: %@\"}", newTone);
