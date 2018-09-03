@@ -62,6 +62,10 @@
 		24682315213D598F00C02DE5 /* LogglyFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822DA213D598F00C02DE5 /* LogglyFields.m */; };
 		24682316213D598F00C02DE5 /* LogglyFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822DC213D598F00C02DE5 /* LogglyFormatter.m */; };
 		24682317213D598F00C02DE5 /* LogglyLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822DE213D598F00C02DE5 /* LogglyLogger.m */; };
+		2468231C213DA5FF00C02DE5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2468231B213DA5FE00C02DE5 /* MobileCoreServices.framework */; };
+		2468231F213DA61800C02DE5 /* Cephei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2468231D213DA61800C02DE5 /* Cephei.framework */; };
+		24682320213DA61800C02DE5 /* CepheiPrefs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2468231E213DA61800C02DE5 /* CepheiPrefs.framework */; };
+		249BC8B7213DB79300BA0A54 /* FrontBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24682319213DA5F100C02DE5 /* FrontBoard.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +155,10 @@
 		246822DD213D598F00C02DE5 /* LogglyFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogglyFormatter.h; sourceTree = "<group>"; };
 		246822DE213D598F00C02DE5 /* LogglyLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogglyLogger.m; sourceTree = "<group>"; };
 		246822DF213D598F00C02DE5 /* LogglyFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogglyFields.h; sourceTree = "<group>"; };
+		24682319213DA5F100C02DE5 /* FrontBoard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FrontBoard.framework; path = ../../../../theos/sdks/iPhoneOS11.2.sdk/System/Library/PrivateFrameworks/FrontBoard.framework; sourceTree = "<group>"; };
+		2468231B213DA5FE00C02DE5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		2468231D213DA61800C02DE5 /* Cephei.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cephei.framework; path = ../../../../theos/lib/Cephei.framework; sourceTree = "<group>"; };
+		2468231E213DA61800C02DE5 /* CepheiPrefs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CepheiPrefs.framework; path = ../../../../theos/lib/CepheiPrefs.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +166,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				249BC8B7213DB79300BA0A54 /* FrontBoard.framework in Frameworks */,
+				2468231F213DA61800C02DE5 /* Cephei.framework in Frameworks */,
+				24682320213DA61800C02DE5 /* CepheiPrefs.framework in Frameworks */,
+				2468231C213DA5FF00C02DE5 /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +181,7 @@
 			children = (
 				2468226B213D58CF00C02DE5 /* ToneManager */,
 				2468226A213D58CF00C02DE5 /* Products */,
+				24682318213DA5F100C02DE5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -336,6 +349,17 @@
 			path = LogglyLogger;
 			sourceTree = SOURCE_ROOT;
 		};
+		24682318213DA5F100C02DE5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2468231D213DA61800C02DE5 /* Cephei.framework */,
+				2468231E213DA61800C02DE5 /* CepheiPrefs.framework */,
+				2468231B213DA5FE00C02DE5 /* MobileCoreServices.framework */,
+				24682319213DA5F100C02DE5 /* FrontBoard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -346,6 +370,7 @@
 				24682265213D58CF00C02DE5 /* Sources */,
 				24682266213D58CF00C02DE5 /* Frameworks */,
 				24682267213D58CF00C02DE5 /* Resources */,
+				249BC8B8213DB9D900BA0A54 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -430,6 +455,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		249BC8B8213DB9D900BA0A54 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		24682265213D58CF00C02DE5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -496,7 +537,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -515,7 +557,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -554,7 +596,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -567,7 +610,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -578,20 +621,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6VG5GK3UD7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"/Users/jesper/theos/vendor/lib/**",
+					"/Users/jesper/theos/lib/**",
+					"/Users/jesper/theos/sdks/iPhoneOS11.2.sdk/System/Library/PrivateFrameworks/**",
+				);
 				HEADER_SEARCH_PATHS = (
 					"/Users/jesper/theos/vendor/include/**",
 					"/Users/jesper/theos/include/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos11.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -600,20 +653,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6VG5GK3UD7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"/Users/jesper/theos/vendor/lib/**",
+					"/Users/jesper/theos/lib/**",
+					"/Users/jesper/theos/sdks/iPhoneOS11.2.sdk/System/Library/PrivateFrameworks/**",
+				);
 				HEADER_SEARCH_PATHS = (
 					"/Users/jesper/theos/vendor/include/**",
 					"/Users/jesper/theos/include/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos11.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

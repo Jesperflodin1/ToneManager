@@ -181,35 +181,35 @@
 
 - (void)verifyAllToneIdentifiers { // Wow, this got ugly...
     @synchronized(self) {
-        DDLogDebug(@"{\"Ringtone Checks\":\"Starting tone identifier verification with ringtones: %@\"}",_ringtones);
+        DDLogDebug(@"{\"Ringtone Identifier Verification\":\"Starting tone identifier verification with ringtones: %@\"}",_ringtones);
         NSMutableArray *identifiers = [_ringtones valueForKey:@"Identifier"];
         
         if ([identifiers count] > 0) {
             //we have identifiers, verify them
-            DDLogVerbose(@"{\"Ringtone Checks\":\"Found identifiers to verify: %@\"}", identifiers);
+            DDLogVerbose(@"{\"Ringtone Identifier Verification\":\"Found identifiers to verify: %@\"}", identifiers);
             TLToneManager *localToneManager = self.toneManager;
             if (localToneManager) {
-                
+                DDLogVerbose(@"{\"Ringtone Identifier Verification\":\"Got TLToneManager\"}");
                 NSMutableArray *allTones = [_ringtones mutableCopy];
                 
-                
-                
-                
                 for (NSString *identifier in identifiers) {
-                    if ([identifier isEqual:[NSNull null]]) // skip nonexistent identifiers
-                        break;
-                    DDLogVerbose(@"{\"Ringtone Checks\":\"Verifying identifier: %@\"}", identifier);
-                    if (![localToneManager toneWithIdentifierIsValid:identifier]) {
+                    DDLogVerbose(@"{\"Ringtone Identifier Verification\":\"Verifying identifier: %@\"}", identifier);
+                    
+                    if (([identifier isEqual:[NSNull null]]) || ![localToneManager toneWithIdentifierIsValid:identifier]) {
                         // Toneidentifier is invalid, remove it from local data.
-                        DDLogVerbose(@"{\"Ringtone Checks\":\"Identifier is invalid: %@\"}", identifier);
+                        DDLogVerbose(@"{\"Ringtone Identifier Verification\":\"Identifier is invalid: %@\"}", identifier);
                         NSDictionary *toneToDelete = nil;
                         
                         for (NSDictionary *curTone in allTones) {
-
-                            if ([[curTone objectForKey:@"Identifier"] isEqualToString:identifier]) {
+                            if (![curTone objectForKey:@"Identifier"]) {
+                                toneToDelete = curTone;
+                                DDLogVerbose(@"{\"Ringtone Identifier Verification\":\"Null identifier, removing.\"}");
+                                break;
+                            }
+                            else if ([[curTone objectForKey:@"Identifier"] isEqualToString:identifier] ) {
                                 
                                 toneToDelete = curTone;
-                                DDLogInfo(@"{\"Preferences:\":\"Found tone to delete because identifier is invalid: %@\"}", toneToDelete);
+                                DDLogInfo(@"{\"Ringtone Identifier Verification\":\"Found tone to delete because identifier is invalid: %@\"}", toneToDelete);
                                 break; // i only want one...
                             }
                         }
@@ -220,10 +220,10 @@
                 }
                 
                 // done, save resulting nsarray
-                [preferences setObject:allTones forKey:@"Ringtones"];
-                [preferences synchronize];
+                self.ringtones = allTones;
+                [self saveMetaData];
             } else {
-                DDLogError(@"{\"Ringtone Checks\":\"Ringtone verification failed, tonemanager failed to load\"}");
+                DDLogError(@"{\"Ringtone Identifier Verification\":\"Ringtone verification failed, tonemanager failed to load\"}");
             }
         }
     }
