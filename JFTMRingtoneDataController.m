@@ -191,8 +191,12 @@
             if (localToneManager) {
                 
                 NSMutableArray *allTones = [_ringtones mutableCopy];
+                
+                
+                
+                
                 for (NSString *identifier in identifiers) {
-                    if ([identifier isEqual:[NSNull null]]) // skip nonexistant identifiers
+                    if ([identifier isEqual:[NSNull null]]) // skip nonexistent identifiers
                         break;
                     DDLogVerbose(@"{\"Ringtone Checks\":\"Verifying identifier: %@\"}", identifier);
                     if (![localToneManager toneWithIdentifierIsValid:identifier]) {

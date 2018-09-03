@@ -1,0 +1,645 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		246822E0213D598F00C02DE5 /* JFTMRingtoneDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24682282213D598B00C02DE5 /* JFTMRingtoneDataController.m */; };
+		246822E1213D598F00C02DE5 /* JFTMRingtoneInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 24682284213D598C00C02DE5 /* JFTMRingtoneInstaller.m */; };
+		246822E2213D598F00C02DE5 /* JFTMMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = 24682285213D598C00C02DE5 /* JFTMMigrator.m */; };
+		246822E3213D598F00C02DE5 /* LaunchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2468228A213D598C00C02DE5 /* LaunchImage@2x.png */; };
+		246822E4213D598F00C02DE5 /* AppIcon57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2468228B213D598C00C02DE5 /* AppIcon57x57.png */; };
+		246822E5213D598F00C02DE5 /* AppIcon76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 2468228C213D598C00C02DE5 /* AppIcon76x76.png */; };
+		246822E6213D598F00C02DE5 /* AppIcon29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 2468228D213D598C00C02DE5 /* AppIcon29x29.png */; };
+		246822E7213D598F00C02DE5 /* AppIcon60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2468228E213D598C00C02DE5 /* AppIcon60x60@2x.png */; };
+		246822E8213D598F00C02DE5 /* AppIcon29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2468228F213D598C00C02DE5 /* AppIcon29x29@2x.png */; };
+		246822E9213D598F00C02DE5 /* AppIcon60x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 24682290213D598C00C02DE5 /* AppIcon60x60.png */; };
+		246822EA213D598F00C02DE5 /* LaunchImage-800-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24682291213D598C00C02DE5 /* LaunchImage-800-667h@2x.png */; };
+		246822EB213D598F00C02DE5 /* AppIcon40x40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24682292213D598C00C02DE5 /* AppIcon40x40@3x.png */; };
+		246822EC213D598F00C02DE5 /* AppIcon57x57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24682293213D598C00C02DE5 /* AppIcon57x57@2x.png */; };
+		246822ED213D598F00C02DE5 /* AppIcon72x72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24682294213D598C00C02DE5 /* AppIcon72x72@2x.png */; };
+		246822EE213D598F00C02DE5 /* AppIcon57x57@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24682295213D598C00C02DE5 /* AppIcon57x57@3x.png */; };
+		246822EF213D598F00C02DE5 /* AppIcon40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24682296213D598C00C02DE5 /* AppIcon40x40@2x.png */; };
+		246822F0213D598F00C02DE5 /* AppIcon29x29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24682297213D598C00C02DE5 /* AppIcon29x29@3x.png */; };
+		246822F1213D598F00C02DE5 /* AppIcon60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24682298213D598C00C02DE5 /* AppIcon60x60@3x.png */; };
+		246822F2213D598F00C02DE5 /* AppIcon72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 24682299213D598C00C02DE5 /* AppIcon72x72.png */; };
+		246822F3213D598F00C02DE5 /* LaunchImage-700-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2468229A213D598C00C02DE5 /* LaunchImage-700-Portrait~ipad.png */; };
+		246822F4213D598F00C02DE5 /* LaunchImage-800-Portrait-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2468229B213D598C00C02DE5 /* LaunchImage-800-Portrait-736h@3x.png */; };
+		246822F5213D598F00C02DE5 /* AppIcon76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2468229C213D598C00C02DE5 /* AppIcon76x76@2x.png */; };
+		246822F6213D598F00C02DE5 /* LaunchImage-700-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2468229D213D598C00C02DE5 /* LaunchImage-700-568h@2x.png */; };
+		246822F7213D598F00C02DE5 /* LaunchImage-700-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2468229E213D598C00C02DE5 /* LaunchImage-700-Landscape@2x~ipad.png */; };
+		246822F8213D598F00C02DE5 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2468229F213D598C00C02DE5 /* LaunchImage.png */; };
+		246822F9213D598F00C02DE5 /* LaunchImage-800-Landscape-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246822A0213D598C00C02DE5 /* LaunchImage-800-Landscape-736h@3x.png */; };
+		246822FA213D598F00C02DE5 /* LaunchImage-700-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 246822A1213D598C00C02DE5 /* LaunchImage-700-Portrait@2x~ipad.png */; };
+		246822FB213D598F00C02DE5 /* LaunchImage-700-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 246822A2213D598C00C02DE5 /* LaunchImage-700-Landscape~ipad.png */; };
+		246822FC213D598F00C02DE5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 246822A3213D598C00C02DE5 /* Info.plist */; };
+		246822FD213D598F00C02DE5 /* AppIcon50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246822A4213D598C00C02DE5 /* AppIcon50x50@2x.png */; };
+		246822FE213D598F00C02DE5 /* AppIcon50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = 246822A5213D598C00C02DE5 /* AppIcon50x50.png */; };
+		246822FF213D598F00C02DE5 /* AppIcon40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 246822A6213D598C00C02DE5 /* AppIcon40x40.png */; };
+		24682300213D598F00C02DE5 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 246822A7213D598C00C02DE5 /* Makefile */; };
+		24682301213D598F00C02DE5 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822A9213D598D00C02DE5 /* DDTTYLogger.m */; };
+		24682302213D598F00C02DE5 /* DDOSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822AC213D598D00C02DE5 /* DDOSLogger.m */; };
+		24682303213D598F00C02DE5 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822B0213D598D00C02DE5 /* DDASLLogger.m */; };
+		24682304213D598F00C02DE5 /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822B2213D598D00C02DE5 /* CLIColor.m */; };
+		24682305213D598F00C02DE5 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822B6213D598D00C02DE5 /* DDContextFilterLogFormatter.m */; };
+		24682306213D598F00C02DE5 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822B7213D598D00C02DE5 /* DDDispatchQueueLogFormatter.m */; };
+		24682307213D598F00C02DE5 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822BA213D598D00C02DE5 /* DDMultiFormatter.m */; };
+		24682308213D598F00C02DE5 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822BC213D598D00C02DE5 /* DDLog.m */; };
+		24682309213D598F00C02DE5 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822C2213D598D00C02DE5 /* DDAbstractDatabaseLogger.m */; };
+		2468230A213D598F00C02DE5 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822C3213D598D00C02DE5 /* DDFileLogger.m */; };
+		2468230B213D598F00C02DE5 /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822C5213D598D00C02DE5 /* DDASLLogCapture.m */; };
+		2468230C213D598F00C02DE5 /* JFTMRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822C6213D598D00C02DE5 /* JFTMRootViewController.m */; };
+		2468230D213D598F00C02DE5 /* FileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822C8213D598D00C02DE5 /* FileHash.m */; };
+		2468230E213D598F00C02DE5 /* JFTMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822C9213D598D00C02DE5 /* JFTMAppDelegate.m */; };
+		2468230F213D598F00C02DE5 /* entitlements.xml in Resources */ = {isa = PBXBuildFile; fileRef = 246822CC213D598E00C02DE5 /* entitlements.xml */; };
+		24682310213D598F00C02DE5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822CD213D598E00C02DE5 /* main.m */; };
+		24682312213D598F00C02DE5 /* postinst in Resources */ = {isa = PBXBuildFile; fileRef = 246822D5213D598E00C02DE5 /* postinst */; };
+		24682313213D598F00C02DE5 /* control in Resources */ = {isa = PBXBuildFile; fileRef = 246822D6213D598E00C02DE5 /* control */; };
+		24682314213D598F00C02DE5 /* JFTMRingtoneScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822D8213D598F00C02DE5 /* JFTMRingtoneScanner.m */; };
+		24682315213D598F00C02DE5 /* LogglyFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822DA213D598F00C02DE5 /* LogglyFields.m */; };
+		24682316213D598F00C02DE5 /* LogglyFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822DC213D598F00C02DE5 /* LogglyFormatter.m */; };
+		24682317213D598F00C02DE5 /* LogglyLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 246822DE213D598F00C02DE5 /* LogglyLogger.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		24682269213D58CF00C02DE5 /* ToneManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToneManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		24682282213D598B00C02DE5 /* JFTMRingtoneDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTMRingtoneDataController.m; sourceTree = SOURCE_ROOT; };
+		24682283213D598B00C02DE5 /* JFTMMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTMMigrator.h; sourceTree = SOURCE_ROOT; };
+		24682284213D598C00C02DE5 /* JFTMRingtoneInstaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTMRingtoneInstaller.m; sourceTree = SOURCE_ROOT; };
+		24682285213D598C00C02DE5 /* JFTMMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTMMigrator.m; sourceTree = SOURCE_ROOT; };
+		24682286213D598C00C02DE5 /* JFTMRingtoneDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTMRingtoneDataController.h; sourceTree = SOURCE_ROOT; };
+		24682287213D598C00C02DE5 /* JFTMiOSHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTMiOSHeaders.h; sourceTree = SOURCE_ROOT; };
+		24682288213D598C00C02DE5 /* JFTMRingtoneInstaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTMRingtoneInstaller.h; sourceTree = SOURCE_ROOT; };
+		2468228A213D598C00C02DE5 /* LaunchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage@2x.png"; sourceTree = "<group>"; };
+		2468228B213D598C00C02DE5 /* AppIcon57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon57x57.png; sourceTree = "<group>"; };
+		2468228C213D598C00C02DE5 /* AppIcon76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon76x76.png; sourceTree = "<group>"; };
+		2468228D213D598C00C02DE5 /* AppIcon29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon29x29.png; sourceTree = "<group>"; };
+		2468228E213D598C00C02DE5 /* AppIcon60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon60x60@2x.png"; sourceTree = "<group>"; };
+		2468228F213D598C00C02DE5 /* AppIcon29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon29x29@2x.png"; sourceTree = "<group>"; };
+		24682290213D598C00C02DE5 /* AppIcon60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon60x60.png; sourceTree = "<group>"; };
+		24682291213D598C00C02DE5 /* LaunchImage-800-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-800-667h@2x.png"; sourceTree = "<group>"; };
+		24682292213D598C00C02DE5 /* AppIcon40x40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon40x40@3x.png"; sourceTree = "<group>"; };
+		24682293213D598C00C02DE5 /* AppIcon57x57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon57x57@2x.png"; sourceTree = "<group>"; };
+		24682294213D598C00C02DE5 /* AppIcon72x72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon72x72@2x.png"; sourceTree = "<group>"; };
+		24682295213D598C00C02DE5 /* AppIcon57x57@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon57x57@3x.png"; sourceTree = "<group>"; };
+		24682296213D598C00C02DE5 /* AppIcon40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon40x40@2x.png"; sourceTree = "<group>"; };
+		24682297213D598C00C02DE5 /* AppIcon29x29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon29x29@3x.png"; sourceTree = "<group>"; };
+		24682298213D598C00C02DE5 /* AppIcon60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon60x60@3x.png"; sourceTree = "<group>"; };
+		24682299213D598C00C02DE5 /* AppIcon72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon72x72.png; sourceTree = "<group>"; };
+		2468229A213D598C00C02DE5 /* LaunchImage-700-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-700-Portrait~ipad.png"; sourceTree = "<group>"; };
+		2468229B213D598C00C02DE5 /* LaunchImage-800-Portrait-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-800-Portrait-736h@3x.png"; sourceTree = "<group>"; };
+		2468229C213D598C00C02DE5 /* AppIcon76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76@2x.png"; sourceTree = "<group>"; };
+		2468229D213D598C00C02DE5 /* LaunchImage-700-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-700-568h@2x.png"; sourceTree = "<group>"; };
+		2468229E213D598C00C02DE5 /* LaunchImage-700-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-700-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		2468229F213D598C00C02DE5 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		246822A0213D598C00C02DE5 /* LaunchImage-800-Landscape-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-800-Landscape-736h@3x.png"; sourceTree = "<group>"; };
+		246822A1213D598C00C02DE5 /* LaunchImage-700-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-700-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		246822A2213D598C00C02DE5 /* LaunchImage-700-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-700-Landscape~ipad.png"; sourceTree = "<group>"; };
+		246822A3213D598C00C02DE5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		246822A4213D598C00C02DE5 /* AppIcon50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon50x50@2x.png"; sourceTree = "<group>"; };
+		246822A5213D598C00C02DE5 /* AppIcon50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon50x50.png; sourceTree = "<group>"; };
+		246822A6213D598C00C02DE5 /* AppIcon40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon40x40.png; sourceTree = "<group>"; };
+		246822A7213D598C00C02DE5 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = SOURCE_ROOT; };
+		246822A9213D598D00C02DE5 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		246822AA213D598D00C02DE5 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		246822AB213D598D00C02DE5 /* DDLegacyMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLegacyMacros.h; sourceTree = "<group>"; };
+		246822AC213D598D00C02DE5 /* DDOSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDOSLogger.m; sourceTree = "<group>"; };
+		246822AD213D598D00C02DE5 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		246822AE213D598D00C02DE5 /* DDLogMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLogMacros.h; sourceTree = "<group>"; };
+		246822AF213D598D00C02DE5 /* DDASLLogCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogCapture.h; sourceTree = "<group>"; };
+		246822B0213D598D00C02DE5 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		246822B2213D598D00C02DE5 /* CLIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLIColor.m; sourceTree = "<group>"; };
+		246822B3213D598D00C02DE5 /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
+		246822B4213D598D00C02DE5 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		246822B6213D598D00C02DE5 /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		246822B7213D598D00C02DE5 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		246822B8213D598D00C02DE5 /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
+		246822B9213D598D00C02DE5 /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		246822BA213D598D00C02DE5 /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
+		246822BB213D598D00C02DE5 /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		246822BC213D598D00C02DE5 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		246822BD213D598D00C02DE5 /* CocoaLumberjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack.h; sourceTree = "<group>"; };
+		246822BE213D598D00C02DE5 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		246822BF213D598D00C02DE5 /* DDAssertMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAssertMacros.h; sourceTree = "<group>"; };
+		246822C0213D598D00C02DE5 /* DDOSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDOSLogger.h; sourceTree = "<group>"; };
+		246822C1213D598D00C02DE5 /* DDLog+LOGV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDLog+LOGV.h"; sourceTree = "<group>"; };
+		246822C2213D598D00C02DE5 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		246822C3213D598D00C02DE5 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		246822C4213D598D00C02DE5 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		246822C5213D598D00C02DE5 /* DDASLLogCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogCapture.m; sourceTree = "<group>"; };
+		246822C6213D598D00C02DE5 /* JFTMRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTMRootViewController.m; sourceTree = SOURCE_ROOT; };
+		246822C7213D598D00C02DE5 /* FileHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHash.h; sourceTree = SOURCE_ROOT; };
+		246822C8213D598D00C02DE5 /* FileHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHash.m; sourceTree = SOURCE_ROOT; };
+		246822C9213D598D00C02DE5 /* JFTMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTMAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		246822CA213D598D00C02DE5 /* JFTMRingtoneScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTMRingtoneScanner.h; sourceTree = SOURCE_ROOT; };
+		246822CB213D598E00C02DE5 /* JFTMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTMAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		246822CC213D598E00C02DE5 /* entitlements.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = entitlements.xml; sourceTree = SOURCE_ROOT; };
+		246822CD213D598E00C02DE5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
+		246822D0213D598E00C02DE5 /* TLToneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLToneManager.h; sourceTree = "<group>"; };
+		246822D1213D598E00C02DE5 /* TLITunesTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLITunesTone.h; sourceTree = "<group>"; };
+		246822D2213D598E00C02DE5 /* JFTMRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTMRootViewController.h; sourceTree = SOURCE_ROOT; };
+		246822D5213D598E00C02DE5 /* postinst */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = postinst; sourceTree = "<group>"; };
+		246822D6213D598E00C02DE5 /* control */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = control; sourceTree = "<group>"; };
+		246822D7213D598F00C02DE5 /* JFTMCommonHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTMCommonHeaders.h; sourceTree = SOURCE_ROOT; };
+		246822D8213D598F00C02DE5 /* JFTMRingtoneScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTMRingtoneScanner.m; sourceTree = SOURCE_ROOT; };
+		246822DA213D598F00C02DE5 /* LogglyFields.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogglyFields.m; sourceTree = "<group>"; };
+		246822DB213D598F00C02DE5 /* LogglyLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogglyLogger.h; sourceTree = "<group>"; };
+		246822DC213D598F00C02DE5 /* LogglyFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogglyFormatter.m; sourceTree = "<group>"; };
+		246822DD213D598F00C02DE5 /* LogglyFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogglyFormatter.h; sourceTree = "<group>"; };
+		246822DE213D598F00C02DE5 /* LogglyLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogglyLogger.m; sourceTree = "<group>"; };
+		246822DF213D598F00C02DE5 /* LogglyFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogglyFields.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		24682266213D58CF00C02DE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		24682260213D58CF00C02DE5 = {
+			isa = PBXGroup;
+			children = (
+				2468226B213D58CF00C02DE5 /* ToneManager */,
+				2468226A213D58CF00C02DE5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2468226A213D58CF00C02DE5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24682269213D58CF00C02DE5 /* ToneManager.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2468226B213D58CF00C02DE5 /* ToneManager */ = {
+			isa = PBXGroup;
+			children = (
+				246822A8213D598D00C02DE5 /* CocoaLumberjack */,
+				246822D9213D598F00C02DE5 /* LogglyLogger */,
+				246822D3213D598E00C02DE5 /* layout */,
+				246822CF213D598E00C02DE5 /* iOSHeaders */,
+				24682289213D598C00C02DE5 /* Resources */,
+				246822CC213D598E00C02DE5 /* entitlements.xml */,
+				246822C7213D598D00C02DE5 /* FileHash.h */,
+				246822C8213D598D00C02DE5 /* FileHash.m */,
+				246822CB213D598E00C02DE5 /* JFTMAppDelegate.h */,
+				246822C9213D598D00C02DE5 /* JFTMAppDelegate.m */,
+				246822D7213D598F00C02DE5 /* JFTMCommonHeaders.h */,
+				24682287213D598C00C02DE5 /* JFTMiOSHeaders.h */,
+				24682283213D598B00C02DE5 /* JFTMMigrator.h */,
+				24682285213D598C00C02DE5 /* JFTMMigrator.m */,
+				24682286213D598C00C02DE5 /* JFTMRingtoneDataController.h */,
+				24682282213D598B00C02DE5 /* JFTMRingtoneDataController.m */,
+				24682288213D598C00C02DE5 /* JFTMRingtoneInstaller.h */,
+				24682284213D598C00C02DE5 /* JFTMRingtoneInstaller.m */,
+				246822CA213D598D00C02DE5 /* JFTMRingtoneScanner.h */,
+				246822D8213D598F00C02DE5 /* JFTMRingtoneScanner.m */,
+				246822D2213D598E00C02DE5 /* JFTMRootViewController.h */,
+				246822C6213D598D00C02DE5 /* JFTMRootViewController.m */,
+				246822CD213D598E00C02DE5 /* main.m */,
+				246822A7213D598C00C02DE5 /* Makefile */,
+			);
+			path = ToneManager;
+			sourceTree = "<group>";
+		};
+		24682289213D598C00C02DE5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2468228A213D598C00C02DE5 /* LaunchImage@2x.png */,
+				2468228B213D598C00C02DE5 /* AppIcon57x57.png */,
+				2468228C213D598C00C02DE5 /* AppIcon76x76.png */,
+				2468228D213D598C00C02DE5 /* AppIcon29x29.png */,
+				2468228E213D598C00C02DE5 /* AppIcon60x60@2x.png */,
+				2468228F213D598C00C02DE5 /* AppIcon29x29@2x.png */,
+				24682290213D598C00C02DE5 /* AppIcon60x60.png */,
+				24682291213D598C00C02DE5 /* LaunchImage-800-667h@2x.png */,
+				24682292213D598C00C02DE5 /* AppIcon40x40@3x.png */,
+				24682293213D598C00C02DE5 /* AppIcon57x57@2x.png */,
+				24682294213D598C00C02DE5 /* AppIcon72x72@2x.png */,
+				24682295213D598C00C02DE5 /* AppIcon57x57@3x.png */,
+				24682296213D598C00C02DE5 /* AppIcon40x40@2x.png */,
+				24682297213D598C00C02DE5 /* AppIcon29x29@3x.png */,
+				24682298213D598C00C02DE5 /* AppIcon60x60@3x.png */,
+				24682299213D598C00C02DE5 /* AppIcon72x72.png */,
+				2468229A213D598C00C02DE5 /* LaunchImage-700-Portrait~ipad.png */,
+				2468229B213D598C00C02DE5 /* LaunchImage-800-Portrait-736h@3x.png */,
+				2468229C213D598C00C02DE5 /* AppIcon76x76@2x.png */,
+				2468229D213D598C00C02DE5 /* LaunchImage-700-568h@2x.png */,
+				2468229E213D598C00C02DE5 /* LaunchImage-700-Landscape@2x~ipad.png */,
+				2468229F213D598C00C02DE5 /* LaunchImage.png */,
+				246822A0213D598C00C02DE5 /* LaunchImage-800-Landscape-736h@3x.png */,
+				246822A1213D598C00C02DE5 /* LaunchImage-700-Portrait@2x~ipad.png */,
+				246822A2213D598C00C02DE5 /* LaunchImage-700-Landscape~ipad.png */,
+				246822A3213D598C00C02DE5 /* Info.plist */,
+				246822A4213D598C00C02DE5 /* AppIcon50x50@2x.png */,
+				246822A5213D598C00C02DE5 /* AppIcon50x50.png */,
+				246822A6213D598C00C02DE5 /* AppIcon40x40.png */,
+			);
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		246822A8213D598D00C02DE5 /* CocoaLumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				246822A9213D598D00C02DE5 /* DDTTYLogger.m */,
+				246822AA213D598D00C02DE5 /* DDLog.h */,
+				246822AB213D598D00C02DE5 /* DDLegacyMacros.h */,
+				246822AC213D598D00C02DE5 /* DDOSLogger.m */,
+				246822AD213D598D00C02DE5 /* DDAbstractDatabaseLogger.h */,
+				246822AE213D598D00C02DE5 /* DDLogMacros.h */,
+				246822AF213D598D00C02DE5 /* DDASLLogCapture.h */,
+				246822B0213D598D00C02DE5 /* DDASLLogger.m */,
+				246822B1213D598D00C02DE5 /* CLI */,
+				246822B4213D598D00C02DE5 /* DDFileLogger.h */,
+				246822B5213D598D00C02DE5 /* Extensions */,
+				246822BC213D598D00C02DE5 /* DDLog.m */,
+				246822BD213D598D00C02DE5 /* CocoaLumberjack.h */,
+				246822BE213D598D00C02DE5 /* DDTTYLogger.h */,
+				246822BF213D598D00C02DE5 /* DDAssertMacros.h */,
+				246822C0213D598D00C02DE5 /* DDOSLogger.h */,
+				246822C1213D598D00C02DE5 /* DDLog+LOGV.h */,
+				246822C2213D598D00C02DE5 /* DDAbstractDatabaseLogger.m */,
+				246822C3213D598D00C02DE5 /* DDFileLogger.m */,
+				246822C4213D598D00C02DE5 /* DDASLLogger.h */,
+				246822C5213D598D00C02DE5 /* DDASLLogCapture.m */,
+			);
+			path = CocoaLumberjack;
+			sourceTree = SOURCE_ROOT;
+		};
+		246822B1213D598D00C02DE5 /* CLI */ = {
+			isa = PBXGroup;
+			children = (
+				246822B2213D598D00C02DE5 /* CLIColor.m */,
+				246822B3213D598D00C02DE5 /* CLIColor.h */,
+			);
+			path = CLI;
+			sourceTree = "<group>";
+		};
+		246822B5213D598D00C02DE5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				246822B6213D598D00C02DE5 /* DDContextFilterLogFormatter.m */,
+				246822B7213D598D00C02DE5 /* DDDispatchQueueLogFormatter.m */,
+				246822B8213D598D00C02DE5 /* DDMultiFormatter.h */,
+				246822B9213D598D00C02DE5 /* DDContextFilterLogFormatter.h */,
+				246822BA213D598D00C02DE5 /* DDMultiFormatter.m */,
+				246822BB213D598D00C02DE5 /* DDDispatchQueueLogFormatter.h */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		246822CF213D598E00C02DE5 /* iOSHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				246822D0213D598E00C02DE5 /* TLToneManager.h */,
+				246822D1213D598E00C02DE5 /* TLITunesTone.h */,
+			);
+			path = iOSHeaders;
+			sourceTree = SOURCE_ROOT;
+		};
+		246822D3213D598E00C02DE5 /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				246822D4213D598E00C02DE5 /* DEBIAN */,
+			);
+			path = layout;
+			sourceTree = SOURCE_ROOT;
+		};
+		246822D4213D598E00C02DE5 /* DEBIAN */ = {
+			isa = PBXGroup;
+			children = (
+				246822D5213D598E00C02DE5 /* postinst */,
+				246822D6213D598E00C02DE5 /* control */,
+			);
+			path = DEBIAN;
+			sourceTree = "<group>";
+		};
+		246822D9213D598F00C02DE5 /* LogglyLogger */ = {
+			isa = PBXGroup;
+			children = (
+				246822DA213D598F00C02DE5 /* LogglyFields.m */,
+				246822DB213D598F00C02DE5 /* LogglyLogger.h */,
+				246822DC213D598F00C02DE5 /* LogglyFormatter.m */,
+				246822DD213D598F00C02DE5 /* LogglyFormatter.h */,
+				246822DE213D598F00C02DE5 /* LogglyLogger.m */,
+				246822DF213D598F00C02DE5 /* LogglyFields.h */,
+			);
+			path = LogglyLogger;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		24682268213D58CF00C02DE5 /* ToneManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2468227F213D58D100C02DE5 /* Build configuration list for PBXNativeTarget "ToneManager" */;
+			buildPhases = (
+				24682265213D58CF00C02DE5 /* Sources */,
+				24682266213D58CF00C02DE5 /* Frameworks */,
+				24682267213D58CF00C02DE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ToneManager;
+			productName = ToneManager;
+			productReference = 24682269213D58CF00C02DE5 /* ToneManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		24682261213D58CF00C02DE5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Jesper Flodin";
+				TargetAttributes = {
+					24682268213D58CF00C02DE5 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 24682264213D58CF00C02DE5 /* Build configuration list for PBXProject "ToneManager" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 24682260213D58CF00C02DE5;
+			productRefGroup = 2468226A213D58CF00C02DE5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				24682268213D58CF00C02DE5 /* ToneManager */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		24682267213D58CF00C02DE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				246822E7213D598F00C02DE5 /* AppIcon60x60@2x.png in Resources */,
+				246822FA213D598F00C02DE5 /* LaunchImage-700-Portrait@2x~ipad.png in Resources */,
+				246822F5213D598F00C02DE5 /* AppIcon76x76@2x.png in Resources */,
+				246822FE213D598F00C02DE5 /* AppIcon50x50.png in Resources */,
+				246822E5213D598F00C02DE5 /* AppIcon76x76.png in Resources */,
+				246822E9213D598F00C02DE5 /* AppIcon60x60.png in Resources */,
+				246822EE213D598F00C02DE5 /* AppIcon57x57@3x.png in Resources */,
+				246822EA213D598F00C02DE5 /* LaunchImage-800-667h@2x.png in Resources */,
+				246822F6213D598F00C02DE5 /* LaunchImage-700-568h@2x.png in Resources */,
+				246822F0213D598F00C02DE5 /* AppIcon29x29@3x.png in Resources */,
+				246822ED213D598F00C02DE5 /* AppIcon72x72@2x.png in Resources */,
+				246822F3213D598F00C02DE5 /* LaunchImage-700-Portrait~ipad.png in Resources */,
+				24682312213D598F00C02DE5 /* postinst in Resources */,
+				246822F8213D598F00C02DE5 /* LaunchImage.png in Resources */,
+				246822FC213D598F00C02DE5 /* Info.plist in Resources */,
+				246822F2213D598F00C02DE5 /* AppIcon72x72.png in Resources */,
+				246822FD213D598F00C02DE5 /* AppIcon50x50@2x.png in Resources */,
+				246822EF213D598F00C02DE5 /* AppIcon40x40@2x.png in Resources */,
+				246822F7213D598F00C02DE5 /* LaunchImage-700-Landscape@2x~ipad.png in Resources */,
+				246822F9213D598F00C02DE5 /* LaunchImage-800-Landscape-736h@3x.png in Resources */,
+				246822F4213D598F00C02DE5 /* LaunchImage-800-Portrait-736h@3x.png in Resources */,
+				246822E3213D598F00C02DE5 /* LaunchImage@2x.png in Resources */,
+				2468230F213D598F00C02DE5 /* entitlements.xml in Resources */,
+				246822FF213D598F00C02DE5 /* AppIcon40x40.png in Resources */,
+				24682313213D598F00C02DE5 /* control in Resources */,
+				246822E4213D598F00C02DE5 /* AppIcon57x57.png in Resources */,
+				246822EC213D598F00C02DE5 /* AppIcon57x57@2x.png in Resources */,
+				246822E8213D598F00C02DE5 /* AppIcon29x29@2x.png in Resources */,
+				246822FB213D598F00C02DE5 /* LaunchImage-700-Landscape~ipad.png in Resources */,
+				246822E6213D598F00C02DE5 /* AppIcon29x29.png in Resources */,
+				246822F1213D598F00C02DE5 /* AppIcon60x60@3x.png in Resources */,
+				246822EB213D598F00C02DE5 /* AppIcon40x40@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		24682265213D58CF00C02DE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24682308213D598F00C02DE5 /* DDLog.m in Sources */,
+				2468230D213D598F00C02DE5 /* FileHash.m in Sources */,
+				24682316213D598F00C02DE5 /* LogglyFormatter.m in Sources */,
+				246822E2213D598F00C02DE5 /* JFTMMigrator.m in Sources */,
+				24682302213D598F00C02DE5 /* DDOSLogger.m in Sources */,
+				2468230A213D598F00C02DE5 /* DDFileLogger.m in Sources */,
+				24682301213D598F00C02DE5 /* DDTTYLogger.m in Sources */,
+				24682305213D598F00C02DE5 /* DDContextFilterLogFormatter.m in Sources */,
+				2468230E213D598F00C02DE5 /* JFTMAppDelegate.m in Sources */,
+				24682310213D598F00C02DE5 /* main.m in Sources */,
+				24682314213D598F00C02DE5 /* JFTMRingtoneScanner.m in Sources */,
+				24682317213D598F00C02DE5 /* LogglyLogger.m in Sources */,
+				246822E0213D598F00C02DE5 /* JFTMRingtoneDataController.m in Sources */,
+				2468230C213D598F00C02DE5 /* JFTMRootViewController.m in Sources */,
+				24682304213D598F00C02DE5 /* CLIColor.m in Sources */,
+				24682300213D598F00C02DE5 /* Makefile in Sources */,
+				2468230B213D598F00C02DE5 /* DDASLLogCapture.m in Sources */,
+				24682315213D598F00C02DE5 /* LogglyFields.m in Sources */,
+				24682307213D598F00C02DE5 /* DDMultiFormatter.m in Sources */,
+				24682309213D598F00C02DE5 /* DDAbstractDatabaseLogger.m in Sources */,
+				24682306213D598F00C02DE5 /* DDDispatchQueueLogFormatter.m in Sources */,
+				24682303213D598F00C02DE5 /* DDASLLogger.m in Sources */,
+				246822E1213D598F00C02DE5 /* JFTMRingtoneInstaller.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2468227D213D58D100C02DE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2468227E213D58D100C02DE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		24682280213D58D100C02DE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6VG5GK3UD7;
+				HEADER_SEARCH_PATHS = (
+					"/Users/jesper/theos/vendor/include/**",
+					"/Users/jesper/theos/include/**",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		24682281213D58D100C02DE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6VG5GK3UD7;
+				HEADER_SEARCH_PATHS = (
+					"/Users/jesper/theos/vendor/include/**",
+					"/Users/jesper/theos/include/**",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		24682264213D58CF00C02DE5 /* Build configuration list for PBXProject "ToneManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2468227D213D58D100C02DE5 /* Debug */,
+				2468227E213D58D100C02DE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2468227F213D58D100C02DE5 /* Build configuration list for PBXNativeTarget "ToneManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24682280213D58D100C02DE5 /* Debug */,
+				24682281213D58D100C02DE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 24682261213D58CF00C02DE5 /* Project object */;
+}

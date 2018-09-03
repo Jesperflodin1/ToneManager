@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+        <key>platform-application</key>
+        <true/>
+        
+        <key>com.apple.private.security.no-container</key>
+        <true/>
+        
+		<key>com.apple.private.tcc.allow</key>
+		<array>
+			<string>kTCCServiceMediaLibrary</string>
+		</array>
+
+		<key>com.apple.system.set-alert-tone</key>
+		<true/>
+
+		<key>com.apple.media.ringtones.read-write</key>
+		<true/>
+
+	</dict>
+</plist>
