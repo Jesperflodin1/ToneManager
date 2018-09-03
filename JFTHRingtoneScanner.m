@@ -9,13 +9,13 @@
 #pragma mark - Init methods
 - (instancetype)init {
     if (self = [super init]) {
-        DDLogDebug(@"{\"Ringtone Import\":\"Init\"}");
+        DDLogDebug(@"{\"RingtoneScanner\":\"Init\"}");
     }
     return self;
 }
 
 - (void)dealloc {
-    DDLogDebug(@"{\"Ringtone Import\":\"Deallocating\"}");
+    DDLogDebug(@"{\"RingtoneScanner\":\"Deallocating scanner\"}");
 }
 
 
@@ -27,7 +27,7 @@
         }
         [[self installer] scanDone];
     } else
-        DDLogError(@"{\"Ringtone Import\":\"Something is wrong, we cant import ringtones. Aborting.\"}");
+        DDLogError(@"{\"RingtoneScanner\":\"Something is wrong, we cant import ringtones. Aborting.\"}");
 }
 // Files with same name from different apps will try to import, but tonelibrary wont import them
 - (void)_getNewRingtoneFilesFromApp:(NSString *)bundleID withSubfolder:(NSString *)subfolder {
@@ -36,39 +36,39 @@
 
     FBApplicationInfo *appInfo = [LSApplicationProxy applicationProxyForIdentifier:bundleID];
     appDirectory = [appInfo.dataContainerURL.path stringByAppendingPathComponent:subfolder];
-    DDLogInfo(@"{\"Ringtone Import\":\"listing app folder for bundle: %@\"}",bundleID);
+    DDLogInfo(@"{\"RingtoneScanner\":\"listing app folder for bundle: %@\"}",bundleID);
 
     NSArray *appDirFiles = [localFileManager contentsOfDirectoryAtPath:appDirectory error:nil];
     
-    DDLogInfo(@"{\"Ringtone Import\":\"Found these files: %@\"}", appDirFiles);
+    DDLogInfo(@"{\"RingtoneScanner\":\"Found these files: %@\"}", appDirFiles);
     
     if (!appDirFiles) // App unavailable or folder unavailable, not adding
         return;
     
-    DDLogDebug(@"{\"Ringtone Import\":\"App folder available!\"}");
+    DDLogDebug(@"{\"RingtoneScanner\":\"App folder available!\"}");
 
     if (!([appDirFiles count] > 0)) // Nothing to import for this app
         return;
     
-    DDLogInfo(@"{\"Ringtone Import\":\"Found %lu files\"}", (unsigned long)[appDirFiles count]);
+    DDLogInfo(@"{\"RingtoneScanner\":\"Found %lu files\"}", (unsigned long)[appDirFiles count]);
 
     for (NSString *file in appDirFiles) {
         if ([[file pathExtension] isEqualToString: @"m4r"]) {
             // Check if ringtone already exists
             if ([[[self installer] dataController] isImportedRingtoneWithFilePath:[appDirectory stringByAppendingPathComponent:file]]) {
-                DDLogDebug(@"{\"Ringtone Import\":\"File already imported based on path: %@\"}",file);
+                DDLogDebug(@"{\"RingtoneScanner\":\"File already imported based on path: %@\"}",file);
                 continue;
             }
             
             NSString *toneName = [JFTHRingtoneDataController createNameFromFile:[file stringByDeletingPathExtension]];
             if ([[[self installer] dataController] isImportedRingtoneWithName:toneName]) {
                 // filename equals but is from another path(=app)
-                DDLogDebug(@"{\"Ringtone Import\":\"Filename exists but is from another app, forcing import: %@\"}",file);
+                DDLogDebug(@"{\"RingtoneScanner\":\"Filename exists but is from another app, forcing import: %@\"}",file);
                 
                 toneName = [toneName stringByAppendingFormat:@" (%@)",[JFTHRingtoneScanner genRandStringLength:5]]; // append random string
             }
             
-            DDLogInfo(@"{\"Ringtone Import\":\"Adding ringtone to be imported: %@\"}", file);
+            DDLogInfo(@"{\"RingtoneScanner\":\"Adding ringtone to be imported: %@\"}", file);
             NSMutableDictionary *ringtone = [NSMutableDictionary new];
             [ringtone setObject:bundleID forKey:@"BundleID"];
             [ringtone setObject:toneName forKey:@"Name"];

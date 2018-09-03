@@ -36,14 +36,14 @@
 }
 
 - (void)dealloc {
-    DDLogDebug(@"{\"Ringtone Import\":\"Deallocating\"}");
+    DDLogDebug(@"{\"RingtoneInstaller\":\"Deallocating installer\"}");
 }
 
 - (JFTHRingtoneDataController *)dataController {
-    return self.dataController;
+    return _dataController;
 }
 - (JFTHRingtoneScanner *)scanner {
-    return self.scanner;
+    return _scanner;
 }
 
 - (void)addRingtoneToImport:(NSDictionary *)tone {

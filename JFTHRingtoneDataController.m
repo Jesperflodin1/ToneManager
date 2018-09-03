@@ -124,6 +124,8 @@
         };
         DDLogInfo(@"{\"Ringtone Import\":\"Calling import for tone with metadata: %@\"}", currentTone);
         @synchronized(self) {
+            DDLogVerbose(@"{\"Ringtone Import\":\"Trying to import with toneData: %@\"}",toneData);
+            DDLogVerbose(@"{\"Ringtone Import\":\"Trying to import with metadata: %@\"}",currentTone);
             [self.toneManager importTone:toneData metadata:currentTone completionBlock:importCompleteBlock];
         }
     

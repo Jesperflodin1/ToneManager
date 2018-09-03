@@ -86,7 +86,7 @@ HBPreferences *preferences;
     
     [installer installAllNewRingtonesFromAppsWithSubdirs:apps];*/
     [installer installRingtone:@"/var/mobile/Containers/Data/Application/21EFB592-D000-4CAB-8190-AD2684B8BFF4/Documents/Stiftelsen - Vart jag än går_24770249.m4r"];
-    [apps release];
+    //[apps release];
     [installer release];
     //});
 }
