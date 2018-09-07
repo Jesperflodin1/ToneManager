@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  WorldTrotter
+//  ToneManager
 //
-//  Created by Jesper Flodin on 2018-08-29.
+//  Created by Jesper Flodin on 2018-09-07.
 //  Copyright © 2018 Jesper Flodin. All rights reserved.
 //
 
@@ -15,9 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window!.rootViewController = UINavigationController(rootViewController: RootViewController())
-        window!.makeKeyAndVisible()
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        // Override point for customization after application launch.
+        self.window!.backgroundColor = UIColor.white
+        self.window!.rootViewController = TabBarController()
+        self.window!.makeKeyAndVisible()
         return true
     }
 

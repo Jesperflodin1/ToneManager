@@ -12,7 +12,7 @@ FINALPACKAGE = 0
 
 APPLICATION_NAME = ToneManager
 ToneManager_FILES = $(wildcard *.swift)
-#ToneManager_FILES = $(wildcard *.mm) $(wildcard *.m) $(wildcard CocoaLumberjack/*.m) $(wildcard LogglyLogger/*.m)
+#ToneManager_FILES = $(wildcard *.mm) $(wildcard *.m) $(wildcard CocoaLumberjack/*.m) $(wildcard LogglyLogger/*.m) $(wildcard *.swift)
 ToneManager_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 ToneManager_CODESIGN_FLAGS = -Sentitlements.xml
 
