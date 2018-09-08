@@ -27,4 +27,10 @@ class RingtoneStore {
         createTestRingtone()
     }
     
+    func removeRingtone(_ ringtone: Ringtone) {
+        if let index = allRingtones.index(of: ringtone) {
+            allRingtones.remove(at: index)
+        }
+    }
+    
 }

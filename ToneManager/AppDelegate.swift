@@ -13,13 +13,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         // Override point for customization after application launch.
         self.window!.backgroundColor = UIColor.white
-        self.window!.rootViewController = TabBarController()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nvc = storyboard.instantiateViewController(withIdentifier: "JFTMNavigationController") as! UINavigationController
+        let vc = nvc.topViewController as! RingtoneTableViewController
+        vc.ringtoneStore = RingtoneStore()
+        
+        self.window!.rootViewController = nvc
         self.window!.makeKeyAndVisible()
+        
+        application.statusBarStyle = .lightContent // .default
+        
+        #if TARGET_OS_SIMULATOR
+        NSLog("Compiled for simulator!")
+        #else
+        if let test = FBApplicationInfoHandler.path(forBundleIdentifier: "com.908.AudikoFree") {
+            NSLog("WOO!!! \(test.path)")
+        } else {
+            NSLog("ERROR: Failed to get bundle path !!!!!!!!!")
+        }
+        #endif
+        
+//        UINavigationBar.appearance().barTintColor = UIColor(red: 76.0/255.0, green: 150/255.0, blue: 94.0/255.0, alpha: 0.8)
+//        UINavigationBar.appearance().tintColor = UIColor.white
+//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+//        UINavigationBar.appearance().isTranslucent = true
+        
+        
+        
         return true
     }
 

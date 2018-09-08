@@ -12,51 +12,55 @@ class RingtoneTableViewController : UITableViewController {
     
     var ringtoneStore : RingtoneStore!
     
-    private let headerId = "ringtonesHeaderId"
-    private let cellId = "ringtonesCellId"
+//    private let headerId = "ringtonesHeaderId"
+    private let cellId = "JFTMRingtoneCell"
+    private let rowHeight : CGFloat = 55
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.lightGray
+//        settingsButton.setFAIcon(icon: .FACogs, iconSize: 30)
+//        view.backgroundColor = UIColor.lightGray
         
-        tableView.backgroundColor = UIColor.lightGray
-        tableView.register(RingtoneTableViewHeader.self, forHeaderFooterViewReuseIdentifier: headerId)
-        tableView.register(RingtoneTableCell.self, forCellReuseIdentifier: cellId)
-    }
-    
-    convenience init() {
-        self.init(style: .plain)
-    }
-    
-    override init(style: UITableViewStyle) {
-        super.init(style: style)
+//        self.navigationController?.navigationBar.tintColor = UIColor.green
+//        self.navigationItem.titleView?.backgroundColor = UIColor.green
         
-        self.navigationItem.title = "Available Ringtones"
-        self.tabBarItem = UITabBarItem(title: "Ringtones", image:nil , tag: 0)
-        
-        let selectedColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0)
-        let unSelectedColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.4)
-        self.tabBarItem.setFAIcon(icon: .FABellO, size: nil, textColor: unSelectedColor, backgroundColor: .clear, selectedTextColor: selectedColor, selectedBackgroundColor: .clear)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+//        tableView.backgroundColor = UIColor.lightGray
+//        tableView.register(RingtoneTableViewHeader.self, forHeaderFooterViewReuseIdentifier: headerId)
+//        tableView.register(RingtoneTableCell.self, forCellReuseIdentifier: cellId)
     }
     
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 80
+//    }
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerId) as! RingtoneTableViewHeader
+//        header.textLabel?.text = "TEST"
+//        header.detailTextLabel?.text = "test"
+//        header.contentView.backgroundColor = UIColor.white
+//        return header
+//    }
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow,
+            indexPathForSelectedRow == indexPath {
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+            return nil
+        }
+        return indexPath
     }
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerId) as! RingtoneTableViewHeader
-        header.textLabel?.text = "TEST"
-        header.backgroundColor = UIColor.white
-        return header
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
     }
-    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        if self.tableView.indexPathForSelectedRow?.row == indexPath.row {
+            return rowHeight*2
+        } else {
+            return rowHeight
+        }
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ringtoneStore.allRingtones.count
@@ -66,12 +70,23 @@ class RingtoneTableViewController : UITableViewController {
         
         let ringtone = ringtoneStore.allRingtones[indexPath.row]
         
-        cell.textLabel?.text = ringtone.name
-        cell.detailTextLabel?.text = ringtone.bundleID
+        cell.nameLabel.text = ringtone.name
+        cell.fromAppLabel.text = ringtone.bundleID
         
         
         return cell
     }
     
+    
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let ringtone = ringtoneStore.allRingtones[indexPath.row]
+            
+            ringtoneStore.removeRingtone(ringtone)
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
     
 }

@@ -18,6 +18,8 @@
 
 		<key>com.apple.media.ringtones.read-write</key>
 		<true/>
-
+        
+        <key>com.apple.managedconfiguration.profiled-access</key>
+        <true/>
 	</dict>
 </plist>

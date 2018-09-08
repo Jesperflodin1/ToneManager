@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		249694972143C35C009960D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 249694962143C35B009960D7 /* Main.storyboard */; };
+		24969499214406FE009960D7 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24969498214406FE009960D7 /* assets.xcassets */; };
+		2496949B214409E2009960D7 /* RingtoneDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */; };
 		2497A63B214251D200597B5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A63A214251D200597B5C /* AppDelegate.swift */; };
-		2497A63D214251D300597B5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2497A63C214251D300597B5C /* Assets.xcassets */; };
 		2497A640214251D300597B5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2497A63E214251D300597B5C /* LaunchScreen.storyboard */; };
 		2497A64B214251D300597B5C /* ToneManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A64A214251D300597B5C /* ToneManagerTests.swift */; };
 		2497A656214251D400597B5C /* ToneManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A655214251D400597B5C /* ToneManagerUITests.swift */; };
-		2497A6642142529100597B5C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A6632142529100597B5C /* TabBarViewController.swift */; };
 		2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A6652142533600597B5C /* RingtoneTableViewController.swift */; };
 		2497A6682142537B00597B5C /* Ringtone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A6672142537B00597B5C /* Ringtone.swift */; };
 		2497A66A2142538500597B5C /* RingtoneStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A6692142538500597B5C /* RingtoneStore.swift */; };
@@ -21,8 +22,9 @@
 		24EE207221428A5D0045D678 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24EE206F21428A5D0045D678 /* FontAwesome.ttf */; };
 		24EE207321428A5D0045D678 /* FAIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE207021428A5D0045D678 /* FAIcon.swift */; };
 		24EE2075214295480045D678 /* RingtoneTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE2074214295480045D678 /* RingtoneTableCell.swift */; };
-		24EE2077214295E90045D678 /* RingtoneTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE2076214295E90045D678 /* RingtoneTableViewHeader.swift */; };
-		24EE2079214295F50045D678 /* RingtoneTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE2078214295F50045D678 /* RingtoneTableViewFooter.swift */; };
+		24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EE20822142C9590045D678 /* TLToneManagerHandler.m */; };
+		24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EE20862142D9A30045D678 /* FBApplicationInfoHandler.m */; };
+		24EE208A2142EB050045D678 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EE20892142EB050045D678 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,9 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		249694962143C35B009960D7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		24969498214406FE009960D7 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
+		2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneDetailViewController.swift; sourceTree = "<group>"; };
 		2497A637214251D200597B5C /* ToneManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToneManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2497A63A214251D200597B5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2497A63C214251D300597B5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2497A63F214251D300597B5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2497A641214251D300597B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2497A646214251D300597B5C /* ToneManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToneManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,7 +58,6 @@
 		2497A651214251D300597B5C /* ToneManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToneManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2497A655214251D400597B5C /* ToneManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneManagerUITests.swift; sourceTree = "<group>"; };
 		2497A657214251D400597B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2497A6632142529100597B5C /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		2497A6652142533600597B5C /* RingtoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneTableViewController.swift; sourceTree = "<group>"; };
 		2497A6672142537B00597B5C /* Ringtone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ringtone.swift; sourceTree = "<group>"; };
 		2497A6692142538500597B5C /* RingtoneStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneStore.swift; sourceTree = "<group>"; };
@@ -63,8 +66,13 @@
 		24EE206F21428A5D0045D678 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		24EE207021428A5D0045D678 /* FAIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAIcon.swift; sourceTree = "<group>"; };
 		24EE2074214295480045D678 /* RingtoneTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneTableCell.swift; sourceTree = "<group>"; };
-		24EE2076214295E90045D678 /* RingtoneTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneTableViewHeader.swift; sourceTree = "<group>"; };
-		24EE2078214295F50045D678 /* RingtoneTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneTableViewFooter.swift; sourceTree = "<group>"; };
+		24EE207E2142C7E60045D678 /* ToneManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ToneManager-Bridging-Header.h"; sourceTree = "<group>"; };
+		24EE20822142C9590045D678 /* TLToneManagerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLToneManagerHandler.m; sourceTree = "<group>"; };
+		24EE20832142C9590045D678 /* TLToneManagerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLToneManagerHandler.h; sourceTree = "<group>"; };
+		24EE20852142D9A30045D678 /* FBApplicationInfoHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBApplicationInfoHandler.h; sourceTree = "<group>"; };
+		24EE20862142D9A30045D678 /* FBApplicationInfoHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBApplicationInfoHandler.m; sourceTree = "<group>"; };
+		24EE20892142EB050045D678 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		24EE208B214311630045D678 /* iOSHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSHeaders.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24EE208A2142EB050045D678 /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +108,7 @@
 				2497A649214251D300597B5C /* ToneManagerTests */,
 				2497A654214251D300597B5C /* ToneManagerUITests */,
 				2497A638214251D200597B5C /* Products */,
+				24EE20882142EB040045D678 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,21 +125,26 @@
 		2497A639214251D200597B5C /* ToneManager */ = {
 			isa = PBXGroup;
 			children = (
+				24969498214406FE009960D7 /* assets.xcassets */,
 				2497A63A214251D200597B5C /* AppDelegate.swift */,
-				2497A6632142529100597B5C /* TabBarViewController.swift */,
+				249694962143C35B009960D7 /* Main.storyboard */,
 				24EE206A214276CF0045D678 /* SettingsViewController.swift */,
 				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
 				24EE2074214295480045D678 /* RingtoneTableCell.swift */,
-				24EE2076214295E90045D678 /* RingtoneTableViewHeader.swift */,
-				24EE2078214295F50045D678 /* RingtoneTableViewFooter.swift */,
+				2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */,
 				2497A6672142537B00597B5C /* Ringtone.swift */,
 				2497A6692142538500597B5C /* RingtoneStore.swift */,
-				2497A63C214251D300597B5C /* Assets.xcassets */,
 				2497A63E214251D300597B5C /* LaunchScreen.storyboard */,
 				2497A641214251D300597B5C /* Info.plist */,
+				24EE20832142C9590045D678 /* TLToneManagerHandler.h */,
+				24EE20822142C9590045D678 /* TLToneManagerHandler.m */,
 				24EE207021428A5D0045D678 /* FAIcon.swift */,
 				24EE206E21428A5C0045D678 /* FAIcon+Lookup.swift */,
 				24EE206F21428A5D0045D678 /* FontAwesome.ttf */,
+				24EE207E2142C7E60045D678 /* ToneManager-Bridging-Header.h */,
+				24EE20852142D9A30045D678 /* FBApplicationInfoHandler.h */,
+				24EE208B214311630045D678 /* iOSHeaders.h */,
+				24EE20862142D9A30045D678 /* FBApplicationInfoHandler.m */,
 			);
 			path = ToneManager;
 			sourceTree = "<group>";
@@ -150,6 +165,14 @@
 				2497A657214251D400597B5C /* Info.plist */,
 			);
 			path = ToneManagerUITests;
+			sourceTree = "<group>";
+		};
+		24EE20882142EB040045D678 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24EE20892142EB050045D678 /* MobileCoreServices.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +243,7 @@
 				TargetAttributes = {
 					2497A636214251D200597B5C = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					2497A645214251D300597B5C = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -256,9 +280,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2497A63D214251D300597B5C /* Assets.xcassets in Resources */,
 				2497A640214251D300597B5C /* LaunchScreen.storyboard in Resources */,
 				24EE207221428A5D0045D678 /* FontAwesome.ttf in Resources */,
+				24969499214406FE009960D7 /* assets.xcassets in Resources */,
+				249694972143C35C009960D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,16 +308,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2497A6642142529100597B5C /* TabBarViewController.swift in Sources */,
 				2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */,
 				24EE207121428A5D0045D678 /* FAIcon+Lookup.swift in Sources */,
 				2497A66A2142538500597B5C /* RingtoneStore.swift in Sources */,
 				2497A63B214251D200597B5C /* AppDelegate.swift in Sources */,
-				24EE2079214295F50045D678 /* RingtoneTableViewFooter.swift in Sources */,
 				2497A6682142537B00597B5C /* Ringtone.swift in Sources */,
-				24EE2077214295E90045D678 /* RingtoneTableViewHeader.swift in Sources */,
+				24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */,
 				24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */,
+				24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */,
 				24EE207321428A5D0045D678 /* FAIcon.swift in Sources */,
+				2496949B214409E2009960D7 /* RingtoneDetailViewController.swift in Sources */,
 				24EE2075214295480045D678 /* RingtoneTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,7 +360,8 @@
 				2497A63F214251D300597B5C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
+			path = ToneManager;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 
@@ -391,10 +417,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.2;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -445,9 +471,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.2;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -458,6 +484,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6VG5GK3UD7;
 				INFOPLIST_FILE = ToneManager/Info.plist;
@@ -468,6 +496,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.2;
+				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -477,6 +508,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6VG5GK3UD7;
 				INFOPLIST_FILE = ToneManager/Info.plist;
@@ -487,6 +520,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.2;
+				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
