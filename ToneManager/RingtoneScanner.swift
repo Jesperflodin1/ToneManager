@@ -7,9 +7,18 @@
 //
 
 import Foundation
+import BugfenderSDK
 
 class RingtoneScanner {
     private let appDataPath = "/var/mobile/Library/ToneManager"
+    
+    var delegate : RingtoneStore
+    
+    init(_ delegate : RingtoneStore) {
+        self.delegate = delegate
+        BFLog("Scanner initializing")
+    }
+    
     
     
 }
