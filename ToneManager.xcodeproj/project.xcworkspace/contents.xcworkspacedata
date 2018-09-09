@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Main.storyboard">
+   </FileRef>
+   <FileRef
       location = "self:ToneManager.xcodeproj">
    </FileRef>
 </Workspace>

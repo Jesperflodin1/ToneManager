@@ -12,6 +12,7 @@
 @interface FBApplicationInfoHandler : NSObject
 
 + (NSURL * __nullable)pathForBundleIdentifier:(NSString * __nonnull)bundleID;
++ (NSString * __nullable)displayNameForBundleIdentifier:(NSString * __nonnull)bundleID;
 + (BOOL)loadFramework;
 
 @end

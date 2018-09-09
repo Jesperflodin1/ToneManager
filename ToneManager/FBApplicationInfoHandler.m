@@ -13,15 +13,15 @@
 
 + (BOOL)loadFramework {
     if (NSClassFromString(@"FBApplicationInfo")) {
-        NSLog(@"FrontBoard Loaded!");
+        NSLog(@"JFTM: FrontBoard Loaded!");
         return YES;
     } else {
         NSBundle *bundle = [NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/FrontBoard.framework"];
         if (![bundle load]) {
-            NSLog(@"ERROR: Failed to load FrontBoard framework");
+            NSLog(@"JFTM: ERROR: Failed to load FrontBoard framework");
             return NO;
         } else {
-            NSLog(@"FrontBoard Loaded from disk!");
+            NSLog(@"JFTM: FrontBoard Loaded from disk!");
             return YES;
         }
     }
@@ -33,14 +33,26 @@
     }
 //    SEL selector = NSSelectorFromString(@"applicationProxyForIdentifier:");
     if ( ![NSClassFromString(@"LSApplicationProxy") respondsToSelector:@selector(applicationProxyForIdentifier:)]) {
-        NSLog(@"ERROR: applicationProxyForIdentifier: not responding");
+        NSLog(@"JFTM: ERROR: applicationProxyForIdentifier: not responding");
         return nil;
     }
-    Class FBAppInfo = NSClassFromString(@"FBApplicationInfo");
-    NSLog(@"FBAppInfo = %@",FBAppInfo);
     FBApplicationInfo *appInfo = [NSClassFromString(@"LSApplicationProxy") performSelector:@selector(applicationProxyForIdentifier:) withObject:bundleID];
-    NSLog(@"appInfo = %@",appInfo);
+    NSLog(@"JFTM: appInfo = %@",appInfo);
     return [appInfo performSelector:@selector(dataContainerURL)];
+}
+
++ (NSString * __nullable)displayNameForBundleIdentifier:(NSString * __nonnull)bundleID {
+    if (![FBApplicationInfoHandler loadFramework]) {
+        return nil;
+    }
+    //    SEL selector = NSSelectorFromString(@"applicationProxyForIdentifier:");
+    if ( ![NSClassFromString(@"LSApplicationProxy") respondsToSelector:@selector(applicationProxyForIdentifier:)]) {
+        NSLog(@"JFTM: ERROR: applicationProxyForIdentifier: not responding");
+        return nil;
+    }
+    LSApplicationProxy *appProxy = [NSClassFromString(@"LSApplicationProxy") performSelector:@selector(applicationProxyForIdentifier:) withObject:bundleID];
+    NSLog(@"JFTM: appProxy = %@",appProxy);
+    return [appProxy performSelector:@selector(itemName)];
 }
 
 @end

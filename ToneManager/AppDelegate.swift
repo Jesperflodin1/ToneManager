@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BugfenderSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,10 +15,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        Bugfender.activateLogger("HId16MWO0WTn4W4zk1Ipb32RtNf43dN6")
+        Bugfender.enableUIEventLogging() // optional, log user interactions automatically
+        Bugfender.enableCrashReporting() // optional, log crashes automatically
+        BFLog("App start") // use BFLog as you would use NSLog
+        
+        let fileManager = FileManager.default
+        let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
+        if !fileManager.fileExists(atPath: appDataDir.path) {
+            BFLog("No app data directory found, creating")
+            do {
+                try fileManager.createDirectory(atPath: appDataDir.path, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                BFLog("JFTM: Couldn't create document directory")
+            }
+        } else {
+            BFLog("App data directory exists")
+        }
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        // Override point for customization after application launch.
+
         self.window!.backgroundColor = UIColor.white
         
+        BFLog("Loading main storyboard")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nvc = storyboard.instantiateViewController(withIdentifier: "JFTMNavigationController") as! UINavigationController
         let vc = nvc.topViewController as! RingtoneTableViewController
@@ -27,23 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.makeKeyAndVisible()
         
         application.statusBarStyle = .lightContent // .default
-        
-        #if TARGET_OS_SIMULATOR
-        NSLog("Compiled for simulator!")
-        #else
-        if let test = FBApplicationInfoHandler.path(forBundleIdentifier: "com.908.AudikoFree") {
-            NSLog("WOO!!! \(test.path)")
-        } else {
-            NSLog("ERROR: Failed to get bundle path !!!!!!!!!")
-        }
-        #endif
-        
-//        UINavigationBar.appearance().barTintColor = UIColor(red: 76.0/255.0, green: 150/255.0, blue: 94.0/255.0, alpha: 0.8)
-//        UINavigationBar.appearance().tintColor = UIColor.white
-//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
-//        UINavigationBar.appearance().isTranslucent = true
-        
-        
         
         return true
     }

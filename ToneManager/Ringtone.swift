@@ -34,6 +34,9 @@ class Ringtone : NSObject {
     var protectedContent: Bool
     var purchased: Bool
     
+    var appName: String
+    var size: Int
+    
     init(name: String, identifier: String?, totalTime: Int?, bundleID: String?, fileURL: URL, protectedContent: Bool?, purchased: Bool?) {
         self.name = name
         self.identifier = identifier
@@ -63,6 +66,14 @@ class Ringtone : NSObject {
         } else {
             self.purchased = false
         }
+        
+        if let app = FBApplicationInfoHandler.displayName(forBundleIdentifier: self.bundleID) {
+            self.appName = app
+        } else {
+            self.appName = self.bundleID
+        }
+        
+        self.size = 0 // TODO: File size
         
         super.init()
     }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BugfenderSDK
 
 class RingtoneStore {
     
@@ -20,6 +21,7 @@ class RingtoneStore {
     }
     
     init() {
+        BFLog("RingtoneStore init")
         createTestRingtone()
         createTestRingtone()
         createTestRingtone()
@@ -31,6 +33,10 @@ class RingtoneStore {
         if let index = allRingtones.index(of: ringtone) {
             allRingtones.remove(at: index)
         }
+    }
+    
+    func updateRingtones(completionHandler: (_ didUpdate: Bool) -> Void) {
+        
     }
     
 }

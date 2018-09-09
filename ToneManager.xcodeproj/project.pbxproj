@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		249694972143C35C009960D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 249694962143C35B009960D7 /* Main.storyboard */; };
+		1B7547485A56829ADA0E8A7C /* Pods_ToneManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87726A0BFD0B4E267CD5179 /* Pods_ToneManager.framework */; };
 		24969499214406FE009960D7 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24969498214406FE009960D7 /* assets.xcassets */; };
 		2496949B214409E2009960D7 /* RingtoneDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */; };
+		249694A22144F0A7009960D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2496949E2144EBB9009960D7 /* Main.storyboard */; };
+		249694A521450AC6009960D7 /* entitlements.xml in Resources */ = {isa = PBXBuildFile; fileRef = 249694A421450AC6009960D7 /* entitlements.xml */; };
+		249694A721454F96009960D7 /* RingtoneScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249694A621454F96009960D7 /* RingtoneScanner.swift */; };
 		2497A63B214251D200597B5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A63A214251D200597B5C /* AppDelegate.swift */; };
 		2497A640214251D300597B5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2497A63E214251D300597B5C /* LaunchScreen.storyboard */; };
 		2497A64B214251D300597B5C /* ToneManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A64A214251D300597B5C /* ToneManagerTests.swift */; };
@@ -18,13 +21,12 @@
 		2497A6682142537B00597B5C /* Ringtone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A6672142537B00597B5C /* Ringtone.swift */; };
 		2497A66A2142538500597B5C /* RingtoneStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A6692142538500597B5C /* RingtoneStore.swift */; };
 		24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE206A214276CF0045D678 /* SettingsViewController.swift */; };
-		24EE207121428A5D0045D678 /* FAIcon+Lookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE206E21428A5C0045D678 /* FAIcon+Lookup.swift */; };
-		24EE207221428A5D0045D678 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24EE206F21428A5D0045D678 /* FontAwesome.ttf */; };
-		24EE207321428A5D0045D678 /* FAIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE207021428A5D0045D678 /* FAIcon.swift */; };
 		24EE2075214295480045D678 /* RingtoneTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE2074214295480045D678 /* RingtoneTableCell.swift */; };
 		24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EE20822142C9590045D678 /* TLToneManagerHandler.m */; };
 		24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EE20862142D9A30045D678 /* FBApplicationInfoHandler.m */; };
 		24EE208A2142EB050045D678 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EE20892142EB050045D678 /* MobileCoreServices.framework */; };
+		3A0E0435786C44BF60985FC7 /* Pods_ToneManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */; };
+		BE4E087C5B988C85CBA2F99B /* Pods_ToneManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787B7BD1ECCE5249CE75158F /* Pods_ToneManagerUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,9 +47,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		249694962143C35B009960D7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24969498214406FE009960D7 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneDetailViewController.swift; sourceTree = "<group>"; };
+		2496949E2144EBB9009960D7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = /Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Main.storyboard; sourceTree = "<absolute>"; };
+		249694A421450AC6009960D7 /* entitlements.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = entitlements.xml; sourceTree = "<group>"; };
+		249694A621454F96009960D7 /* RingtoneScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneScanner.swift; sourceTree = "<group>"; };
 		2497A637214251D200597B5C /* ToneManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToneManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2497A63A214251D200597B5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2497A63F214251D300597B5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,9 +67,6 @@
 		2497A6672142537B00597B5C /* Ringtone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ringtone.swift; sourceTree = "<group>"; };
 		2497A6692142538500597B5C /* RingtoneStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneStore.swift; sourceTree = "<group>"; };
 		24EE206A214276CF0045D678 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		24EE206E21428A5C0045D678 /* FAIcon+Lookup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FAIcon+Lookup.swift"; sourceTree = "<group>"; };
-		24EE206F21428A5D0045D678 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
-		24EE207021428A5D0045D678 /* FAIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAIcon.swift; sourceTree = "<group>"; };
 		24EE2074214295480045D678 /* RingtoneTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneTableCell.swift; sourceTree = "<group>"; };
 		24EE207E2142C7E60045D678 /* ToneManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ToneManager-Bridging-Header.h"; sourceTree = "<group>"; };
 		24EE20822142C9590045D678 /* TLToneManagerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLToneManagerHandler.m; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 		24EE20862142D9A30045D678 /* FBApplicationInfoHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBApplicationInfoHandler.m; sourceTree = "<group>"; };
 		24EE20892142EB050045D678 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		24EE208B214311630045D678 /* iOSHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSHeaders.h; sourceTree = "<group>"; };
+		28C8EA633FF5601A839E9E13 /* Pods-ToneManagerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManagerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManagerUITests/Pods-ToneManagerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2C0BE91D61C88AF3F956DEAC /* Pods-ToneManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManager/Pods-ToneManager.debug.xcconfig"; sourceTree = "<group>"; };
+		787B7BD1ECCE5249CE75158F /* Pods_ToneManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B6239BE23ADD75B5B2F0250 /* Pods-ToneManagerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManagerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManagerUITests/Pods-ToneManagerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A1CE92B8D71786E10DE64544 /* Pods-ToneManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManagerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManagerTests/Pods-ToneManagerTests.release.xcconfig"; sourceTree = "<group>"; };
+		BA61086B2010E40B6D1AE4CA /* Pods-ToneManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManagerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManagerTests/Pods-ToneManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CD3373338519FD00CA4E77F3 /* Pods-ToneManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManager/Pods-ToneManager.release.xcconfig"; sourceTree = "<group>"; };
+		E87726A0BFD0B4E267CD5179 /* Pods_ToneManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24EE208A2142EB050045D678 /* MobileCoreServices.framework in Frameworks */,
+				1B7547485A56829ADA0E8A7C /* Pods_ToneManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A0E0435786C44BF60985FC7 /* Pods_ToneManagerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE4E087C5B988C85CBA2F99B /* Pods_ToneManagerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +122,7 @@
 				2497A654214251D300597B5C /* ToneManagerUITests */,
 				2497A638214251D200597B5C /* Products */,
 				24EE20882142EB040045D678 /* Frameworks */,
+				4CF3AF4B44E406C6C6587F3D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,25 +140,24 @@
 			isa = PBXGroup;
 			children = (
 				24969498214406FE009960D7 /* assets.xcassets */,
+				2496949E2144EBB9009960D7 /* Main.storyboard */,
+				2497A63E214251D300597B5C /* LaunchScreen.storyboard */,
 				2497A63A214251D200597B5C /* AppDelegate.swift */,
-				249694962143C35B009960D7 /* Main.storyboard */,
 				24EE206A214276CF0045D678 /* SettingsViewController.swift */,
 				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
 				24EE2074214295480045D678 /* RingtoneTableCell.swift */,
 				2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */,
 				2497A6672142537B00597B5C /* Ringtone.swift */,
 				2497A6692142538500597B5C /* RingtoneStore.swift */,
-				2497A63E214251D300597B5C /* LaunchScreen.storyboard */,
+				249694A621454F96009960D7 /* RingtoneScanner.swift */,
 				2497A641214251D300597B5C /* Info.plist */,
+				24EE207E2142C7E60045D678 /* ToneManager-Bridging-Header.h */,
+				24EE208B214311630045D678 /* iOSHeaders.h */,
 				24EE20832142C9590045D678 /* TLToneManagerHandler.h */,
 				24EE20822142C9590045D678 /* TLToneManagerHandler.m */,
-				24EE207021428A5D0045D678 /* FAIcon.swift */,
-				24EE206E21428A5C0045D678 /* FAIcon+Lookup.swift */,
-				24EE206F21428A5D0045D678 /* FontAwesome.ttf */,
-				24EE207E2142C7E60045D678 /* ToneManager-Bridging-Header.h */,
 				24EE20852142D9A30045D678 /* FBApplicationInfoHandler.h */,
-				24EE208B214311630045D678 /* iOSHeaders.h */,
 				24EE20862142D9A30045D678 /* FBApplicationInfoHandler.m */,
+				249694A421450AC6009960D7 /* entitlements.xml */,
 			);
 			path = ToneManager;
 			sourceTree = "<group>";
@@ -171,8 +184,24 @@
 			isa = PBXGroup;
 			children = (
 				24EE20892142EB050045D678 /* MobileCoreServices.framework */,
+				E87726A0BFD0B4E267CD5179 /* Pods_ToneManager.framework */,
+				17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */,
+				787B7BD1ECCE5249CE75158F /* Pods_ToneManagerUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4CF3AF4B44E406C6C6587F3D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C0BE91D61C88AF3F956DEAC /* Pods-ToneManager.debug.xcconfig */,
+				CD3373338519FD00CA4E77F3 /* Pods-ToneManager.release.xcconfig */,
+				BA61086B2010E40B6D1AE4CA /* Pods-ToneManagerTests.debug.xcconfig */,
+				A1CE92B8D71786E10DE64544 /* Pods-ToneManagerTests.release.xcconfig */,
+				7B6239BE23ADD75B5B2F0250 /* Pods-ToneManagerUITests.debug.xcconfig */,
+				28C8EA633FF5601A839E9E13 /* Pods-ToneManagerUITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,9 +211,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2497A65A214251D400597B5C /* Build configuration list for PBXNativeTarget "ToneManager" */;
 			buildPhases = (
+				270D784557AF8187DA688C84 /* [CP] Check Pods Manifest.lock */,
 				2497A633214251D200597B5C /* Sources */,
 				2497A634214251D200597B5C /* Frameworks */,
 				2497A635214251D200597B5C /* Resources */,
+				249694A321450A59009960D7 /* ShellScript */,
+				6152E5909BFF4496799113E7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,6 +231,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2497A65D214251D400597B5C /* Build configuration list for PBXNativeTarget "ToneManagerTests" */;
 			buildPhases = (
+				AA5AC3619BC7710A7C410158 /* [CP] Check Pods Manifest.lock */,
 				2497A642214251D300597B5C /* Sources */,
 				2497A643214251D300597B5C /* Frameworks */,
 				2497A644214251D300597B5C /* Resources */,
@@ -217,6 +250,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2497A660214251D400597B5C /* Build configuration list for PBXNativeTarget "ToneManagerUITests" */;
 			buildPhases = (
+				169D7EA876C3DF58F0EDABA7 /* [CP] Check Pods Manifest.lock */,
 				2497A64D214251D300597B5C /* Sources */,
 				2497A64E214251D300597B5C /* Frameworks */,
 				2497A64F214251D300597B5C /* Resources */,
@@ -280,10 +314,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				249694A22144F0A7009960D7 /* Main.storyboard in Resources */,
+				249694A521450AC6009960D7 /* entitlements.xml in Resources */,
 				2497A640214251D300597B5C /* LaunchScreen.storyboard in Resources */,
-				24EE207221428A5D0045D678 /* FontAwesome.ttf in Resources */,
 				24969499214406FE009960D7 /* assets.xcassets in Resources */,
-				249694972143C35C009960D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,20 +337,107 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		169D7EA876C3DF58F0EDABA7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ToneManagerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		249694A321450A59009960D7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\n# Modify this to your device's IP address.\nIP=\"192.168.2.95\"\n\n# Verify that the build is for iOS Device and not a Simulator.\nif [[ \"$NATIVE_ARCH\" != \"i386\" && \"$NATIVE_ARCH\" != \"x86_64\" ]]; then\n# Kill any running instances and remove the app folder.\necho \"Removing previous app\"\nssh root@$IP \"killall ${TARGETNAME}; rm -rf /Applications/${WRAPPER_NAME}\"\n# Self sign the build.\necho \"Signing with ldid\"\nldid -S$BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/entitlements.xml $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/$TARGETNAME\n# Copy it over.\necho \"Copying to device\"\nscp -r $BUILT_PRODUCTS_DIR/${WRAPPER_NAME} root@$IP:/Applications/\n#echo \"Running uicache\"\n#ssh root@$IP \"uicache\"\n\n# This part just creates create an OS X notification to let you know that the process is done.\n# You can get terminal-notifier from https://github.com/alloy/terminal-notifier.\n# You can remove this line if you want.\nfi";
+		};
+		270D784557AF8187DA688C84 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ToneManager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6152E5909BFF4496799113E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ToneManager/Pods-ToneManager-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BugfenderSDK/BugfenderSDK.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BugfenderSDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ToneManager/Pods-ToneManager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA5AC3619BC7710A7C410158 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ToneManagerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2497A633214251D200597B5C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				249694A721454F96009960D7 /* RingtoneScanner.swift in Sources */,
 				2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */,
-				24EE207121428A5D0045D678 /* FAIcon+Lookup.swift in Sources */,
 				2497A66A2142538500597B5C /* RingtoneStore.swift in Sources */,
 				2497A63B214251D200597B5C /* AppDelegate.swift in Sources */,
 				2497A6682142537B00597B5C /* Ringtone.swift in Sources */,
 				24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */,
 				24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */,
 				24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */,
-				24EE207321428A5D0045D678 /* FAIcon.swift in Sources */,
 				2496949B214409E2009960D7 /* RingtoneDetailViewController.swift in Sources */,
 				24EE2075214295480045D678 /* RingtoneTableCell.swift in Sources */,
 			);
@@ -482,6 +603,7 @@
 		};
 		2497A65B214251D400597B5C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C0BE91D61C88AF3F956DEAC /* Pods-ToneManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -491,7 +613,7 @@
 				INFOPLIST_FILE = ToneManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
+					/usr/lib/libswift/4.1.2/,
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
@@ -506,6 +628,7 @@
 		};
 		2497A65C214251D400597B5C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD3373338519FD00CA4E77F3 /* Pods-ToneManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -515,7 +638,7 @@
 				INFOPLIST_FILE = ToneManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
+					/usr/lib/libswift/4.1.2/,
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
@@ -529,6 +652,7 @@
 		};
 		2497A65E214251D400597B5C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA61086B2010E40B6D1AE4CA /* Pods-ToneManagerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -550,6 +674,7 @@
 		};
 		2497A65F214251D400597B5C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1CE92B8D71786E10DE64544 /* Pods-ToneManagerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -571,6 +696,7 @@
 		};
 		2497A661214251D400597B5C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B6239BE23ADD75B5B2F0250 /* Pods-ToneManagerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -591,6 +717,7 @@
 		};
 		2497A662214251D400597B5C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28C8EA633FF5601A839E9E13 /* Pods-ToneManagerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
