@@ -1,6 +1,6 @@
 /// A thread-safe array.
 public class SynchronizedArray<Element> {
-    fileprivate let queue = DispatchQueue(label: "io.zamzam.ZamzamKit.SynchronizedArray", attributes: .concurrent)
+    fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SynchronizedArray", attributes: .concurrent)
     fileprivate var array = [Element]()
 }
 

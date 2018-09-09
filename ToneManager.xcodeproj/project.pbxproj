@@ -398,10 +398,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ToneManager/Pods-ToneManager-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BugfenderSDK/BugfenderSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BugfenderSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -617,6 +619,7 @@
 				INFOPLIST_FILE = ToneManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
 					/usr/lib/libswift/4.1.2/,
 					"@executable_path/Frameworks",
 				);
@@ -642,6 +645,7 @@
 				INFOPLIST_FILE = ToneManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
 					/usr/lib/libswift/4.1.2/,
 					"@executable_path/Frameworks",
 				);

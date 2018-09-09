@@ -35,7 +35,7 @@ class RingtoneStore {
 //        }, completion: completion)
 //    }
     
-    func updateRingtones(completionHandler: (Bool) -> Void) {
+    func updateRingtones(completionHandler: @escaping (Bool) -> Void) {
         let scanner = RingtoneScanner(self)
         // TODO: Get apps to scan from preferences
         

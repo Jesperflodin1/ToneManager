@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import BugfenderSDK
+import PKHUD
 
 class RingtoneTableViewController : UITableViewController {
     
@@ -17,9 +19,12 @@ class RingtoneTableViewController : UITableViewController {
     private let rowHeight : CGFloat = 55
     
     @IBAction func updateTapped(_ sender: UIBarButtonItem) {
+        HUD.show(.labeledProgress(title: "Updating", subtitle: "Scanning for new ringtones"))
+        
         ringtoneStore.updateRingtones { (needsUpdate: Bool) in
+            HUD.flash(.success, delay: 1.0)
             if (needsUpdate) {
-                tableView.reloadData()
+                self.tableView.reloadData()
             }
         }
     }

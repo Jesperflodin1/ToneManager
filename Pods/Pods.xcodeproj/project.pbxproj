@@ -3,110 +3,163 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1473C031A3F06315839E3969AEB269DE /* Pods-ToneManagerUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A88EBD4A0895B0BE74D7CEBB980D6290 /* Pods-ToneManagerUITests-dummy.m */; };
+		17E7E62102D200AFE11B049F570C9397 /* PKHUDErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A138D59E8E60E7C4E6A047B06A158388 /* PKHUDErrorView.swift */; };
+		1929F91EB38B923FBFA0B2F53C0C4877 /* PKHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CBC5D58EF02138CB4CCDCCA18C29438 /* PKHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DABA9DC73CFFCDAC7F7A83232C6F8CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */; };
+		1F34910B27A3B86966E07898A2B70AE6 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC0785BF37B03E16E4191B6942643E /* FrameView.swift */; };
+		2DCA4225866D2445C444325589BD9744 /* PKHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 76E673229107B327146A74455A1367B9 /* PKHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3470186F176465D3CA04711D0D82DF38 /* PKHUDAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8520E0E48280F75AFF3DAF533C50A4 /* PKHUDAnimation.swift */; };
+		34D8AB5C8FA400C58D7CA084633DF744 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43A07E9EF92674DB876975E5CCD29EF8 /* Images.xcassets */; };
 		37040BA453FC167E98A9276D039A743F /* Pods-ToneManagerTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 32D9528A293C23D343BC5C9279E550EF /* Pods-ToneManagerTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5238AEA249AAB9163D5CF341E8B83BDA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */; };
-		6504F8185AA78C8699227C992DCB7C39 /* BugfenderSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C5A34D7B50C47CD57F4F5F0A9F0F1341 /* BugfenderSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6504F8185AA78C8699227C992DCB7C39 /* BugfenderSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FD0421F5BBDC7957B725F6092A6B968 /* BugfenderSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6AD6F5F93F53AA60ADD75AE542340C6C /* Pods-ToneManagerUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B85E9848A423CAE4FDABC981D46396 /* Pods-ToneManagerUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		766750E7B98FF8495403D0C7B5064D6C /* PKHUDProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B00E42044E8128ECD7278D598BC7D83 /* PKHUDProgressView.swift */; };
+		76C604447A665654489E56EF79A55D12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */; };
+		7F09171ED8899C35E45511452323B3DF /* PKHUDSquareBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFD4548861642598670F23C4233A77 /* PKHUDSquareBaseView.swift */; };
+		869B25CDDA4D1BDA81A495A23D43E108 /* PKHUDAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44882C5A8419BF3CDCBD8D1275688E2E /* PKHUDAssets.swift */; };
+		89C4ADD534D41DF5442F67D799B8E12B /* PKHUDSystemActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5DA7DF070DB2754EE96178DEDD039 /* PKHUDSystemActivityIndicatorView.swift */; };
 		A1BE6E8B5D5CA2B03A327E72DFA17D34 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E8DF8CDB96CED2A77C23DC7FD0FBB5 /* MobileCoreServices.framework */; };
 		A4DD418ADE0BE16F36C60B1F60848A67 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0BDE54605F2BACC1A369436937D0D5 /* Security.framework */; };
-		B269CC5587D7A8B5B4AD57276BE580CD /* BugfenderSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1966C6886A3200B83FE4F6491CEAE7E5 /* BugfenderSDK-dummy.m */; };
+		A5A9F17A94A6CC0F7D4E9DE0FCAFE5AB /* PKHUDSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9C921DBDC78EFE85D4EF72BC4800F1 /* PKHUDSuccessView.swift */; };
+		A7BA7C4E4C047A5698A68CA76A453605 /* PKHUDTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607B4EF02FB5DA8B8C1FE3B8C441C7C0 /* PKHUDTextView.swift */; };
+		AEA27A6C1523E5B1A1B3B74CA02FB67D /* PKHUDRotatingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6814A43B999FBB121644833FADB1C7 /* PKHUDRotatingImageView.swift */; };
+		B1DC643D39F725A5C89C8195B5C10A09 /* PKHUDAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = F349F794B866B26CC53BEB69585458A8 /* PKHUDAnimating.swift */; };
+		B269CC5587D7A8B5B4AD57276BE580CD /* BugfenderSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4729E47093929648B5F7482AB9EBFF1B /* BugfenderSDK-dummy.m */; };
 		B3CDBD659A1D708DF4E7957518C97DD8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBBA9ADA1BEF3D8A85BF1C2E12A52BB /* SystemConfiguration.framework */; };
 		B6D4BB4167D66F5996DD6A4C3B5D0E2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */; };
-		C4C7666C49411A2D581835723B3F273F /* Bugfender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCCFB9FD29A7E03780BAC0A1F16965D /* Bugfender.swift */; };
-		CC813DC8C946F306117FEE216C1F3045 /* Pods-ToneManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DDCDF0894BCA4D093572874062B0C8 /* Pods-ToneManager-dummy.m */; };
-		CFD927969395B2CCFD3AEDA3278284A6 /* Pods-ToneManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 797F6883D6BABCBE51512B6EE9A1A36E /* Pods-ToneManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D19B9E6EB93FD926EFD42FD25B496A43 /* BugfenderSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = C9D8D7FC6A7F472EF315B9A0AD64DB71 /* BugfenderSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA1B53BE85DE9BD789FE1C32FBA8C752 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB7A364C13CB8BA9470F384DD672CD /* HUD.swift */; };
+		BF541FB658B81D55E6A960701BF0619E /* PKHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDFD76444F9B80811B89824F62D9C65 /* PKHUD.swift */; };
+		C14042451DB67567896F1B6BE928252A /* Pods-ToneManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 797F6883D6BABCBE51512B6EE9A1A36E /* Pods-ToneManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C4C7666C49411A2D581835723B3F273F /* Bugfender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7AAC2B460BE2391710BCB4CF7A0174 /* Bugfender.swift */; };
+		D0F542D62E2AA523E0A3D28DC85D2012 /* PKHUDWideBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B704A01962A5FE43A5F40642609FC965 /* PKHUDWideBaseView.swift */; };
+		D19B9E6EB93FD926EFD42FD25B496A43 /* BugfenderSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9CA0F4007AA15689D766C9CB464998 /* BugfenderSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E04D06DA70F44AE169DE38F1E886735F /* Pods-ToneManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DDCDF0894BCA4D093572874062B0C8 /* Pods-ToneManager-dummy.m */; };
+		E57944FDD00D7F5F2674D4D52E0F52BA /* PKHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B67D0C903879426B15E637632850E7C /* PKHUD-dummy.m */; };
 		EA06AAD607112870616368F20E9E4E14 /* Pods-ToneManagerTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2DE1CD3F72B8F14AE80D3B19882E64 /* Pods-ToneManagerTests-dummy.m */; };
 		EA7BF7B7C5A46F62AB0039574BE2C3E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */; };
+		EF874C556BE14ABCAEA0C3342D5BD306 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */; };
+		F4C22A07683E879CB3ECF7D6A73F667E /* WindowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C909A81CB50601D06EFF2EDDEEFE44 /* WindowRootViewController.swift */; };
+		F61C2235825FE532417891978344385E /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321875A00973E2A98166DE25929877C3 /* Window.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		448A321734F2521F613E507773179525 /* PBXContainerItemProxy */ = {
+		05D08CD116727E89599E658EDF6DE5C1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C719E0E6D0CC7EB314382613918822AA;
-			remoteInfo = "Pods-ToneManager";
+			remoteGlobalIDString = D7A75F149082140741FC1E0B5B2863C8;
+			remoteInfo = PKHUD;
 		};
-		4690052413C1576915D80E6DD9394ED2 /* PBXContainerItemProxy */ = {
+		192F3A2E42E201B3816F7DD86F389E5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CD704FAC627B9B2935B033E67090D71F;
 			remoteInfo = BugfenderSDK;
 		};
+		448A321734F2521F613E507773179525 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2F98A57D34B389D163E03C77FA2E8D0;
+			remoteInfo = "Pods-ToneManager";
+		};
 		79183CD35C2BBEB2A7528F511E243AB5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C719E0E6D0CC7EB314382613918822AA;
+			remoteGlobalIDString = E2F98A57D34B389D163E03C77FA2E8D0;
 			remoteInfo = "Pods-ToneManager";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06D671DE244453AE0B9F472E4DDE7C53 /* BugfenderSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BugfenderSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AFFD4548861642598670F23C4233A77 /* PKHUDSquareBaseView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDSquareBaseView.swift; path = PKHUD/PKHUDSquareBaseView.swift; sourceTree = "<group>"; };
 		0B9771135625FAF453659940D9A4E6A8 /* Pods-ToneManagerUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ToneManagerUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		0BE14A48511779C0CCDA0B97BDF3E08B /* Pods-ToneManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ToneManager.debug.xcconfig"; sourceTree = "<group>"; };
+		0F6CAC2209BAB75C6A82AE4D1C4A5F5B /* BugfenderSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BugfenderSDK.modulemap; sourceTree = "<group>"; };
 		1046392136B2CB37BF8B08E376AF82E1 /* Pods-ToneManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ToneManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		1966C6886A3200B83FE4F6491CEAE7E5 /* BugfenderSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BugfenderSDK-dummy.m"; sourceTree = "<group>"; };
-		1C445BC9F0FBE59848983E4CDB3B076C /* BugfenderSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BugfenderSDK-prefix.pch"; sourceTree = "<group>"; };
+		1A6814A43B999FBB121644833FADB1C7 /* PKHUDRotatingImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDRotatingImageView.swift; path = PKHUD/PKHUDRotatingImageView.swift; sourceTree = "<group>"; };
+		1A7107A2A288328901248DD7ED7F9EA9 /* BugfenderSDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BugfenderSDK.xcconfig; sourceTree = "<group>"; };
+		30EA44F6F1CD3C38CE4526043269537A /* Pods_ToneManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ToneManagerUITests.framework; path = "Pods-ToneManagerUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		321875A00973E2A98166DE25929877C3 /* Window.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Window.swift; path = PKHUD/Window.swift; sourceTree = "<group>"; };
 		32D9528A293C23D343BC5C9279E550EF /* Pods-ToneManagerTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ToneManagerTests-umbrella.h"; sourceTree = "<group>"; };
+		3442DAC43DC02212D1826D2AA1E329EB /* libBugfenderSDKstatic.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libBugfenderSDKstatic.a; sourceTree = "<group>"; };
 		357BC016A181FFC5959237F485E02507 /* Pods-ToneManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ToneManager.release.xcconfig"; sourceTree = "<group>"; };
+		35FFB9AEA609C226B5ED91A979662131 /* PKHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PKHUD-prefix.pch"; sourceTree = "<group>"; };
 		39DDCDF0894BCA4D093572874062B0C8 /* Pods-ToneManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ToneManager-dummy.m"; sourceTree = "<group>"; };
+		3B67D0C903879426B15E637632850E7C /* PKHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PKHUD-dummy.m"; sourceTree = "<group>"; };
 		3C334F18C20B9E45F1ABF8C1886B2B4F /* Pods-ToneManagerUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ToneManagerUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		40B5ED0345DFA0AD324E79300B5EF632 /* Pods_ToneManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CBC5D58EF02138CB4CCDCCA18C29438 /* PKHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PKHUD-umbrella.h"; sourceTree = "<group>"; };
 		41B81079183EC3930AE741D5A291C13F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		423A707D4B8DDDFEBF00719EDA78186D /* Pods-ToneManagerUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManagerUITests-frameworks.sh"; sourceTree = "<group>"; };
+		43A07E9EF92674DB876975E5CCD29EF8 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PKHUD/Images.xcassets; sourceTree = "<group>"; };
+		44882C5A8419BF3CDCBD8D1275688E2E /* PKHUDAssets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDAssets.swift; path = PKHUD/PKHUDAssets.swift; sourceTree = "<group>"; };
+		4729E47093929648B5F7482AB9EBFF1B /* BugfenderSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BugfenderSDK-dummy.m"; sourceTree = "<group>"; };
 		4A07DA0DB0EB3398B074348CCFC89136 /* Pods-ToneManager-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ToneManager-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4A53E44110360B59CC09A63C85D25807 /* Pods-ToneManagerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ToneManagerTests.modulemap"; sourceTree = "<group>"; };
 		4C2DE1CD3F72B8F14AE80D3B19882E64 /* Pods-ToneManagerTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ToneManagerTests-dummy.m"; sourceTree = "<group>"; };
 		5143985604796D98FA0668AFF9B45681 /* Pods-ToneManager-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ToneManager-acknowledgements.plist"; sourceTree = "<group>"; };
 		54B6191EE2F09B0A3E6E8BF9660D0316 /* Pods-ToneManagerTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManagerTests-resources.sh"; sourceTree = "<group>"; };
+		5B00E42044E8128ECD7278D598BC7D83 /* PKHUDProgressView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDProgressView.swift; path = PKHUD/PKHUDProgressView.swift; sourceTree = "<group>"; };
+		5CEB461293698441C0422BE9BCB1F0AB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D0078F1A48108C290AFACE2FF7156B1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FD0421F5BBDC7957B725F6092A6B968 /* BugfenderSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BugfenderSDK-umbrella.h"; sourceTree = "<group>"; };
+		607B4EF02FB5DA8B8C1FE3B8C441C7C0 /* PKHUDTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDTextView.swift; path = PKHUD/PKHUDTextView.swift; sourceTree = "<group>"; };
 		65B85E9848A423CAE4FDABC981D46396 /* Pods-ToneManagerUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ToneManagerUITests-umbrella.h"; sourceTree = "<group>"; };
-		67E21A2A33B28A553AFA964B7B9BBF94 /* BugfenderSDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BugfenderSDK.xcconfig; sourceTree = "<group>"; };
 		685351EB85F656500DC2D7E0786CCFDD /* Pods-ToneManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ToneManager.modulemap"; sourceTree = "<group>"; };
-		6CCCFB9FD29A7E03780BAC0A1F16965D /* Bugfender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bugfender.swift; path = swift/Bugfender.swift; sourceTree = "<group>"; };
+		6C9CA0F4007AA15689D766C9CB464998 /* BugfenderSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BugfenderSDK.h; sourceTree = "<group>"; };
 		6D476C460FB03F098CEBFE60BFF5D99A /* Pods-ToneManager-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManager-frameworks.sh"; sourceTree = "<group>"; };
+		6EAB7A364C13CB8BA9470F384DD672CD /* HUD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HUD.swift; path = PKHUD/HUD.swift; sourceTree = "<group>"; };
+		6EDFD76444F9B80811B89824F62D9C65 /* PKHUD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUD.swift; path = PKHUD/PKHUD.swift; sourceTree = "<group>"; };
 		74E8DF8CDB96CED2A77C23DC7FD0FBB5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		76E673229107B327146A74455A1367B9 /* PKHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PKHUD.h; path = PKHUD/PKHUD.h; sourceTree = "<group>"; };
 		797F6883D6BABCBE51512B6EE9A1A36E /* Pods-ToneManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ToneManager-umbrella.h"; sourceTree = "<group>"; };
-		7AE3C0847BED484E4E82E91E73166855 /* Pods_ToneManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C78BE99F311EF9DA8C3F05C8DB70CBC /* libBugfenderSDKstatic.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libBugfenderSDKstatic.a; sourceTree = "<group>"; };
+		81D5DA7DF070DB2754EE96178DEDD039 /* PKHUDSystemActivityIndicatorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDSystemActivityIndicatorView.swift; path = PKHUD/PKHUDSystemActivityIndicatorView.swift; sourceTree = "<group>"; };
+		82D17EB6AC1E07A206BE976B6BD19858 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A0BDE54605F2BACC1A369436937D0D5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		8BBBA9ADA1BEF3D8A85BF1C2E12A52BB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9859362605DB2FC0048D281E64A4D1F4 /* Pods-ToneManagerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ToneManagerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9BDA54141A19DC5D779C4119FD8D3E5D /* Pods-ToneManagerUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManagerUITests-resources.sh"; sourceTree = "<group>"; };
+		A138D59E8E60E7C4E6A047B06A158388 /* PKHUDErrorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDErrorView.swift; path = PKHUD/PKHUDErrorView.swift; sourceTree = "<group>"; };
 		A80A44FF33AC2039992A676B9290307A /* Pods-ToneManagerUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ToneManagerUITests.modulemap"; sourceTree = "<group>"; };
 		A88EBD4A0895B0BE74D7CEBB980D6290 /* Pods-ToneManagerUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ToneManagerUITests-dummy.m"; sourceTree = "<group>"; };
-		C5A34D7B50C47CD57F4F5F0A9F0F1341 /* BugfenderSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BugfenderSDK-umbrella.h"; sourceTree = "<group>"; };
-		C9D8D7FC6A7F472EF315B9A0AD64DB71 /* BugfenderSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BugfenderSDK.h; sourceTree = "<group>"; };
+		AA7AAC2B460BE2391710BCB4CF7A0174 /* Bugfender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bugfender.swift; path = swift/Bugfender.swift; sourceTree = "<group>"; };
+		AD8DCE6C87B82F326E798CB36147B51A /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ToneManagerTests.framework; path = "Pods-ToneManagerTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B704A01962A5FE43A5F40642609FC965 /* PKHUDWideBaseView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDWideBaseView.swift; path = PKHUD/PKHUDWideBaseView.swift; sourceTree = "<group>"; };
+		B8C909A81CB50601D06EFF2EDDEEFE44 /* WindowRootViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WindowRootViewController.swift; path = PKHUD/WindowRootViewController.swift; sourceTree = "<group>"; };
 		C9F1E18BB02E3B9603F6E1B6CED3F967 /* Pods-ToneManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ToneManagerTests.release.xcconfig"; sourceTree = "<group>"; };
+		CA9EF8E3C3172A4330E72A242781AA55 /* PKHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PKHUD.framework; path = PKHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD26B3CCDA86FA7C8E363BCF277611C5 /* Pods-ToneManagerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ToneManagerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D1F7B1ACEB3B1371BCD02BAD5D1DED96 /* Pods_ToneManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ToneManager.framework; path = "Pods-ToneManager.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37A873C7073C971848911B94DF21D38 /* Pods-ToneManagerTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManagerTests-frameworks.sh"; sourceTree = "<group>"; };
+		D7D9B6EE6F0F33FCEA61C17942FB6630 /* BugfenderSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BugfenderSDK-prefix.pch"; sourceTree = "<group>"; };
+		DAA4C6DDB3038C8260FE2A883AC27AC3 /* PKHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PKHUD.xcconfig; sourceTree = "<group>"; };
+		DCCC0785BF37B03E16E4191B6942643E /* FrameView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameView.swift; path = PKHUD/FrameView.swift; sourceTree = "<group>"; };
+		DE8520E0E48280F75AFF3DAF533C50A4 /* PKHUDAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDAnimation.swift; path = PKHUD/PKHUDAnimation.swift; sourceTree = "<group>"; };
+		E0524C7DD374DB13980F0960A467B0E6 /* BugfenderSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BugfenderSDK.framework; path = BugfenderSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57FA0A7288F5E8F3B193B7856974121 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E936073E90F47CC43A4F35B402AD3214 /* PKHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PKHUD.modulemap; sourceTree = "<group>"; };
 		E9A5E7663569BAAF62F4DE4C819A7CB8 /* Pods-ToneManager-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManager-resources.sh"; sourceTree = "<group>"; };
 		EAD176B1ED996CDF71F7FBC52F3FE7C2 /* Pods-ToneManagerTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ToneManagerTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		ECF6E84F838A5826023E3EF5D6AE690E /* BugfenderSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BugfenderSDK.modulemap; sourceTree = "<group>"; };
-		FA0D4506786F3EE056CF71A82559AD97 /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE9C921DBDC78EFE85D4EF72BC4800F1 /* PKHUDSuccessView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDSuccessView.swift; path = PKHUD/PKHUDSuccessView.swift; sourceTree = "<group>"; };
+		F349F794B866B26CC53BEB69585458A8 /* PKHUDAnimating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDAnimating.swift; path = PKHUD/PKHUDAnimating.swift; sourceTree = "<group>"; };
 		FA94475416CC6520CA1FE3A4BA2B2D3C /* Pods-ToneManagerTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ToneManagerTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		FF9F9442D1DEDC3276DCE533D2CDE927 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		24FE326AA2F76BECD8B75E2359AD8114 /* Frameworks */ = {
+		09097AE0247A71FADE9AE4A13E3E0C55 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5238AEA249AAB9163D5CF341E8B83BDA /* Foundation.framework in Frameworks */,
+				EF874C556BE14ABCAEA0C3342D5BD306 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,9 +190,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8887E6ACEF626DAF8FE447966CC07330 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76C604447A665654489E56EF79A55D12 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		056778CCD3E8F107DC9ECE36414A3879 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				43A07E9EF92674DB876975E5CCD29EF8 /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		08EBDA19B8DBD8A82EDA2E0838FB2364 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +220,16 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		094202BEE8C9D25CBAC4D1AA756FFE33 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				AA7AAC2B460BE2391710BCB4CF7A0174 /* Bugfender.swift */,
+				6C9CA0F4007AA15689D766C9CB464998 /* BugfenderSDK.h */,
+				4B431E703AB08538A55C330FB5AF74A8 /* Frameworks */,
+			);
+			name = Swift;
+			sourceTree = "<group>";
+		};
 		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,14 +238,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1F0A1B58F3367104667D0B754B027EB1 /* Swift */ = {
+		2E3007D7F4A4E38244D06C22BBE3A85F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6CCCFB9FD29A7E03780BAC0A1F16965D /* Bugfender.swift */,
-				C9D8D7FC6A7F472EF315B9A0AD64DB71 /* BugfenderSDK.h */,
-				893A67D8051483266215A654DA0FE7CD /* Frameworks */,
+				CABC98B2444CF9A99A299E75898B9ACE /* BugfenderSDK */,
+				61E3C2719B5CD7EE6F0D2B1506EB4746 /* PKHUD */,
 			);
-			name = Swift;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		3B6297830840B4F300EDA9A947DB9147 /* Pods-ToneManagerUITests */ = {
@@ -187,20 +265,6 @@
 			path = "Target Support Files/Pods-ToneManagerUITests";
 			sourceTree = "<group>";
 		};
-		3CA13D19697974532903FA852B441193 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				ECF6E84F838A5826023E3EF5D6AE690E /* BugfenderSDK.modulemap */,
-				67E21A2A33B28A553AFA964B7B9BBF94 /* BugfenderSDK.xcconfig */,
-				1966C6886A3200B83FE4F6491CEAE7E5 /* BugfenderSDK-dummy.m */,
-				1C445BC9F0FBE59848983E4CDB3B076C /* BugfenderSDK-prefix.pch */,
-				C5A34D7B50C47CD57F4F5F0A9F0F1341 /* BugfenderSDK-umbrella.h */,
-				FF9F9442D1DEDC3276DCE533D2CDE927 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/BugfenderSDK";
-			sourceTree = "<group>";
-		};
 		461611FD637D0835EDE4EB75C6F7B4D6 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,13 +275,53 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		4DA96B6FE4A8EC99830DF3FBE0D5A969 /* BugfenderSDK */ = {
+		4B431E703AB08538A55C330FB5AF74A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3CA13D19697974532903FA852B441193 /* Support Files */,
-				1F0A1B58F3367104667D0B754B027EB1 /* Swift */,
+				3442DAC43DC02212D1826D2AA1E329EB /* libBugfenderSDKstatic.a */,
 			);
-			path = BugfenderSDK;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61E3C2719B5CD7EE6F0D2B1506EB4746 /* PKHUD */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC0785BF37B03E16E4191B6942643E /* FrameView.swift */,
+				6EAB7A364C13CB8BA9470F384DD672CD /* HUD.swift */,
+				76E673229107B327146A74455A1367B9 /* PKHUD.h */,
+				6EDFD76444F9B80811B89824F62D9C65 /* PKHUD.swift */,
+				F349F794B866B26CC53BEB69585458A8 /* PKHUDAnimating.swift */,
+				DE8520E0E48280F75AFF3DAF533C50A4 /* PKHUDAnimation.swift */,
+				44882C5A8419BF3CDCBD8D1275688E2E /* PKHUDAssets.swift */,
+				A138D59E8E60E7C4E6A047B06A158388 /* PKHUDErrorView.swift */,
+				5B00E42044E8128ECD7278D598BC7D83 /* PKHUDProgressView.swift */,
+				1A6814A43B999FBB121644833FADB1C7 /* PKHUDRotatingImageView.swift */,
+				0AFFD4548861642598670F23C4233A77 /* PKHUDSquareBaseView.swift */,
+				EE9C921DBDC78EFE85D4EF72BC4800F1 /* PKHUDSuccessView.swift */,
+				81D5DA7DF070DB2754EE96178DEDD039 /* PKHUDSystemActivityIndicatorView.swift */,
+				607B4EF02FB5DA8B8C1FE3B8C441C7C0 /* PKHUDTextView.swift */,
+				B704A01962A5FE43A5F40642609FC965 /* PKHUDWideBaseView.swift */,
+				321875A00973E2A98166DE25929877C3 /* Window.swift */,
+				B8C909A81CB50601D06EFF2EDDEEFE44 /* WindowRootViewController.swift */,
+				056778CCD3E8F107DC9ECE36414A3879 /* Resources */,
+				9A57E990EE0016B310595D267EA74532 /* Support Files */,
+			);
+			name = PKHUD;
+			path = PKHUD;
+			sourceTree = "<group>";
+		};
+		6782A649E83F6AF2DC52D56C4561615D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0F6CAC2209BAB75C6A82AE4D1C4A5F5B /* BugfenderSDK.modulemap */,
+				1A7107A2A288328901248DD7ED7F9EA9 /* BugfenderSDK.xcconfig */,
+				4729E47093929648B5F7482AB9EBFF1B /* BugfenderSDK-dummy.m */,
+				D7D9B6EE6F0F33FCEA61C17942FB6630 /* BugfenderSDK-prefix.pch */,
+				5FD0421F5BBDC7957B725F6092A6B968 /* BugfenderSDK-umbrella.h */,
+				82D17EB6AC1E07A206BE976B6BD19858 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BugfenderSDK";
 			sourceTree = "<group>";
 		};
 		7619A20916EE21FD71EF9C334ECCC9C7 /* Pods-ToneManager */ = {
@@ -243,29 +347,46 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
-				E15C77200AF00B4E903A5A140AB5770E /* Pods */,
-				B66F3B70533A9DCD1171A6F874062C53 /* Products */,
+				2E3007D7F4A4E38244D06C22BBE3A85F /* Pods */,
+				9A75DCBF0B4FC7DCBC6CBD3D39393D6A /* Products */,
 				461611FD637D0835EDE4EB75C6F7B4D6 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		893A67D8051483266215A654DA0FE7CD /* Frameworks */ = {
+		9A57E990EE0016B310595D267EA74532 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7C78BE99F311EF9DA8C3F05C8DB70CBC /* libBugfenderSDKstatic.a */,
+				5CEB461293698441C0422BE9BCB1F0AB /* Info.plist */,
+				E936073E90F47CC43A4F35B402AD3214 /* PKHUD.modulemap */,
+				DAA4C6DDB3038C8260FE2A883AC27AC3 /* PKHUD.xcconfig */,
+				3B67D0C903879426B15E637632850E7C /* PKHUD-dummy.m */,
+				35FFB9AEA609C226B5ED91A979662131 /* PKHUD-prefix.pch */,
+				3CBC5D58EF02138CB4CCDCCA18C29438 /* PKHUD-umbrella.h */,
 			);
-			name = Frameworks;
+			name = "Support Files";
+			path = "../Target Support Files/PKHUD";
 			sourceTree = "<group>";
 		};
-		B66F3B70533A9DCD1171A6F874062C53 /* Products */ = {
+		9A75DCBF0B4FC7DCBC6CBD3D39393D6A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				06D671DE244453AE0B9F472E4DDE7C53 /* BugfenderSDK.framework */,
-				40B5ED0345DFA0AD324E79300B5EF632 /* Pods_ToneManager.framework */,
-				FA0D4506786F3EE056CF71A82559AD97 /* Pods_ToneManagerTests.framework */,
-				7AE3C0847BED484E4E82E91E73166855 /* Pods_ToneManagerUITests.framework */,
+				E0524C7DD374DB13980F0960A467B0E6 /* BugfenderSDK.framework */,
+				CA9EF8E3C3172A4330E72A242781AA55 /* PKHUD.framework */,
+				D1F7B1ACEB3B1371BCD02BAD5D1DED96 /* Pods_ToneManager.framework */,
+				AD8DCE6C87B82F326E798CB36147B51A /* Pods_ToneManagerTests.framework */,
+				30EA44F6F1CD3C38CE4526043269537A /* Pods_ToneManagerUITests.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CABC98B2444CF9A99A299E75898B9ACE /* BugfenderSDK */ = {
+			isa = PBXGroup;
+			children = (
+				6782A649E83F6AF2DC52D56C4561615D /* Support Files */,
+				094202BEE8C9D25CBAC4D1AA756FFE33 /* Swift */,
+			);
+			name = BugfenderSDK;
+			path = BugfenderSDK;
 			sourceTree = "<group>";
 		};
 		D9D31ABA6D076CBBAA04FFAE380AAC67 /* Pods-ToneManagerTests */ = {
@@ -286,14 +407,6 @@
 			path = "Target Support Files/Pods-ToneManagerTests";
 			sourceTree = "<group>";
 		};
-		E15C77200AF00B4E903A5A140AB5770E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4DA96B6FE4A8EC99830DF3FBE0D5A969 /* BugfenderSDK */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -303,6 +416,14 @@
 			files = (
 				6504F8185AA78C8699227C992DCB7C39 /* BugfenderSDK-umbrella.h in Headers */,
 				D19B9E6EB93FD926EFD42FD25B496A43 /* BugfenderSDK.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B7445B5BF23CD59264EAE9A77B2A04C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C14042451DB67567896F1B6BE928252A /* Pods-ToneManager-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,11 +443,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FFFDE9245BF8F3E81AE8FE09A529844C /* Headers */ = {
+		CEEFB59308D9874EDAA446AD0659FA29 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD927969395B2CCFD3AEDA3278284A6 /* Pods-ToneManager-umbrella.h in Headers */,
+				1929F91EB38B923FBFA0B2F53C0C4877 /* PKHUD-umbrella.h in Headers */,
+				2DCA4225866D2445C444325589BD9744 /* PKHUD.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,25 +470,7 @@
 			);
 			name = "Pods-ToneManagerUITests";
 			productName = "Pods-ToneManagerUITests";
-			productReference = 7AE3C0847BED484E4E82E91E73166855 /* Pods_ToneManagerUITests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C719E0E6D0CC7EB314382613918822AA /* Pods-ToneManager */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 53A0661ECFF2D7D9FA1A2EAFD00C774D /* Build configuration list for PBXNativeTarget "Pods-ToneManager" */;
-			buildPhases = (
-				C070550B291CD928C6828CD2BDB8FC74 /* Sources */,
-				24FE326AA2F76BECD8B75E2359AD8114 /* Frameworks */,
-				FFFDE9245BF8F3E81AE8FE09A529844C /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2D483A3B6BB2A3BF038D4917AAEF0411 /* PBXTargetDependency */,
-			);
-			name = "Pods-ToneManager";
-			productName = "Pods-ToneManager";
-			productReference = 40B5ED0345DFA0AD324E79300B5EF632 /* Pods_ToneManager.framework */;
+			productReference = 30EA44F6F1CD3C38CE4526043269537A /* Pods_ToneManagerUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		CD704FAC627B9B2935B033E67090D71F /* BugfenderSDK */ = {
@@ -383,7 +487,25 @@
 			);
 			name = BugfenderSDK;
 			productName = BugfenderSDK;
-			productReference = 06D671DE244453AE0B9F472E4DDE7C53 /* BugfenderSDK.framework */;
+			productReference = E0524C7DD374DB13980F0960A467B0E6 /* BugfenderSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D7A75F149082140741FC1E0B5B2863C8 /* PKHUD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9306D49004A2A30AC52787A7B1C9C87A /* Build configuration list for PBXNativeTarget "PKHUD" */;
+			buildPhases = (
+				64C2A244B5B13B1D5FBAAA42BFE1724F /* Sources */,
+				09097AE0247A71FADE9AE4A13E3E0C55 /* Frameworks */,
+				CEEFB59308D9874EDAA446AD0659FA29 /* Headers */,
+				A6E5CC81DF41A96AA2FC861070D8146A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PKHUD;
+			productName = PKHUD;
+			productReference = CA9EF8E3C3172A4330E72A242781AA55 /* PKHUD.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DE7CF9C70CAF0B4DB6BC1DFB5E2E4B94 /* Pods-ToneManagerTests */ = {
@@ -401,7 +523,26 @@
 			);
 			name = "Pods-ToneManagerTests";
 			productName = "Pods-ToneManagerTests";
-			productReference = FA0D4506786F3EE056CF71A82559AD97 /* Pods_ToneManagerTests.framework */;
+			productReference = AD8DCE6C87B82F326E798CB36147B51A /* Pods_ToneManagerTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E2F98A57D34B389D163E03C77FA2E8D0 /* Pods-ToneManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DD7778BFF4CC0D8EE8E95517536D380 /* Build configuration list for PBXNativeTarget "Pods-ToneManager" */;
+			buildPhases = (
+				6A2F35E665C490B1F7A611BC894CA490 /* Sources */,
+				8887E6ACEF626DAF8FE447966CC07330 /* Frameworks */,
+				4B7445B5BF23CD59264EAE9A77B2A04C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ACC1BA28F5C5A4F27072A7B18F9A925D /* PBXTargetDependency */,
+				84891DEDDD8663E4D078BA7E2E1D48C9 /* PBXTargetDependency */,
+			);
+			name = "Pods-ToneManager";
+			productName = "Pods-ToneManager";
+			productReference = D1F7B1ACEB3B1371BCD02BAD5D1DED96 /* Pods_ToneManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -411,7 +552,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -421,17 +562,29 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = B66F3B70533A9DCD1171A6F874062C53 /* Products */;
+			productRefGroup = 9A75DCBF0B4FC7DCBC6CBD3D39393D6A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				CD704FAC627B9B2935B033E67090D71F /* BugfenderSDK */,
-				C719E0E6D0CC7EB314382613918822AA /* Pods-ToneManager */,
+				D7A75F149082140741FC1E0B5B2863C8 /* PKHUD */,
+				E2F98A57D34B389D163E03C77FA2E8D0 /* Pods-ToneManager */,
 				DE7CF9C70CAF0B4DB6BC1DFB5E2E4B94 /* Pods-ToneManagerTests */,
 				A73DFEA464B3A94863F3A73FA457AD93 /* Pods-ToneManagerUITests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A6E5CC81DF41A96AA2FC861070D8146A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34D8AB5C8FA400C58D7CA084633DF744 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1E9DBFEDAF6C8315F861D971A82D8DCD /* Sources */ = {
@@ -443,19 +596,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		64C2A244B5B13B1D5FBAAA42BFE1724F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F34910B27A3B86966E07898A2B70AE6 /* FrameView.swift in Sources */,
+				BA1B53BE85DE9BD789FE1C32FBA8C752 /* HUD.swift in Sources */,
+				E57944FDD00D7F5F2674D4D52E0F52BA /* PKHUD-dummy.m in Sources */,
+				BF541FB658B81D55E6A960701BF0619E /* PKHUD.swift in Sources */,
+				B1DC643D39F725A5C89C8195B5C10A09 /* PKHUDAnimating.swift in Sources */,
+				3470186F176465D3CA04711D0D82DF38 /* PKHUDAnimation.swift in Sources */,
+				869B25CDDA4D1BDA81A495A23D43E108 /* PKHUDAssets.swift in Sources */,
+				17E7E62102D200AFE11B049F570C9397 /* PKHUDErrorView.swift in Sources */,
+				766750E7B98FF8495403D0C7B5064D6C /* PKHUDProgressView.swift in Sources */,
+				AEA27A6C1523E5B1A1B3B74CA02FB67D /* PKHUDRotatingImageView.swift in Sources */,
+				7F09171ED8899C35E45511452323B3DF /* PKHUDSquareBaseView.swift in Sources */,
+				A5A9F17A94A6CC0F7D4E9DE0FCAFE5AB /* PKHUDSuccessView.swift in Sources */,
+				89C4ADD534D41DF5442F67D799B8E12B /* PKHUDSystemActivityIndicatorView.swift in Sources */,
+				A7BA7C4E4C047A5698A68CA76A453605 /* PKHUDTextView.swift in Sources */,
+				D0F542D62E2AA523E0A3D28DC85D2012 /* PKHUDWideBaseView.swift in Sources */,
+				F61C2235825FE532417891978344385E /* Window.swift in Sources */,
+				F4C22A07683E879CB3ECF7D6A73F667E /* WindowRootViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A2F35E665C490B1F7A611BC894CA490 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E04D06DA70F44AE169DE38F1E886735F /* Pods-ToneManager-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		985CB1DB5CF005E5E08C3B1522349FDF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EA06AAD607112870616368F20E9E4E14 /* Pods-ToneManagerTests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C070550B291CD928C6828CD2BDB8FC74 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC813DC8C946F306117FEE216C1F3045 /* Pods-ToneManager-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,59 +650,30 @@
 		156C166703974571A10D47239497B87B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-ToneManager";
-			target = C719E0E6D0CC7EB314382613918822AA /* Pods-ToneManager */;
+			target = E2F98A57D34B389D163E03C77FA2E8D0 /* Pods-ToneManager */;
 			targetProxy = 448A321734F2521F613E507773179525 /* PBXContainerItemProxy */;
 		};
-		2D483A3B6BB2A3BF038D4917AAEF0411 /* PBXTargetDependency */ = {
+		84891DEDDD8663E4D078BA7E2E1D48C9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = BugfenderSDK;
-			target = CD704FAC627B9B2935B033E67090D71F /* BugfenderSDK */;
-			targetProxy = 4690052413C1576915D80E6DD9394ED2 /* PBXContainerItemProxy */;
+			name = PKHUD;
+			target = D7A75F149082140741FC1E0B5B2863C8 /* PKHUD */;
+			targetProxy = 05D08CD116727E89599E658EDF6DE5C1 /* PBXContainerItemProxy */;
 		};
 		98581A8A276DC7F496734A0797735325 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-ToneManager";
-			target = C719E0E6D0CC7EB314382613918822AA /* Pods-ToneManager */;
+			target = E2F98A57D34B389D163E03C77FA2E8D0 /* Pods-ToneManager */;
 			targetProxy = 79183CD35C2BBEB2A7528F511E243AB5 /* PBXContainerItemProxy */;
+		};
+		ACC1BA28F5C5A4F27072A7B18F9A925D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BugfenderSDK;
+			target = CD704FAC627B9B2935B033E67090D71F /* BugfenderSDK */;
+			targetProxy = 192F3A2E42E201B3816F7DD86F389E5C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		04E2D3031355F1E3E8EC088F445EC41F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BE14A48511779C0CCDA0B97BDF3E08B /* Pods-ToneManager.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ToneManager/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ToneManager/Pods-ToneManager.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		199D972A13F2B4C56847F7A89CCA83BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -589,9 +737,46 @@
 			};
 			name = Debug;
 		};
+		24CA7F323E466682236F216033C865A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAA4C6DDB3038C8260FE2A883AC27AC3 /* PKHUD.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PKHUD/PKHUD-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PKHUD/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/PKHUD/PKHUD.modulemap";
+				PRODUCT_MODULE_NAME = PKHUD;
+				PRODUCT_NAME = PKHUD;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		4159076B93F1DDE8D9B349B3DE6ABDDE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67E21A2A33B28A553AFA964B7B9BBF94 /* BugfenderSDK.xcconfig */;
+			baseConfigurationReference = 1A7107A2A288328901248DD7ED7F9EA9 /* BugfenderSDK.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -606,7 +791,11 @@
 				INFOPLIST_FILE = "Target Support Files/BugfenderSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/BugfenderSDK/BugfenderSDK.modulemap";
 				PRODUCT_MODULE_NAME = BugfenderSDK;
 				PRODUCT_NAME = BugfenderSDK;
@@ -615,6 +804,45 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		52F6A6D0205CE0E1810401FA986A5704 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BE14A48511779C0CCDA0B97BDF3E08B /* Pods-ToneManager.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ToneManager/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ToneManager/Pods-ToneManager.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -638,7 +866,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManagerTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManagerTests/Pods-ToneManagerTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -672,7 +904,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManagerUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManagerUITests/Pods-ToneManagerUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -705,7 +941,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManagerUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManagerUITests/Pods-ToneManagerUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -724,7 +964,7 @@
 		};
 		AE88DE1227A5CC3F19D9336E78D07F52 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67E21A2A33B28A553AFA964B7B9BBF94 /* BugfenderSDK.xcconfig */;
+			baseConfigurationReference = 1A7107A2A288328901248DD7ED7F9EA9 /* BugfenderSDK.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -739,7 +979,11 @@
 				INFOPLIST_FILE = "Target Support Files/BugfenderSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/BugfenderSDK/BugfenderSDK.modulemap";
 				PRODUCT_MODULE_NAME = BugfenderSDK;
 				PRODUCT_NAME = BugfenderSDK;
@@ -748,41 +992,6 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		B3A164FBEE95EA62B2FEA027429C6FBB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 357BC016A181FFC5959237F485E02507 /* Pods-ToneManager.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ToneManager/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ToneManager/Pods-ToneManager.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -807,7 +1016,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManagerTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManagerTests/Pods-ToneManagerTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -817,6 +1030,81 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E8C8081CAAF1C34E288C6BFAFC910E12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 357BC016A181FFC5959237F485E02507 /* Pods-ToneManager.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ToneManager/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ToneManager/Pods-ToneManager.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F6429776402C657AB08E97817386DBE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAA4C6DDB3038C8260FE2A883AC27AC3 /* PKHUD.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PKHUD/PKHUD-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PKHUD/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/PKHUD/PKHUD.modulemap";
+				PRODUCT_MODULE_NAME = PKHUD;
+				PRODUCT_NAME = PKHUD;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -877,7 +1165,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -903,11 +1190,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		53A0661ECFF2D7D9FA1A2EAFD00C774D /* Build configuration list for PBXNativeTarget "Pods-ToneManager" */ = {
+		6DD7778BFF4CC0D8EE8E95517536D380 /* Build configuration list for PBXNativeTarget "Pods-ToneManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				04E2D3031355F1E3E8EC088F445EC41F /* Debug */,
-				B3A164FBEE95EA62B2FEA027429C6FBB /* Release */,
+				52F6A6D0205CE0E1810401FA986A5704 /* Debug */,
+				E8C8081CAAF1C34E288C6BFAFC910E12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9306D49004A2A30AC52787A7B1C9C87A /* Build configuration list for PBXNativeTarget "PKHUD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6429776402C657AB08E97817386DBE7 /* Debug */,
+				24CA7F323E466682236F216033C865A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
