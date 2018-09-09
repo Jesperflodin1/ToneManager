@@ -105,8 +105,8 @@ class RingtoneTableViewController : UITableViewController {
         
         let ringtone = ringtoneStore.allRingtones[indexPath.row]
         
-        cell.nameLabel.text = ringtone.name
-        cell.fromAppLabel.text = ringtone.appName
+        cell.nameLabel.text = ringtone?.name
+        cell.fromAppLabel.text = ringtone?.appName
         
         return cell
     }
@@ -115,11 +115,9 @@ class RingtoneTableViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let ringtone = ringtoneStore.allRingtones[indexPath.row]
-            
-            ringtoneStore.removeRingtone(ringtone)
-            
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            ringtoneStore.allRingtones.remove(at: indexPath.row) { (_) in
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
         }
     }
     

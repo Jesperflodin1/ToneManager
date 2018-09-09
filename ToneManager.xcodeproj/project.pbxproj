@@ -13,6 +13,7 @@
 		249694A22144F0A7009960D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2496949E2144EBB9009960D7 /* Main.storyboard */; };
 		249694A521450AC6009960D7 /* entitlements.xml in Resources */ = {isa = PBXBuildFile; fileRef = 249694A421450AC6009960D7 /* entitlements.xml */; };
 		249694A721454F96009960D7 /* RingtoneScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249694A621454F96009960D7 /* RingtoneScanner.swift */; };
+		249694A921456804009960D7 /* SynchronizedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249694A821456804009960D7 /* SynchronizedArray.swift */; };
 		2497A63B214251D200597B5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A63A214251D200597B5C /* AppDelegate.swift */; };
 		2497A640214251D300597B5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2497A63E214251D300597B5C /* LaunchScreen.storyboard */; };
 		2497A64B214251D300597B5C /* ToneManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A64A214251D300597B5C /* ToneManagerTests.swift */; };
@@ -53,6 +54,7 @@
 		2496949E2144EBB9009960D7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = /Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Main.storyboard; sourceTree = "<absolute>"; };
 		249694A421450AC6009960D7 /* entitlements.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = entitlements.xml; sourceTree = "<group>"; };
 		249694A621454F96009960D7 /* RingtoneScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneScanner.swift; sourceTree = "<group>"; };
+		249694A821456804009960D7 /* SynchronizedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizedArray.swift; sourceTree = "<group>"; };
 		2497A637214251D200597B5C /* ToneManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToneManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2497A63A214251D200597B5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2497A63F214251D300597B5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				2497A6672142537B00597B5C /* Ringtone.swift */,
 				2497A6692142538500597B5C /* RingtoneStore.swift */,
 				249694A621454F96009960D7 /* RingtoneScanner.swift */,
+				249694A821456804009960D7 /* SynchronizedArray.swift */,
 				2497A641214251D300597B5C /* Info.plist */,
 				24EE207E2142C7E60045D678 /* ToneManager-Bridging-Header.h */,
 				24EE208B214311630045D678 /* iOSHeaders.h */,
@@ -432,6 +435,7 @@
 			files = (
 				249694A721454F96009960D7 /* RingtoneScanner.swift in Sources */,
 				2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */,
+				249694A921456804009960D7 /* SynchronizedArray.swift in Sources */,
 				2497A66A2142538500597B5C /* RingtoneStore.swift in Sources */,
 				2497A63B214251D200597B5C /* AppDelegate.swift in Sources */,
 				2497A6682142537B00597B5C /* Ringtone.swift in Sources */,

@@ -11,7 +11,7 @@ import BugfenderSDK
 
 class RingtoneStore {
     
-    var allRingtones = [Ringtone]()
+    var allRingtones = SynchronizedArray<Ringtone>()
     
     @discardableResult func createTestRingtone() -> Ringtone {
         let newTone = Ringtone(filePath: "/var/Containers/something/Documents/ringtone    pls--   åäö!.m4r", bundleID: "com.908.AudikoFree")
@@ -29,13 +29,13 @@ class RingtoneStore {
         createTestRingtone()
     }
     
-    func removeRingtone(_ ringtone: Ringtone) {
-        if let index = allRingtones.index(of: ringtone) {
-            allRingtones.remove(at: index)
-        }
-    }
+//    func removeRingtone(_ ringtone: Ringtone, completion: ((Ringtone) -> Void)? = nil ) {
+//        allRingtones.remove(where: {
+//            $0 == ringtone
+//        }, completion: completion)
+//    }
     
-    func updateRingtones(completionHandler: (_ didUpdate: Bool) -> Void) {
+    func updateRingtones(completionHandler: (Bool) -> Void) {
         
     }
     
