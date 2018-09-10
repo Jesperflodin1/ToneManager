@@ -14,7 +14,7 @@
 static TLToneManager *_toneManager = nil;
 static TLToneManagerHandler *_helper = nil;
 
-+ (TLToneManagerHandler *)sharedInstance {
++ (TLToneManagerHandler  * __nullable )sharedInstance {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSBundle *bundle = [NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/ToneLibrary.framework"];
@@ -30,15 +30,15 @@ static TLToneManagerHandler *_helper = nil;
     return _helper;
 }
 
-- (BOOL)toneWithIdentifierIsValid:(NSString *)toneIdentifier {
+- (BOOL)toneWithIdentifierIsValid:(NSString * _Nonnull )toneIdentifier {
     return [_toneManager toneWithIdentifierIsValid:toneIdentifier];
 }
 
-- (void)removeImportedToneWithIdentifier:(NSString *)toneIdentifier {
+- (void)removeImportedToneWithIdentifier:(NSString * _Nonnull)toneIdentifier {
     [_toneManager removeImportedToneWithIdentifier:toneIdentifier];
 }
 
-- (void)importTone:(NSData *)data metadata:(NSDictionary *)dict completionBlock:(void (^)(BOOL, NSString *))completionBlock {
+- (void)importTone:(NSData * _Nonnull)data metadata:(NSDictionary * _Nonnull)dict completionBlock:(void (^)(BOOL, NSString * __nullable))completionBlock {
     [_toneManager importTone:data metadata:dict completionBlock:completionBlock];
 }
 

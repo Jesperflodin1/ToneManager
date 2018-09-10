@@ -26,37 +26,8 @@ extension URL {
 }
 
 class Ringtone : NSObject {
-    var name: String {
-        get {
-            var result = ""
-            queue.sync { result = self.name }
-            return result
-        }
-        set {
-            queue.async(flags: .barrier) {
-                self.name = newValue
-            }
-        }
-    }
-    
-    var identifier: String? {
-        get {
-            var result : String? = nil
-            
-            queue.sync {
-                if self.identifier != nil {
-                    result = self.identifier
-                }
-            }
-            return result
-        }
-        
-        set {
-            queue.async(flags: .barrier) {
-                self.identifier = newValue
-            }
-        }
-    }
+    private(set) var name: String
+    private(set) var identifier: String?
     
     let totalTime: Int
     let bundleID: String
@@ -73,16 +44,12 @@ class Ringtone : NSObject {
                 return true
             } else { return false }
         }
-        set { 
-            if newValue == false {
-                self.identifier = nil
-            } else { return }
-        }
     }
     
-    private let queue = DispatchQueue(label: "fi.flodin.tonemanager.RingtoneSerialQueue", attributes: .concurrent)
+//    private let queue = DispatchQueue(label: "fi.flodin.tonemanager.RingtoneSerialQueue")
     
-    init(name: String, identifier: String?, totalTime: Int?, bundleID: String?, fileURL: URL, protectedContent: Bool?, purchased: Bool?) {
+    
+    init(name: String, identifier: String?, totalTime: Int?, bundleID: String?, fileURL: URL, protectedContent: Bool? = nil, purchased: Bool? = nil) {
         
         self.fileURL = fileURL
         
@@ -118,18 +85,24 @@ class Ringtone : NSObject {
         }
         
         self.size = 0 // TODO: File size
-        
-        super.init()
-        
+
         self.name = name
         self.identifier = identifier
+        super.init()
     }
     
     convenience init(filePath: String, bundleID: String) {
         let url = URL(fileURLWithPath: filePath)
         let generatedName = url.nameFromFilePath()
         
-        self.init(name: generatedName, identifier:nil , totalTime: nil, bundleID: bundleID, fileURL: url, protectedContent: false, purchased: false)
+        self.init(name: generatedName, identifier:nil , totalTime: nil, bundleID: bundleID, fileURL: url)
+    }
+    
+    func isValid() -> Bool {
+        guard let toneIdentifier = self.identifier else { return false }
+        guard let toneManager = TLToneManagerHandler.sharedInstance() else { return false }
+        
+        return toneManager.tone(withIdentifierIsValid: toneIdentifier)
     }
 
 }

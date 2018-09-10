@@ -37,9 +37,9 @@ class RingtoneTableViewController : UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        ringtoneStore.allRingtones.lockArray()
-        tableView.reloadData()
-        ringtoneStore.allRingtones.unlockArray()
+//        ringtoneStore.allRingtones.lockArray()
+//        tableView.reloadData()
+//        ringtoneStore.allRingtones.unlockArray()
         
         // deselect the selected row if any
         let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
