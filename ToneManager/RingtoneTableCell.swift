@@ -13,9 +13,12 @@ class RingtoneTableCell : UITableViewCell {
     @IBOutlet weak var fromAppLabel: UILabel!
     @IBOutlet weak var lengthLabel: UILabel!
     
+    @IBOutlet weak var installedLabel: UILabel!
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
+    
+    var ringtoneItem : Ringtone? = nil
     
     
     func updateButtons(_ state: Bool) -> Void {

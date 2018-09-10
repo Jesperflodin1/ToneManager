@@ -16,15 +16,15 @@ class RingtoneDetailViewController : UITableViewController {
     @IBOutlet weak var sizeLabel: UILabel!
     @IBOutlet weak var pathLabel: UILabel!
     
-    @IBOutlet weak var playButton: UIButton!
     
     var ringtone : Ringtone!
     
-    @IBAction func playTapped(_ sender: Any) {
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        playButton.setImage(UIImage(named: "play-circle"), for: .normal)
+//        playButton.contentVerticalAlignment = .fill
+//        playButton.contentHorizontalAlignment = .fill
         if ringtone != nil {
             self.nameLabel.text = ringtone.name
             self.appLabel.text = ringtone.appName

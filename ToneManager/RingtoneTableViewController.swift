@@ -18,19 +18,29 @@ class RingtoneTableViewController : UITableViewController {
     private let cellId = "RingtoneTableCell"
     private let rowHeight : CGFloat = 55
     
+    
+    @IBAction func filterChanged(_ sender: UISegmentedControl) {
+    }
+    
     @IBAction func updateTapped(_ sender: UIBarButtonItem) {
         HUD.show(.labeledProgress(title: "Updating", subtitle: "Scanning for new ringtones"))
         
-        ringtoneStore.updateRingtones { (needsUpdate: Bool) in
+        ringtoneStore.updateRingtones { [weak self] (needsUpdate: Bool)  in
+            guard let strongSelf = self else { return }
             HUD.flash(.success, delay: 1.0)
             if (needsUpdate) {
-                self.tableView.reloadData()
+                strongSelf.ringtoneStore.allRingtones.lockArray()
+                strongSelf.tableView.reloadData()
+                strongSelf.ringtoneStore.allRingtones.unlockArray()
             }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        ringtoneStore.allRingtones.lockArray()
         tableView.reloadData()
+        ringtoneStore.allRingtones.unlockArray()
+        
         // deselect the selected row if any
         let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
         if let selectedRowNotNill = selectedRow {
@@ -108,8 +118,10 @@ class RingtoneTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RingtoneTableCell
         
+        ringtoneStore.allRingtones.lockArray()
         let ringtone = ringtoneStore.allRingtones[indexPath.row]
-        
+        ringtoneStore.allRingtones.unlockArray()
+        cell.ringtoneItem = ringtone
         cell.nameLabel.text = ringtone?.name
         cell.fromAppLabel.text = ringtone?.appName
         
@@ -120,9 +132,13 @@ class RingtoneTableViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            ringtoneStore.allRingtones.remove(at: indexPath.row) { (_) in
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
+            let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
+            
+            ringtoneStore.allRingtones.remove(where: { $0 == cell.ringtoneItem }, completion: { (deletedRingtone) in
+                if let index = tableView.indexPath(for: cell) {
+                    tableView.deleteRows(at: [index], with: .automatic)
+                }
+            })
         }
     }
     
@@ -132,16 +148,14 @@ class RingtoneTableViewController : UITableViewController {
         switch segue.identifier {
         case "showDetailsFromCellLabel"?:
             let cell = sender as! RingtoneTableCell
-            if let indexPath = tableView.indexPath(for: cell) {
-                let ringtone = ringtoneStore.allRingtones[indexPath.row]
-                let detailViewController = segue.destination as! RingtoneDetailViewController
-                detailViewController.ringtone = ringtone
-            }
+            let detailViewController = segue.destination as! RingtoneDetailViewController
+            detailViewController.ringtone = cell.ringtoneItem
+            
         case "showDetailsFromCellButton"?:
-            if let row = tableView.indexPathForSelectedRow?.row {
-                let ringtone = ringtoneStore.allRingtones[row]
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
                 let detailViewController = segue.destination as! RingtoneDetailViewController
-                detailViewController.ringtone = ringtone
+                detailViewController.ringtone = cell.ringtoneItem
             }
         default: break
         }

@@ -22,7 +22,9 @@ class RingtoneScanner {
     // Files with same name from different apps will try to import, but tonelibrary wont import them
     func importRingtonesFrom(paths pathsArray : Array<String>, completionHandler: @escaping (Bool) -> Void ) -> Void {
         
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let strongSelf = self else { return }
+            
             BFLog("Starting scan for paths: \(pathsArray)")
             
             let fileManager = FileManager.default

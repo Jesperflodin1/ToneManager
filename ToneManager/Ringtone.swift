@@ -26,20 +26,64 @@ extension URL {
 }
 
 class Ringtone : NSObject {
-    var name: String
-    var identifier: String?
-    var totalTime: Int
-    var bundleID: String
-    var fileURL: URL
-    var protectedContent: Bool
-    var purchased: Bool
+    var name: String {
+        get {
+            var result = ""
+            queue.sync { result = self.name }
+            return result
+        }
+        set {
+            queue.async(flags: .barrier) {
+                self.name = newValue
+            }
+        }
+    }
     
-    var appName: String
-    var size: Int
+    var identifier: String? {
+        get {
+            var result : String? = nil
+            
+            queue.sync {
+                if self.identifier != nil {
+                    result = self.identifier
+                }
+            }
+            return result
+        }
+        
+        set {
+            queue.async(flags: .barrier) {
+                self.identifier = newValue
+            }
+        }
+    }
+    
+    let totalTime: Int
+    let bundleID: String
+    let fileURL: URL
+    let protectedContent: Bool
+    let purchased: Bool
+    
+    let appName: String
+    let size: Int
+    
+    var installed : Bool {
+        get { // If identifier is set, tone is considered installed.
+            if self.identifier != nil {
+                return true
+            } else { return false }
+        }
+        set { 
+            if newValue == false {
+                self.identifier = nil
+            } else { return }
+        }
+    }
+    
+    private let queue = DispatchQueue(label: "fi.flodin.tonemanager.RingtoneSerialQueue", attributes: .concurrent)
     
     init(name: String, identifier: String?, totalTime: Int?, bundleID: String?, fileURL: URL, protectedContent: Bool?, purchased: Bool?) {
-        self.name = name
-        self.identifier = identifier
+        
         self.fileURL = fileURL
         
         if let time = totalTime {
@@ -76,6 +120,9 @@ class Ringtone : NSObject {
         self.size = 0 // TODO: File size
         
         super.init()
+        
+        self.name = name
+        self.identifier = identifier
     }
     
     convenience init(filePath: String, bundleID: String) {

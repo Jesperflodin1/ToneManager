@@ -11,22 +11,20 @@ import BugfenderSDK
 
 class RingtoneStore {
     
-    var allRingtones = SynchronizedArray<Ringtone>()
+    var allRingtones = WriteLockableSynchronizedArray<Ringtone>()
     
-    @discardableResult func createTestRingtone() -> Ringtone {
-        let newTone = Ringtone(filePath: "/var/Containers/something/Documents/ringtone    pls--   åäö!.m4r", bundleID: "com.908.AudikoFree")
+    func createTestRingtones() {
+        for i in 1...5 {
+            let newTone = Ringtone(filePath: "/var/Containers/something/Documents/ringtone\(i)    pls--   åäö!.m4r", bundleID: "com.908.AudikoFree")
+            
+            allRingtones.append(newTone)
+        }
         
-        allRingtones.append(newTone)
-        return newTone
     }
     
     init() {
         BFLog("RingtoneStore init")
-        createTestRingtone()
-        createTestRingtone()
-        createTestRingtone()
-        createTestRingtone()
-        createTestRingtone()
+        createTestRingtones()
     }
     
 //    func removeRingtone(_ ringtone: Ringtone, completion: ((Ringtone) -> Void)? = nil ) {
