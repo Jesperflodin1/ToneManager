@@ -9,11 +9,19 @@
 #import "TLToneManagerHandler.h"
 #import "iOSHeaders.h"
 
+/**
+ <#Description#>
+ */
 @implementation TLToneManagerHandler
 
 static TLToneManager *_toneManager = nil;
 static TLToneManagerHandler *_helper = nil;
 
+/**
+ <#Description#>
+
+ @return <#return value description#>
+ */
 + (TLToneManagerHandler  * __nullable )sharedInstance {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -30,14 +38,32 @@ static TLToneManagerHandler *_helper = nil;
     return _helper;
 }
 
+/**
+ <#Description#>
+
+ @param toneIdentifier <#toneIdentifier description#>
+ @return <#return value description#>
+ */
 - (BOOL)toneWithIdentifierIsValid:(NSString * _Nonnull )toneIdentifier {
     return [_toneManager toneWithIdentifierIsValid:toneIdentifier];
 }
 
+/**
+ <#Description#>
+
+ @param toneIdentifier <#toneIdentifier description#>
+ */
 - (void)removeImportedToneWithIdentifier:(NSString * _Nonnull)toneIdentifier {
     [_toneManager removeImportedToneWithIdentifier:toneIdentifier];
 }
 
+/**
+ <#Description#>
+
+ @param data <#data description#>
+ @param dict <#dict description#>
+ @param completionBlock <#completionBlock description#>
+ */
 - (void)importTone:(NSData * _Nonnull)data metadata:(NSDictionary * _Nonnull)dict completionBlock:(void (^)(BOOL, NSString * __nullable))completionBlock {
     [_toneManager importTone:data metadata:dict completionBlock:completionBlock];
 }

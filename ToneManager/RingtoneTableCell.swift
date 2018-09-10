@@ -8,19 +8,30 @@
 
 import UIKit
 
+/// <#Description#>
 class RingtoneTableCell : UITableViewCell {
+    /// <#Description#>
     @IBOutlet weak var nameLabel: UILabel!
+    /// <#Description#>
     @IBOutlet weak var fromAppLabel: UILabel!
+    /// <#Description#>
     @IBOutlet weak var lengthLabel: UILabel!
     
+    /// <#Description#>
     @IBOutlet weak var installedLabel: UILabel!
     
+    /// <#Description#>
     @IBOutlet weak var playButton: UIButton!
+    /// <#Description#>
     @IBOutlet weak var infoButton: UIButton!
     
+    /// <#Description#>
     var ringtoneItem : Ringtone? = nil
     
     
+    /// <#Description#>
+    ///
+    /// - Parameter state: <#state description#>
     func updateButtons(_ state: Bool) -> Void {
         if state == true {
             self.playButton.alpha = 0.7

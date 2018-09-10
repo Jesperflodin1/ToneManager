@@ -10,18 +10,28 @@ import UIKit
 import BugfenderSDK
 import PKHUD
 
+/// <#Description#>
 class RingtoneTableViewController : UITableViewController {
     
+    /// <#Description#>
     var ringtoneStore : RingtoneStore!
     
-//    private let headerId = "ringtonesHeaderId"
+
+    /// <#Description#>
     private let cellId = "RingtoneTableCell"
+    /// <#Description#>
     private let rowHeight : CGFloat = 55
     
     
+    /// <#Description#>
+    ///
+    /// - Parameter sender: <#sender description#>
     @IBAction func filterChanged(_ sender: UISegmentedControl) {
     }
     
+    /// <#Description#>
+    ///
+    /// - Parameter sender: <#sender description#>
     @IBAction func updateTapped(_ sender: UIBarButtonItem) {
         HUD.show(.labeledProgress(title: "Updating", subtitle: "Scanning for new ringtones"))
         
@@ -36,6 +46,9 @@ class RingtoneTableViewController : UITableViewController {
         }
     }
     
+    /// <#Description#>
+    ///
+    /// - Parameter animated: <#animated description#>
     override func viewWillAppear(_ animated: Bool) {
 //        ringtoneStore.allRingtones.lockArray()
 //        tableView.reloadData()
@@ -56,6 +69,9 @@ class RingtoneTableViewController : UITableViewController {
         }
         super.viewWillAppear(animated)
     }
+    /// <#Description#>
+    ///
+    /// - Parameter animated: <#animated description#>
     override func viewWillDisappear(_ animated: Bool) {
         // deselect the selected row if any
         let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
@@ -73,6 +89,12 @@ class RingtoneTableViewController : UITableViewController {
         super.viewWillDisappear(animated)
     }
 
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
+    /// - Returns: <#return value description#>
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let indexPathForSelectedRow = tableView.indexPathForSelectedRow, // second tap on already selected cell
             indexPathForSelectedRow == indexPath {
@@ -87,6 +109,11 @@ class RingtoneTableViewController : UITableViewController {
         }
         return indexPath
     }
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.tableView.beginUpdates()
@@ -96,6 +123,11 @@ class RingtoneTableViewController : UITableViewController {
             cell.updateButtons(true)
         }, completion: nil)
     }
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
         UIView.animate(withDuration: 0.2, animations: {
@@ -103,6 +135,12 @@ class RingtoneTableViewController : UITableViewController {
         })
     }
     
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
+    /// - Returns: <#return value description#>
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.tableView.indexPathForSelectedRow?.row == indexPath.row {
             return rowHeight*1.7
@@ -111,10 +149,22 @@ class RingtoneTableViewController : UITableViewController {
         }
     }
     
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - section: <#section description#>
+    /// - Returns: <#return value description#>
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ringtoneStore.allRingtones.count
     }
     
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
+    /// - Returns: <#return value description#>
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RingtoneTableCell
         
@@ -130,6 +180,12 @@ class RingtoneTableViewController : UITableViewController {
     
     
     
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - editingStyle: <#editingStyle description#>
+    ///   - indexPath: <#indexPath description#>
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
@@ -144,6 +200,11 @@ class RingtoneTableViewController : UITableViewController {
     
     
     
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - segue: <#segue description#>
+    ///   - sender: <#sender description#>
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showDetailsFromCellLabel"?:

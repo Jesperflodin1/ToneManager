@@ -9,8 +9,16 @@
 #import "FBApplicationInfoHandler.h"
 #import "iOSHeaders.h"
 
+/**
+ <#Description#>
+ */
 @implementation FBApplicationInfoHandler
 
+/**
+ <#Description#>
+
+ @return <#return value description#>
+ */
 + (BOOL)loadFramework {
     if (NSClassFromString(@"FBApplicationInfo")) {
         NSLog(@"JFTM: FrontBoard Loaded!");
@@ -27,6 +35,12 @@
     }
 }
 
+/**
+ <#Description#>
+
+ @param bundleID <#bundleID description#>
+ @return <#return value description#>
+ */
 + (NSURL * _Nullable )pathForBundleIdentifier:(NSString *)bundleID {
     if (![FBApplicationInfoHandler loadFramework]) {
         return nil;
@@ -41,6 +55,12 @@
     return [appInfo performSelector:@selector(dataContainerURL)];
 }
 
+/**
+ <#Description#>
+
+ @param bundleID <#bundleID description#>
+ @return <#return value description#>
+ */
 + (NSString * __nullable)displayNameForBundleIdentifier:(NSString * __nonnull)bundleID {
     if (![FBApplicationInfoHandler loadFramework]) {
         return nil;

@@ -9,17 +9,28 @@
 import Foundation
 import BugfenderSDK
 
+/// <#Description#>
 class RingtoneScanner {
+    /// <#Description#>
     private let appDataPath = "/var/mobile/Library/ToneManager"
     
+    /// <#Description#>
     var delegate : RingtoneStore
     
+    /// <#Description#>
+    ///
+    /// - Parameter delegate: <#delegate description#>
     init(_ delegate : RingtoneStore) {
         self.delegate = delegate
         BFLog("Scanner initializing")
     }
     
     // Files with same name from different apps will try to import, but tonelibrary wont import them
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - pathsArray: <#pathsArray description#>
+    ///   - completionHandler: <#completionHandler description#>
     func importRingtonesFrom(paths pathsArray : Array<String>, completionHandler: @escaping (Bool) -> Void ) -> Void {
         
         DispatchQueue.global(qos: .background).async { [weak self] in
