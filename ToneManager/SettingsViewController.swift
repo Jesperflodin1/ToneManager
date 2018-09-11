@@ -12,6 +12,17 @@ import BugfenderSDK
 /// <#Description#>
 class SettingsViewController : UITableViewController {
     
+//    override func viewDidLoad() {
+////        if #available(iOS 11.0, *) {
+////            BFLog("viewDidLoad, >=iOS 11")
+////            navigationController?.navigationBar.prefersLargeTitles = true
+////            navigationController?.navigationItem.largeTitleDisplayMode = .always
+////        } else {
+////            BFLog("viewDidLoad, <iOS 11")
+////        }
+//        
+//    }
+    
     /// <#Description#>
     ///
     /// - Parameter sender: <#sender description#>

@@ -20,6 +20,7 @@ ToneManager_BRIDGING_HEADER = ToneManager/ToneManager-Bridging-Header.h
 
 ToneManager_FRAMEWORKS = MobileCoreServices AVFoundation UIKit CoreGraphics
 #ToneManager_PRIVATEFRAMEWORKS = ToneLibrary FrontBoard
+YoneManager_Libraries = applist
 
 include $(THEOS_MAKE_PATH)/application.mk
 

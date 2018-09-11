@@ -14,6 +14,8 @@
 		249694A521450AC6009960D7 /* entitlements.xml in Resources */ = {isa = PBXBuildFile; fileRef = 249694A421450AC6009960D7 /* entitlements.xml */; };
 		249694A721454F96009960D7 /* RingtoneScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249694A621454F96009960D7 /* RingtoneScanner.swift */; };
 		249694A921456804009960D7 /* SynchronizedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249694A821456804009960D7 /* SynchronizedArray.swift */; };
+		249694AC21478E79009960D7 /* libapplist.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 249694AB21478E79009960D7 /* libapplist.dylib */; };
+		249694AE214799F0009960D7 /* AppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249694AD214799F0009960D7 /* AppListViewController.swift */; };
 		2497A63B214251D200597B5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A63A214251D200597B5C /* AppDelegate.swift */; };
 		2497A640214251D300597B5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2497A63E214251D300597B5C /* LaunchScreen.storyboard */; };
 		2497A64B214251D300597B5C /* ToneManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A64A214251D300597B5C /* ToneManagerTests.swift */; };
@@ -55,6 +57,8 @@
 		249694A421450AC6009960D7 /* entitlements.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = entitlements.xml; sourceTree = "<group>"; };
 		249694A621454F96009960D7 /* RingtoneScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneScanner.swift; sourceTree = "<group>"; };
 		249694A821456804009960D7 /* SynchronizedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizedArray.swift; sourceTree = "<group>"; };
+		249694AB21478E79009960D7 /* libapplist.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libapplist.dylib; sourceTree = "<group>"; };
+		249694AD214799F0009960D7 /* AppListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListViewController.swift; sourceTree = "<group>"; };
 		2497A637214251D200597B5C /* ToneManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToneManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2497A63A214251D200597B5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2497A63F214251D300597B5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				249694AC21478E79009960D7 /* libapplist.dylib in Frameworks */,
 				24EE208A2142EB050045D678 /* MobileCoreServices.framework in Frameworks */,
 				1B7547485A56829ADA0E8A7C /* Pods_ToneManager.framework in Frameworks */,
 			);
@@ -116,12 +121,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		249694AA21478E79009960D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				249694AB21478E79009960D7 /* libapplist.dylib */,
+			);
+			name = Frameworks;
+			path = ToneManager/Frameworks;
+			sourceTree = "<group>";
+		};
 		2497A62E214251D200597B5C = {
 			isa = PBXGroup;
 			children = (
 				2497A639214251D200597B5C /* ToneManager */,
 				2497A649214251D300597B5C /* ToneManagerTests */,
 				2497A654214251D300597B5C /* ToneManagerUITests */,
+				249694AA21478E79009960D7 /* Frameworks */,
 				2497A638214251D200597B5C /* Products */,
 				24EE20882142EB040045D678 /* Frameworks */,
 				4CF3AF4B44E406C6C6587F3D /* Pods */,
@@ -152,6 +167,7 @@
 				2497A6672142537B00597B5C /* Ringtone.swift */,
 				2497A6692142538500597B5C /* RingtoneStore.swift */,
 				249694A621454F96009960D7 /* RingtoneScanner.swift */,
+				249694AD214799F0009960D7 /* AppListViewController.swift */,
 				249694A821456804009960D7 /* SynchronizedArray.swift */,
 				2497A641214251D300597B5C /* Info.plist */,
 				24EE207E2142C7E60045D678 /* ToneManager-Bridging-Header.h */,
@@ -370,7 +386,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\n# Modify this to your device's IP address.\nIP=\"192.168.2.95\"\n\n# Verify that the build is for iOS Device and not a Simulator.\nif [[ \"$NATIVE_ARCH\" != \"i386\" && \"$NATIVE_ARCH\" != \"x86_64\" ]]; then\n# Kill any running instances and remove the app folder.\necho \"Removing previous app\"\nssh root@$IP \"killall ${TARGETNAME}; rm -rf /Applications/${WRAPPER_NAME}\"\n# Self sign the build.\necho \"Signing with ldid\"\nldid -S$BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/entitlements.xml $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/$TARGETNAME\n# Copy it over.\necho \"Copying to device\"\nscp -r $BUILT_PRODUCTS_DIR/${WRAPPER_NAME} root@$IP:/Applications/\n#echo \"Running uicache\"\n#ssh root@$IP \"uicache\"\n\n# This part just creates create an OS X notification to let you know that the process is done.\n# You can get terminal-notifier from https://github.com/alloy/terminal-notifier.\n# You can remove this line if you want.\nfi";
+			shellScript = "#!/bin/sh\n\n# Modify this to your device's IP address.\nIP=\"192.168.2.95\"\n\n# Verify that the build is for iOS Device and not a Simulator.\nif [[ \"$NATIVE_ARCH\" != \"i386\" && \"$NATIVE_ARCH\" != \"x86_64\" ]]; then\n# Kill any running instances and remove the app folder.\necho \"Removing previous app\"\nssh root@$IP \"killall ${TARGETNAME}; rm -rf /Applications/${WRAPPER_NAME}\"\n# Self sign the build.\necho \"Signing with ldid\"\nldid -S$BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/entitlements.xml $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/$TARGETNAME\nldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/BugfenderSDK.framework/BugfenderSDK\nldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/PKHUD.framework/PKHUD\n# Copy it over.\necho \"Copying to device\"\nscp -r $BUILT_PRODUCTS_DIR/${WRAPPER_NAME} root@$IP:/Applications/\n#echo \"Running uicache\"\n#ssh root@$IP \"uicache\"\n\n# This part just creates create an OS X notification to let you know that the process is done.\n# You can get terminal-notifier from https://github.com/alloy/terminal-notifier.\n# You can remove this line if you want.\nfi";
 		};
 		270D784557AF8187DA688C84 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -437,6 +453,7 @@
 			files = (
 				249694A721454F96009960D7 /* RingtoneScanner.swift in Sources */,
 				2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */,
+				249694AE214799F0009960D7 /* AppListViewController.swift in Sources */,
 				249694A921456804009960D7 /* SynchronizedArray.swift in Sources */,
 				2497A66A2142538500597B5C /* RingtoneStore.swift in Sources */,
 				2497A63B214251D200597B5C /* AppDelegate.swift in Sources */,
@@ -616,6 +633,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6VG5GK3UD7;
+				HEADER_SEARCH_PATHS = /Users/jesper/theos/include/;
 				INFOPLIST_FILE = ToneManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -623,13 +641,19 @@
 					/usr/lib/libswift/4.1.2/,
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ToneManager/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos11.2;
+				SEPARATE_SYMBOL_EDIT = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
@@ -642,6 +666,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6VG5GK3UD7;
+				HEADER_SEARCH_PATHS = /Users/jesper/theos/include/;
 				INFOPLIST_FILE = ToneManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -649,12 +674,18 @@
 					/usr/lib/libswift/4.1.2/,
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ToneManager/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos11.2;
+				SEPARATE_SYMBOL_EDIT = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};

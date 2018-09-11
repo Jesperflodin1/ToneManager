@@ -21,5 +21,8 @@
         
         <key>com.apple.managedconfiguration.profiled-access</key>
         <true/>
+        
+        <key>com.apple.private.skip-library-validation</key>
+        <true/>
 	</dict>
 </plist>

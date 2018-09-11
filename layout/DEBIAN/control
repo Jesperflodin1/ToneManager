@@ -1,6 +1,6 @@
 Package: fi.flodin.tonemanager
 Name: ToneManager
-Depends: mobilesubstrate, ws.hbang.common (>= 1.12)
+Depends: mobilesubstrate, com.rpetrich.rocketbootstrap, AppList
 Version: 0.5.0
 Architecture: iphoneos-arm
 Description: Automatically adds ringtones from Audiko to device
