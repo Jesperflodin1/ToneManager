@@ -8,49 +8,64 @@
 
 import UIKit
 import BugfenderSDK
+import SafariServices
 
 /// <#Description#>
-class SettingsViewController : UITableViewController {
+class SettingsViewController : UITableViewController, SFSafariViewControllerDelegate {
     
-//    override func viewDidLoad() {
-////        if #available(iOS 11.0, *) {
-////            BFLog("viewDidLoad, >=iOS 11")
-////            navigationController?.navigationBar.prefersLargeTitles = true
-////            navigationController?.navigationItem.largeTitleDisplayMode = .always
-////        } else {
-////            BFLog("viewDidLoad, <iOS 11")
-////        }
-//        
-//    }
     
-    /// <#Description#>
+    @IBOutlet weak var autoInstallSwitch: UISwitch!
+    @IBOutlet weak var remoteLoggingSwitch: UISwitch!
+    
+    @IBAction func autoInstallChanged(_ sender: UISwitch) {
+    }
+    
+    @IBAction func remoteLoggingChanged(_ sender: UISwitch) {
+    }
+    
+    override func viewDidLoad() {
+        <#code#>
+    }
+    
+    /// Opens github page
     ///
-    /// - Parameter sender: <#sender description#>
+    /// - Parameter sender: Gesture recognizer that called this function
     @IBAction func githubTapped(_ sender: UITapGestureRecognizer) {
-        BFLog("Github!")
+        openSafariVC(withUrl: "https://github.com/Jesperflodin1/ToneManager")
     }
 
-    /// <#Description#>
+    /// Opens my reddit page
     ///
-    /// - Parameter sender: <#sender description#>
+    /// - Parameter sender: Gesture recognizer that called this function
     @IBAction func redditTapped(_ sender: UITapGestureRecognizer) {
+        openSafariVC(withUrl: "https://www.reddit.com/user/jesperflodin1")
     }
     
-    /// <#Description#>
+    /// Opens paypal.me page for donations
     ///
-    /// - Parameter sender: <#sender description#>
+    /// - Parameter sender: Gesture recognizer that called this function
     @IBAction func paypalTapped(_ sender: UITapGestureRecognizer) {
+        openSafariVC(withUrl: "https://www.paypal.me/Jesperflodin")
     }
     
-    /// <#Description#>
+    /// Opens my twitter
     ///
-    /// - Parameter sender: <#sender description#>
+    /// - Parameter sender: Gesture recognizer that called this function
     @IBAction func twitterTapped(_ sender: UITapGestureRecognizer) {
+        openSafariVC(withUrl: "https://twitter.com/JesperFlodin")
     }
     
-    /// <#Description#>
+    /// Opens url in a SFSafariViewController
     ///
-    /// - Parameter sender: <#sender description#>
-    @IBAction func emailTapped(_ sender: UITapGestureRecognizer) {
+    /// - Parameter url: url to open
+    func openSafariVC(withUrl url : String) {
+        
+        let safariVC = SFSafariViewController(url: NSURL(string: url)! as URL)
+        self.present(safariVC, animated: true, completion: nil)
+        safariVC.delegate = self
+    }
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

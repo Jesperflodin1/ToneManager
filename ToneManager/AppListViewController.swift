@@ -28,7 +28,7 @@ class AppListViewController : UITableViewController {
             errorAlert("Failed to load AppList. Is AppList really installed?")
             return
         }
-        guard let apps = ALApplicationList.shared() else {
+        guard (ALApplicationList.shared()) != nil else {
             errorAlert("Error occured when loading apps with AppList.")
             return
         }
