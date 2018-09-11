@@ -13,16 +13,24 @@ import BugfenderSDK
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-    /// <#Description#>
-    ///
-    /// - Parameters:
-    ///   - application: <#application description#>
-    ///   - launchOptions: <#launchOptions description#>
-    /// - Returns: <#return value description#>
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        UserDefaults.standard.register(defaults: [
+    
+    var remoteLogging : Bool = false
+    
+    /// Enables remote logging if enabled in userdefaults
+    func enableRemoteLogging() {
+        if remoteLogging {
+            Bugfender.activateLogger("HId16MWO0WTn4W4zk1Ipb32RtNf43dN6")
+            Bugfender.enableUIEventLogging() // optional, log user interactions automatically
+            Bugfender.enableCrashReporting() // optional, log crashes automatically
+            BFLog("Remote logging enabled")
+        }
+    }
+    
+    
+    /// Sets default user settings for UserDefaults
+    func registerDefaults() {
+        let defaults = UserDefaults.standard
+        defaults.register(defaults: [
             "AutoScan" : false,
             "RemoteLogging" : true,
             "AudikoLite" : true,
@@ -30,14 +38,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "ZedgeRingtones" : true
             ])
         
-        let remoteLogging = UserDefaults.standard.bool(forKey: "RemoteLogging")
+        remoteLogging = UserDefaults.standard.bool(forKey: "RemoteLogging")
+    }
+
+    /// UIApplicationDelegate method. Called on application launch. Loads and sets rootviewcontroller from main storyboard
+    ///
+    /// - Parameters:
+    ///   - application: Current UIApplication
+    ///   - launchOptions: Not used here
+    /// - Returns: always true
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        if remoteLogging == true {
-            Bugfender.activateLogger("HId16MWO0WTn4W4zk1Ipb32RtNf43dN6")
-            Bugfender.enableUIEventLogging() // optional, log user interactions automatically
-            Bugfender.enableCrashReporting() // optional, log crashes automatically
-            BFLog("Remote logging enabled")
-        }
+        registerDefaults()
+        enableRemoteLogging()
+        
         BFLog("App start") // use BFLog as you would use NSLog
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -59,41 +73,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    /// <#Description#>
+    /// UIApplicationDelegate method.
     ///
-    /// - Parameter application: <#application description#>
+    /// - Parameter application: Current UIApplication
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        UserDefaults.standard.synchronize()
     }
 
-    /// <#Description#>
+    /// UIApplicationDelegate method.
     ///
-    /// - Parameter application: <#application description#>
+    /// - Parameter application: Current UIApplication
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        UserDefaults.standard.synchronize()
     }
 
-    /// <#Description#>
+    /// UIApplicationDelegate method. Called when application will return from background
     ///
-    /// - Parameter application: <#application description#>
+    /// - Parameter application: Current UIApplication
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        BFLog("App returning from background")
     }
 
-    /// <#Description#>
+    /// UIApplicationDelegate method. Called when application returns from background
     ///
-    /// - Parameter application: <#application description#>
+    /// - Parameter application: Current UIApplication
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
-    /// <#Description#>
+    /// UIApplicationDelegate method.
     ///
-    /// - Parameter application: <#application description#>
+    /// - Parameter application: Current UIApplication
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        UserDefaults.standard.synchronize()
     }
 
 

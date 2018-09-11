@@ -12,6 +12,8 @@ import BugfenderSDK
 /// Model class for ringtones
 class RingtoneStore {
     
+    let defaults = UserDefaults.standard
+    
     /// WriteLockableSynchronizedArray for all ringtones
     var allRingtones = WriteLockableSynchronizedArray<Ringtone>()
 

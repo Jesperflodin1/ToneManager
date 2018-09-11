@@ -10,21 +10,36 @@ import UIKit
 import BugfenderSDK
 import SafariServices
 
-/// <#Description#>
+/// View controller for main settings page
 class SettingsViewController : UITableViewController, SFSafariViewControllerDelegate {
     
+    let defaults = UserDefaults.standard
     
     @IBOutlet weak var autoInstallSwitch: UISwitch!
     @IBOutlet weak var remoteLoggingSwitch: UISwitch!
     
+    /// Auto install ringtones switch changed state. Saves state to userdefaults
+    ///
+    /// - Parameter sender: UISwitch that initiated this
     @IBAction func autoInstallChanged(_ sender: UISwitch) {
+        let state = sender.isOn
+        defaults.set(state, forKey: "AutoScan")
     }
     
+    /// Remote logging switch changed state. Saves state to userdefaults
+    ///
+    /// - Parameter sender: UISwitch that initiated this
     @IBAction func remoteLoggingChanged(_ sender: UISwitch) {
+        defaults.set(sender.isOn, forKey: "RemoteLogging")
     }
-    
-    override func viewDidLoad() {
-        <#code#>
+
+    /// Called when view will appear on screen. Reads preferences from userdefaults and sets user controls in this view
+    ///
+    /// - Parameter animated: true if view will appear with animation
+    override func viewWillAppear(_ animated: Bool) {
+        autoInstallSwitch.isOn = defaults.bool(forKey: "AutoScan")
+        remoteLoggingSwitch.isOn = defaults.bool(forKey: "RemoteLogging")
+        super.viewWillAppear(animated)
     }
     
     /// Opens github page
@@ -65,6 +80,10 @@ class SettingsViewController : UITableViewController, SFSafariViewControllerDele
         safariVC.delegate = self
     }
     
+    
+    /// SFSafariViewControllerDelegate method. Called when user taps "done". Dismisses the safari window.
+    ///
+    /// - Parameter controller: SFSafariViewController this was initiated from.
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         controller.dismiss(animated: true, completion: nil)
     }

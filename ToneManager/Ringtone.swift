@@ -7,14 +7,14 @@
 //
 import Foundation
 
-// MARK: - <#Description#>
+// MARK: - String Extension for removing extra whitespace
 extension String {
     func condenseWhitespace() -> String {
         let components = self.components(separatedBy: .whitespacesAndNewlines)
         return components.filter { !$0.isEmpty }.joined(separator: " ")
     }
 }
-// MARK: - <#Description#>
+// MARK: - URL Extension for generating a ringtone name from its filename
 extension URL {
     func nameFromFilePath() -> String {
         let filename = self.deletingPathExtension().lastPathComponent
@@ -27,30 +27,30 @@ extension URL {
     }
 }
 
-/// <#Description#>
+/// Model class for one ringtone. Stores metadata
 class Ringtone : NSObject {
-    /// <#Description#>
+    /// Name visible in the ringtone picker
     private(set) var name: String
-    /// <#Description#>
+    /// Identifier used by tonelibrary
     private(set) var identifier: String?
     
-    /// <#Description#>
+    /// Length of ringtone
     let totalTime: Int
-    /// <#Description#>
+    /// Bundle ID it was imported from
     let bundleID: String
-    /// <#Description#>
+    /// Location for ringtone as URL
     let fileURL: URL
-    /// <#Description#>
+    /// Always false
     let protectedContent: Bool
-    /// <#Description#>
+    /// Always false
     let purchased: Bool
     
-    /// <#Description#>
+    /// Appname (from bundle id) to show in the RingtoneTableView
     let appName: String
-    /// <#Description#>
+    /// File size of ringtone
     let size: Int
     
-    /// <#Description#>
+    /// returns true if this ringtone is installed on device
     var installed : Bool {
         get { // If identifier is set, tone is considered installed.
             if self.identifier != nil {
@@ -126,9 +126,10 @@ class Ringtone : NSObject {
         self.init(name: generatedName, identifier:nil , totalTime: nil, bundleID: bundleID, fileURL: url)
     }
     
-    /// <#Description#>
+    /// Uses ToneLibrary to check if this ringtone is valid. It will be valid if it has an identifier that exists in
+    /// this devices tonelibrary
     ///
-    /// - Returns: <#return value description#>
+    /// - Returns: true if valid
     func isValid() -> Bool {
         guard let toneIdentifier = self.identifier else { return false }
         guard let toneManager = TLToneManagerHandler.sharedInstance() else { return false }
