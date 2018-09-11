@@ -22,33 +22,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// - Returns: <#return value description#>
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        Bugfender.activateLogger("HId16MWO0WTn4W4zk1Ipb32RtNf43dN6")
-        Bugfender.enableUIEventLogging() // optional, log user interactions automatically
-        Bugfender.enableCrashReporting() // optional, log crashes automatically
+        UserDefaults.standard.register(defaults: [
+            "AutoScan" : false,
+            "RemoteLogging" : true,
+            "AudikoLite" : true,
+            "AudikoPro" : true,
+            "ZedgeRingtones" : true
+            ])
+        
+        let remoteLogging = UserDefaults.standard.bool(forKey: "RemoteLogging")
+        
+        if remoteLogging == true {
+            Bugfender.activateLogger("HId16MWO0WTn4W4zk1Ipb32RtNf43dN6")
+            Bugfender.enableUIEventLogging() // optional, log user interactions automatically
+            Bugfender.enableCrashReporting() // optional, log crashes automatically
+            BFLog("Remote logging enabled")
+        }
         BFLog("App start") // use BFLog as you would use NSLog
         
-        let fileManager = FileManager.default
-        let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
-        if !fileManager.fileExists(atPath: appDataDir.path) {
-            BFLog("No app data directory found, creating")
-            do {
-                try fileManager.createDirectory(atPath: appDataDir.path, withIntermediateDirectories: true, attributes: nil)
-            } catch {
-                BFLog("JFTM: Couldn't create document directory")
-            }
-        } else {
-            BFLog("App data directory exists")
-        }
-        
         self.window = UIWindow(frame: UIScreen.main.bounds)
-
         self.window!.backgroundColor = UIColor.white
+        
+        let store = RingtoneStore()
         
         BFLog("Loading main storyboard")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nvc = storyboard.instantiateViewController(withIdentifier: "JFTMNavigationController") as! UINavigationController
         let vc = nvc.topViewController as! RingtoneTableViewController
-        vc.ringtoneStore = RingtoneStore()
+        vc.ringtoneStore = store
         
         self.window!.rootViewController = nvc
         self.window!.makeKeyAndVisible()

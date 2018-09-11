@@ -10,28 +10,28 @@ import UIKit
 import BugfenderSDK
 import PKHUD
 
-/// <#Description#>
+/// Shows available and installed ringtones
 class RingtoneTableViewController : UITableViewController {
     
-    /// <#Description#>
+    /// Storage for Ringtones
     var ringtoneStore : RingtoneStore!
-    
 
-    /// <#Description#>
+    /// Identifier for Cell used to show a ringtone
     private let cellId = "RingtoneTableCell"
-    /// <#Description#>
+    
+    /// Height for each row
     private let rowHeight : CGFloat = 55
     
     
-    /// <#Description#>
+    /// Executes when the user changes the filter to show either "All", "Installed" or "Not installed" Ringtones
     ///
-    /// - Parameter sender: <#sender description#>
+    /// - Parameter sender: UISegmentedControl that triggered this
     @IBAction func filterChanged(_ sender: UISegmentedControl) {
     }
     
-    /// <#Description#>
+    /// Refresh button was tapped. Rescans apps to find new ringtones
     ///
-    /// - Parameter sender: <#sender description#>
+    /// - Parameter sender: Button that triggered this
     @IBAction func updateTapped(_ sender: UIBarButtonItem) {
         HUD.show(.labeledProgress(title: "Updating", subtitle: "Scanning for new ringtones"))
         
@@ -46,9 +46,9 @@ class RingtoneTableViewController : UITableViewController {
         }
     }
     
-    /// <#Description#>
+    /// Called when view will appear
     ///
-    /// - Parameter animated: <#animated description#>
+    /// - Parameter animated: true if view appears with animation
     override func viewWillAppear(_ animated: Bool) {
 //        ringtoneStore.allRingtones.lockArray()
 //        tableView.reloadData()
@@ -69,9 +69,10 @@ class RingtoneTableViewController : UITableViewController {
         }
         super.viewWillAppear(animated)
     }
-    /// <#Description#>
+    /// Called whe view will disappear. Deselects a selected row, if any is selected. Also makes sure the buttons in the
+    /// selected cell is hidden
     ///
-    /// - Parameter animated: <#animated description#>
+    /// - Parameter animated: true if view will disappear with animation
     override func viewWillDisappear(_ animated: Bool) {
         // deselect the selected row if any
         let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
@@ -89,12 +90,12 @@ class RingtoneTableViewController : UITableViewController {
         super.viewWillDisappear(animated)
     }
 
-    /// <#Description#>
+    /// UITableView delegate method. If a row already is selected, it will deselect it.
     ///
     /// - Parameters:
-    ///   - tableView: <#tableView description#>
-    ///   - indexPath: <#indexPath description#>
-    /// - Returns: <#return value description#>
+    ///   - tableView: current UITableView
+    ///   - indexPath: IndexPath for tapped row
+    /// - Returns: IndexPath
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let indexPathForSelectedRow = tableView.indexPathForSelectedRow, // second tap on already selected cell
             indexPathForSelectedRow == indexPath {
@@ -109,11 +110,11 @@ class RingtoneTableViewController : UITableViewController {
         }
         return indexPath
     }
-    /// <#Description#>
+    /// UITableView delegate method. Selects row that was tapped and unhides buttons available for this cell
     ///
     /// - Parameters:
-    ///   - tableView: <#tableView description#>
-    ///   - indexPath: <#indexPath description#>
+    ///   - tableView: current UITableView
+    ///   - indexPath: IndexPath for selected row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.tableView.beginUpdates()
@@ -123,11 +124,11 @@ class RingtoneTableViewController : UITableViewController {
             cell.updateButtons(true)
         }, completion: nil)
     }
-    /// <#Description#>
+    /// UITableView delegate method. Row at indexpath was deselected. Hides buttons in cell.
     ///
     /// - Parameters:
-    ///   - tableView: <#tableView description#>
-    ///   - indexPath: <#indexPath description#>
+    ///   - tableView: current UITableView
+    ///   - indexPath: Indexpath for cell
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
         UIView.animate(withDuration: 0.2, animations: {
@@ -135,12 +136,12 @@ class RingtoneTableViewController : UITableViewController {
         })
     }
     
-    /// <#Description#>
+    /// UITableView Datasource method. Returns height depending on if the cell is selected or not
     ///
     /// - Parameters:
-    ///   - tableView: <#tableView description#>
-    ///   - indexPath: <#indexPath description#>
-    /// - Returns: <#return value description#>
+    ///   - tableView: current UITableView
+    ///   - indexPath: IndexPath for cell
+    /// - Returns: Row height
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.tableView.indexPathForSelectedRow?.row == indexPath.row {
             return rowHeight*1.7
@@ -149,22 +150,22 @@ class RingtoneTableViewController : UITableViewController {
         }
     }
     
-    /// <#Description#>
+    /// UITableView datasource method.
     ///
     /// - Parameters:
-    ///   - tableView: <#tableView description#>
-    ///   - section: <#section description#>
-    /// - Returns: <#return value description#>
+    ///   - tableView: current UITableView
+    ///   - section: Current section
+    /// - Returns: Returns number of rows in this section (usually number of ringtones)
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ringtoneStore.allRingtones.count
     }
     
-    /// <#Description#>
+    /// UITableView Datasource method
     ///
     /// - Parameters:
-    ///   - tableView: <#tableView description#>
-    ///   - indexPath: <#indexPath description#>
-    /// - Returns: <#return value description#>
+    ///   - tableView: current UITableView
+    ///   - indexPath: Indexpath for current cell
+    /// - Returns: UITableViewCell of subclass RingtoneTableCell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RingtoneTableCell
         
@@ -178,14 +179,12 @@ class RingtoneTableViewController : UITableViewController {
         return cell
     }
     
-    
-    
-    /// <#Description#>
+    /// UITableView delegate method. Called when a ringtone should be removed
     ///
     /// - Parameters:
-    ///   - tableView: <#tableView description#>
-    ///   - editingStyle: <#editingStyle description#>
-    ///   - indexPath: <#indexPath description#>
+    ///   - tableView: current UITableView
+    ///   - editingStyle: Style for editing
+    ///   - indexPath: Indexpath for cell
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
@@ -198,13 +197,11 @@ class RingtoneTableViewController : UITableViewController {
         }
     }
     
-    
-    
-    /// <#Description#>
+    /// Called when a segue is triggered
     ///
     /// - Parameters:
-    ///   - segue: <#segue description#>
-    ///   - sender: <#sender description#>
+    ///   - segue: segue that was triggered. Has a unique identifier.
+    ///   - sender: sender that initiated the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showDetailsFromCellLabel"?:
