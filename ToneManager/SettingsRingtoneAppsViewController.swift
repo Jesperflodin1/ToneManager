@@ -12,11 +12,11 @@ public class SettingsRingtoneAppsViewController : UITableViewController {
     
     let defaults = UserDefaults.standard
     
-    @IBOutlet weak var zedgeSwitch: UISwitch!
-    @IBOutlet weak var audikoLiteSwitch: UISwitch!
-    @IBOutlet weak var audikoProSwitch: UISwitch!
+    @IBOutlet public weak var zedgeSwitch: UISwitch!
+    @IBOutlet public weak var audikoLiteSwitch: UISwitch!
+    @IBOutlet public weak var audikoProSwitch: UISwitch!
     
-    var zedge : Bool {
+    public var zedge : Bool {
         get {
             return defaults.bool(forKey: "ZedgeRingtones")
         }
@@ -24,7 +24,7 @@ public class SettingsRingtoneAppsViewController : UITableViewController {
             defaults.set(newValue, forKey: "ZedgeRingtones")
         }
     }
-    var audikoLite : Bool {
+    public var audikoLite : Bool {
         get {
             return defaults.bool(forKey: "AudikoLite")
         }
@@ -32,7 +32,7 @@ public class SettingsRingtoneAppsViewController : UITableViewController {
             defaults.set(newValue, forKey: "AudikoLite")
         }
     }
-    var audikoPro : Bool {
+    public var audikoPro : Bool {
         get {
             return defaults.bool(forKey: "AudikoPro")
         }
@@ -44,28 +44,28 @@ public class SettingsRingtoneAppsViewController : UITableViewController {
     /// Zedge Ringtones switch changed state
     ///
     /// - Parameter sender: UISwitch that initiated this call
-    @IBAction func zedgeChanged(_ sender: UISwitch) {
+    @IBAction public func zedgeChanged(_ sender: UISwitch) {
         zedge = sender.isOn
     }
     
     /// Audiko Lite switch changed state
     ///
     /// - Parameter sender: UISwitch that initiated this call
-    @IBAction func audikoLiteChanged(_ sender: UISwitch) {
+    @IBAction public func audikoLiteChanged(_ sender: UISwitch) {
         audikoLite = sender.isOn
     }
     
     /// Audiko Pro switch changed state
     ///
     /// - Parameter sender: UISwitch that initiated this call
-    @IBAction func audikoProChanged(_ sender: UISwitch) {
+    @IBAction public func audikoProChanged(_ sender: UISwitch) {
         audikoPro = sender.isOn
     }
     
     /// Called when view will appear on screen. Reads preferences from userdefaults and sets user controls in this view
     ///
     /// - Parameter animated: true if view will appear with animation
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         zedgeSwitch.isOn = zedge
         audikoLiteSwitch.isOn = audikoLite
         audikoProSwitch.isOn = audikoPro

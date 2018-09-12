@@ -12,40 +12,40 @@ import BugfenderSDK
 
 
 /// Model class for ringtones
-class RingtoneStore {
+public class RingtoneStore {
     
-    let defaults = UserDefaults.standard
-    let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
-    let plistURL = URL(fileURLWithPath: "/var/mobile/Library/ToneManager/tones.plist")
+    public let defaults = UserDefaults.standard
+    public let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
+    public let plistURL = URL(fileURLWithPath: "/var/mobile/Library/ToneManager/tones.plist")
     
-    weak var tableView : UITableView?
+    public weak var tableView : UITableView?
     
-    var zedge : Bool {
+    public var zedge : Bool {
         get {
             return defaults.bool(forKey: "ZedgeRingtones")
         }
     }
-    var audikoLite : Bool {
+    public var audikoLite : Bool {
         get {
             return defaults.bool(forKey: "AudikoLite")
         }
     }
-    var audikoPro : Bool {
+    public var audikoPro : Bool {
         get {
             return defaults.bool(forKey: "AudikoPro")
         }
     }
     
-    var autoInstall : Bool {
+    public var autoInstall : Bool {
         get {
             return defaults.bool(forKey: "AutoInstall")
         }
     }
     
     /// WriteLockableSynchronizedArray for all ringtones
-    var allRingtones = WriteLockableSynchronizedArray<Ringtone>()
+    public var allRingtones = WriteLockableSynchronizedArray<Ringtone>()
 
-    func createTestRingtones() {
+    public func createTestRingtones() {
         for i in 1...5 {
             let newTone = Ringtone(filePath: "/var/Containers/something/Documents/ringtone\(i)    pls--   åäö!.m4r", bundleID: "com.908.AudikoFree")
             
@@ -77,7 +77,7 @@ class RingtoneStore {
     /// Loads ringtones from plist. Will also verify all loaded ringtones if shouldVerifyRingtones=true
     ///
     /// - Parameter shouldVerifyRingtones: will verify ringtones if true, is by default false
-    func loadFromPlist(_ shouldVerifyRingtones : Bool = true) {
+    public func loadFromPlist(_ shouldVerifyRingtones : Bool = true) {
         DispatchQueue.global(qos: .background).async {
 
             var ringtonesArray : Array<Ringtone> = []
@@ -105,7 +105,7 @@ class RingtoneStore {
         }
     }
     
-    func writeToPlist() {
+    public func writeToPlist() {
         guard let ringtones = allRingtones.array else {
             Bugfender.error("Failed to get ringtones array")
             return
@@ -126,11 +126,11 @@ class RingtoneStore {
     ///
     /// - Parameter ringtonesArray: Array with ringtones to verify
     /// - Returns: Array which only contains valid ringtones
-    func verifyRingtones(inArray ringtonesArray : Array<Ringtone>) -> Array<Ringtone> {
+    public func verifyRingtones(inArray ringtonesArray : Array<Ringtone>) -> Array<Ringtone> {
         return ringtonesArray.filter { $0.isValid() }
     }
     
-    func ringtoneAppsToScan() -> Array<String> {
+    public func ringtoneAppsToScan() -> Array<String> {
         var apps : Array<String> = []
         
         if zedge {
@@ -156,7 +156,7 @@ class RingtoneStore {
     ///
     /// - Parameter completionHandler: completion block that should run when import is done, a Bool indicating if new ringtones
     /// was imported is passed to it.
-    func updateRingtones(completionHandler: @escaping (Bool) -> Void) {
+    public func updateRingtones(completionHandler: @escaping (Bool) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let scanner = RingtoneScanner(self)
             // TODO: Get extra apps to scan from preferences

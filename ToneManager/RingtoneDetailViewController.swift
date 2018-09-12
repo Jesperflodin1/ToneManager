@@ -12,25 +12,25 @@ import UIKit
 public class RingtoneDetailViewController : UITableViewController {
     
     /// <#Description#>
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet public weak var nameLabel: UILabel!
     /// <#Description#>
-    @IBOutlet weak var appLabel: UILabel!
+    @IBOutlet public weak var appLabel: UILabel!
     /// <#Description#>
-    @IBOutlet weak var lengthLabel: UILabel!
+    @IBOutlet public weak var lengthLabel: UILabel!
     /// <#Description#>
-    @IBOutlet weak var sizeLabel: UILabel!
+    @IBOutlet public weak var sizeLabel: UILabel!
     /// <#Description#>
-    @IBOutlet weak var pathLabel: UILabel!
+    @IBOutlet public weak var pathLabel: UILabel!
     
     
     /// <#Description#>
-    var ringtone : Ringtone!
+    public var ringtone : Ringtone!
     
     
     /// <#Description#>
     ///
     /// - Parameter animated: <#animated description#>
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        playButton.setImage(UIImage(named: "play-circle"), for: .normal)
 //        playButton.contentVerticalAlignment = .fill

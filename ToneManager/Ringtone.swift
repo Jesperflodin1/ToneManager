@@ -37,20 +37,20 @@ public class Ringtone : NSObject, NSCopying, Codable {
     private(set) var identifier: String?
     
     /// Length of ringtone
-    let totalTime: Int
+    public let totalTime: Int
     /// Bundle ID it was imported from
-    let bundleID: String
+    public let bundleID: String
     /// Location for ringtone as URL
-    let fileURL: URL
+    public let fileURL: URL
     /// Always false
-    let protectedContent: Bool
+    public let protectedContent: Bool
     /// Always false
-    let purchased: Bool
+    public let purchased: Bool
     
     /// Appname (from bundle id) to show in the RingtoneTableView
-    let appName: String
+    public let appName: String
     /// File size of ringtone
-    let size: Int
+    public let size: Int
     
 //    private let queue = DispatchQueue(label: "fi.flodin.tonemanager.RingtoneSerialQueue")
     

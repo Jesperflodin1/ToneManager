@@ -15,7 +15,7 @@ public class RingtoneScanner {
     private let appDataPath = "/var/mobile/Library/ToneManager"
     
     /// Reference to RingtoneStore
-    var delegate : RingtoneStore
+    public var delegate : RingtoneStore
     
     /// Init method. Sets current ringtonestore as delegate
     ///

@@ -14,7 +14,7 @@ import PKHUD
 public class RingtoneTableViewController : UITableViewController {
     
     /// Storage for Ringtones
-    var ringtoneStore : RingtoneStore!
+    internal var ringtoneStore : RingtoneStore!
 
     /// Identifier for Cell used to show a ringtone
     private let cellId = "RingtoneTableCell"
@@ -37,18 +37,18 @@ public class RingtoneTableViewController : UITableViewController {
     /// Executes when the user changes the filter to show either "All", "Installed" or "Not installed" Ringtones
     ///
     /// - Parameter sender: UISegmentedControl that triggered this
-    @IBAction func filterChanged(_ sender: UISegmentedControl) {
+    @IBAction public func filterChanged(_ sender: UISegmentedControl) {
     }
     
     /// Refresh button was tapped. Rescans apps to find new ringtones
     ///
     /// - Parameter sender: Button that triggered this
-    @IBAction func updateTapped(_ sender: UIBarButtonItem) {
+    @IBAction public func updateTapped(_ sender: UIBarButtonItem) {
         updateRingtones()
     }
     
     /// Rescans apps to find new ringtones
-    func updateRingtones() {
+    public func updateRingtones() {
         HUD.show(.labeledProgress(title: "Updating", subtitle: "Scanning for new ringtones"))
         
         ringtoneStore.updateRingtones { [weak self] (needsUpdate: Bool)  in
@@ -62,7 +62,7 @@ public class RingtoneTableViewController : UITableViewController {
         }
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         self.ringtoneStore = RingtoneStore()
         updateRingtones()
         ringtoneStore.tableView = self.tableView
@@ -73,18 +73,18 @@ public class RingtoneTableViewController : UITableViewController {
         NotificationCenter.default.addObserver(self, selector:#selector(willEnterBackground), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
     }
     
-    @objc func willEnterForeground() {
+    @objc public func willEnterForeground() {
         BFLog("did become active, autoinstall = \(autoInstall)")
         updateRingtones()
     }
-    @objc func willEnterBackground() {
+    @objc public func willEnterBackground() {
         ringtoneStore.writeToPlist()
     }
     
     /// Called when view will appear
     ///
     /// - Parameter animated: true if view appears with animation
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
 //        ringtoneStore.allRingtones.lockArray()
 //        tableView.reloadData()
 //        ringtoneStore.allRingtones.unlockArray()
@@ -108,7 +108,7 @@ public class RingtoneTableViewController : UITableViewController {
     /// selected cell is hidden
     ///
     /// - Parameter animated: true if view will disappear with animation
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         // deselect the selected row if any
         let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
         if let selectedRowNotNill = selectedRow {
@@ -131,7 +131,7 @@ public class RingtoneTableViewController : UITableViewController {
     ///   - tableView: current UITableView
     ///   - indexPath: IndexPath for tapped row
     /// - Returns: IndexPath
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    override public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let indexPathForSelectedRow = tableView.indexPathForSelectedRow, // second tap on already selected cell
             indexPathForSelectedRow == indexPath {
             tableView.deselectRow(at: indexPath, animated: true)
@@ -150,7 +150,7 @@ public class RingtoneTableViewController : UITableViewController {
     /// - Parameters:
     ///   - tableView: current UITableView
     ///   - indexPath: IndexPath for selected row
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.tableView.beginUpdates()
         self.tableView.endUpdates()
@@ -164,7 +164,7 @@ public class RingtoneTableViewController : UITableViewController {
     /// - Parameters:
     ///   - tableView: current UITableView
     ///   - indexPath: Indexpath for cell
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    override public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
         UIView.animate(withDuration: 0.2, animations: {
             cell.updateButtons(false)
@@ -177,7 +177,7 @@ public class RingtoneTableViewController : UITableViewController {
     ///   - tableView: current UITableView
     ///   - indexPath: IndexPath for cell
     /// - Returns: Row height
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.tableView.indexPathForSelectedRow?.row == indexPath.row {
             return rowHeight*1.7
         } else {
@@ -191,7 +191,7 @@ public class RingtoneTableViewController : UITableViewController {
     ///   - tableView: current UITableView
     ///   - section: Current section
     /// - Returns: Returns number of rows in this section (usually number of ringtones)
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ringtoneStore.allRingtones.count
     }
     
@@ -201,7 +201,7 @@ public class RingtoneTableViewController : UITableViewController {
     ///   - tableView: current UITableView
     ///   - indexPath: Indexpath for current cell
     /// - Returns: UITableViewCell of subclass RingtoneTableCell
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RingtoneTableCell
         
         ringtoneStore.allRingtones.lockArray()
@@ -220,7 +220,7 @@ public class RingtoneTableViewController : UITableViewController {
     ///   - tableView: current UITableView
     ///   - editingStyle: Style for editing
     ///   - indexPath: Indexpath for cell
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
             
@@ -237,7 +237,7 @@ public class RingtoneTableViewController : UITableViewController {
     /// - Parameters:
     ///   - segue: segue that was triggered. Has a unique identifier.
     ///   - sender: sender that initiated the segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showDetailsFromCellLabel"?:
             let cell = sender as! RingtoneTableCell

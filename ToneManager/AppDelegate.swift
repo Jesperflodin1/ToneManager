@@ -12,16 +12,16 @@ import BugfenderSDK
 @UIApplicationMain
 public class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+    public var window: UIWindow?
     
-    var remoteLogging : Bool {
+    public var remoteLogging : Bool {
         get {
             return UserDefaults.standard.bool(forKey: "RemoteLogging")
         }
     }
     
     /// Enables remote logging if enabled in userdefaults
-    func enableRemoteLogging() {
+    public func enableRemoteLogging() {
         if remoteLogging {
             Bugfender.activateLogger("HId16MWO0WTn4W4zk1Ipb32RtNf43dN6")
             Bugfender.enableUIEventLogging() // optional, log user interactions automatically
@@ -32,7 +32,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /// Sets default user settings for UserDefaults
-    func registerDefaults() {
+    public func registerDefaults() {
         let defaults = UserDefaults.standard
         defaults.register(defaults: [
             "AutoInstall" : false,
@@ -49,7 +49,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     ///   - application: Current UIApplication
     ///   - launchOptions: Not used here
     /// - Returns: always true
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         registerDefaults()
         enableRemoteLogging()
@@ -75,7 +75,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     /// UIApplicationDelegate method.
     ///
     /// - Parameter application: Current UIApplication
-    func applicationWillResignActive(_ application: UIApplication) {
+    public func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         UserDefaults.standard.synchronize()
@@ -84,7 +84,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     /// UIApplicationDelegate method.
     ///
     /// - Parameter application: Current UIApplication
-    func applicationDidEnterBackground(_ application: UIApplication) {
+    public func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         UserDefaults.standard.synchronize()
@@ -93,7 +93,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     /// UIApplicationDelegate method. Called when application will return from background
     ///
     /// - Parameter application: Current UIApplication
-    func applicationWillEnterForeground(_ application: UIApplication) {
+    public func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         BFLog("App returning from background")
     }
@@ -101,14 +101,14 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     /// UIApplicationDelegate method. Called when application returns from background
     ///
     /// - Parameter application: Current UIApplication
-    func applicationDidBecomeActive(_ application: UIApplication) {
+    public func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
     /// UIApplicationDelegate method.
     ///
     /// - Parameter application: Current UIApplication
-    func applicationWillTerminate(_ application: UIApplication) {
+    public func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         UserDefaults.standard.synchronize()
     }

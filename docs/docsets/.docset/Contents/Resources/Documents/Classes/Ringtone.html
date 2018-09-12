@@ -14,7 +14,7 @@
     <a title="Ringtone Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (60% documented)</p>
+        <p><a href="../index.html"> Docs</a> (61% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -31,7 +31,7 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes.html#/c:@M@ToneManager@objc(cs)AppDelegate">AppDelegate</a>
+                <a href="../Classes/AppDelegate.html">AppDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/AppListViewController.html">AppListViewController</a>
@@ -40,7 +40,7 @@
                 <a href="../Classes/Ringtone.html">Ringtone</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes.html#/c:@M@ToneManager@objc(cs)RingtoneDetailViewController">RingtoneDetailViewController</a>
+                <a href="../Classes/RingtoneDetailViewController.html">RingtoneDetailViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/RingtoneInstaller.html">RingtoneInstaller</a>
@@ -49,22 +49,39 @@
                 <a href="../Classes/RingtoneScanner.html">RingtoneScanner</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes.html#/c:@M@ToneManager@objc(cs)RingtoneTableCell">RingtoneTableCell</a>
+                <a href="../Classes/RingtoneStore.html">RingtoneStore</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes.html#/c:@M@ToneManager@objc(cs)RingtoneTableViewController">RingtoneTableViewController</a>
+                <a href="../Classes/RingtoneTableCell.html">RingtoneTableCell</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes.html#/c:@M@ToneManager@objc(cs)SettingsRingtoneAppsViewController">SettingsRingtoneAppsViewController</a>
+                <a href="../Classes/RingtoneTableViewController.html">RingtoneTableViewController</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes.html#/c:@M@ToneManager@objc(cs)SettingsViewController">SettingsViewController</a>
+                <a href="../Classes/SettingsRingtoneAppsViewController.html">SettingsRingtoneAppsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SettingsViewController.html">SettingsViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/WriteLockableSynchronizedArray.html">WriteLockableSynchronizedArray</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/WriteLockableSynchronizedArray/Iterator.html">– Iterator</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:11ToneManager8appNamesSaySSGvp">appNames</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:11ToneManager7tabViewSo07UITableD0Cvp">tabView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:11ToneManager7theAppss10DictionaryVyS2SGvp">theApps</a>
               </li>
             </ul>
           </li>
@@ -100,6 +117,249 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:11ToneManager8RingtoneC4nameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager8RingtoneC4nameSSvp">name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Name visible in the ringtone picker</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager8RingtoneC10identifierSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/identifier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager8RingtoneC10identifierSSSgvp">identifier</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Identifier used by tonelibrary</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager8RingtoneC9totalTimeSivp"></a>
+                    <a name="//apple_ref/swift/Property/totalTime" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager8RingtoneC9totalTimeSivp">totalTime</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Length of ringtone</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">totalTime</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager8RingtoneC8bundleIDSSvp"></a>
+                    <a name="//apple_ref/swift/Property/bundleID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager8RingtoneC8bundleIDSSvp">bundleID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Bundle ID it was imported from</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">bundleID</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager8RingtoneC7fileURL10Foundation0E0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/fileURL" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager8RingtoneC7fileURL10Foundation0E0Vvp">fileURL</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Location for ringtone as URL</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">fileURL</span><span class="p">:</span> <span class="kt">URL</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager8RingtoneC16protectedContentSbvp"></a>
+                    <a name="//apple_ref/swift/Property/protectedContent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager8RingtoneC16protectedContentSbvp">protectedContent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Always false</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">protectedContent</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager8RingtoneC9purchasedSbvp"></a>
+                    <a name="//apple_ref/swift/Property/purchased" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager8RingtoneC9purchasedSbvp">purchased</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Always false</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">purchased</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager8RingtoneC7appNameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/appName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager8RingtoneC7appNameSSvp">appName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Appname (from bundle id) to show in the RingtoneTableView</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">appName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager8RingtoneC4sizeSivp"></a>
+                    <a name="//apple_ref/swift/Property/size" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager8RingtoneC4sizeSivp">size</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>File size of ringtone</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:@M@ToneManager@objc(cs)Ringtone(im)copyWithZone:"></a>
                     <a name="//apple_ref/swift/Method/copy(with:)" class="dashAnchor"></a>
                     <a class="token" href="#/c:@M@ToneManager@objc(cs)Ringtone(im)copyWithZone:">copy(with:)</a>
@@ -120,6 +380,182 @@
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">copy</span><span class="p">(</span><span class="n">with</span> <span class="nv">zone</span><span class="p">:</span> <span class="kt">NSZone</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Any</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager8RingtoneCACSS4name_SSSg10identifierSiSg9totalTimeAE8bundleID10Foundation3URLV04fileK0SbSg16protectedContentAN9purchasedtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(name:identifier:totalTime:bundleID:fileURL:protectedContent:purchased:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager8RingtoneCACSS4name_SSSg10identifierSiSg9totalTimeAE8bundleID10Foundation3URLV04fileK0SbSg16protectedContentAN9purchasedtcfc">init(name:identifier:totalTime:bundleID:fileURL:protectedContent:purchased:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Init method</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">totalTime</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?,</span> <span class="nv">bundleID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">fileURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">protectedContent</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">purchased</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Name to show in the ringtone picker</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>identifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>tone identifier (assigned by TLToneManager in ToneLibrary)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>totalTime</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Length of ringtone</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bundleID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>bundle id this was imported from</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fileURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Full path to ringtone</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>protectedContent</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Required by tonelibrary. Defaults to false</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>purchased</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Required by tonelibrary. Defaults to false</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager8RingtoneCACSS8filePath_SS8bundleIDtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(filePath:bundleID:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager8RingtoneCACSS8filePath_SS8bundleIDtcfc">init(filePath:bundleID:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience init method</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">filePath</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">bundleID</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>filePath</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Full path to ringtone</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bundleID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>bundleid this ringtone was imported from</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

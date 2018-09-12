@@ -51,13 +51,6 @@
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/AppListViewController.swift",
-      "line": 19,
-      "symbol": "AppListViewController.dataSource",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/AppListViewController.swift",
       "line": 21,
       "symbol": "AppListViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
@@ -446,20 +439,6 @@
       "line": 290,
       "symbol": "WriteLockableSynchronizedArray.+=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SynchronizedArray.swift",
-      "line": 303,
-      "symbol": "WriteLockableSynchronizedArray.Iterator.index",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SynchronizedArray.swift",
-      "line": 304,
-      "symbol": "WriteLockableSynchronizedArray.Iterator.arr",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {

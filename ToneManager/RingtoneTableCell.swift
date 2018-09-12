@@ -32,7 +32,7 @@ public class RingtoneTableCell : UITableViewCell {
     /// <#Description#>
     ///
     /// - Parameter state: <#state description#>
-    func updateButtons(_ state: Bool) -> Void {
+    public func updateButtons(_ state: Bool) -> Void {
         if state == true {
             self.playButton.alpha = 0.7
             self.playButton.isEnabled = true
@@ -48,7 +48,7 @@ public class RingtoneTableCell : UITableViewCell {
         }
     }
     
-    override func prepareForReuse() {
+    override public func prepareForReuse() {
         nameLabel.text = ""
         fromAppLabel.text = ""
         lengthLabel.text = ""
