@@ -11,7 +11,7 @@ import BugfenderSDK
 import SafariServices
 
 /// View controller for main settings page
-class SettingsViewController : UITableViewController, SFSafariViewControllerDelegate {
+public class SettingsViewController : UITableViewController, SFSafariViewControllerDelegate {
     
     let defaults = UserDefaults.standard
     var autoInstall : Bool {

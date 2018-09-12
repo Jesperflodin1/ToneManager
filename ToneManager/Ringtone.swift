@@ -8,14 +8,14 @@
 import Foundation
 
 // MARK: - String Extension for removing extra whitespace
-extension String {
+public extension String {
     func condenseWhitespace() -> String {
         let components = self.components(separatedBy: .whitespacesAndNewlines)
         return components.filter { !$0.isEmpty }.joined(separator: " ")
     }
 }
 // MARK: - URL Extension for generating a ringtone name from its filename
-extension URL {
+public extension URL {
     func nameFromFilePath() -> String {
         let filename = self.deletingPathExtension().lastPathComponent
         
@@ -28,7 +28,7 @@ extension URL {
 }
 
 /// Model class for one ringtone. Stores metadata
-class Ringtone : NSObject, NSCopying, Codable {
+public class Ringtone : NSObject, NSCopying, Codable {
     
     
     /// Name visible in the ringtone picker
@@ -54,21 +54,21 @@ class Ringtone : NSObject, NSCopying, Codable {
     
 //    private let queue = DispatchQueue(label: "fi.flodin.tonemanager.RingtoneSerialQueue")
     
-    func copy(with zone: NSZone? = nil) -> Any {
+    public func copy(with zone: NSZone? = nil) -> Any {
         return Ringtone(name: self.name, identifier: self.identifier, totalTime: self.totalTime, bundleID: self.bundleID, fileURL: self.fileURL, protectedContent: self.protectedContent, purchased: self.purchased)
     }
     
     
-    /// <#Description#>
+    /// Init method
     ///
     /// - Parameters:
-    ///   - name: <#name description#>
-    ///   - identifier: <#identifier description#>
-    ///   - totalTime: <#totalTime description#>
-    ///   - bundleID: <#bundleID description#>
-    ///   - fileURL: <#fileURL description#>
-    ///   - protectedContent: <#protectedContent description#>
-    ///   - purchased: <#purchased description#>
+    ///   - name: Name to show in the ringtone picker
+    ///   - identifier: tone identifier (assigned by TLToneManager in ToneLibrary)
+    ///   - totalTime: Length of ringtone
+    ///   - bundleID: bundle id this was imported from
+    ///   - fileURL: Full path to ringtone
+    ///   - protectedContent: Required by tonelibrary. Defaults to false
+    ///   - purchased: Required by tonelibrary. Defaults to false
     init(name: String, identifier: String?, totalTime: Int?, bundleID: String?, fileURL: URL, protectedContent: Bool? = nil, purchased: Bool? = nil) {
         
         self.fileURL = fileURL
@@ -111,11 +111,11 @@ class Ringtone : NSObject, NSCopying, Codable {
         super.init()
     }
     
-    /// <#Description#>
+    /// Convenience init method
     ///
     /// - Parameters:
-    ///   - filePath: <#filePath description#>
-    ///   - bundleID: <#bundleID description#>
+    ///   - filePath: Full path to ringtone
+    ///   - bundleID: bundleid this ringtone was imported from
     convenience init(filePath: String, bundleID: String) {
         let url = URL(fileURLWithPath: filePath)
         let generatedName = url.nameFromFilePath()
@@ -124,10 +124,11 @@ class Ringtone : NSObject, NSCopying, Codable {
     }
     
     /// Uses ToneLibrary to check if this ringtone is valid. It will be valid if it has an identifier that exists in
-    /// this devices tonelibrary. Also checks if fileURL exists. If toneIdentifier is nil, ringtone is considered valid ( if file exists)
+    /// this devices tonelibrary. Also checks if fileURL exists. If toneIdentifier is nil, ringtone is considered valid
+    /// ( if file exists)
     ///
     /// - Returns: true if valid
-    func isValid() -> Bool {
+    public func isValid() -> Bool {
         let fileManager = FileManager.default
         if !fileManager.fileExists(atPath: fileURL.path) {
             return false // file does not exist

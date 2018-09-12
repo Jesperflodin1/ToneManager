@@ -14,11 +14,11 @@ var appNames : [String] = []
 var theApps : [String:String] = [:]
 
 
-class AppListViewController : UITableViewController {
+public class AppListViewController : UITableViewController {
     
     private var dataSource : ALApplicationTableDataSource
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = dataSource
         dataSource.tableView = self.tableView
@@ -52,7 +52,7 @@ class AppListViewController : UITableViewController {
     }
     
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         dataSource = ALApplicationTableDataSource()
         dataSource.sectionDescriptors = ALApplicationTableDataSource.standardSectionDescriptors()
         super.init(coder: aDecoder)

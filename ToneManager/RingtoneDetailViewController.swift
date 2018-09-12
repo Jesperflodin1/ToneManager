@@ -9,7 +9,7 @@
 import UIKit
 
 /// <#Description#>
-class RingtoneDetailViewController : UITableViewController {
+public class RingtoneDetailViewController : UITableViewController {
     
     /// <#Description#>
     @IBOutlet weak var nameLabel: UILabel!

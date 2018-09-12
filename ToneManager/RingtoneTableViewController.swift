@@ -11,7 +11,7 @@ import BugfenderSDK
 import PKHUD
 
 /// Shows available and installed ringtones
-class RingtoneTableViewController : UITableViewController {
+public class RingtoneTableViewController : UITableViewController {
     
     /// Storage for Ringtones
     var ringtoneStore : RingtoneStore!
@@ -79,10 +79,6 @@ class RingtoneTableViewController : UITableViewController {
     }
     @objc func willEnterBackground() {
         ringtoneStore.writeToPlist()
-    }
-    
-    deinit {
-        <#statements#>
     }
     
     /// Called when view will appear

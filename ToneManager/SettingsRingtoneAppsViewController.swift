@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsRingtoneAppsViewController : UITableViewController {
+public class SettingsRingtoneAppsViewController : UITableViewController {
     
     let defaults = UserDefaults.standard
     

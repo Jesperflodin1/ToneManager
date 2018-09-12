@@ -10,28 +10,27 @@ import Foundation
 import BugfenderSDK
 
 /// Class that handles scanning and importing of ringtones
-class RingtoneScanner {
-    /// <#Description#>
+public class RingtoneScanner {
+    /// path for app data
     private let appDataPath = "/var/mobile/Library/ToneManager"
     
-    /// <#Description#>
+    /// Reference to RingtoneStore
     var delegate : RingtoneStore
     
-    /// <#Description#>
+    /// Init method. Sets current ringtonestore as delegate
     ///
-    /// - Parameter delegate: <#delegate description#>
+    /// - Parameter delegate: Current RingtoneStore
     init(_ delegate : RingtoneStore) {
         self.delegate = delegate
         BFLog("Scanner initializing")
     }
     
-    // Files with same name from different apps will try to import, but tonelibrary wont import them
-    /// <#Description#>
+    /// Searches paths in pathsArray for ringtones that haven't yet been added to the database and adds them.
+    /// Will copy the ringtones to the application data folder
     ///
-    /// - Parameters:
-    ///   - pathsArray: <#pathsArray description#>
-    ///   - completionHandler: <#completionHandler description#>
-    func importRingtonesFrom(paths pathsArray : Array<String>) -> Array<Ringtone>? {
+    /// - Parameter pathsArray: Array of paths to search
+    /// - Returns: sorted array of all imported ringtones including new and old. Nil if nothing was imported
+    public func importRingtonesFrom(paths pathsArray : Array<String>) -> Array<Ringtone>? {
         
         BFLog("Starting scan for paths: \(pathsArray)")
         
@@ -67,6 +66,9 @@ class RingtoneScanner {
             // check based on filename (or name?) and maybe file size?
             
             for file in filesArray {
+                let pathExtension = URL(fileURLWithPath: file).pathExtension
+                if pathExtension != "m4r" { continue }
+                
                 
             }
             

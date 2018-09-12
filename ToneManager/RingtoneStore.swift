@@ -98,6 +98,8 @@ class RingtoneStore {
                 
                 self.createTestRingtones()
                 
+                self.writeToPlist()
+                
                 self.tableView?.reloadData()
             }
         }
@@ -167,6 +169,7 @@ class RingtoneStore {
     
                     DispatchQueue.main.async {
                         self.allRingtones = WriteLockableSynchronizedArray(with: newArray)
+                        self.writeToPlist()
                         completionHandler(true)
                     }
                 } else {

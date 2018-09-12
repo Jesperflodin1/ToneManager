@@ -10,7 +10,7 @@ import UIKit
 import BugfenderSDK
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+public class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     

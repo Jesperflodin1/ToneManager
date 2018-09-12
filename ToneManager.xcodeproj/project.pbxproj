@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B7547485A56829ADA0E8A7C /* Pods_ToneManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87726A0BFD0B4E267CD5179 /* Pods_ToneManager.framework */; };
+		24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24496B22214991B40031E422 /* RingtoneInstaller.swift */; };
 		24969499214406FE009960D7 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24969498214406FE009960D7 /* assets.xcassets */; };
 		2496949B214409E2009960D7 /* RingtoneDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */; };
 		249694A22144F0A7009960D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2496949E2144EBB9009960D7 /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24496B22214991B40031E422 /* RingtoneInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneInstaller.swift; sourceTree = "<group>"; };
 		24969498214406FE009960D7 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneDetailViewController.swift; sourceTree = "<group>"; };
 		2496949E2144EBB9009960D7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = /Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Main.storyboard; sourceTree = "<absolute>"; };
@@ -170,6 +172,7 @@
 				2497A6672142537B00597B5C /* Ringtone.swift */,
 				2497A6692142538500597B5C /* RingtoneStore.swift */,
 				249694A621454F96009960D7 /* RingtoneScanner.swift */,
+				24496B22214991B40031E422 /* RingtoneInstaller.swift */,
 				249694AD214799F0009960D7 /* AppListViewController.swift */,
 				249694A821456804009960D7 /* SynchronizedArray.swift */,
 				2497A641214251D300597B5C /* Info.plist */,
@@ -462,6 +465,7 @@
 				2497A63B214251D200597B5C /* AppDelegate.swift in Sources */,
 				2497A6682142537B00597B5C /* Ringtone.swift in Sources */,
 				24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */,
+				24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */,
 				24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */,
 				24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */,
 				2496949B214409E2009960D7 /* RingtoneDetailViewController.swift in Sources */,
