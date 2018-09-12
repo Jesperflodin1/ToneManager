@@ -16,34 +16,59 @@ class SettingsRingtoneAppsViewController : UITableViewController {
     @IBOutlet weak var audikoLiteSwitch: UISwitch!
     @IBOutlet weak var audikoProSwitch: UISwitch!
     
+    var zedge : Bool {
+        get {
+            return defaults.bool(forKey: "ZedgeRingtones")
+        }
+        set {
+            defaults.set(newValue, forKey: "ZedgeRingtones")
+        }
+    }
+    var audikoLite : Bool {
+        get {
+            return defaults.bool(forKey: "AudikoLite")
+        }
+        set {
+            defaults.set(newValue, forKey: "AudikoLite")
+        }
+    }
+    var audikoPro : Bool {
+        get {
+            return defaults.bool(forKey: "AudikoPro")
+        }
+        set {
+            defaults.set(newValue, forKey: "AudikoPro")
+        }
+    }
+    
     /// Zedge Ringtones switch changed state
     ///
     /// - Parameter sender: UISwitch that initiated this call
     @IBAction func zedgeChanged(_ sender: UISwitch) {
-        defaults.set(sender.isOn, forKey: "ZedgeRingtones")
+        zedge = sender.isOn
     }
     
     /// Audiko Lite switch changed state
     ///
     /// - Parameter sender: UISwitch that initiated this call
     @IBAction func audikoLiteChanged(_ sender: UISwitch) {
-        defaults.set(sender.isOn, forKey: "AudikoLite")
+        audikoLite = sender.isOn
     }
     
     /// Audiko Pro switch changed state
     ///
     /// - Parameter sender: UISwitch that initiated this call
     @IBAction func audikoProChanged(_ sender: UISwitch) {
-        defaults.set(sender.isOn, forKey: "AudikoPro")
+        audikoPro = sender.isOn
     }
     
     /// Called when view will appear on screen. Reads preferences from userdefaults and sets user controls in this view
     ///
     /// - Parameter animated: true if view will appear with animation
     override func viewWillAppear(_ animated: Bool) {
-        zedgeSwitch.isOn = defaults.bool(forKey: "ZedgeRingtones")
-        audikoLiteSwitch.isOn = defaults.bool(forKey: "AudikoLite")
-        audikoProSwitch.isOn = defaults.bool(forKey: "AudikoPro")
+        zedgeSwitch.isOn = zedge
+        audikoLiteSwitch.isOn = audikoLite
+        audikoProSwitch.isOn = audikoPro
         super.viewWillAppear(animated)
     }
     

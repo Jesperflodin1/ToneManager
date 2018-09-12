@@ -14,7 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var remoteLogging : Bool = false
+    var remoteLogging : Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "RemoteLogging")
+        }
+    }
     
     /// Enables remote logging if enabled in userdefaults
     func enableRemoteLogging() {
@@ -31,14 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func registerDefaults() {
         let defaults = UserDefaults.standard
         defaults.register(defaults: [
-            "AutoScan" : false,
+            "AutoInstall" : false,
             "RemoteLogging" : true,
             "AudikoLite" : true,
             "AudikoPro" : true,
             "ZedgeRingtones" : true
             ])
-        
-        remoteLogging = UserDefaults.standard.bool(forKey: "RemoteLogging")
     }
 
     /// UIApplicationDelegate method. Called on application launch. Loads and sets rootviewcontroller from main storyboard
@@ -57,13 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window!.backgroundColor = UIColor.white
         
-        let store = RingtoneStore()
-        
         BFLog("Loading main storyboard")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nvc = storyboard.instantiateViewController(withIdentifier: "JFTMNavigationController") as! UINavigationController
-        let vc = nvc.topViewController as! RingtoneTableViewController
-        vc.ringtoneStore = store
+//        let vc = nvc.topViewController as! RingtoneTableViewController
         
         self.window!.rootViewController = nvc
         self.window!.makeKeyAndVisible()

@@ -14,6 +14,22 @@ import SafariServices
 class SettingsViewController : UITableViewController, SFSafariViewControllerDelegate {
     
     let defaults = UserDefaults.standard
+    var autoInstall : Bool {
+        get {
+            return defaults.bool(forKey: "AutoInstall")
+        }
+        set {
+            defaults.set(newValue, forKey: "AutoInstall")
+        }
+    }
+    var remoteLogging : Bool {
+        get {
+            return defaults.bool(forKey: "RemoteLogging")
+        }
+        set {
+            defaults.set(newValue, forKey: "RemoteLogging")
+        }
+    }
     
     @IBOutlet weak var autoInstallSwitch: UISwitch!
     @IBOutlet weak var remoteLoggingSwitch: UISwitch!
@@ -22,23 +38,24 @@ class SettingsViewController : UITableViewController, SFSafariViewControllerDele
     ///
     /// - Parameter sender: UISwitch that initiated this
     @IBAction func autoInstallChanged(_ sender: UISwitch) {
-        let state = sender.isOn
-        defaults.set(state, forKey: "AutoScan")
+        autoInstall = sender.isOn
+        BFLog("autoScan changed, new value = \(autoInstall)")
     }
     
     /// Remote logging switch changed state. Saves state to userdefaults
     ///
     /// - Parameter sender: UISwitch that initiated this
     @IBAction func remoteLoggingChanged(_ sender: UISwitch) {
-        defaults.set(sender.isOn, forKey: "RemoteLogging")
+        remoteLogging = sender.isOn
     }
 
     /// Called when view will appear on screen. Reads preferences from userdefaults and sets user controls in this view
     ///
     /// - Parameter animated: true if view will appear with animation
     override func viewWillAppear(_ animated: Bool) {
-        autoInstallSwitch.isOn = defaults.bool(forKey: "AutoScan")
-        remoteLoggingSwitch.isOn = defaults.bool(forKey: "RemoteLogging")
+        BFLog("autoScan = \(autoInstall)")
+        autoInstallSwitch.isOn = autoInstall
+        remoteLoggingSwitch.isOn = remoteLogging
         super.viewWillAppear(animated)
     }
     

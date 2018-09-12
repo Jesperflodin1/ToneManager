@@ -9,10 +9,38 @@
 import Foundation
 import BugfenderSDK
 
+
+
 /// Model class for ringtones
 class RingtoneStore {
     
     let defaults = UserDefaults.standard
+    let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
+    let plistURL = URL(fileURLWithPath: "/var/mobile/Library/ToneManager/tones.plist")
+    
+    weak var tableView : UITableView?
+    
+    var zedge : Bool {
+        get {
+            return defaults.bool(forKey: "ZedgeRingtones")
+        }
+    }
+    var audikoLite : Bool {
+        get {
+            return defaults.bool(forKey: "AudikoLite")
+        }
+    }
+    var audikoPro : Bool {
+        get {
+            return defaults.bool(forKey: "AudikoPro")
+        }
+    }
+    
+    var autoInstall : Bool {
+        get {
+            return defaults.bool(forKey: "AutoInstall")
+        }
+    }
     
     /// WriteLockableSynchronizedArray for all ringtones
     var allRingtones = WriteLockableSynchronizedArray<Ringtone>()
@@ -31,7 +59,6 @@ class RingtoneStore {
         BFLog("RingtoneStore init")
         
         let fileManager = FileManager.default
-        let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
         if !fileManager.fileExists(atPath: appDataDir.path) {
             BFLog("No app data directory found, creating")
             do {
@@ -44,7 +71,83 @@ class RingtoneStore {
             BFLog("App data directory exists")
         }
         
-        createTestRingtones()
+        loadFromPlist()
+    }
+    
+    /// Loads ringtones from plist. Will also verify all loaded ringtones if shouldVerifyRingtones=true
+    ///
+    /// - Parameter shouldVerifyRingtones: will verify ringtones if true, is by default false
+    func loadFromPlist(_ shouldVerifyRingtones : Bool = true) {
+        DispatchQueue.global(qos: .background).async {
+
+            var ringtonesArray : Array<Ringtone> = []
+            
+            do {
+                let data = try Data(contentsOf: self.plistURL)
+                let decoder = PropertyListDecoder()
+                ringtonesArray = try decoder.decode(Array<Ringtone>.self, from: data)
+                BFLog("Success reading plist: \(ringtonesArray)")
+            } catch {
+                Bugfender.error("Error when reading ringtones from plist: \(error)")
+            }
+            if shouldVerifyRingtones {
+                ringtonesArray = self.verifyRingtones(inArray: ringtonesArray)
+            }
+            DispatchQueue.main.async {
+                self.allRingtones = WriteLockableSynchronizedArray(with: ringtonesArray)
+                
+                self.createTestRingtones()
+                
+                self.tableView?.reloadData()
+            }
+        }
+    }
+    
+    func writeToPlist() {
+        guard let ringtones = allRingtones.array else {
+            Bugfender.error("Failed to get ringtones array")
+            return
+        }
+        let ringtonesArrayCopy : Array<Ringtone> = ringtones.map(){ $0.copy() as! Ringtone }
+        let encoder = PropertyListEncoder()
+        encoder.outputFormat = .binary
+        do {
+            let data = try encoder.encode(ringtonesArrayCopy)
+            try data.write(to: plistURL)
+            BFLog("Done writing plist")
+        } catch {
+            Bugfender.error("Error when writing ringtones to plist: \(error)")
+        }
+    }
+    
+    /// Verifies if ringtones are valid. Calls isValid on every ringtone in array. Removes invalid ringtones.
+    ///
+    /// - Parameter ringtonesArray: Array with ringtones to verify
+    /// - Returns: Array which only contains valid ringtones
+    func verifyRingtones(inArray ringtonesArray : Array<Ringtone>) -> Array<Ringtone> {
+        return ringtonesArray.filter { $0.isValid() }
+    }
+    
+    func ringtoneAppsToScan() -> Array<String> {
+        var apps : Array<String> = []
+        
+        if zedge {
+            if let path = FBApplicationInfoHandler.path(forBundleIdentifier: "com.zedge.Zedge") {
+                apps.append(path.appendingPathComponent("Documents").path)
+            }
+        }
+        if audikoLite {
+            if let path = FBApplicationInfoHandler.path(forBundleIdentifier: "com.908.AudikoFree") {
+                apps.append(path.appendingPathComponent("Documents").path)
+            }
+        }
+        if audikoPro {
+            if let path = FBApplicationInfoHandler.path(forBundleIdentifier: "com.908.Audiko") {
+                apps.append(path.appendingPathComponent("Documents").path)
+            }
+        }
+        
+        return apps
     }
     
     /// Rescans default and/or chosen apps for new ringtones and imports them. Uses RingtoneScanner class for this
@@ -52,8 +155,34 @@ class RingtoneStore {
     /// - Parameter completionHandler: completion block that should run when import is done, a Bool indicating if new ringtones
     /// was imported is passed to it.
     func updateRingtones(completionHandler: @escaping (Bool) -> Void) {
-        let scanner = RingtoneScanner(self)
-        // TODO: Get apps to scan from preferences
+        DispatchQueue.global(qos: .background).async {
+            let scanner = RingtoneScanner(self)
+            // TODO: Get extra apps to scan from preferences
+            
+            var apps = self.ringtoneAppsToScan()
+            apps.append("/test")
+            if apps.count > 0 {
+                BFLog("Paths to scan: \(apps)")
+                if let newArray = scanner.importRingtonesFrom(paths: apps) {
+    
+                    DispatchQueue.main.async {
+                        self.allRingtones = WriteLockableSynchronizedArray(with: newArray)
+                        completionHandler(true)
+                    }
+                } else {
+                    BFLog("Scan did not find anything new")
+                    DispatchQueue.main.async {
+                        completionHandler(false)
+                    }
+                }
+                
+            } else {
+                BFLog("0 paths to scan, skipping scan")
+                DispatchQueue.main.async {
+                    completionHandler(false)
+                }
+            }
+        }
         
     }
     

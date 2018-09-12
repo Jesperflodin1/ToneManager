@@ -22,6 +22,17 @@ class RingtoneTableViewController : UITableViewController {
     /// Height for each row
     private let rowHeight : CGFloat = 55
     
+    let defaults = UserDefaults.standard
+    
+    var autoInstall : Bool {
+        get {
+            return defaults.bool(forKey: "AutoInstall")
+        }
+        set {
+            defaults.set(newValue, forKey: "AutoInstall")
+        }
+    }
+    
     
     /// Executes when the user changes the filter to show either "All", "Installed" or "Not installed" Ringtones
     ///
@@ -33,6 +44,11 @@ class RingtoneTableViewController : UITableViewController {
     ///
     /// - Parameter sender: Button that triggered this
     @IBAction func updateTapped(_ sender: UIBarButtonItem) {
+        updateRingtones()
+    }
+    
+    /// Rescans apps to find new ringtones
+    func updateRingtones() {
         HUD.show(.labeledProgress(title: "Updating", subtitle: "Scanning for new ringtones"))
         
         ringtoneStore.updateRingtones { [weak self] (needsUpdate: Bool)  in
@@ -44,6 +60,29 @@ class RingtoneTableViewController : UITableViewController {
                 strongSelf.ringtoneStore.allRingtones.unlockArray()
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        self.ringtoneStore = RingtoneStore()
+        updateRingtones()
+        ringtoneStore.tableView = self.tableView
+        tableView.dataSource = self
+        NotificationCenter.default.addObserver(self, selector:#selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(willEnterBackground), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(willEnterBackground), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
+    }
+    
+    @objc func willEnterForeground() {
+        BFLog("did become active, autoinstall = \(autoInstall)")
+        updateRingtones()
+    }
+    @objc func willEnterBackground() {
+        ringtoneStore.writeToPlist()
+    }
+    
+    deinit {
+        <#statements#>
     }
     
     /// Called when view will appear

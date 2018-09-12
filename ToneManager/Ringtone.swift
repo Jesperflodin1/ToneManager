@@ -28,7 +28,9 @@ extension URL {
 }
 
 /// Model class for one ringtone. Stores metadata
-class Ringtone : NSObject {
+class Ringtone : NSObject, NSCopying, Codable {
+    
+    
     /// Name visible in the ringtone picker
     private(set) var name: String
     /// Identifier used by tonelibrary
@@ -50,16 +52,11 @@ class Ringtone : NSObject {
     /// File size of ringtone
     let size: Int
     
-    /// returns true if this ringtone is installed on device
-    var installed : Bool {
-        get { // If identifier is set, tone is considered installed.
-            if self.identifier != nil {
-                return true
-            } else { return false }
-        }
-    }
-    
 //    private let queue = DispatchQueue(label: "fi.flodin.tonemanager.RingtoneSerialQueue")
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        return Ringtone(name: self.name, identifier: self.identifier, totalTime: self.totalTime, bundleID: self.bundleID, fileURL: self.fileURL, protectedContent: self.protectedContent, purchased: self.purchased)
+    }
     
     
     /// <#Description#>
@@ -127,11 +124,16 @@ class Ringtone : NSObject {
     }
     
     /// Uses ToneLibrary to check if this ringtone is valid. It will be valid if it has an identifier that exists in
-    /// this devices tonelibrary
+    /// this devices tonelibrary. Also checks if fileURL exists. If toneIdentifier is nil, ringtone is considered valid ( if file exists)
     ///
     /// - Returns: true if valid
     func isValid() -> Bool {
-        guard let toneIdentifier = self.identifier else { return false }
+        let fileManager = FileManager.default
+        if !fileManager.fileExists(atPath: fileURL.path) {
+            return false // file does not exist
+        }
+        
+        guard let toneIdentifier = self.identifier else { return true }
         guard let toneManager = TLToneManagerHandler.sharedInstance() else { return false }
         
         return toneManager.tone(withIdentifierIsValid: toneIdentifier)

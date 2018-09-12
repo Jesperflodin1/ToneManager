@@ -47,4 +47,12 @@ class RingtoneTableCell : UITableViewCell {
             self.infoButton.isEnabled = false
         }
     }
+    
+    override func prepareForReuse() {
+        nameLabel.text = ""
+        fromAppLabel.text = ""
+        lengthLabel.text = ""
+        installedLabel.text = ""
+        ringtoneItem = nil
+    }
 }
