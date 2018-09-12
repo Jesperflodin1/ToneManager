@@ -9,12 +9,11 @@
 import UIKit
 import BugfenderSDK
 
-var tabView : UITableView = UITableView()
-var appNames : [String] = []
-var theApps : [String:String] = [:]
-
-
 public class AppListViewController : UITableViewController {
+    
+    var tabView : UITableView = UITableView()
+    var appNames : [String] = []
+    var theApps : [String:String] = [:]
     
     private var dataSource : ALApplicationTableDataSource
     
