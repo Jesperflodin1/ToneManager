@@ -112,7 +112,7 @@ public class RingtoneStore {
             DispatchQueue.main.async {
                 self.allRingtones = WriteLockableSynchronizedArray(with: ringtonesArray)
                 
-//                self.createTestRingtones()
+                self.createTestRingtones()
                 
                 self.writeToPlist()
                 

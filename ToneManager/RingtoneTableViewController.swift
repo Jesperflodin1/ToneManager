@@ -25,6 +25,9 @@ public class RingtoneTableViewController : UITableViewController {
     /// Userdefaults object
     let defaults = UserDefaults.standard
     
+    /// Table filter variable 0=All, 1=Installed, 2=Not installed
+    var ringtoneFilter : Int = 0
+    
     var autoInstall : Bool {
         get {
             return defaults.bool(forKey: "AutoInstall")
@@ -82,7 +85,7 @@ public class RingtoneTableViewController : UITableViewController {
                 let installAction = UIAlertAction(title: "Install", style: .default, handler:
                 { (action) -> Void in
                     self.ringtoneStore.installRingtone(cell.ringtoneItem!, completionHandler: { (installedRingtone) in
-                        cell.updateInstalledButton()
+                        cell.updateInstallStatus()
                         HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed ringtone"), delay: 0.7)
                         self.ringtoneStore.writeToPlist()
                     })
@@ -101,7 +104,7 @@ public class RingtoneTableViewController : UITableViewController {
                 let installAction = UIAlertAction(title: "Uninstall", style: .destructive, handler:
                 { (action) -> Void in
                     self.ringtoneStore.uninstallRingtone(cell.ringtoneItem!, completionHandler: { (uninstalledRingtone) in
-                        cell.updateInstalledButton()
+                        cell.updateInstallStatus()
                         HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Uninstalled ringtone"), delay: 0.7)
                         self.ringtoneStore.writeToPlist()
                     })
@@ -291,8 +294,9 @@ public class RingtoneTableViewController : UITableViewController {
         cell.ringtoneItem = ringtone
         cell.nameLabel.text = ringtone?.name
         cell.fromAppLabel.text = ringtone?.appName
-        cell.lengthLabel.text = String(ringtone?.totalTime ?? 0)
-        cell.updateInstalledButton()
+        cell.lengthLabel.text = String(ringtone?.totalTime ?? 0) + " s"
+        cell.updateInstallStatus()
+
         
         return cell
     }

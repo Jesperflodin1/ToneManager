@@ -10,22 +10,33 @@ import UIKit
 
 /// UITableCell subclass for ringtones, used in ’RingtoneTableViewController’
 public class RingtoneTableCell : UITableViewCell {
-    /// <#Description#>
+    /// Outlet for name label UILabel
     @IBOutlet weak var nameLabel: UILabel!
-    /// <#Description#>
+    
+    /// Outlet for label showing which app ringtone was imported from
     @IBOutlet weak var fromAppLabel: UILabel!
-    /// <#Description#>
+    
+    /// Outlet for ringtone length label
     @IBOutlet weak var lengthLabel: UILabel!
     
-    /// <#Description#>
+    /// Outlet for label showing install status
     @IBOutlet weak var installedLabel: UILabel!
     
-    /// <#Description#>
+    
+    /// Outlet for UIButton with play/pause action
     @IBOutlet weak var playButton: UIButton!
-    /// <#Description#>
+    
+    /// Outlet for "more info", segues to ’RingtoneDetailViewController’ on tap
     @IBOutlet weak var infoButton: UIButton!
+    
+    /// Outlet for install button. Installs or uninstalls ringtone on tap
     @IBOutlet weak var installButton: UIButton!
+    
+    /// Outlet for trash button. Deletes ringtone
     @IBOutlet weak var deleteButton: UIButton!
+    
+    /// Outlet for install button constraint to the button left of it
+    @IBOutlet weak var installButtonHorizontalConstraint: NSLayoutConstraint!
     
     /// Associated ringtone object
     var ringtoneItem : Ringtone? = nil
@@ -45,7 +56,10 @@ public class RingtoneTableCell : UITableViewCell {
             self.installButton.alpha = 0.7
             self.installButton.isEnabled = true
             
-            self.lengthLabel.alpha = 0.7
+            self.deleteButton.alpha = 0.7
+            self.deleteButton.isEnabled = true
+            
+            self.lengthLabel.alpha = 1.0
             self.lengthLabel.isHidden = false
         } else {
             self.playButton.alpha = 0.0
@@ -57,16 +71,24 @@ public class RingtoneTableCell : UITableViewCell {
             self.installButton.alpha = 0.0
             self.installButton.isEnabled = false
             
+            self.deleteButton.alpha = 0.0
+            self.deleteButton.isEnabled = false
+            
             self.lengthLabel.alpha = 0.0
             self.lengthLabel.isHidden = true
         }
     }
     
-    public func updateInstalledButton() {
-        if ringtoneItem?.identifier == nil {
+    /// Updates UIImage for install button to show if button action is install or uninstall. Also updates installed label
+    public func updateInstallStatus() {
+        if ringtoneItem?.identifier != nil {
             installButton.setImage(UIImage(named: "file-export"), for: .normal)
+            installButtonHorizontalConstraint.constant = 20
+            self.layoutIfNeeded()
         } else {
             installButton.setImage(UIImage(named: "file-minus"), for: .normal)
+            installButtonHorizontalConstraint.constant = 28
+            self.layoutIfNeeded()
         }
     }
     

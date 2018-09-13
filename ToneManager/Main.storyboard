@@ -76,7 +76,7 @@
                                             <state key="normal" image="play-circle"/>
                                         </button>
                                         <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8r3-9w-4nI">
-                                            <rect key="frame" x="68" y="18" width="30" height="30"/>
+                                            <rect key="frame" x="76" y="18" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="8r3-9w-4nI" secondAttribute="height" multiplier="1:1" id="1g8-jU-Vuz"/>
                                                 <constraint firstAttribute="width" constant="30" id="1ia-Re-Vt0"/>
@@ -87,7 +87,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXk-DZ-6TO">
-                                            <rect key="frame" x="110" y="18" width="22" height="30"/>
+                                            <rect key="frame" x="126" y="18" width="22" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="34" id="Q8q-6N-yVW"/>
                                                 <constraint firstAttribute="height" constant="30" id="UN3-TD-nUG"/>
@@ -98,7 +98,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fp5-EY-4ot">
-                                            <rect key="frame" x="144" y="18" width="26" height="30"/>
+                                            <rect key="frame" x="176" y="18" width="26" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Fp5-EY-4ot" secondAttribute="height" multiplier="13:15" id="gfW-2B-Ssx"/>
                                                 <constraint firstAttribute="height" constant="30" id="kIz-yA-9ZB"/>
@@ -106,7 +106,6 @@
                                             <state key="normal" image="trash-alt"/>
                                             <connections>
                                                 <action selector="deleteRingtone:" destination="rCO-Vu-eEW" eventType="touchUpInside" id="kVP-SR-2kv"/>
-                                                <action selector="installRingtone:" destination="rCO-Vu-eEW" eventType="touchUpInside" id="COL-47-JXz"/>
                                             </connections>
                                         </button>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Installed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhN-xV-dGi">
@@ -116,20 +115,20 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29 s" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXc-23-AgQ">
-                                            <rect key="frame" x="187" y="26" width="25" height="14"/>
+                                            <rect key="frame" x="227" y="26" width="25" height="14"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="lXc-23-AgQ" firstAttribute="leading" secondItem="Fp5-EY-4ot" secondAttribute="trailing" constant="17" id="8Tq-dB-zIV"/>
+                                        <constraint firstItem="lXc-23-AgQ" firstAttribute="leading" secondItem="Fp5-EY-4ot" secondAttribute="trailing" constant="25" id="8Tq-dB-zIV"/>
                                         <constraint firstAttribute="trailing" secondItem="yhN-xV-dGi" secondAttribute="trailing" constant="8" id="D5U-vO-vHd"/>
                                         <constraint firstItem="lXc-23-AgQ" firstAttribute="centerY" secondItem="Fp5-EY-4ot" secondAttribute="centerY" id="DqP-ZV-MG0"/>
-                                        <constraint firstItem="Fp5-EY-4ot" firstAttribute="leading" secondItem="sXk-DZ-6TO" secondAttribute="trailing" constant="12" id="G7Q-5l-i8r"/>
+                                        <constraint firstItem="Fp5-EY-4ot" firstAttribute="leading" secondItem="sXk-DZ-6TO" secondAttribute="trailing" constant="28" id="G7Q-5l-i8r"/>
                                         <constraint firstItem="zbR-gF-SaI" firstAttribute="leading" secondItem="WSC-9Q-dgH" secondAttribute="leading" constant="10" id="Hru-nn-JZw"/>
-                                        <constraint firstItem="sXk-DZ-6TO" firstAttribute="leading" secondItem="8r3-9w-4nI" secondAttribute="trailing" constant="12" id="J4A-wV-cqr"/>
-                                        <constraint firstItem="8r3-9w-4nI" firstAttribute="leading" secondItem="zbR-gF-SaI" secondAttribute="trailing" constant="12" id="Q8P-dE-4b9"/>
+                                        <constraint firstItem="sXk-DZ-6TO" firstAttribute="leading" secondItem="8r3-9w-4nI" secondAttribute="trailing" constant="20" id="J4A-wV-cqr"/>
+                                        <constraint firstItem="8r3-9w-4nI" firstAttribute="leading" secondItem="zbR-gF-SaI" secondAttribute="trailing" constant="20" id="Q8P-dE-4b9"/>
                                         <constraint firstAttribute="bottom" secondItem="zbR-gF-SaI" secondAttribute="bottom" constant="6.5" id="Vkg-Be-R18"/>
                                         <constraint firstItem="UV8-aZ-laJ" firstAttribute="trailing" secondItem="WSC-9Q-dgH" secondAttribute="trailing" id="VzH-r3-0AH"/>
                                         <constraint firstItem="WSC-9Q-dgH" firstAttribute="leading" secondItem="UV8-aZ-laJ" secondAttribute="leading" id="d1l-qo-ig1"/>
@@ -149,6 +148,7 @@
                                     <outlet property="fromAppLabel" destination="UV8-aZ-laJ" id="Sa1-EP-AjK"/>
                                     <outlet property="infoButton" destination="8r3-9w-4nI" id="2s1-Th-mKd"/>
                                     <outlet property="installButton" destination="sXk-DZ-6TO" id="7SE-Id-PmS"/>
+                                    <outlet property="installButtonHorizontalConstraint" destination="J4A-wV-cqr" id="DPY-KO-pFd"/>
                                     <outlet property="installedLabel" destination="yhN-xV-dGi" id="E32-Ij-FOf"/>
                                     <outlet property="lengthLabel" destination="lXc-23-AgQ" id="h1h-2w-e2d"/>
                                     <outlet property="nameLabel" destination="WSC-9Q-dgH" id="Rk1-37-dBu"/>

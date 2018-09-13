@@ -64,29 +64,8 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableCell.swift",
-      "line": 27,
-      "symbol": "RingtoneTableCell.installButton",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableCell.swift",
-      "line": 28,
-      "symbol": "RingtoneTableCell.deleteButton",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableCell.swift",
-      "line": 65,
-      "symbol": "RingtoneTableCell.updateInstalledButton()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableViewController.swift",
-      "line": 28,
+      "line": 31,
       "symbol": "RingtoneTableViewController.autoInstall",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
