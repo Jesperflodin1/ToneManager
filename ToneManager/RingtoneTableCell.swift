@@ -81,13 +81,15 @@ public class RingtoneTableCell : UITableViewCell {
     
     /// Updates UIImage for install button to show if button action is install or uninstall. Also updates installed label
     public func updateInstallStatus() {
-        if ringtoneItem?.identifier != nil {
+        if ringtoneItem?.identifier == nil { // not installed
             installButton.setImage(UIImage(named: "file-export"), for: .normal)
             installButtonHorizontalConstraint.constant = 20
+            installedLabel.isHidden = true
             self.layoutIfNeeded()
-        } else {
+        } else { // installed
             installButton.setImage(UIImage(named: "file-minus"), for: .normal)
             installButtonHorizontalConstraint.constant = 28
+            installedLabel.isHidden = false
             self.layoutIfNeeded()
         }
     }

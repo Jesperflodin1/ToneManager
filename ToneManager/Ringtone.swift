@@ -7,6 +7,7 @@
 //
 import Foundation
 import BugfenderSDK
+import AVFoundation
 
 // MARK: - String Extension for removing extra whitespace
 public extension String {
@@ -34,33 +35,45 @@ public class Ringtone : NSObject, NSCopying, Codable {
     
     /// Name visible in the ringtone picker
     private(set) var name: String
+    
     /// Identifier used by tonelibrary
     public var identifier: String?
     
-    /// Length of ringtone
-    public let totalTime: Int
+    /// Length of ringtone as Int, calculated from ’self.rawDuration’
+    public var totalTime: Int {
+        get {
+            return NSNumber(value: round(self.rawDuration)).intValue
+        }
+    }
+    
+    /// duration in seconds, as double
+    public let rawDuration : Double
+    
     /// Bundle ID it was imported from
     public let bundleID: String
+    
     /// Location for ringtone as URL
     public let fileURL: URL
+    
     /// Always false
     public let protectedContent: Bool
+    
     /// Always false
     public let purchased: Bool
     
     /// Appname (from bundle id) to show in the RingtoneTableView
     public let appName: String
+    
     /// File size of ringtone
     public let size: Int
     
-//    private let queue = DispatchQueue(label: "fi.flodin.tonemanager.RingtoneSerialQueue")
     
     /// Creates a copy of this ringtone object
     ///
     /// - Parameter zone: ?
     /// - Returns: New ringtone with same values as this ringtone
     public func copy(with zone: NSZone? = nil) -> Any {
-        return Ringtone(name: self.name, identifier: self.identifier, totalTime: self.totalTime, bundleID: self.bundleID, fileURL: self.fileURL, protectedContent: self.protectedContent, purchased: self.purchased)
+        return Ringtone(name: self.name, identifier: self.identifier, duration: self.rawDuration, bundleID: self.bundleID, fileURL: self.fileURL, protectedContent: self.protectedContent, purchased: self.purchased)
     }
     
     
@@ -69,20 +82,28 @@ public class Ringtone : NSObject, NSCopying, Codable {
     /// - Parameters:
     ///   - name: Name to show in the ringtone picker
     ///   - identifier: tone identifier (assigned by TLToneManager in ToneLibrary)
-    ///   - totalTime: Length of ringtone
+    ///   - duration: Length of ringtone in seconds, as double
     ///   - bundleID: bundle id this was imported from
     ///   - fileURL: Full path to ringtone
     ///   - protectedContent: Required by tonelibrary. Defaults to false
     ///   - purchased: Required by tonelibrary. Defaults to false
-    init(name: String, identifier: String?, totalTime: Int?, bundleID: String?, fileURL: URL, protectedContent: Bool? = nil, purchased: Bool? = nil) {
+    init(name: String, identifier: String?, duration: Double?, bundleID: String?, fileURL: URL, protectedContent: Bool? = nil, purchased: Bool? = nil) {
         
         self.fileURL = fileURL
         
-        if let time = totalTime {
-            self.totalTime = time
+        if let time = duration {
+            self.rawDuration = NSNumber(value: time).doubleValue
         } else {
-            //TODO: calculate total time
-            self.totalTime = 0
+            do
+            {
+                let avAudioPlayer = try AVAudioPlayer(contentsOf: fileURL)
+                let duration = avAudioPlayer.duration
+                self.rawDuration = duration
+            }
+            catch{
+                Bugfender.error("Error when retrieving duration of file: \(self.fileURL), error: \(error)")
+                self.rawDuration = 0
+            }
         }
         
         if let bundle = bundleID {
@@ -135,7 +156,7 @@ public class Ringtone : NSObject, NSCopying, Codable {
         let url = URL(fileURLWithPath: filePath)
         let generatedName = url.nameFromFilePath()
         
-        self.init(name: generatedName, identifier:nil , totalTime: nil, bundleID: bundleID, fileURL: url)
+        self.init(name: generatedName, identifier:nil , duration: nil, bundleID: bundleID, fileURL: url)
     }
     
     /// Uses ToneLibrary to check if this ringtone is valid. It will be valid if it has an identifier that exists in
@@ -168,6 +189,7 @@ public class Ringtone : NSObject, NSCopying, Codable {
         }
     }
     
+    /// Deletes the file this ringtone object is associated with
     public func deleteFile() {
         do {
             try FileManager.default.removeItem(at: self.fileURL)

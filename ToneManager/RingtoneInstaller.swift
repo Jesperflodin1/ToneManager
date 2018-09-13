@@ -32,7 +32,7 @@ public class RingtoneInstaller {
             }
             var toneLibraryMetaData = [String:Any]()
             toneLibraryMetaData["Name"] = ringtone.name
-            toneLibraryMetaData["Total Time"] = ringtone.totalTime
+            toneLibraryMetaData["Total Time"] = NSNumber(value: ringtone.rawDuration*1000).intValue
             toneLibraryMetaData["Purchased"] = ringtone.purchased
             toneLibraryMetaData["Protected Content"] = ringtone.protectedContent
             

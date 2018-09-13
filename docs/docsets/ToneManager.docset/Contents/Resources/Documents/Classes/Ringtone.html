@@ -14,7 +14,7 @@
     <a title="Ringtone Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ToneManager Docs</a> (88% documented)</p>
+        <p><a href="../index.html">ToneManager Docs</a> (89% documented)</p>
         <p class="header-right"><a href="https://github.com/Jesperflodin1/ToneManager"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjesperflodin1%2Egithub%2Eio%2FToneManager%2Fdocsets%2FToneManager%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -177,14 +177,41 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Length of ringtone</p>
+                        <p>Length of ringtone as Int, calculated from ’self.rawDuration’</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">totalTime</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">totalTime</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager8RingtoneC11rawDurationSdvp"></a>
+                    <a name="//apple_ref/swift/Property/rawDuration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager8RingtoneC11rawDurationSdvp">rawDuration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>duration in seconds, as double</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">rawDuration</span><span class="p">:</span> <span class="kt">Double</span></code></pre>
 
                         </div>
                       </div>
@@ -406,9 +433,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11ToneManager8RingtoneCACSS4name_SSSg10identifierSiSg9totalTimeAE8bundleID10Foundation3URLV04fileK0SbSg16protectedContentAN9purchasedtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(name:identifier:totalTime:bundleID:fileURL:protectedContent:purchased:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager8RingtoneCACSS4name_SSSg10identifierSiSg9totalTimeAE8bundleID10Foundation3URLV04fileK0SbSg16protectedContentAN9purchasedtcfc">init(name:identifier:totalTime:bundleID:fileURL:protectedContent:purchased:)</a>
+                    <a name="/s:11ToneManager8RingtoneCACSS4name_SSSg10identifierSdSg8durationAE8bundleID10Foundation3URLV04fileJ0SbSg16protectedContentAN9purchasedtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(name:identifier:duration:bundleID:fileURL:protectedContent:purchased:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager8RingtoneCACSS4name_SSSg10identifierSdSg8durationAE8bundleID10Foundation3URLV04fileJ0SbSg16protectedContentAN9purchasedtcfc">init(name:identifier:duration:bundleID:fileURL:protectedContent:purchased:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -423,7 +450,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">totalTime</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?,</span> <span class="nv">bundleID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">fileURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">protectedContent</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">purchased</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?,</span> <span class="nv">bundleID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">fileURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">protectedContent</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">purchased</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -458,12 +485,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>totalTime</em>
+                                <em>duration</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Length of ringtone</p>
+                                  <p>Length of ringtone in seconds, as double</p>
                                 </div>
                               </td>
                             </tr>
@@ -656,7 +683,7 @@ this devices tonelibrary. Also checks if fileURL exists. If toneIdentifier is ni
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Deletes the file this ringtone object is associated with</p>
 
                       </div>
                       <div class="declaration">
