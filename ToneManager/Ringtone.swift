@@ -6,6 +6,7 @@
 //  Copyright © 2018 Jesper Flodin. All rights reserved.
 //
 import Foundation
+import BugfenderSDK
 
 // MARK: - String Extension for removing extra whitespace
 public extension String {
@@ -103,11 +104,21 @@ public class Ringtone : NSObject, NSCopying, Codable {
         } else {
             self.appName = self.bundleID
         }
-        
-        self.size = 0 // TODO: File size
 
         self.name = name
         self.identifier = identifier
+        
+        var fileSize = 0
+        do {
+            let attribute = try FileManager.default.attributesOfItem(atPath: fileURL.path)
+            if let size = attribute[FileAttributeKey.size] as? Int {
+                fileSize = size
+            }
+        } catch {
+            Bugfender.error("Could not get file size for path: \(fileURL) Error: \(error)")
+        }
+        self.size = fileSize
+
         super.init()
     }
     

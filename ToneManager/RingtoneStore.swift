@@ -9,13 +9,13 @@
 import Foundation
 import BugfenderSDK
 
-
+public let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
 
 /// Model class for ringtones
 public class RingtoneStore {
     
     public let defaults = UserDefaults.standard
-    public let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
+    
     public let plistURL = URL(fileURLWithPath: "/var/mobile/Library/ToneManager/tones.plist")
     
     public weak var tableView : UITableView?
