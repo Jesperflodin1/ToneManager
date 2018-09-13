@@ -92,7 +92,7 @@ public class RingtoneStore {
     
     /// Loads ringtones from plist. Will also verify all loaded ringtones if shouldVerifyRingtones=true (defaults to true). Dispatches work to serial queue.
     ///
-    /// - Parameter shouldVerifyRingtones: will verify ringtones if true, is by default false
+    /// - Parameter shouldVerifyRingtones: will verify ringtones if true, is by default true
     public func loadFromPlist(_ shouldVerifyRingtones : Bool = true) {
         queue.sync {
 

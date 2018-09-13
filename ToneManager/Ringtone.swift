@@ -46,6 +46,13 @@ public class Ringtone : NSObject, NSCopying, Codable {
         }
     }
     
+    public var installed: Bool {
+        get {
+            guard identifier != nil else { return false }
+            return true
+        }
+    }
+    
     /// duration in seconds, as double
     public let rawDuration : Double
     
