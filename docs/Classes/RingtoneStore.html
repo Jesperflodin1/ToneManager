@@ -14,7 +14,7 @@
     <a title="RingtoneStore Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ToneManager Docs</a> (82% documented)</p>
+        <p><a href="../index.html">ToneManager Docs</a> (81% documented)</p>
         <p class="header-right"><a href="https://github.com/Jesperflodin1/ToneManager"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjesperflodin1%2Egithub%2Eio%2FToneManager%2Fdocsets%2FToneManager%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -329,6 +329,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:11ToneManager13RingtoneStoreC5queue33_F6FA59A2FB0B9BCAC6DBF913EA6DCFE5LLSo13DispatchQueueCvp"></a>
+                    <a name="//apple_ref/swift/Property/queue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC5queue33_F6FA59A2FB0B9BCAC6DBF913EA6DCFE5LLSo13DispatchQueueCvp">queue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Serial queue for reading/writing plist</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">fileprivate</span> <span class="k">let</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:11ToneManager13RingtoneStoreC19createTestRingtonesyyF"></a>
                     <a name="//apple_ref/swift/Method/createTestRingtones()" class="dashAnchor"></a>
                     <a class="token" href="#/s:11ToneManager13RingtoneStoreC19createTestRingtonesyyF">createTestRingtones()</a>
@@ -383,6 +410,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:11ToneManager13RingtoneStoreC12createAppDir33_F6FA59A2FB0B9BCAC6DBF913EA6DCFE5LLyyF"></a>
+                    <a name="//apple_ref/swift/Method/createAppDir()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC12createAppDir33_F6FA59A2FB0B9BCAC6DBF913EA6DCFE5LLyyF">createAppDir()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates application data directory if possible and needed</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">createAppDir</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:11ToneManager13RingtoneStoreC13loadFromPlistySbF"></a>
                     <a name="//apple_ref/swift/Method/loadFromPlist(_:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:11ToneManager13RingtoneStoreC13loadFromPlistySbF">loadFromPlist(_:)</a>
@@ -393,7 +447,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Loads ringtones from plist. Will also verify all loaded ringtones if shouldVerifyRingtones=true</p>
+                        <p>Loads ringtones from plist. Will also verify all loaded ringtones if shouldVerifyRingtones=true (defaults to true). Dispatches work to serial queue.</p>
 
                       </div>
                       <div class="declaration">
@@ -439,7 +493,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Writes all currently known ringtones to local plist</p>
+                        <p>Writes all currently known ringtones to local plist. Dispatches work to serial queue</p>
 
                       </div>
                       <div class="declaration">
@@ -583,6 +637,122 @@
                               <td>
                                 <div>
                                   <p>Completion block to execute when import is done. Ringtone object is passed as argument, identifier will be set if import was successful</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager13RingtoneStoreC09uninstallC0yAA0C0C_yAFc17completionHandlertF"></a>
+                    <a name="//apple_ref/swift/Method/uninstallRingtone(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC09uninstallC0yAA0C0C_yAFc17completionHandlertF">uninstallRingtone(_:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Uses ’RingtoneInstaller’ to uninstall ringtone</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">uninstallRingtone</span><span class="p">(</span><span class="n">_</span> <span class="nv">ringtone</span> <span class="p">:</span> <span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ringtone</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Ringtone object to uninstall</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Completion block to execute when uninstall is done. Ringtone object is passed as argument, identifier will be set if it was successful</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager13RingtoneStoreC06removeC0yAA0C0C_yAFcSg10completiontF"></a>
+                    <a name="//apple_ref/swift/Method/removeRingtone(_:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC06removeC0yAA0C0C_yAFcSg10completiontF">removeRingtone(_:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes ringtone from database and filesystem. Also removes from tonelibrary if identifier is set</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeRingtone</span><span class="p">(</span><span class="n">_</span> <span class="nv">ringtone</span> <span class="p">:</span> <span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ringtone</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Ringtone to remove</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional completion block to run when done. Runs in main queue</p>
                                 </div>
                               </td>
                             </tr>

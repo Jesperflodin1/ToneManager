@@ -168,6 +168,14 @@ public class Ringtone : NSObject, NSCopying, Codable {
         }
     }
     
+    public func deleteFile() {
+        do {
+            try FileManager.default.removeItem(at: self.fileURL)
+        } catch {
+            Bugfender.error("Error when deleting ringtone file from path (\(self.fileURL)) with error: \(error)")
+        }
+    }
+    
     /// Returns description string for this ringtone
     public override var description: String {
         get {

@@ -71,9 +71,37 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Ringtone.swift",
+      "line": 171,
+      "symbol": "Ringtone.deleteFile()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneStore.swift",
-      "line": 56,
+      "line": 59,
       "symbol": "RingtoneStore.createTestRingtones()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableCell.swift",
+      "line": 27,
+      "symbol": "RingtoneTableCell.installButton",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableCell.swift",
+      "line": 28,
+      "symbol": "RingtoneTableCell.deleteButton",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableCell.swift",
+      "line": 65,
+      "symbol": "RingtoneTableCell.updateInstalledButton()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -86,21 +114,14 @@
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableViewController.swift",
-      "line": 66,
-      "symbol": "RingtoneTableViewController.viewDidLoad()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableViewController.swift",
-      "line": 77,
+      "line": 153,
       "symbol": "RingtoneTableViewController.willEnterForeground()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableViewController.swift",
-      "line": 81,
+      "line": 157,
       "symbol": "RingtoneTableViewController.willEnterBackground()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

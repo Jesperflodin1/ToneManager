@@ -52,6 +52,9 @@ public class RingtoneStore {
     
     /// WriteLockableSynchronizedArray for all ringtones
     public var allRingtones = WriteLockableSynchronizedArray<Ringtone>()
+    
+    /// Serial queue for reading/writing plist
+    fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SerialRingtoneStorePListReaderWriterQueue")
 
     public func createTestRingtones() {
         for i in 1...5 {
@@ -66,6 +69,13 @@ public class RingtoneStore {
     init() {
         BFLog("RingtoneStore init")
         
+        createAppDir()
+        
+        loadFromPlist()
+    }
+    
+    /// Creates application data directory if possible and needed
+    private func createAppDir() {
         let fileManager = FileManager.default
         if !fileManager.fileExists(atPath: appDataDir.path) {
             BFLog("No app data directory found, creating")
@@ -78,15 +88,13 @@ public class RingtoneStore {
         } else {
             BFLog("App data directory exists")
         }
-        
-        loadFromPlist()
     }
     
-    /// Loads ringtones from plist. Will also verify all loaded ringtones if shouldVerifyRingtones=true
+    /// Loads ringtones from plist. Will also verify all loaded ringtones if shouldVerifyRingtones=true (defaults to true). Dispatches work to serial queue.
     ///
     /// - Parameter shouldVerifyRingtones: will verify ringtones if true, is by default false
     public func loadFromPlist(_ shouldVerifyRingtones : Bool = true) {
-        DispatchQueue.global(qos: .background).async {
+        queue.sync {
 
             var ringtonesArray : Array<Ringtone> = []
             
@@ -104,7 +112,7 @@ public class RingtoneStore {
             DispatchQueue.main.async {
                 self.allRingtones = WriteLockableSynchronizedArray(with: ringtonesArray)
                 
-                self.createTestRingtones()
+//                self.createTestRingtones()
                 
                 self.writeToPlist()
                 
@@ -113,21 +121,24 @@ public class RingtoneStore {
         }
     }
     
-    /// Writes all currently known ringtones to local plist
+    /// Writes all currently known ringtones to local plist. Dispatches work to serial queue
     public func writeToPlist() {
-        guard let ringtones = allRingtones.array else {
-            Bugfender.error("Failed to get ringtones array")
-            return
-        }
-        let ringtonesArrayCopy : Array<Ringtone> = ringtones.map(){ $0.copy() as! Ringtone }
-        let encoder = PropertyListEncoder()
-        encoder.outputFormat = .binary
-        do {
-            let data = try encoder.encode(ringtonesArrayCopy)
-            try data.write(to: plistURL)
-            BFLog("Done writing plist")
-        } catch {
-            Bugfender.error("Error when writing ringtones to plist: \(error)")
+        queue.async {
+            guard let ringtones = self.allRingtones.array else {
+                Bugfender.error("Failed to get ringtones array")
+                return
+            }
+            self.createAppDir()
+            let ringtonesArrayCopy : Array<Ringtone> = ringtones.map(){ $0.copy() as! Ringtone }
+            let encoder = PropertyListEncoder()
+            encoder.outputFormat = .binary
+            do {
+                let data = try encoder.encode(ringtonesArrayCopy)
+                try data.write(to: self.plistURL)
+                BFLog("Done writing plist")
+            } catch {
+                Bugfender.error("Error when writing ringtones to plist: \(error)")
+            }
         }
     }
     
@@ -169,6 +180,53 @@ public class RingtoneStore {
         installer.installRingtone(ringtone, completionHandler: completionHandler)
     }
     
+    /// Uses ’RingtoneInstaller’ to uninstall ringtone
+    ///
+    /// - Parameters:
+    ///   - ringtone: Ringtone object to uninstall
+    ///   - completionHandler: Completion block to execute when uninstall is done. Ringtone object is passed as argument, identifier will be set if it was successful
+    public func uninstallRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone) -> Void) {
+        let installer = RingtoneInstaller()
+        BFLog("calling uninstall for ringtone: \(ringtone)")
+        
+        guard let identifier = ringtone.identifier else {
+            return
+        }
+        
+        if installer.removeRingtoneWithIdentifier(identifier) {
+            BFLog("uninstall success!")
+            DispatchQueue.main.async {
+                completionHandler(ringtone)
+            }
+        }
+    }
+    
+    /// Removes ringtone from database and filesystem. Also removes from tonelibrary if identifier is set
+    ///
+    /// - Parameters:
+    ///   - ringtone: Ringtone to remove
+    ///   - completion: Optional completion block to run when done. Runs in main queue
+    public func removeRingtone(_ ringtone : Ringtone, completion: ((Ringtone) -> Void)? = nil) {
+        BFLog("Delete was called for ringtone: \(ringtone)")
+        if let identifier = ringtone.identifier {
+            BFLog("Ringtone has identifier, trying to remove from tonelibrary")
+            let installer = RingtoneInstaller()
+            if !installer.removeRingtoneWithIdentifier(identifier) {
+                Bugfender.warning("Failed to remove ringtone from tonelibrary: \(ringtone)")
+                return
+            }
+            BFLog("Success removing identifier from tonelibrary")
+        }
+        ringtone.deleteFile()
+        
+        
+        DispatchQueue.main.async {
+            self.allRingtones.remove(where: { $0 == ringtone })
+            completion?(ringtone)
+        }
+        
+    }
+    
     /// Rescans default and/or chosen apps for new ringtones and imports them. Uses RingtoneScanner class for this
     ///
     /// - Parameter completionHandler: completion block that should run when import is done, a Bool indicating if new ringtones
@@ -178,8 +236,8 @@ public class RingtoneStore {
             let scanner = RingtoneScanner(self)
             // TODO: Get extra apps to scan from preferences
             
-            var apps = self.ringtoneAppsToScan()
-            apps.append("/test")
+            let apps = self.ringtoneAppsToScan()
+//            apps.append("/test")
             if apps.count > 0 {
                 BFLog("Paths to scan: \(apps)")
                 if let newArray = scanner.importRingtonesFrom(apps: apps) {

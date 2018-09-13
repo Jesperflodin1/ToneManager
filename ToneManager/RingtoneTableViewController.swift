@@ -54,7 +54,7 @@ public class RingtoneTableViewController : UITableViewController {
         
         ringtoneStore.updateRingtones { [weak self] (needsUpdate: Bool)  in
             guard let strongSelf = self else { return }
-            HUD.flash(.success, delay: 1.0)
+            HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Updated available ringtones"), delay: 1.0)
             if (needsUpdate) {
                 strongSelf.ringtoneStore.allRingtones.lockArray()
                 strongSelf.tableView.reloadData()
@@ -63,6 +63,82 @@ public class RingtoneTableViewController : UITableViewController {
         }
     }
     
+    /// Called when install button is tapped in ’RingtoneTableCell’
+    ///
+    /// - Parameter sender: Button that was tapped
+    @IBAction func installRingtone(_ sender: UIButton) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
+
+            if cell.ringtoneItem?.identifier == nil { // is not installed
+            
+                let title = "Install \(cell.ringtoneItem?.name ?? "name missing")"
+                let message = "Are you sure you want to add this ringtone to device ringtones?"
+                let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                ac.addAction(cancelAction)
+                
+                let installAction = UIAlertAction(title: "Install", style: .default, handler:
+                { (action) -> Void in
+                    self.ringtoneStore.installRingtone(cell.ringtoneItem!, completionHandler: { (installedRingtone) in
+                        cell.updateInstalledButton()
+                        HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed ringtone"), delay: 0.7)
+                    })
+                })
+                ac.addAction(installAction)
+                present(ac, animated: true, completion: nil)
+                
+            } else { // is installed
+                let title = "Uninstall \(cell.ringtoneItem?.name ?? "name missing")"
+                let message = "Are you sure you want to uninstall this ringtone?"
+                let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                ac.addAction(cancelAction)
+                
+                let installAction = UIAlertAction(title: "Uninstall", style: .destructive, handler:
+                { (action) -> Void in
+                    self.ringtoneStore.uninstallRingtone(cell.ringtoneItem!, completionHandler: { (uninstalledRingtone) in
+                        cell.updateInstalledButton()
+                        HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Uninstalled ringtone"), delay: 0.7)
+                    })
+                })
+                ac.addAction(installAction)
+                present(ac, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    /// Called when trash button is tapped in ’RingtoneTableCell’. Deletes ringtone.
+    ///
+    /// - Parameter sender: Button that was tapped
+    @IBAction func deleteRingtone(_ sender: UIButton) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
+                
+            let title = "Delete \(cell.ringtoneItem?.name ?? "name missing")"
+            let message = "Are you sure you want to delete this ringtone from this app? It will also be removed from the devices ringtones if installed. If you do not remove it from the source app it will get imported again at next refresh."
+            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            ac.addAction(cancelAction)
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler:
+            { (action) -> Void in
+                self.ringtoneStore.removeRingtone(cell.ringtoneItem!, completion: { (deletedRingtone) in
+                    if let index = self.tableView.indexPath(for: cell) {
+                        self.tableView.deleteRows(at: [index], with: .automatic)
+                        HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Deleted ringtone"), delay: 0.7)
+                    }
+                })
+            })
+            ac.addAction(deleteAction)
+            present(ac, animated: true, completion: nil)
+        }
+    }
+    
+    /// Called when view has finished loading
     override public func viewDidLoad() {
         self.ringtoneStore = RingtoneStore()
         updateRingtones()
@@ -211,6 +287,8 @@ public class RingtoneTableViewController : UITableViewController {
         cell.ringtoneItem = ringtone
         cell.nameLabel.text = ringtone?.name
         cell.fromAppLabel.text = ringtone?.appName
+        cell.lengthLabel.text = String(ringtone?.totalTime ?? 0)
+        cell.updateInstalledButton()
         
         return cell
     }
@@ -225,11 +303,24 @@ public class RingtoneTableViewController : UITableViewController {
         if editingStyle == .delete {
             let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
             
-            ringtoneStore.allRingtones.remove(where: { $0 == cell.ringtoneItem }, completion: { (deletedRingtone) in
-                if let index = tableView.indexPath(for: cell) {
-                    tableView.deleteRows(at: [index], with: .automatic)
-                }
+            let title = "Delete \(cell.ringtoneItem?.name ?? "name missing")"
+            let message = "Are you sure you want to delete this ringtone from this app? It will also be removed from the devices ringtones if installed. If you do not remove it from the source app it will get imported again at next refresh."
+            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            ac.addAction(cancelAction)
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler:
+            { (action) -> Void in
+                self.ringtoneStore.removeRingtone(cell.ringtoneItem!, completion: { (deletedRingtone) in
+                    if let index = tableView.indexPath(for: cell) {
+                        tableView.deleteRows(at: [index], with: .automatic)
+                    }
+                })
             })
+            ac.addAction(deleteAction)
+            
+            present(ac, animated: true, completion: nil)
         }
     }
     

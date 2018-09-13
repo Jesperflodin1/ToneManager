@@ -26,7 +26,7 @@ public class RingtoneInstaller {
                 Bugfender.error("TLToneManager does not respond to required selectors, unknown error")
                 return
             }
-            if ringtone.identifier == nil {
+            if ringtone.identifier != nil {
                 BFLog("Ringtone is already imported, tone: \(ringtone)")
                 return
             }
@@ -51,7 +51,9 @@ public class RingtoneInstaller {
                 } else {
                     Bugfender.error("Ringtone install failed, got success=\(success) and identifier=\(toneIdentifier ?? "nil")")
                 }
-                completionHandler(ringtone)
+                DispatchQueue.main.async {
+                    completionHandler(ringtone)
+                }
             }
         }
     }

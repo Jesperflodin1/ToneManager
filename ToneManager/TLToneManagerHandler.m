@@ -30,7 +30,7 @@ static TLToneManagerHandler *_helper = nil;
         if (![bundle load]) {
             NSLog(@"ERROR: Failed to load ToneLibrary framework");
         } else {
-            _toneManager = [NSClassFromString(@"TLToneManager") valueForKey:@"sharedInstance"];
+            _toneManager = [NSClassFromString(@"TLToneManager") performSelector:@selector(sharedToneManager)];
             _helper = [[TLToneManagerHandler alloc] init];
         }
     });
@@ -46,6 +46,7 @@ static TLToneManagerHandler *_helper = nil;
     else {
         result = NO;
     }
+    return result;
 }
 
 /**
