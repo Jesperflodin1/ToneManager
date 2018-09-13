@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// <#Description#>
+/// View controller that shows details page for ringtone
 public class RingtoneDetailViewController : UITableViewController {
     
     /// <#Description#>
@@ -23,11 +23,11 @@ public class RingtoneDetailViewController : UITableViewController {
     @IBOutlet public weak var pathLabel: UILabel!
     
     
-    /// <#Description#>
+    /// Associated ringtone object to show in this view
     public var ringtone : Ringtone!
     
     
-    /// <#Description#>
+    /// Called when view will appear. Prepares outlets with values from associated ringtone object
     ///
     /// - Parameter animated: <#animated description#>
     override public func viewWillAppear(_ animated: Bool) {

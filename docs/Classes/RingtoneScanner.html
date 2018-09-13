@@ -14,7 +14,7 @@
     <a title="RingtoneScanner Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ToneManager Docs</a> (61% documented)</p>
+        <p><a href="../index.html">ToneManager Docs</a> (82% documented)</p>
         <p class="header-right"><a href="https://github.com/Jesperflodin1/ToneManager"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjesperflodin1%2Egithub%2Eio%2FToneManager%2Fdocsets%2FToneManager%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -74,6 +74,14 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:11ToneManager10appDataDir10Foundation3URLVvp">appDataDir</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -102,33 +110,6 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11ToneManager15RingtoneScannerC11appDataPath33_BA6777113B53F3118868676A4267D98FLLSSvp"></a>
-                    <a name="//apple_ref/swift/Property/appDataPath" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager15RingtoneScannerC11appDataPath33_BA6777113B53F3118868676A4267D98FLLSSvp">appDataPath</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>path for app data</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">let</span> <span class="nv">appDataPath</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -205,9 +186,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11ToneManager15RingtoneScannerC19importRingtonesFromSayAA0C0CGSgSaySSG5paths_tF"></a>
-                    <a name="//apple_ref/swift/Method/importRingtonesFrom(paths:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager15RingtoneScannerC19importRingtonesFromSayAA0C0CGSgSaySSG5paths_tF">importRingtonesFrom(paths:)</a>
+                    <a name="/s:11ToneManager15RingtoneScannerC19importRingtonesFromSayAA0C0CGSgSaySSG4apps_tF"></a>
+                    <a name="//apple_ref/swift/Method/importRingtonesFrom(apps:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager15RingtoneScannerC19importRingtonesFromSayAA0C0CGSgSaySSG4apps_tF">importRingtonesFrom(apps:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -223,7 +204,7 @@ Will copy the ringtones to the application data folder</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">importRingtonesFrom</span><span class="p">(</span><span class="n">paths</span> <span class="nv">pathsArray</span><span class="p">:</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="o">&gt;</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">importRingtonesFrom</span><span class="p">(</span><span class="n">apps</span> <span class="nv">appsArray</span><span class="p">:</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="o">&gt;</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -248,7 +229,69 @@ Will copy the ringtones to the application data folder</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>sorted array of all imported ringtones including new and old. Nil if nothing was imported</p>
+                        <p>sorted array of all new imported ringtones. Nil if nothing was imported</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager15RingtoneScannerC04copyC5ToAppSSSgSS_SS11forBundleIDtF"></a>
+                    <a name="//apple_ref/swift/Method/copyRingtoneToApp(_:forBundleID:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager15RingtoneScannerC04copyC5ToAppSSSgSS_SS11forBundleIDtF">copyRingtoneToApp(_:forBundleID:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Copies file to subfolder <q>bundleid</q> in application data folder</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">copyRingtoneToApp</span><span class="p">(</span><span class="n">_</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">forBundleID</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>path to file to copy</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forBundleID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>bundleid to use as subfolder</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>path file was copied to</p>
                       </div>
                     </section>
                   </div>

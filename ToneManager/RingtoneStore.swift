@@ -9,33 +9,41 @@
 import Foundation
 import BugfenderSDK
 
+/// Global variable for application data folder
 public let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
 
 /// Model class for ringtones
 public class RingtoneStore {
     
+    /// Userdefaults.standard
     public let defaults = UserDefaults.standard
     
+    /// Path to local plist for ringtone metadata
     public let plistURL = URL(fileURLWithPath: "/var/mobile/Library/ToneManager/tones.plist")
     
+    /// Reference to tableView for RingtoneTableViewController
     public weak var tableView : UITableView?
     
+    /// Gets "ZedgeRingtones" value from userdefaults
     public var zedge : Bool {
         get {
             return defaults.bool(forKey: "ZedgeRingtones")
         }
     }
+    /// Gets "AudikoLite" value from userdefaults
     public var audikoLite : Bool {
         get {
             return defaults.bool(forKey: "AudikoLite")
         }
     }
+    /// Gets "AudikoPro" value from userdefaults
     public var audikoPro : Bool {
         get {
             return defaults.bool(forKey: "AudikoPro")
         }
     }
     
+    /// Gets "AutoInstall" value from userdefaults
     public var autoInstall : Bool {
         get {
             return defaults.bool(forKey: "AutoInstall")
@@ -105,6 +113,7 @@ public class RingtoneStore {
         }
     }
     
+    /// Writes all currently known ringtones to local plist
     public func writeToPlist() {
         guard let ringtones = allRingtones.array else {
             Bugfender.error("Failed to get ringtones array")
@@ -130,26 +139,34 @@ public class RingtoneStore {
         return ringtonesArray.filter { $0.isValid() }
     }
     
+    /// Gets bundle ids of apps to scan depending on userdefaults values
+    ///
+    /// - Returns: Array with bundle ids
     public func ringtoneAppsToScan() -> Array<String> {
         var apps : Array<String> = []
         
         if zedge {
-            if let path = FBApplicationInfoHandler.path(forBundleIdentifier: "com.zedge.Zedge") {
-                apps.append(path.appendingPathComponent("Documents").path)
-            }
+            apps.append("com.zedge.Zedge")
         }
         if audikoLite {
-            if let path = FBApplicationInfoHandler.path(forBundleIdentifier: "com.908.AudikoFree") {
-                apps.append(path.appendingPathComponent("Documents").path)
-            }
+            apps.append("com.908.AudikoFree")
         }
         if audikoPro {
-            if let path = FBApplicationInfoHandler.path(forBundleIdentifier: "com.908.Audiko") {
-                apps.append(path.appendingPathComponent("Documents").path)
-            }
+            apps.append("com.908.Audiko")
         }
         
         return apps
+    }
+    
+    /// Uses ’RingtoneInstaller’ to install ringtone
+    ///
+    /// - Parameters:
+    ///   - ringtone: Ringtone object to install
+    ///   - completionHandler: Completion block to execute when import is done. Ringtone object is passed as argument, identifier will be set if import was successful
+    public func installRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone) -> Void) {
+        let installer = RingtoneInstaller()
+        BFLog("Calling ringtone install for ringtone: \(ringtone)")
+        installer.installRingtone(ringtone, completionHandler: completionHandler)
     }
     
     /// Rescans default and/or chosen apps for new ringtones and imports them. Uses RingtoneScanner class for this
@@ -165,8 +182,9 @@ public class RingtoneStore {
             apps.append("/test")
             if apps.count > 0 {
                 BFLog("Paths to scan: \(apps)")
-                if let newArray = scanner.importRingtonesFrom(paths: apps) {
-    
+                if let newArray = scanner.importRingtonesFrom(apps: apps) {
+                    BFLog("Ringtone import success, got new ringtones: \(newArray)")
+                    
                     DispatchQueue.main.async {
                         self.allRingtones = WriteLockableSynchronizedArray(with: newArray)
                         self.writeToPlist()

@@ -38,6 +38,16 @@ static TLToneManagerHandler *_helper = nil;
     return _helper;
 }
 
+-(BOOL)canImport {
+    BOOL result;
+    if ([_toneManager respondsToSelector:@selector(importTone:metadata:completionBlock:)]) {
+        result = [_toneManager respondsToSelector:@selector(removeImportedToneWithIdentifier:)];
+    }
+    else {
+        result = NO;
+    }
+}
+
 /**
  <#Description#>
 

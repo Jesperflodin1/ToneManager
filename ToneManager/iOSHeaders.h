@@ -49,26 +49,12 @@
  */
 +(id)sharedToneManager;
 
-//-(void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
-//-(void)_reloadTonesAfterExternalChange;
-//-(void)_reloadITunesRingtonesAfterExternalChange; // ios 10
-//-(NSMutableArray *)_tonesFromManifestPath:(id *)arg1 mediaDirectoryPath:(id *)arg2;
-
-/*
- *  data: (NSData) ringtone data from file
- *  dict: (NSDictionary) keys="Name","Total Time","Purchased"=false,"Protected Content"=false
- *  block: (code block) receives arguments BOOL success and NSString toneIdentifier.
- *
- *  Imports the ringtone if Name does not already exist, generates an UUID and sets the success variable according to if import
- *  was successful or not and sets toneIdentifier to "itunes:UUID". The filename of the ringtone will be "import_UUID.m4r"
- *
- */
 /**
- <#Description#>
+ Imports the ringtone if Name does not already exist, generates an UUID and sets the success variable according to if import was successful or not and sets toneIdentifier to "itunes:UUID". The filename of the ringtone will be "import_UUID.m4r"
 
- @param data <#data description#>
- @param dict <#dict description#>
- @param completionBlock <#completionBlock description#>
+ @param data (NSData) ringtone data from file
+ @param dict (NSDictionary) keys="Name","Total Time","Purchased"=false,"Protected Content"=false
+ @param completionBlock (code block) receives arguments BOOL success and NSString toneIdentifier.
  */
 -(void)importTone:(NSData *)data metadata:(NSDictionary *)dict completionBlock:(void (^)(BOOL success, NSString *toneIdentifier))completionBlock;
 

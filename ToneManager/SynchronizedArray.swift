@@ -1,9 +1,10 @@
 import Foundation
 
+
 /// A lockable, thread-safe array.
-// It is a modification of Basem Emara's SynchronizedArray, see <http://basememara.com/creating-thread-safe-arrays-in-swift/>
-// It provides concurrent reads and serialized writes. A write is only executed after all reads have been completed.
-// If the LockableSynchronizedArray is locked, new writes are deferred until it is unlocked again, while new reads are executed normally.
+/// It is a modification of Basem Emara's SynchronizedArray, see <http://basememara.com/creating-thread-safe-arrays-in-swift/>
+/// It provides concurrent reads and serialized writes. A write is only executed after all reads have been completed.
+/// If the LockableSynchronizedArray is locked, new writes are deferred until it is unlocked again, while new reads are executed normally.
 public class WriteLockableSynchronizedArray<Element> {
     
     typealias WriteOperation = ()->Void

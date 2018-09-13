@@ -30,6 +30,34 @@
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/AppListViewController.swift",
+      "line": 14,
+      "symbol": "AppListViewController.tabView",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/AppListViewController.swift",
+      "line": 15,
+      "symbol": "AppListViewController.appNames",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/AppListViewController.swift",
+      "line": 16,
+      "symbol": "AppListViewController.theApps",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/AppListViewController.swift",
+      "line": 18,
+      "symbol": "AppListViewController.dataSource",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/AppListViewController.swift",
       "line": 20,
       "symbol": "AppListViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
@@ -163,6 +191,20 @@
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableViewController.swift",
+      "line": 25,
+      "symbol": "RingtoneTableViewController.defaults",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableViewController.swift",
+      "line": 27,
+      "symbol": "RingtoneTableViewController.autoInstall",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableViewController.swift",
       "line": 65,
       "symbol": "RingtoneTableViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
@@ -187,6 +229,13 @@
       "line": 11,
       "symbol": "SettingsRingtoneAppsViewController",
       "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SettingsRingtoneAppsViewController.swift",
+      "line": 13,
+      "symbol": "SettingsRingtoneAppsViewController.defaults",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
@@ -228,6 +277,13 @@
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SettingsRingtoneAppsViewController.swift",
       "line": 35,
       "symbol": "SettingsRingtoneAppsViewController.audikoPro",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SettingsViewController.swift",
+      "line": 16,
+      "symbol": "SettingsViewController.defaults",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -324,9 +380,51 @@
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SynchronizedArray.swift",
+      "line": null,
+      "symbol": "WriteLockableSynchronizedArray",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SynchronizedArray.swift",
       "line": 7,
       "symbol": "WriteLockableSynchronizedArray",
       "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SynchronizedArray.swift",
+      "line": 9,
+      "symbol": "WriteLockableSynchronizedArray.WriteOperation",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SynchronizedArray.swift",
+      "line": 11,
+      "symbol": "WriteLockableSynchronizedArray.lockCounter",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SynchronizedArray.swift",
+      "line": 12,
+      "symbol": "WriteLockableSynchronizedArray.queue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SynchronizedArray.swift",
+      "line": 13,
+      "symbol": "WriteLockableSynchronizedArray.internalArray",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SynchronizedArray.swift",
+      "line": 14,
+      "symbol": "WriteLockableSynchronizedArray.deferredWriteOperations",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
@@ -348,6 +446,34 @@
       "line": 290,
       "symbol": "WriteLockableSynchronizedArray.+=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SynchronizedArray.swift",
+      "line": 303,
+      "symbol": "WriteLockableSynchronizedArray.Iterator.index",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SynchronizedArray.swift",
+      "line": 304,
+      "symbol": "WriteLockableSynchronizedArray.Iterator.arr",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SynchronizedArray.swift",
+      "line": 306,
+      "symbol": "WriteLockableSynchronizedArray.Iterator.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SynchronizedArray.swift",
+      "line": 322,
+      "symbol": "WriteLockableSynchronizedArray.handleWriteOperation(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
   ],

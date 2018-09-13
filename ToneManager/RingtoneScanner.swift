@@ -32,15 +32,15 @@ public class RingtoneScanner {
         
         BFLog("Starting scan for apps: \(appsArray)")
         
-        guard let tempArray = delegate.allRingtones.array else {
-            Bugfender.error("Failed to get ringtones array")
-            return nil
-        }
+//        guard let tempArray = delegate.allRingtones.array else {
+//            Bugfender.error("Failed to get ringtones array")
+//            return nil
+//        }
         
         var newRingtones : Array<Ringtone> = []
         
-        var ringtonesArrayCopy : Array<Ringtone> = tempArray.map(){ $0.copy() as! Ringtone }
-        BFLog("Got copy of ringtone array: \(ringtonesArrayCopy)")
+//        var ringtonesArrayCopy : Array<Ringtone> = tempArray.map(){ $0.copy() as! Ringtone }
+//        BFLog("Got copy of ringtone array: \(ringtonesArrayCopy)")
         
         let fileManager = FileManager.default
         

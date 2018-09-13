@@ -14,7 +14,7 @@
     <a title="RingtoneInstaller Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ToneManager Docs</a> (61% documented)</p>
+        <p><a href="../index.html">ToneManager Docs</a> (82% documented)</p>
         <p class="header-right"><a href="https://github.com/Jesperflodin1/ToneManager"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjesperflodin1%2Egithub%2Eio%2FToneManager%2Fdocsets%2FToneManager%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -74,6 +74,14 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:11ToneManager10appDataDir10Foundation3URLVvp">appDataDir</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -96,7 +104,7 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>Class that handles tonelibrary import and deletion of ringtones</p>
 
           </section>
           <section class="section task-group-section">
@@ -105,9 +113,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11ToneManager17RingtoneInstallerC07installC0SbAA0C0CF"></a>
-                    <a name="//apple_ref/swift/Method/installRingtone(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager17RingtoneInstallerC07installC0SbAA0C0CF">installRingtone(_:)</a>
+                    <a name="/s:11ToneManager17RingtoneInstallerC5queue33_153ED8F465BDC947F68EB9898C6FC072LLSo13DispatchQueueCvp"></a>
+                    <a name="//apple_ref/swift/Property/queue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager17RingtoneInstallerC5queue33_153ED8F465BDC947F68EB9898C6FC072LLSo13DispatchQueueCvp">queue</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -115,16 +123,124 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Serial queue where import calls are placed</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">installRingtone</span><span class="p">(</span><span class="n">_</span> <span class="nv">ringtone</span><span class="p">:</span> <span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">fileprivate</span> <span class="k">let</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager17RingtoneInstallerC07installC0yAA0C0C_yAFc17completionHandlertF"></a>
+                    <a name="//apple_ref/swift/Method/installRingtone(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager17RingtoneInstallerC07installC0yAA0C0C_yAFc17completionHandlertF">installRingtone(_:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Installs ringtone in tonelibrary</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">installRingtone</span><span class="p">(</span><span class="n">_</span> <span class="nv">ringtone</span> <span class="p">:</span> <span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ringtone</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Ringtone object to install</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Gets executed after import, ringtone object is passed to it. identifier is set if import was successful</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager17RingtoneInstallerC06removeC14WithIdentifierSbSSF"></a>
+                    <a name="//apple_ref/swift/Method/removeRingtoneWithIdentifier(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager17RingtoneInstallerC06removeC14WithIdentifierSbSSF">removeRingtoneWithIdentifier(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes ringtone from tonelibrary</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeRingtoneWithIdentifier</span><span class="p">(</span><span class="n">_</span> <span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>identifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>identifier to remove</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>returns true if successful</p>
                       </div>
                     </section>
                   </div>

@@ -8,14 +8,20 @@
 
 import UIKit
 
+/// View controller used in settings which shows switches for default supported ringtone apps
 public class SettingsRingtoneAppsViewController : UITableViewController {
     
+    /// Userdefaults object
     let defaults = UserDefaults.standard
     
-    @IBOutlet public weak var zedgeSwitch: UISwitch!
-    @IBOutlet public weak var audikoLiteSwitch: UISwitch!
-    @IBOutlet public weak var audikoProSwitch: UISwitch!
+    /// Outlet for UISwitch for Zedge Ringtones
+    @IBOutlet weak var zedgeSwitch: UISwitch!
+    /// Outlet for UISwitch for Audiko Lite
+    @IBOutlet weak var audikoLiteSwitch: UISwitch!
+    /// Outlet for UISwitch for Audiko Pro
+    @IBOutlet weak var audikoProSwitch: UISwitch!
     
+    /// Used to get and set "ZedgeRingtones" value in userdefaults
     public var zedge : Bool {
         get {
             return defaults.bool(forKey: "ZedgeRingtones")
@@ -24,6 +30,7 @@ public class SettingsRingtoneAppsViewController : UITableViewController {
             defaults.set(newValue, forKey: "ZedgeRingtones")
         }
     }
+    /// Used to get and set "AudikoLite" value in userdefaults
     public var audikoLite : Bool {
         get {
             return defaults.bool(forKey: "AudikoLite")
@@ -32,6 +39,7 @@ public class SettingsRingtoneAppsViewController : UITableViewController {
             defaults.set(newValue, forKey: "AudikoLite")
         }
     }
+    /// Used to get and set "AudikoPro" value in userdefaults
     public var audikoPro : Bool {
         get {
             return defaults.bool(forKey: "AudikoPro")

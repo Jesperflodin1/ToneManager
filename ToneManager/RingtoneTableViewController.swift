@@ -22,6 +22,7 @@ public class RingtoneTableViewController : UITableViewController {
     /// Height for each row
     private let rowHeight : CGFloat = 55
     
+    /// Userdefaults object
     let defaults = UserDefaults.standard
     
     var autoInstall : Bool {

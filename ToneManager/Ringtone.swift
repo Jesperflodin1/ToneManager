@@ -35,7 +35,7 @@ public class Ringtone : NSObject, NSCopying, Codable {
     /// Name visible in the ringtone picker
     private(set) var name: String
     /// Identifier used by tonelibrary
-    private(set) var identifier: String?
+    public var identifier: String?
     
     /// Length of ringtone
     public let totalTime: Int
@@ -55,6 +55,10 @@ public class Ringtone : NSObject, NSCopying, Codable {
     
 //    private let queue = DispatchQueue(label: "fi.flodin.tonemanager.RingtoneSerialQueue")
     
+    /// Creates a copy of this ringtone object
+    ///
+    /// - Parameter zone: ?
+    /// - Returns: New ringtone with same values as this ringtone
     public func copy(with zone: NSZone? = nil) -> Any {
         return Ringtone(name: self.name, identifier: self.identifier, totalTime: self.totalTime, bundleID: self.bundleID, fileURL: self.fileURL, protectedContent: self.protectedContent, purchased: self.purchased)
     }
@@ -149,6 +153,26 @@ public class Ringtone : NSObject, NSCopying, Codable {
         guard let toneManager = TLToneManagerHandler.sharedInstance() else { return false }
         
         return toneManager.tone(withIdentifierIsValid: toneIdentifier)
+    }
+    
+    /// Returns data object with data from ringtone file
+    ///
+    /// - Returns: Data from ringtone file
+    public func getData() -> Data? {
+        do {
+            let data = try Data(contentsOf: self.fileURL)
+            return data
+        } catch {
+            Bugfender.error("Error when retrieving data for ringtone. Error: \(error)")
+            return nil
+        }
+    }
+    
+    /// Returns description string for this ringtone
+    public override var description: String {
+        get {
+            return "<Ringtone name:\(self.name), identifier: \(self.identifier ?? "nil"), URL: \(self.fileURL)>"
+        }
     }
 
 }

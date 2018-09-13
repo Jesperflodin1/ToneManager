@@ -42,4 +42,6 @@
  */
 -(BOOL)toneWithIdentifierIsValid:(NSString *)toneIdentifier;
 
+-(BOOL)canImport;
+
 @end

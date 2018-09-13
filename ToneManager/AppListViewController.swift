@@ -9,6 +9,7 @@
 import UIKit
 import BugfenderSDK
 
+/// Table view controller that uses Applist to show list of apps
 public class AppListViewController : UITableViewController {
     
     var tabView : UITableView = UITableView()
@@ -51,6 +52,9 @@ public class AppListViewController : UITableViewController {
     }
     
     
+    /// Init method that gets called when storyboard initiates this view controller
+    ///
+    /// - Parameter aDecoder: not used here
     required public init?(coder aDecoder: NSCoder) {
         dataSource = ALApplicationTableDataSource()
         dataSource.sectionDescriptors = ALApplicationTableDataSource.standardSectionDescriptors()

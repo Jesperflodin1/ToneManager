@@ -14,7 +14,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">ToneManager Docs</a> (61% documented)</p>
+        <p><a href="index.html">ToneManager Docs</a> (82% documented)</p>
         <p class="header-right"><a href="https://github.com/Jesperflodin1/ToneManager"><img src="img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjesperflodin1%2Egithub%2Eio%2FToneManager%2Fdocsets%2FToneManager%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -70,6 +70,14 @@
               </li>
               <li class="nav-group-task">
                 <a href="Classes/WriteLockableSynchronizedArray/Iterator.html">– Iterator</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:11ToneManager10appDataDir10Foundation3URLVvp">appDataDir</a>
               </li>
             </ul>
           </li>
@@ -142,7 +150,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Table view controller that uses Applist to show list of apps</p>
 
                         <a href="Classes/AppListViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -213,7 +221,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>&lt;#Description#&gt;</p>
+                        <p>View controller that shows details page for ringtone</p>
 
                         <a href="Classes/RingtoneDetailViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -245,7 +253,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Class that handles tonelibrary import and deletion of ringtones</p>
 
                         <a href="Classes/RingtoneInstaller.html" class="slightly-smaller">See more</a>
                       </div>
@@ -341,7 +349,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>&lt;#Description#&gt;</p>
+                        <p>UITableCell subclass for ringtones, used in ’RingtoneTableViewController’</p>
 
                         <a href="Classes/RingtoneTableCell.html" class="slightly-smaller">See more</a>
                       </div>
@@ -405,7 +413,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>View controller used in settings which shows switches for default supported ringtone apps</p>
 
                         <a href="Classes/SettingsRingtoneAppsViewController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -469,7 +477,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A lockable, thread-safe array.
+It is a modification of Basem Emara&rsquo;s SynchronizedArray, see <a href="http://basememara.com/creating-thread-safe-arrays-in-swift/">http://basememara.com/creating-thread-safe-arrays-in-swift/</a>
+It provides concurrent reads and serialized writes. A write is only executed after all reads have been completed.
+If the LockableSynchronizedArray is locked, new writes are deferred until it is unlocked again, while new reads are executed normally.</p>
 
                         <a href="Classes/WriteLockableSynchronizedArray.html" class="slightly-smaller">See more</a>
                       </div>

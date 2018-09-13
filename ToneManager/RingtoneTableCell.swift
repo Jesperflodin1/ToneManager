@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// <#Description#>
+/// UITableCell subclass for ringtones, used in ’RingtoneTableViewController’
 public class RingtoneTableCell : UITableViewCell {
     /// <#Description#>
     @IBOutlet weak var nameLabel: UILabel!
@@ -29,9 +29,9 @@ public class RingtoneTableCell : UITableViewCell {
     var ringtoneItem : Ringtone? = nil
     
     
-    /// <#Description#>
+    /// Updates state of buttons (hidden/shown)
     ///
-    /// - Parameter state: <#state description#>
+    /// - Parameter state: Bool, true for shown and false for hidden
     public func updateButtons(_ state: Bool) -> Void {
         if state == true {
             self.playButton.alpha = 0.7
@@ -48,6 +48,7 @@ public class RingtoneTableCell : UITableViewCell {
         }
     }
     
+    /// UITableViewCell function which prepares cell for reuse
     override public func prepareForReuse() {
         nameLabel.text = ""
         fromAppLabel.text = ""
