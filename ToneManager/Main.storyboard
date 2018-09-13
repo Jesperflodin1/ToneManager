@@ -234,16 +234,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0F-Y6-Kho">
-                                                    <rect key="frame" x="16" y="12" width="32" height="21"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/28 s" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fb1-mp-Po2">
                                                     <rect key="frame" x="299" y="12" width="60" height="21"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play-circle" translatesAutoresizingMaskIntoConstraints="NO" id="Fci-8N-f9f">
+                                                    <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0F-Y6-Kho">
+                                                    <rect key="frame" x="56" y="12" width="32" height="21"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -251,12 +254,17 @@
                                             <constraints>
                                                 <constraint firstItem="Fb1-mp-Po2" firstAttribute="centerY" secondItem="9hN-IW-uLe" secondAttribute="centerY" id="CAB-S0-2xD"/>
                                                 <constraint firstItem="s0F-Y6-Kho" firstAttribute="centerY" secondItem="9hN-IW-uLe" secondAttribute="centerY" id="Cm7-6Z-q2i"/>
+                                                <constraint firstItem="Fci-8N-f9f" firstAttribute="centerY" secondItem="9hN-IW-uLe" secondAttribute="centerY" id="GUQ-6C-WJR"/>
+                                                <constraint firstItem="s0F-Y6-Kho" firstAttribute="leading" secondItem="Fci-8N-f9f" secondAttribute="trailing" constant="10" id="Jci-VZ-OKQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Fb1-mp-Po2" secondAttribute="trailing" id="Jex-mH-Gys"/>
                                                 <constraint firstItem="s0F-Y6-Kho" firstAttribute="bottom" secondItem="9hN-IW-uLe" secondAttribute="bottomMargin" id="MVB-Lk-0yO"/>
-                                                <constraint firstItem="s0F-Y6-Kho" firstAttribute="leading" secondItem="9hN-IW-uLe" secondAttribute="leadingMargin" id="lgT-Hx-1E7"/>
+                                                <constraint firstItem="Fci-8N-f9f" firstAttribute="leading" secondItem="9hN-IW-uLe" secondAttribute="leadingMargin" id="eI6-nC-WAE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="1Cg-8Q-ThU" appends="YES" id="c9W-fr-ofT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -395,12 +403,20 @@
                         <outlet property="lengthLabel" destination="Qdg-qj-76r" id="loI-ll-YQM"/>
                         <outlet property="nameLabel" destination="PAr-WC-eFC" id="NqD-Fo-10c"/>
                         <outlet property="pathLabel" destination="xHx-Dm-lQN" id="k2a-8P-Qb6"/>
+                        <outlet property="ringtonePlayerDurationLabel" destination="Fb1-mp-Po2" id="oRZ-Qi-225"/>
+                        <outlet property="ringtonePlayerPlayImage" destination="Fci-8N-f9f" id="OC4-jL-cu5"/>
+                        <outlet property="ringtonePlayerPlayLabel" destination="s0F-Y6-Kho" id="OC5-WJ-bG4"/>
                         <outlet property="sizeLabel" destination="Qhw-aR-6pJ" id="EpC-la-54b"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nP-lb-sco" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="1Cg-8Q-ThU">
+                    <connections>
+                        <action selector="playRowTapped:" destination="Ufq-Kt-sAC" id="ull-bh-yh1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1316" y="125"/>
+            <point key="canvasLocation" x="1316" y="124.58770614692655"/>
         </scene>
         <!--Ringtone Apps-->
         <scene sceneID="mKE-pL-xJf">
