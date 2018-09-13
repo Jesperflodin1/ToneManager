@@ -9,11 +9,15 @@
 import UIKit
 import BugfenderSDK
 
+/// Application execution start point
 @UIApplicationMain
+/// AppDelegate class
 public class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    /// reference to UIWindow
     public var window: UIWindow?
     
+    /// Gets "RemoteLogging" key from userdefaults
     public var remoteLogging : Bool {
         get {
             return UserDefaults.standard.bool(forKey: "RemoteLogging")

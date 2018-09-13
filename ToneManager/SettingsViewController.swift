@@ -13,7 +13,9 @@ import SafariServices
 /// View controller for main settings page
 public class SettingsViewController : UITableViewController, SFSafariViewControllerDelegate {
     
+    /// Userdefaults object
     let defaults = UserDefaults.standard
+    /// Gets/sets "AutoInstall" key from userdefaults
     public var autoInstall : Bool {
         get {
             return defaults.bool(forKey: "AutoInstall")
@@ -22,6 +24,7 @@ public class SettingsViewController : UITableViewController, SFSafariViewControl
             defaults.set(newValue, forKey: "AutoInstall")
         }
     }
+    /// Gets/sets "RemoteLogging" key from userdefaults
     public var remoteLogging : Bool {
         get {
             return defaults.bool(forKey: "RemoteLogging")
@@ -31,7 +34,9 @@ public class SettingsViewController : UITableViewController, SFSafariViewControl
         }
     }
     
+    /// Outlet for autoinstall UISwitch
     @IBOutlet public weak var autoInstallSwitch: UISwitch!
+    /// Outlet for remote logging UISwitch
     @IBOutlet public weak var remoteLoggingSwitch: UISwitch!
     
     /// Auto install ringtones switch changed state. Saves state to userdefaults
@@ -96,7 +101,6 @@ public class SettingsViewController : UITableViewController, SFSafariViewControl
         self.present(safariVC, animated: true, completion: nil)
         safariVC.delegate = self
     }
-    
     
     /// SFSafariViewControllerDelegate method. Called when user taps "done". Dismisses the safari window.
     ///

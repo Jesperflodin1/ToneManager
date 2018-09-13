@@ -222,12 +222,13 @@ public class RingtoneStore {
         
         DispatchQueue.main.async {
             self.allRingtones.remove(where: { $0 == ringtone })
+            self.writeToPlist()
             completion?(ringtone)
         }
         
     }
     
-    /// Rescans default and/or chosen apps for new ringtones and imports them. Uses RingtoneScanner class for this
+    /// Rescans default and/or chosen apps for new ringtones and imports them. Uses RingtoneScanner class for this. Also sorts the ringtone array by name, ascending
     ///
     /// - Parameter completionHandler: completion block that should run when import is done, a Bool indicating if new ringtones
     /// was imported is passed to it.
@@ -244,7 +245,10 @@ public class RingtoneStore {
                     BFLog("Ringtone import success, got new ringtones: \(newArray)")
                     
                     DispatchQueue.main.async {
-                        self.allRingtones = WriteLockableSynchronizedArray(with: newArray)
+                        self.allRingtones.append(newArray)
+                        self.allRingtones = WriteLockableSynchronizedArray(with: self.allRingtones.sorted(by: { (initial, next) -> Bool in
+                            return initial.name.compare(next.name) == .orderedAscending
+                        }))
                         self.writeToPlist()
                         completionHandler(true)
                     }

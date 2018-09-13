@@ -84,6 +84,7 @@ public class RingtoneTableViewController : UITableViewController {
                     self.ringtoneStore.installRingtone(cell.ringtoneItem!, completionHandler: { (installedRingtone) in
                         cell.updateInstalledButton()
                         HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed ringtone"), delay: 0.7)
+                        self.ringtoneStore.writeToPlist()
                     })
                 })
                 ac.addAction(installAction)
@@ -102,6 +103,7 @@ public class RingtoneTableViewController : UITableViewController {
                     self.ringtoneStore.uninstallRingtone(cell.ringtoneItem!, completionHandler: { (uninstalledRingtone) in
                         cell.updateInstalledButton()
                         HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Uninstalled ringtone"), delay: 0.7)
+                        self.ringtoneStore.writeToPlist()
                     })
                 })
                 ac.addAction(installAction)
@@ -150,10 +152,12 @@ public class RingtoneTableViewController : UITableViewController {
         NotificationCenter.default.addObserver(self, selector:#selector(willEnterBackground), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
     }
     
+    /// Called from notification observer when app will enter foreground. Updates available ringtones
     @objc public func willEnterForeground() {
         BFLog("did become active, autoinstall = \(autoInstall)")
         updateRingtones()
     }
+    /// Called from notification observer when app will enter background or terminate. Writes ringtone plist to disk.
     @objc public func willEnterBackground() {
         ringtoneStore.writeToPlist()
     }
