@@ -39,7 +39,7 @@ public class Ringtone : NSObject, NSCopying, Codable {
     /// Identifier used by tonelibrary
     public var identifier: String?
     
-    /// Length of ringtone as Int, calculated from ’self.rawDuration’
+    /// Length of ringtone as Int, calculated from ’Ringtone.rawDuration’
     public var totalTime: Int {
         get {
             return NSNumber(value: round(self.rawDuration)).intValue

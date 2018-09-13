@@ -84,11 +84,15 @@ class RingtoneDetailViewController : UITableViewController {
         }
         
         if !player.isPlaying {
-            ringtonePlayerPlayLabel.text = "Pause"
-            ringtonePlayerPlayImage.image = UIImage(named: "pause-circle")
+            ringtonePlayerPlayLabel.text = "Stop"
+            ringtonePlayerPlayImage.image = UIImage(named: "stop-circle")
+            
+            player.playRingtone()
         } else {
             ringtonePlayerPlayLabel.text = "Play"
             ringtonePlayerPlayImage.image = UIImage(named: "play-circle")
+            
+            player.stopPlaying()
         }
         
     }

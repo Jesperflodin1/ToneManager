@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import BugfenderSDK
 
 /// Class that handles playing of ringtones
 class RingtonePlayer {
@@ -33,11 +34,24 @@ class RingtonePlayer {
         guard let ringtone = self.ringtone else { return }
         
         let url = ringtone.fileURL
-        
-        if #available(iOS 11.0, *) {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
             
+            // For iOS 11
+            if #available(iOS 11.0, *) {
+                self.audioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
+            } else { // For iOS versions < 11
+                self.audioPlayer = try AVAudioPlayer(contentsOf: url)
+            }
+
+            guard let aPlayer = audioPlayer else { return }
+            aPlayer.play()
+            
+        } catch {
+            Bugfender.error("Error when playing ringtone: \(ringtone) with error: \(error)")
         }
-        
+
         self.isPlaying = true
     }
     
