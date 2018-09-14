@@ -51,14 +51,154 @@
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Ringtone.swift",
-      "line": 49,
+      "line": 35,
+      "symbol": "Ringtone.CodingKeys",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Ringtone.swift",
+      "line": 36,
+      "symbol": "Ringtone.CodingKeys.name",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Ringtone.swift",
+      "line": 37,
+      "symbol": "Ringtone.CodingKeys.identifier",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Ringtone.swift",
+      "line": 38,
+      "symbol": "Ringtone.CodingKeys.rawDuration",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Ringtone.swift",
+      "line": 39,
+      "symbol": "Ringtone.CodingKeys.bundleID",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Ringtone.swift",
+      "line": 40,
+      "symbol": "Ringtone.CodingKeys.fileURL",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Ringtone.swift",
+      "line": 41,
+      "symbol": "Ringtone.CodingKeys.protectedContent",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Ringtone.swift",
+      "line": 42,
+      "symbol": "Ringtone.CodingKeys.purchased",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Ringtone.swift",
+      "line": 43,
+      "symbol": "Ringtone.CodingKeys.appName",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Ringtone.swift",
+      "line": 44,
+      "symbol": "Ringtone.CodingKeys.size",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Ringtone.swift",
+      "line": 86,
       "symbol": "Ringtone.installed",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Ringtone.swift",
+      "line": 277,
+      "symbol": "Ringtone.humanReadableSize()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
+      "line": 41,
+      "symbol": "RingtoneDetailViewController.installCellLabel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
+      "line": 47,
+      "symbol": "RingtoneDetailViewController.ringtoneStore",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
+      "line": 94,
+      "symbol": "RingtoneDetailViewController.setupPlayer()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
+      "line": 159,
+      "symbol": "RingtoneDetailViewController.enableTimer()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
+      "line": 166,
+      "symbol": "RingtoneDetailViewController.stopTimer()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
+      "line": 172,
+      "symbol": "RingtoneDetailViewController.updateProgress()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
+      "line": 183,
+      "symbol": "RingtoneDetailViewController.audioPlayerDidFinishPlaying(_:successfully:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
+      "line": 187,
+      "symbol": "RingtoneDetailViewController.audioPlayerDecodeErrorDidOccur(_:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneStore.swift",
-      "line": 59,
+      "line": 53,
+      "symbol": "RingtoneStore.finishedLoading",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneStore.swift",
+      "line": 61,
       "symbol": "RingtoneStore.createTestRingtones()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -67,6 +207,20 @@
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableViewController.swift",
       "line": 31,
       "symbol": "RingtoneTableViewController.autoInstall",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableViewController.swift",
+      "line": 175,
+      "symbol": "RingtoneTableViewController.dataFinishedLoading()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SettingsViewController.swift",
+      "line": 16,
+      "symbol": "SettingsViewController.ringtoneStore",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },

@@ -93,6 +93,7 @@ public class RingtoneTableCell : UITableViewCell {
 //            installButtonHorizontalConstraint.constant = 26
             installedLabel.isHidden = false
             
+            installedLabel.text = "Installed"
             installedLabel.backgroundColor = UIColor.white
             installedLabel.layer.masksToBounds = true
             installedLabel.layer.borderColor = UIColor(red: 79/255, green: 143/255, blue: 0, alpha: 0.7).cgColor
@@ -110,6 +111,7 @@ public class RingtoneTableCell : UITableViewCell {
         fromAppLabel.text = ""
         lengthLabel.text = ""
         installedLabel.text = ""
+        updateButtons(false)
         ringtoneItem = nil
     }
 }

@@ -137,6 +137,9 @@ public class RingtoneScanner {
         
         do {
             try fileManager.createDirectory(at: appDataSubfolder, withIntermediateDirectories: true)
+            if fileManager.fileExists(atPath: toFilePath.path) {
+                try fileManager.removeItem(atPath: toFilePath.path)
+            }
             try fileManager.copyItem(atPath: path, toPath: toFilePath.path)
             BFLog("Copied file to path: \(toFilePath.path)")
             return toFilePath.path

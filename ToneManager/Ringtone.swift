@@ -273,5 +273,13 @@ public class Ringtone : NSObject, NSCopying, Codable {
             return "<Ringtone name:\(self.name), identifier: \(self.identifier ?? "nil"), URL: \(self.fileURL)>"
         }
     }
+    
+    public func humanReadableSize() -> String {
+        let byteCount = self.size
+        let bcf = ByteCountFormatter()
+        bcf.allowedUnits = [.useAll]
+        bcf.countStyle = .file
+        return bcf.string(fromByteCount: Int64(byteCount))
+    }
 
 }

@@ -37,8 +37,15 @@ class RingtoneDetailViewController : UITableViewController, AVAudioPlayerDelegat
     /// Outlet for play label
     @IBOutlet weak var ringtonePlayerPlayLabel: UILabel!
     
+    
+    @IBOutlet weak var installCellLabel: UILabel!
+    @IBOutlet weak var deleteCellLabel: UILabel!
+    //TODO: Actions for install and delete cells
+    
     /// Associated ringtone object to show in this view
     var ringtone : Ringtone!
+    
+    var ringtoneStore : RingtoneStore!
     
     /// AVAudioPlayer object, used for playing audio
     var audioPlayer : AVAudioPlayer?
@@ -56,11 +63,17 @@ class RingtoneDetailViewController : UITableViewController, AVAudioPlayerDelegat
         if ringtone != nil {
             self.nameLabel.text = ringtone.name
             self.appLabel.text = ringtone.appName
-            self.lengthLabel.text = "\(ringtone.totalTime)"
-            self.sizeLabel.text = "\(ringtone.size)"
+            self.lengthLabel.text = "\(ringtone.totalTime) s"
+            self.sizeLabel.text = "\(ringtone.humanReadableSize())"
             self.pathLabel.text = ringtone.fileURL.path
             
             self.ringtonePlayerDurationLabel.text = "0 / \(ringtone.totalTime) s"
+            
+            if ringtone.installed {
+                installCellLabel.text = "Uninstall ringtone"
+                installCellLabel.textColor = deleteCellLabel.textColor //UIColor.red //UIColor(red: 252, green: 33, blue: 37, alpha: 1.0)
+                deleteCellLabel.text = "Delete and uninstall ringtone"
+            }
             
             super.viewWillAppear(animated)
         }
@@ -106,7 +119,7 @@ class RingtoneDetailViewController : UITableViewController, AVAudioPlayerDelegat
         }
         ringtonePlayerPlayLabel.text = "Stop"
         ringtonePlayerPlayImage.image = UIImage(named: "stop-circle")
-        ringtonePlayerDurationLabel.text = "0 / \(Int(round(player.duration)))"
+        ringtonePlayerDurationLabel.text = "0 / \(Int(round(player.duration))) s"
         enableTimer()
         player.play()
     }
@@ -118,7 +131,7 @@ class RingtoneDetailViewController : UITableViewController, AVAudioPlayerDelegat
         }
         ringtonePlayerPlayLabel.text = "Play"
         ringtonePlayerPlayImage.image = UIImage(named: "play-circle")
-        ringtonePlayerDurationLabel.text = "0 / \(Int(round(player.duration)))"
+        ringtonePlayerDurationLabel.text = "0 / \(Int(round(player.duration))) s"
         stopTimer()
         player.stop()
         self.audioPlayer = nil

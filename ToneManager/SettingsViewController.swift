@@ -13,6 +13,10 @@ import SafariServices
 /// View controller for main settings page
 public class SettingsViewController : UITableViewController, SFSafariViewControllerDelegate {
     
+    //TODO: delete all ringtones action
+    
+    var ringtoneStore : RingtoneStore!
+    
     /// Userdefaults object
     let defaults = UserDefaults.standard
     /// Gets/sets "AutoInstall" key from userdefaults

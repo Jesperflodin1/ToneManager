@@ -99,7 +99,8 @@ public class RingtoneStore {
     /// - Parameter shouldVerifyRingtones: will verify ringtones if true, is by default true
     public func loadFromPlist(_ shouldVerifyRingtones : Bool = true, completionHandler:  @escaping () -> Void) {
         queue.async {
-
+            //TODO: Check if tones.plist exist. If it does and reading failes, try to rebuild database!
+            
 //            var ringtonesArray : Array<Ringtone> = []
             NSLog("Trying to read plist")
             do {
@@ -117,7 +118,11 @@ public class RingtoneStore {
                 } else {
                     self.allRingtones = WriteLockableSynchronizedArray(with: ringtonesArray)
                 }
-
+                
+                // Sort
+                self.allRingtones = WriteLockableSynchronizedArray(with: self.allRingtones.sorted(by: { (initial, next) -> Bool in
+                    return initial.name.compare(next.name) == .orderedAscending
+                }))
             } catch {
                 NSLog("Error when reading ringtones from plist: \(error)")
                 Bugfender.error("Error when reading ringtones from plist: \(error)")

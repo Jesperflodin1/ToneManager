@@ -122,6 +122,8 @@ public class RingtoneTableViewController : UITableViewController {
             }
         }
     }
+    @IBAction func installAllRingtonesTapped(_ sender: UIBarButtonItem) {
+    }
     
     /// Called when trash button is tapped in ’RingtoneTableCell’. Deletes ringtone.
     ///
@@ -198,7 +200,7 @@ public class RingtoneTableViewController : UITableViewController {
         NSLog("ViewWillAppear")
         let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
         if let selectedRowNotNill = selectedRow {
-            print(selectedRowNotNill)
+         
             if let cell = tableView.cellForRow(at: selectedRowNotNill) as? RingtoneTableCell {
                 UIView.animate(withDuration: 0.2, animations: {
                     cell.updateButtons(false)
@@ -321,6 +323,14 @@ public class RingtoneTableViewController : UITableViewController {
             cell.fromAppLabel.text = ringtone?.appName
             cell.lengthLabel.text = String(ringtone?.totalTime ?? 0) + " s"
             cell.updateInstallStatus()
+            
+            let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
+            if let selectedRowNotNill = selectedRow {
+                if selectedRowNotNill == indexPath {
+                    // current row is selected
+                    cell.updateButtons(true)
+                }
+            }
         }
 
         
@@ -369,13 +379,18 @@ public class RingtoneTableViewController : UITableViewController {
             let cell = sender as! RingtoneTableCell
             let detailViewController = segue.destination as! RingtoneDetailViewController
             detailViewController.ringtone = cell.ringtoneItem
+            detailViewController.ringtoneStore = self.ringtoneStore
             
         case "showDetailsFromCellButton"?:
             if let indexPath = tableView.indexPathForSelectedRow {
                 let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
                 let detailViewController = segue.destination as! RingtoneDetailViewController
                 detailViewController.ringtone = cell.ringtoneItem
+                detailViewController.ringtoneStore = self.ringtoneStore
             }
+        case "showSettingsFromBarButton"?:
+            let settingsViewController = segue.destination as! SettingsViewController
+            settingsViewController.ringtoneStore = self.ringtoneStore
         default: break
         }
     }
