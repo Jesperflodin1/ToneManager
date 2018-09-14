@@ -70,10 +70,18 @@ public class RingtoneScanner {
                 let pathExtension = fileUrl.pathExtension
                 if pathExtension != "m4r" { continue } // Skip non-m4r files
                 
-                // skip files with filename that already exists
-                if (delegate.allRingtones.contains(where: { $0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent } )) {
-                    BFLog("File already exists: \(fileUrl)")
+                var appendRandomToRingtoneName : Bool = false
+                
+                // Skip ringtones with same filename from same app
+                if (delegate.allRingtones.contains(where: { ($0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent) && ($0.bundleID == currentApp) } )) {
+                    BFLog("File already exists: \(fileUrl) for app: \(currentApp)")
                     continue
+                }
+                
+                // if filename already exists, but different app, prepare to set a different ringtone name
+                if (delegate.allRingtones.contains(where: { $0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent } )) {
+                    BFLog("File already exists but different app, importing anyway: \(fileUrl)")
+                    appendRandomToRingtoneName = true
                 }
                 
 //                var fileSize = 0
@@ -94,7 +102,7 @@ public class RingtoneScanner {
                     continue
                 }
                 
-                let newRingtone = Ringtone(filePath: path, bundleID: currentApp)
+                let newRingtone = Ringtone(filePath: path, bundleID: currentApp, appendRandomToName: appendRandomToRingtoneName)
                 
                 newRingtones.append(newRingtone)
                 

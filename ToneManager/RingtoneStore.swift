@@ -174,7 +174,7 @@ public class RingtoneStore {
     /// - Parameters:
     ///   - ringtone: Ringtone object to install
     ///   - completionHandler: Completion block to execute when import is done. Ringtone object is passed as argument, identifier will be set if import was successful
-    public func installRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone) -> Void) {
+    public func installRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone, Bool) -> Void) {
         let installer = RingtoneInstaller()
         BFLog("Calling ringtone install for ringtone: \(ringtone)")
         installer.installRingtone(ringtone, completionHandler: completionHandler)

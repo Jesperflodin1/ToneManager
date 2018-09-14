@@ -53,12 +53,13 @@ public class RingtoneTableViewController : UITableViewController {
     
     /// Rescans apps to find new ringtones
     public func updateRingtones() {
-        HUD.show(.labeledProgress(title: "Updating", subtitle: "Scanning for new ringtones"))
+//        HUD.show(.labeledProgress(title: "Updating", subtitle: "Scanning for new ringtones"))
         
         ringtoneStore.updateRingtones { [weak self] (needsUpdate: Bool)  in
             guard let strongSelf = self else { return }
-            HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Updated available ringtones"), delay: 1.0)
+
             if (needsUpdate) {
+                HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Updated available ringtones"), delay: 0.5)
                 strongSelf.ringtoneStore.allRingtones.lockArray()
                 strongSelf.tableView.reloadData()
                 strongSelf.ringtoneStore.allRingtones.unlockArray()
@@ -84,10 +85,16 @@ public class RingtoneTableViewController : UITableViewController {
                 
                 let installAction = UIAlertAction(title: "Install", style: .default, handler:
                 { (action) -> Void in
-                    self.ringtoneStore.installRingtone(cell.ringtoneItem!, completionHandler: { (installedRingtone) in
-                        cell.updateInstallStatus()
-                        HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed ringtone"), delay: 0.7)
-                        self.ringtoneStore.writeToPlist()
+                    self.ringtoneStore.installRingtone(cell.ringtoneItem!, completionHandler: { (installedRingtone, success) in
+                        if (success) {
+                            BFLog("Got success in callback from ringtone install")
+                            cell.updateInstallStatus()
+                            HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed ringtone"), delay: 0.7)
+                            self.ringtoneStore.writeToPlist()
+                        } else {
+                            BFLog("Got failure in callback from ringtone install")
+                            HUD.flash(.labeledError(title: "Error", subtitle: "Error when installing ringtone"), delay: 0.7)
+                        }
                     })
                 })
                 ac.addAction(installAction)

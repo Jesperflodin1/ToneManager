@@ -10,7 +10,6 @@
 		1B7547485A56829ADA0E8A7C /* Pods_ToneManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87726A0BFD0B4E267CD5179 /* Pods_ToneManager.framework */; };
 		24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24496B22214991B40031E422 /* RingtoneInstaller.swift */; };
 		24496B25214AAF860031E422 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24496B24214AAF860031E422 /* AVFoundation.framework */; };
-		24496B27214AE5970031E422 /* RingtonePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24496B26214AE5970031E422 /* RingtonePlayer.swift */; };
 		24969499214406FE009960D7 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24969498214406FE009960D7 /* assets.xcassets */; };
 		2496949B214409E2009960D7 /* RingtoneDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */; };
 		249694A22144F0A7009960D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2496949E2144EBB9009960D7 /* Main.storyboard */; };
@@ -57,7 +56,6 @@
 		17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24496B22214991B40031E422 /* RingtoneInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneInstaller.swift; sourceTree = "<group>"; };
 		24496B24214AAF860031E422 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		24496B26214AE5970031E422 /* RingtonePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtonePlayer.swift; sourceTree = "<group>"; };
 		24969498214406FE009960D7 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneDetailViewController.swift; sourceTree = "<group>"; };
 		2496949E2144EBB9009960D7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = /Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Main.storyboard; sourceTree = "<absolute>"; };
@@ -175,7 +173,6 @@
 				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
 				24EE2074214295480045D678 /* RingtoneTableCell.swift */,
 				2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */,
-				24496B26214AE5970031E422 /* RingtonePlayer.swift */,
 				2497A6672142537B00597B5C /* Ringtone.swift */,
 				2497A6692142538500597B5C /* RingtoneStore.swift */,
 				249694A621454F96009960D7 /* RingtoneScanner.swift */,
@@ -464,7 +461,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24496B27214AE5970031E422 /* RingtonePlayer.swift in Sources */,
 				249694A721454F96009960D7 /* RingtoneScanner.swift in Sources */,
 				2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */,
 				249694AE214799F0009960D7 /* AppListViewController.swift in Sources */,

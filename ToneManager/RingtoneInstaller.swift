@@ -20,7 +20,7 @@ public class RingtoneInstaller {
     /// - Parameters:
     ///   - ringtone: Ringtone object to install
     ///   - completionHandler: Gets executed after import, ringtone object is passed to it. identifier is set if import was successful
-    public func installRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone) -> Void )  {
+    public func installRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone, Bool) -> Void )  {
         queue.async {
             if !TLToneManagerHandler.sharedInstance().canImport() {
                 Bugfender.error("TLToneManager does not respond to required selectors, unknown error")
@@ -52,7 +52,7 @@ public class RingtoneInstaller {
                     Bugfender.error("Ringtone install failed, got success=\(success) and identifier=\(toneIdentifier ?? "nil")")
                 }
                 DispatchQueue.main.async {
-                    completionHandler(ringtone)
+                    completionHandler(ringtone, success)
                 }
             }
         }

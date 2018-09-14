@@ -10,14 +10,14 @@ import BugfenderSDK
 import AVFoundation
 
 // MARK: - String Extension for removing extra whitespace
-public extension String {
+extension String {
     func condenseWhitespace() -> String {
         let components = self.components(separatedBy: .whitespacesAndNewlines)
         return components.filter { !$0.isEmpty }.joined(separator: " ")
     }
 }
 // MARK: - URL Extension for generating a ringtone name from its filename
-public extension URL {
+extension URL {
     func nameFromFilePath() -> String {
         let filename = self.deletingPathExtension().lastPathComponent
         
@@ -159,10 +159,27 @@ public class Ringtone : NSObject, NSCopying, Codable {
     /// - Parameters:
     ///   - filePath: Full path to ringtone
     ///   - bundleID: bundleid this ringtone was imported from
-    convenience init(filePath: String, bundleID: String) {
+    ///   - appendRandomToName: true if a short random string should be appended to ringtone name
+    convenience init(filePath: String, bundleID: String, appendRandomToName : Bool = false) {
         let url = URL(fileURLWithPath: filePath)
-        let generatedName = url.nameFromFilePath()
-        
+        var generatedName = url.nameFromFilePath()
+        if appendRandomToName {
+            let allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+            let allowedCharsCount = UInt32(allowedChars.count)
+            var randomString = ""
+            
+            let length = 4
+            
+            for _ in 0..<length {
+                let randomNum = Int(arc4random_uniform(allowedCharsCount))
+                let randomIndex = allowedChars.index(allowedChars.startIndex, offsetBy: randomNum)
+                let newCharacter = allowedChars[randomIndex]
+                randomString += String(newCharacter)
+            }
+            
+            generatedName += " (\(randomString))"
+        }
+            
         self.init(name: generatedName, identifier:nil , duration: nil, bundleID: bundleID, fileURL: url)
     }
     
@@ -206,7 +223,7 @@ public class Ringtone : NSObject, NSCopying, Codable {
     }
     
     /// Returns description string for this ringtone
-    public override var description: String {
+    override public var description: String {
         get {
             return "<Ringtone name:\(self.name), identifier: \(self.identifier ?? "nil"), URL: \(self.fileURL)>"
         }
