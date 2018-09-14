@@ -104,6 +104,9 @@ class RingtoneDetailViewController : UITableViewController, AVAudioPlayerDelegat
         guard let player = self.audioPlayer else {
             return
         }
+        ringtonePlayerPlayLabel.text = "Stop"
+        ringtonePlayerPlayImage.image = UIImage(named: "stop-circle")
+        ringtonePlayerDurationLabel.text = "0 / \(Int(round(player.duration)))"
         enableTimer()
         player.play()
     }
@@ -113,6 +116,9 @@ class RingtoneDetailViewController : UITableViewController, AVAudioPlayerDelegat
         guard let player = self.audioPlayer else {
             return
         }
+        ringtonePlayerPlayLabel.text = "Play"
+        ringtonePlayerPlayImage.image = UIImage(named: "play-circle")
+        ringtonePlayerDurationLabel.text = "0 / \(Int(round(player.duration)))"
         stopTimer()
         player.stop()
         self.audioPlayer = nil
@@ -132,14 +138,8 @@ class RingtoneDetailViewController : UITableViewController, AVAudioPlayerDelegat
         }
         
         if player.isPlaying {
-            ringtonePlayerPlayLabel.text = "Play"
-            ringtonePlayerPlayImage.image = UIImage(named: "play-circle")
-            ringtonePlayerDurationLabel.text = "0 / \(player.duration)"
             stopPlaying()
         } else {
-            ringtonePlayerPlayLabel.text = "Stop"
-            ringtonePlayerPlayImage.image = UIImage(named: "stop-circle")
-            ringtonePlayerDurationLabel.text = "0 / \(player.duration)"
             playRingtone()
         }
         
@@ -164,6 +164,17 @@ class RingtoneDetailViewController : UITableViewController, AVAudioPlayerDelegat
         }
         player.updateMeters() //refresh state
         let currentTime : Int = Int(round(player.currentTime))
-        ringtonePlayerDurationLabel.text = "\(currentTime) / \(player.duration)"
+        ringtonePlayerDurationLabel.text = "\(currentTime) / \(Int(round(player.duration)))"
+    }
+    
+    //MARK: AVAudioPlayerDelegate methods
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        stopPlaying()
+    }
+    
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        Bugfender.warning("Audio playback error: \(String(describing: error))")
+        stopPlaying()
     }
 }

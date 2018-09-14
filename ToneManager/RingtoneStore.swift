@@ -215,6 +215,7 @@ public class RingtoneStore {
         
         if installer.removeRingtoneWithIdentifier(identifier) {
             BFLog("uninstall success!")
+            ringtone.identifier = nil
             DispatchQueue.main.async {
                 completionHandler(ringtone)
             }
