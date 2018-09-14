@@ -32,6 +32,43 @@ extension URL {
 /// Model class for one ringtone. Stores metadata
 public class Ringtone : NSObject, NSCopying, Codable {
     
+    enum CodingKeys: String, CodingKey {
+        case name
+        case identifier
+        case rawDuration
+        case bundleID
+        case fileURL
+        case protectedContent
+        case purchased
+        case appName
+        case size
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        name = try values.decode(String.self, forKey: .name)
+        identifier = try values.decodeIfPresent(String.self, forKey: .identifier)
+        rawDuration = try values.decode(Double.self, forKey: .rawDuration)
+        bundleID = try values.decode(String.self, forKey: .bundleID)
+        fileURL = try values.decode(URL.self, forKey: .fileURL)
+        protectedContent = try values.decode(Bool.self, forKey: .protectedContent)
+        purchased = try values.decode(Bool.self, forKey: .purchased)
+        appName = try values.decode(String.self, forKey: .appName)
+        size = try values.decode(Int.self, forKey: .size)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encodeIfPresent(identifier, forKey: .identifier)
+        try container.encode(rawDuration, forKey: .rawDuration)
+        try container.encode(bundleID, forKey: .bundleID)
+        try container.encode(fileURL, forKey: .fileURL)
+        try container.encode(protectedContent, forKey: .protectedContent)
+        try container.encode(purchased, forKey: .purchased)
+        try container.encode(appName, forKey: .appName)
+        try container.encode(size, forKey: .size)
+    }
     
     /// Name visible in the ringtone picker
     private(set) var name: String
@@ -95,7 +132,7 @@ public class Ringtone : NSObject, NSCopying, Codable {
     ///   - protectedContent: Required by tonelibrary. Defaults to false
     ///   - purchased: Required by tonelibrary. Defaults to false
     init(name: String, identifier: String?, duration: Double?, bundleID: String?, fileURL: URL, protectedContent: Bool? = nil, purchased: Bool? = nil) {
-        
+        NSLog("Ringtone init")
         self.fileURL = fileURL
         
         if let time = duration {
@@ -161,6 +198,7 @@ public class Ringtone : NSObject, NSCopying, Codable {
     ///   - bundleID: bundleid this ringtone was imported from
     ///   - appendRandomToName: true if a short random string should be appended to ringtone name
     convenience init(filePath: String, bundleID: String, appendRandomToName : Bool = false) {
+        NSLog("Ringtone convenience init")
         let url = URL(fileURLWithPath: filePath)
         var generatedName = url.nameFromFilePath()
         if appendRandomToName {
@@ -191,13 +229,20 @@ public class Ringtone : NSObject, NSCopying, Codable {
     public func isValid() -> Bool {
         let fileManager = FileManager.default
         if !fileManager.fileExists(atPath: fileURL.path) {
+            NSLog("ringtone does not exist")
             return false // file does not exist
         }
         
         guard let toneIdentifier = self.identifier else { return true }
-        guard let toneManager = TLToneManagerHandler.sharedInstance() else { return false }
+        guard let toneManager = TLToneManagerHandler.sharedInstance() else { return true }
         
-        return toneManager.tone(withIdentifierIsValid: toneIdentifier)
+        let result = toneManager.tone(withIdentifierIsValid: toneIdentifier)
+        NSLog("verify, result: \(result)")
+        if !result {
+            try? fileManager.removeItem(atPath: fileURL.path)
+        }
+            
+        return result
     }
     
     /// Returns data object with data from ringtone file

@@ -57,8 +57,9 @@ public class RingtoneTableViewController : UITableViewController {
         
         ringtoneStore.updateRingtones { [weak self] (needsUpdate: Bool)  in
             guard let strongSelf = self else { return }
-
+            NSLog("updateringtones callback")
             if (needsUpdate) {
+                NSLog("updateringtones callback, got true for needsupdate")
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Updated available ringtones"), delay: 0.5)
                 strongSelf.ringtoneStore.allRingtones.lockArray()
                 strongSelf.tableView.reloadData()
@@ -152,14 +153,27 @@ public class RingtoneTableViewController : UITableViewController {
     
     /// Called when view has finished loading
     override public func viewDidLoad() {
-        self.ringtoneStore = RingtoneStore()
-        updateRingtones()
-        ringtoneStore.tableView = self.tableView
-        tableView.dataSource = self
-        NotificationCenter.default.addObserver(self, selector:#selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NSLog("Viewdidload")
         
-        NotificationCenter.default.addObserver(self, selector:#selector(willEnterBackground), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(willEnterBackground), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
+        
+        self.ringtoneStore = RingtoneStore(ringtoneTableViewController: self, completionHandler: {
+            NSLog("Ringtonestore completionhandler")
+            
+            
+        })
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
+        
+        
+    }
+    
+    func dataFinishedLoading() {
+        updateRingtones()
     }
     
     /// Called from notification observer when app will enter foreground. Updates available ringtones
@@ -181,6 +195,7 @@ public class RingtoneTableViewController : UITableViewController {
 //        ringtoneStore.allRingtones.unlockArray()
         
         // deselect the selected row if any
+        NSLog("ViewWillAppear")
         let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
         if let selectedRowNotNill = selectedRow {
             print(selectedRowNotNill)
@@ -269,7 +284,7 @@ public class RingtoneTableViewController : UITableViewController {
     ///   - indexPath: IndexPath for cell
     /// - Returns: Row height
     override public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.tableView.indexPathForSelectedRow?.row == indexPath.row {
+        if tableView.indexPathForSelectedRow?.row == indexPath.row {
             return rowHeight*1.7
         } else {
             return rowHeight
@@ -283,7 +298,9 @@ public class RingtoneTableViewController : UITableViewController {
     ///   - section: Current section
     /// - Returns: Returns number of rows in this section (usually number of ringtones)
     override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if ringtoneStore.finishedLoading {
         return ringtoneStore.allRingtones.count
+        } else { return 0 }
     }
     
     /// UITableView Datasource method
@@ -295,14 +312,16 @@ public class RingtoneTableViewController : UITableViewController {
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RingtoneTableCell
         
-        ringtoneStore.allRingtones.lockArray()
-        let ringtone = ringtoneStore.allRingtones[indexPath.row]
-        ringtoneStore.allRingtones.unlockArray()
-        cell.ringtoneItem = ringtone
-        cell.nameLabel.text = ringtone?.name
-        cell.fromAppLabel.text = ringtone?.appName
-        cell.lengthLabel.text = String(ringtone?.totalTime ?? 0) + " s"
-        cell.updateInstallStatus()
+        if ringtoneStore.finishedLoading {
+            ringtoneStore.allRingtones.lockArray()
+            let ringtone = ringtoneStore.allRingtones[indexPath.row]
+            ringtoneStore.allRingtones.unlockArray()
+            cell.ringtoneItem = ringtone
+            cell.nameLabel.text = ringtone?.name
+            cell.fromAppLabel.text = ringtone?.appName
+            cell.lengthLabel.text = String(ringtone?.totalTime ?? 0) + " s"
+            cell.updateInstallStatus()
+        }
 
         
         return cell

@@ -30,7 +30,7 @@ public class RingtoneScanner {
     /// - Returns: sorted array of all new imported ringtones. Nil if nothing was imported
     public func importRingtonesFrom(apps appsArray : Array<String>) -> Array<Ringtone>? {
         
-        BFLog("Starting scan for apps: \(appsArray)")
+//        BFLog("Starting scan for apps: \(appsArray)")
         
 //        guard let tempArray = delegate.allRingtones.array else {
 //            Bugfender.error("Failed to get ringtones array")
@@ -45,20 +45,22 @@ public class RingtoneScanner {
         let fileManager = FileManager.default
         
         for currentApp in appsArray {
-            guard let currentPath = FBApplicationInfoHandler.displayName(forBundleIdentifier: currentApp) else { continue }
+            guard var currentPath = FBApplicationInfoHandler.path(forBundleIdentifier: currentApp) else { continue }
+            
+            currentPath.appendPathComponent("Documents")
             
             BFLog("Scanning path: \(currentPath)")
             
             var filesArray : Array<String>
             do {
-                filesArray = try fileManager.contentsOfDirectory(atPath: currentPath)
-                BFLog("Found files: \(filesArray)")
+                filesArray = try fileManager.contentsOfDirectory(atPath: currentPath.path)
+                BFLog("Found \(filesArray.count) files")
             } catch {
-                Bugfender.error("Error: Could not enumerate path: \(currentPath) Error: \(error)")
+                Bugfender.error("Error: Could not enumerate path: \(currentPath.path) Error: \(error)")
                 continue // go to next iteration/folder
             }
             guard filesArray.count > 0 else {
-                Bugfender.warning("No files found for path: \(currentPath)")
+                Bugfender.warning("No files found for path: \(currentPath.path)")
                 continue // go to next iteration/folder
             }
             
@@ -74,7 +76,7 @@ public class RingtoneScanner {
                 
                 // Skip ringtones with same filename from same app
                 if (delegate.allRingtones.contains(where: { ($0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent) && ($0.bundleID == currentApp) } )) {
-                    BFLog("File already exists: \(fileUrl) for app: \(currentApp)")
+                    BFLog("File already exists: \(fileUrl.path) for app: \(currentApp)")
                     continue
                 }
                 
@@ -95,7 +97,7 @@ public class RingtoneScanner {
                 
                 // skip files with filesize that already exists
 //                if (delegate.allRingtones.contains(where: { $0.fileURL ==  fileUrl } )) { continue }
-                let ringtoneSourcePath = URL(fileURLWithPath: currentPath).appendingPathComponent(file, isDirectory: false)
+                let ringtoneSourcePath = URL(fileURLWithPath: currentPath.path).appendingPathComponent(file, isDirectory: false)
                 
                 guard let path = copyRingtoneToApp(ringtoneSourcePath.path, forBundleID: currentApp) else {
                     Bugfender.error("Error when getting new filepath for ringtone")

@@ -83,14 +83,14 @@ public class RingtoneTableCell : UITableViewCell {
     public func updateInstallStatus() {
         if !(ringtoneItem?.installed)! { // not installed
             installButton.setImage(UIImage(named: "file-export"), for: .normal)
-            installButtonHorizontalConstraint.constant = 20
+            installButtonHorizontalConstraint.constant = 26
             installedLabel.isHidden = true
             
             self.setNeedsLayout()
             self.layoutIfNeeded()
         } else { // installed
             installButton.setImage(UIImage(named: "file-minus"), for: .normal)
-            installButtonHorizontalConstraint.constant = 28
+            installButtonHorizontalConstraint.constant = 26
             installedLabel.isHidden = false
             
             installedLabel.backgroundColor = UIColor.white

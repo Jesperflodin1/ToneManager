@@ -21,8 +21,8 @@ public class RingtoneStore {
     /// Path to local plist for ringtone metadata
     public let plistURL = URL(fileURLWithPath: "/var/mobile/Library/ToneManager/tones.plist")
     
-    /// Reference to tableView for RingtoneTableViewController
-    public weak var tableView : UITableView?
+    /// Reference to RingtoneTableViewController
+    public weak var ringtoneTableViewController : RingtoneTableViewController?
     
     /// Gets "ZedgeRingtones" value from userdefaults
     public var zedge : Bool {
@@ -50,6 +50,8 @@ public class RingtoneStore {
         }
     }
     
+    var finishedLoading : Bool = false
+    
     /// WriteLockableSynchronizedArray for all ringtones
     public var allRingtones = WriteLockableSynchronizedArray<Ringtone>()
     
@@ -66,12 +68,14 @@ public class RingtoneStore {
     }
     
     /// Init method. Checks folder existence and if necessary creates application data folder
-    init() {
+    init(ringtoneTableViewController : RingtoneTableViewController, completionHandler: @escaping () -> Void) {
         BFLog("RingtoneStore init")
+        NSLog("RingtoneStore init")
+        self.ringtoneTableViewController = ringtoneTableViewController
         
         createAppDir()
         
-        loadFromPlist()
+        loadFromPlist(completionHandler: completionHandler)
     }
     
     /// Creates application data directory if possible and needed
@@ -93,36 +97,51 @@ public class RingtoneStore {
     /// Loads ringtones from plist. Will also verify all loaded ringtones if shouldVerifyRingtones=true (defaults to true). Dispatches work to serial queue.
     ///
     /// - Parameter shouldVerifyRingtones: will verify ringtones if true, is by default true
-    public func loadFromPlist(_ shouldVerifyRingtones : Bool = true) {
-        queue.sync {
+    public func loadFromPlist(_ shouldVerifyRingtones : Bool = true, completionHandler:  @escaping () -> Void) {
+        queue.async {
 
-            var ringtonesArray : Array<Ringtone> = []
-            
+//            var ringtonesArray : Array<Ringtone> = []
+            NSLog("Trying to read plist")
             do {
                 let data = try Data(contentsOf: self.plistURL)
+                NSLog("Got data: \(data)")
                 let decoder = PropertyListDecoder()
-                ringtonesArray = try decoder.decode(Array<Ringtone>.self, from: data)
-                BFLog("Success reading plist: \(ringtonesArray)")
+                let ringtonesArray = try decoder.decode(Array<Ringtone>.self, from: data)
+                
+                if shouldVerifyRingtones {
+                    let newRingtonesArray = self.verifyRingtones(inArray: ringtonesArray)
+
+                    self.allRingtones = WriteLockableSynchronizedArray(with: newRingtonesArray)
+
+                    
+                } else {
+                    self.allRingtones = WriteLockableSynchronizedArray(with: ringtonesArray)
+                }
+
             } catch {
+                NSLog("Error when reading ringtones from plist: \(error)")
                 Bugfender.error("Error when reading ringtones from plist: \(error)")
             }
-            if shouldVerifyRingtones {
-                ringtonesArray = self.verifyRingtones(inArray: ringtonesArray)
-            }
-            DispatchQueue.main.async {
-                self.allRingtones = WriteLockableSynchronizedArray(with: ringtonesArray)
-                
-                self.createTestRingtones()
-                
-                self.writeToPlist()
-                
-                self.tableView?.reloadData()
-            }
+            
+            
+//          self.createTestRingtones()
+            
+//            DispatchQueue.main.sync {
+            
+            
+//            }
+            self.finishedLoading = true
+            completionHandler()
+            self.ringtoneTableViewController?.dataFinishedLoading()
+            self.ringtoneTableViewController?.tableView?.reloadData()
         }
+
+        
     }
     
     /// Writes all currently known ringtones to local plist. Dispatches work to serial queue
     public func writeToPlist() {
+        if !finishedLoading { return }
         queue.async {
             guard let ringtones = self.allRingtones.array else {
                 Bugfender.error("Failed to get ringtones array")
@@ -147,6 +166,7 @@ public class RingtoneStore {
     /// - Parameter ringtonesArray: Array with ringtones to verify
     /// - Returns: Array which only contains valid ringtones
     public func verifyRingtones(inArray ringtonesArray : Array<Ringtone>) -> Array<Ringtone> {
+        NSLog("Verifying ringtones")
         return ringtonesArray.filter { $0.isValid() }
     }
     
@@ -233,7 +253,10 @@ public class RingtoneStore {
     /// - Parameter completionHandler: completion block that should run when import is done, a Bool indicating if new ringtones
     /// was imported is passed to it.
     public func updateRingtones(completionHandler: @escaping (Bool) -> Void) {
-        DispatchQueue.global(qos: .background).async {
+        NSLog("Update called, finishedloading=\(self.finishedLoading)")
+        if !finishedLoading { return }
+        
+        queue.async {
             let scanner = RingtoneScanner(self)
             // TODO: Get extra apps to scan from preferences
             
@@ -242,14 +265,14 @@ public class RingtoneStore {
             if apps.count > 0 {
                 BFLog("Paths to scan: \(apps)")
                 if let newArray = scanner.importRingtonesFrom(apps: apps) {
-                    BFLog("Ringtone import success, got new ringtones: \(newArray)")
+                    BFLog("Ringtone import success, got new ringtones")
                     
                     DispatchQueue.main.async {
                         self.allRingtones.append(newArray)
                         self.allRingtones = WriteLockableSynchronizedArray(with: self.allRingtones.sorted(by: { (initial, next) -> Bool in
                             return initial.name.compare(next.name) == .orderedAscending
                         }))
-                        self.writeToPlist()
+                        
                         completionHandler(true)
                     }
                 } else {
@@ -265,6 +288,7 @@ public class RingtoneStore {
                     completionHandler(false)
                 }
             }
+            self.writeToPlist()
         }
         
     }
