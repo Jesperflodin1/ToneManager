@@ -813,6 +813,9 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete all imported ringtones" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfh-K4-6g5">
                                                     <rect key="frame" x="16" y="11" width="343" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="gUg-Ol-drI"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                                     <nil key="highlightedColor"/>
@@ -820,12 +823,10 @@
                                             </subviews>
                                             <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="dfh-K4-6g5" firstAttribute="centerY" secondItem="LjU-Kg-kDJ" secondAttribute="centerY" id="3O0-6c-Chj"/>
-                                                <constraint firstItem="dfh-K4-6g5" firstAttribute="leading" secondItem="LjU-Kg-kDJ" secondAttribute="leadingMargin" id="Bsf-ns-xng"/>
-                                                <constraint firstItem="dfh-K4-6g5" firstAttribute="top" secondItem="LjU-Kg-kDJ" secondAttribute="topMargin" id="K4U-1Z-8Tc"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="dfh-K4-6g5" secondAttribute="trailing" id="Ph4-tr-mb3"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="dfh-K4-6g5" secondAttribute="bottom" id="kxJ-nl-l17"/>
-                                                <constraint firstItem="dfh-K4-6g5" firstAttribute="centerX" secondItem="LjU-Kg-kDJ" secondAttribute="centerX" id="oC5-bS-QPD"/>
+                                                <constraint firstItem="dfh-K4-6g5" firstAttribute="bottom" secondItem="LjU-Kg-kDJ" secondAttribute="bottomMargin" id="2q5-XC-Nk8"/>
+                                                <constraint firstItem="dfh-K4-6g5" firstAttribute="top" secondItem="LjU-Kg-kDJ" secondAttribute="topMargin" id="9AU-ET-WfO"/>
+                                                <constraint firstItem="dfh-K4-6g5" firstAttribute="trailing" secondItem="LjU-Kg-kDJ" secondAttribute="trailingMargin" id="PAg-T6-s2Y"/>
+                                                <constraint firstItem="dfh-K4-6g5" firstAttribute="leading" secondItem="LjU-Kg-kDJ" secondAttribute="leadingMargin" id="gy6-OH-cql"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
@@ -940,7 +941,7 @@
                                         <rect key="frame" x="0.0" y="630.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V2F-Vk-EDQ" id="k9Y-R6-ZbI">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact me on Reddit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1J1-is-P4t">
