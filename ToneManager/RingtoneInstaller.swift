@@ -28,7 +28,7 @@ extension RingtoneInstaller {
     ///
     /// - Parameter identifier: identifier to remove
     /// - Returns: returns true if successful
-    func removeRingtone(_ ringtone : Ringtone, deleteFile : Bool = true) -> Bool {
+    func removeRingtone(_ ringtone : Ringtone, deleteFile : Bool = true, completionHandler: ((Bool) -> Void)? = nil ) -> Bool {
         if !TLToneManagerHandler.sharedInstance().canImport() {
             Bugfender.error("TLToneManager does not respond to required selectors, unknown error")
             return false

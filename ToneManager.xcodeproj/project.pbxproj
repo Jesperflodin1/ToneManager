@@ -33,8 +33,10 @@
 		24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EE20822142C9590045D678 /* TLToneManagerHandler.m */; };
 		24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EE20862142D9A30045D678 /* FBApplicationInfoHandler.m */; };
 		24EE208A2142EB050045D678 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EE20892142EB050045D678 /* MobileCoreServices.framework */; };
+		30F4C62E8F6AF1DA3B7B1D40 /* Pods_ToneManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56DFC59107A5F6111AB3E4A /* Pods_ToneManagerTests.framework */; };
 		3A0E0435786C44BF60985FC7 /* Pods_ToneManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */; };
 		BE4E087C5B988C85CBA2F99B /* Pods_ToneManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787B7BD1ECCE5249CE75158F /* Pods_ToneManagerUITests.framework */; };
+		F7EECDE01BA83D5715DAFA5D /* Pods_ToneManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FB56436B5FE7D0AF8E042F /* Pods_ToneManagerUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,9 +95,12 @@
 		24EE208B214311630045D678 /* iOSHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSHeaders.h; sourceTree = "<group>"; };
 		28C8EA633FF5601A839E9E13 /* Pods-ToneManagerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManagerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManagerUITests/Pods-ToneManagerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2C0BE91D61C88AF3F956DEAC /* Pods-ToneManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManager/Pods-ToneManager.debug.xcconfig"; sourceTree = "<group>"; };
+		3AB2F0288DA14F8204028D09 /* Pods_ToneManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		787B7BD1ECCE5249CE75158F /* Pods_ToneManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6239BE23ADD75B5B2F0250 /* Pods-ToneManagerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManagerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManagerUITests/Pods-ToneManagerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1CE92B8D71786E10DE64544 /* Pods-ToneManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManagerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManagerTests/Pods-ToneManagerTests.release.xcconfig"; sourceTree = "<group>"; };
+		B3FB56436B5FE7D0AF8E042F /* Pods_ToneManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B56DFC59107A5F6111AB3E4A /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA61086B2010E40B6D1AE4CA /* Pods-ToneManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManagerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManagerTests/Pods-ToneManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD3373338519FD00CA4E77F3 /* Pods-ToneManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManager/Pods-ToneManager.release.xcconfig"; sourceTree = "<group>"; };
 		E87726A0BFD0B4E267CD5179 /* Pods_ToneManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A0E0435786C44BF60985FC7 /* Pods_ToneManagerTests.framework in Frameworks */,
+				30F4C62E8F6AF1DA3B7B1D40 /* Pods_ToneManagerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE4E087C5B988C85CBA2F99B /* Pods_ToneManagerUITests.framework in Frameworks */,
+				F7EECDE01BA83D5715DAFA5D /* Pods_ToneManagerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +144,9 @@
 			children = (
 				24496B24214AAF860031E422 /* AVFoundation.framework */,
 				249694AB21478E79009960D7 /* libapplist.dylib */,
+				3AB2F0288DA14F8204028D09 /* Pods_ToneManager.framework */,
+				B56DFC59107A5F6111AB3E4A /* Pods_ToneManagerTests.framework */,
+				B3FB56436B5FE7D0AF8E042F /* Pods_ToneManagerUITests.framework */,
 			);
 			name = Frameworks;
 			path = ToneManager/Frameworks;
@@ -589,7 +599,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -642,7 +652,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -673,7 +683,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos;
 				SEPARATE_SYMBOL_EDIT = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -707,7 +717,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos;
 				SEPARATE_SYMBOL_EDIT = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

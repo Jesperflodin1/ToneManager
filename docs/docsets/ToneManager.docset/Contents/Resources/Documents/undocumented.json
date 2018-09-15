@@ -142,49 +142,56 @@
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
-      "line": 47,
+      "line": 42,
+      "symbol": "RingtoneDetailViewController.deleteCellLabel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
+      "line": 48,
       "symbol": "RingtoneDetailViewController.ringtoneStore",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
-      "line": 94,
+      "line": 96,
       "symbol": "RingtoneDetailViewController.setupPlayer()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
-      "line": 159,
+      "line": 161,
       "symbol": "RingtoneDetailViewController.enableTimer()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
-      "line": 166,
+      "line": 168,
       "symbol": "RingtoneDetailViewController.stopTimer()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
-      "line": 172,
+      "line": 174,
       "symbol": "RingtoneDetailViewController.updateProgress()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
-      "line": 183,
+      "line": 185,
       "symbol": "RingtoneDetailViewController.audioPlayerDidFinishPlaying(_:successfully:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneDetailViewController.swift",
-      "line": 187,
+      "line": 189,
       "symbol": "RingtoneDetailViewController.audioPlayerDecodeErrorDidOccur(_:error:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -212,14 +219,21 @@
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableViewController.swift",
-      "line": 175,
+      "line": 125,
+      "symbol": "RingtoneTableViewController.installAllRingtonesTapped(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/RingtoneTableViewController.swift",
+      "line": 177,
       "symbol": "RingtoneTableViewController.dataFinishedLoading()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/SettingsViewController.swift",
-      "line": 16,
+      "line": 18,
       "symbol": "SettingsViewController.ringtoneStore",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"

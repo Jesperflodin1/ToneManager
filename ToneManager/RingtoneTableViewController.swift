@@ -106,13 +106,19 @@ extension RingtoneTableViewController {
                     if installedTones > 0, failedTones == 0 {
                         HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed \(installedTones) ringtones"), delay: 1.0)
                     } else if installedTones > 0, failedTones > 0 {
-                        HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed \(installedTones) ringtones, however \(failedTones) failed"), delay: 1.0)
-                    } 
+                        HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed \(installedTones) ringtones, however \(failedTones) failed to install"), delay: 1.0)
+                    } else if installedTones == 0 {
+                        HUD.flash(.labeledError(title: "Error", subtitle: "No ringtones was imported because of an unknown error"), delay: 1.0)
+                    } else {
+                        HUD.flash(.labeledError(title: "Super Mega Error", subtitle: "Well, this is embarassing. This should not happen"), delay: 2.0)
+                    }
                     
                     strongSelf.tableView.reloadData()
                 })
                 
             })
+            ac.addAction(installAction)
+            present(ac, animated: true, completion: nil)
         }
     }
     
@@ -138,6 +144,10 @@ extension RingtoneTableViewController {
         })
         ac.addAction(installAction)
         present(ac, animated: true, completion: nil)
+    }
+    
+    func uninstallAll() {
+        
     }
     
     

@@ -14,7 +14,7 @@
     <a title="SettingsViewController Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ToneManager Docs</a> (80% documented)</p>
+        <p><a href="../index.html">ToneManager Docs</a> (71% documented)</p>
         <p class="header-right"><a href="https://github.com/Jesperflodin1/ToneManager"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjesperflodin1%2Egithub%2Eio%2FToneManager%2Fdocsets%2FToneManager%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -95,6 +95,20 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ColorPalette.html">ColorPalette</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Preferences.html">Preferences</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Preferences/keys.html">– keys</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -103,7 +117,7 @@
             <h1>SettingsViewController</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SettingsViewController</span> <span class="p">:</span> <span class="kt">UITableViewController</span><span class="p">,</span> <span class="kt">SFSafariViewControllerDelegate</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SettingsViewController</span> <span class="p">:</span> <span class="kt">UITableViewController</span></code></pre>
 
                 </div>
               </div>
@@ -134,87 +148,6 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">ringtoneStore</span><span class="p">:</span> <span class="kt"><a href="../Classes/RingtoneStore.html">RingtoneStore</a></span><span class="o">!</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11ToneManager22SettingsViewControllerC8defaultsSo12UserDefaultsCvp"></a>
-                    <a name="//apple_ref/swift/Property/defaults" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager22SettingsViewControllerC8defaultsSo12UserDefaultsCvp">defaults</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Userdefaults object</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">defaults</span><span class="p">:</span> <span class="kt">UserDefaults</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11ToneManager22SettingsViewControllerC11autoInstallSbvp"></a>
-                    <a name="//apple_ref/swift/Property/autoInstall" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager22SettingsViewControllerC11autoInstallSbvp">autoInstall</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Gets/sets <q>AutoInstall</q> key from userdefaults</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">autoInstall</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11ToneManager22SettingsViewControllerC13remoteLoggingSbvp"></a>
-                    <a name="//apple_ref/swift/Property/remoteLogging" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager22SettingsViewControllerC13remoteLoggingSbvp">remoteLogging</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Gets/sets <q>RemoteLogging</q> key from userdefaults</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">remoteLogging</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -277,334 +210,17 @@
                     </section>
                   </div>
                 </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@ToneManager@objc(cs)SettingsViewController(im)autoInstallChanged:"></a>
-                    <a name="//apple_ref/swift/Method/autoInstallChanged(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@ToneManager@objc(cs)SettingsViewController(im)autoInstallChanged:">autoInstallChanged(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Auto install ringtones switch changed state. Saves state to userdefaults</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">autoInstallChanged</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UISwitch</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>sender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>UISwitch that initiated this</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@ToneManager@objc(cs)SettingsViewController(im)remoteLoggingChanged:"></a>
-                    <a name="//apple_ref/swift/Method/remoteLoggingChanged(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@ToneManager@objc(cs)SettingsViewController(im)remoteLoggingChanged:">remoteLoggingChanged(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Remote logging switch changed state. Saves state to userdefaults</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">remoteLoggingChanged</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UISwitch</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>sender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>UISwitch that initiated this</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@ToneManager@objc(cs)SettingsViewController(im)viewWillAppear:"></a>
-                    <a name="//apple_ref/swift/Method/viewWillAppear(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@ToneManager@objc(cs)SettingsViewController(im)viewWillAppear:">viewWillAppear(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Called when view will appear on screen. Reads preferences from userdefaults and sets user controls in this view</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">viewWillAppear</span><span class="p">(</span><span class="n">_</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>animated</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>true if view will appear with animation</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@ToneManager@objc(cs)SettingsViewController(im)githubTapped:"></a>
-                    <a name="//apple_ref/swift/Method/githubTapped(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@ToneManager@objc(cs)SettingsViewController(im)githubTapped:">githubTapped(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Opens github page</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">githubTapped</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UITapGestureRecognizer</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>sender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Gesture recognizer that called this function</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@ToneManager@objc(cs)SettingsViewController(im)redditTapped:"></a>
-                    <a name="//apple_ref/swift/Method/redditTapped(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@ToneManager@objc(cs)SettingsViewController(im)redditTapped:">redditTapped(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Opens my reddit page</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">redditTapped</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UITapGestureRecognizer</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>sender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Gesture recognizer that called this function</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@ToneManager@objc(cs)SettingsViewController(im)paypalTapped:"></a>
-                    <a name="//apple_ref/swift/Method/paypalTapped(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@ToneManager@objc(cs)SettingsViewController(im)paypalTapped:">paypalTapped(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Opens paypal.me page for donations</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">paypalTapped</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UITapGestureRecognizer</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>sender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Gesture recognizer that called this function</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@ToneManager@objc(cs)SettingsViewController(im)twitterTapped:"></a>
-                    <a name="//apple_ref/swift/Method/twitterTapped(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@ToneManager@objc(cs)SettingsViewController(im)twitterTapped:">twitterTapped(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Opens my twitter</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">twitterTapped</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UITapGestureRecognizer</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>sender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Gesture recognizer that called this function</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/SFSafariViewController%20methods"></a>
+                <a name="//apple_ref/swift/Section/SFSafariViewController methods" class="dashAnchor"></a>
+                <a href="#/SFSafariViewController%20methods">
+                  <h3 class="section-name">SFSafariViewController methods</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -654,9 +270,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@ToneManager@objc(cs)SettingsViewController(im)safariViewControllerDidFinish:"></a>
+                    <a name="/c:@CM@ToneManager@objc(cs)SettingsViewController(im)safariViewControllerDidFinish:"></a>
                     <a name="//apple_ref/swift/Method/safariViewControllerDidFinish(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@ToneManager@objc(cs)SettingsViewController(im)safariViewControllerDidFinish:">safariViewControllerDidFinish(_:)</a>
+                    <a class="token" href="#/c:@CM@ToneManager@objc(cs)SettingsViewController(im)safariViewControllerDidFinish:">safariViewControllerDidFinish(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -688,6 +304,367 @@
                               <td>
                                 <div>
                                   <p>SFSafariViewController this was initiated from.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/UIViewController%20overrides"></a>
+                <a name="//apple_ref/swift/Section/UIViewController overrides" class="dashAnchor"></a>
+                <a href="#/UIViewController%20overrides">
+                  <h3 class="section-name">UIViewController overrides</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@ToneManager@objc(cs)SettingsViewController(im)viewWillAppear:"></a>
+                    <a name="//apple_ref/swift/Method/viewWillAppear(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@ToneManager@objc(cs)SettingsViewController(im)viewWillAppear:">viewWillAppear(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called when view will appear on screen. Reads preferences from userdefaults and sets user controls in this view</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">viewWillAppear</span><span class="p">(</span><span class="n">_</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>animated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>true if view will appear with animation</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Switches%20actions"></a>
+                <a name="//apple_ref/swift/Section/Switches actions" class="dashAnchor"></a>
+                <a href="#/Switches%20actions">
+                  <h3 class="section-name">Switches actions</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@ToneManager@objc(cs)SettingsViewController(im)autoInstallChanged:"></a>
+                    <a name="//apple_ref/swift/Method/autoInstallChanged(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@ToneManager@objc(cs)SettingsViewController(im)autoInstallChanged:">autoInstallChanged(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Auto install ringtones switch changed state. Saves state to userdefaults</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">autoInstallChanged</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UISwitch</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>UISwitch that initiated this</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@ToneManager@objc(cs)SettingsViewController(im)remoteLoggingChanged:"></a>
+                    <a name="//apple_ref/swift/Method/remoteLoggingChanged(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@ToneManager@objc(cs)SettingsViewController(im)remoteLoggingChanged:">remoteLoggingChanged(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remote logging switch changed state. Saves state to userdefaults</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">remoteLoggingChanged</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UISwitch</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>UISwitch that initiated this</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Button%20Actions"></a>
+                <a name="//apple_ref/swift/Section/Button Actions" class="dashAnchor"></a>
+                <a href="#/Button%20Actions">
+                  <h3 class="section-name">Button Actions</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@ToneManager@objc(cs)SettingsViewController(im)githubTapped:"></a>
+                    <a name="//apple_ref/swift/Method/githubTapped(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@ToneManager@objc(cs)SettingsViewController(im)githubTapped:">githubTapped(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Opens github page</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">githubTapped</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UITapGestureRecognizer</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Gesture recognizer that called this function</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@ToneManager@objc(cs)SettingsViewController(im)redditTapped:"></a>
+                    <a name="//apple_ref/swift/Method/redditTapped(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@ToneManager@objc(cs)SettingsViewController(im)redditTapped:">redditTapped(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Opens my reddit page</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">redditTapped</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UITapGestureRecognizer</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Gesture recognizer that called this function</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@ToneManager@objc(cs)SettingsViewController(im)paypalTapped:"></a>
+                    <a name="//apple_ref/swift/Method/paypalTapped(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@ToneManager@objc(cs)SettingsViewController(im)paypalTapped:">paypalTapped(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Opens paypal.me page for donations</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">paypalTapped</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UITapGestureRecognizer</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Gesture recognizer that called this function</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@ToneManager@objc(cs)SettingsViewController(im)twitterTapped:"></a>
+                    <a name="//apple_ref/swift/Method/twitterTapped(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@ToneManager@objc(cs)SettingsViewController(im)twitterTapped:">twitterTapped(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Opens my twitter</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">twitterTapped</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UITapGestureRecognizer</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Gesture recognizer that called this function</p>
                                 </div>
                               </td>
                             </tr>
