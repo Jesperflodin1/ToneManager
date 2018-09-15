@@ -11,7 +11,7 @@ import AVFoundation
 import BugfenderSDK
 
 /// View controller that shows details page for ringtone
-class RingtoneDetailViewController : UITableViewController, AVAudioPlayerDelegate {
+class RingtoneDetailViewController : UITableViewController {
     
     /// Outlet for ringtone name label
     @IBOutlet weak var nameLabel: UILabel!
@@ -52,46 +52,11 @@ class RingtoneDetailViewController : UITableViewController, AVAudioPlayerDelegat
     
     /// Timer object used for showing play duration
     var timer : Timer?
-    
-    // MARK: UIViewController override methods
-    /// Called when view will appear. Prepares outlets with values from associated ringtone object
-    ///
-    /// - Parameter animated: true if view will appear with animation
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
 
-        if ringtone != nil {
-            self.nameLabel.text = ringtone.name
-            self.appLabel.text = ringtone.appName
-            self.lengthLabel.text = "\(ringtone.totalTime) s"
-            self.sizeLabel.text = "\(ringtone.humanReadableSize())"
-            self.pathLabel.text = ringtone.fileURL.path
-            
-            self.ringtonePlayerDurationLabel.text = "0 / \(ringtone.totalTime) s"
-            
-            if ringtone.installed {
-                installCellLabel.text = "Uninstall ringtone"
-                installCellLabel.textColor = deleteCellLabel.textColor //UIColor.red //UIColor(red: 252, green: 33, blue: 37, alpha: 1.0)
-                deleteCellLabel.text = "Delete and uninstall ringtone"
-            }
-            
-            super.viewWillAppear(animated)
-        }
-    }
-    
-    /// Overrides view will disappear, called when view will disappear. Stops playing ringtone.
-    ///
-    /// - Parameter animated: true if view will disappear with animation
-    override func viewWillDisappear(_ animated: Bool) {
-        if self.audioPlayer != nil {
-            stopPlaying()
-            self.audioPlayer = nil
-        }
-        
-        super.viewWillDisappear(animated)
-    }
-    
-    // MARK: Ringtone player methods
+}
+
+//MARK: AVAudioPlayer methods
+extension RingtoneDetailViewController {
     
     func setupPlayer() {
         do {
@@ -179,9 +144,10 @@ class RingtoneDetailViewController : UITableViewController, AVAudioPlayerDelegat
         let currentTime : Int = Int(round(player.currentTime))
         ringtonePlayerDurationLabel.text = "\(currentTime) / \(Int(round(player.duration)))"
     }
-    
-    //MARK: AVAudioPlayerDelegate methods
-    
+}
+
+//MARK: AVAudioPlayerDelegate methods
+extension RingtoneDetailViewController: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         stopPlaying()
     }
@@ -189,5 +155,46 @@ class RingtoneDetailViewController : UITableViewController, AVAudioPlayerDelegat
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         Bugfender.warning("Audio playback error: \(String(describing: error))")
         stopPlaying()
+    }
+}
+
+//MARK: UIViewController override methods
+extension RingtoneDetailViewController {
+    
+    /// Called when view will appear. Prepares outlets with values from associated ringtone object
+    ///
+    /// - Parameter animated: true if view will appear with animation
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if ringtone != nil {
+            self.nameLabel.text = ringtone.name
+            self.appLabel.text = ringtone.appName
+            self.lengthLabel.text = "\(ringtone.totalTime) s"
+            self.sizeLabel.text = "\(ringtone.humanReadableSize())"
+            self.pathLabel.text = ringtone.fileURL.path
+            
+            self.ringtonePlayerDurationLabel.text = "0 / \(ringtone.totalTime) s"
+            
+            if ringtone.installed {
+                installCellLabel.text = "Uninstall ringtone"
+                installCellLabel.textColor = deleteCellLabel.textColor //UIColor.red //UIColor(red: 252, green: 33, blue: 37, alpha: 1.0)
+                deleteCellLabel.text = "Delete and uninstall ringtone"
+            }
+            
+            super.viewWillAppear(animated)
+        }
+    }
+    
+    /// Overrides view will disappear, called when view will disappear. Stops playing ringtone.
+    ///
+    /// - Parameter animated: true if view will disappear with animation
+    override func viewWillDisappear(_ animated: Bool) {
+        if self.audioPlayer != nil {
+            stopPlaying()
+            self.audioPlayer = nil
+        }
+        
+        super.viewWillDisappear(animated)
     }
 }

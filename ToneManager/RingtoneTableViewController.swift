@@ -27,33 +27,16 @@ public class RingtoneTableViewController : UITableViewController {
     
     /// Table filter variable 0=All, 1=Installed, 2=Not installed
     var ringtoneFilter : Int = 0
-    
-    var autoInstall : Bool {
-        get {
-            return defaults.bool(forKey: "AutoInstall")
-        }
-        set {
-            defaults.set(newValue, forKey: "AutoInstall")
-        }
-    }
-    
-    
-    /// Executes when the user changes the filter to show either "All", "Installed" or "Not installed" Ringtones
-    ///
-    /// - Parameter sender: UISegmentedControl that triggered this
-    @IBAction public func filterChanged(_ sender: UISegmentedControl) {
-    }
-    
-    /// Refresh button was tapped. Rescans apps to find new ringtones
-    ///
-    /// - Parameter sender: Button that triggered this
-    @IBAction public func updateTapped(_ sender: UIBarButtonItem) {
-        updateRingtones()
-    }
+}
+
+
+//MARK: RingtoneStore methods
+extension RingtoneTableViewController {
     
     /// Rescans apps to find new ringtones
     public func updateRingtones() {
-//        HUD.show(.labeledProgress(title: "Updating", subtitle: "Scanning for new ringtones"))
+        
+        //        HUD.show(.labeledProgress(title: "Updating", subtitle: "Scanning for new ringtones"))
         
         ringtoneStore.updateRingtones { [weak self] (needsUpdate: Bool)  in
             guard let strongSelf = self else { return }
@@ -67,6 +50,11 @@ public class RingtoneTableViewController : UITableViewController {
             }
         }
     }
+}
+
+
+//MARK: UI Actions
+extension RingtoneTableViewController {
     
     /// Called when install button is tapped in ’RingtoneTableCell’
     ///
@@ -74,9 +62,9 @@ public class RingtoneTableViewController : UITableViewController {
     @IBAction func installRingtone(_ sender: UIButton) {
         if let indexPath = tableView.indexPathForSelectedRow {
             let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
-
-            if cell.ringtoneItem?.identifier == nil { // is not installed
             
+            if cell.ringtoneItem?.identifier == nil { // is not installed
+                
                 let title = "Install \(cell.ringtoneItem?.name ?? "name missing")"
                 let message = "Are you sure you want to add this ringtone to device ringtones?"
                 let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
@@ -122,6 +110,8 @@ public class RingtoneTableViewController : UITableViewController {
             }
         }
     }
+    
+    
     @IBAction func installAllRingtonesTapped(_ sender: UIBarButtonItem) {
     }
     
@@ -131,7 +121,7 @@ public class RingtoneTableViewController : UITableViewController {
     @IBAction func deleteRingtone(_ sender: UIButton) {
         if let indexPath = tableView.indexPathForSelectedRow {
             let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
-                
+            
             let title = "Delete \(cell.ringtoneItem?.name ?? "name missing")"
             let message = "Are you sure you want to delete this ringtone from this app? It will also be removed from the devices ringtones if installed. If you do not remove it from the source app it will get imported again at next refresh."
             let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
@@ -153,10 +143,57 @@ public class RingtoneTableViewController : UITableViewController {
         }
     }
     
+    /// Executes when the user changes the filter to show either "All", "Installed" or "Not installed" Ringtones
+    ///
+    /// - Parameter sender: UISegmentedControl that triggered this
+    @IBAction public func filterChanged(_ sender: UISegmentedControl) {
+    }
+    
+    /// Refresh button was tapped. Rescans apps to find new ringtones
+    ///
+    /// - Parameter sender: Button that triggered this
+    @IBAction public func updateTapped(_ sender: UIBarButtonItem) {
+        updateRingtones()
+    }
+}
+
+
+//MARK: RingtoneStore callback
+extension RingtoneTableViewController {
+    func dataFinishedLoading() {
+        updateRingtones()
+    }
+}
+
+
+//MARK: Notification observers
+extension RingtoneTableViewController {
+    
+    private func registerObservers() {
+        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
+    }
+    
+    /// Called from notification observer when app will enter foreground. Updates available ringtones
+    @objc public func willEnterForeground() {
+        BFLog("did become active, autoinstall = \(Preferences.autoInstall)")
+        updateRingtones()
+    }
+    /// Called from notification observer when app will enter background or terminate. Writes ringtone plist to disk.
+    @objc public func willEnterBackground() {
+        ringtoneStore.writeToPlist()
+    }
+}
+
+
+//MARK: UIViewController method overrides
+extension RingtoneTableViewController {
+    
     /// Called when view has finished loading
     override public func viewDidLoad() {
         NSLog("Viewdidload")
-        
         
         self.ringtoneStore = RingtoneStore(ringtoneTableViewController: self, completionHandler: {
             NSLog("Ringtonestore completionhandler")
@@ -166,41 +203,24 @@ public class RingtoneTableViewController : UITableViewController {
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
+        registerObservers()
         
-        
-    }
-    
-    func dataFinishedLoading() {
-        updateRingtones()
-    }
-    
-    /// Called from notification observer when app will enter foreground. Updates available ringtones
-    @objc public func willEnterForeground() {
-        BFLog("did become active, autoinstall = \(autoInstall)")
-        updateRingtones()
-    }
-    /// Called from notification observer when app will enter background or terminate. Writes ringtone plist to disk.
-    @objc public func willEnterBackground() {
-        ringtoneStore.writeToPlist()
     }
     
     /// Called when view will appear
     ///
     /// - Parameter animated: true if view appears with animation
     override public func viewWillAppear(_ animated: Bool) {
-//        ringtoneStore.allRingtones.lockArray()
-//        tableView.reloadData()
-//        ringtoneStore.allRingtones.unlockArray()
+        //        ringtoneStore.allRingtones.lockArray()
+        //        tableView.reloadData()
+        //        ringtoneStore.allRingtones.unlockArray()
         
         // deselect the selected row if any
         NSLog("ViewWillAppear")
         let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
         if let selectedRowNotNill = selectedRow {
-         
+            
             if let cell = tableView.cellForRow(at: selectedRowNotNill) as? RingtoneTableCell {
                 UIView.animate(withDuration: 0.2, animations: {
                     cell.updateButtons(false)
@@ -212,6 +232,7 @@ public class RingtoneTableViewController : UITableViewController {
         }
         super.viewWillAppear(animated)
     }
+    
     /// Called whe view will disappear. Deselects a selected row, if any is selected. Also makes sure the buttons in the
     /// selected cell is hidden
     ///
@@ -232,7 +253,72 @@ public class RingtoneTableViewController : UITableViewController {
         }
         super.viewWillDisappear(animated)
     }
+}
 
+//MARK: Segues handling
+extension RingtoneTableViewController {
+    /// Called when a segue is triggered
+    ///
+    /// - Parameters:
+    ///   - segue: segue that was triggered. Has a unique identifier.
+    ///   - sender: sender that initiated the segue
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "showDetailsFromCellLabel"?:
+            let cell = sender as! RingtoneTableCell
+            let detailViewController = segue.destination as! RingtoneDetailViewController
+            detailViewController.ringtone = cell.ringtoneItem
+            detailViewController.ringtoneStore = self.ringtoneStore
+            
+        case "showDetailsFromCellButton"?:
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
+                let detailViewController = segue.destination as! RingtoneDetailViewController
+                detailViewController.ringtone = cell.ringtoneItem
+                detailViewController.ringtoneStore = self.ringtoneStore
+            }
+        case "showSettingsFromBarButton"?:
+            let settingsViewController = segue.destination as! SettingsViewController
+            settingsViewController.ringtoneStore = self.ringtoneStore
+        default: break
+        }
+    }
+}
+
+
+//MARK: UITableView Delegate methods
+extension RingtoneTableViewController {
+    
+    /// UITableView delegate method. Called when a ringtone should be removed
+    ///
+    /// - Parameters:
+    ///   - tableView: current UITableView
+    ///   - editingStyle: Style for editing
+    ///   - indexPath: Indexpath for cell
+    override public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
+            
+            let title = "Delete \(cell.ringtoneItem?.name ?? "name missing")"
+            let message = "Are you sure you want to delete this ringtone from this app? It will also be removed from the devices ringtones if installed. If you do not remove it from the source app it will get imported again at next refresh."
+            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            ac.addAction(cancelAction)
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler:
+            { (action) -> Void in
+                self.ringtoneStore.removeRingtone(cell.ringtoneItem!, completion: { (deletedRingtone) in
+                    if let index = tableView.indexPath(for: cell) {
+                        tableView.deleteRows(at: [index], with: .automatic)
+                    }
+                })
+            })
+            ac.addAction(deleteAction)
+            
+            present(ac, animated: true, completion: nil)
+        }
+    }
     /// UITableView delegate method. If a row already is selected, it will deselect it.
     ///
     /// - Parameters:
@@ -278,6 +364,10 @@ public class RingtoneTableViewController : UITableViewController {
             cell.updateButtons(false)
         })
     }
+}
+
+//MARK: UITableView DataSource methods
+extension RingtoneTableViewController {
     
     /// UITableView Datasource method. Returns height depending on if the cell is selected or not
     ///
@@ -301,7 +391,7 @@ public class RingtoneTableViewController : UITableViewController {
     /// - Returns: Returns number of rows in this section (usually number of ringtones)
     override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if ringtoneStore.finishedLoading {
-        return ringtoneStore.allRingtones.count
+            return ringtoneStore.allRingtones.count
         } else { return 0 }
     }
     
@@ -332,67 +422,8 @@ public class RingtoneTableViewController : UITableViewController {
                 }
             }
         }
-
+        
         
         return cell
     }
-    
-    /// UITableView delegate method. Called when a ringtone should be removed
-    ///
-    /// - Parameters:
-    ///   - tableView: current UITableView
-    ///   - editingStyle: Style for editing
-    ///   - indexPath: Indexpath for cell
-    override public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
-            
-            let title = "Delete \(cell.ringtoneItem?.name ?? "name missing")"
-            let message = "Are you sure you want to delete this ringtone from this app? It will also be removed from the devices ringtones if installed. If you do not remove it from the source app it will get imported again at next refresh."
-            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            ac.addAction(cancelAction)
-            
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler:
-            { (action) -> Void in
-                self.ringtoneStore.removeRingtone(cell.ringtoneItem!, completion: { (deletedRingtone) in
-                    if let index = tableView.indexPath(for: cell) {
-                        tableView.deleteRows(at: [index], with: .automatic)
-                    }
-                })
-            })
-            ac.addAction(deleteAction)
-            
-            present(ac, animated: true, completion: nil)
-        }
-    }
-    
-    /// Called when a segue is triggered
-    ///
-    /// - Parameters:
-    ///   - segue: segue that was triggered. Has a unique identifier.
-    ///   - sender: sender that initiated the segue
-    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case "showDetailsFromCellLabel"?:
-            let cell = sender as! RingtoneTableCell
-            let detailViewController = segue.destination as! RingtoneDetailViewController
-            detailViewController.ringtone = cell.ringtoneItem
-            detailViewController.ringtoneStore = self.ringtoneStore
-            
-        case "showDetailsFromCellButton"?:
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
-                let detailViewController = segue.destination as! RingtoneDetailViewController
-                detailViewController.ringtone = cell.ringtoneItem
-                detailViewController.ringtoneStore = self.ringtoneStore
-            }
-        case "showSettingsFromBarButton"?:
-            let settingsViewController = segue.destination as! SettingsViewController
-            settingsViewController.ringtoneStore = self.ringtoneStore
-        default: break
-        }
-    }
-    
 }

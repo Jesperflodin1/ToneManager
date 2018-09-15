@@ -22,7 +22,10 @@ public class RingtoneScanner {
         self.delegate = delegate
         BFLog("Scanner initializing")
     }
-    
+}
+
+//MARK: Scanning and importing methods
+extension RingtoneScanner {
     /// Searches paths in pathsArray for ringtones that haven't yet been added to the database and adds them.
     /// Will copy the ringtones to the application data folder
     ///
@@ -30,17 +33,17 @@ public class RingtoneScanner {
     /// - Returns: sorted array of all new imported ringtones. Nil if nothing was imported
     public func importRingtonesFrom(apps appsArray : Array<String>) -> Array<Ringtone>? {
         
-//        BFLog("Starting scan for apps: \(appsArray)")
+        //        BFLog("Starting scan for apps: \(appsArray)")
         
-//        guard let tempArray = delegate.allRingtones.array else {
-//            Bugfender.error("Failed to get ringtones array")
-//            return nil
-//        }
+        //        guard let tempArray = delegate.allRingtones.array else {
+        //            Bugfender.error("Failed to get ringtones array")
+        //            return nil
+        //        }
         
         var newRingtones : Array<Ringtone> = []
         
-//        var ringtonesArrayCopy : Array<Ringtone> = tempArray.map(){ $0.copy() as! Ringtone }
-//        BFLog("Got copy of ringtone array: \(ringtonesArrayCopy)")
+        //        var ringtonesArrayCopy : Array<Ringtone> = tempArray.map(){ $0.copy() as! Ringtone }
+        //        BFLog("Got copy of ringtone array: \(ringtonesArrayCopy)")
         
         let fileManager = FileManager.default
         
@@ -86,17 +89,17 @@ public class RingtoneScanner {
                     appendRandomToRingtoneName = true
                 }
                 
-//                var fileSize = 0
-//                do {
-//                    let attribute = try FileManager.default.attributesOfItem(atPath: fileUrl.path)
-//                    if let size = attribute[FileAttributeKey.size] as? Int { fileSize = size }
-//                } catch {
-//                    Bugfender.error("Could not get file size for path: \(fileUrl) Error: \(error)")
-//                    continue
-//                }
+                //                var fileSize = 0
+                //                do {
+                //                    let attribute = try FileManager.default.attributesOfItem(atPath: fileUrl.path)
+                //                    if let size = attribute[FileAttributeKey.size] as? Int { fileSize = size }
+                //                } catch {
+                //                    Bugfender.error("Could not get file size for path: \(fileUrl) Error: \(error)")
+                //                    continue
+                //                }
                 
                 // skip files with filesize that already exists
-//                if (delegate.allRingtones.contains(where: { $0.fileURL ==  fileUrl } )) { continue }
+                //                if (delegate.allRingtones.contains(where: { $0.fileURL ==  fileUrl } )) { continue }
                 let ringtoneSourcePath = URL(fileURLWithPath: currentPath.path).appendingPathComponent(file, isDirectory: false)
                 
                 guard let path = copyRingtoneToApp(ringtoneSourcePath.path, forBundleID: currentApp) else {
@@ -117,10 +120,11 @@ public class RingtoneScanner {
         } else {
             return nil
         }
-    
     }
-    
+}
 
+//MARK: File importer
+extension RingtoneScanner {
     /// Copies file to subfolder "bundleid" in application data folder
     ///
     /// - Parameters:
@@ -148,5 +152,4 @@ public class RingtoneScanner {
         }
         return nil
     }
-    
 }

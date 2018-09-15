@@ -17,16 +17,9 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     /// reference to UIWindow
     public var window: UIWindow?
     
-    /// Gets "RemoteLogging" key from userdefaults
-    public var remoteLogging : Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: "RemoteLogging")
-        }
-    }
-    
     /// Enables remote logging if enabled in userdefaults
     public func enableRemoteLogging() {
-        if remoteLogging {
+        if Preferences.remoteLogging {
             Bugfender.activateLogger("HId16MWO0WTn4W4zk1Ipb32RtNf43dN6")
             Bugfender.enableUIEventLogging() // optional, log user interactions automatically
             Bugfender.enableCrashReporting() // optional, log crashes automatically
@@ -37,13 +30,12 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /// Sets default user settings for UserDefaults
     public func registerDefaults() {
-        let defaults = UserDefaults.standard
-        defaults.register(defaults: [
-            "AutoInstall" : false,
-            "RemoteLogging" : true,
-            "AudikoLite" : true,
-            "AudikoPro" : true,
-            "ZedgeRingtones" : true
+        Preferences.defaults.register(defaults: [
+            Preferences.keys.autoInstall.rawValue : false,
+            Preferences.keys.remoteLogging.rawValue : true,
+            Preferences.keys.audikoLite.rawValue : true,
+            Preferences.keys.audikoPro.rawValue : true,
+            Preferences.keys.zedgeRingtones.rawValue : true
             ])
     }
 

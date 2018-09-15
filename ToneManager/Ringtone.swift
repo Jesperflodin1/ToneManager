@@ -30,45 +30,7 @@ extension URL {
 }
 
 /// Model class for one ringtone. Stores metadata
-public class Ringtone : NSObject, NSCopying, Codable {
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case identifier
-        case rawDuration
-        case bundleID
-        case fileURL
-        case protectedContent
-        case purchased
-        case appName
-        case size
-    }
-    
-    public required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        name = try values.decode(String.self, forKey: .name)
-        identifier = try values.decodeIfPresent(String.self, forKey: .identifier)
-        rawDuration = try values.decode(Double.self, forKey: .rawDuration)
-        bundleID = try values.decode(String.self, forKey: .bundleID)
-        fileURL = try values.decode(URL.self, forKey: .fileURL)
-        protectedContent = try values.decode(Bool.self, forKey: .protectedContent)
-        purchased = try values.decode(Bool.self, forKey: .purchased)
-        appName = try values.decode(String.self, forKey: .appName)
-        size = try values.decode(Int.self, forKey: .size)
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
-        try container.encodeIfPresent(identifier, forKey: .identifier)
-        try container.encode(rawDuration, forKey: .rawDuration)
-        try container.encode(bundleID, forKey: .bundleID)
-        try container.encode(fileURL, forKey: .fileURL)
-        try container.encode(protectedContent, forKey: .protectedContent)
-        try container.encode(purchased, forKey: .purchased)
-        try container.encode(appName, forKey: .appName)
-        try container.encode(size, forKey: .size)
-    }
+public class Ringtone : NSObject, Codable {
     
     /// Name visible in the ringtone picker
     private(set) var name: String
@@ -112,15 +74,7 @@ public class Ringtone : NSObject, NSCopying, Codable {
     public let size: Int
     
     
-    /// Creates a copy of this ringtone object
-    ///
-    /// - Parameter zone: ?
-    /// - Returns: New ringtone with same values as this ringtone
-    public func copy(with zone: NSZone? = nil) -> Any {
-        return Ringtone(name: self.name, identifier: self.identifier, duration: self.rawDuration, bundleID: self.bundleID, fileURL: self.fileURL, protectedContent: self.protectedContent, purchased: self.purchased)
-    }
-    
-    
+    //MARK: Initializers
     /// Init method
     ///
     /// - Parameters:
@@ -173,7 +127,7 @@ public class Ringtone : NSObject, NSCopying, Codable {
         } else {
             self.appName = self.bundleID
         }
-
+        
         self.name = name
         self.identifier = identifier
         
@@ -187,7 +141,7 @@ public class Ringtone : NSObject, NSCopying, Codable {
             Bugfender.error("Could not get file size for path: \(fileURL) Error: \(error)")
         }
         self.size = fileSize
-
+        
         super.init()
     }
     
@@ -217,9 +171,68 @@ public class Ringtone : NSObject, NSCopying, Codable {
             
             generatedName += " (\(randomString))"
         }
-            
+        
         self.init(name: generatedName, identifier:nil , duration: nil, bundleID: bundleID, fileURL: url)
     }
+    
+    public required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        name = try values.decode(String.self, forKey: .name)
+        identifier = try values.decodeIfPresent(String.self, forKey: .identifier)
+        rawDuration = try values.decode(Double.self, forKey: .rawDuration)
+        bundleID = try values.decode(String.self, forKey: .bundleID)
+        fileURL = try values.decode(URL.self, forKey: .fileURL)
+        protectedContent = try values.decode(Bool.self, forKey: .protectedContent)
+        purchased = try values.decode(Bool.self, forKey: .purchased)
+        appName = try values.decode(String.self, forKey: .appName)
+        size = try values.decode(Int.self, forKey: .size)
+    }
+    
+    //MARK: Codable
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case identifier
+        case rawDuration
+        case bundleID
+        case fileURL
+        case protectedContent
+        case purchased
+        case appName
+        case size
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encodeIfPresent(identifier, forKey: .identifier)
+        try container.encode(rawDuration, forKey: .rawDuration)
+        try container.encode(bundleID, forKey: .bundleID)
+        try container.encode(fileURL, forKey: .fileURL)
+        try container.encode(protectedContent, forKey: .protectedContent)
+        try container.encode(purchased, forKey: .purchased)
+        try container.encode(appName, forKey: .appName)
+        try container.encode(size, forKey: .size)
+    }
+}
+
+
+//MARK: NSCopying
+extension Ringtone: NSCopying {
+    
+    /// Creates a copy of this ringtone object
+    ///
+    /// - Parameter zone: ?
+    /// - Returns: New ringtone with same values as this ringtone
+    public func copy(with zone: NSZone? = nil) -> Any {
+        return Ringtone(name: self.name, identifier: self.identifier, duration: self.rawDuration, bundleID: self.bundleID, fileURL: self.fileURL, protectedContent: self.protectedContent, purchased: self.purchased)
+    }
+    
+}
+
+
+//MARK: Calculated values
+extension Ringtone {
     
     /// Uses ToneLibrary to check if this ringtone is valid. It will be valid if it has an identifier that exists in
     /// this devices tonelibrary. Also checks if fileURL exists. If toneIdentifier is nil, ringtone is considered valid
@@ -241,10 +254,28 @@ public class Ringtone : NSObject, NSCopying, Codable {
         if !result {
             try? fileManager.removeItem(atPath: fileURL.path)
         }
-            
+        
         return result
     }
     
+    /// Returns description string for this ringtone
+    override public var description: String {
+        get {
+            return "<Ringtone name:\(self.name), identifier: \(self.identifier ?? "nil"), URL: \(self.fileURL)>"
+        }
+    }
+    
+    public func humanReadableSize() -> String {
+        let byteCount = self.size
+        let bcf = ByteCountFormatter()
+        bcf.allowedUnits = [.useAll]
+        bcf.countStyle = .file
+        return bcf.string(fromByteCount: Int64(byteCount))
+    }
+}
+
+//MARK: Actions
+extension Ringtone {
     /// Returns data object with data from ringtone file
     ///
     /// - Returns: Data from ringtone file
@@ -266,20 +297,4 @@ public class Ringtone : NSObject, NSCopying, Codable {
             Bugfender.error("Error when deleting ringtone file from path (\(self.fileURL)) with error: \(error)")
         }
     }
-    
-    /// Returns description string for this ringtone
-    override public var description: String {
-        get {
-            return "<Ringtone name:\(self.name), identifier: \(self.identifier ?? "nil"), URL: \(self.fileURL)>"
-        }
-    }
-    
-    public func humanReadableSize() -> String {
-        let byteCount = self.size
-        let bcf = ByteCountFormatter()
-        bcf.allowedUnits = [.useAll]
-        bcf.countStyle = .file
-        return bcf.string(fromByteCount: Int64(byteCount))
-    }
-
 }

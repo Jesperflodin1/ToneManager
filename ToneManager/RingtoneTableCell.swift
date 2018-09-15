@@ -9,7 +9,7 @@
 import UIKit
 
 /// UITableCell subclass for ringtones, used in ’RingtoneTableViewController’
-public class RingtoneTableCell : UITableViewCell {
+public class RingtoneTableCell: UITableViewCell {
     /// Outlet for name label UILabel
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -40,8 +40,10 @@ public class RingtoneTableCell : UITableViewCell {
     
     /// Associated ringtone object
     var ringtoneItem : Ringtone? = nil
-    
-    
+}
+
+//MARK: Cell UIView update actions
+extension RingtoneTableCell {
     /// Updates state of buttons (hidden/shown)
     ///
     /// - Parameter state: Bool, true for shown and false for hidden
@@ -83,20 +85,20 @@ public class RingtoneTableCell : UITableViewCell {
     public func updateInstallStatus() {
         if !(ringtoneItem?.installed)! { // not installed
             installButton.setImage(UIImage(named: "install"), for: .normal)
-//            installButtonHorizontalConstraint.constant = 26
+            //            installButtonHorizontalConstraint.constant = 26
             installedLabel.isHidden = true
             
             self.setNeedsLayout()
             self.layoutIfNeeded()
         } else { // installed
             installButton.setImage(UIImage(named: "uninstall"), for: .normal)
-//            installButtonHorizontalConstraint.constant = 26
+            //            installButtonHorizontalConstraint.constant = 26
             installedLabel.isHidden = false
             
             installedLabel.text = "Installed"
-            installedLabel.backgroundColor = UIColor.white
+            installedLabel.backgroundColor = ColorPalette.backgroundColor
             installedLabel.layer.masksToBounds = true
-            installedLabel.layer.borderColor = UIColor(red: 79/255, green: 143/255, blue: 0, alpha: 0.7).cgColor
+            installedLabel.layer.borderColor = ColorPalette.themeColor.cgColor
             installedLabel.layer.borderWidth = 1
             installedLabel.layer.cornerRadius = 6
             
@@ -104,7 +106,10 @@ public class RingtoneTableCell : UITableViewCell {
             self.layoutIfNeeded()
         }
     }
-    
+}
+
+//MARK: UITableViewCell override methods
+extension RingtoneTableCell {
     /// UITableViewCell function which prepares cell for reuse
     override public func prepareForReuse() {
         nameLabel.text = ""

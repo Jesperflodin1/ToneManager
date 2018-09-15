@@ -26,6 +26,8 @@
 		2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A6652142533600597B5C /* RingtoneTableViewController.swift */; };
 		2497A6682142537B00597B5C /* Ringtone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A6672142537B00597B5C /* Ringtone.swift */; };
 		2497A66A2142538500597B5C /* RingtoneStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A6692142538500597B5C /* RingtoneStore.swift */; };
+		24982BD2214CE12B00DD0474 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24982BD1214CE12B00DD0474 /* ColorPalette.swift */; };
+		24982BD4214CE16700DD0474 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24982BD3214CE16700DD0474 /* Preferences.swift */; };
 		24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE206A214276CF0045D678 /* SettingsViewController.swift */; };
 		24EE2075214295480045D678 /* RingtoneTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE2074214295480045D678 /* RingtoneTableCell.swift */; };
 		24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EE20822142C9590045D678 /* TLToneManagerHandler.m */; };
@@ -78,6 +80,8 @@
 		2497A6652142533600597B5C /* RingtoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneTableViewController.swift; sourceTree = "<group>"; };
 		2497A6672142537B00597B5C /* Ringtone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ringtone.swift; sourceTree = "<group>"; };
 		2497A6692142538500597B5C /* RingtoneStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneStore.swift; sourceTree = "<group>"; };
+		24982BD1214CE12B00DD0474 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		24982BD3214CE16700DD0474 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		24EE206A214276CF0045D678 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		24EE2074214295480045D678 /* RingtoneTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneTableCell.swift; sourceTree = "<group>"; };
 		24EE207E2142C7E60045D678 /* ToneManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ToneManager-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 				24EE206A214276CF0045D678 /* SettingsViewController.swift */,
 				249694AF2147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift */,
 				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
+				24982BD1214CE12B00DD0474 /* ColorPalette.swift */,
+				24982BD3214CE16700DD0474 /* Preferences.swift */,
 				24EE2074214295480045D678 /* RingtoneTableCell.swift */,
 				2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */,
 				2497A6672142537B00597B5C /* Ringtone.swift */,
@@ -466,6 +472,7 @@
 				249694AE214799F0009960D7 /* AppListViewController.swift in Sources */,
 				249694A921456804009960D7 /* SynchronizedArray.swift in Sources */,
 				2497A66A2142538500597B5C /* RingtoneStore.swift in Sources */,
+				24982BD2214CE12B00DD0474 /* ColorPalette.swift in Sources */,
 				2497A63B214251D200597B5C /* AppDelegate.swift in Sources */,
 				2497A6682142537B00597B5C /* Ringtone.swift in Sources */,
 				24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */,
@@ -474,6 +481,7 @@
 				24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */,
 				2496949B214409E2009960D7 /* RingtoneDetailViewController.swift in Sources */,
 				249694B02147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift in Sources */,
+				24982BD4214CE16700DD0474 /* Preferences.swift in Sources */,
 				24EE2075214295480045D678 /* RingtoneTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

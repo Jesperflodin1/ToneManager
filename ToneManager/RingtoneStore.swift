@@ -15,40 +15,11 @@ public let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
 /// Model class for ringtones
 public class RingtoneStore {
     
-    /// Userdefaults.standard
-    public let defaults = UserDefaults.standard
-    
     /// Path to local plist for ringtone metadata
     public let plistURL = URL(fileURLWithPath: "/var/mobile/Library/ToneManager/tones.plist")
     
     /// Reference to RingtoneTableViewController
     public weak var ringtoneTableViewController : RingtoneTableViewController?
-    
-    /// Gets "ZedgeRingtones" value from userdefaults
-    public var zedge : Bool {
-        get {
-            return defaults.bool(forKey: "ZedgeRingtones")
-        }
-    }
-    /// Gets "AudikoLite" value from userdefaults
-    public var audikoLite : Bool {
-        get {
-            return defaults.bool(forKey: "AudikoLite")
-        }
-    }
-    /// Gets "AudikoPro" value from userdefaults
-    public var audikoPro : Bool {
-        get {
-            return defaults.bool(forKey: "AudikoPro")
-        }
-    }
-    
-    /// Gets "AutoInstall" value from userdefaults
-    public var autoInstall : Bool {
-        get {
-            return defaults.bool(forKey: "AutoInstall")
-        }
-    }
     
     var finishedLoading : Bool = false
     
@@ -175,25 +146,13 @@ public class RingtoneStore {
         return ringtonesArray.filter { $0.isValid() }
     }
     
-    /// Gets bundle ids of apps to scan depending on userdefaults values
-    ///
-    /// - Returns: Array with bundle ids
-    public func ringtoneAppsToScan() -> Array<String> {
-        var apps : Array<String> = []
-        
-        if zedge {
-            apps.append("com.zedge.Zedge")
-        }
-        if audikoLite {
-            apps.append("com.908.AudikoFree")
-        }
-        if audikoPro {
-            apps.append("com.908.Audiko")
-        }
-        
-        return apps
-    }
     
+    
+
+}
+
+//MARK: Ringtone install/uninstall methods
+extension RingtoneStore {
     /// Uses ’RingtoneInstaller’ to install ringtone
     ///
     /// - Parameters:
@@ -251,9 +210,11 @@ public class RingtoneStore {
             self.writeToPlist()
             completion?(ringtone)
         }
-        
     }
-    
+}
+
+//MARK: Ringtone Scanning methods
+extension RingtoneStore {
     /// Rescans default and/or chosen apps for new ringtones and imports them. Uses RingtoneScanner class for this. Also sorts the ringtone array by name, ascending
     ///
     /// - Parameter completionHandler: completion block that should run when import is done, a Bool indicating if new ringtones
@@ -266,8 +227,8 @@ public class RingtoneStore {
             let scanner = RingtoneScanner(self)
             // TODO: Get extra apps to scan from preferences
             
-            let apps = self.ringtoneAppsToScan()
-//            apps.append("/test")
+            let apps = Preferences.ringtoneAppsToScan
+            //            apps.append("/test")
             if apps.count > 0 {
                 BFLog("Paths to scan: \(apps)")
                 if let newArray = scanner.importRingtonesFrom(apps: apps) {
@@ -298,5 +259,4 @@ public class RingtoneStore {
         }
         
     }
-    
 }

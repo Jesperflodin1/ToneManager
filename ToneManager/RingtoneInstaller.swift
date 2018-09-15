@@ -14,7 +14,28 @@ public class RingtoneInstaller {
     
     /// Serial queue where import calls are placed
     fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SerialRingtoneInstallerQueue")
-    
+}
+
+//MARK: Uninstall methods
+extension RingtoneInstaller {
+    /// Removes ringtone from tonelibrary
+    ///
+    /// - Parameter identifier: identifier to remove
+    /// - Returns: returns true if successful
+    public func removeRingtoneWithIdentifier(_ identifier : String) -> Bool {
+        if !TLToneManagerHandler.sharedInstance().canImport() {
+            Bugfender.error("TLToneManager does not respond to required selectors, unknown error")
+            return false
+        }
+        
+        TLToneManagerHandler.sharedInstance().removeImportedTone(withIdentifier: identifier)
+        
+        return true
+    }
+}
+
+//MARK: Install methods
+extension RingtoneInstaller {
     /// Installs ringtone in tonelibrary
     ///
     /// - Parameters:
@@ -57,20 +78,4 @@ public class RingtoneInstaller {
             }
         }
     }
-    
-    /// Removes ringtone from tonelibrary
-    ///
-    /// - Parameter identifier: identifier to remove
-    /// - Returns: returns true if successful
-    public func removeRingtoneWithIdentifier(_ identifier : String) -> Bool {
-        if !TLToneManagerHandler.sharedInstance().canImport() {
-            Bugfender.error("TLToneManager does not respond to required selectors, unknown error")
-            return false
-        }
-        
-        TLToneManagerHandler.sharedInstance().removeImportedTone(withIdentifier: identifier)
-        
-        return true
-    }
-    
 }
