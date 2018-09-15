@@ -83,6 +83,9 @@ extension RingtoneTableViewController {
         present(ac, animated: true, completion: nil)
     }
     
+    
+    //TODO: Add number of ringtones this action will install in alert
+    //TODO: Dont show alert if number is 0
     func installAllRingtones(withAlert : Bool = true) {
         if withAlert {
             
@@ -181,7 +184,7 @@ extension RingtoneTableViewController {
 extension RingtoneTableViewController {
     
     @IBAction func installAllTapped(_ sender: UIBarButtonItem) {
-        
+        installAllRingtones()
     }
     
     
