@@ -241,9 +241,11 @@ extension RingtoneTableViewController {
     ///
     /// - Parameter animated: true if view appears with animation
     override public func viewWillAppear(_ animated: Bool) {
-        //        ringtoneStore.allRingtones.lockArray()
-        //        tableView.reloadData()
-        //        ringtoneStore.allRingtones.unlockArray()
+        if ringtoneStore.finishedLoading {
+            ringtoneStore.allRingtones.lockArray()
+            tableView.reloadData()
+            ringtoneStore.allRingtones.unlockArray()
+        }
         
         // deselect the selected row if any
         NSLog("ViewWillAppear")
@@ -328,24 +330,7 @@ extension RingtoneTableViewController {
         if editingStyle == .delete {
             let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
             
-            let title = "Delete \(cell.ringtoneItem?.name ?? "name missing")"
-            let message = "Are you sure you want to delete this ringtone from this app? It will also be removed from the devices ringtones if installed. If you do not remove it from the source app it will get imported again at next refresh."
-            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            ac.addAction(cancelAction)
-            
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler:
-            { (action) -> Void in
-                self.ringtoneStore.removeRingtone(cell.ringtoneItem!, completion: { (deletedRingtone) in
-                    if let index = tableView.indexPath(for: cell) {
-                        tableView.deleteRows(at: [index], with: .automatic)
-                    }
-                })
-            })
-            ac.addAction(deleteAction)
-            
-            present(ac, animated: true, completion: nil)
+            deleteRingtone(inCell: cell)
         }
     }
     /// UITableView delegate method. If a row already is selected, it will deselect it.

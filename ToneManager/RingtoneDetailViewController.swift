@@ -41,7 +41,6 @@ class RingtoneDetailViewController : UITableViewController {
     
     @IBOutlet weak var installCellLabel: UILabel!
     @IBOutlet weak var deleteCellLabel: UILabel!
-    //TODO: Actions for install and delete cells
     
     /// Associated ringtone object to show in this view
     var ringtone : Ringtone!
@@ -53,6 +52,7 @@ class RingtoneDetailViewController : UITableViewController {
     
     /// Timer object used for showing play duration
     var timer : Timer?
+
 
 }
 
@@ -70,6 +70,47 @@ extension RingtoneDetailViewController {
             deleteCellLabel.text = "Delete Ringtone"
         }
     }
+}
+
+//MARK: UI Tap Actions
+extension RingtoneDetailViewController {
+    
+    @IBAction func installRowTapped(_ sender: UITapGestureRecognizer) {
+        if !ringtone.installed { // is not installed
+            
+            installRingtone(ringtone: ringtone)
+            
+        } else { // is installed
+            
+            uninstallRingtone(ringtone: ringtone)
+        }
+    }
+    
+    
+    @IBAction func deleteRowTapped(_ sender: UITapGestureRecognizer) {
+        deleteRingtone(ringtone: self.ringtone)
+    }
+    
+    /// Called when play row is tapped in the associated tableview
+    ///
+    /// - Parameter sender: UITapGestureRecognizer that initiated this call
+    @IBAction func playRowTapped(_ sender: UITapGestureRecognizer) {
+        if self.audioPlayer == nil {
+            setupPlayer()
+        }
+        
+        guard let player = self.audioPlayer else {
+            return
+        }
+        
+        if player.isPlaying {
+            stopPlaying()
+        } else {
+            playRingtone()
+        }
+    }
+    
+    
 }
 
 //MARK: Install/uninstall ringtone methods
@@ -125,10 +166,34 @@ extension RingtoneDetailViewController {
                 strongSelf.updateInstallStatus()
                 HUD.allowsInteraction = true
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Uninstalled ringtone"), delay: 0.7)
-                strongSelf.ringtoneStore.writeToPlist()
             })
         })
         ac.addAction(installAction)
+        present(ac, animated: true, completion: nil)
+    }
+    
+    
+    func deleteRingtone(ringtone: Ringtone) {
+        
+        let title = "Delete \(ringtone.name)"
+        let message = "Are you sure you want to delete this ringtone from this app? It will also be removed from the devices ringtones if installed. If you do not remove it from the source app it will get imported again at next refresh."
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        ac.addAction(cancelAction)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler:
+        { [weak self] (action) -> Void in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.ringtoneStore.removeRingtone(ringtone, completion: { (deletedRingtone) in
+                _ = strongSelf.navigationController?.popViewController(animated: true)
+                HUD.allowsInteraction = true
+                HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Deleted ringtone"), delay: 0.7)
+                
+            })
+        })
+        ac.addAction(deleteAction)
         present(ac, animated: true, completion: nil)
     }
 }
@@ -181,25 +246,7 @@ extension RingtoneDetailViewController {
         
     }
     
-    /// Called when play row is tapped in the associated tableview
-    ///
-    /// - Parameter sender: UITapGestureRecognizer that initiated this call
-    @IBAction func playRowTapped(_ sender: UITapGestureRecognizer) {
-        if self.audioPlayer == nil {
-            setupPlayer()
-        }
-        
-        guard let player = self.audioPlayer else {
-            return
-        }
-        
-        if player.isPlaying {
-            stopPlaying()
-        } else {
-            playRingtone()
-        }
-        
-    }
+    
     
     func enableTimer() {
         guard self.audioPlayer != nil else { return }

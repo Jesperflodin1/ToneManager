@@ -431,6 +431,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="X4b-5I-e6A" appends="YES" id="3RH-8S-s9y"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Qq2-YZ-8Ud">
                                         <rect key="frame" x="0.0" y="455.5" width="375" height="44"/>
@@ -456,6 +459,10 @@
                                                 <constraint firstItem="AJ2-2G-Aw7" firstAttribute="leading" secondItem="7fr-Jm-Lkh" secondAttribute="leadingMargin" id="oon-ch-ssE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="eUZ-hu-V8N" appends="YES" id="USM-aV-w7g"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -483,6 +490,16 @@
                 <tapGestureRecognizer id="1Cg-8Q-ThU">
                     <connections>
                         <action selector="playRowTapped:" destination="Ufq-Kt-sAC" id="ull-bh-yh1"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="X4b-5I-e6A">
+                    <connections>
+                        <action selector="installRowTapped:" destination="Ufq-Kt-sAC" id="8M1-K9-cXe"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="eUZ-hu-V8N">
+                    <connections>
+                        <action selector="deleteRowTapped:" destination="Ufq-Kt-sAC" id="Jyx-QK-AjQ"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
