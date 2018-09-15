@@ -96,23 +96,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
-        backgroundTaskIdentifier = application.beginBackgroundTask(expirationHandler: { [weak self] in
-            guard let strongSelf = self else { return }
+        backgroundTaskIdentifier = application.beginBackgroundTask(expirationHandler: {
             
-            application.endBackgroundTask(strongSelf.backgroundTaskIdentifier)
-            strongSelf.backgroundTaskIdentifier = UIBackgroundTaskInvalid
+            application.endBackgroundTask(self.backgroundTaskIdentifier)
+            self.backgroundTaskIdentifier = UIBackgroundTaskInvalid
         })
         
-        DispatchQueue.global(qos: .background).async { [weak self] in
-            guard let strongSelf = self else { return }
+        DispatchQueue.global(qos: .default).async {
             
-            strongSelf.ringtoneStore.writeToPlist()
+            self.ringtoneStore.writeToPlist()
             UserDefaults.standard.synchronize()
             
             BFLog("Saved plist when app entered background")
             
-            application.endBackgroundTask(strongSelf.backgroundTaskIdentifier)
-            strongSelf.backgroundTaskIdentifier = UIBackgroundTaskInvalid
+            application.endBackgroundTask(self.backgroundTaskIdentifier)
+            self.backgroundTaskIdentifier = UIBackgroundTaskInvalid
         }
     }
 

@@ -27,6 +27,7 @@ public class RingtoneTableViewController : UITableViewController {
     
     /// Table filter variable 0=All, 1=Installed, 2=Not installed
     var ringtoneFilter : Int = 0
+
 }
 
 
@@ -80,6 +81,39 @@ extension RingtoneTableViewController {
         })
         ac.addAction(installAction)
         present(ac, animated: true, completion: nil)
+    }
+    
+    func installAllRingtones(withAlert : Bool = true) {
+        if withAlert {
+            
+            let title = "Install all available ringtones"
+            let message = "This will install ALL available ringtones. Are you sure you want to continue?"
+            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            ac.addAction(cancelAction)
+            
+            let installAction = UIAlertAction(title: "Install All", style: .default, handler:
+            { [weak self] (action) -> Void in
+                guard let strongSelf = self else { return }
+                
+                HUD.show(.labeledProgress(title: "Installing", subtitle: "Installing all ringtones"))
+                
+                BFLog("Calling install for all ringtones")
+                
+                strongSelf.ringtoneStore.installAllRingtones(completionHandler: { (installedTones : Int, failedTones : Int) in
+                    
+                    if installedTones > 0, failedTones == 0 {
+                        HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed \(installedTones) ringtones"), delay: 1.0)
+                    } else if installedTones > 0, failedTones > 0 {
+                        HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed \(installedTones) ringtones, however \(failedTones) failed"), delay: 1.0)
+                    } 
+                    
+                    strongSelf.tableView.reloadData()
+                })
+                
+            })
+        }
     }
     
     
@@ -136,6 +170,15 @@ extension RingtoneTableViewController {
 //MARK: UI Actions
 extension RingtoneTableViewController {
     
+    @IBAction func installAllTapped(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    
+    @IBAction func uninstallAllTapped(_ sender: UIBarButtonItem) {
+        
+    }
+    
     /// Called when install button is tapped in ’RingtoneTableCell’
     ///
     /// - Parameter sender: Button that was tapped
@@ -155,10 +198,6 @@ extension RingtoneTableViewController {
                 uninstallRingtone(inCell: cell)
             }
         }
-    }
-    
-    
-    @IBAction func installAllRingtonesTapped(_ sender: UIBarButtonItem) {
     }
     
     /// Called when trash button is tapped in ’RingtoneTableCell’. Deletes ringtone.

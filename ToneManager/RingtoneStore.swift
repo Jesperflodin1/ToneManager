@@ -169,11 +169,19 @@ extension RingtoneStore {
     /// - Parameters:
     ///   - ringtone: Ringtone object to install
     ///   - completionHandler: Completion block to execute when import is done. Ringtone object is passed as argument, identifier will be set if import was successful
-    public func installRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone, Bool) -> Void) {
+    func installRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone, Bool) -> Void) {
         let installer = RingtoneInstaller(self)
         BFLog("Calling ringtone install for ringtone: \(ringtone)")
         installer.installRingtone(ringtone, completionHandler: completionHandler)
 
+    }
+    
+    func installAllRingtones(completionHandler: @escaping (Int, Int) -> Void) {
+        let tonesToInstall = allRingtones.filter { !$0.installed } // get available ringtones that are not installed
+        
+        let installer = RingtoneInstaller(self)
+        
+        installer.installRingtones(inArray: tonesToInstall, completionHandler: completionHandler)
     }
     
     /// Uses ’RingtoneInstaller’ to uninstall ringtone
@@ -181,7 +189,7 @@ extension RingtoneStore {
     /// - Parameters:
     ///   - ringtone: Ringtone object to uninstall
     ///   - completionHandler: Completion block to execute when uninstall is done. Ringtone object is passed as argument, identifier will be set if it was successful
-    public func uninstallRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone) -> Void) {
+    func uninstallRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone) -> Void) {
         
         let installer = RingtoneInstaller(self)
         
@@ -200,7 +208,7 @@ extension RingtoneStore {
     /// - Parameters:
     ///   - ringtone: Ringtone to remove
     ///   - completion: Optional completion block to run when done. Runs in main queue
-    public func removeRingtone(_ ringtone : Ringtone, completion: ((Ringtone) -> Void)? = nil) {
+    func removeRingtone(_ ringtone : Ringtone, completion: ((Ringtone) -> Void)? = nil) {
         BFLog("Delete was called for ringtone: \(ringtone)")
         
         let installer = RingtoneInstaller(self)

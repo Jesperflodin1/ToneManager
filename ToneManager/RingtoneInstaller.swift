@@ -10,7 +10,7 @@ import Foundation
 import BugfenderSDK
 
 /// Class that handles tonelibrary import and deletion of ringtones
-public class RingtoneInstaller {
+class RingtoneInstaller {
     
     /// Serial queue where import calls are placed
     fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SerialRingtoneInstallerQueue")
@@ -28,7 +28,7 @@ extension RingtoneInstaller {
     ///
     /// - Parameter identifier: identifier to remove
     /// - Returns: returns true if successful
-    public func removeRingtone(_ ringtone : Ringtone, deleteFile : Bool = true) -> Bool {
+    func removeRingtone(_ ringtone : Ringtone, deleteFile : Bool = true) -> Bool {
         if !TLToneManagerHandler.sharedInstance().canImport() {
             Bugfender.error("TLToneManager does not respond to required selectors, unknown error")
             return false
@@ -57,7 +57,7 @@ extension RingtoneInstaller {
     /// - Parameters:
     ///   - ringtone: Ringtone object to install
     ///   - completionHandler: Gets executed after import, ringtone object is passed to it. identifier is set if import was successful
-    public func installRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone, Bool) -> Void )  {
+    func installRingtone(_ ringtone : Ringtone, completionHandler: ((Ringtone, Bool) -> Void)? = nil )  {
         queue.async {
             if !TLToneManagerHandler.sharedInstance().canImport() {
                 Bugfender.error("TLToneManager does not respond to required selectors, unknown error")
@@ -90,9 +90,38 @@ extension RingtoneInstaller {
                 }
                 DispatchQueue.main.async {
                     self.ringtoneStore.didInstallRingtone()
-                    completionHandler(ringtone, success)
+                    
+                    guard let completion = completionHandler else { return }
+                    completion(ringtone, success)
                 }
             }
+        }
+    }
+    
+    func installRingtones(inArray ringtonesArray: Array<Ringtone>, completionHandler: @escaping (Int, Int) -> Void) {
+        let group = DispatchGroup()
+        
+        BFLog("Starting install for an array of ringtones")
+        
+        var installedTones : Int = 0
+        var failedTones : Int = 0
+        
+        for currentTone in ringtonesArray {
+            
+            group.enter()
+            installRingtone(currentTone) { (ringtone, success) in
+                if success {
+                    installedTones += 1
+                } else {
+                    failedTones += 1
+                }
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.ringtoneStore.didInstallRingtone()
+            completionHandler(installedTones, failedTones)
         }
     }
 }

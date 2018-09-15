@@ -52,12 +52,6 @@ class RingtoneDetailViewController : UITableViewController {
     
     /// Timer object used for showing play duration
     var timer : Timer?
-
-    @IBAction func uninstallAllTapped(_ sender: UIBarButtonItem) {
-    }
-    
-    @IBAction func installAllTapped(_ sender: Any) {
-    }
 }
 
 //MARK: UITableViewCell updating methods
