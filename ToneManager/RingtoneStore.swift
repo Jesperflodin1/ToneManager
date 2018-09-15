@@ -145,10 +145,14 @@ public class RingtoneStore {
         NSLog("Verifying ringtones")
         return ringtonesArray.filter { $0.isValid() }
     }
-    
-    
-    
+}
 
+//MARK: RingtoneInstaller callback
+extension RingtoneStore {
+    
+    func didInstallRingtone() {
+        self.writeToPlist()
+    }
 }
 
 //MARK: Ringtone install/uninstall methods
@@ -159,9 +163,10 @@ extension RingtoneStore {
     ///   - ringtone: Ringtone object to install
     ///   - completionHandler: Completion block to execute when import is done. Ringtone object is passed as argument, identifier will be set if import was successful
     public func installRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone, Bool) -> Void) {
-        let installer = RingtoneInstaller()
+        let installer = RingtoneInstaller(self)
         BFLog("Calling ringtone install for ringtone: \(ringtone)")
         installer.installRingtone(ringtone, completionHandler: completionHandler)
+
     }
     
     /// Uses ’RingtoneInstaller’ to uninstall ringtone
@@ -170,16 +175,13 @@ extension RingtoneStore {
     ///   - ringtone: Ringtone object to uninstall
     ///   - completionHandler: Completion block to execute when uninstall is done. Ringtone object is passed as argument, identifier will be set if it was successful
     public func uninstallRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone) -> Void) {
-        let installer = RingtoneInstaller()
+        
+        let installer = RingtoneInstaller(self)
+        
         BFLog("calling uninstall for ringtone: \(ringtone)")
-        
-        guard let identifier = ringtone.identifier else {
-            return
-        }
-        
-        if installer.removeRingtoneWithIdentifier(identifier) {
+
+        if installer.removeRingtone(ringtone, deleteFile: false) {
             BFLog("uninstall success!")
-            ringtone.identifier = nil
             DispatchQueue.main.async {
                 completionHandler(ringtone)
             }
@@ -193,17 +195,14 @@ extension RingtoneStore {
     ///   - completion: Optional completion block to run when done. Runs in main queue
     public func removeRingtone(_ ringtone : Ringtone, completion: ((Ringtone) -> Void)? = nil) {
         BFLog("Delete was called for ringtone: \(ringtone)")
-        if let identifier = ringtone.identifier {
-            BFLog("Ringtone has identifier, trying to remove from tonelibrary")
-            let installer = RingtoneInstaller()
-            if !installer.removeRingtoneWithIdentifier(identifier) {
-                Bugfender.warning("Failed to remove ringtone from tonelibrary: \(ringtone)")
-                return
-            }
-            BFLog("Success removing identifier from tonelibrary")
-        }
-        ringtone.deleteFile()
         
+        let installer = RingtoneInstaller(self)
+            
+        if !installer.removeRingtone(ringtone, deleteFile: true) {
+            Bugfender.warning("Failed to remove ringtone from tonelibrary: \(ringtone)")
+            return
+        }
+        BFLog("Success removing identifier from tonelibrary")
         
         DispatchQueue.main.async {
             self.allRingtones.remove(where: { $0 == ringtone })

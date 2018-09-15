@@ -77,6 +77,10 @@ extension SettingsViewController {
 
 //MARK: Button Actions
 extension SettingsViewController {
+    
+    
+    
+    
     /// Opens github page
     ///
     /// - Parameter sender: Gesture recognizer that called this function

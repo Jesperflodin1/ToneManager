@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import BugfenderSDK
+import PKHUD
 
 /// View controller that shows details page for ringtone
 class RingtoneDetailViewController : UITableViewController {
@@ -53,6 +54,83 @@ class RingtoneDetailViewController : UITableViewController {
     /// Timer object used for showing play duration
     var timer : Timer?
 
+}
+
+//MARK: UITableViewCell updating methods
+extension RingtoneDetailViewController {
+    func updateInstallStatus() {
+        
+        if ringtone.installed {
+            installCellLabel.text = "Uninstall Ringtone"
+            installCellLabel.textColor = ColorPalette.destructiveColor
+            deleteCellLabel.text = "Delete and uninstall ringtone"
+        } else {
+            installCellLabel.text = "Install Ringtone"
+            installCellLabel.textColor = ColorPalette.cellActionColor
+            deleteCellLabel.text = "Delete Ringtone"
+        }
+    }
+}
+
+//MARK: Install/uninstall ringtone methods
+extension RingtoneDetailViewController {
+    func installRingtone(ringtone: Ringtone) {
+        
+        let title = "Install \(ringtone.name)"
+        let message = "Are you sure you want to add this ringtone to device ringtones?"
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        ac.addAction(cancelAction)
+        
+        let installAction = UIAlertAction(title: "Install", style: .default, handler:
+        { (action) -> Void in
+            
+            self.ringtoneStore.installRingtone(ringtone, completionHandler: { [weak self] (installedRingtone, success) in
+                if (success) {
+                    guard let strongSelf = self else { return }
+                    
+                    BFLog("Got success in callback from ringtone install")
+                    strongSelf.updateInstallStatus()
+                    HUD.allowsInteraction = true
+                    HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed ringtone"), delay: 0.7)
+                    strongSelf.ringtoneStore.writeToPlist()
+                } else {
+                    
+                    BFLog("Got failure in callback from ringtone install")
+                    HUD.allowsInteraction = true
+                    HUD.flash(.labeledError(title: "Error", subtitle: "Error when installing ringtone"), delay: 0.7)
+                }
+            })
+        })
+        ac.addAction(installAction)
+        present(ac, animated: true, completion: nil)
+    }
+    
+    
+    func uninstallRingtone(ringtone: Ringtone) {
+        
+        let title = "Uninstall \(ringtone.name)"
+        let message = "Are you sure you want to uninstall this ringtone?"
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        ac.addAction(cancelAction)
+        
+        let installAction = UIAlertAction(title: "Uninstall", style: .destructive, handler:
+        { [weak self] (action) -> Void in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.ringtoneStore.uninstallRingtone(ringtone, completionHandler: { (uninstalledRingtone) in
+                strongSelf.updateInstallStatus()
+                HUD.allowsInteraction = true
+                HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Uninstalled ringtone"), delay: 0.7)
+                strongSelf.ringtoneStore.writeToPlist()
+            })
+        })
+        ac.addAction(installAction)
+        present(ac, animated: true, completion: nil)
+    }
 }
 
 //MARK: AVAudioPlayer methods
@@ -176,11 +254,7 @@ extension RingtoneDetailViewController {
             
             self.ringtonePlayerDurationLabel.text = "0 / \(ringtone.totalTime) s"
             
-            if ringtone.installed {
-                installCellLabel.text = "Uninstall ringtone"
-                installCellLabel.textColor = deleteCellLabel.textColor //UIColor.red //UIColor(red: 252, green: 33, blue: 37, alpha: 1.0)
-                deleteCellLabel.text = "Delete and uninstall ringtone"
-            }
+            updateInstallStatus()
             
             super.viewWillAppear(animated)
         }

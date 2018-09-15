@@ -14,6 +14,12 @@ public class RingtoneInstaller {
     
     /// Serial queue where import calls are placed
     fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SerialRingtoneInstallerQueue")
+    
+    var ringtoneStore : RingtoneStore
+    
+    init(_ ringtoneStore: RingtoneStore) {
+        self.ringtoneStore = ringtoneStore
+    }
 }
 
 //MARK: Uninstall methods
@@ -22,20 +28,30 @@ extension RingtoneInstaller {
     ///
     /// - Parameter identifier: identifier to remove
     /// - Returns: returns true if successful
-    public func removeRingtoneWithIdentifier(_ identifier : String) -> Bool {
+    public func removeRingtone(_ ringtone : Ringtone, deleteFile : Bool = true) -> Bool {
         if !TLToneManagerHandler.sharedInstance().canImport() {
             Bugfender.error("TLToneManager does not respond to required selectors, unknown error")
             return false
         }
+        if let identifier = ringtone.identifier {
+            TLToneManagerHandler.sharedInstance().removeImportedTone(withIdentifier: identifier)
+            ringtone.identifier = nil
+        }
         
-        TLToneManagerHandler.sharedInstance().removeImportedTone(withIdentifier: identifier)
-        
+        if deleteFile {
+            BFLog("Deleting ringtone file")
+            ringtone.deleteFile()
+        } else {
+            self.ringtoneStore.didInstallRingtone()
+        }
+            
         return true
     }
 }
 
 //MARK: Install methods
 extension RingtoneInstaller {
+    
     /// Installs ringtone in tonelibrary
     ///
     /// - Parameters:
@@ -73,6 +89,7 @@ extension RingtoneInstaller {
                     Bugfender.error("Ringtone install failed, got success=\(success) and identifier=\(toneIdentifier ?? "nil")")
                 }
                 DispatchQueue.main.async {
+                    self.ringtoneStore.didInstallRingtone()
                     completionHandler(ringtone, success)
                 }
             }
