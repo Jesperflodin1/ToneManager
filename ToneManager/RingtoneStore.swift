@@ -64,6 +64,10 @@ public class RingtoneStore {
             BFLog("App data directory exists")
         }
     }
+}
+
+//MARK: Plist reading and writing
+extension RingtoneStore {
     
     /// Loads ringtones from plist. Will also verify all loaded ringtones if shouldVerifyRingtones=true (defaults to true). Dispatches work to serial queue.
     ///
@@ -91,9 +95,10 @@ public class RingtoneStore {
                 }
                 
                 // Sort
-                self.allRingtones = WriteLockableSynchronizedArray(with: self.allRingtones.sorted(by: { (initial, next) -> Bool in
-                    return initial.name.compare(next.name) == .orderedAscending
-                }))
+                let sortedTones = self.allRingtones.sorted(by: { (initial, next) -> Bool in
+                    return initial.name.lowercased().compare(next.name.lowercased()) == .orderedAscending
+                })
+                self.allRingtones = WriteLockableSynchronizedArray(with: sortedTones)
             } catch {
                 NSLog("Error when reading ringtones from plist: \(error)")
                 Bugfender.error("Error when reading ringtones from plist: \(error)")
@@ -108,8 +113,9 @@ public class RingtoneStore {
 //            }
             self.finishedLoading = true
             completionHandler()
-            self.ringtoneTableViewController?.dataFinishedLoading()
-            self.ringtoneTableViewController?.tableView?.reloadData()
+            guard let ringtoneTableController = self.ringtoneTableViewController else { return }
+            ringtoneTableController.dataFinishedLoading()
+            ringtoneTableController.tableView?.reloadData()
         }
 
         
@@ -118,6 +124,7 @@ public class RingtoneStore {
     /// Writes all currently known ringtones to local plist. Dispatches work to serial queue
     public func writeToPlist() {
         if !finishedLoading { return }
+        
         queue.async {
             guard let ringtones = self.allRingtones.array else {
                 Bugfender.error("Failed to get ringtones array")
@@ -235,9 +242,10 @@ extension RingtoneStore {
                     
                     DispatchQueue.main.async {
                         self.allRingtones.append(newArray)
-                        self.allRingtones = WriteLockableSynchronizedArray(with: self.allRingtones.sorted(by: { (initial, next) -> Bool in
-                            return initial.name.compare(next.name) == .orderedAscending
-                        }))
+                        let sortedTones = self.allRingtones.sorted(by: { (initial, next) -> Bool in
+                            return initial.name.lowercased().compare(next.name.lowercased()) == .orderedAscending
+                        })
+                        self.allRingtones = WriteLockableSynchronizedArray(with: sortedTones)
                         
                         completionHandler(true)
                     }
@@ -256,6 +264,24 @@ extension RingtoneStore {
             }
             self.writeToPlist()
         }
-        
     }
 }
+
+////MARK: Notification observers
+//extension RingtoneStore {
+//    
+//    func registerObservers() {
+////        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+//        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+////        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
+//    }
+//    
+//    // Called from notification observer when app will enter background or terminate. Writes ringtone plist to disk.
+//    @objc public func willEnterBackground() {
+//        
+//        
+//        
+//        BFLog("Will enter background")
+//        self.writeToPlist()
+//    }
+//}

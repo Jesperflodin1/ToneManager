@@ -53,7 +53,11 @@ class RingtoneDetailViewController : UITableViewController {
     /// Timer object used for showing play duration
     var timer : Timer?
 
-
+    @IBAction func uninstallAllTapped(_ sender: UIBarButtonItem) {
+    }
+    
+    @IBAction func installAllTapped(_ sender: Any) {
+    }
 }
 
 //MARK: UITableViewCell updating methods
@@ -201,6 +205,18 @@ extension RingtoneDetailViewController {
 //MARK: AVAudioPlayer methods
 extension RingtoneDetailViewController {
     
+    private func humanReadableDuration(_ duration: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = NumberFormatter.Style.decimal
+        formatter.roundingMode = NumberFormatter.RoundingMode.halfUp
+        formatter.maximumFractionDigits = 1
+        
+        guard let durationString = formatter.string(from: NSNumber(value: duration)) else {
+            return "nil"
+        }
+        return durationString
+    }
+    
     func setupPlayer() {
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
@@ -227,7 +243,7 @@ extension RingtoneDetailViewController {
         }
         ringtonePlayerPlayLabel.text = "Stop"
         ringtonePlayerPlayImage.image = UIImage(named: "stop-circle")
-        ringtonePlayerDurationLabel.text = "0 / \(Int(round(player.duration))) s"
+        ringtonePlayerDurationLabel.text = "0.0 / \(humanReadableDuration(player.duration)) s"
         enableTimer()
         player.play()
     }
@@ -239,7 +255,7 @@ extension RingtoneDetailViewController {
         }
         ringtonePlayerPlayLabel.text = "Play"
         ringtonePlayerPlayImage.image = UIImage(named: "play-circle")
-        ringtonePlayerDurationLabel.text = "0 / \(Int(round(player.duration))) s"
+        ringtonePlayerDurationLabel.text = "0.0 / \(humanReadableDuration(player.duration)) s"
         stopTimer()
         player.stop()
         self.audioPlayer = nil
@@ -251,7 +267,7 @@ extension RingtoneDetailViewController {
     func enableTimer() {
         guard self.audioPlayer != nil else { return }
         
-        timer = Timer(timeInterval: 0.1, target: self, selector: (#selector(self.updateProgress)), userInfo: nil, repeats: true)
+        timer = Timer(timeInterval: 0.05, target: self, selector: (#selector(self.updateProgress)), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: RunLoopMode(rawValue: "NSDefaultRunLoopMode"))
     }
     
@@ -266,8 +282,8 @@ extension RingtoneDetailViewController {
             return
         }
         player.updateMeters() //refresh state
-        let currentTime : Int = Int(round(player.currentTime))
-        ringtonePlayerDurationLabel.text = "\(currentTime) / \(Int(round(player.duration)))"
+  
+        ringtonePlayerDurationLabel.text = "\(humanReadableDuration(player.currentTime)) / \(humanReadableDuration(player.duration))"
     }
 }
 
@@ -295,11 +311,11 @@ extension RingtoneDetailViewController {
         if ringtone != nil {
             self.nameLabel.text = ringtone.name
             self.appLabel.text = ringtone.appName
-            self.lengthLabel.text = "\(ringtone.totalTime) s"
+            self.lengthLabel.text = "\(humanReadableDuration(ringtone.rawDuration)) s"
             self.sizeLabel.text = "\(ringtone.humanReadableSize())"
             self.pathLabel.text = ringtone.fileURL.path
             
-            self.ringtonePlayerDurationLabel.text = "0 / \(ringtone.totalTime) s"
+            self.ringtonePlayerDurationLabel.text = "0.0 / \(humanReadableDuration(ringtone.rawDuration)) s"
             
             updateInstallStatus()
             

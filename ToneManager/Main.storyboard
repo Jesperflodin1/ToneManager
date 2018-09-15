@@ -19,11 +19,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="rPN-Rp-Nx9">
+                        <view key="tableHeaderView" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" id="rPN-Rp-Nx9">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <segmentedControl opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SuP-95-mAH">
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SuP-95-mAH">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                     <segments>
                                         <segment title="All"/>
@@ -170,10 +170,16 @@
                                 <action selector="updateTapped:" destination="rCO-Vu-eEW" id="emu-pH-QMO"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Jw1-xQ-0Xx"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="ypg-6Q-hmd"/>
                         <barButtonItem title="Install all" id="mp6-lO-Vjj">
                             <connections>
-                                <action selector="installAllRingtonesTapped:" destination="rCO-Vu-eEW" id="GWw-zb-Uxr"/>
+                                <action selector="installAllTapped:" destination="szD-tQ-ESr" id="MoY-Ua-Qvq"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="D0j-OG-EfF"/>
+                        <barButtonItem title="Uninstall all" id="48K-l0-sD7">
+                            <connections>
+                                <action selector="uninstallAllTapped:" destination="szD-tQ-ESr" id="yRp-zD-XgT"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -188,6 +194,7 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dlp-19-Fdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="szD-tQ-ESr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="596" y="124.58770614692655"/>
         </scene>
@@ -451,12 +458,12 @@
                                             </subviews>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="AJ2-2G-Aw7" secondAttribute="trailing" id="5nW-dP-YtM"/>
-                                                <constraint firstItem="AJ2-2G-Aw7" firstAttribute="bottom" secondItem="7fr-Jm-Lkh" secondAttribute="bottomMargin" id="BQ1-Gn-9Bb"/>
-                                                <constraint firstItem="AJ2-2G-Aw7" firstAttribute="centerY" secondItem="7fr-Jm-Lkh" secondAttribute="centerY" id="Q0n-D1-mhr"/>
-                                                <constraint firstItem="AJ2-2G-Aw7" firstAttribute="centerX" secondItem="7fr-Jm-Lkh" secondAttribute="centerX" id="QHD-qU-WBv"/>
-                                                <constraint firstItem="AJ2-2G-Aw7" firstAttribute="top" secondItem="7fr-Jm-Lkh" secondAttribute="topMargin" id="WLr-fA-u9V"/>
-                                                <constraint firstItem="AJ2-2G-Aw7" firstAttribute="leading" secondItem="7fr-Jm-Lkh" secondAttribute="leadingMargin" id="oon-ch-ssE"/>
+                                                <constraint firstItem="AJ2-2G-Aw7" firstAttribute="leading" secondItem="7fr-Jm-Lkh" secondAttribute="leadingMargin" id="0I0-Oy-avs"/>
+                                                <constraint firstItem="AJ2-2G-Aw7" firstAttribute="centerY" secondItem="7fr-Jm-Lkh" secondAttribute="centerY" id="C1O-jp-YnI"/>
+                                                <constraint firstItem="AJ2-2G-Aw7" firstAttribute="trailing" secondItem="7fr-Jm-Lkh" secondAttribute="trailingMargin" id="NTF-0O-q50"/>
+                                                <constraint firstItem="AJ2-2G-Aw7" firstAttribute="centerX" secondItem="7fr-Jm-Lkh" secondAttribute="centerX" id="Qim-Pq-2yh"/>
+                                                <constraint firstItem="AJ2-2G-Aw7" firstAttribute="bottom" secondItem="7fr-Jm-Lkh" secondAttribute="bottomMargin" id="SqP-Kn-TMz"/>
+                                                <constraint firstItem="AJ2-2G-Aw7" firstAttribute="top" secondItem="7fr-Jm-Lkh" secondAttribute="topMargin" id="fv9-CN-nUq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>

@@ -200,19 +200,12 @@ extension RingtoneTableViewController {
     
     private func registerObservers() {
         NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
     }
     
     /// Called from notification observer when app will enter foreground. Updates available ringtones
     @objc public func willEnterForeground() {
         BFLog("did become active, autoinstall = \(Preferences.autoInstall)")
         updateRingtones()
-    }
-    /// Called from notification observer when app will enter background or terminate. Writes ringtone plist to disk.
-    @objc public func willEnterBackground() {
-        ringtoneStore.writeToPlist()
     }
 }
 
@@ -222,13 +215,6 @@ extension RingtoneTableViewController {
     
     /// Called when view has finished loading
     override public func viewDidLoad() {
-        NSLog("Viewdidload")
-        
-        self.ringtoneStore = RingtoneStore(ringtoneTableViewController: self, completionHandler: {
-            NSLog("Ringtonestore completionhandler")
-            
-            
-        })
         
         self.tableView.dataSource = self
         self.tableView.delegate = self

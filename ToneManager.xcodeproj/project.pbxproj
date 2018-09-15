@@ -172,13 +172,13 @@
 				2496949E2144EBB9009960D7 /* Main.storyboard */,
 				2497A63E214251D300597B5C /* LaunchScreen.storyboard */,
 				2497A63A214251D200597B5C /* AppDelegate.swift */,
+				24982BD3214CE16700DD0474 /* Preferences.swift */,
+				24982BD1214CE12B00DD0474 /* ColorPalette.swift */,
 				24EE206A214276CF0045D678 /* SettingsViewController.swift */,
 				249694AF2147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift */,
 				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
-				24982BD1214CE12B00DD0474 /* ColorPalette.swift */,
-				24982BD3214CE16700DD0474 /* Preferences.swift */,
-				24EE2074214295480045D678 /* RingtoneTableCell.swift */,
 				2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */,
+				24EE2074214295480045D678 /* RingtoneTableCell.swift */,
 				2497A6672142537B00597B5C /* Ringtone.swift */,
 				2497A6692142538500597B5C /* RingtoneStore.swift */,
 				249694A621454F96009960D7 /* RingtoneScanner.swift */,
@@ -313,6 +313,11 @@
 					2497A636214251D200597B5C = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 0940;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					2497A645214251D300597B5C = {
 						CreatedOnToolsVersion = 9.4.1;

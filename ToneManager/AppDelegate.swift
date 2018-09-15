@@ -12,13 +12,18 @@ import BugfenderSDK
 /// Application execution start point
 @UIApplicationMain
 /// AppDelegate class
-public class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /// reference to UIWindow
-    public var window: UIWindow?
+    var window: UIWindow?
+    
+    var ringtoneStore : RingtoneStore!
+    
+    var backgroundTaskIdentifier : UIBackgroundTaskIdentifier!
+
     
     /// Enables remote logging if enabled in userdefaults
-    public func enableRemoteLogging() {
+    func enableRemoteLogging() {
         if Preferences.remoteLogging {
             Bugfender.activateLogger("HId16MWO0WTn4W4zk1Ipb32RtNf43dN6")
             Bugfender.enableUIEventLogging() // optional, log user interactions automatically
@@ -29,7 +34,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /// Sets default user settings for UserDefaults
-    public func registerDefaults() {
+    func registerDefaults() {
         Preferences.defaults.register(defaults: [
             Preferences.keys.autoInstall.rawValue : false,
             Preferences.keys.remoteLogging.rawValue : true,
@@ -45,7 +50,8 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     ///   - application: Current UIApplication
     ///   - launchOptions: Not used here
     /// - Returns: always true
-    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        backgroundTaskIdentifier = UIBackgroundTaskInvalid
         
         registerDefaults()
         enableRemoteLogging()
@@ -58,7 +64,13 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         BFLog("Loading main storyboard")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nvc = storyboard.instantiateViewController(withIdentifier: "JFTMNavigationController") as! UINavigationController
-//        let vc = nvc.topViewController as! RingtoneTableViewController
+        let vc = nvc.topViewController as! RingtoneTableViewController
+        
+        vc.ringtoneStore = RingtoneStore(ringtoneTableViewController: vc, completionHandler: {
+            NSLog("Ringtonestore completionhandler")
+        })
+        
+        self.ringtoneStore = vc.ringtoneStore
         
         self.window!.rootViewController = nvc
         self.window!.makeKeyAndVisible()
@@ -71,7 +83,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     /// UIApplicationDelegate method.
     ///
     /// - Parameter application: Current UIApplication
-    public func applicationWillResignActive(_ application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         UserDefaults.standard.synchronize()
@@ -80,16 +92,34 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     /// UIApplicationDelegate method.
     ///
     /// - Parameter application: Current UIApplication
-    public func applicationDidEnterBackground(_ application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        UserDefaults.standard.synchronize()
+        
+        backgroundTaskIdentifier = application.beginBackgroundTask(expirationHandler: { [weak self] in
+            guard let strongSelf = self else { return }
+            
+            application.endBackgroundTask(strongSelf.backgroundTaskIdentifier)
+            strongSelf.backgroundTaskIdentifier = UIBackgroundTaskInvalid
+        })
+        
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.ringtoneStore.writeToPlist()
+            UserDefaults.standard.synchronize()
+            
+            BFLog("Saved plist when app entered background")
+            
+            application.endBackgroundTask(strongSelf.backgroundTaskIdentifier)
+            strongSelf.backgroundTaskIdentifier = UIBackgroundTaskInvalid
+        }
     }
 
     /// UIApplicationDelegate method. Called when application will return from background
     ///
     /// - Parameter application: Current UIApplication
-    public func applicationWillEnterForeground(_ application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         BFLog("App returning from background")
     }
@@ -97,14 +127,14 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     /// UIApplicationDelegate method. Called when application returns from background
     ///
     /// - Parameter application: Current UIApplication
-    public func applicationDidBecomeActive(_ application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
     /// UIApplicationDelegate method.
     ///
     /// - Parameter application: Current UIApplication
-    public func applicationWillTerminate(_ application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         UserDefaults.standard.synchronize()
     }
