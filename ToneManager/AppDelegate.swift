@@ -71,10 +71,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
 //        nvc.navigationBar.barTintColor = UIColor(patternImage: UIImage(named: "menuBackground")!)
-        nvc.navigationBar.setBackgroundImage(UIImage(named: "menuBackground3"), for: .default)
+        nvc.navigationBar.setBackgroundImage(UIImage(named: "navbar")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: .stretch), for: .default)
         nvc.navigationBar.isTranslucent = true
         
-        nvc.toolbar.setBackgroundImage(UIImage(named: "menuBackground3"), forToolbarPosition: .any, barMetrics: .default)
+        nvc.toolbar.setBackgroundImage(UIImage(named: "navbar")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: .stretch), forToolbarPosition: .any, barMetrics: .default)
         nvc.toolbar.isTranslucent = true
         
         self.window!.rootViewController = nvc
