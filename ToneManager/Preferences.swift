@@ -23,7 +23,6 @@ struct Preferences {
     }
 }
 
-//TODO: Getter for installed apps?
 //MARK: Simple setters and getters
 extension Preferences {
     
@@ -101,5 +100,23 @@ extension Preferences {
             return apps
         }
     }
-    
+}
+
+//MARK: Install status
+extension Preferences {
+    static var audikoLiteInstalled : Bool {
+        get {
+            return FBApplicationInfoHandler.installedStatus(forBundleId: "com.908.AudikoFree")
+        }
+    }
+    static var audikoProInstalled : Bool {
+        get {
+            return FBApplicationInfoHandler.installedStatus(forBundleId: "com.908.Audiko")
+        }
+    }
+    static var zedgeRingtonesInstalled : Bool {
+        get {
+            return FBApplicationInfoHandler.installedStatus(forBundleId: "com.zedge.Zedge")
+        }
+    }
 }

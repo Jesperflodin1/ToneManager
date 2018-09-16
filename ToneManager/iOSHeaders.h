@@ -6,11 +6,7 @@
 //  Copyright © 2018 Jesper Flodin. All rights reserved.
 //
 
-#ifndef iOSHeaders_h
-#define iOSHeaders_h
-
-
-#endif /* iOSHeaders_h */
+#import <UIKit/UIApplication.h>
 
 //#import <MobileCoreServices/MobileCoreServices.h>
 
@@ -23,6 +19,7 @@
 + (id)applicationProxyForIdentifier:(NSString *)arg1;
 + (id)applicationProxyForBundleURL:(NSURL *)arg1;
 - (NSString *)itemName;
+- (BOOL)isInstalled;
 @end
 
 /**
@@ -76,3 +73,8 @@
  */
 -(BOOL)toneWithIdentifierIsValid:(NSString *)toneIdentifier;
 @end
+
+@interface PrivateApi_LSApplicationWorkspace
+- (NSArray*)allInstalledApplications;
+- (bool)openApplicationWithBundleID:(id)arg1;
+    @end

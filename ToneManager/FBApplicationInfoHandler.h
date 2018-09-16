@@ -28,11 +28,19 @@
  @return <#return value description#>
  */
 + (NSString * __nullable)displayNameForBundleIdentifier:(NSString * __nonnull)bundleID;
+    
++ (BOOL)installedStatusForBundleId:(NSString * __nonnull)bundleID;
+    
 /**
  <#Description#>
 
  @return <#return value description#>
  */
 + (BOOL)loadFramework;
+
+@end
+
+@interface ApplicationHandler : NSObject
+    + (BOOL)openApplicationWithIdentifier:(NSString *)bundleID;
 
 @end

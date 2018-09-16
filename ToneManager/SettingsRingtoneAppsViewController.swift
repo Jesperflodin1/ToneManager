@@ -50,6 +50,25 @@ extension SettingsRingtoneAppsViewController {
     ///
     /// - Parameter animated: true if view will appear with animation
     override public func viewWillAppear(_ animated: Bool) {
+        
+        if Preferences.zedgeRingtonesInstalled {
+            zedgeSwitch.isEnabled = true
+        } else {
+            zedgeSwitch.isEnabled = false
+        
+        }
+        
+        if Preferences.audikoLiteInstalled {
+            audikoLiteSwitch.isEnabled = true
+        } else {
+            audikoLiteSwitch.isEnabled = false
+        }
+        
+        if Preferences.audikoProInstalled {
+            audikoProSwitch.isEnabled = true
+        } else {
+            audikoProSwitch.isEnabled = false
+        }
         zedgeSwitch.isOn = Preferences.zedgeRingtones
         audikoLiteSwitch.isOn = Preferences.audikoLite
         audikoProSwitch.isOn = Preferences.audikoPro

@@ -13,7 +13,7 @@ import BugfenderSDK
 class RingtoneInstaller {
     
     /// Serial queue where import calls are placed
-    fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SerialRingtoneInstallerQueue")
+    fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SerialRingtoneInstallerQueue", attributes: .concurrent)
     
     var ringtoneStore : RingtoneStore
     
@@ -28,24 +28,64 @@ extension RingtoneInstaller {
     ///
     /// - Parameter identifier: identifier to remove
     /// - Returns: returns true if successful
-    func removeRingtone(_ ringtone : Ringtone, deleteFile : Bool = true, completionHandler: ((Bool) -> Void)? = nil ) -> Bool {
-        if !TLToneManagerHandler.sharedInstance().canImport() {
-            Bugfender.error("TLToneManager does not respond to required selectors, unknown error")
-            return false
+    func removeRingtone(_ ringtone : Ringtone, deleteFile : Bool = true, shouldCallBackToStore: Bool = true, completionHandler: @escaping (Bool) -> Void) {
+        queue.async {
+            if !TLToneManagerHandler.sharedInstance().canImport() {
+                Bugfender.error("TLToneManager does not respond to required selectors, unknown error")
+                DispatchQueue.main.async {
+                    completionHandler(false)
+                }
+                return
+            }
+            if let identifier = ringtone.identifier {
+                TLToneManagerHandler.sharedInstance().removeImportedTone(withIdentifier: identifier)
+                ringtone.identifier = nil
+            }
+            
+            if deleteFile {
+                BFLog("Deleting ringtone file")
+                ringtone.deleteFile()
+            }
+            
+            DispatchQueue.main.async {
+                
+                if deleteFile {
+                    self.ringtoneStore.allRingtones.remove(where: { $0 == ringtone })
+                }
+                if shouldCallBackToStore {
+                    self.ringtoneStore.writeToPlist()
+                }
+                completionHandler(true)
+            }
         }
-        if let identifier = ringtone.identifier {
-            TLToneManagerHandler.sharedInstance().removeImportedTone(withIdentifier: identifier)
-            ringtone.identifier = nil
+    }
+    
+    func removeRingtones(inArray ringtonesArray: Array<Ringtone>, deleteFiles: Bool = false, completionHandler: @escaping (Int, Int) -> Void) {
+        let group = DispatchGroup()
+        
+        BFLog("Starting uninstall for an array of ringtones with deletefiles = \(deleteFiles)")
+        
+        var uninstalledTones : Int = 0
+        var failedTones : Int = 0
+        
+        for currentTone in ringtonesArray {
+            
+            group.enter()
+            removeRingtone(currentTone, deleteFile: deleteFiles, shouldCallBackToStore: false, completionHandler: { (success) in
+                if success {
+                    uninstalledTones += 1
+                } else {
+                    failedTones += 1
+                }
+                group.leave()
+            })
         }
         
-        if deleteFile {
-            BFLog("Deleting ringtone file")
-            ringtone.deleteFile()
-        } else {
-            self.ringtoneStore.didInstallRingtone()
+        group.notify(queue: .main) {
+            self.ringtoneStore.writeToPlist()
+            completionHandler(uninstalledTones, failedTones)
         }
-            
-        return true
+        
     }
 }
 
@@ -57,14 +97,20 @@ extension RingtoneInstaller {
     /// - Parameters:
     ///   - ringtone: Ringtone object to install
     ///   - completionHandler: Gets executed after import, ringtone object is passed to it. identifier is set if import was successful
-    func installRingtone(_ ringtone : Ringtone, completionHandler: ((Ringtone, Bool) -> Void)? = nil )  {
+    func installRingtone(_ ringtone : Ringtone, shouldCallBackToStore: Bool = true, completionHandler: @escaping (Ringtone, Bool) -> Void)  {
         queue.async {
             if !TLToneManagerHandler.sharedInstance().canImport() {
                 Bugfender.error("TLToneManager does not respond to required selectors, unknown error")
+                DispatchQueue.main.async {
+                    completionHandler(ringtone, false)
+                }
                 return
             }
             if ringtone.identifier != nil {
-                BFLog("Ringtone is already imported, tone: \(ringtone)")
+                BFLog("Ringtone is already installed, tone: \(ringtone)")
+                DispatchQueue.main.async {
+                    completionHandler(ringtone, false)
+                }
                 return
             }
             var toneLibraryMetaData = [String:Any]()
@@ -75,6 +121,9 @@ extension RingtoneInstaller {
             
             guard let toneData = ringtone.getData() else {
                 Bugfender.error("Could not get data for ringtone with path (\(ringtone.fileURL.path))")
+                DispatchQueue.main.async {
+                    completionHandler(ringtone, false)
+                }
                 return
             }
             
@@ -89,10 +138,11 @@ extension RingtoneInstaller {
                     Bugfender.error("Ringtone install failed, got success=\(success) and identifier=\(toneIdentifier ?? "nil")")
                 }
                 DispatchQueue.main.async {
-                    self.ringtoneStore.didInstallRingtone()
+                    if shouldCallBackToStore {
+                        self.ringtoneStore.writeToPlist()
+                    }
                     
-                    guard let completion = completionHandler else { return }
-                    completion(ringtone, success)
+                    completionHandler(ringtone, success)
                 }
             }
         }
@@ -109,7 +159,7 @@ extension RingtoneInstaller {
         for currentTone in ringtonesArray {
             
             group.enter()
-            installRingtone(currentTone) { (ringtone, success) in
+            installRingtone(currentTone, shouldCallBackToStore: false) { (ringtone, success) in
                 if success {
                     installedTones += 1
                 } else {
@@ -120,7 +170,7 @@ extension RingtoneInstaller {
         }
         
         group.notify(queue: .main) {
-            self.ringtoneStore.didInstallRingtone()
+            self.ringtoneStore.writeToPlist()
             completionHandler(installedTones, failedTones)
         }
     }

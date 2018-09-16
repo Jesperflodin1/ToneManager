@@ -37,6 +37,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Preferences.keys.audikoPro.rawValue : true,
             Preferences.keys.zedgeRingtones.rawValue : true
             ])
+        
+//        if !Preferences.audikoLiteInstalled {
+//            Preferences.audikoLite = false
+//        }
+//        if !Preferences.audikoProInstalled {
+//            Preferences.audikoPro = false
+//        }
+//        if !Preferences.zedgeRingtonesInstalled {
+//            Preferences.zedgeRingtones = false
+//        }
     }
 
     /// UIApplicationDelegate method. Called on application launch. Loads and sets rootviewcontroller from main storyboard
@@ -53,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BFLog("App start") // use BFLog as you would use NSLog
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window!.backgroundColor = UIColor.white
+//        self.window!.backgroundColor = UIColor.white
         
         BFLog("Loading main storyboard")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

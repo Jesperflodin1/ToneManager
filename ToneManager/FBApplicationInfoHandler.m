@@ -74,5 +74,28 @@
     NSLog(@"JFTM: appProxy = %@",appProxy);
     return [appProxy performSelector:@selector(itemName)];
 }
+    
++ (BOOL)installedStatusForBundleId:(NSString * __nonnull)bundleID {
+    if (![FBApplicationInfoHandler loadFramework]) {
+        return false;
+    }
+    if ( ![NSClassFromString(@"LSApplicationProxy") respondsToSelector:@selector(applicationProxyForIdentifier:)]) {
+        NSLog(@"JFTM: ERROR: applicationProxyForIdentifier: not responding");
+        return nil;
+    }
+    LSApplicationProxy *appProxy = [NSClassFromString(@"LSApplicationProxy") performSelector:@selector(applicationProxyForIdentifier:) withObject:bundleID];
+    return [appProxy performSelector:@selector(isInstalled)];
+}
+
+@end
+
+@implementation ApplicationHandler : NSObject
+    + (BOOL)openApplicationWithIdentifier:(NSString *)bundleID {
+        PrivateApi_LSApplicationWorkspace* _workspace = [NSClassFromString(@"LSApplicationWorkspace") new];
+        
+        return (BOOL)[_workspace openApplicationWithBundleID:bundleID];
+    }
+
+
 
 @end

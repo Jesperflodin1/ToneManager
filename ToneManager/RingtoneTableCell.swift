@@ -16,9 +16,6 @@ public class RingtoneTableCell: UITableViewCell {
     /// Outlet for label showing which app ringtone was imported from
     @IBOutlet weak var fromAppLabel: UILabel!
     
-    /// Outlet for ringtone length label
-    @IBOutlet weak var lengthLabel: UILabel!
-    
     /// Outlet for label showing install status
     @IBOutlet weak var installedLabel: UILabel!
     
@@ -60,9 +57,7 @@ extension RingtoneTableCell {
             
             self.deleteButton.alpha = 0.7
             self.deleteButton.isEnabled = true
-            
-            self.lengthLabel.alpha = 1.0
-            self.lengthLabel.isHidden = false
+
         } else {
             self.playButton.alpha = 0.0
             self.playButton.isEnabled = false
@@ -75,23 +70,20 @@ extension RingtoneTableCell {
             
             self.deleteButton.alpha = 0.0
             self.deleteButton.isEnabled = false
-            
-            self.lengthLabel.alpha = 0.0
-            self.lengthLabel.isHidden = true
         }
     }
     
     /// Updates UIImage for install button to show if button action is install or uninstall. Also updates installed label
     public func updateInstallStatus() {
         if !(ringtoneItem?.installed)! { // not installed
-            installButton.setImage(UIImage(named: "install"), for: .normal)
+            installButton.setImage(UIImage(named: "plus-circle44"), for: .normal)
             //            installButtonHorizontalConstraint.constant = 26
             installedLabel.isHidden = true
             
             self.setNeedsLayout()
             self.layoutIfNeeded()
         } else { // installed
-            installButton.setImage(UIImage(named: "uninstall"), for: .normal)
+            installButton.setImage(UIImage(named: "minus-circle44"), for: .normal)
             //            installButtonHorizontalConstraint.constant = 26
             installedLabel.isHidden = false
             
@@ -114,7 +106,6 @@ extension RingtoneTableCell {
     override public func prepareForReuse() {
         nameLabel.text = ""
         fromAppLabel.text = ""
-        lengthLabel.text = ""
         installedLabel.text = ""
         updateButtons(false)
         ringtoneItem = nil
