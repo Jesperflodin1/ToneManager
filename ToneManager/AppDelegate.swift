@@ -69,6 +69,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nvc = storyboard.instantiateViewController(withIdentifier: "JFTMNavigationController") as! UINavigationController
         
+        
+//        nvc.navigationBar.barTintColor = UIColor(patternImage: UIImage(named: "menuBackground")!)
+        nvc.navigationBar.setBackgroundImage(UIImage(named: "menuBackground3"), for: .default)
+        nvc.navigationBar.isTranslucent = true
+        
+        nvc.toolbar.setBackgroundImage(UIImage(named: "menuBackground3"), forToolbarPosition: .any, barMetrics: .default)
+        nvc.toolbar.isTranslucent = true
+        
         self.window!.rootViewController = nvc
         self.window!.makeKeyAndVisible()
         

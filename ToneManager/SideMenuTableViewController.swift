@@ -21,7 +21,7 @@ class SideMenuTableViewController: UITableViewController, SKStoreProductViewCont
     let audikoProItunesId : NSNumber = 725401575
     
     @IBAction func openZedgeTapped(_ sender: UITapGestureRecognizer) {
-//        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
         if Preferences.zedgeRingtonesInstalled {
             ApplicationHandler.openApplication(withIdentifier: "com.zedge.Zedge")
         } else {
@@ -31,7 +31,7 @@ class SideMenuTableViewController: UITableViewController, SKStoreProductViewCont
     }
     
     @IBAction func openAudikoLiteTapped(_ sender: UITapGestureRecognizer) {
-//        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
         if Preferences.audikoLiteInstalled {
             ApplicationHandler.openApplication(withIdentifier: "com.908.AudikoFree")
         } else {
@@ -41,7 +41,7 @@ class SideMenuTableViewController: UITableViewController, SKStoreProductViewCont
     }
     
     @IBAction func openAudikoPaidTapped(_ sender: UITapGestureRecognizer) {
-//        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
         if Preferences.audikoProInstalled {
             ApplicationHandler.openApplication(withIdentifier: "com.908.Audiko")
         } else {

@@ -411,6 +411,7 @@ extension RingtoneTableViewController {
         self.tableView.delegate = self
         registerObservers()
         setupSideMenu()
+        
         super.viewDidLoad()
     }
     
