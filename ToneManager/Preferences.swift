@@ -23,7 +23,7 @@ struct Preferences {
     }
 }
 
-
+//TODO: Getter for installed apps?
 //MARK: Simple setters and getters
 extension Preferences {
     

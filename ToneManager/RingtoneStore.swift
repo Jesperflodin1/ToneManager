@@ -13,18 +13,27 @@ import BugfenderSDK
 public let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
 
 /// Model class for ringtones
-public class RingtoneStore {
+class RingtoneStore {
     
     /// Path to local plist for ringtone metadata
-    public let plistURL = URL(fileURLWithPath: "/var/mobile/Library/ToneManager/tones.plist")
-    
-    /// Reference to RingtoneTableViewController
-    public weak var ringtoneTableViewController : RingtoneTableViewController?
+    let plistURL = URL(fileURLWithPath: "/var/mobile/Library/ToneManager/tones.plist")
     
     var finishedLoading : Bool = false
     
     /// WriteLockableSynchronizedArray for all ringtones
-    public var allRingtones = WriteLockableSynchronizedArray<Ringtone>()
+    var allRingtones = WriteLockableSynchronizedArray<Ringtone>()
+    
+    var installedRingtones : Array<Ringtone> {
+        get {
+            return allRingtones.filter { $0.installed }
+        }
+    }
+    
+    var notInstalledRingtones : Array<Ringtone> {
+        get {
+            return allRingtones.filter { !$0.installed }
+        }
+    }
     
     /// Serial queue for reading/writing plist
     fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SerialRingtoneStorePListReaderWriterQueue")
@@ -38,15 +47,21 @@ public class RingtoneStore {
         
     }
     
+    static let sharedInstance = RingtoneStore()
+    
+    var backgroundTaskIdentifier : UIBackgroundTaskIdentifier!
+    
     /// Init method. Checks folder existence and if necessary creates application data folder
-    init(ringtoneTableViewController : RingtoneTableViewController, completionHandler: @escaping () -> Void) {
+    init() {
         BFLog("RingtoneStore init")
         NSLog("RingtoneStore init")
-        self.ringtoneTableViewController = ringtoneTableViewController
+        
+        backgroundTaskIdentifier = UIBackgroundTaskInvalid
+        registerObservers()
         
         createAppDir()
         
-        loadFromPlist(completionHandler: completionHandler)
+        loadFromPlist()
     }
     
     /// Creates application data directory if possible and needed
@@ -72,15 +87,14 @@ extension RingtoneStore {
     /// Loads ringtones from plist. Will also verify all loaded ringtones if shouldVerifyRingtones=true (defaults to true). Dispatches work to serial queue.
     ///
     /// - Parameter shouldVerifyRingtones: will verify ringtones if true, is by default true
-    public func loadFromPlist(_ shouldVerifyRingtones : Bool = true, completionHandler:  @escaping () -> Void) {
+    public func loadFromPlist(_ shouldVerifyRingtones : Bool = true) {
         queue.async {
             //TODO: Check if tones.plist exist. If it does and reading failes, try to rebuild database!
             
-//            var ringtonesArray : Array<Ringtone> = []
             NSLog("Trying to read plist")
             do {
                 let data = try Data(contentsOf: self.plistURL)
-                NSLog("Got data: \(data)")
+
                 let decoder = PropertyListDecoder()
                 let ringtonesArray = try decoder.decode(Array<Ringtone>.self, from: data)
                 
@@ -113,10 +127,7 @@ extension RingtoneStore {
             
 //            }
             self.finishedLoading = true
-            completionHandler()
-            guard let ringtoneTableController = self.ringtoneTableViewController else { return }
-            ringtoneTableController.dataFinishedLoading()
-            ringtoneTableController.tableView?.reloadData()
+            NotificationCenter.default.post(name: .ringtoneStoreDidFinishLoading, object: nil)
         }
 
         
@@ -178,7 +189,7 @@ extension RingtoneStore {
     }
     
     func installAllRingtones(completionHandler: @escaping (Int, Int) -> Void) {
-        let tonesToInstall = allRingtones.filter { !$0.installed } // get available ringtones that are not installed
+        let tonesToInstall = self.notInstalledRingtones
         
         let installer = RingtoneInstaller(self)
         
@@ -276,21 +287,36 @@ extension RingtoneStore {
     }
 }
 
-////MARK: Notification observers
-//extension RingtoneStore {
-//    
-//    func registerObservers() {
-////        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-//        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-////        NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterBackground), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
-//    }
-//    
-//    // Called from notification observer when app will enter background or terminate. Writes ringtone plist to disk.
-//    @objc public func willEnterBackground() {
-//        
-//        
-//        
-//        BFLog("Will enter background")
-//        self.writeToPlist()
-//    }
-//}
+//MARK: Notification observers
+extension RingtoneStore {
+    
+    func registerObservers() {
+        NotificationCenter.default.addObserver(self, selector:#selector(self.didEnterBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+    }
+    
+    // Called from notification observer when app will enter background or terminate. Writes ringtone plist to disk.
+    @objc public func didEnterBackground() {
+        
+        backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: {
+            
+            UIApplication.shared.endBackgroundTask(self.backgroundTaskIdentifier)
+            self.backgroundTaskIdentifier = UIBackgroundTaskInvalid
+        })
+        
+        DispatchQueue.global(qos: .default).async {
+            
+            self.writeToPlist()
+            UserDefaults.standard.synchronize()
+            
+            BFLog("Saved plist when app entered background")
+            
+            UIApplication.shared.endBackgroundTask(self.backgroundTaskIdentifier)
+            self.backgroundTaskIdentifier = UIBackgroundTaskInvalid
+        }
+    }
+}
+
+//MARK: Notfication name extension
+extension Notification.Name {
+    static let ringtoneStoreDidFinishLoading = Notification.Name("RingtoneStoreDidFinishLoading")
+}

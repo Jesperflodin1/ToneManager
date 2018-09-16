@@ -52,6 +52,11 @@ class RingtoneDetailViewController : UITableViewController {
     
     /// Timer object used for showing play duration
     var timer : Timer?
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.ringtoneStore = RingtoneStore.sharedInstance
+        super.init(coder: aDecoder)
+    }
 }
 
 //MARK: UITableViewCell updating methods

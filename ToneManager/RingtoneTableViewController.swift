@@ -9,12 +9,13 @@
 import UIKit
 import BugfenderSDK
 import PKHUD
+import SideMenu
 
 /// Shows available and installed ringtones
 public class RingtoneTableViewController : UITableViewController {
     
     /// Storage for Ringtones
-    internal var ringtoneStore : RingtoneStore!
+    fileprivate var ringtoneStore : RingtoneStore!
 
     /// Identifier for Cell used to show a ringtone
     private let cellId = "RingtoneTableCell"
@@ -27,6 +28,11 @@ public class RingtoneTableViewController : UITableViewController {
     
     /// Table filter variable 0=All, 1=Installed, 2=Not installed
     var ringtoneFilter : Int = 0
+    
+    public required init?(coder aDecoder: NSCoder) {
+        ringtoneStore = RingtoneStore.sharedInstance
+        super.init(coder: aDecoder)
+    }
 
 }
 
@@ -228,6 +234,10 @@ extension RingtoneTableViewController {
     ///
     /// - Parameter sender: UISegmentedControl that triggered this
     @IBAction public func filterChanged(_ sender: UISegmentedControl) {
+        ringtoneFilter = sender.selectedSegmentIndex
+        ringtoneStore.allRingtones.lockArray()
+        tableView.reloadData()
+        ringtoneStore.allRingtones.unlockArray()
     }
     
     /// Refresh button was tapped. Rescans apps to find new ringtones
@@ -238,26 +248,46 @@ extension RingtoneTableViewController {
     }
 }
 
-
-//MARK: RingtoneStore callback
-extension RingtoneTableViewController {
-    func dataFinishedLoading() {
-        updateRingtones()
-    }
-}
-
-
 //MARK: Notification observers
 extension RingtoneTableViewController {
     
     private func registerObservers() {
         NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(self.dataFinishedLoading(notification:)), name: .ringtoneStoreDidFinishLoading, object: nil)
     }
     
     /// Called from notification observer when app will enter foreground. Updates available ringtones
     @objc public func willEnterForeground() {
         BFLog("did become active, autoinstall = \(Preferences.autoInstall)")
         updateRingtones()
+    }
+    
+    @objc func dataFinishedLoading(notification: NSNotification) {
+        tableView.reloadData()
+        updateRingtones()
+    }
+}
+
+//MARK: Side menu methods
+extension RingtoneTableViewController {
+    
+    fileprivate func setupSideMenu() {
+        // Define the menus
+        SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
+        
+        // Enable gestures. The left and/or right menus must be set up above for these to work.
+        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
+        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        
+        // Set up a cool background image for demo purposes
+//        SideMenuManager.default.menuAnimationBackgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        
+        SideMenuManager.default.menuPresentMode = .viewSlideInOut
+        SideMenuManager.default.menuBlurEffectStyle = UIBlurEffectStyle.dark
+        SideMenuManager.default.menuFadeStatusBar = true
+        SideMenuManager.default.menuShadowOpacity = 0.5
     }
 }
 
@@ -270,9 +300,9 @@ extension RingtoneTableViewController {
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
         registerObservers()
-        
+        setupSideMenu()
+
     }
     
     /// Called when view will appear
@@ -337,18 +367,13 @@ extension RingtoneTableViewController {
             let cell = sender as! RingtoneTableCell
             let detailViewController = segue.destination as! RingtoneDetailViewController
             detailViewController.ringtone = cell.ringtoneItem
-            detailViewController.ringtoneStore = self.ringtoneStore
             
         case "showDetailsFromCellButton"?:
             if let indexPath = tableView.indexPathForSelectedRow {
                 let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
                 let detailViewController = segue.destination as! RingtoneDetailViewController
                 detailViewController.ringtone = cell.ringtoneItem
-                detailViewController.ringtoneStore = self.ringtoneStore
             }
-        case "showSettingsFromBarButton"?:
-            let settingsViewController = segue.destination as! SettingsViewController
-            settingsViewController.ringtoneStore = self.ringtoneStore
         default: break
         }
     }
@@ -431,7 +456,7 @@ extension RingtoneTableViewController {
     /// - Returns: Row height
     override public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView.indexPathForSelectedRow?.row == indexPath.row {
-            return rowHeight*1.7
+            return rowHeight*2.0
         } else {
             return rowHeight
         }
@@ -445,7 +470,16 @@ extension RingtoneTableViewController {
     /// - Returns: Returns number of rows in this section (usually number of ringtones)
     override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if ringtoneStore.finishedLoading {
-            return ringtoneStore.allRingtones.count
+            switch ringtoneFilter {
+            case 0:
+                return ringtoneStore.allRingtones.count
+            case 1:
+                return ringtoneStore.installedRingtones.count
+            case 2:
+                return ringtoneStore.notInstalledRingtones.count
+            default:
+                return 0
+            }
         } else { return 0 }
     }
     
@@ -460,7 +494,19 @@ extension RingtoneTableViewController {
         
         if ringtoneStore.finishedLoading {
             ringtoneStore.allRingtones.lockArray()
-            let ringtone = ringtoneStore.allRingtones[indexPath.row]
+            
+            let ringtone : Ringtone?
+            switch ringtoneFilter {
+            case 0:
+                ringtone = ringtoneStore.allRingtones[indexPath.row]
+            case 1:
+                ringtone = ringtoneStore.installedRingtones[indexPath.row]
+            case 2:
+                ringtone = ringtoneStore.notInstalledRingtones[indexPath.row]
+            default:
+                ringtoneStore.allRingtones.unlockArray()
+                return cell
+            }
             ringtoneStore.allRingtones.unlockArray()
             cell.ringtoneItem = ringtone
             cell.nameLabel.text = ringtone?.name

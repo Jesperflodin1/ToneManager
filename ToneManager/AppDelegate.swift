@@ -17,11 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// reference to UIWindow
     var window: UIWindow?
     
-    var ringtoneStore : RingtoneStore!
-    
-    var backgroundTaskIdentifier : UIBackgroundTaskIdentifier!
-
-    
     /// Enables remote logging if enabled in userdefaults
     func enableRemoteLogging() {
         if Preferences.remoteLogging {
@@ -51,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ///   - launchOptions: Not used here
     /// - Returns: always true
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        backgroundTaskIdentifier = UIBackgroundTaskInvalid
         
         registerDefaults()
         enableRemoteLogging()
@@ -64,13 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BFLog("Loading main storyboard")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nvc = storyboard.instantiateViewController(withIdentifier: "JFTMNavigationController") as! UINavigationController
-        let vc = nvc.topViewController as! RingtoneTableViewController
-        
-        vc.ringtoneStore = RingtoneStore(ringtoneTableViewController: vc, completionHandler: {
-            NSLog("Ringtonestore completionhandler")
-        })
-        
-        self.ringtoneStore = vc.ringtoneStore
         
         self.window!.rootViewController = nvc
         self.window!.makeKeyAndVisible()
@@ -96,22 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
-        backgroundTaskIdentifier = application.beginBackgroundTask(expirationHandler: {
-            
-            application.endBackgroundTask(self.backgroundTaskIdentifier)
-            self.backgroundTaskIdentifier = UIBackgroundTaskInvalid
-        })
         
-        DispatchQueue.global(qos: .default).async {
-            
-            self.ringtoneStore.writeToPlist()
-            UserDefaults.standard.synchronize()
-            
-            BFLog("Saved plist when app entered background")
-            
-            application.endBackgroundTask(self.backgroundTaskIdentifier)
-            self.backgroundTaskIdentifier = UIBackgroundTaskInvalid
-        }
     }
 
     /// UIApplicationDelegate method. Called when application will return from background

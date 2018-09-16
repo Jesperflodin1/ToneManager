@@ -3,11 +3,13 @@
 
 target 'ToneManager' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  platform :ios, '8.0'
   use_frameworks!
 
   # Pods for ToneManager
-pod 'BugfenderSDK', '~> 1.5'
-pod 'PKHUD', '~> 5.0'
+  pod 'BugfenderSDK', '~> 1.5'
+  pod 'PKHUD', '~> 5.0'
+  pod 'SideMenu'
   target 'ToneManagerTests' do
     inherit! :search_paths
     # Pods for testing

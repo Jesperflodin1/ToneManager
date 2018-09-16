@@ -11,7 +11,7 @@ import BugfenderSDK
 import SafariServices
 
 /// View controller for main settings page
-public class SettingsViewController : UITableViewController {
+class SettingsViewController : UITableViewController {
     
     //TODO: delete all ringtones action
     
@@ -22,6 +22,10 @@ public class SettingsViewController : UITableViewController {
     /// Outlet for remote logging UISwitch
     @IBOutlet public weak var remoteLoggingSwitch: UISwitch!
 
+    required init?(coder aDecoder: NSCoder) {
+        self.ringtoneStore = RingtoneStore.sharedInstance
+        super.init(coder: aDecoder)
+    }
 }
 
 //MARK: SFSafariViewController methods

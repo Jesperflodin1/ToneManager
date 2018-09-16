@@ -10,6 +10,7 @@
 		1B7547485A56829ADA0E8A7C /* Pods_ToneManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87726A0BFD0B4E267CD5179 /* Pods_ToneManager.framework */; };
 		24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24496B22214991B40031E422 /* RingtoneInstaller.swift */; };
 		24496B25214AAF860031E422 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24496B24214AAF860031E422 /* AVFoundation.framework */; };
+		2491B38D214E49B6001B36DE /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */; };
 		24969499214406FE009960D7 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24969498214406FE009960D7 /* assets.xcassets */; };
 		2496949B214409E2009960D7 /* RingtoneDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */; };
 		249694A22144F0A7009960D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2496949E2144EBB9009960D7 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24496B22214991B40031E422 /* RingtoneInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneInstaller.swift; sourceTree = "<group>"; };
 		24496B24214AAF860031E422 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		24969498214406FE009960D7 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneDetailViewController.swift; sourceTree = "<group>"; };
 		2496949E2144EBB9009960D7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = /Users/jesper/Documents/Projects/Tweaks/ToneManager/ToneManager/Main.storyboard; sourceTree = "<absolute>"; };
@@ -184,8 +186,7 @@
 				2497A63A214251D200597B5C /* AppDelegate.swift */,
 				24982BD3214CE16700DD0474 /* Preferences.swift */,
 				24982BD1214CE12B00DD0474 /* ColorPalette.swift */,
-				24EE206A214276CF0045D678 /* SettingsViewController.swift */,
-				249694AF2147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift */,
+				2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */,
 				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
 				2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */,
 				24EE2074214295480045D678 /* RingtoneTableCell.swift */,
@@ -193,6 +194,8 @@
 				2497A6692142538500597B5C /* RingtoneStore.swift */,
 				249694A621454F96009960D7 /* RingtoneScanner.swift */,
 				24496B22214991B40031E422 /* RingtoneInstaller.swift */,
+				24EE206A214276CF0045D678 /* SettingsViewController.swift */,
+				249694AF2147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift */,
 				249694AD214799F0009960D7 /* AppListViewController.swift */,
 				249694A821456804009960D7 /* SynchronizedArray.swift */,
 				2497A641214251D300597B5C /* Info.plist */,
@@ -417,7 +420,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\n# Modify this to your device's IP address.\nIP=\"192.168.2.95\"\n\n# Verify that the build is for iOS Device and not a Simulator.\nif [[ \"$NATIVE_ARCH\" != \"i386\" && \"$NATIVE_ARCH\" != \"x86_64\" ]]; then\n# Kill any running instances and remove the app folder.\necho \"Removing previous app\"\nssh root@$IP \"killall ${TARGETNAME}; rm -rf /Applications/${WRAPPER_NAME}\"\n# Self sign the build.\necho \"Signing with ldid\"\nldid -S$BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/entitlements.xml $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/$TARGETNAME\nldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/BugfenderSDK.framework/BugfenderSDK\nldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/PKHUD.framework/PKHUD\n# Copy it over.\n\n#rm -r $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/libswift*\n\necho \"Copying to device\"\nscp -r $BUILT_PRODUCTS_DIR/${WRAPPER_NAME} root@$IP:/Applications/\n#echo \"Running uicache\"\n#ssh root@$IP \"uicache\"\n\n# This part just creates create an OS X notification to let you know that the process is done.\n# You can get terminal-notifier from https://github.com/alloy/terminal-notifier.\n# You can remove this line if you want.\nfi";
+			shellScript = "#!/bin/sh\n\n# Modify this to your device's IP address.\nIP=\"192.168.2.95\"\n\n# Verify that the build is for iOS Device and not a Simulator.\nif [[ \"$NATIVE_ARCH\" != \"i386\" && \"$NATIVE_ARCH\" != \"x86_64\" ]]; then\n# Kill any running instances and remove the app folder.\necho \"Removing previous app\"\nssh root@$IP \"killall ${TARGETNAME}; rm -rf /Applications/${WRAPPER_NAME}\"\n# Self sign the build.\necho \"Signing with ldid\"\nldid -S$BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/entitlements.xml $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/$TARGETNAME\nldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/BugfenderSDK.framework/BugfenderSDK\nldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/PKHUD.framework/PKHUD\nldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/SideMenu.framework/SideMenu\n# Copy it over.\n\n#rm -r $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/libswift*\n\necho \"Copying to device\"\nscp -r $BUILT_PRODUCTS_DIR/${WRAPPER_NAME} root@$IP:/Applications/\n#echo \"Running uicache\"\n#ssh root@$IP \"uicache\"\n\n# This part just creates create an OS X notification to let you know that the process is done.\n# You can get terminal-notifier from https://github.com/alloy/terminal-notifier.\n# You can remove this line if you want.\nfi";
 		};
 		270D784557AF8187DA688C84 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -446,11 +449,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-ToneManager/Pods-ToneManager-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BugfenderSDK/BugfenderSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BugfenderSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -486,6 +491,7 @@
 				2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */,
 				249694AE214799F0009960D7 /* AppListViewController.swift in Sources */,
 				249694A921456804009960D7 /* SynchronizedArray.swift in Sources */,
+				2491B38D214E49B6001B36DE /* SideMenuTableViewController.swift in Sources */,
 				2497A66A2142538500597B5C /* RingtoneStore.swift in Sources */,
 				24982BD2214CE12B00DD0474 /* ColorPalette.swift in Sources */,
 				2497A63B214251D200597B5C /* AppDelegate.swift in Sources */,

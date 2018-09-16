@@ -10,10 +10,10 @@ import Foundation
 import BugfenderSDK
 
 /// Class that handles scanning and importing of ringtones
-public class RingtoneScanner {
+class RingtoneScanner {
     
     /// Reference to RingtoneStore
-    public var delegate : RingtoneStore
+    var delegate : RingtoneStore
     
     /// Init method. Sets current ringtonestore as delegate
     ///
