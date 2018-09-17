@@ -304,8 +304,3 @@ extension RingtoneStore {
         }
     }
 }
-
-//MARK: Notfication name extension
-extension Notification.Name {
-    static let ringtoneStoreDidFinishLoading = Notification.Name("RingtoneStoreDidFinishLoading")
-}

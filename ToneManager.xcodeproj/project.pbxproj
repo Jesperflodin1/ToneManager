@@ -38,6 +38,11 @@
 		24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EE20822142C9590045D678 /* TLToneManagerHandler.m */; };
 		24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EE20862142D9A30045D678 /* FBApplicationInfoHandler.m */; };
 		24EE208A2142EB050045D678 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EE20892142EB050045D678 /* MobileCoreServices.framework */; };
+		24F7ECE4214FD78900A46E72 /* String+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7ECE3214FD78900A46E72 /* String+Version.swift */; };
+		24F7ECE6214FD7C200A46E72 /* String+CondenseWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7ECE5214FD7C200A46E72 /* String+CondenseWhitespace.swift */; };
+		24F7ECE8214FD7F600A46E72 /* URL+RingtoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7ECE7214FD7F600A46E72 /* URL+RingtoneName.swift */; };
+		24F7ECEA214FD84C00A46E72 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7ECE9214FD84C00A46E72 /* Notification+Name.swift */; };
+		24F7ECEC214FF17600A46E72 /* UIApplication-TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7ECEB214FF17600A46E72 /* UIApplication-TopViewController.swift */; };
 		30F4C62E8F6AF1DA3B7B1D40 /* Pods_ToneManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56DFC59107A5F6111AB3E4A /* Pods_ToneManagerTests.framework */; };
 		3A0E0435786C44BF60985FC7 /* Pods_ToneManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */; };
 		479A22855526EC45CD8934E1 /* Pods_ToneManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB2F0288DA14F8204028D09 /* Pods_ToneManager.framework */; };
@@ -105,6 +110,11 @@
 		24EE20862142D9A30045D678 /* FBApplicationInfoHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBApplicationInfoHandler.m; sourceTree = "<group>"; };
 		24EE20892142EB050045D678 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		24EE208B214311630045D678 /* iOSHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSHeaders.h; sourceTree = "<group>"; };
+		24F7ECE3214FD78900A46E72 /* String+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Version.swift"; sourceTree = "<group>"; };
+		24F7ECE5214FD7C200A46E72 /* String+CondenseWhitespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CondenseWhitespace.swift"; sourceTree = "<group>"; };
+		24F7ECE7214FD7F600A46E72 /* URL+RingtoneName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+RingtoneName.swift"; sourceTree = "<group>"; };
+		24F7ECE9214FD84C00A46E72 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
+		24F7ECEB214FF17600A46E72 /* UIApplication-TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication-TopViewController.swift"; sourceTree = "<group>"; };
 		28C8EA633FF5601A839E9E13 /* Pods-ToneManagerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManagerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManagerUITests/Pods-ToneManagerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2C0BE91D61C88AF3F956DEAC /* Pods-ToneManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManager/Pods-ToneManager.debug.xcconfig"; sourceTree = "<group>"; };
 		3AB2F0288DA14F8204028D09 /* Pods_ToneManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,9 +206,14 @@
 				24969498214406FE009960D7 /* assets.xcassets */,
 				2496949E2144EBB9009960D7 /* Main.storyboard */,
 				2497A63E214251D300597B5C /* LaunchScreen.storyboard */,
+				24F7ECE3214FD78900A46E72 /* String+Version.swift */,
+				24F7ECE5214FD7C200A46E72 /* String+CondenseWhitespace.swift */,
+				24F7ECE7214FD7F600A46E72 /* URL+RingtoneName.swift */,
+				24F7ECEB214FF17600A46E72 /* UIApplication-TopViewController.swift */,
+				24F7ECE9214FD84C00A46E72 /* Notification+Name.swift */,
 				2497A63A214251D200597B5C /* AppDelegate.swift */,
-				24982BD3214CE16700DD0474 /* Preferences.swift */,
 				24982BD1214CE12B00DD0474 /* ColorPalette.swift */,
+				24982BD3214CE16700DD0474 /* Preferences.swift */,
 				2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */,
 				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
 				2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */,
@@ -511,17 +526,22 @@
 				2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */,
 				249694AE214799F0009960D7 /* AppListViewController.swift in Sources */,
 				249694A921456804009960D7 /* SynchronizedArray.swift in Sources */,
+				24F7ECEA214FD84C00A46E72 /* Notification+Name.swift in Sources */,
 				2491B38D214E49B6001B36DE /* SideMenuTableViewController.swift in Sources */,
 				2497A66A2142538500597B5C /* RingtoneStore.swift in Sources */,
 				24982BD2214CE12B00DD0474 /* ColorPalette.swift in Sources */,
 				2497A63B214251D200597B5C /* AppDelegate.swift in Sources */,
 				2491B398214FA8D1001B36DE /* ApplicationHandler.m in Sources */,
+				24F7ECE6214FD7C200A46E72 /* String+CondenseWhitespace.swift in Sources */,
 				2491B393214FA681001B36DE /* RingtoneManager.swift in Sources */,
+				24F7ECE4214FD78900A46E72 /* String+Version.swift in Sources */,
 				2497A6682142537B00597B5C /* Ringtone.swift in Sources */,
 				24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */,
 				24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */,
+				24F7ECE8214FD7F600A46E72 /* URL+RingtoneName.swift in Sources */,
 				24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */,
 				24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */,
+				24F7ECEC214FF17600A46E72 /* UIApplication-TopViewController.swift in Sources */,
 				2496949B214409E2009960D7 /* RingtoneDetailViewController.swift in Sources */,
 				249694B02147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift in Sources */,
 				24982BD4214CE16700DD0474 /* Preferences.swift in Sources */,

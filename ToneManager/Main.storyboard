@@ -1107,7 +1107,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow me on twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDh-Sd-Uw6">
-                                                    <rect key="frame" x="60" y="12.5" width="155" height="20.5"/>
+                                                    <rect key="frame" x="60" y="11.5" width="155" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1123,8 +1123,8 @@
                                             <color key="tintColor" red="0.11372549019607843" green="0.63137254901960782" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="eXh-TL-SpX" firstAttribute="centerY" secondItem="G2T-II-xEg" secondAttribute="centerY" id="2WC-pB-BMg"/>
-                                                <constraint firstItem="YDh-Sd-Uw6" firstAttribute="bottom" secondItem="G2T-II-xEg" secondAttribute="bottomMargin" id="90A-By-6T8"/>
                                                 <constraint firstItem="eXh-TL-SpX" firstAttribute="leading" secondItem="G2T-II-xEg" secondAttribute="leading" constant="16" id="ACa-8q-wKd"/>
+                                                <constraint firstItem="YDh-Sd-Uw6" firstAttribute="centerY" secondItem="G2T-II-xEg" secondAttribute="centerY" id="Rad-SX-f9U"/>
                                                 <constraint firstItem="YDh-Sd-Uw6" firstAttribute="leading" secondItem="eXh-TL-SpX" secondAttribute="trailing" constant="15" id="eQu-t8-0UH"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1173,7 +1173,7 @@
                                         <rect key="frame" x="0.0" y="674.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E7E-yG-dIl" id="kZ1-Bm-G3F">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="aeQ-PJ-4xX">
