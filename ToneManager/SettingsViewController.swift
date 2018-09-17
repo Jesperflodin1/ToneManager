@@ -26,6 +26,8 @@ class SettingsViewController : UITableViewController {
         self.ringtoneStore = RingtoneStore.sharedInstance
         super.init(coder: aDecoder)
     }
+    @IBAction func deleteAllTapped(_ sender: UITapGestureRecognizer) {
+    }
 }
 
 //MARK: SFSafariViewController methods

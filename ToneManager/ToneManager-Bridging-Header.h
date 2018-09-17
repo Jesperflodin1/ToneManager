@@ -4,4 +4,5 @@
 
 #import "FBApplicationInfoHandler.h"
 #import "TLToneManagerHandler.h"
+#import "ApplicationHandler.h"
 #import <AppList/AppList.h>

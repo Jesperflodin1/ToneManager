@@ -3,87 +3,119 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		032E097B464F9AE8FFFAAA1684A171B9 /* Pods-ToneManagerUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B85E9848A423CAE4FDABC981D46396 /* Pods-ToneManagerUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		055127FE5A55C7BC0250637A1E4ECD11 /* Pods-ToneManagerTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 32D9528A293C23D343BC5C9279E550EF /* Pods-ToneManagerTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06A96386D98D3EA18C8D20A672F62E99 /* PKHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 593A02E59E9BE459CEDCB6F40A53283E /* PKHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		08CDDC6F184C030BB72E4FDBFE35AFDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */; };
-		10DC7D4D6C1BDDDC17A135808F1C0F16 /* BugfenderSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FA46CBC13211300D35371C494611F /* BugfenderSDK-dummy.m */; };
-		12CB4DCA79CC1401B42D7D639E7F512E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBBA9ADA1BEF3D8A85BF1C2E12A52BB /* SystemConfiguration.framework */; };
-		1D55930B7B2718EF5393D115CCFCB1B7 /* Pods-ToneManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 797F6883D6BABCBE51512B6EE9A1A36E /* Pods-ToneManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06A96386D98D3EA18C8D20A672F62E99 /* PKHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E6B5A003A0AC6BC09D022FECBB499B5 /* PKHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		08CDDC6F184C030BB72E4FDBFE35AFDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B19470CEBFB02F4B5B06D0982B37B8 /* Foundation.framework */; };
+		09098BB4B891B7002D350AC321F44037 /* pdf@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C60EEFBE4D459FFE99BB1ED382E024E /* pdf@2x.png */; };
+		10DC7D4D6C1BDDDC17A135808F1C0F16 /* BugfenderSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A0386958FF71B50B491E2639C20FBACB /* BugfenderSDK-dummy.m */; };
+		127B50B3085439E7F58E1E94F16F0C61 /* WebviewPreviewViewContoller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB9614987B6E5E3B672B5CC44BBFE74 /* WebviewPreviewViewContoller.xib */; };
+		12CB4DCA79CC1401B42D7D639E7F512E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3CBA51D6AFFA3BB25EF468F085CE93 /* SystemConfiguration.framework */; };
+		21C805D87D9564C77C7E3059F9778D67 /* zip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2201182E6298B170CAA4656B1581349F /* zip@2x.png */; };
+		27D65F53529C7D00D3E4596F524E1D43 /* FileBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6402CE7C5B94E799006B4F36065535 /* FileBrowser.xib */; };
 		2E8B4766D54F5615615D5FE19C84AECC /* Pods-ToneManagerTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2DE1CD3F72B8F14AE80D3B19882E64 /* Pods-ToneManagerTests-dummy.m */; };
-		2F88060F521A966C0A27B2A50C7164E6 /* PKHUDAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A48AB5FF8092AC13C1855E114200DE6 /* PKHUDAnimating.swift */; };
-		33D023E55DAA58063205CD59CBA716F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */; };
-		46C9C29D51C469080B8A222205A4E1E0 /* Bugfender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7850CAC4DA43B3375FF9E49BF0B73A67 /* Bugfender.swift */; };
-		52DD1020464FD156F9196099CD3D39D0 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D9713E3BFAB08D215F87CCB83C239B /* HUD.swift */; };
-		5454C54D5E886A2218F679E851271B51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C5B04DFFCB8C8FAF82A07829F5A0725 /* Images.xcassets */; };
-		5FF6280AC1F208DD68221AFDE04C9303 /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978BC03C0DAF8ABCE218F540A14104F8 /* SideMenuTransition.swift */; };
-		621F371A23517A4AC49A9C476A6E2925 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */; };
-		648A4E34800415420FDEEF7F883E340E /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E2429735B04F87580DEAB8DFEF9BA /* FrameView.swift */; };
-		6577D2A56401A9E59FA2DBD136023BDB /* Pods-ToneManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DDCDF0894BCA4D093572874062B0C8 /* Pods-ToneManager-dummy.m */; };
-		6B93F86634D586AD934EA316017409B3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */; };
-		75171246373D071BEA9EBC3F5B110591 /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D650087658BC8F1682C4F8330C6EAC /* UISideMenuNavigationController.swift */; };
-		88D3C77DEFBBC93797206040A5A08CE8 /* PKHUDAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9669B126E0C0B713F06ED4BE7307B05 /* PKHUDAnimation.swift */; };
-		8B4061C97BEBA1A9DE833ACBBC6551D2 /* PKHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2ADE9BBCD69B1DD2591911FC877BC94A /* PKHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		99D8AF12F8F1C3A13F420F963DA78467 /* PKHUDAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A767309502F7C32685937961D071D6 /* PKHUDAssets.swift */; };
-		A250D4C88B90740D6E29E1CD1E9E0141 /* BugfenderSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 21EC5AB242CA18C32F87D4301D1DB9EC /* BugfenderSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A38DEC912D3E563E66A86FAE8D91304F /* WindowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE8FA70A303FCB8CBB02B25A83C9249 /* WindowRootViewController.swift */; };
+		2F88060F521A966C0A27B2A50C7164E6 /* PKHUDAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD023408FB83C29B25203EE14446EF8 /* PKHUDAnimating.swift */; };
+		361C5EFA1553A5F2A9CAF54183606C9F /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB7473044633BD7763718BB532C37E5 /* FileParser.swift */; };
+		38A303159890A9C62BFCF4981794283C /* SideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 078098FE10EEC4AE41F919D2DC000F26 /* SideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E2BE9608B70BBA6F90066BF1F839CF3 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310C573C06EAD617FF16C1CE70D23216 /* QuickLook.framework */; };
+		3F592203A138907E1CC01DEDFA603116 /* documents@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 135EC3E53B4F11F0A25AB18287DF3E73 /* documents@2x.png */; };
+		46C9C29D51C469080B8A222205A4E1E0 /* Bugfender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469CFE52906D6EE8571D1EEA37B5207 /* Bugfender.swift */; };
+		478BE7A7DE286151D452C9C727B218BE /* folder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 325AE6B903E997CAD3896D37847D8D92 /* folder@2x.png */; };
+		518A78A85CE89201E1E7E9FA8F65E222 /* PreviewTransitionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C656E2A4764EB7F77064FB73D7B67A8 /* PreviewTransitionViewController.xib */; };
+		52DD1020464FD156F9196099CD3D39D0 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE9372804408C3BC65F378197E538B /* HUD.swift */; };
+		530461905767AED8C778FFF938A7122E /* image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86DFD4F0623F1B55133587D9C0FB3864 /* image@2x.png */; };
+		5454C54D5E886A2218F679E851271B51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D63731E056DCCFCADB4DACEF2A7E494D /* Images.xcassets */; };
+		6114163B00D1FD616EABAD9AC380A351 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 408A4471C37A7884AD84DC15F7F39D10 /* WebKit.framework */; };
+		621F371A23517A4AC49A9C476A6E2925 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B19470CEBFB02F4B5B06D0982B37B8 /* Foundation.framework */; };
+		648A4E34800415420FDEEF7F883E340E /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53233ED5C4D7A3216A6CE68AC69B3A5 /* FrameView.swift */; };
+		69C16362114E92CCFEDF707ED2280565 /* FBFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39A5F2A9539EAC918BE72F8C670016 /* FBFile.swift */; };
+		6D0EA2080E45D3B9884E6030A214F2ED /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3FA0220DC34C46162CEBB63755180 /* UISideMenuNavigationController.swift */; };
+		6E8EEFC1682D45FB58E7227CC68F88F6 /* Pods-ToneManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 797F6883D6BABCBE51512B6EE9A1A36E /* Pods-ToneManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		705B83526023A51359989ED95163DBAC /* WebviewPreviewViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC624069419648B2ACDAB9518658BA /* WebviewPreviewViewContoller.swift */; };
+		7DDBF87AF0FF98E8C2C0B750AB974546 /* FileListPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6C76F193F6D1AF95598804520FDCC6 /* FileListPreview.swift */; };
+		882B63F37781C069F3FD402D85DD4CD0 /* FileListSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0D8E6711987A96411B130FD31A2317 /* FileListSearch.swift */; };
+		88D3C77DEFBBC93797206040A5A08CE8 /* PKHUDAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D6F449281119896D31957781B68204 /* PKHUDAnimation.swift */; };
+		8B4061C97BEBA1A9DE833ACBBC6551D2 /* PKHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A5DC4B599514D05A87EC8B54405C5185 /* PKHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C219DC98C61463A284602DBBD4BD7F3 /* FileBrowser-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D2E19354E67DBA15CC16175F88F6C9 /* FileBrowser-dummy.m */; };
+		8E01E341B85CA28238B978548E030E7D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B19470CEBFB02F4B5B06D0982B37B8 /* Foundation.framework */; };
+		943EF611A1DC998ADD03CB9FCAE6CA2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B19470CEBFB02F4B5B06D0982B37B8 /* Foundation.framework */; };
+		965FDC00417A7007D4D3BBF817F85301 /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809A82C1EFC3476B8FCACDCE85AC4BB /* SideMenuTransition.swift */; };
+		9747C5470DCD4E6C0A27955E18D5FC92 /* FileBrowser.h in Headers */ = {isa = PBXBuildFile; fileRef = 611C6414CFA71F30A2DC56BE835C335E /* FileBrowser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		99D8AF12F8F1C3A13F420F963DA78467 /* PKHUDAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F3EBFF3AA540A8E35F68EA69B60691 /* PKHUDAssets.swift */; };
+		9A80B26F84B4BDB287DFB41FF2B53D87 /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696C33063DFFDF133F76762117CBFC8 /* SideMenuManager.swift */; };
+		A250D4C88B90740D6E29E1CD1E9E0141 /* BugfenderSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D670D67DB0F12BFF28E1455A9347168A /* BugfenderSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A38DEC912D3E563E66A86FAE8D91304F /* WindowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3366E856C7DD6DBF42EFEA1FD3B7637A /* WindowRootViewController.swift */; };
 		A39B67CB4CFB4E840E4AE6B4EC3763D5 /* Pods-ToneManagerUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A88EBD4A0895B0BE74D7CEBB980D6290 /* Pods-ToneManagerUITests-dummy.m */; };
-		AD99E559D40DC787E337B8C56B1970C0 /* PKHUDSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFDA362C22E3919FB8DC207E35E6A6B /* PKHUDSuccessView.swift */; };
-		AF8A8D529C8EB40D2628225C046E6303 /* SideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CE8C0D6202A18CD978C28499C89E6EB /* SideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B1154C077DA285CE7B47AB0E84585267 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6DFF916BADA5C198D79C72F26FBEAB /* Window.swift */; };
-		B6F1F83E44F70DC813876852DF813CA8 /* PKHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BEDE6AB483D89DA28B4D41BF737937 /* PKHUD-dummy.m */; };
-		B73889A2D01BB3C2D2B33C8C543ADE15 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0BDE54605F2BACC1A369436937D0D5 /* Security.framework */; };
-		B98D3D988CB98A85363C4DEAF620DD0E /* SideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CCA9DAF0F6836E6CF623A92A4EA3DC /* SideMenu-dummy.m */; };
-		BF48EEC10C8AC76C41B3190989877E9D /* BugfenderSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 727B029A7DA61F8B66FD75A2A7B201B2 /* BugfenderSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFAFD9637550CFE84AD2AAFD7BF971F1 /* PKHUDSystemActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB4EFA69769A2188535228D201E8B2 /* PKHUDSystemActivityIndicatorView.swift */; };
-		C150165EAD91FBCDCE1F9CABFD9D6AA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */; };
-		C88BFDF9FD6D431B3FF2F727D7AB7814 /* PKHUDWideBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2790CE4A2F1E99F3B3B1592D4D5B3327 /* PKHUDWideBaseView.swift */; };
-		CA5FC1B32EA96EAFDB6B78E8B6BDC3B6 /* PKHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA35D94830951A6FBBD858D37B06546 /* PKHUD.swift */; };
-		CF44CD3A8E9B8821D4403C4376FD455D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */; };
-		D176D4A0A7FA5497483B99321553FB1B /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9799BDD352E6C7F10B9793243343F7 /* SideMenuManager.swift */; };
-		D586A2C75A481588304F2C59A4418C0E /* PKHUDErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E26006C1ECE7AF042265FC45768EFC /* PKHUDErrorView.swift */; };
-		D7A8D34737A318E59B08B47605598B03 /* PKHUDProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F617DD25906A9C2DBFD90ABE4046F2 /* PKHUDProgressView.swift */; };
-		E4A32D9AD54408014F6DB96317F14595 /* PKHUDRotatingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7DAE65E793CE1D29EC088CDA3816F3 /* PKHUDRotatingImageView.swift */; };
-		E75FE0E9A3187A29EB4D66E6AD24D298 /* PKHUDTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481D125B08EE5B7B1F77477C3334256D /* PKHUDTextView.swift */; };
-		F5CEF54B331B98631E91BA9C29BFDB96 /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25611071BD9013C8C281B76839AFC64D /* UITableViewVibrantCell.swift */; };
-		FBEF405595849771F639712CC0F7B3BD /* PKHUDSquareBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AEC35B452765A5BFAFA114CF8E3182 /* PKHUDSquareBaseView.swift */; };
-		FE2BD01ADAA8FEF092FF348DE06F6205 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E8DF8CDB96CED2A77C23DC7FD0FBB5 /* MobileCoreServices.framework */; };
+		AD99E559D40DC787E337B8C56B1970C0 /* PKHUDSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AC2D09CEF5216B041B5D51C0BCFF57 /* PKHUDSuccessView.swift */; };
+		B1154C077DA285CE7B47AB0E84585267 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE764AB9740C8F33A0D43DEFF3EFE40 /* Window.swift */; };
+		B14902953D4F282BDF88B414BD4039A4 /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C04B27374CA9E3626818A90AC06418 /* UITableViewVibrantCell.swift */; };
+		B6F1F83E44F70DC813876852DF813CA8 /* PKHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC89EF07C41B4A2F19C3677E1EE1597 /* PKHUD-dummy.m */; };
+		B73889A2D01BB3C2D2B33C8C543ADE15 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA1406F4D1155BE707EB4CABF0ACBBE /* Security.framework */; };
+		B8DCF9010041B75662F695A6BC58D8C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B19470CEBFB02F4B5B06D0982B37B8 /* Foundation.framework */; };
+		BC2EFE312A705F8102BFC663D81C089D /* SideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF59F613E675FDE0423DB0C99E3B16D /* SideMenu-dummy.m */; };
+		BE183910A87243404D69815AE55C062F /* Pods-ToneManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DDCDF0894BCA4D093572874062B0C8 /* Pods-ToneManager-dummy.m */; };
+		BE66F5864469EA44E806820E3C705EA0 /* FileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9B4C17EB07DE97C0151BC1303DFFA /* FileListViewController.swift */; };
+		BF1B392237F41CF7B45325A784420E75 /* FileListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C07DAA7420C669BC2C9397BD756BBDD /* FileListTableView.swift */; };
+		BF48EEC10C8AC76C41B3190989877E9D /* BugfenderSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D39BDDB7C4373CBAEE5492FAAED54970 /* BugfenderSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFAFD9637550CFE84AD2AAFD7BF971F1 /* PKHUDSystemActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D772F05B78F1A9F47D8D47E625DB3A0 /* PKHUDSystemActivityIndicatorView.swift */; };
+		C150165EAD91FBCDCE1F9CABFD9D6AA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B19470CEBFB02F4B5B06D0982B37B8 /* Foundation.framework */; };
+		C3216BF769844D8D05098ED70BB34318 /* FileBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587C6CCA584DA1210F03BFD5E6A87B3B /* FileBrowser.swift */; };
+		C88BFDF9FD6D431B3FF2F727D7AB7814 /* PKHUDWideBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5D908707AA68239CE414B707FFAF99 /* PKHUDWideBaseView.swift */; };
+		CA5FC1B32EA96EAFDB6B78E8B6BDC3B6 /* PKHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3EEA3A4D79F5B7FF3679CC53FC6BB2 /* PKHUD.swift */; };
+		CF44CD3A8E9B8821D4403C4376FD455D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B19470CEBFB02F4B5B06D0982B37B8 /* Foundation.framework */; };
+		D250DF1F9A837AD6DB988AE139144BC0 /* PreviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75518B3550ADB8BE12DF52F2B087DF2F /* PreviewManager.swift */; };
+		D35AB1D9E68C0E9294AE9958A44736FF /* PreviewTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12467A9583F36D2B37AAE889C283A72 /* PreviewTransitionViewController.swift */; };
+		D586A2C75A481588304F2C59A4418C0E /* PKHUDErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539800E02E24BF0C615D2F31B1DDC42B /* PKHUDErrorView.swift */; };
+		D7A8D34737A318E59B08B47605598B03 /* PKHUDProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1248CE6E6F4DFA3806CF8935D7AAD1AC /* PKHUDProgressView.swift */; };
+		E0ECAB8CE423151C30049007D1083B1D /* FileBrowser-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 49A7A5C3E2C57D88794F5C6CF9A4ABE1 /* FileBrowser-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E4A32D9AD54408014F6DB96317F14595 /* PKHUDRotatingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638120548637342F4A6A80A471B6A151 /* PKHUDRotatingImageView.swift */; };
+		E75FE0E9A3187A29EB4D66E6AD24D298 /* PKHUDTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6CD65C745D3B5AB227F0D8810EFCE /* PKHUDTextView.swift */; };
+		FA2C4F1B00AF51C78688A2E9726F7343 /* file@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE455EA5D8A7BA049F222FC048D5D9B9 /* file@2x.png */; };
+		FBEF405595849771F639712CC0F7B3BD /* PKHUDSquareBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CFA15CAFEF703BEF3118E545FDFB19 /* PKHUDSquareBaseView.swift */; };
+		FE2BD01ADAA8FEF092FF348DE06F6205 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4B98329FC2B9757CD688E34FBC726AC /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4B3E1B7FCEF3A19058B2FA401228F7B5 /* PBXContainerItemProxy */ = {
+		2D395D6418510AD8411103D696A152DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DDD6CA6740CA06E5E57E2A0C5FAC273B;
-			remoteInfo = "Pods-ToneManager";
-		};
-		51EBFB5E71C1E33E2780B8968548CD50 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2B1CE7F10CF3A5808C926E25C013905E;
+			remoteGlobalIDString = 477A7816F19489FB082E5804AD24DF04;
 			remoteInfo = SideMenu;
 		};
-		636F1FFF0DBFDC1028BD5B051FF636B3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DDD6CA6740CA06E5E57E2A0C5FAC273B;
-			remoteInfo = "Pods-ToneManager";
-		};
-		7F41451ACEF00A6B91E002CB0ED55FEC /* PBXContainerItemProxy */ = {
+		2E0A24A7902F19E94E8BF6030B149CDD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C0748B62182D3C0CFC4071E37F3CCCA5;
 			remoteInfo = PKHUD;
 		};
-		899764F5D22F93E998AC69C47C981149 /* PBXContainerItemProxy */ = {
+		4B3E1B7FCEF3A19058B2FA401228F7B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF2FB1DEF36D1C8EDF9805CB23BB4951;
+			remoteInfo = "Pods-ToneManager";
+		};
+		5D9A71C135B3284BECD28BAE80CCB004 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1877285AD4FAF21DE21607C649BFFFCE;
+			remoteInfo = FileBrowser;
+		};
+		636F1FFF0DBFDC1028BD5B051FF636B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF2FB1DEF36D1C8EDF9805CB23BB4951;
+			remoteInfo = "Pods-ToneManager";
+		};
+		7513B681FCE6939C45AD0F813F2D52BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -93,98 +125,135 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0053114041B67C50A3734FA3E94E8171 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A48AB5FF8092AC13C1855E114200DE6 /* PKHUDAnimating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDAnimating.swift; path = PKHUD/PKHUDAnimating.swift; sourceTree = "<group>"; };
-		0AFDA362C22E3919FB8DC207E35E6A6B /* PKHUDSuccessView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDSuccessView.swift; path = PKHUD/PKHUDSuccessView.swift; sourceTree = "<group>"; };
+		030492D39029FB171A4E8C225B8C1694 /* FileBrowser-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FileBrowser-prefix.pch"; sourceTree = "<group>"; };
+		0469CFE52906D6EE8571D1EEA37B5207 /* Bugfender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bugfender.swift; path = swift/Bugfender.swift; sourceTree = "<group>"; };
+		06FC624069419648B2ACDAB9518658BA /* WebviewPreviewViewContoller.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebviewPreviewViewContoller.swift; path = FileBrowser/WebviewPreviewViewContoller.swift; sourceTree = "<group>"; };
+		078098FE10EEC4AE41F919D2DC000F26 /* SideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-umbrella.h"; sourceTree = "<group>"; };
 		0B9771135625FAF453659940D9A4E6A8 /* Pods-ToneManagerUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ToneManagerUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		0BE14A48511779C0CCDA0B97BDF3E08B /* Pods-ToneManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ToneManager.debug.xcconfig"; sourceTree = "<group>"; };
-		0D3130CD36ED334DAF32D511F701ECE4 /* BugfenderSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BugfenderSDK-prefix.pch"; sourceTree = "<group>"; };
 		1046392136B2CB37BF8B08E376AF82E1 /* Pods-ToneManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ToneManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		15620F6065D9AA752E5BE8B24D903202 /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ToneManagerTests.framework; path = "Pods-ToneManagerTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		195D1639611C8C7383B368F00721CE17 /* PKHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PKHUD.modulemap; sourceTree = "<group>"; };
-		21EC5AB242CA18C32F87D4301D1DB9EC /* BugfenderSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BugfenderSDK-umbrella.h"; sourceTree = "<group>"; };
-		250E2429735B04F87580DEAB8DFEF9BA /* FrameView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameView.swift; path = PKHUD/FrameView.swift; sourceTree = "<group>"; };
-		25611071BD9013C8C281B76839AFC64D /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UITableViewVibrantCell.swift; path = Pod/Classes/UITableViewVibrantCell.swift; sourceTree = "<group>"; };
-		25D9713E3BFAB08D215F87CCB83C239B /* HUD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HUD.swift; path = PKHUD/HUD.swift; sourceTree = "<group>"; };
-		2790CE4A2F1E99F3B3B1592D4D5B3327 /* PKHUDWideBaseView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDWideBaseView.swift; path = PKHUD/PKHUDWideBaseView.swift; sourceTree = "<group>"; };
-		2A7DAE65E793CE1D29EC088CDA3816F3 /* PKHUDRotatingImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDRotatingImageView.swift; path = PKHUD/PKHUDRotatingImageView.swift; sourceTree = "<group>"; };
-		2ADE9BBCD69B1DD2591911FC877BC94A /* PKHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PKHUD-umbrella.h"; sourceTree = "<group>"; };
+		1248CE6E6F4DFA3806CF8935D7AAD1AC /* PKHUDProgressView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDProgressView.swift; path = PKHUD/PKHUDProgressView.swift; sourceTree = "<group>"; };
+		135EC3E53B4F11F0A25AB18287DF3E73 /* documents@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "documents@2x.png"; path = "FileBrowser/Resources/documents@2x.png"; sourceTree = "<group>"; };
+		15AE9372804408C3BC65F378197E538B /* HUD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HUD.swift; path = PKHUD/HUD.swift; sourceTree = "<group>"; };
+		15F3EBFF3AA540A8E35F68EA69B60691 /* PKHUDAssets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDAssets.swift; path = PKHUD/PKHUDAssets.swift; sourceTree = "<group>"; };
+		1937A590209675DD337AF799AAA67650 /* SideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-prefix.pch"; sourceTree = "<group>"; };
+		19AC2D09CEF5216B041B5D51C0BCFF57 /* PKHUDSuccessView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDSuccessView.swift; path = PKHUD/PKHUDSuccessView.swift; sourceTree = "<group>"; };
+		1BC89EF07C41B4A2F19C3677E1EE1597 /* PKHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PKHUD-dummy.m"; sourceTree = "<group>"; };
+		1FB9614987B6E5E3B672B5CC44BBFE74 /* WebviewPreviewViewContoller.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = WebviewPreviewViewContoller.xib; path = FileBrowser/Resources/WebviewPreviewViewContoller.xib; sourceTree = "<group>"; };
+		2201182E6298B170CAA4656B1581349F /* zip@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "zip@2x.png"; path = "FileBrowser/Resources/zip@2x.png"; sourceTree = "<group>"; };
+		2379ADE9E56C116C1F28622237EA0EBA /* PKHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PKHUD.modulemap; sourceTree = "<group>"; };
+		2C60EEFBE4D459FFE99BB1ED382E024E /* pdf@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "pdf@2x.png"; path = "FileBrowser/Resources/pdf@2x.png"; sourceTree = "<group>"; };
+		2C6402CE7C5B94E799006B4F36065535 /* FileBrowser.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FileBrowser.xib; path = FileBrowser/Resources/FileBrowser.xib; sourceTree = "<group>"; };
+		2E6B5A003A0AC6BC09D022FECBB499B5 /* PKHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PKHUD.h; path = PKHUD/PKHUD.h; sourceTree = "<group>"; };
+		310C573C06EAD617FF16C1CE70D23216 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/QuickLook.framework; sourceTree = DEVELOPER_DIR; };
+		325AE6B903E997CAD3896D37847D8D92 /* folder@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "folder@2x.png"; path = "FileBrowser/Resources/folder@2x.png"; sourceTree = "<group>"; };
 		32D9528A293C23D343BC5C9279E550EF /* Pods-ToneManagerTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ToneManagerTests-umbrella.h"; sourceTree = "<group>"; };
-		34E26006C1ECE7AF042265FC45768EFC /* PKHUDErrorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDErrorView.swift; path = PKHUD/PKHUDErrorView.swift; sourceTree = "<group>"; };
+		3366E856C7DD6DBF42EFEA1FD3B7637A /* WindowRootViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WindowRootViewController.swift; path = PKHUD/WindowRootViewController.swift; sourceTree = "<group>"; };
 		357BC016A181FFC5959237F485E02507 /* Pods-ToneManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ToneManager.release.xcconfig"; sourceTree = "<group>"; };
-		35D650087658BC8F1682C4F8330C6EAC /* UISideMenuNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UISideMenuNavigationController.swift; path = Pod/Classes/UISideMenuNavigationController.swift; sourceTree = "<group>"; };
 		39DDCDF0894BCA4D093572874062B0C8 /* Pods-ToneManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ToneManager-dummy.m"; sourceTree = "<group>"; };
+		3AA1406F4D1155BE707EB4CABF0ACBBE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		3B3CBA51D6AFFA3BB25EF468F085CE93 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		3C07DAA7420C669BC2C9397BD756BBDD /* FileListTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileListTableView.swift; path = FileBrowser/FileListTableView.swift; sourceTree = "<group>"; };
 		3C334F18C20B9E45F1ABF8C1886B2B4F /* Pods-ToneManagerUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ToneManagerUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		408A4471C37A7884AD84DC15F7F39D10 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		41B81079183EC3930AE741D5A291C13F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		423A707D4B8DDDFEBF00719EDA78186D /* Pods-ToneManagerUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManagerUITests-frameworks.sh"; sourceTree = "<group>"; };
-		452ADE5D97E77CBD258564A4289464A1 /* Pods_ToneManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ToneManagerUITests.framework; path = "Pods-ToneManagerUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		481D125B08EE5B7B1F77477C3334256D /* PKHUDTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDTextView.swift; path = PKHUD/PKHUDTextView.swift; sourceTree = "<group>"; };
+		433EF5ACE36232FD4B741106809F72A9 /* Pods_ToneManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49A7A5C3E2C57D88794F5C6CF9A4ABE1 /* FileBrowser-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FileBrowser-umbrella.h"; sourceTree = "<group>"; };
 		4A07DA0DB0EB3398B074348CCFC89136 /* Pods-ToneManager-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ToneManager-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4A53E44110360B59CC09A63C85D25807 /* Pods-ToneManagerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ToneManagerTests.modulemap"; sourceTree = "<group>"; };
+		4BE764AB9740C8F33A0D43DEFF3EFE40 /* Window.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Window.swift; path = PKHUD/Window.swift; sourceTree = "<group>"; };
 		4C2DE1CD3F72B8F14AE80D3B19882E64 /* Pods-ToneManagerTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ToneManagerTests-dummy.m"; sourceTree = "<group>"; };
+		4D3AFBBAAEC923B5CCE813CE3FC5D125 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D6C76F193F6D1AF95598804520FDCC6 /* FileListPreview.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileListPreview.swift; path = FileBrowser/FileListPreview.swift; sourceTree = "<group>"; };
+		4F8DD15D91E2FA38C508E8F943CD873B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5143985604796D98FA0668AFF9B45681 /* Pods-ToneManager-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ToneManager-acknowledgements.plist"; sourceTree = "<group>"; };
+		539800E02E24BF0C615D2F31B1DDC42B /* PKHUDErrorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDErrorView.swift; path = PKHUD/PKHUDErrorView.swift; sourceTree = "<group>"; };
 		54B6191EE2F09B0A3E6E8BF9660D0316 /* Pods-ToneManagerTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManagerTests-resources.sh"; sourceTree = "<group>"; };
-		5510C8722BE3069240C7607D5CB94B53 /* BugfenderSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BugfenderSDK.modulemap; sourceTree = "<group>"; };
-		55AEC35B452765A5BFAFA114CF8E3182 /* PKHUDSquareBaseView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDSquareBaseView.swift; path = PKHUD/PKHUDSquareBaseView.swift; sourceTree = "<group>"; };
-		5808E01039B34D954F4B306C4278BC68 /* libBugfenderSDKstatic.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libBugfenderSDKstatic.a; sourceTree = "<group>"; };
-		593A02E59E9BE459CEDCB6F40A53283E /* PKHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PKHUD.h; path = PKHUD/PKHUD.h; sourceTree = "<group>"; };
+		5510C3B3B199B38043A22F599F447ADC /* PKHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PKHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5768D668C5D8F93B3117506BA9C625EA /* PKHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PKHUD-prefix.pch"; sourceTree = "<group>"; };
+		587C6CCA584DA1210F03BFD5E6A87B3B /* FileBrowser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileBrowser.swift; path = FileBrowser/FileBrowser.swift; sourceTree = "<group>"; };
+		59D2E19354E67DBA15CC16175F88F6C9 /* FileBrowser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FileBrowser-dummy.m"; sourceTree = "<group>"; };
+		5CF59F613E675FDE0423DB0C99E3B16D /* SideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SideMenu-dummy.m"; sourceTree = "<group>"; };
 		5D0078F1A48108C290AFACE2FF7156B1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6370E138476BC0615362116C558B6B5B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		611C6414CFA71F30A2DC56BE835C335E /* FileBrowser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FileBrowser.h; path = FileBrowser/FileBrowser.h; sourceTree = "<group>"; };
+		61642C43F6EC468A3A44DFEC6B8A9BB6 /* FileBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FileBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		638120548637342F4A6A80A471B6A151 /* PKHUDRotatingImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDRotatingImageView.swift; path = PKHUD/PKHUDRotatingImageView.swift; sourceTree = "<group>"; };
 		65B85E9848A423CAE4FDABC981D46396 /* Pods-ToneManagerUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ToneManagerUITests-umbrella.h"; sourceTree = "<group>"; };
 		685351EB85F656500DC2D7E0786CCFDD /* Pods-ToneManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ToneManager.modulemap"; sourceTree = "<group>"; };
-		6A6DFF916BADA5C198D79C72F26FBEAB /* Window.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Window.swift; path = PKHUD/Window.swift; sourceTree = "<group>"; };
 		6D476C460FB03F098CEBFE60BFF5D99A /* Pods-ToneManager-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManager-frameworks.sh"; sourceTree = "<group>"; };
-		727B029A7DA61F8B66FD75A2A7B201B2 /* BugfenderSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BugfenderSDK.h; sourceTree = "<group>"; };
-		74E8DF8CDB96CED2A77C23DC7FD0FBB5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
-		7850CAC4DA43B3375FF9E49BF0B73A67 /* Bugfender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bugfender.swift; path = swift/Bugfender.swift; sourceTree = "<group>"; };
+		75518B3550ADB8BE12DF52F2B087DF2F /* PreviewManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PreviewManager.swift; path = FileBrowser/PreviewManager.swift; sourceTree = "<group>"; };
+		782BE3FE3205B4EC4B86CFD957AF1ED3 /* PKHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PKHUD.xcconfig; sourceTree = "<group>"; };
 		797F6883D6BABCBE51512B6EE9A1A36E /* Pods-ToneManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ToneManager-umbrella.h"; sourceTree = "<group>"; };
-		7C5B04DFFCB8C8FAF82A07829F5A0725 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PKHUD/Images.xcassets; sourceTree = "<group>"; };
-		7F3FA46CBC13211300D35371C494611F /* BugfenderSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BugfenderSDK-dummy.m"; sourceTree = "<group>"; };
-		84FF46B43456AE9E0A87E3FD7F326584 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		887F97F7D4502AC5D40E8D5D6D446307 /* SideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-prefix.pch"; sourceTree = "<group>"; };
-		88F617DD25906A9C2DBFD90ABE4046F2 /* PKHUDProgressView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDProgressView.swift; path = PKHUD/PKHUDProgressView.swift; sourceTree = "<group>"; };
-		890FA5FC36940774904953D4904D854A /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SideMenu.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A0BDE54605F2BACC1A369436937D0D5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		8BBBA9ADA1BEF3D8A85BF1C2E12A52BB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		978BC03C0DAF8ABCE218F540A14104F8 /* SideMenuTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuTransition.swift; path = Pod/Classes/SideMenuTransition.swift; sourceTree = "<group>"; };
+		79D6F449281119896D31957781B68204 /* PKHUDAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDAnimation.swift; path = PKHUD/PKHUDAnimation.swift; sourceTree = "<group>"; };
+		7C656E2A4764EB7F77064FB73D7B67A8 /* PreviewTransitionViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = PreviewTransitionViewController.xib; path = FileBrowser/Resources/PreviewTransitionViewController.xib; sourceTree = "<group>"; };
+		7D772F05B78F1A9F47D8D47E625DB3A0 /* PKHUDSystemActivityIndicatorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDSystemActivityIndicatorView.swift; path = PKHUD/PKHUDSystemActivityIndicatorView.swift; sourceTree = "<group>"; };
+		7F30A4CDD0B0E0280D33562376FDAB9F /* BugfenderSDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BugfenderSDK.xcconfig; sourceTree = "<group>"; };
+		86DFD4F0623F1B55133587D9C0FB3864 /* image@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "image@2x.png"; path = "FileBrowser/Resources/image@2x.png"; sourceTree = "<group>"; };
+		8E5D908707AA68239CE414B707FFAF99 /* PKHUDWideBaseView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDWideBaseView.swift; path = PKHUD/PKHUDWideBaseView.swift; sourceTree = "<group>"; };
+		91EC28A880B98BB9129972D3226D356B /* BugfenderSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BugfenderSDK-prefix.pch"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		94CFD338AD1113F320B3CA3F81D94E7A /* SideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SideMenu.modulemap; sourceTree = "<group>"; };
+		97AA2E31C35C58D1A2E5E96F19313EAA /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9859362605DB2FC0048D281E64A4D1F4 /* Pods-ToneManagerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ToneManagerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9B0E1DBEB8ACDFC7EC86D3FAD420CD1B /* FileBrowser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FileBrowser.xcconfig; sourceTree = "<group>"; };
+		9B3EEA3A4D79F5B7FF3679CC53FC6BB2 /* PKHUD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUD.swift; path = PKHUD/PKHUD.swift; sourceTree = "<group>"; };
 		9BDA54141A19DC5D779C4119FD8D3E5D /* Pods-ToneManagerUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManagerUITests-resources.sh"; sourceTree = "<group>"; };
-		9CE8C0D6202A18CD978C28499C89E6EB /* SideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-umbrella.h"; sourceTree = "<group>"; };
-		9E211B6F2BE12C35583668E1E129C276 /* SideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SideMenu.xcconfig; sourceTree = "<group>"; };
+		9FD023408FB83C29B25203EE14446EF8 /* PKHUDAnimating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDAnimating.swift; path = PKHUD/PKHUDAnimating.swift; sourceTree = "<group>"; };
+		A0386958FF71B50B491E2639C20FBACB /* BugfenderSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BugfenderSDK-dummy.m"; sourceTree = "<group>"; };
+		A1A1216FFC2A7266520862B2F872510B /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2AB0CAC21323D45DB6253541E3A5498 /* SideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SideMenu.xcconfig; sourceTree = "<group>"; };
+		A53233ED5C4D7A3216A6CE68AC69B3A5 /* FrameView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameView.swift; path = PKHUD/FrameView.swift; sourceTree = "<group>"; };
+		A5DC4B599514D05A87EC8B54405C5185 /* PKHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PKHUD-umbrella.h"; sourceTree = "<group>"; };
 		A80A44FF33AC2039992A676B9290307A /* Pods-ToneManagerUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ToneManagerUITests.modulemap"; sourceTree = "<group>"; };
 		A88EBD4A0895B0BE74D7CEBB980D6290 /* Pods-ToneManagerUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ToneManagerUITests-dummy.m"; sourceTree = "<group>"; };
-		AAA35D94830951A6FBBD858D37B06546 /* PKHUD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUD.swift; path = PKHUD/PKHUD.swift; sourceTree = "<group>"; };
-		AACB4EFA69769A2188535228D201E8B2 /* PKHUDSystemActivityIndicatorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDSystemActivityIndicatorView.swift; path = PKHUD/PKHUDSystemActivityIndicatorView.swift; sourceTree = "<group>"; };
-		B5A767309502F7C32685937961D071D6 /* PKHUDAssets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDAssets.swift; path = PKHUD/PKHUDAssets.swift; sourceTree = "<group>"; };
-		B5D2189507A90ABC3909F0D013017F9C /* PKHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PKHUD.xcconfig; sourceTree = "<group>"; };
-		BAE8FA70A303FCB8CBB02B25A83C9249 /* WindowRootViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WindowRootViewController.swift; path = PKHUD/WindowRootViewController.swift; sourceTree = "<group>"; };
-		C3F00D2D0872D49F913C730456D11EE5 /* BugfenderSDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BugfenderSDK.xcconfig; sourceTree = "<group>"; };
-		C988424FE30DB9C69DBC9D28B1A6E540 /* PKHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PKHUD.framework; path = PKHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD0D62A7C15D9D403653E86DEADC6B1A /* BugfenderSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BugfenderSDK.modulemap; sourceTree = "<group>"; };
+		B0CFA15CAFEF703BEF3118E545FDFB19 /* PKHUDSquareBaseView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDSquareBaseView.swift; path = PKHUD/PKHUDSquareBaseView.swift; sourceTree = "<group>"; };
+		B12467A9583F36D2B37AAE889C283A72 /* PreviewTransitionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PreviewTransitionViewController.swift; path = FileBrowser/PreviewTransitionViewController.swift; sourceTree = "<group>"; };
+		B696C33063DFFDF133F76762117CBFC8 /* SideMenuManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuManager.swift; path = Pod/Classes/SideMenuManager.swift; sourceTree = "<group>"; };
+		BDA3FA0220DC34C46162CEBB63755180 /* UISideMenuNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UISideMenuNavigationController.swift; path = Pod/Classes/UISideMenuNavigationController.swift; sourceTree = "<group>"; };
+		BE0D8E6711987A96411B130FD31A2317 /* FileListSearch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileListSearch.swift; path = FileBrowser/FileListSearch.swift; sourceTree = "<group>"; };
+		BF0821E313CAE21A70E732513F1D6AC7 /* BugfenderSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BugfenderSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4B98329FC2B9757CD688E34FBC726AC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		C5C04B27374CA9E3626818A90AC06418 /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UITableViewVibrantCell.swift; path = Pod/Classes/UITableViewVibrantCell.swift; sourceTree = "<group>"; };
 		C9F1E18BB02E3B9603F6E1B6CED3F967 /* Pods-ToneManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ToneManagerTests.release.xcconfig"; sourceTree = "<group>"; };
-		CA9799BDD352E6C7F10B9793243343F7 /* SideMenuManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuManager.swift; path = Pod/Classes/SideMenuManager.swift; sourceTree = "<group>"; };
+		CA39A5F2A9539EAC918BE72F8C670016 /* FBFile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FBFile.swift; path = FileBrowser/FBFile.swift; sourceTree = "<group>"; };
 		CD26B3CCDA86FA7C8E363BCF277611C5 /* Pods-ToneManagerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ToneManagerUITests.release.xcconfig"; sourceTree = "<group>"; };
-		CE8790E4EEC9548976097A8D9D56D822 /* BugfenderSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BugfenderSDK.framework; path = BugfenderSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA6CD65C745D3B5AB227F0D8810EFCE /* PKHUDTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDTextView.swift; path = PKHUD/PKHUDTextView.swift; sourceTree = "<group>"; };
 		D37A873C7073C971848911B94DF21D38 /* Pods-ToneManagerTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManagerTests-frameworks.sh"; sourceTree = "<group>"; };
-		D9669B126E0C0B713F06ED4BE7307B05 /* PKHUDAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDAnimation.swift; path = PKHUD/PKHUDAnimation.swift; sourceTree = "<group>"; };
-		DF7824788C614591ABCD3D60E65CE62F /* Pods_ToneManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ToneManager.framework; path = "Pods-ToneManager.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3CCA9DAF0F6836E6CF623A92A4EA3DC /* SideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SideMenu-dummy.m"; sourceTree = "<group>"; };
+		D37FBB71E41C0DFC3C3AC2916884988A /* FileBrowser.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FileBrowser.modulemap; sourceTree = "<group>"; };
+		D39BDDB7C4373CBAEE5492FAAED54970 /* BugfenderSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BugfenderSDK.h; sourceTree = "<group>"; };
+		D3B19470CEBFB02F4B5B06D0982B37B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D4F9B4C17EB07DE97C0151BC1303DFFA /* FileListViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileListViewController.swift; path = FileBrowser/FileListViewController.swift; sourceTree = "<group>"; };
+		D63731E056DCCFCADB4DACEF2A7E494D /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PKHUD/Images.xcassets; sourceTree = "<group>"; };
+		D670D67DB0F12BFF28E1455A9347168A /* BugfenderSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BugfenderSDK-umbrella.h"; sourceTree = "<group>"; };
+		D93AAA3335692427A38F09785B91C90B /* libBugfenderSDKstatic.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libBugfenderSDKstatic.a; sourceTree = "<group>"; };
 		E57FA0A7288F5E8F3B193B7856974121 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E809A82C1EFC3476B8FCACDCE85AC4BB /* SideMenuTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuTransition.swift; path = Pod/Classes/SideMenuTransition.swift; sourceTree = "<group>"; };
+		E98B32D33A6D1AFD958AECB16098B682 /* Pods_ToneManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A5E7663569BAAF62F4DE4C819A7CB8 /* Pods-ToneManager-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManager-resources.sh"; sourceTree = "<group>"; };
-		EA3168F9D8A3093AA41CB354819EDE0E /* PKHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PKHUD-prefix.pch"; sourceTree = "<group>"; };
 		EAD176B1ED996CDF71F7FBC52F3FE7C2 /* Pods-ToneManagerTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ToneManagerTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		F355BF1CEF2E578E20D6B14BA6D0C6D4 /* SideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SideMenu.modulemap; sourceTree = "<group>"; };
-		F7BEDE6AB483D89DA28B4D41BF737937 /* PKHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PKHUD-dummy.m"; sourceTree = "<group>"; };
+		EFB7473044633BD7763718BB532C37E5 /* FileParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileParser.swift; path = FileBrowser/FileParser.swift; sourceTree = "<group>"; };
+		EFEE90AFBE7435E9EB84EC2256053181 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA94475416CC6520CA1FE3A4BA2B2D3C /* Pods-ToneManagerTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ToneManagerTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		FC16A9C1AE1716584FBB33E3DB6D0EC6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE455EA5D8A7BA049F222FC048D5D9B9 /* file@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "file@2x.png"; path = "FileBrowser/Resources/file@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		234D6B8BDCA464B495E262E44BEB2353 /* Frameworks */ = {
+		172250FE3EDA85C8298C0CB72AD4A595 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33D023E55DAA58063205CD59CBA716F7 /* Foundation.framework in Frameworks */,
+				B8DCF9010041B75662F695A6BC58D8C0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20CD08B77428382B32568B41CDFDCDC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E01E341B85CA28238B978548E030E7D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,14 +265,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		862D06C67000F73FF4FC681860ECDC9E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6B93F86634D586AD934EA316017409B3 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9DBDEF4E804EADEF5A4E4E8B3ABE9559 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -212,6 +273,16 @@
 				FE2BD01ADAA8FEF092FF348DE06F6205 /* MobileCoreServices.framework in Frameworks */,
 				B73889A2D01BB3C2D2B33C8C543ADE15 /* Security.framework in Frameworks */,
 				12CB4DCA79CC1401B42D7D639E7F512E /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9CEC8AB969D2434FF2EF5D4D944CCF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				943EF611A1DC998ADD03CB9FCAE6CA2E /* Foundation.framework in Frameworks */,
+				3E2BE9608B70BBA6F90066BF1F839CF3 /* QuickLook.framework in Frameworks */,
+				6114163B00D1FD616EABAD9AC380A351 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,64 +305,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		074E81D8DF60F3F275362D41664CD4FA /* SideMenu */ = {
+		0F75DF6C7C5F002280EC53F48E80B587 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CA9799BDD352E6C7F10B9793243343F7 /* SideMenuManager.swift */,
-				978BC03C0DAF8ABCE218F540A14104F8 /* SideMenuTransition.swift */,
-				35D650087658BC8F1682C4F8330C6EAC /* UISideMenuNavigationController.swift */,
-				25611071BD9013C8C281B76839AFC64D /* UITableViewVibrantCell.swift */,
-				F14CE0B688BE3808C5386526BDB59777 /* Support Files */,
-			);
-			name = SideMenu;
-			path = SideMenu;
-			sourceTree = "<group>";
-		};
-		08EBDA19B8DBD8A82EDA2E0838FB2364 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				8B932163AA8216AE2D5F8C06C7F11186 /* Foundation.framework */,
-				74E8DF8CDB96CED2A77C23DC7FD0FBB5 /* MobileCoreServices.framework */,
-				8A0BDE54605F2BACC1A369436937D0D5 /* Security.framework */,
-				8BBBA9ADA1BEF3D8A85BF1C2E12A52BB /* SystemConfiguration.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				08EBDA19B8DBD8A82EDA2E0838FB2364 /* iOS */,
+				E29502D049A66907E81F33EC16D8CC32 /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1E3BE849B4E3FE11E8FFBFA097A3DB72 /* Swift */ = {
-			isa = PBXGroup;
-			children = (
-				7850CAC4DA43B3375FF9E49BF0B73A67 /* Bugfender.swift */,
-				727B029A7DA61F8B66FD75A2A7B201B2 /* BugfenderSDK.h */,
-				5AA83D9EF3376308AFACD443A9548F9A /* Frameworks */,
-			);
-			name = Swift;
-			sourceTree = "<group>";
-		};
-		29232DD924E26E719BF705ED61BA3624 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5857348B087AB60BCA0DD97A0CBC4AE3 /* BugfenderSDK */,
-				8747C9F07C8B83EC861FD5B322842DC1 /* PKHUD */,
-				074E81D8DF60F3F275362D41664CD4FA /* SideMenu */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		332CCE864C73C418AE276A704D72DC8D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				7C5B04DFFCB8C8FAF82A07829F5A0725 /* Images.xcassets */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		3B6297830840B4F300EDA9A947DB9147 /* Pods-ToneManagerUITests */ = {
@@ -312,18 +331,12 @@
 			path = "Target Support Files/Pods-ToneManagerUITests";
 			sourceTree = "<group>";
 		};
-		447874B1BF7D9B52C0052251B3E7038D /* Support Files */ = {
+		45E1322FC8C4DEA0A22B979F3D254EDC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5510C8722BE3069240C7607D5CB94B53 /* BugfenderSDK.modulemap */,
-				C3F00D2D0872D49F913C730456D11EE5 /* BugfenderSDK.xcconfig */,
-				7F3FA46CBC13211300D35371C494611F /* BugfenderSDK-dummy.m */,
-				0D3130CD36ED334DAF32D511F701ECE4 /* BugfenderSDK-prefix.pch */,
-				21EC5AB242CA18C32F87D4301D1DB9EC /* BugfenderSDK-umbrella.h */,
-				84FF46B43456AE9E0A87E3FD7F326584 /* Info.plist */,
+				D93AAA3335692427A38F09785B91C90B /* libBugfenderSDKstatic.a */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/BugfenderSDK";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		461611FD637D0835EDE4EB75C6F7B4D6 /* Targets Support Files */ = {
@@ -336,36 +349,81 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		49F91E33F7BB312D8B9670BF80C32CE7 /* Support Files */ = {
+		468CD9C14B59EECF6B88D21CE9682025 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6370E138476BC0615362116C558B6B5B /* Info.plist */,
-				195D1639611C8C7383B368F00721CE17 /* PKHUD.modulemap */,
-				B5D2189507A90ABC3909F0D013017F9C /* PKHUD.xcconfig */,
-				F7BEDE6AB483D89DA28B4D41BF737937 /* PKHUD-dummy.m */,
-				EA3168F9D8A3093AA41CB354819EDE0E /* PKHUD-prefix.pch */,
-				2ADE9BBCD69B1DD2591911FC877BC94A /* PKHUD-umbrella.h */,
+				135EC3E53B4F11F0A25AB18287DF3E73 /* documents@2x.png */,
+				FE455EA5D8A7BA049F222FC048D5D9B9 /* file@2x.png */,
+				2C6402CE7C5B94E799006B4F36065535 /* FileBrowser.xib */,
+				325AE6B903E997CAD3896D37847D8D92 /* folder@2x.png */,
+				86DFD4F0623F1B55133587D9C0FB3864 /* image@2x.png */,
+				2C60EEFBE4D459FFE99BB1ED382E024E /* pdf@2x.png */,
+				7C656E2A4764EB7F77064FB73D7B67A8 /* PreviewTransitionViewController.xib */,
+				1FB9614987B6E5E3B672B5CC44BBFE74 /* WebviewPreviewViewContoller.xib */,
+				2201182E6298B170CAA4656B1581349F /* zip@2x.png */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/PKHUD";
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		5857348B087AB60BCA0DD97A0CBC4AE3 /* BugfenderSDK */ = {
+		4A3AB0BF8D0BF2BD22E26BD7A4136F4B /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				447874B1BF7D9B52C0052251B3E7038D /* Support Files */,
-				1E3BE849B4E3FE11E8FFBFA097A3DB72 /* Swift */,
+				B696C33063DFFDF133F76762117CBFC8 /* SideMenuManager.swift */,
+				E809A82C1EFC3476B8FCACDCE85AC4BB /* SideMenuTransition.swift */,
+				BDA3FA0220DC34C46162CEBB63755180 /* UISideMenuNavigationController.swift */,
+				C5C04B27374CA9E3626818A90AC06418 /* UITableViewVibrantCell.swift */,
+				75D36B744073C12824131CD603178626 /* Support Files */,
 			);
-			name = BugfenderSDK;
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		67CF14138A685A4EEB64D1FC0888E870 /* BugfenderSDK */ = {
+			isa = PBXGroup;
+			children = (
+				A47822DEC9B61B0ADA2C1B656C0A4554 /* Support Files */,
+				BB0300F78CB7CC3D825E4D6E8A0E17C4 /* Swift */,
+			);
 			path = BugfenderSDK;
 			sourceTree = "<group>";
 		};
-		5AA83D9EF3376308AFACD443A9548F9A /* Frameworks */ = {
+		71652A81BD493C59C343F862FDE6793E /* PKHUD */ = {
 			isa = PBXGroup;
 			children = (
-				5808E01039B34D954F4B306C4278BC68 /* libBugfenderSDKstatic.a */,
+				A53233ED5C4D7A3216A6CE68AC69B3A5 /* FrameView.swift */,
+				15AE9372804408C3BC65F378197E538B /* HUD.swift */,
+				2E6B5A003A0AC6BC09D022FECBB499B5 /* PKHUD.h */,
+				9B3EEA3A4D79F5B7FF3679CC53FC6BB2 /* PKHUD.swift */,
+				9FD023408FB83C29B25203EE14446EF8 /* PKHUDAnimating.swift */,
+				79D6F449281119896D31957781B68204 /* PKHUDAnimation.swift */,
+				15F3EBFF3AA540A8E35F68EA69B60691 /* PKHUDAssets.swift */,
+				539800E02E24BF0C615D2F31B1DDC42B /* PKHUDErrorView.swift */,
+				1248CE6E6F4DFA3806CF8935D7AAD1AC /* PKHUDProgressView.swift */,
+				638120548637342F4A6A80A471B6A151 /* PKHUDRotatingImageView.swift */,
+				B0CFA15CAFEF703BEF3118E545FDFB19 /* PKHUDSquareBaseView.swift */,
+				19AC2D09CEF5216B041B5D51C0BCFF57 /* PKHUDSuccessView.swift */,
+				7D772F05B78F1A9F47D8D47E625DB3A0 /* PKHUDSystemActivityIndicatorView.swift */,
+				CFA6CD65C745D3B5AB227F0D8810EFCE /* PKHUDTextView.swift */,
+				8E5D908707AA68239CE414B707FFAF99 /* PKHUDWideBaseView.swift */,
+				4BE764AB9740C8F33A0D43DEFF3EFE40 /* Window.swift */,
+				3366E856C7DD6DBF42EFEA1FD3B7637A /* WindowRootViewController.swift */,
+				8C532F84F5CEB3D17BEC35EA90387683 /* Resources */,
+				7704AC69B92551031ADF08A4C9E384A9 /* Support Files */,
 			);
-			name = Frameworks;
+			path = PKHUD;
+			sourceTree = "<group>";
+		};
+		75D36B744073C12824131CD603178626 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EFEE90AFBE7435E9EB84EC2256053181 /* Info.plist */,
+				94CFD338AD1113F320B3CA3F81D94E7A /* SideMenu.modulemap */,
+				A2AB0CAC21323D45DB6253541E3A5498 /* SideMenu.xcconfig */,
+				5CF59F613E675FDE0423DB0C99E3B16D /* SideMenu-dummy.m */,
+				1937A590209675DD337AF799AAA67650 /* SideMenu-prefix.pch */,
+				078098FE10EEC4AE41F919D2DC000F26 /* SideMenu-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SideMenu";
 			sourceTree = "<group>";
 		};
 		7619A20916EE21FD71EF9C334ECCC9C7 /* Pods-ToneManager */ = {
@@ -386,53 +444,118 @@
 			path = "Target Support Files/Pods-ToneManager";
 			sourceTree = "<group>";
 		};
+		7704AC69B92551031ADF08A4C9E384A9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4F8DD15D91E2FA38C508E8F943CD873B /* Info.plist */,
+				2379ADE9E56C116C1F28622237EA0EBA /* PKHUD.modulemap */,
+				782BE3FE3205B4EC4B86CFD957AF1ED3 /* PKHUD.xcconfig */,
+				1BC89EF07C41B4A2F19C3677E1EE1597 /* PKHUD-dummy.m */,
+				5768D668C5D8F93B3117506BA9C625EA /* PKHUD-prefix.pch */,
+				A5DC4B599514D05A87EC8B54405C5185 /* PKHUD-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PKHUD";
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
-				29232DD924E26E719BF705ED61BA3624 /* Pods */,
-				9FF8B3D62A3EED5A1136294B657A12DF /* Products */,
+				0F75DF6C7C5F002280EC53F48E80B587 /* Frameworks */,
+				940C03FE8A5268F2C17CC5135D8AFB8F /* Pods */,
+				CBCBF11E25DD0509B3A4FCCD49AB891D /* Products */,
 				461611FD637D0835EDE4EB75C6F7B4D6 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8747C9F07C8B83EC861FD5B322842DC1 /* PKHUD */ = {
+		8C532F84F5CEB3D17BEC35EA90387683 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				250E2429735B04F87580DEAB8DFEF9BA /* FrameView.swift */,
-				25D9713E3BFAB08D215F87CCB83C239B /* HUD.swift */,
-				593A02E59E9BE459CEDCB6F40A53283E /* PKHUD.h */,
-				AAA35D94830951A6FBBD858D37B06546 /* PKHUD.swift */,
-				0A48AB5FF8092AC13C1855E114200DE6 /* PKHUDAnimating.swift */,
-				D9669B126E0C0B713F06ED4BE7307B05 /* PKHUDAnimation.swift */,
-				B5A767309502F7C32685937961D071D6 /* PKHUDAssets.swift */,
-				34E26006C1ECE7AF042265FC45768EFC /* PKHUDErrorView.swift */,
-				88F617DD25906A9C2DBFD90ABE4046F2 /* PKHUDProgressView.swift */,
-				2A7DAE65E793CE1D29EC088CDA3816F3 /* PKHUDRotatingImageView.swift */,
-				55AEC35B452765A5BFAFA114CF8E3182 /* PKHUDSquareBaseView.swift */,
-				0AFDA362C22E3919FB8DC207E35E6A6B /* PKHUDSuccessView.swift */,
-				AACB4EFA69769A2188535228D201E8B2 /* PKHUDSystemActivityIndicatorView.swift */,
-				481D125B08EE5B7B1F77477C3334256D /* PKHUDTextView.swift */,
-				2790CE4A2F1E99F3B3B1592D4D5B3327 /* PKHUDWideBaseView.swift */,
-				6A6DFF916BADA5C198D79C72F26FBEAB /* Window.swift */,
-				BAE8FA70A303FCB8CBB02B25A83C9249 /* WindowRootViewController.swift */,
-				332CCE864C73C418AE276A704D72DC8D /* Resources */,
-				49F91E33F7BB312D8B9670BF80C32CE7 /* Support Files */,
+				D63731E056DCCFCADB4DACEF2A7E494D /* Images.xcassets */,
 			);
-			name = PKHUD;
-			path = PKHUD;
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		9FF8B3D62A3EED5A1136294B657A12DF /* Products */ = {
+		8FC9AF645C707D82CD5307B228D33795 /* FileBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				CE8790E4EEC9548976097A8D9D56D822 /* BugfenderSDK.framework */,
-				C988424FE30DB9C69DBC9D28B1A6E540 /* PKHUD.framework */,
-				DF7824788C614591ABCD3D60E65CE62F /* Pods_ToneManager.framework */,
-				15620F6065D9AA752E5BE8B24D903202 /* Pods_ToneManagerTests.framework */,
-				452ADE5D97E77CBD258564A4289464A1 /* Pods_ToneManagerUITests.framework */,
-				890FA5FC36940774904953D4904D854A /* SideMenu.framework */,
+				CA39A5F2A9539EAC918BE72F8C670016 /* FBFile.swift */,
+				611C6414CFA71F30A2DC56BE835C335E /* FileBrowser.h */,
+				587C6CCA584DA1210F03BFD5E6A87B3B /* FileBrowser.swift */,
+				4D6C76F193F6D1AF95598804520FDCC6 /* FileListPreview.swift */,
+				BE0D8E6711987A96411B130FD31A2317 /* FileListSearch.swift */,
+				3C07DAA7420C669BC2C9397BD756BBDD /* FileListTableView.swift */,
+				D4F9B4C17EB07DE97C0151BC1303DFFA /* FileListViewController.swift */,
+				EFB7473044633BD7763718BB532C37E5 /* FileParser.swift */,
+				75518B3550ADB8BE12DF52F2B087DF2F /* PreviewManager.swift */,
+				B12467A9583F36D2B37AAE889C283A72 /* PreviewTransitionViewController.swift */,
+				06FC624069419648B2ACDAB9518658BA /* WebviewPreviewViewContoller.swift */,
+				468CD9C14B59EECF6B88D21CE9682025 /* Resources */,
+				C57FE200B2663AF39222DD1402739AA4 /* Support Files */,
+			);
+			path = FileBrowser;
+			sourceTree = "<group>";
+		};
+		940C03FE8A5268F2C17CC5135D8AFB8F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				67CF14138A685A4EEB64D1FC0888E870 /* BugfenderSDK */,
+				8FC9AF645C707D82CD5307B228D33795 /* FileBrowser */,
+				71652A81BD493C59C343F862FDE6793E /* PKHUD */,
+				4A3AB0BF8D0BF2BD22E26BD7A4136F4B /* SideMenu */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A47822DEC9B61B0ADA2C1B656C0A4554 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AD0D62A7C15D9D403653E86DEADC6B1A /* BugfenderSDK.modulemap */,
+				7F30A4CDD0B0E0280D33562376FDAB9F /* BugfenderSDK.xcconfig */,
+				A0386958FF71B50B491E2639C20FBACB /* BugfenderSDK-dummy.m */,
+				91EC28A880B98BB9129972D3226D356B /* BugfenderSDK-prefix.pch */,
+				D670D67DB0F12BFF28E1455A9347168A /* BugfenderSDK-umbrella.h */,
+				4D3AFBBAAEC923B5CCE813CE3FC5D125 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BugfenderSDK";
+			sourceTree = "<group>";
+		};
+		BB0300F78CB7CC3D825E4D6E8A0E17C4 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				0469CFE52906D6EE8571D1EEA37B5207 /* Bugfender.swift */,
+				D39BDDB7C4373CBAEE5492FAAED54970 /* BugfenderSDK.h */,
+				45E1322FC8C4DEA0A22B979F3D254EDC /* Frameworks */,
+			);
+			name = Swift;
+			sourceTree = "<group>";
+		};
+		C57FE200B2663AF39222DD1402739AA4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D37FBB71E41C0DFC3C3AC2916884988A /* FileBrowser.modulemap */,
+				9B0E1DBEB8ACDFC7EC86D3FAD420CD1B /* FileBrowser.xcconfig */,
+				59D2E19354E67DBA15CC16175F88F6C9 /* FileBrowser-dummy.m */,
+				030492D39029FB171A4E8C225B8C1694 /* FileBrowser-prefix.pch */,
+				49A7A5C3E2C57D88794F5C6CF9A4ABE1 /* FileBrowser-umbrella.h */,
+				FC16A9C1AE1716584FBB33E3DB6D0EC6 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FileBrowser";
+			sourceTree = "<group>";
+		};
+		CBCBF11E25DD0509B3A4FCCD49AB891D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF0821E313CAE21A70E732513F1D6AC7 /* BugfenderSDK.framework */,
+				61642C43F6EC468A3A44DFEC6B8A9BB6 /* FileBrowser.framework */,
+				5510C3B3B199B38043A22F599F447ADC /* PKHUD.framework */,
+				433EF5ACE36232FD4B741106809F72A9 /* Pods_ToneManager.framework */,
+				97AA2E31C35C58D1A2E5E96F19313EAA /* Pods_ToneManagerTests.framework */,
+				E98B32D33A6D1AFD958AECB16098B682 /* Pods_ToneManagerUITests.framework */,
+				A1A1216FFC2A7266520862B2F872510B /* SideMenu.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -455,18 +578,17 @@
 			path = "Target Support Files/Pods-ToneManagerTests";
 			sourceTree = "<group>";
 		};
-		F14CE0B688BE3808C5386526BDB59777 /* Support Files */ = {
+		E29502D049A66907E81F33EC16D8CC32 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				0053114041B67C50A3734FA3E94E8171 /* Info.plist */,
-				F355BF1CEF2E578E20D6B14BA6D0C6D4 /* SideMenu.modulemap */,
-				9E211B6F2BE12C35583668E1E129C276 /* SideMenu.xcconfig */,
-				E3CCA9DAF0F6836E6CF623A92A4EA3DC /* SideMenu-dummy.m */,
-				887F97F7D4502AC5D40E8D5D6D446307 /* SideMenu-prefix.pch */,
-				9CE8C0D6202A18CD978C28499C89E6EB /* SideMenu-umbrella.h */,
+				D3B19470CEBFB02F4B5B06D0982B37B8 /* Foundation.framework */,
+				C4B98329FC2B9757CD688E34FBC726AC /* MobileCoreServices.framework */,
+				310C573C06EAD617FF16C1CE70D23216 /* QuickLook.framework */,
+				3AA1406F4D1155BE707EB4CABF0ACBBE /* Security.framework */,
+				3B3CBA51D6AFFA3BB25EF468F085CE93 /* SystemConfiguration.framework */,
+				408A4471C37A7884AD84DC15F7F39D10 /* WebKit.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SideMenu";
+			name = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -489,19 +611,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69C42BBFF6300980F8F80B8573C9F96B /* Headers */ = {
+		7B47B0347B44F2633C044A47573A74A7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF8A8D529C8EB40D2628225C046E6303 /* SideMenu-umbrella.h in Headers */,
+				38A303159890A9C62BFCF4981794283C /* SideMenu-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		781C9AF0F001997D4B67F06CBD75C419 /* Headers */ = {
+		81B865319000F8B65033C284963E5981 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D55930B7B2718EF5393D115CCFCB1B7 /* Pods-ToneManager-umbrella.h in Headers */,
+				6E8EEFC1682D45FB58E7227CC68F88F6 /* Pods-ToneManager-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +632,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				055127FE5A55C7BC0250637A1E4ECD11 /* Pods-ToneManagerTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E79528A59195B1E1AE75CAC3886335F1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0ECAB8CE423151C30049007D1083B1D /* FileBrowser-umbrella.h in Headers */,
+				9747C5470DCD4E6C0A27955E18D5FC92 /* FileBrowser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,22 +656,22 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2B1CE7F10CF3A5808C926E25C013905E /* SideMenu */ = {
+		1877285AD4FAF21DE21607C649BFFFCE /* FileBrowser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5EAC4E215386A24CC29E6EC873701698 /* Build configuration list for PBXNativeTarget "SideMenu" */;
+			buildConfigurationList = E80961BF6D386EB3612011A310578324 /* Build configuration list for PBXNativeTarget "FileBrowser" */;
 			buildPhases = (
-				69C42BBFF6300980F8F80B8573C9F96B /* Headers */,
-				3340C8F0E493403B7B9350B3677608C3 /* Sources */,
-				862D06C67000F73FF4FC681860ECDC9E /* Frameworks */,
-				D8E7B976CAA385B8ACD0BB0626372517 /* Resources */,
+				E79528A59195B1E1AE75CAC3886335F1 /* Headers */,
+				89FF9E48AFA4BCADF39F32E66177DE22 /* Sources */,
+				A9CEC8AB969D2434FF2EF5D4D944CCF9 /* Frameworks */,
+				C528F2D8EC9C1E4030F914FF479FEF6E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SideMenu;
-			productName = SideMenu;
-			productReference = 890FA5FC36940774904953D4904D854A /* SideMenu.framework */;
+			name = FileBrowser;
+			productName = FileBrowser;
+			productReference = 61642C43F6EC468A3A44DFEC6B8A9BB6 /* FileBrowser.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		433240442101A5997E48ED1D32462B4F /* Pods-ToneManagerTests */ = {
@@ -559,7 +690,25 @@
 			);
 			name = "Pods-ToneManagerTests";
 			productName = "Pods-ToneManagerTests";
-			productReference = 15620F6065D9AA752E5BE8B24D903202 /* Pods_ToneManagerTests.framework */;
+			productReference = 97AA2E31C35C58D1A2E5E96F19313EAA /* Pods_ToneManagerTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		477A7816F19489FB082E5804AD24DF04 /* SideMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1A07577017EB739B739AB0584C8D8DB /* Build configuration list for PBXNativeTarget "SideMenu" */;
+			buildPhases = (
+				7B47B0347B44F2633C044A47573A74A7 /* Headers */,
+				7A9A391FC121C478A7B5BA6EB25B9BF0 /* Sources */,
+				20CD08B77428382B32568B41CDFDCDC3 /* Frameworks */,
+				8C3350BADE409331FE655E9F64D0F379 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SideMenu;
+			productName = SideMenu;
+			productReference = A1A1216FFC2A7266520862B2F872510B /* SideMenu.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		72237CC2739DC1E9C3D5F6BCD1008DDF /* BugfenderSDK */ = {
@@ -577,7 +726,7 @@
 			);
 			name = BugfenderSDK;
 			productName = BugfenderSDK;
-			productReference = CE8790E4EEC9548976097A8D9D56D822 /* BugfenderSDK.framework */;
+			productReference = BF0821E313CAE21A70E732513F1D6AC7 /* BugfenderSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		74CD402180700D5CEE5B197414358A25 /* Pods-ToneManagerUITests */ = {
@@ -596,7 +745,7 @@
 			);
 			name = "Pods-ToneManagerUITests";
 			productName = "Pods-ToneManagerUITests";
-			productReference = 452ADE5D97E77CBD258564A4289464A1 /* Pods_ToneManagerUITests.framework */;
+			productReference = E98B32D33A6D1AFD958AECB16098B682 /* Pods_ToneManagerUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C0748B62182D3C0CFC4071E37F3CCCA5 /* PKHUD */ = {
@@ -614,28 +763,29 @@
 			);
 			name = PKHUD;
 			productName = PKHUD;
-			productReference = C988424FE30DB9C69DBC9D28B1A6E540 /* PKHUD.framework */;
+			productReference = 5510C3B3B199B38043A22F599F447ADC /* PKHUD.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		DDD6CA6740CA06E5E57E2A0C5FAC273B /* Pods-ToneManager */ = {
+		FF2FB1DEF36D1C8EDF9805CB23BB4951 /* Pods-ToneManager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 935C25C30B4169F69B7E3FFDBD30EF0A /* Build configuration list for PBXNativeTarget "Pods-ToneManager" */;
+			buildConfigurationList = D0F16317E575BFD7357DD2EF661641DD /* Build configuration list for PBXNativeTarget "Pods-ToneManager" */;
 			buildPhases = (
-				781C9AF0F001997D4B67F06CBD75C419 /* Headers */,
-				C0FB31AE8A6F903ACD6FAA8DE17A54BA /* Sources */,
-				234D6B8BDCA464B495E262E44BEB2353 /* Frameworks */,
-				898C6F7D7FE63FF07719D6C5B0112623 /* Resources */,
+				81B865319000F8B65033C284963E5981 /* Headers */,
+				98451940C8331733A25135E1976F49C1 /* Sources */,
+				172250FE3EDA85C8298C0CB72AD4A595 /* Frameworks */,
+				1C056464F97C4849C0BFCE9B354E0FF3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D451BC44E46363AAF6F0D4A84C3B1029 /* PBXTargetDependency */,
-				7BF155B03168EB5C00AFD87FDB1245C4 /* PBXTargetDependency */,
-				9D2B26447CD16E6B2F34BC3601FD25EE /* PBXTargetDependency */,
+				75A12142F0AF9BEF8B14C1350359146A /* PBXTargetDependency */,
+				6A06736E623BD6A3D940B1FF738EAB60 /* PBXTargetDependency */,
+				411C83D56A22755B5E77E6C3939E9ED9 /* PBXTargetDependency */,
+				AB1485B96B13090EFE8CD6D3A2169B69 /* PBXTargetDependency */,
 			);
 			name = "Pods-ToneManager";
 			productName = "Pods-ToneManager";
-			productReference = DF7824788C614591ABCD3D60E65CE62F /* Pods_ToneManager.framework */;
+			productReference = 433EF5ACE36232FD4B741106809F72A9 /* Pods_ToneManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -645,7 +795,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 0940;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -655,21 +805,29 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 9FF8B3D62A3EED5A1136294B657A12DF /* Products */;
+			productRefGroup = CBCBF11E25DD0509B3A4FCCD49AB891D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				72237CC2739DC1E9C3D5F6BCD1008DDF /* BugfenderSDK */,
+				1877285AD4FAF21DE21607C649BFFFCE /* FileBrowser */,
 				C0748B62182D3C0CFC4071E37F3CCCA5 /* PKHUD */,
-				DDD6CA6740CA06E5E57E2A0C5FAC273B /* Pods-ToneManager */,
+				FF2FB1DEF36D1C8EDF9805CB23BB4951 /* Pods-ToneManager */,
 				433240442101A5997E48ED1D32462B4F /* Pods-ToneManagerTests */,
 				74CD402180700D5CEE5B197414358A25 /* Pods-ToneManagerUITests */,
-				2B1CE7F10CF3A5808C926E25C013905E /* SideMenu */,
+				477A7816F19489FB082E5804AD24DF04 /* SideMenu */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1C056464F97C4849C0BFCE9B354E0FF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		664D23BEB101C4E37FB873F91B65435B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -678,7 +836,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		898C6F7D7FE63FF07719D6C5B0112623 /* Resources */ = {
+		8C3350BADE409331FE655E9F64D0F379 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -692,10 +850,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D8E7B976CAA385B8ACD0BB0626372517 /* Resources */ = {
+		C528F2D8EC9C1E4030F914FF479FEF6E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F592203A138907E1CC01DEDFA603116 /* documents@2x.png in Resources */,
+				FA2C4F1B00AF51C78688A2E9726F7343 /* file@2x.png in Resources */,
+				27D65F53529C7D00D3E4596F524E1D43 /* FileBrowser.xib in Resources */,
+				478BE7A7DE286151D452C9C727B218BE /* folder@2x.png in Resources */,
+				530461905767AED8C778FFF938A7122E /* image@2x.png in Resources */,
+				09098BB4B891B7002D350AC321F44037 /* pdf@2x.png in Resources */,
+				518A78A85CE89201E1E7E9FA8F65E222 /* PreviewTransitionViewController.xib in Resources */,
+				127B50B3085439E7F58E1E94F16F0C61 /* WebviewPreviewViewContoller.xib in Resources */,
+				21C805D87D9564C77C7E3059F9778D67 /* zip@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,15 +916,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3340C8F0E493403B7B9350B3677608C3 /* Sources */ = {
+		7A9A391FC121C478A7B5BA6EB25B9BF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B98D3D988CB98A85363C4DEAF620DD0E /* SideMenu-dummy.m in Sources */,
-				D176D4A0A7FA5497483B99321553FB1B /* SideMenuManager.swift in Sources */,
-				5FF6280AC1F208DD68221AFDE04C9303 /* SideMenuTransition.swift in Sources */,
-				75171246373D071BEA9EBC3F5B110591 /* UISideMenuNavigationController.swift in Sources */,
-				F5CEF54B331B98631E91BA9C29BFDB96 /* UITableViewVibrantCell.swift in Sources */,
+				BC2EFE312A705F8102BFC663D81C089D /* SideMenu-dummy.m in Sources */,
+				9A80B26F84B4BDB287DFB41FF2B53D87 /* SideMenuManager.swift in Sources */,
+				965FDC00417A7007D4D3BBF817F85301 /* SideMenuTransition.swift in Sources */,
+				6D0EA2080E45D3B9884E6030A214F2ED /* UISideMenuNavigationController.swift in Sources */,
+				B14902953D4F282BDF88B414BD4039A4 /* UITableViewVibrantCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89FF9E48AFA4BCADF39F32E66177DE22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69C16362114E92CCFEDF707ED2280565 /* FBFile.swift in Sources */,
+				8C219DC98C61463A284602DBBD4BD7F3 /* FileBrowser-dummy.m in Sources */,
+				C3216BF769844D8D05098ED70BB34318 /* FileBrowser.swift in Sources */,
+				7DDBF87AF0FF98E8C2C0B750AB974546 /* FileListPreview.swift in Sources */,
+				882B63F37781C069F3FD402D85DD4CD0 /* FileListSearch.swift in Sources */,
+				BF1B392237F41CF7B45325A784420E75 /* FileListTableView.swift in Sources */,
+				BE66F5864469EA44E806820E3C705EA0 /* FileListViewController.swift in Sources */,
+				361C5EFA1553A5F2A9CAF54183606C9F /* FileParser.swift in Sources */,
+				D250DF1F9A837AD6DB988AE139144BC0 /* PreviewManager.swift in Sources */,
+				D35AB1D9E68C0E9294AE9958A44736FF /* PreviewTransitionViewController.swift in Sources */,
+				705B83526023A51359989ED95163DBAC /* WebviewPreviewViewContoller.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98451940C8331733A25135E1976F49C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE183910A87243404D69815AE55C062F /* Pods-ToneManager-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,14 +959,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E8B4766D54F5615615D5FE19C84AECC /* Pods-ToneManagerTests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C0FB31AE8A6F903ACD6FAA8DE17A54BA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6577D2A56401A9E59FA2DBD136023BDB /* Pods-ToneManager-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,42 +973,48 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7BF155B03168EB5C00AFD87FDB1245C4 /* PBXTargetDependency */ = {
+		411C83D56A22755B5E77E6C3939E9ED9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PKHUD;
 			target = C0748B62182D3C0CFC4071E37F3CCCA5 /* PKHUD */;
-			targetProxy = 7F41451ACEF00A6B91E002CB0ED55FEC /* PBXContainerItemProxy */;
+			targetProxy = 2E0A24A7902F19E94E8BF6030B149CDD /* PBXContainerItemProxy */;
+		};
+		6A06736E623BD6A3D940B1FF738EAB60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FileBrowser;
+			target = 1877285AD4FAF21DE21607C649BFFFCE /* FileBrowser */;
+			targetProxy = 5D9A71C135B3284BECD28BAE80CCB004 /* PBXContainerItemProxy */;
+		};
+		75A12142F0AF9BEF8B14C1350359146A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BugfenderSDK;
+			target = 72237CC2739DC1E9C3D5F6BCD1008DDF /* BugfenderSDK */;
+			targetProxy = 7513B681FCE6939C45AD0F813F2D52BE /* PBXContainerItemProxy */;
 		};
 		9760C98C60D56668CE09F95BD9DD22C5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-ToneManager";
-			target = DDD6CA6740CA06E5E57E2A0C5FAC273B /* Pods-ToneManager */;
+			target = FF2FB1DEF36D1C8EDF9805CB23BB4951 /* Pods-ToneManager */;
 			targetProxy = 4B3E1B7FCEF3A19058B2FA401228F7B5 /* PBXContainerItemProxy */;
 		};
-		9D2B26447CD16E6B2F34BC3601FD25EE /* PBXTargetDependency */ = {
+		AB1485B96B13090EFE8CD6D3A2169B69 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SideMenu;
-			target = 2B1CE7F10CF3A5808C926E25C013905E /* SideMenu */;
-			targetProxy = 51EBFB5E71C1E33E2780B8968548CD50 /* PBXContainerItemProxy */;
+			target = 477A7816F19489FB082E5804AD24DF04 /* SideMenu */;
+			targetProxy = 2D395D6418510AD8411103D696A152DE /* PBXContainerItemProxy */;
 		};
 		B966B37A1D4F7BF75A00346CFAA1A424 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-ToneManager";
-			target = DDD6CA6740CA06E5E57E2A0C5FAC273B /* Pods-ToneManager */;
+			target = FF2FB1DEF36D1C8EDF9805CB23BB4951 /* Pods-ToneManager */;
 			targetProxy = 636F1FFF0DBFDC1028BD5B051FF636B3 /* PBXContainerItemProxy */;
-		};
-		D451BC44E46363AAF6F0D4A84C3B1029 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BugfenderSDK;
-			target = 72237CC2739DC1E9C3D5F6BCD1008DDF /* BugfenderSDK */;
-			targetProxy = 899764F5D22F93E998AC69C47C981149 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1EFBD73A3F1EC87EB1B2BD2A2511C155 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3F00D2D0872D49F913C730456D11EE5 /* BugfenderSDK.xcconfig */;
+			baseConfigurationReference = 7F30A4CDD0B0E0280D33562376FDAB9F /* BugfenderSDK.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -838,19 +1029,15 @@
 				INFOPLIST_FILE = "Target Support Files/BugfenderSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/Frameworks/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/BugfenderSDK/BugfenderSDK.modulemap";
 				PRODUCT_MODULE_NAME = BugfenderSDK;
 				PRODUCT_NAME = BugfenderSDK;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -858,6 +1045,74 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		2E0A0AB249A0CFF6A1AA369ADDEFE828 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BE14A48511779C0CCDA0B97BDF3E08B /* Pods-ToneManager.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ToneManager/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ToneManager/Pods-ToneManager.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3AE78DEFFEADB9EF10F8D2EA1616E455 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B0E1DBEB8ACDFC7EC86D3FAD420CD1B /* FileBrowser.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FileBrowser/FileBrowser-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FileBrowser/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/Frameworks/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FileBrowser/FileBrowser.modulemap";
+				PRODUCT_MODULE_NAME = FileBrowser;
+				PRODUCT_NAME = FileBrowser;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		4C6C6C61C120D67E6B122DEA93F7D032 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -876,11 +1131,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManagerTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManagerTests/Pods-ToneManagerTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -896,48 +1147,9 @@
 			};
 			name = Debug;
 		};
-		53E190B47C0B80C87A40805B93B1EE1C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BE14A48511779C0CCDA0B97BDF3E08B /* Pods-ToneManager.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ToneManager/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ToneManager/Pods-ToneManager.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		5443B4FE7EC8CF326F0E8CE34C2CFD2C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3F00D2D0872D49F913C730456D11EE5 /* BugfenderSDK.xcconfig */;
+			baseConfigurationReference = 7F30A4CDD0B0E0280D33562376FDAB9F /* BugfenderSDK.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -952,11 +1164,8 @@
 				INFOPLIST_FILE = "Target Support Files/BugfenderSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/Frameworks/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/BugfenderSDK/BugfenderSDK.modulemap";
 				PRODUCT_MODULE_NAME = BugfenderSDK;
 				PRODUCT_NAME = BugfenderSDK;
@@ -970,6 +1179,41 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		5BFE205B0BD39B8FE27BEB2CA8EF2850 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 357BC016A181FFC5959237F485E02507 /* Pods-ToneManager.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ToneManager/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ToneManager/Pods-ToneManager.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		6F905B2C79F4B1EF6ED396853D75E0BC /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -988,11 +1232,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManagerTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManagerTests/Pods-ToneManagerTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1008,6 +1248,39 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		92DC14984672A87FCD55FBBD779F5C19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2AB0CAC21323D45DB6253541E3A5498 /* SideMenu.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SideMenu/SideMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/Frameworks/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
+				PRODUCT_MODULE_NAME = SideMenu;
+				PRODUCT_NAME = SideMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		96434B6C8FF320C976A10DAD7174A4BB /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1064,6 +1337,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -1085,11 +1359,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManagerUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManagerUITests/Pods-ToneManagerUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1105,9 +1375,43 @@
 			};
 			name = Debug;
 		};
-		C478CA3F98147F3C85561166486C8D7B /* Release */ = {
+		9A9A0886F3CA291C3D3BB57A22510F42 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E211B6F2BE12C35583668E1E129C276 /* SideMenu.xcconfig */;
+			baseConfigurationReference = 9B0E1DBEB8ACDFC7EC86D3FAD420CD1B /* FileBrowser.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FileBrowser/FileBrowser-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FileBrowser/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/Frameworks/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FileBrowser/FileBrowser.modulemap";
+				PRODUCT_MODULE_NAME = FileBrowser;
+				PRODUCT_NAME = FileBrowser;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9BF7440D2226441B19FFAD05CF451025 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2AB0CAC21323D45DB6253541E3A5498 /* SideMenu.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1122,60 +1426,16 @@
 				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/Frameworks/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
 				PRODUCT_MODULE_NAME = SideMenu;
 				PRODUCT_NAME = SideMenu;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CDEFA549584E988BABD7462BE0CB7AC1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 357BC016A181FFC5959237F485E02507 /* Pods-ToneManager.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ToneManager/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ToneManager/Pods-ToneManager.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1249,7 +1509,7 @@
 		};
 		DAEED46C27B6782F5CF2C46813C91D23 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5D2189507A90ABC3909F0D013017F9C /* PKHUD.xcconfig */;
+			baseConfigurationReference = 782BE3FE3205B4EC4B86CFD957AF1ED3 /* PKHUD.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1264,11 +1524,8 @@
 				INFOPLIST_FILE = "Target Support Files/PKHUD/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/Frameworks/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PKHUD/PKHUD.modulemap";
 				PRODUCT_MODULE_NAME = PKHUD;
 				PRODUCT_NAME = PKHUD;
@@ -1285,7 +1542,7 @@
 		};
 		DD507A5C76EE2776908081F36E5AC61B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5D2189507A90ABC3909F0D013017F9C /* PKHUD.xcconfig */;
+			baseConfigurationReference = 782BE3FE3205B4EC4B86CFD957AF1ED3 /* PKHUD.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1300,19 +1557,15 @@
 				INFOPLIST_FILE = "Target Support Files/PKHUD/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/Frameworks/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PKHUD/PKHUD.modulemap";
 				PRODUCT_MODULE_NAME = PKHUD;
 				PRODUCT_NAME = PKHUD;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1338,11 +1591,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManagerUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManagerUITests/Pods-ToneManagerUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1358,42 +1607,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		F8D3D16A3C4B483FB7735C9084079A85 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E211B6F2BE12C35583668E1E129C276 /* SideMenu.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SideMenu/SideMenu-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
-				PRODUCT_MODULE_NAME = SideMenu;
-				PRODUCT_NAME = SideMenu;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1425,15 +1638,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5EAC4E215386A24CC29E6EC873701698 /* Build configuration list for PBXNativeTarget "SideMenu" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F8D3D16A3C4B483FB7735C9084079A85 /* Debug */,
-				C478CA3F98147F3C85561166486C8D7B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		7EC19406EE69D03141B34371C247728D /* Build configuration list for PBXNativeTarget "BugfenderSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1443,11 +1647,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		935C25C30B4169F69B7E3FFDBD30EF0A /* Build configuration list for PBXNativeTarget "Pods-ToneManager" */ = {
+		D0F16317E575BFD7357DD2EF661641DD /* Build configuration list for PBXNativeTarget "Pods-ToneManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				53E190B47C0B80C87A40805B93B1EE1C /* Debug */,
-				CDEFA549584E988BABD7462BE0CB7AC1 /* Release */,
+				2E0A0AB249A0CFF6A1AA369ADDEFE828 /* Debug */,
+				5BFE205B0BD39B8FE27BEB2CA8EF2850 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1A07577017EB739B739AB0584C8D8DB /* Build configuration list for PBXNativeTarget "SideMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92DC14984672A87FCD55FBBD779F5C19 /* Debug */,
+				9BF7440D2226441B19FFAD05CF451025 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E80961BF6D386EB3612011A310578324 /* Build configuration list for PBXNativeTarget "FileBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AE78DEFFEADB9EF10F8D2EA1616E455 /* Debug */,
+				9A9A0886F3CA291C3D3BB57A22510F42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

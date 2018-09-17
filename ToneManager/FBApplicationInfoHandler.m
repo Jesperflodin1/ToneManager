@@ -88,14 +88,3 @@
 }
 
 @end
-
-@implementation ApplicationHandler : NSObject
-    + (BOOL)openApplicationWithIdentifier:(NSString *)bundleID {
-        PrivateApi_LSApplicationWorkspace* _workspace = [NSClassFromString(@"LSApplicationWorkspace") new];
-        
-        return (BOOL)[_workspace openApplicationWithBundleID:bundleID];
-    }
-
-
-
-@end

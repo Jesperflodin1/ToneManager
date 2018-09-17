@@ -39,8 +39,3 @@
 + (BOOL)loadFramework;
 
 @end
-
-@interface ApplicationHandler : NSObject
-    + (BOOL)openApplicationWithIdentifier:(NSString *)bundleID;
-
-@end

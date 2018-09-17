@@ -10,6 +10,7 @@ target 'ToneManager' do
   pod 'BugfenderSDK', '~> 1.5'
   pod 'PKHUD', '~> 5.0'
   pod 'SideMenu'
+  pod 'FileBrowser', '~> 1.0'
   target 'ToneManagerTests' do
     inherit! :search_paths
     # Pods for testing

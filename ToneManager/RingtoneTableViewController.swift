@@ -9,7 +9,6 @@
 import UIKit
 import BugfenderSDK
 import PKHUD
-import SideMenu
 import AVFoundation
 
 /// Shows available and installed ringtones
@@ -30,8 +29,7 @@ class RingtoneTableViewController : UITableViewController {
     /// Table filter variable 0=All, 1=Installed, 2=Not installed
     var ringtoneFilter : Int = 0
     
-    /// AVAudioPlayer object, used for playing audio
-    var audioPlayer : AVAudioPlayer?
+    var ringtonePlayer : RingtonePlayer?
     
     public required init?(coder aDecoder: NSCoder) {
         ringtoneStore = RingtoneStore.sharedInstance
@@ -231,11 +229,10 @@ extension RingtoneTableViewController {
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler:
         { (action) -> Void in
             self.ringtoneStore.removeRingtone(ringtone, completion: { (success) in
-                if success {
-                    if let index = self.tableView.indexPath(for: inCell) {
-                        self.tableView.deleteRows(at: [index], with: .automatic)
-                        HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Deleted ringtone"), delay: 0.7)
-                    }
+                if success, let index = self.tableView.indexPath(for: inCell) {
+       
+                    self.tableView.deleteRows(at: [index], with: .automatic)
+                    HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Deleted ringtone"), delay: 0.7)
                 } else {
                     HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when deletin ringtone"), delay: 1.0)
                 }
@@ -251,41 +248,22 @@ extension RingtoneTableViewController {
 extension RingtoneTableViewController {
     
     @IBAction func playTappedInCell(_ sender: UIButton) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
-            
-            guard let ringtone = cell.ringtoneItem else { return }
-            
-            if self.audioPlayer == nil {
-                setupPlayer(ringtone: ringtone)
-            }
-            
-            guard let player = self.audioPlayer else {
-                return
-            }
-            
-            if player.isPlaying {
-                stopPlaying()
-            } else {
-                playRingtone()
-            }
+        if ringtonePlayer == nil {
+            ringtonePlayer = RingtonePlayer(inTableView: tableView)
         }
+        
+        ringtonePlayer?.togglePlayForSelectedRingtone()
+        
     }
     
     @IBAction func installAllTapped(_ sender: UIBarButtonItem) {
-        if self.audioPlayer != nil {
-            stopPlaying()
-            self.audioPlayer = nil
-        }
+        ringtonePlayer?.stopPlaying()
         installAllRingtones()
     }
     
     
     @IBAction func uninstallAllTapped(_ sender: UIBarButtonItem) {
-        if self.audioPlayer != nil {
-            stopPlaying()
-            self.audioPlayer = nil
-        }
+        ringtonePlayer?.stopPlaying()
         uninstallAll()
     }
     
@@ -295,10 +273,7 @@ extension RingtoneTableViewController {
     @IBAction func installRingtone(_ sender: UIButton) {
         if let indexPath = tableView.indexPathForSelectedRow {
             
-            if self.audioPlayer != nil {
-                stopPlaying()
-                self.audioPlayer = nil
-            }
+            ringtonePlayer?.stopPlaying()
             
             let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
             
@@ -307,7 +282,6 @@ extension RingtoneTableViewController {
             if !ringtone.installed { // is not installed
                 
                 installRingtone(inCell: cell)
-                
             } else { // is installed
                 
                 uninstallRingtone(inCell: cell)
@@ -320,11 +294,7 @@ extension RingtoneTableViewController {
     /// - Parameter sender: Button that was tapped
     @IBAction func deleteRingtone(_ sender: UIButton) {
         if let indexPath = tableView.indexPathForSelectedRow {
-            
-            if self.audioPlayer != nil {
-                stopPlaying()
-                self.audioPlayer = nil
-            }
+            ringtonePlayer?.stopPlaying()
             
             let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
             
@@ -336,11 +306,7 @@ extension RingtoneTableViewController {
     ///
     /// - Parameter sender: UISegmentedControl that triggered this
     @IBAction public func filterChanged(_ sender: UISegmentedControl) {
-        
-        if self.audioPlayer != nil {
-            stopPlaying()
-            self.audioPlayer = nil
-        }
+        ringtonePlayer?.stopPlaying()
         
         ringtoneFilter = sender.selectedSegmentIndex
         ringtoneStore.allRingtones.lockArray()
@@ -353,6 +319,21 @@ extension RingtoneTableViewController {
     /// - Parameter sender: Button that triggered this
     @IBAction public func updateTapped(_ sender: UIBarButtonItem) {
         updateRingtones()
+    }
+    
+    private func deselectCurrentRow() {
+        let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
+        if let selectedRowNotNill = selectedRow {
+            
+            if let cell = tableView.cellForRow(at: selectedRowNotNill) as? RingtoneTableCell {
+                UIView.animate(withDuration: 0.2, animations: {
+                    cell.updateButtons(false)
+                })
+            }
+            tableView.deselectRow(at: selectedRowNotNill, animated: true)
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        }
     }
 }
 
@@ -377,28 +358,7 @@ extension RingtoneTableViewController {
     }
 }
 
-//MARK: Side menu methods
-extension RingtoneTableViewController {
-    
-    fileprivate func setupSideMenu() {
-        // Define the menus
-        SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
-        
-        // Enable gestures. The left and/or right menus must be set up above for these to work.
-        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
-        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
-        
-        // Set up a cool background image for demo purposes
-        SideMenuManager.default.menuAnimationBackgroundColor = UIColor(patternImage: UIImage(named: "menuBackground")!)
-        
-        SideMenuManager.default.menuPresentMode = .viewSlideOut
-        SideMenuManager.default.menuBlurEffectStyle = UIBlurEffectStyle.dark
-        SideMenuManager.default.menuFadeStatusBar = false
-        SideMenuManager.default.menuShadowOpacity = 0.5
-        SideMenuManager.default.menuAnimationFadeStrength = 0
-    }
-}
+
 
 
 //MARK: UIViewController method overrides
@@ -410,7 +370,6 @@ extension RingtoneTableViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         registerObservers()
-        setupSideMenu()
         
         super.viewDidLoad()
     }
@@ -425,20 +384,7 @@ extension RingtoneTableViewController {
             ringtoneStore.allRingtones.unlockArray()
         }
         
-        // deselect the selected row if any
-        NSLog("ViewWillAppear")
-        let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
-        if let selectedRowNotNill = selectedRow {
-            
-            if let cell = tableView.cellForRow(at: selectedRowNotNill) as? RingtoneTableCell {
-                UIView.animate(withDuration: 0.2, animations: {
-                    cell.updateButtons(false)
-                })
-            }
-            tableView.deselectRow(at: selectedRowNotNill, animated: true)
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
-        }
+        deselectCurrentRow()
         super.viewWillAppear(animated)
     }
     
@@ -447,25 +393,9 @@ extension RingtoneTableViewController {
     ///
     /// - Parameter animated: true if view will disappear with animation
     override public func viewWillDisappear(_ animated: Bool) {
+        ringtonePlayer?.stopPlaying()
         
-        if self.audioPlayer != nil {
-            stopPlaying()
-            self.audioPlayer = nil
-        }
-        
-        // deselect the selected row if any
-        let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
-        if let selectedRowNotNill = selectedRow {
-            print(selectedRowNotNill)
-            if let cell = tableView.cellForRow(at: selectedRowNotNill) as? RingtoneTableCell {
-                UIView.animate(withDuration: 0.2, animations: {
-                    cell.updateButtons(false)
-                })
-            }
-            tableView.deselectRow(at: selectedRowNotNill, animated: true)
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
-        }
+        deselectCurrentRow()
         super.viewWillDisappear(animated)
     }
 }
@@ -522,10 +452,7 @@ extension RingtoneTableViewController {
         if let indexPathForSelectedRow = tableView.indexPathForSelectedRow, // second tap on already selected cell
             indexPathForSelectedRow == indexPath {
             
-            if self.audioPlayer != nil {
-                stopPlaying()
-                self.audioPlayer = nil
-            }
+            ringtonePlayer?.stopPlaying()
             
             tableView.deselectRow(at: indexPath, animated: true)
             self.tableView.beginUpdates()
@@ -555,10 +482,7 @@ extension RingtoneTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
-        if self.audioPlayer != nil {
-            stopPlaying()
-            self.audioPlayer = nil
-        }
+        ringtonePlayer?.stopPlaying()
         return indexPath
     }
     
@@ -655,68 +579,6 @@ extension RingtoneTableViewController {
         
         
         return cell
-    }
-}
-
-//MARK: AVAudioPlayer methods
-extension RingtoneTableViewController {
-    
-    func setupPlayer(ringtone: Ringtone) {
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            // For iOS 11
-            if #available(iOS 11.0, *) {
-                self.audioPlayer = try AVAudioPlayer(contentsOf: ringtone.fileURL, fileTypeHint: AVFileType.m4a.rawValue)
-            } else { // For iOS versions < 11
-                self.audioPlayer = try AVAudioPlayer(contentsOf: ringtone.fileURL)
-            }
-            self.audioPlayer?.prepareToPlay()
-            self.audioPlayer?.delegate = self
-            
-        } catch {
-            Bugfender.error("Error when preparing to play ringtone: \(ringtone) with error: \(error)")
-        }
-    }
-    
-    /// Starts playing ringtone if ringtone variable is set
-    func playRingtone() {
-        guard let player = self.audioPlayer else {
-            return
-        }
-        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow {
-            if let cell = tableView.cellForRow(at: indexPathForSelectedRow) as? RingtoneTableCell {
-            cell.playButton.setImage(UIImage(named: "stop-circle44"), for: .normal)
-            player.play()
-            }
-        }
-    }
-    
-    /// Stops playing ringtone
-    func stopPlaying() {
-        guard let player = self.audioPlayer else {
-            return
-        }
-        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow {
-            if let cell = tableView.cellForRow(at: indexPathForSelectedRow) as? RingtoneTableCell {
-                cell.playButton.setImage(UIImage(named: "play-circle44"), for: .normal)
-                player.stop()
-                self.audioPlayer = nil
-            }
-        }
-    }
-}
-
-//MARK: AVAudioPlayerDelegate methods
-extension RingtoneTableViewController: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        stopPlaying()
-    }
-    
-    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
-        Bugfender.warning("Audio playback error: \(String(describing: error))")
-        stopPlaying()
     }
 }
 
