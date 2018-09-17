@@ -9,5 +9,5 @@
 import Foundation
 
 extension Notification.Name {
-  static let ringtoneStoreDidFinishLoading = Notification.Name("RingtoneStoreDidFinishLoading")
+    static let ringtoneStoreDidFinishLoading = Notification.Name("RingtoneStoreDidFinishLoading")
 }

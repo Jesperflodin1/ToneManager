@@ -11,7 +11,7 @@ import BugfenderSDK
 import SafariServices
 
 /// View controller for main settings page
-class SettingsViewController : UITableViewController {
+final class SettingsViewController : UITableViewController {
     
     //TODO: delete all ringtones action
     
@@ -21,7 +21,7 @@ class SettingsViewController : UITableViewController {
     @IBOutlet public weak var autoInstallSwitch: UISwitch!
     /// Outlet for remote logging UISwitch
     @IBOutlet public weak var remoteLoggingSwitch: UISwitch!
-
+    
     required init?(coder aDecoder: NSCoder) {
         self.ringtoneStore = RingtoneStore.sharedInstance
         super.init(coder: aDecoder)
@@ -65,21 +65,21 @@ extension SettingsViewController {
 
 //MARK: UITableViewController DataSource methods
 extension SettingsViewController {
-  override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-    if section != 3 {
-      return super.tableView(tableView, titleForFooterInSection: section)
-    } else {
-      let version : Any! = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
-      let build : Any! = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")
-      
-      let footerText = super.tableView(tableView, titleForFooterInSection: section)
-      
-      guard let versionString = version, let buildString = build else {
-        return footerText!
-      }
-      return "ToneManager \(versionString)-\(buildString)\n" + footerText!
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if section != 3 {
+            return super.tableView(tableView, titleForFooterInSection: section)
+        } else {
+            let version : Any! = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
+            let build : Any! = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")
+            
+            let footerText = super.tableView(tableView, titleForFooterInSection: section)
+            
+            guard let versionString = version, let buildString = build else {
+                return footerText!
+            }
+            return "ToneManager \(versionString)-\(buildString)\n" + footerText!
+        }
     }
-  }
 }
 
 //MARK: Switches actions
@@ -102,7 +102,7 @@ extension SettingsViewController {
 
 //MARK: Button Actions
 extension SettingsViewController {
-  
+    
     /// Opens github page
     ///
     /// - Parameter sender: Gesture recognizer that called this function

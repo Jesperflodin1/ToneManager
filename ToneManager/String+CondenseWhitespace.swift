@@ -9,8 +9,8 @@
 import Foundation
 
 extension String {
-  func condenseWhitespace() -> String {
-    let components = self.components(separatedBy: .whitespacesAndNewlines)
-    return components.filter { !$0.isEmpty }.joined(separator: " ")
-  }
+    func condenseWhitespace() -> String {
+        let components = self.components(separatedBy: .whitespacesAndNewlines)
+        return components.filter { !$0.isEmpty }.joined(separator: " ")
+    }
 }

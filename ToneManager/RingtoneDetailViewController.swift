@@ -12,7 +12,7 @@ import BugfenderSDK
 import PKHUD
 
 /// View controller that shows details page for ringtone
-class RingtoneDetailViewController : UITableViewController {
+final class RingtoneDetailViewController : UITableViewController {
     
     /// Outlet for ringtone name label
     @IBOutlet weak var nameLabel: UILabel!

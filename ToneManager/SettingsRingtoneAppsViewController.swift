@@ -9,7 +9,7 @@
 import UIKit
 
 /// View controller used in settings which shows switches for default supported ringtone apps
-public class SettingsRingtoneAppsViewController : UITableViewController {
+final class SettingsRingtoneAppsViewController : UITableViewController {
     
     /// Outlet for UISwitch for Zedge Ringtones
     @IBOutlet weak var zedgeSwitch: UISwitch!
@@ -55,7 +55,7 @@ extension SettingsRingtoneAppsViewController {
             zedgeSwitch.isEnabled = true
         } else {
             zedgeSwitch.isEnabled = false
-        
+            
         }
         
         if Preferences.audikoLiteInstalled {

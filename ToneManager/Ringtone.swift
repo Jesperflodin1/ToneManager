@@ -10,7 +10,7 @@ import BugfenderSDK
 import AVFoundation
 
 /// Model class for one ringtone. Stores metadata
-public class Ringtone : NSObject, Codable {
+final class Ringtone : NSObject, Codable {
     
     /// Name visible in the ringtone picker
     private(set) var name: String

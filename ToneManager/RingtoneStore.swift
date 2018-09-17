@@ -13,7 +13,7 @@ import BugfenderSDK
 public let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
 
 /// Model class for ringtones
-class RingtoneStore {
+final class RingtoneStore {
     
     /// Path to local plist for ringtone metadata
     let plistURL = URL(fileURLWithPath: "/var/mobile/Library/ToneManager/tones.plist")
@@ -37,7 +37,7 @@ class RingtoneStore {
     
     /// Serial queue for reading/writing plist
     fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SerialRingtoneStorePListReaderWriterQueue")
-
+    
     public func createTestRingtones() {
         for i in 1...5 {
             let newTone = Ringtone(filePath: "/var/Containers/something/Documents/ringtone\(i)    pls--   åäö!.m4r", bundleID: "com.908.AudikoFree")
@@ -94,15 +94,15 @@ extension RingtoneStore {
             NSLog("Trying to read plist")
             do {
                 let data = try Data(contentsOf: self.plistURL)
-
+                
                 let decoder = PropertyListDecoder()
                 let ringtonesArray = try decoder.decode(Array<Ringtone>.self, from: data)
                 
                 if shouldVerifyRingtones {
                     let newRingtonesArray = self.verifyRingtones(inArray: ringtonesArray)
-
+                    
                     self.allRingtones = WriteLockableSynchronizedArray(with: newRingtonesArray)
-
+                    
                     
                 } else {
                     self.allRingtones = WriteLockableSynchronizedArray(with: ringtonesArray)
@@ -120,16 +120,16 @@ extension RingtoneStore {
             }
             
             
-//          self.createTestRingtones()
+            //          self.createTestRingtones()
             
-//            DispatchQueue.main.sync {
+            //            DispatchQueue.main.sync {
             
             
-//            }
+            //            }
             self.finishedLoading = true
             NotificationCenter.default.post(name: .ringtoneStoreDidFinishLoading, object: nil)
         }
-
+        
         
     }
     
@@ -177,7 +177,7 @@ extension RingtoneStore {
         let installer = RingtoneInstaller(self)
         BFLog("Calling ringtone install for ringtone: \(ringtone)")
         installer.installRingtone(ringtone, completionHandler: completionHandler)
-
+        
     }
     
     func installAllRingtones(completionHandler: @escaping (Int, Int) -> Void) {
@@ -223,7 +223,7 @@ extension RingtoneStore {
         BFLog("Delete was called for ringtone: \(ringtone)")
         
         let installer = RingtoneInstaller(self)
-            
+        
         installer.removeRingtone(ringtone, deleteFile: true, shouldCallBackToStore: true, completionHandler: completion)
     }
 }

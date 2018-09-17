@@ -10,7 +10,7 @@ import UIKit
 import BugfenderSDK
 
 /// Table view controller that uses Applist to show list of apps
-public class AppListViewController : UITableViewController {
+final class AppListViewController : UITableViewController {
     
     var tabView : UITableView = UITableView()
     var appNames : [String] = []

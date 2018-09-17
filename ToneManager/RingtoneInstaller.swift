@@ -10,7 +10,7 @@ import Foundation
 import BugfenderSDK
 
 /// Class that handles tonelibrary import and deletion of ringtones
-class RingtoneInstaller {
+final class RingtoneInstaller {
     
     /// Serial queue where import calls are placed
     fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SerialRingtoneInstallerQueue", attributes: .concurrent)

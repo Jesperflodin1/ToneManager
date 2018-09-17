@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 import BugfenderSDK
 
-class RingtonePlayer: NSObject {
+final class RingtonePlayer: NSObject {
     /// AVAudioPlayer object, used for playing audio
     var audioPlayer : AVAudioPlayer?
     
