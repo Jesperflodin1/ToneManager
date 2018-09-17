@@ -12,5 +12,7 @@ class RingtoneManager {
   /// Storage for Ringtones
   fileprivate var ringtoneStore : RingtoneStore!
   
-  
+  init() {
+    ringtoneStore = RingtoneStore.sharedInstance
+  }
 }

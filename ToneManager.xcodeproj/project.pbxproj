@@ -437,7 +437,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\n# Modify this to your device's IP address.\nIP=\"192.168.2.95\"\n\n# Verify that the build is for iOS Device and not a Simulator.\nif [[ \"$NATIVE_ARCH\" != \"i386\" && \"$NATIVE_ARCH\" != \"x86_64\" ]]; then\n# Kill any running instances and remove the app folder.\necho \"Removing previous app\"\nssh root@$IP \"killall ${TARGETNAME}; rm -rf /Applications/${WRAPPER_NAME}\"\n# Self sign the build.\necho \"Signing with ldid\"\nldid -S$BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/entitlements.xml $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/$TARGETNAME\nldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/BugfenderSDK.framework/BugfenderSDK\nldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/PKHUD.framework/PKHUD\nldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/SideMenu.framework/SideMenu\n# Copy it over.\n\n#rm -r $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/libswift*\n\necho \"Copying to device\"\nscp -r $BUILT_PRODUCTS_DIR/${WRAPPER_NAME} root@$IP:/Applications/\n#echo \"Running uicache\"\n#ssh root@$IP \"uicache\"\n\necho \"opening app\"\nssh root@$IP \"open\"\n\n# This part just creates create an OS X notification to let you know that the process is done.\n# You can get terminal-notifier from https://github.com/alloy/terminal-notifier.\n# You can remove this line if you want.\nfi";
+			shellScript = "#!/bin/bash\n\n$SRCROOT/Build-Phases/set-build-number.sh\n\n$SRCROOT/Build-Phases/install-to-device.sh\n\n";
 		};
 		270D784557AF8187DA688C84 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -696,6 +696,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6VG5GK3UD7;
 				HEADER_SEARCH_PATHS = /Users/jesper/theos/include/;
 				INFOPLIST_FILE = ToneManager/Info.plist;
@@ -731,6 +732,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6VG5GK3UD7;
 				HEADER_SEARCH_PATHS = /Users/jesper/theos/include/;
 				INFOPLIST_FILE = ToneManager/Info.plist;
