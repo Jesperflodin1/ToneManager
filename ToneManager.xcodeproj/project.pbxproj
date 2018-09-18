@@ -731,7 +731,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C0BE91D61C88AF3F956DEAC /* Pods-ToneManager.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -751,10 +750,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ToneManager/Frameworks",
 				);
+				OPEN_APP = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_UICACHE = NO;
 				SDKROOT = iphoneos;
 				SEPARATE_SYMBOL_EDIT = NO;
+				SSH_CONNECTION_MODE = NET;
 				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -767,7 +769,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD3373338519FD00CA4E77F3 /* Pods-ToneManager.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -787,10 +788,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ToneManager/Frameworks",
 				);
+				OPEN_APP = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_UICACHE = NO;
 				SDKROOT = iphoneos;
 				SEPARATE_SYMBOL_EDIT = NO;
+				SSH_CONNECTION_MODE = NET;
 				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

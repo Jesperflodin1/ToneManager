@@ -1,0 +1,6 @@
+[submodule "SideMenu"]
+	path = SideMenu
+	url = https://github.com/jonkykong/SideMenu.git
+[submodule "PKHUD"]
+	path = PKHUD
+	url = https://github.com/pkluz/PKHUD.git
