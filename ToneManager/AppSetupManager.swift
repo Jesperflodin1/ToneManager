@@ -7,10 +7,21 @@
 //
 
 import Foundation
+import BugfenderSDK
 
 class AppSetupManager {
     
-    func doSetupIfNeeded() {
-        
+    class func doSetupIfNeeded() {
+        if Preferences.firstRun {
+            BFLog("First run setup")
+            
+        } else if Preferences.isUpdated {
+            BFLog("App has been updated")
+            
+        }
+    }
+    
+    class func registerAppWithSystem() {
+        LSApplicationWorkspaceHandler.registerApplicationDictionary()
     }
 }

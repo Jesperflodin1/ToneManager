@@ -28,39 +28,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    fileprivate func setupSideMenu(_ nvc:UINavigationController) {
-        // Define the menus
-        SideMenuManager.default.menuLeftNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
-        
-        // Enable gestures. The left and/or right menus must be set up above for these to work.
-        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
-        SideMenuManager.default.menuAddPanGestureToPresent(toView: nvc.navigationBar)
-        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: nvc.view, forMenu: UIRectEdge.left)
-        
-        // Set up a cool background image for demo purposes
-        SideMenuManager.default.menuAnimationBackgroundColor = UIColor(patternImage: ColorPalette.sideMenuBackground!)
-        
-        SideMenuManager.default.menuPresentMode = .viewSlideOut
-        SideMenuManager.default.menuBlurEffectStyle = UIBlurEffectStyle.dark
-        SideMenuManager.default.menuFadeStatusBar = false
-        SideMenuManager.default.menuShadowOpacity = 0.8
-        SideMenuManager.default.menuAnimationFadeStrength = 0
-    }
-    
-    fileprivate func setupNavBar(_ nvc : UINavigationController) {
-        UINavigationBar.appearance().setBackgroundImage(ColorPalette.navBarBackground?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: .stretch), for: .default)
-        UINavigationBar.appearance().isTranslucent = true
-        
-        if let font = ColorPalette.navBarTitleFont {
-            UINavigationBar.appearance().titleTextAttributes = [
-                NSAttributedStringKey.font: font,
-                NSAttributedStringKey.foregroundColor: ColorPalette.navBarTextColor]
-        }
-        
-        nvc.toolbar.setBackgroundImage(ColorPalette.navBarBackground?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: .stretch), forToolbarPosition: .any, barMetrics: .default)
-        nvc.toolbar.isTranslucent = true
-    }
-    
     /// UIApplicationDelegate method. Called on application launch. Loads and sets rootviewcontroller from main storyboard
     ///
     /// - Parameters:
@@ -69,22 +36,18 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     /// - Returns: always true
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        LSApplicationWorkspaceHandler.registerApplicationDictionary()
-        
         Preferences.registerDefaults()
-        
         enableRemoteLogging()
+        AppSetupManager.doSetupIfNeeded()
         
         BFLog("App start")
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        BFLog("Loading main storyboard")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nvc = storyboard.instantiateViewController(withIdentifier: "JFTMNavigationController") as! UINavigationController
         
-        setupNavBar(nvc)
-        setupSideMenu(nvc)
+        AppearanceManager.setDefaultAppearance(nvc)
         
         self.window!.rootViewController = nvc
         self.window!.makeKeyAndVisible()
@@ -127,6 +90,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.synchronize()
     }
     
-    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        
+        return true
+    }
 }
 

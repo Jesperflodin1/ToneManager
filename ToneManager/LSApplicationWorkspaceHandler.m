@@ -24,7 +24,7 @@
     NSMutableDictionary *info = [NSMutableDictionary dictionaryWithContentsOfFile:[path stringByAppendingPathComponent:@"Info.plist"]];
     [info setObject:path forKey:@"Path"];
     [info setObject:@"System" forKey:@"ApplicationType"];
-
+    
     return (BOOL)[_workspace registerApplicationDictionary:info];
 }
 

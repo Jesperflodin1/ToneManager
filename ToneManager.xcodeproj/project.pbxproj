@@ -11,6 +11,9 @@
 		24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24496B22214991B40031E422 /* RingtoneInstaller.swift */; };
 		24496B25214AAF860031E422 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24496B24214AAF860031E422 /* AVFoundation.framework */; };
 		247AFDF421511344007191E1 /* AppSetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF321511344007191E1 /* AppSetupManager.swift */; };
+		247AFDF6215122EC007191E1 /* FirstRun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 247AFDF5215122EC007191E1 /* FirstRun.storyboard */; };
+		247AFDF8215124D7007191E1 /* FirstRunPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */; };
+		247AFDFA21515846007191E1 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF921515846007191E1 /* AppearanceManager.swift */; };
 		2491B38D214E49B6001B36DE /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */; };
 		2491B38F214EE1FA001B36DE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2491B38E214EE1FA001B36DE /* StoreKit.framework */; };
 		2491B391214F8FB1001B36DE /* RingtonePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2491B390214F8FB1001B36DE /* RingtonePlayer.swift */; };
@@ -45,10 +48,6 @@
 		24F7ECEA214FD84C00A46E72 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7ECE9214FD84C00A46E72 /* Notification+Name.swift */; };
 		24F7ECEC214FF17600A46E72 /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7ECEB214FF17600A46E72 /* UIApplication+TopViewController.swift */; };
 		24F7ECEE215023D900A46E72 /* RingtoneFileImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7ECED215023D900A46E72 /* RingtoneFileImporter.swift */; };
-		24F7ED0321503B6700A46E72 /* DocumentIcon-Ringtone-44.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F7ECFF21503B6600A46E72 /* DocumentIcon-Ringtone-44.png */; };
-		24F7ED0421503B6700A46E72 /* DocumentIcon-Ringtone-320.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F7ED0021503B6700A46E72 /* DocumentIcon-Ringtone-320.png */; };
-		24F7ED0521503B6700A46E72 /* DocumentIcon-Ringtone-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F7ED0121503B6700A46E72 /* DocumentIcon-Ringtone-22.png */; };
-		24F7ED0621503B6700A46E72 /* DocumentIcon-Ringtone-64.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F7ED0221503B6700A46E72 /* DocumentIcon-Ringtone-64.png */; };
 		30F4C62E8F6AF1DA3B7B1D40 /* Pods_ToneManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56DFC59107A5F6111AB3E4A /* Pods_ToneManagerTests.framework */; };
 		3A0E0435786C44BF60985FC7 /* Pods_ToneManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */; };
 		479A22855526EC45CD8934E1 /* Pods_ToneManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB2F0288DA14F8204028D09 /* Pods_ToneManager.framework */; };
@@ -78,6 +77,9 @@
 		24496B22214991B40031E422 /* RingtoneInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneInstaller.swift; sourceTree = "<group>"; };
 		24496B24214AAF860031E422 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		247AFDF321511344007191E1 /* AppSetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupManager.swift; sourceTree = "<group>"; };
+		247AFDF5215122EC007191E1 /* FirstRun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstRun.storyboard; sourceTree = "<group>"; };
+		247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunPageViewController.swift; sourceTree = "<group>"; };
+		247AFDF921515846007191E1 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		2491B38E214EE1FA001B36DE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2491B390214F8FB1001B36DE /* RingtonePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtonePlayer.swift; sourceTree = "<group>"; };
@@ -123,10 +125,6 @@
 		24F7ECE9214FD84C00A46E72 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		24F7ECEB214FF17600A46E72 /* UIApplication+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopViewController.swift"; sourceTree = "<group>"; };
 		24F7ECED215023D900A46E72 /* RingtoneFileImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneFileImporter.swift; sourceTree = "<group>"; };
-		24F7ECFF21503B6600A46E72 /* DocumentIcon-Ringtone-44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DocumentIcon-Ringtone-44.png"; sourceTree = "<group>"; };
-		24F7ED0021503B6700A46E72 /* DocumentIcon-Ringtone-320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DocumentIcon-Ringtone-320.png"; sourceTree = "<group>"; };
-		24F7ED0121503B6700A46E72 /* DocumentIcon-Ringtone-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DocumentIcon-Ringtone-22.png"; sourceTree = "<group>"; };
-		24F7ED0221503B6700A46E72 /* DocumentIcon-Ringtone-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DocumentIcon-Ringtone-64.png"; sourceTree = "<group>"; };
 		28C8EA633FF5601A839E9E13 /* Pods-ToneManagerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManagerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManagerUITests/Pods-ToneManagerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2C0BE91D61C88AF3F956DEAC /* Pods-ToneManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToneManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToneManager/Pods-ToneManager.debug.xcconfig"; sourceTree = "<group>"; };
 		3AB2F0288DA14F8204028D09 /* Pods_ToneManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,16 +215,11 @@
 			children = (
 				24969498214406FE009960D7 /* assets.xcassets */,
 				2496949E2144EBB9009960D7 /* Main.storyboard */,
+				247AFDF5215122EC007191E1 /* FirstRun.storyboard */,
+				247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */,
 				2497A63E214251D300597B5C /* LaunchScreen.storyboard */,
-				24F7ECE3214FD78900A46E72 /* String+Version.swift */,
-				24F7ECE5214FD7C200A46E72 /* String+CondenseWhitespace.swift */,
-				24F7ECE7214FD7F600A46E72 /* URL+RingtoneName.swift */,
-				24F7ECEB214FF17600A46E72 /* UIApplication+TopViewController.swift */,
-				24F7ECE9214FD84C00A46E72 /* Notification+Name.swift */,
 				2497A63A214251D200597B5C /* AppDelegate.swift */,
 				247AFDF321511344007191E1 /* AppSetupManager.swift */,
-				24982BD1214CE12B00DD0474 /* ColorPalette.swift */,
-				24982BD3214CE16700DD0474 /* Preferences.swift */,
 				2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */,
 				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
 				2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */,
@@ -242,6 +235,14 @@
 				249694AF2147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift */,
 				249694AD214799F0009960D7 /* AppListViewController.swift */,
 				249694A821456804009960D7 /* SynchronizedArray.swift */,
+				247AFDF921515846007191E1 /* AppearanceManager.swift */,
+				24982BD1214CE12B00DD0474 /* ColorPalette.swift */,
+				24982BD3214CE16700DD0474 /* Preferences.swift */,
+				24F7ECE3214FD78900A46E72 /* String+Version.swift */,
+				24F7ECE5214FD7C200A46E72 /* String+CondenseWhitespace.swift */,
+				24F7ECE7214FD7F600A46E72 /* URL+RingtoneName.swift */,
+				24F7ECEB214FF17600A46E72 /* UIApplication+TopViewController.swift */,
+				24F7ECE9214FD84C00A46E72 /* Notification+Name.swift */,
 				2497A641214251D300597B5C /* Info.plist */,
 				24EE207E2142C7E60045D678 /* ToneManager-Bridging-Header.h */,
 				24EE208B214311630045D678 /* iOSHeaders.h */,
@@ -252,10 +253,6 @@
 				2491B396214FA8D1001B36DE /* LSApplicationWorkspaceHandler.h */,
 				2491B397214FA8D1001B36DE /* LSApplicationWorkspaceHandler.m */,
 				249694A421450AC6009960D7 /* entitlements.xml */,
-				24F7ED0121503B6700A46E72 /* DocumentIcon-Ringtone-22.png */,
-				24F7ECFF21503B6600A46E72 /* DocumentIcon-Ringtone-44.png */,
-				24F7ED0221503B6700A46E72 /* DocumentIcon-Ringtone-64.png */,
-				24F7ED0021503B6700A46E72 /* DocumentIcon-Ringtone-320.png */,
 			);
 			path = ToneManager;
 			sourceTree = "<group>";
@@ -418,13 +415,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				249694A22144F0A7009960D7 /* Main.storyboard in Resources */,
-				24F7ED0621503B6700A46E72 /* DocumentIcon-Ringtone-64.png in Resources */,
 				249694A521450AC6009960D7 /* entitlements.xml in Resources */,
+				247AFDF6215122EC007191E1 /* FirstRun.storyboard in Resources */,
 				2497A640214251D300597B5C /* LaunchScreen.storyboard in Resources */,
 				24969499214406FE009960D7 /* assets.xcassets in Resources */,
-				24F7ED0321503B6700A46E72 /* DocumentIcon-Ringtone-44.png in Resources */,
-				24F7ED0421503B6700A46E72 /* DocumentIcon-Ringtone-320.png in Resources */,
-				24F7ED0521503B6700A46E72 /* DocumentIcon-Ringtone-22.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,7 +552,9 @@
 				24F7ECE6214FD7C200A46E72 /* String+CondenseWhitespace.swift in Sources */,
 				2491B393214FA681001B36DE /* RingtoneManager.swift in Sources */,
 				24F7ECE4214FD78900A46E72 /* String+Version.swift in Sources */,
+				247AFDFA21515846007191E1 /* AppearanceManager.swift in Sources */,
 				2497A6682142537B00597B5C /* Ringtone.swift in Sources */,
+				247AFDF8215124D7007191E1 /* FirstRunPageViewController.swift in Sources */,
 				24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */,
 				24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */,
 				24F7ECE8214FD7F600A46E72 /* URL+RingtoneName.swift in Sources */,
