@@ -14,7 +14,7 @@
     <a title="RingtoneTableViewController Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ToneManager Docs</a> (71% documented)</p>
+        <p><a href="../index.html">ToneManager Docs</a> (54% documented)</p>
         <p class="header-right"><a href="https://github.com/Jesperflodin1/ToneManager"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjesperflodin1%2Egithub%2Eio%2FToneManager%2Fdocsets%2FToneManager%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -39,6 +39,15 @@
                 <a href="../Classes/AppListViewController.html">AppListViewController</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/AppSetupManager.html">AppSetupManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AppearanceManager.html">AppearanceManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FirstRunPageViewController.html">FirstRunPageViewController</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/Ringtone.html">Ringtone</a>
               </li>
               <li class="nav-group-task">
@@ -48,7 +57,16 @@
                 <a href="../Classes/RingtoneDetailViewController.html">RingtoneDetailViewController</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes.html#/s:11ToneManager20RingtoneFileImporterC">RingtoneFileImporter</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/RingtoneInstaller.html">RingtoneInstaller</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RingtoneManager.html">RingtoneManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RingtonePlayer.html">RingtonePlayer</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/RingtoneScanner.html">RingtoneScanner</a>
@@ -67,6 +85,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/SettingsViewController.html">SettingsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SideMenuTableViewController.html">SideMenuTableViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/WriteLockableSynchronizedArray.html">WriteLockableSynchronizedArray</a>
@@ -88,7 +109,16 @@
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Extensions/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification/Name.html">– Name</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIApplication.html">UIApplication</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/URL.html">URL</a>
@@ -117,7 +147,7 @@
             <h1>RingtoneTableViewController</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RingtoneTableViewController</span> <span class="p">:</span> <span class="kt">UITableViewController</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">RingtoneTableViewController</span> <span class="p">:</span> <span class="kt">UITableViewController</span></code></pre>
 
                 </div>
               </div>
@@ -130,9 +160,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11ToneManager27RingtoneTableViewControllerC13ringtoneStoreSQyAA0cH0CGvp"></a>
+                    <a name="/s:11ToneManager27RingtoneTableViewControllerC13ringtoneStore33_B433F8894036EF5D1CCE65238959B745LLSQyAA0cH0CGvp"></a>
                     <a name="//apple_ref/swift/Property/ringtoneStore" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager27RingtoneTableViewControllerC13ringtoneStoreSQyAA0cH0CGvp">ringtoneStore</a>
+                    <a class="token" href="#/s:11ToneManager27RingtoneTableViewControllerC13ringtoneStore33_B433F8894036EF5D1CCE65238959B745LLSQyAA0cH0CGvp">ringtoneStore</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -147,7 +177,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">internal</span> <span class="k">var</span> <span class="nv">ringtoneStore</span><span class="p">:</span> <span class="kt"><a href="../Classes/RingtoneStore.html">RingtoneStore</a></span><span class="o">!</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">fileprivate</span> <span class="k">var</span> <span class="nv">ringtoneStore</span><span class="p">:</span> <span class="kt"><a href="../Classes/RingtoneStore.html">RingtoneStore</a></span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -262,6 +292,60 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager27RingtoneTableViewControllerC14ringtonePlayerAA0cH0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/ringtonePlayer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager27RingtoneTableViewControllerC14ringtonePlayerAA0cH0CSgvp">ringtonePlayer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">ringtonePlayer</span><span class="p">:</span> <span class="kt"><a href="../Classes/RingtonePlayer.html">RingtonePlayer</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@ToneManager@objc(cs)RingtoneTableViewController(im)initWithCoder:"></a>
+                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@ToneManager@objc(cs)RingtoneTableViewController(im)initWithCoder:">init(coder:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
             <div class="task-group">
@@ -276,36 +360,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11ToneManager27RingtoneTableViewControllerC15updateRingtonesyyF"></a>
-                    <a name="//apple_ref/swift/Method/updateRingtones()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager27RingtoneTableViewControllerC15updateRingtonesyyF">updateRingtones()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Rescans apps to find new ringtones</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">updateRingtones</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11ToneManager27RingtoneTableViewControllerC07installC0yAA0cD4CellC02inH0_tF"></a>
-                    <a name="//apple_ref/swift/Method/installRingtone(inCell:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager27RingtoneTableViewControllerC07installC0yAA0cD4CellC02inH0_tF">installRingtone(inCell:)</a>
+                    <a name="/s:11ToneManager27RingtoneTableViewControllerC24updateAvailableRingtonesyyF"></a>
+                    <a name="//apple_ref/swift/Method/updateAvailableRingtones()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager27RingtoneTableViewControllerC24updateAvailableRingtonesyyF">updateAvailableRingtones()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -320,115 +377,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">installRingtone</span><span class="p">(</span><span class="nv">inCell</span><span class="p">:</span> <span class="kt"><a href="../Classes/RingtoneTableCell.html">RingtoneTableCell</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11ToneManager27RingtoneTableViewControllerC19installAllRingtonesySb9withAlert_tF"></a>
-                    <a name="//apple_ref/swift/Method/installAllRingtones(withAlert:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager27RingtoneTableViewControllerC19installAllRingtonesySb9withAlert_tF">installAllRingtones(withAlert:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">installAllRingtones</span><span class="p">(</span><span class="nv">withAlert</span> <span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11ToneManager27RingtoneTableViewControllerC09uninstallC0yAA0cD4CellC02inH0_tF"></a>
-                    <a name="//apple_ref/swift/Method/uninstallRingtone(inCell:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager27RingtoneTableViewControllerC09uninstallC0yAA0cD4CellC02inH0_tF">uninstallRingtone(inCell:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">uninstallRingtone</span><span class="p">(</span><span class="nv">inCell</span><span class="p">:</span> <span class="kt"><a href="../Classes/RingtoneTableCell.html">RingtoneTableCell</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11ToneManager27RingtoneTableViewControllerC12uninstallAllyyF"></a>
-                    <a name="//apple_ref/swift/Method/uninstallAll()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager27RingtoneTableViewControllerC12uninstallAllyyF">uninstallAll()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">uninstallAll</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11ToneManager27RingtoneTableViewControllerC06deleteC0yAA0cD4CellC02inH0_tF"></a>
-                    <a name="//apple_ref/swift/Method/deleteRingtone(inCell:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager27RingtoneTableViewControllerC06deleteC0yAA0cD4CellC02inH0_tF">deleteRingtone(inCell:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">deleteRingtone</span><span class="p">(</span><span class="nv">inCell</span><span class="p">:</span> <span class="kt"><a href="../Classes/RingtoneTableCell.html">RingtoneTableCell</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">updateAvailableRingtones</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -446,6 +395,34 @@
                 </a>
               </div>
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@ToneManager@objc(cs)RingtoneTableViewController(im)playTappedInCell:"></a>
+                    <a name="//apple_ref/swift/Method/playTappedInCell(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@ToneManager@objc(cs)RingtoneTableViewController(im)playTappedInCell:">playTappedInCell(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">func</span> <span class="nf">playTappedInCell</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -617,7 +594,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@IBAction</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">filterChanged</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UISegmentedControl</span><span class="p">)</span></code></pre>
+<span class="kd">func</span> <span class="nf">filterChanged</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UISegmentedControl</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -664,7 +641,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@IBAction</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">updateTapped</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIBarButtonItem</span><span class="p">)</span></code></pre>
+<span class="kd">func</span> <span class="nf">updateTapped</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIBarButtonItem</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -690,23 +667,12 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/RingtoneStore%20callback"></a>
-                <a name="//apple_ref/swift/Section/RingtoneStore callback" class="dashAnchor"></a>
-                <a href="#/RingtoneStore%20callback">
-                  <h3 class="section-name">RingtoneStore callback</h3>
-                </a>
-              </div>
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11ToneManager27RingtoneTableViewControllerC19dataFinishedLoadingyyF"></a>
-                    <a name="//apple_ref/swift/Method/dataFinishedLoading()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager27RingtoneTableViewControllerC19dataFinishedLoadingyyF">dataFinishedLoading()</a>
+                    <a name="/s:11ToneManager27RingtoneTableViewControllerC18deselectCurrentRow33_B433F8894036EF5D1CCE65238959B745LLyyF"></a>
+                    <a name="//apple_ref/swift/Method/deselectCurrentRow()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager27RingtoneTableViewControllerC18deselectCurrentRow33_B433F8894036EF5D1CCE65238959B745LLyyF">deselectCurrentRow()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -721,7 +687,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">dataFinishedLoading</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">deselectCurrentRow</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -787,7 +753,35 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">willEnterForeground</span><span class="p">()</span></code></pre>
+<span class="kd">func</span> <span class="nf">willEnterForeground</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@ToneManager@objc(cs)RingtoneTableViewController(im)dataFinishedLoadingWithNotification:"></a>
+                    <a name="//apple_ref/swift/Method/dataFinishedLoading(notification:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@ToneManager@objc(cs)RingtoneTableViewController(im)dataFinishedLoadingWithNotification:">dataFinishedLoading(notification:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">func</span> <span class="nf">dataFinishedLoading</span><span class="p">(</span><span class="nv">notification</span><span class="p">:</span> <span class="kt">NSNotification</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1025,7 +1019,7 @@ selected cell is hidden</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">commit</span> <span class="nv">editingStyle</span><span class="p">:</span> <span class="kt">UITableViewCellEditingStyle</span><span class="p">,</span> <span class="n">forRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">commit</span> <span class="nv">editingStyle</span><span class="p">:</span> <span class="kt">UITableViewCellEditingStyle</span><span class="p">,</span> <span class="n">forRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1095,7 +1089,7 @@ selected cell is hidden</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">willSelectRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IndexPath</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">willSelectRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IndexPath</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -1157,7 +1151,7 @@ selected cell is hidden</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">didSelectRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">didSelectRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1198,6 +1192,33 @@ selected cell is hidden</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:@CM@ToneManager@objc(cs)RingtoneTableViewController(im)tableView:willDeselectRowAtIndexPath:"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:willDeselectRowAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@ToneManager@objc(cs)RingtoneTableViewController(im)tableView:willDeselectRowAtIndexPath:">tableView(_:willDeselectRowAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">willDeselectRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IndexPath</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:@CM@ToneManager@objc(cs)RingtoneTableViewController(im)tableView:didDeselectRowAtIndexPath:"></a>
                     <a name="//apple_ref/swift/Method/tableView(_:didDeselectRowAt:)" class="dashAnchor"></a>
                     <a class="token" href="#/c:@CM@ToneManager@objc(cs)RingtoneTableViewController(im)tableView:didDeselectRowAtIndexPath:">tableView(_:didDeselectRowAt:)</a>
@@ -1215,7 +1236,7 @@ selected cell is hidden</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">didDeselectRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">didDeselectRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>

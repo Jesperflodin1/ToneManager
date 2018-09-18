@@ -14,7 +14,7 @@
     <a title="RingtoneStore Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ToneManager Docs</a> (71% documented)</p>
+        <p><a href="../index.html">ToneManager Docs</a> (54% documented)</p>
         <p class="header-right"><a href="https://github.com/Jesperflodin1/ToneManager"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjesperflodin1%2Egithub%2Eio%2FToneManager%2Fdocsets%2FToneManager%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -39,6 +39,15 @@
                 <a href="../Classes/AppListViewController.html">AppListViewController</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/AppSetupManager.html">AppSetupManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AppearanceManager.html">AppearanceManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FirstRunPageViewController.html">FirstRunPageViewController</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/Ringtone.html">Ringtone</a>
               </li>
               <li class="nav-group-task">
@@ -48,7 +57,16 @@
                 <a href="../Classes/RingtoneDetailViewController.html">RingtoneDetailViewController</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes.html#/s:11ToneManager20RingtoneFileImporterC">RingtoneFileImporter</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/RingtoneInstaller.html">RingtoneInstaller</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RingtoneManager.html">RingtoneManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RingtonePlayer.html">RingtonePlayer</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/RingtoneScanner.html">RingtoneScanner</a>
@@ -67,6 +85,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/SettingsViewController.html">SettingsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SideMenuTableViewController.html">SideMenuTableViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/WriteLockableSynchronizedArray.html">WriteLockableSynchronizedArray</a>
@@ -88,7 +109,16 @@
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Extensions/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification/Name.html">– Name</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIApplication.html">UIApplication</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/URL.html">URL</a>
@@ -117,7 +147,7 @@
             <h1>RingtoneStore</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RingtoneStore</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">RingtoneStore</span></code></pre>
 
                 </div>
               </div>
@@ -147,34 +177,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">plistURL</span><span class="p">:</span> <span class="kt">URL</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11ToneManager13RingtoneStoreC27ringtoneTableViewControllerAA0cfgH0CSgXwvp"></a>
-                    <a name="//apple_ref/swift/Property/ringtoneTableViewController" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC27ringtoneTableViewControllerAA0cfgH0CSgXwvp">ringtoneTableViewController</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Reference to RingtoneTableViewController</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">ringtoneTableViewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/RingtoneTableViewController.html">RingtoneTableViewController</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">plistURL</span><span class="p">:</span> <span class="kt">URL</span></code></pre>
 
                         </div>
                       </div>
@@ -228,7 +231,61 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">allRingtones</span><span class="p">:</span> <span class="kt"><a href="../Classes/WriteLockableSynchronizedArray.html">WriteLockableSynchronizedArray</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">allRingtones</span><span class="p">:</span> <span class="kt"><a href="../Classes/WriteLockableSynchronizedArray.html">WriteLockableSynchronizedArray</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager13RingtoneStoreC18installedRingtonesSayAA0C0CGvp"></a>
+                    <a name="//apple_ref/swift/Property/installedRingtones" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC18installedRingtonesSayAA0C0CGvp">installedRingtones</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">installedRingtones</span><span class="p">:</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager13RingtoneStoreC21notInstalledRingtonesSayAA0C0CGvp"></a>
+                    <a name="//apple_ref/swift/Property/notInstalledRingtones" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC21notInstalledRingtonesSayAA0C0CGvp">notInstalledRingtones</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">notInstalledRingtones</span><span class="p">:</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -292,9 +349,63 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11ToneManager13RingtoneStoreCAcA0C19TableViewControllerC08ringtoneefG0_yyc17completionHandlertcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(ringtoneTableViewController:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager13RingtoneStoreCAcA0C19TableViewControllerC08ringtoneefG0_yyc17completionHandlertcfc">init(ringtoneTableViewController:completionHandler:)</a>
+                    <a name="/s:11ToneManager13RingtoneStoreC14sharedInstanceACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/sharedInstance" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC14sharedInstanceACvpZ">sharedInstance</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">sharedInstance</span><span class="p">:</span> <span class="kt">RingtoneStore</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager13RingtoneStoreC24backgroundTaskIdentifierSQySiGvp"></a>
+                    <a name="//apple_ref/swift/Property/backgroundTaskIdentifier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC24backgroundTaskIdentifierSQySiGvp">backgroundTaskIdentifier</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">backgroundTaskIdentifier</span><span class="p">:</span> <span class="kt">UIBackgroundTaskIdentifier</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager13RingtoneStoreCACycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreCACycfc">init()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -309,7 +420,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">ringtoneTableViewController</span> <span class="p">:</span> <span class="kt"><a href="../Classes/RingtoneTableViewController.html">RingtoneTableViewController</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -357,9 +468,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11ToneManager13RingtoneStoreC13loadFromPlistySb_yyc17completionHandlertF"></a>
-                    <a name="//apple_ref/swift/Method/loadFromPlist(_:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC13loadFromPlistySb_yyc17completionHandlertF">loadFromPlist(_:completionHandler:)</a>
+                    <a name="/s:11ToneManager13RingtoneStoreC13loadFromPlistySbF"></a>
+                    <a name="//apple_ref/swift/Method/loadFromPlist(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC13loadFromPlistySbF">loadFromPlist(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -374,7 +485,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">loadFromPlist</span><span class="p">(</span><span class="n">_</span> <span class="nv">shouldVerifyRingtones</span> <span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span>  <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">loadFromPlist</span><span class="p">(</span><span class="n">_</span> <span class="nv">shouldVerifyRingtones</span> <span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -481,44 +592,6 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/RingtoneInstaller%20callback"></a>
-                <a name="//apple_ref/swift/Section/RingtoneInstaller callback" class="dashAnchor"></a>
-                <a href="#/RingtoneInstaller%20callback">
-                  <h3 class="section-name">RingtoneInstaller callback</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11ToneManager13RingtoneStoreC010didInstallC0yyF"></a>
-                    <a name="//apple_ref/swift/Method/didInstallRingtone()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC010didInstallC0yyF">didInstallRingtone()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">didInstallRingtone</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
                 <a name="/Ringtone%20install/uninstall%20methods"></a>
                 <a name="//apple_ref/swift/Section/Ringtone install/uninstall methods" class="dashAnchor"></a>
                 <a href="#/Ringtone%20install/uninstall%20methods">
@@ -614,9 +687,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11ToneManager13RingtoneStoreC09uninstallC0yAA0C0C_yAFc17completionHandlertF"></a>
+                    <a name="/s:11ToneManager13RingtoneStoreC09uninstallC0yAA0C0C_ySbc17completionHandlertF"></a>
                     <a name="//apple_ref/swift/Method/uninstallRingtone(_:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC09uninstallC0yAA0C0C_yAFc17completionHandlertF">uninstallRingtone(_:completionHandler:)</a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC09uninstallC0yAA0C0C_ySbc17completionHandlertF">uninstallRingtone(_:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -631,7 +704,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">uninstallRingtone</span><span class="p">(</span><span class="n">_</span> <span class="nv">ringtone</span> <span class="p">:</span> <span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">uninstallRingtone</span><span class="p">(</span><span class="n">_</span> <span class="nv">ringtone</span> <span class="p">:</span> <span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -672,9 +745,36 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11ToneManager13RingtoneStoreC06removeC0yAA0C0C_yAFcSg10completiontF"></a>
+                    <a name="/s:11ToneManager13RingtoneStoreC21uninstallAllRingtonesyySi_Sitc17completionHandler_tF"></a>
+                    <a name="//apple_ref/swift/Method/uninstallAllRingtones(completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC21uninstallAllRingtonesyySi_Sitc17completionHandler_tF">uninstallAllRingtones(completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">uninstallAllRingtones</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager13RingtoneStoreC06removeC0yAA0C0C_ySbc10completiontF"></a>
                     <a name="//apple_ref/swift/Method/removeRingtone(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC06removeC0yAA0C0C_yAFcSg10completiontF">removeRingtone(_:completion:)</a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC06removeC0yAA0C0C_ySbc10completiontF">removeRingtone(_:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -689,7 +789,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeRingtone</span><span class="p">(</span><span class="n">_</span> <span class="nv">ringtone</span> <span class="p">:</span> <span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeRingtone</span><span class="p">(</span><span class="n">_</span> <span class="nv">ringtone</span> <span class="p">:</span> <span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -781,6 +881,72 @@ was imported is passed to it.</p>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Notification%20observers"></a>
+                <a name="//apple_ref/swift/Section/Notification observers" class="dashAnchor"></a>
+                <a href="#/Notification%20observers">
+                  <h3 class="section-name">Notification observers</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager13RingtoneStoreC17registerObserversyyF"></a>
+                    <a name="//apple_ref/swift/Method/registerObservers()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC17registerObserversyyF">registerObservers()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">registerObservers</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager13RingtoneStoreC18didEnterBackgroundyyF"></a>
+                    <a name="//apple_ref/swift/Method/didEnterBackground()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager13RingtoneStoreC18didEnterBackgroundyyF">didEnterBackground()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">didEnterBackground</span><span class="p">()</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>

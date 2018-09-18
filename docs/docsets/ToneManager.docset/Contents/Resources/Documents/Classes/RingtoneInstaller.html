@@ -14,7 +14,7 @@
     <a title="RingtoneInstaller Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ToneManager Docs</a> (71% documented)</p>
+        <p><a href="../index.html">ToneManager Docs</a> (54% documented)</p>
         <p class="header-right"><a href="https://github.com/Jesperflodin1/ToneManager"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjesperflodin1%2Egithub%2Eio%2FToneManager%2Fdocsets%2FToneManager%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -39,6 +39,15 @@
                 <a href="../Classes/AppListViewController.html">AppListViewController</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/AppSetupManager.html">AppSetupManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AppearanceManager.html">AppearanceManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FirstRunPageViewController.html">FirstRunPageViewController</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/Ringtone.html">Ringtone</a>
               </li>
               <li class="nav-group-task">
@@ -48,7 +57,16 @@
                 <a href="../Classes/RingtoneDetailViewController.html">RingtoneDetailViewController</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes.html#/s:11ToneManager20RingtoneFileImporterC">RingtoneFileImporter</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/RingtoneInstaller.html">RingtoneInstaller</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RingtoneManager.html">RingtoneManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RingtonePlayer.html">RingtonePlayer</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/RingtoneScanner.html">RingtoneScanner</a>
@@ -67,6 +85,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/SettingsViewController.html">SettingsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SideMenuTableViewController.html">SideMenuTableViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/WriteLockableSynchronizedArray.html">WriteLockableSynchronizedArray</a>
@@ -88,7 +109,16 @@
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Extensions/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification/Name.html">– Name</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIApplication.html">UIApplication</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/URL.html">URL</a>
@@ -117,7 +147,7 @@
             <h1>RingtoneInstaller</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RingtoneInstaller</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">RingtoneInstaller</span></code></pre>
 
                 </div>
               </div>
@@ -222,9 +252,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11ToneManager17RingtoneInstallerC06removeC0SbAA0C0C_Sb10deleteFileySbcSg17completionHandlertF"></a>
-                    <a name="//apple_ref/swift/Method/removeRingtone(_:deleteFile:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager17RingtoneInstallerC06removeC0SbAA0C0C_Sb10deleteFileySbcSg17completionHandlertF">removeRingtone(_:deleteFile:completionHandler:)</a>
+                    <a name="/s:11ToneManager17RingtoneInstallerC06removeC0yAA0C0C_Sb10deleteFileSb21shouldCallBackToStoreySbc17completionHandlertF"></a>
+                    <a name="//apple_ref/swift/Method/removeRingtone(_:deleteFile:shouldCallBackToStore:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager17RingtoneInstallerC06removeC0yAA0C0C_Sb10deleteFileSb21shouldCallBackToStoreySbc17completionHandlertF">removeRingtone(_:deleteFile:shouldCallBackToStore:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -239,7 +269,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeRingtone</span><span class="p">(</span><span class="n">_</span> <span class="nv">ringtone</span> <span class="p">:</span> <span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">,</span> <span class="nv">deleteFile</span> <span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeRingtone</span><span class="p">(</span><span class="n">_</span> <span class="nv">ringtone</span> <span class="p">:</span> <span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">,</span> <span class="nv">deleteFile</span> <span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">shouldCallBackToStore</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -269,6 +299,33 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11ToneManager17RingtoneInstallerC15removeRingtonesySayAA0C0CG7inArray_Sb11deleteFilesySi_Sitc17completionHandlertF"></a>
+                    <a name="//apple_ref/swift/Method/removeRingtones(inArray:deleteFiles:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager17RingtoneInstallerC15removeRingtonesySayAA0C0CG7inArray_Sb11deleteFilesySi_Sitc17completionHandlertF">removeRingtones(inArray:deleteFiles:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeRingtones</span><span class="p">(</span><span class="n">inArray</span> <span class="nv">ringtonesArray</span><span class="p">:</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">deleteFiles</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
             <div class="task-group">
@@ -283,9 +340,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11ToneManager17RingtoneInstallerC07installC0yAA0C0C_yAF_SbtcSg17completionHandlertF"></a>
-                    <a name="//apple_ref/swift/Method/installRingtone(_:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11ToneManager17RingtoneInstallerC07installC0yAA0C0C_yAF_SbtcSg17completionHandlertF">installRingtone(_:completionHandler:)</a>
+                    <a name="/s:11ToneManager17RingtoneInstallerC07installC0yAA0C0C_Sb21shouldCallBackToStoreyAF_Sbtc17completionHandlertF"></a>
+                    <a name="//apple_ref/swift/Method/installRingtone(_:shouldCallBackToStore:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11ToneManager17RingtoneInstallerC07installC0yAA0C0C_Sb21shouldCallBackToStoreyAF_Sbtc17completionHandlertF">installRingtone(_:shouldCallBackToStore:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -300,7 +357,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">installRingtone</span><span class="p">(</span><span class="n">_</span> <span class="nv">ringtone</span> <span class="p">:</span> <span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">,</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span> <span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">installRingtone</span><span class="p">(</span><span class="n">_</span> <span class="nv">ringtone</span> <span class="p">:</span> <span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">,</span> <span class="nv">shouldCallBackToStore</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/Ringtone.html">Ringtone</a></span><span class="p">,</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
