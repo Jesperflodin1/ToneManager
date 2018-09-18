@@ -1,12 +1,6 @@
 #!/bin/bash
 
-if [ -f "/var/mobile/Library/Application Support/ToneHelper/ToneHelperData.plist" ]
-then
-    echo "Removing leftover files from previous version."
-    # Try to move plist if exists from old folder if exists
-	echo "file found. Moving to new path."
-	mv "/var/mobile/Library/Application Support/ToneHelper/ToneHelperData.plist" "/var/mobile/Library/ToneHelper/"
-	rm -r "/var/mobile/Library/Application Support/ToneHelper/"
-fi
+echo "Running UICache, this might take a while..."
+uicache
 
 exit 0

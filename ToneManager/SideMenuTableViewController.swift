@@ -9,6 +9,7 @@
 import Foundation
 import SideMenu
 import StoreKit
+import BugfenderSDK
 
 final class SideMenuTableViewController: UITableViewController {
     
@@ -19,7 +20,10 @@ final class SideMenuTableViewController: UITableViewController {
     @IBAction func openZedgeTapped(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
         if Preferences.zedgeRingtonesInstalled {
-            ApplicationHandler.openApplication(withIdentifier: "com.zedge.Zedge")
+            if !LSApplicationWorkspaceHandler.openApplication(withBundleID: "com.zedge.Zedge") {
+                Bugfender.error("Failed to open app with LSApplicationWorkspace")
+            }
+            
         } else {
             openAppStore(forApp: Preferences.zedgeItunesId)
         }
@@ -29,7 +33,9 @@ final class SideMenuTableViewController: UITableViewController {
     @IBAction func openAudikoLiteTapped(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
         if Preferences.audikoLiteInstalled {
-            ApplicationHandler.openApplication(withIdentifier: "com.908.AudikoFree")
+            if !LSApplicationWorkspaceHandler.openApplication(withBundleID: "com.908.AudikoFree") {
+                Bugfender.error("Failed to open app with LSApplicationWorkspace")
+            }
         } else {
             openAppStore(forApp: Preferences.audikoLiteItunesId)
         }
@@ -39,7 +45,9 @@ final class SideMenuTableViewController: UITableViewController {
     @IBAction func openAudikoPaidTapped(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
         if Preferences.audikoProInstalled {
-            ApplicationHandler.openApplication(withIdentifier: "com.908.Audiko")
+            if !LSApplicationWorkspaceHandler.openApplication(withBundleID: "com.908.Audiko")  {
+                Bugfender.error("Failed to open app with LSApplicationWorkspace")
+            }
         } else {
             openAppStore(forApp: Preferences.audikoProItunesId)
         }

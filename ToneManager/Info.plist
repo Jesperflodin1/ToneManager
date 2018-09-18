@@ -16,10 +16,10 @@
 				<string>public.audio</string>
 				<string>public.mp3</string>
 				<string>public.mpeg-4-audio</string>
-				<string>com.apple.protected-​mpeg-4-audio</string>
 				<string>public.aifc-audio</string>
 				<string>com.apple.coreaudio-​format</string>
 				<string>public.aiff-audio</string>
+				<string>com.apple.mpeg-4-ringtone</string>
 			</array>
 		</dict>
 	</array>
@@ -40,7 +40,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>0.5</string>
 	<key>CFBundleVersion</key>
-	<string>24</string>
+	<string>43</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSRequiresIPhoneOS</key>

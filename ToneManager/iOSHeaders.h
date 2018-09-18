@@ -74,7 +74,15 @@
 -(BOOL)toneWithIdentifierIsValid:(NSString *)toneIdentifier;
 @end
 
-@interface PrivateApi_LSApplicationWorkspace
+
+@interface PrivateApi_LSApplicationWorkspace : NSObject
++(id)defaultWorkspace;
 - (NSArray*)allInstalledApplications;
 - (bool)openApplicationWithBundleID:(id)arg1;
-    @end
+-(BOOL)unregisterApplication:(NSURL *)url;
+-(BOOL)registerApplication:(NSURL *)url;
+-(BOOL)registerApplicationDictionary:(id)arg1;
+-(BOOL)registerBundleWithInfo:(id)arg1 options:(id)arg2 type:(unsigned long long)arg3 progress:(id)arg4;
+-(BOOL)_LSPrivateRebuildApplicationDatabasesForSystemApps:(BOOL)arg1 internal:(BOOL)arg2 user:(BOOL)arg3;
+-(BOOL)invalidateIconCache:(id)arg1 ;
+@end

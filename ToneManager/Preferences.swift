@@ -174,6 +174,8 @@ extension Preferences {
         let version : Any! = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
         let build : Any! = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")
         
+        
+        
         guard let currentVersion = version as? String else { return }
         guard let currentBuild = build as? String else { return }
         
@@ -183,9 +185,17 @@ extension Preferences {
             } else {
                 Preferences.isUpdated = false
             }
+            Preferences.version = currentVersion
+            guard let buildInt = Int(currentBuild) else { return }
+            Preferences.build = buildInt
         }
-        
-        guard let buildInt = Int(currentBuild) else { return }
-        Preferences.build = buildInt
+    }
+    
+    static func firstRunDone() {
+        Preferences.firstRun = false
+    }
+    
+    static func updateDone() {
+        Preferences.isUpdated = false
     }
 }

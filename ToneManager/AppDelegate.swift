@@ -69,6 +69,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     /// - Returns: always true
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        LSApplicationWorkspaceHandler.registerApplicationDictionary()
+        
         Preferences.registerDefaults()
         
         enableRemoteLogging()
