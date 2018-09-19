@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XLActionController
 
 /// UITableCell subclass for ringtones, used in ’RingtoneTableViewController’
 final class RingtoneTableCell: UITableViewCell {
@@ -18,6 +19,12 @@ final class RingtoneTableCell: UITableViewCell {
     
     @IBOutlet weak var cellMenuButton: RingtoneCellButton!
     
+    var buttonAction: ((RingtoneTableCell) -> Void)?
+    
+    @IBAction func cellMenuTapped(_ sender: Any) {
+        self.buttonAction?(self)
+    }
+
     
     /// Outlet for UIButton with play/pause action
     @IBOutlet weak var playButton: UIButton!
@@ -27,8 +34,7 @@ final class RingtoneTableCell: UITableViewCell {
     
     /// Associated ringtone object
     var ringtoneItem : Ringtone? = nil
-    @IBAction func menuTapped(_ sender: RingtoneCellButton) {
-    }
+
 }
 
 //MARK: Cell UIView update actions

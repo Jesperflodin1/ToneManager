@@ -296,7 +296,7 @@
                                             </constraints>
                                             <state key="normal" image="dots"/>
                                             <connections>
-                                                <action selector="menuTapped:" destination="iqL-3v-40C" eventType="touchUpInside" id="irh-k7-96b"/>
+                                                <action selector="cellMenuTapped:" destination="iqL-3v-40C" eventType="touchUpInside" id="kXG-g9-ron"/>
                                             </connections>
                                         </button>
                                     </subviews>

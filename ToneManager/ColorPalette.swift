@@ -21,8 +21,10 @@ struct ColorPalette {
     static let cellActionColor = UIColor(red: 29/255, green: 155/255, blue: 246/255, alpha: 1.0) //blue
     
     static let ringtoneInstalledColor = UIColor(red: 79/255, green: 143/255, blue: 0, alpha: 1.0)
-    
     static let ringtoneNotInstalledColor = UIColor(red: 252/255, green: 33/255, blue: 37/255, alpha: 1.0)
+    
+    static let actionSheetLabelDefault = UIColor.lightGray
+    static let actionSheetLabelDestructive = UIColor(red: 210/255.0, green: 77/255.0, blue: 56/255.0, alpha: 1.0)
     
     
 }
@@ -34,8 +36,13 @@ extension ColorPalette {
     
     static let ringtoneCellPlayImage = UIImage(named: "play-circle44")
     static let ringtoneCellStopImage = UIImage(named: "stop-circle44")
-    static let ringtoneCellInstallImage = UIImage(named: "plus-circle44")
-    static let ringtoneCellUninstallImage = UIImage(named: "minus-circle44")
+    
+    static let ringtoneCellMenuInstall = UIImage(named: "plus")
+    static let ringtoneCellMenuUninstall = UIImage(named: "minus")
+    static let ringtoneCellMenuDelete = UIImage(named: "trash")
+    static let ringtoneCellMenuInfo = UIImage(named: "info")
+    static let ringtoneCellMenuCancel = UIImage(named: "cross")
+    
     
 }
 

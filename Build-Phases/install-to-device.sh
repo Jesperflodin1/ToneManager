@@ -5,7 +5,7 @@
 if [[ "$SSH_CONNECTION_MODE" == "NET" ]]; then
 IP="192.168.2.95"
 PORT="22"
-elif [[ "$SSH_CONNECTION_MODE" == "USB" ]]; then
+else
 IP="127.0.0.1"
 PORT="2222"
 fi

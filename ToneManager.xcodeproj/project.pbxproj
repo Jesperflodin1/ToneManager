@@ -11,6 +11,10 @@
 		24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24496B22214991B40031E422 /* RingtoneInstaller.swift */; };
 		24496B25214AAF860031E422 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24496B24214AAF860031E422 /* AVFoundation.framework */; };
 		2477828221524D720058074F /* RingtoneCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828121524D720058074F /* RingtoneCellButton.swift */; };
+		2477828521525CE10058074F /* ActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828321525CE00058074F /* ActionSheetController.swift */; };
+		2477828621525CE10058074F /* ActionSheetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2477828421525CE00058074F /* ActionSheetCell.xib */; };
+		2477828821525CF50058074F /* ActionSheetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828721525CF50058074F /* ActionSheetCell.swift */; };
+		2477828A21525D840058074F /* ActionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828921525D840058074F /* ActionData.swift */; };
 		247AFDF421511344007191E1 /* AppSetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF321511344007191E1 /* AppSetupManager.swift */; };
 		247AFDF6215122EC007191E1 /* FirstRun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 247AFDF5215122EC007191E1 /* FirstRun.storyboard */; };
 		247AFDF8215124D7007191E1 /* FirstRunPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */; };
@@ -78,6 +82,10 @@
 		24496B22214991B40031E422 /* RingtoneInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneInstaller.swift; sourceTree = "<group>"; };
 		24496B24214AAF860031E422 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2477828121524D720058074F /* RingtoneCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneCellButton.swift; sourceTree = "<group>"; };
+		2477828321525CE00058074F /* ActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetController.swift; sourceTree = "<group>"; };
+		2477828421525CE00058074F /* ActionSheetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionSheetCell.xib; sourceTree = "<group>"; };
+		2477828721525CF50058074F /* ActionSheetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetCell.swift; sourceTree = "<group>"; };
+		2477828921525D840058074F /* ActionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionData.swift; sourceTree = "<group>"; };
 		247AFDF321511344007191E1 /* AppSetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupManager.swift; sourceTree = "<group>"; };
 		247AFDF5215122EC007191E1 /* FirstRun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstRun.storyboard; sourceTree = "<group>"; };
 		247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunPageViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +228,10 @@
 				247AFDF5215122EC007191E1 /* FirstRun.storyboard */,
 				247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */,
 				2497A63E214251D300597B5C /* LaunchScreen.storyboard */,
+				2477828421525CE00058074F /* ActionSheetCell.xib */,
+				2477828921525D840058074F /* ActionData.swift */,
+				2477828321525CE00058074F /* ActionSheetController.swift */,
+				2477828721525CF50058074F /* ActionSheetCell.swift */,
 				2497A63A214251D200597B5C /* AppDelegate.swift */,
 				247AFDF321511344007191E1 /* AppSetupManager.swift */,
 				2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */,
@@ -418,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				249694A22144F0A7009960D7 /* Main.storyboard in Resources */,
+				2477828621525CE10058074F /* ActionSheetCell.xib in Resources */,
 				249694A521450AC6009960D7 /* entitlements.xml in Resources */,
 				247AFDF6215122EC007191E1 /* FirstRun.storyboard in Resources */,
 				2497A640214251D300597B5C /* LaunchScreen.storyboard in Resources */,
@@ -553,7 +566,9 @@
 				249694A921456804009960D7 /* SynchronizedArray.swift in Sources */,
 				2477828221524D720058074F /* RingtoneCellButton.swift in Sources */,
 				24F7ECEA214FD84C00A46E72 /* Notification+Name.swift in Sources */,
+				2477828821525CF50058074F /* ActionSheetCell.swift in Sources */,
 				2491B38D214E49B6001B36DE /* SideMenuTableViewController.swift in Sources */,
+				2477828521525CE10058074F /* ActionSheetController.swift in Sources */,
 				24F7ECEE215023D900A46E72 /* RingtoneFileImporter.swift in Sources */,
 				2497A66A2142538500597B5C /* RingtoneStore.swift in Sources */,
 				24982BD2214CE12B00DD0474 /* ColorPalette.swift in Sources */,
@@ -562,6 +577,7 @@
 				24F7ECE6214FD7C200A46E72 /* String+CondenseWhitespace.swift in Sources */,
 				2491B393214FA681001B36DE /* RingtoneManager.swift in Sources */,
 				24F7ECE4214FD78900A46E72 /* String+Version.swift in Sources */,
+				2477828A21525D840058074F /* ActionData.swift in Sources */,
 				247AFDFA21515846007191E1 /* AppearanceManager.swift in Sources */,
 				2497A6682142537B00597B5C /* Ringtone.swift in Sources */,
 				247AFDF8215124D7007191E1 /* FirstRunPageViewController.swift in Sources */,

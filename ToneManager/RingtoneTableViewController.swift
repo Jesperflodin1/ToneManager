@@ -10,6 +10,7 @@ import UIKit
 import BugfenderSDK
 import PKHUD
 import AVFoundation
+import XLActionController
 
 /// Shows available and installed ringtones
 final class RingtoneTableViewController : UITableViewController {
@@ -37,6 +38,7 @@ final class RingtoneTableViewController : UITableViewController {
     }
     
     
+    
 }
 
 
@@ -57,6 +59,53 @@ extension RingtoneTableViewController {
 
 //MARK: UI Actions
 extension RingtoneTableViewController {
+    
+    func cellMenuAction(_ cell: RingtoneTableCell) {
+
+        guard let ringtone = cell.ringtoneItem else { return }
+        
+        let actionController = ActionSheetController()
+        
+        ringtonePlayer?.stopPlaying()
+        
+        if ringtone.installed {
+            actionController.addAction(Action(ActionData(title: "Uninstall", image: ColorPalette.ringtoneCellMenuUninstall!), style: .default, handler: { action in
+                
+                RingtoneManager.uninstallRingtone(inCell: cell) { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.ringtoneStore.allRingtones.lockArray()
+                    strongSelf.tableView.reloadData()
+                    strongSelf.ringtoneStore.allRingtones.unlockArray()
+                }
+                
+            }))
+        } else {
+            actionController.addAction(Action(ActionData(title: "Install", image: ColorPalette.ringtoneCellMenuInstall!), style: .default, handler: { action in
+                
+                RingtoneManager.installRingtone(inCell: cell) { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.ringtoneStore.allRingtones.lockArray()
+                    strongSelf.tableView.reloadData()
+                    strongSelf.ringtoneStore.allRingtones.unlockArray()
+                }
+                
+            }))
+        }
+        actionController.addAction(Action(ActionData(title: "Delete", image: ColorPalette.ringtoneCellMenuDelete!), style: .destructive, handler: { action in
+            
+            RingtoneManager.deleteRingtone(inCell: cell) { [weak self] in
+                guard let strongSelf = self else { return }
+                if let index = strongSelf.tableView.indexPath(for: cell) {
+                    
+                    strongSelf.tableView.deleteRows(at: [index], with: .automatic)
+                }
+            }
+            
+        }))
+        actionController.addAction(Action(ActionData(title: "Cancel", image: ColorPalette.ringtoneCellMenuCancel!), style: .cancel, handler: nil))
+        
+        present(actionController, animated: true, completion: nil)
+    }
     
     @IBAction func playTappedInCell(_ sender: UIButton) {
         if ringtonePlayer == nil {
@@ -85,51 +134,6 @@ extension RingtoneTableViewController {
             strongSelf.ringtoneStore.allRingtones.lockArray()
             strongSelf.tableView.reloadData()
             strongSelf.ringtoneStore.allRingtones.unlockArray()
-        }
-    }
-    
-    /// Called when install button is tapped in ’RingtoneTableCell’
-    ///
-    /// - Parameter sender: Button that was tapped
-    @IBAction func installRingtone(_ sender: UIButton) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            
-            ringtonePlayer?.stopPlaying()
-            
-            let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
-            guard let ringtone = cell.ringtoneItem else { return }
-            if !ringtone.installed { // is not installed
-                RingtoneManager.installRingtone(inCell: cell) { [weak self] in
-                    guard let strongSelf = self else { return }
-                    strongSelf.ringtoneStore.allRingtones.lockArray()
-                    strongSelf.tableView.reloadData()
-                    strongSelf.ringtoneStore.allRingtones.unlockArray()
-                }
-            } else { // is installed
-                RingtoneManager.uninstallRingtone(inCell: cell) { [weak self] in
-                    guard let strongSelf = self else { return }
-                    strongSelf.ringtoneStore.allRingtones.lockArray()
-                    strongSelf.tableView.reloadData()
-                    strongSelf.ringtoneStore.allRingtones.unlockArray()
-                }
-            }
-        }
-    }
-    
-    /// Called when trash button is tapped in ’RingtoneTableCell’. Deletes ringtone.
-    ///
-    /// - Parameter sender: Button that was tapped
-    @IBAction func deleteRingtone(_ sender: UIButton) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            ringtonePlayer?.stopPlaying()
-            
-            let cell = tableView.cellForRow(at: indexPath) as! RingtoneTableCell
-            
-            RingtoneManager.deleteRingtone(inCell: cell) {
-                if let index = self.tableView.indexPath(for: cell) {
-                    self.tableView.deleteRows(at: [index], with: .automatic)
-                }
-            }
         }
     }
     
@@ -402,6 +406,10 @@ extension RingtoneTableViewController {
             cell.nameLabel.text = ringtone?.name
             cell.fromAppLabel.text = ringtone?.appName
             cell.cellMenuButton.addedTouchArea = 10
+            cell.buttonAction = { [weak self] (cell) in
+                guard let strongSelf = self else { return }
+                strongSelf.cellMenuAction(cell)
+            }
             
             cell.updateInstallStatus()
             
