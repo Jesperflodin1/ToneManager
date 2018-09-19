@@ -17,6 +17,15 @@ final class SideMenuTableViewController: UITableViewController {
     @IBOutlet weak var openAudikoLiteLabel: UILabel!
     @IBOutlet weak var openAudikoPaidLabel: UILabel!
     
+    @IBAction func reloadRingtonesTapped(_ sender: UITapGestureRecognizer) {
+        RingtoneManager.updateRingtones {
+            NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
+        }
+    }
+    
+    @IBAction func importFileTapped(_ sender: UITapGestureRecognizer) {
+    }
+    
     @IBAction func openZedgeTapped(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
         if Preferences.zedgeRingtonesInstalled {

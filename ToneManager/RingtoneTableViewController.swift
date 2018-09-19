@@ -11,6 +11,7 @@ import BugfenderSDK
 import PKHUD
 import AVFoundation
 import XLActionController
+import FileBrowser
 
 /// Shows available and installed ringtones
 final class RingtoneTableViewController : UITableViewController {
@@ -37,6 +38,24 @@ final class RingtoneTableViewController : UITableViewController {
         super.init(coder: aDecoder)
     }
     
+    @IBAction func importFileTapped(_ sender: UIBarButtonItem) {
+        let fileBrowser = FileBrowser(initialPath: URL(fileURLWithPath: "/var/mobile/Downloads"), allowEditing: false, showCancelButton: true)
+        fileBrowser.excludesFileExtensions = ["zip", "txt", "jpg", "jpeg", "png", "gif"]
+        
+        fileBrowser.didSelectFile = { (file: FBFile) -> Void in
+            RingtoneStore.sharedInstance.importFile(file, completionHandler: { (success, error) in
+                if !success {
+                    if error.code == 1050 {
+                        HUD.flash(.labeledError(title: "Error", subtitle: "File is not a valid ringtone"), delay: 1.0)
+                        return
+                    }
+                }
+                
+                
+            })
+            
+        }
+    }
 }
 
 
@@ -191,6 +210,7 @@ extension RingtoneTableViewController {
         NotificationCenter.default.addObserver(self, selector:#selector(self.willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
         NotificationCenter.default.addObserver(self, selector:#selector(self.dataFinishedLoading(notification:)), name: .ringtoneStoreDidFinishLoading, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(self.storeDidReload(notification:)), name: .ringtoneStoreDidReload, object: nil)
     }
     
     /// Called from notification observer when app will enter foreground. Updates available ringtones
@@ -202,6 +222,11 @@ extension RingtoneTableViewController {
     @objc func dataFinishedLoading(notification: NSNotification) {
         tableView.reloadData()
         updateAvailableRingtones()
+    }
+    @objc func storeDidReload(notification: NSNotification) {
+        ringtoneStore.allRingtones.lockArray()
+        tableView.reloadData()
+        ringtoneStore.allRingtones.unlockArray()
     }
 }
 

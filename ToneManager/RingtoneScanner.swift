@@ -12,14 +12,7 @@ import BugfenderSDK
 /// Class that handles scanning and importing of ringtones
 class RingtoneScanner {
     
-    /// Reference to RingtoneStore
-    var delegate : RingtoneStore
-    
-    /// Init method. Sets current ringtonestore as delegate
-    ///
-    /// - Parameter delegate: Current RingtoneStore
-    init(_ delegate : RingtoneStore) {
-        self.delegate = delegate
+    init() {
         BFLog("Scanner initializing")
     }
 }
@@ -78,13 +71,13 @@ extension RingtoneScanner {
                 var appendRandomToRingtoneName : Bool = false
                 
                 // Skip ringtones with same filename from same app
-                if (delegate.allRingtones.contains(where: { ($0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent) && ($0.bundleID == currentApp) } )) {
+                if (RingtoneStore.sharedInstance.allRingtones.contains(where: { ($0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent) && ($0.bundleID == currentApp) } )) {
                     BFLog("File already exists: \(fileUrl.path) for app: \(currentApp)")
                     continue
                 }
                 
                 // if filename already exists, but different app, prepare to set a different ringtone name
-                if (delegate.allRingtones.contains(where: { $0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent } )) {
+                if (RingtoneStore.sharedInstance.allRingtones.contains(where: { $0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent } )) {
                     BFLog("File already exists but different app, importing anyway: \(fileUrl)")
                     appendRandomToRingtoneName = true
                 }

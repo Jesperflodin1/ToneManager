@@ -15,7 +15,7 @@
         <scene sceneID="bgI-df-cke">
             <objects>
                 <tableViewController id="vaA-fV-mcs" customClass="SideMenuTableViewController" customModule="ToneManager" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="50" sectionFooterHeight="50" contentViewInsetsToSafeArea="NO" id="Uy2-9a-ByH">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="45" sectionFooterHeight="40" contentViewInsetsToSafeArea="NO" id="Uy2-9a-ByH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -113,10 +113,58 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="3v8-eB-Yf8">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="aDC-cI-6SF" style="IBUITableViewCellStyleDefault" id="VGi-lT-Xjf" customClass="UITableViewVibrantCell" customModule="SideMenu">
+                                        <rect key="frame" x="0.0" y="375" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VGi-lT-Xjf" id="rlw-VN-PpL">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Reload ringtones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" id="aDC-cI-6SF">
+                                                    <rect key="frame" x="15" y="0.0" width="344" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <gestureRecognizers/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="FLA-kI-OXr" appends="YES" id="tV9-t7-MBn"/>
+                                                    </connections>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="eyS-yA-LrF" style="IBUITableViewCellStyleDefault" id="Bec-ky-LVp" customClass="UITableViewVibrantCell" customModule="SideMenu">
+                                        <rect key="frame" x="0.0" y="419" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bec-ky-LVp" id="P7z-Qv-5Ho">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Import from file" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" id="eyS-yA-LrF">
+                                                    <rect key="frame" x="15" y="0.0" width="344" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <gestureRecognizers/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="fOe-l9-6YY" appends="YES" id="eZL-ob-9t9"/>
+                                                    </connections>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="Bhn-s5-KC9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="0vd-pW-hbF" style="IBUITableViewCellStyleDefault" id="hTo-66-yfU" customClass="UITableViewVibrantCell" customModule="SideMenu">
-                                        <rect key="frame" x="0.0" y="390" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="548" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hTo-66-yfU" id="Sqj-tn-hhN">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -137,7 +185,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="x0x-VY-yZd" style="IBUITableViewCellStyleDefault" id="mXb-3h-Cx0" customClass="UITableViewVibrantCell" customModule="SideMenu">
-                                        <rect key="frame" x="0.0" y="434" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="592" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mXb-3h-Cx0" id="YDn-l7-sU3">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -186,6 +234,16 @@
                 <tapGestureRecognizer id="6ai-Ir-40P">
                     <connections>
                         <action selector="openAudikoPaidTapped:" destination="vaA-fV-mcs" id="rq9-6u-e8H"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="FLA-kI-OXr">
+                    <connections>
+                        <action selector="reloadRingtonesTapped:" destination="vaA-fV-mcs" id="pLQ-Xw-rdP"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="fOe-l9-6YY">
+                    <connections>
+                        <action selector="importFileTapped:" destination="vaA-fV-mcs" id="3Ra-BS-PiS"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -334,7 +392,14 @@
                                 <action selector="updateTapped:" destination="rCO-Vu-eEW" id="emu-pH-QMO"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="ypg-6Q-hmd"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Zhz-Jr-soL"/>
+                        <barButtonItem title="Choose file" image="folder" id="Me3-cv-ri4">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="importFileTapped:" destination="rCO-Vu-eEW" id="qEt-EI-aId"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem width="60" style="plain" systemItem="fixedSpace" id="e4E-Zb-CLd"/>
                         <barButtonItem title="Install all" id="mp6-lO-Vjj">
                             <connections>
                                 <action selector="installAllTapped:" destination="rCO-Vu-eEW" id="ljz-mV-whC"/>
@@ -356,6 +421,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dlp-19-Fdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1314,6 +1380,7 @@
         <image name="AudikoPro" width="28" height="28"/>
         <image name="Zedge" width="28" height="28"/>
         <image name="dots" width="44" height="44"/>
+        <image name="folder" width="24" height="21"/>
         <image name="github" width="29" height="29"/>
         <image name="info-circle44" width="44" height="44"/>
         <image name="menuBackground" width="500" height="750"/>
@@ -1326,8 +1393,8 @@
         <image name="twitter" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qXT-DA-gkR"/>
-        <segue reference="f8G-jg-3dQ"/>
+        <segue reference="4pd-C6-I03"/>
+        <segue reference="PTZ-6q-gtg"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

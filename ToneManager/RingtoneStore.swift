@@ -8,6 +8,7 @@
 
 import Foundation
 import BugfenderSDK
+import FileBrowser
 
 /// Global variable for application data folder
 public let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
@@ -240,12 +241,12 @@ extension RingtoneStore {
     ///
     /// - Parameter completionHandler: completion block that should run when import is done, a Bool indicating if new ringtones
     /// was imported is passed to it.
-    public func updateRingtones(completionHandler: @escaping (Bool) -> Void) {
+    func updateRingtones(completionHandler: @escaping (Bool) -> Void) {
         NSLog("Update called, finishedloading=\(self.finishedLoading)")
         if !finishedLoading { return }
         
         queue.async {
-            let scanner = RingtoneScanner(self)
+            let scanner = RingtoneScanner()
             // TODO: Get extra apps to scan from preferences
             
             let apps = Preferences.ringtoneAppsToScan
@@ -280,6 +281,14 @@ extension RingtoneStore {
             self.writeToPlist()
         }
     }
+    
+    func importFile(_ file : FBFile, completionHandler: @escaping (Bool, NSError) -> Void) {
+        let fileImporter = RingtoneFileImporter()
+        if !fileImporter.isFileValidRingtone(file) {
+            let error = NSError(domain: "", code: 1050, userInfo: nil)
+            completionHandler(false, error)
+        }
+    }
 }
 
 //MARK: Notification observers
@@ -290,7 +299,7 @@ extension RingtoneStore {
     }
     
     // Called from notification observer when app will enter background or terminate. Writes ringtone plist to disk.
-    @objc public func didEnterBackground() {
+    @objc func didEnterBackground() {
         
         backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: {
             
