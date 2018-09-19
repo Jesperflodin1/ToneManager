@@ -23,15 +23,15 @@
                         <gestureRecognizers/>
                         <color key="separatorColor" red="0.30980392159999998" green="0.56078431370000004" blue="0.0" alpha="0.19806827910958905" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="8" maxY="0.0"/>
-                        <imageView key="tableHeaderView" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuBackground" id="1oH-Wx-Etz">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="133"/>
+                        <imageView key="tableHeaderView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuBackground" id="1oH-Wx-Etz">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <sections>
                             <tableViewSection id="PZA-Vz-VUm">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="x40-V4-3zv" rowHeight="25" style="IBUITableViewCellStyleDefault" id="16B-gK-8dg" customClass="UITableViewVibrantCell" customModule="SideMenu">
-                                        <rect key="frame" x="0.0" y="133" width="375" height="25"/>
+                                        <rect key="frame" x="0.0" y="150" width="375" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="16B-gK-8dg" id="Op9-X7-8ZQ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
@@ -49,7 +49,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="9Rg-VK-nfM" style="IBUITableViewCellStyleDefault" id="VBb-M5-iVU" customClass="UITableViewVibrantCell" customModule="SideMenu">
-                                        <rect key="frame" x="0.0" y="158" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="175" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VBb-M5-iVU" id="TaP-gK-NPR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -70,7 +70,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="ond-lV-6RO" style="IBUITableViewCellStyleDefault" id="1Ul-Fq-WxW" customClass="UITableViewVibrantCell" customModule="SideMenu">
-                                        <rect key="frame" x="0.0" y="202" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="219" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Ul-Fq-WxW" id="I0y-lD-CYo">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -91,7 +91,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="Q6e-ZO-4mR" style="IBUITableViewCellStyleDefault" id="XiO-SP-HbW" customClass="UITableViewVibrantCell" customModule="SideMenu">
-                                        <rect key="frame" x="0.0" y="246" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="263" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XiO-SP-HbW" id="IUt-W3-ciC">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -116,7 +116,7 @@
                             <tableViewSection id="3v8-eB-Yf8">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="aDC-cI-6SF" style="IBUITableViewCellStyleDefault" id="VGi-lT-Xjf" customClass="UITableViewVibrantCell" customModule="SideMenu">
-                                        <rect key="frame" x="0.0" y="375" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="392" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VGi-lT-Xjf" id="rlw-VN-PpL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -138,7 +138,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="eyS-yA-LrF" style="IBUITableViewCellStyleDefault" id="Bec-ky-LVp" customClass="UITableViewVibrantCell" customModule="SideMenu">
-                                        <rect key="frame" x="0.0" y="419" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="436" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bec-ky-LVp" id="P7z-Qv-5Ho">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -164,7 +164,7 @@
                             <tableViewSection id="Bhn-s5-KC9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="0vd-pW-hbF" style="IBUITableViewCellStyleDefault" id="hTo-66-yfU" customClass="UITableViewVibrantCell" customModule="SideMenu">
-                                        <rect key="frame" x="0.0" y="548" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="565" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hTo-66-yfU" id="Sqj-tn-hhN">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -185,7 +185,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="x0x-VY-yZd" style="IBUITableViewCellStyleDefault" id="mXb-3h-Cx0" customClass="UITableViewVibrantCell" customModule="SideMenu">
-                                        <rect key="frame" x="0.0" y="592" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="609" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mXb-3h-Cx0" id="YDn-l7-sU3">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -392,14 +392,14 @@
                                 <action selector="updateTapped:" destination="rCO-Vu-eEW" id="emu-pH-QMO"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Zhz-Jr-soL"/>
+                        <barButtonItem width="22" style="plain" systemItem="fixedSpace" id="E9l-N0-lwS"/>
                         <barButtonItem title="Choose file" image="folder" id="Me3-cv-ri4">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="importFileTapped:" destination="rCO-Vu-eEW" id="qEt-EI-aId"/>
+                                <action selector="importFileTapped:" destination="rCO-Vu-eEW" id="vgM-MD-9zm"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem width="60" style="plain" systemItem="fixedSpace" id="e4E-Zb-CLd"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="dik-Dp-FRY"/>
                         <barButtonItem title="Install all" id="mp6-lO-Vjj">
                             <connections>
                                 <action selector="installAllTapped:" destination="rCO-Vu-eEW" id="ljz-mV-whC"/>
@@ -1383,7 +1383,7 @@
         <image name="folder" width="24" height="21"/>
         <image name="github" width="29" height="29"/>
         <image name="info-circle44" width="44" height="44"/>
-        <image name="menuBackground" width="500" height="750"/>
+        <image name="menuBackground" width="375" height="150"/>
         <image name="paypal" width="29" height="29"/>
         <image name="play-circle" width="30" height="30"/>
         <image name="play-circle44" width="44" height="44"/>

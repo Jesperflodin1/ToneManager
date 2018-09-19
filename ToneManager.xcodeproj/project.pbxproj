@@ -15,6 +15,7 @@
 		2477828621525CE10058074F /* ActionSheetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2477828421525CE00058074F /* ActionSheetCell.xib */; };
 		2477828821525CF50058074F /* ActionSheetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828721525CF50058074F /* ActionSheetCell.swift */; };
 		2477828A21525D840058074F /* ActionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828921525D840058074F /* ActionData.swift */; };
+		2477828C215298980058074F /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828B215298980058074F /* ErrorCode.swift */; };
 		247AFDF421511344007191E1 /* AppSetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF321511344007191E1 /* AppSetupManager.swift */; };
 		247AFDF6215122EC007191E1 /* FirstRun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 247AFDF5215122EC007191E1 /* FirstRun.storyboard */; };
 		247AFDF8215124D7007191E1 /* FirstRunPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */; };
@@ -86,6 +87,7 @@
 		2477828421525CE00058074F /* ActionSheetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionSheetCell.xib; sourceTree = "<group>"; };
 		2477828721525CF50058074F /* ActionSheetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetCell.swift; sourceTree = "<group>"; };
 		2477828921525D840058074F /* ActionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionData.swift; sourceTree = "<group>"; };
+		2477828B215298980058074F /* ErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
 		247AFDF321511344007191E1 /* AppSetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupManager.swift; sourceTree = "<group>"; };
 		247AFDF5215122EC007191E1 /* FirstRun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstRun.storyboard; sourceTree = "<group>"; };
 		247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunPageViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				247AFDF921515846007191E1 /* AppearanceManager.swift */,
 				24982BD1214CE12B00DD0474 /* ColorPalette.swift */,
 				24982BD3214CE16700DD0474 /* Preferences.swift */,
+				2477828B215298980058074F /* ErrorCode.swift */,
 				24F7ECE3214FD78900A46E72 /* String+Version.swift */,
 				24F7ECE5214FD7C200A46E72 /* String+CondenseWhitespace.swift */,
 				24F7ECE7214FD7F600A46E72 /* URL+RingtoneName.swift */,
@@ -582,6 +585,7 @@
 				2497A6682142537B00597B5C /* Ringtone.swift in Sources */,
 				247AFDF8215124D7007191E1 /* FirstRunPageViewController.swift in Sources */,
 				24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */,
+				2477828C215298980058074F /* ErrorCode.swift in Sources */,
 				24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */,
 				24F7ECE8214FD7F600A46E72 /* URL+RingtoneName.swift in Sources */,
 				24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */,
@@ -782,7 +786,7 @@
 				RUN_UICACHE = NO;
 				SDKROOT = iphoneos;
 				SEPARATE_SYMBOL_EDIT = NO;
-				SSH_CONNECTION_MODE = USB;
+				SSH_CONNECTION_MODE = NET;
 				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -820,7 +824,7 @@
 				RUN_UICACHE = NO;
 				SDKROOT = iphoneos;
 				SEPARATE_SYMBOL_EDIT = NO;
-				SSH_CONNECTION_MODE = USB;
+				SSH_CONNECTION_MODE = NET;
 				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

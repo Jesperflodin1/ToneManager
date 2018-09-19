@@ -8,6 +8,7 @@
 
 import UIKit
 import PKHUD
+import PopupDialog
 import BugfenderSDK
 
 class RingtoneManager {

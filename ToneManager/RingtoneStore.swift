@@ -282,11 +282,34 @@ extension RingtoneStore {
         }
     }
     
-    func importFile(_ file : FBFile, completionHandler: @escaping (Bool, NSError) -> Void) {
-        let fileImporter = RingtoneFileImporter()
-        if !fileImporter.isFileValidRingtone(file) {
-            let error = NSError(domain: "", code: 1050, userInfo: nil)
-            completionHandler(false, error)
+    func importFile(_ file : FBFile, completionHandler: @escaping (Bool, NSError?) -> Void) {
+        queue.async {
+            let fileImporter = RingtoneFileImporter()
+            if !fileImporter.isFileValidRingtone(file) {
+                let error = NSError(domain: "", code: ErrorCode.invalidRingtoneFile.rawValue, userInfo: nil)
+                DispatchQueue.main.async {
+                    completionHandler(false, error)
+                }
+                return
+            }
+            
+            guard let newRingtone = fileImporter.importFile(file) else {
+                let error = NSError(domain: "", code: ErrorCode.unknownImportError.rawValue, userInfo: nil)
+                Bugfender.error("Got error when trying to import single FBFile, errorcode=\(error)")
+                DispatchQueue.main.async {
+                    completionHandler(false, error)
+                }
+                return
+            }
+            DispatchQueue.main.async {
+                self.allRingtones.append(newRingtone)
+                let sortedTones = self.allRingtones.sorted(by: { (initial, next) -> Bool in
+                    return initial.name.lowercased().compare(next.name.lowercased()) == .orderedAscending
+                })
+                self.allRingtones = WriteLockableSynchronizedArray(with: sortedTones)
+                completionHandler(true, nil)
+            }
+            
         }
     }
 }

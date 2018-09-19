@@ -39,22 +39,31 @@ final class RingtoneTableViewController : UITableViewController {
     }
     
     @IBAction func importFileTapped(_ sender: UIBarButtonItem) {
-        let fileBrowser = FileBrowser(initialPath: URL(fileURLWithPath: "/var/mobile/Downloads"), allowEditing: false, showCancelButton: true)
+        let fileBrowser = FileBrowser(initialPath: URL(fileURLWithPath: "/"), allowEditing: false, showCancelButton: true)
         fileBrowser.excludesFileExtensions = ["zip", "txt", "jpg", "jpeg", "png", "gif"]
         
-        fileBrowser.didSelectFile = { (file: FBFile) -> Void in
+        fileBrowser.didSelectFile = { [weak self] (file: FBFile) -> Void in
             RingtoneStore.sharedInstance.importFile(file, completionHandler: { (success, error) in
                 if !success {
-                    if error.code == 1050 {
+                    guard let errorType = error else { return }
+                    if errorType.code == ErrorCode.invalidRingtoneFile.rawValue {
                         HUD.flash(.labeledError(title: "Error", subtitle: "File is not a valid ringtone"), delay: 1.0)
                         return
+                    } else {
+                        guard let strongSelf = self else { return }
+                        
+                        HUD.flash(.labeledSuccess(title: "Success", subtitle: "Imported 1 Ringtone"), delay: 0.7)
+                        
+                        strongSelf.ringtoneStore.allRingtones.lockArray()
+                        strongSelf.tableView.reloadData()
+                        strongSelf.ringtoneStore.allRingtones.unlockArray()
                     }
                 }
                 
                 
             })
-            
         }
+        present(fileBrowser, animated: true, completion: nil)
     }
 }
 

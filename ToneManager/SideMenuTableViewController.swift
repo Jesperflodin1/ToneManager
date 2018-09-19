@@ -10,6 +10,8 @@ import Foundation
 import SideMenu
 import StoreKit
 import BugfenderSDK
+import FileBrowser
+import PKHUD
 
 final class SideMenuTableViewController: UITableViewController {
     
@@ -18,12 +20,36 @@ final class SideMenuTableViewController: UITableViewController {
     @IBOutlet weak var openAudikoPaidLabel: UILabel!
     
     @IBAction func reloadRingtonesTapped(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
         RingtoneManager.updateRingtones {
             NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
         }
     }
     
     @IBAction func importFileTapped(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
+        let fileBrowser = FileBrowser(initialPath: URL(fileURLWithPath: "/"), allowEditing: false, showCancelButton: true)
+        fileBrowser.excludesFileExtensions = ["zip", "txt", "jpg", "jpeg", "png", "gif", "deb", "xml"]
+        
+        fileBrowser.didSelectFile = { (file: FBFile) -> Void in
+            RingtoneStore.sharedInstance.importFile(file, completionHandler: { (success, error) in
+                if !success {
+                    guard let errorType = error else { return }
+                    if errorType.code == ErrorCode.invalidRingtoneFile.rawValue {
+                        HUD.flash(.labeledError(title: "Error", subtitle: "File is not a valid ringtone"), delay: 1.0)
+                        return
+                    } else {
+                        
+                        HUD.flash(.labeledSuccess(title: "Success", subtitle: "Imported 1 Ringtone"), delay: 0.7)
+                        
+                         NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
+                    }
+                }
+                
+                
+            })
+        }
+        present(fileBrowser, animated: true, completion: nil)
     }
     
     @IBAction func openZedgeTapped(_ sender: UITapGestureRecognizer) {
@@ -91,7 +117,7 @@ extension SideMenuTableViewController {
         
         
         // Set up a cool background image for demo purposes
-        let imageView = UIImageView(image: UIImage(named: "menuBackground"))
+        let imageView = UIImageView(image: ColorPalette.sideMenuBackground)
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         tableView.backgroundView = imageView

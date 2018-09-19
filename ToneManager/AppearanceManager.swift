@@ -20,6 +20,7 @@ class AppearanceManager {
     fileprivate class func setupNavBar(_ nvc : UINavigationController) {
         UINavigationBar.appearance().setBackgroundImage(ColorPalette.navBarBackground?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: .stretch), for: .default)
         UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().tintColor = UIColor.white
         
         if let font = ColorPalette.navBarTitleFont {
             UINavigationBar.appearance().titleTextAttributes = [

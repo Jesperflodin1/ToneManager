@@ -32,7 +32,7 @@ struct ColorPalette {
 //MARK: Images
 extension ColorPalette {
     static let navBarBackground = UIImage(named: "navbar")
-    static let sideMenuBackground = UIImage(named: "menuBackground")
+    static let sideMenuBackground = UIImage(named: "colorful")
     
     static let ringtoneCellPlayImage = UIImage(named: "play-circle44")
     static let ringtoneCellStopImage = UIImage(named: "stop-circle44")

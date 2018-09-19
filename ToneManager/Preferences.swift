@@ -158,7 +158,7 @@ extension Preferences {
     /// Sets default user settings for UserDefaults
     static func registerDefaults() {
         Preferences.defaults.register(defaults: [
-            Preferences.keys.autoInstall.rawValue : false,
+            Preferences.keys.autoInstall.rawValue : true,
             Preferences.keys.remoteLogging.rawValue : true,
             Preferences.keys.audikoLite.rawValue : true,
             Preferences.keys.audikoPro.rawValue : true,

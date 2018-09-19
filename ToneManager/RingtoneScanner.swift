@@ -78,7 +78,7 @@ extension RingtoneScanner {
                 
                 // if filename already exists, but different app, prepare to set a different ringtone name
                 if (RingtoneStore.sharedInstance.allRingtones.contains(where: { $0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent } )) {
-                    BFLog("File already exists but different app, importing anyway: \(fileUrl)")
+                    BFLog("File already exists but different app, importing anyway: \(fileUrl.path)")
                     appendRandomToRingtoneName = true
                 }
                 
