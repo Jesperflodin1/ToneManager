@@ -29,6 +29,9 @@ struct Preferences {
     static let zedgeItunesId : NSNumber = 584485870
     static let audikoLiteItunesId : NSNumber = 878910012
     static let audikoProItunesId : NSNumber = 725401575
+    
+    static let defaultExcludedFileExtensions = ["zip", "txt", "jpg", "jpeg", "png", "gif", "deb", "xml"]
+    static let fileBrowserDefaultPath = "/var/mobile"
 }
 
 //MARK: Simple setters and getters

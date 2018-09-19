@@ -13,6 +13,7 @@ import AVFoundation
 import XLActionController
 import FileBrowser
 
+
 /// Shows available and installed ringtones
 final class RingtoneTableViewController : UITableViewController {
     
@@ -39,8 +40,8 @@ final class RingtoneTableViewController : UITableViewController {
     }
     
     @IBAction func importFileTapped(_ sender: UIBarButtonItem) {
-        let fileBrowser = FileBrowser(initialPath: URL(fileURLWithPath: "/"), allowEditing: false, showCancelButton: true)
-        fileBrowser.excludesFileExtensions = ["zip", "txt", "jpg", "jpeg", "png", "gif"]
+        let fileBrowser = FileBrowser(initialPath: URL(fileURLWithPath: Preferences.fileBrowserDefaultPath), allowEditing: false, showCancelButton: true)
+        fileBrowser.excludesFileExtensions = Preferences.defaultExcludedFileExtensions
         
         fileBrowser.didSelectFile = { [weak self] (file: FBFile) -> Void in
             RingtoneStore.sharedInstance.importFile(file, completionHandler: { (success, error) in

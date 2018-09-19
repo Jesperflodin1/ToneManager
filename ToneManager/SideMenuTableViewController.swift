@@ -27,9 +27,9 @@ final class SideMenuTableViewController: UITableViewController {
     }
     
     @IBAction func importFileTapped(_ sender: UITapGestureRecognizer) {
-        dismiss(animated: true, completion: nil)
-        let fileBrowser = FileBrowser(initialPath: URL(fileURLWithPath: "/"), allowEditing: false, showCancelButton: true)
-        fileBrowser.excludesFileExtensions = ["zip", "txt", "jpg", "jpeg", "png", "gif", "deb", "xml"]
+
+        let fileBrowser = FileBrowser(initialPath: URL(fileURLWithPath: Preferences.fileBrowserDefaultPath), allowEditing: false, showCancelButton: true)
+        fileBrowser.excludesFileExtensions = Preferences.defaultExcludedFileExtensions
         
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
             RingtoneStore.sharedInstance.importFile(file, completionHandler: { (success, error) in
@@ -49,7 +49,8 @@ final class SideMenuTableViewController: UITableViewController {
                 
             })
         }
-        present(fileBrowser, animated: true, completion: nil)
+        guard let topVC = UIApplication.topViewController() else { return }
+        topVC.present(fileBrowser, animated: true, completion: nil)
     }
     
     @IBAction func openZedgeTapped(_ sender: UITapGestureRecognizer) {

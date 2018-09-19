@@ -87,7 +87,7 @@ final class Ringtone : NSObject, Codable {
         if let bundle = bundleID {
             self.bundleID = bundle
         } else {
-            self.bundleID = "fi.flodin.tonemanager"
+            self.bundleID = "unknown.app"
         }
         
         if let protected = protectedContent {
@@ -104,6 +104,8 @@ final class Ringtone : NSObject, Codable {
         
         if let app = FBApplicationInfoHandler.displayName(forBundleIdentifier: self.bundleID) {
             self.appName = app
+        } else if self.bundleID == Bundle.main.bundleIdentifier {
+            self.appName = "Local import"
         } else {
             self.appName = self.bundleID
         }
