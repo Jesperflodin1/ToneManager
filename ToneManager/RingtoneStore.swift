@@ -204,7 +204,7 @@ extension RingtoneStore {
         
         let installer = RingtoneInstaller(self)
         
-        BFLog("calling uninstall for ringtone: \(ringtone)")
+        BFLog("calling uninstall for ringtone: \(ringtone.name)")
         
         installer.removeRingtone(ringtone, deleteFile: false, completionHandler: completionHandler)
         
@@ -226,7 +226,7 @@ extension RingtoneStore {
     ///   - ringtone: Ringtone to remove
     ///   - completion: Optional completion block to run when done. Runs in main queue
     func removeRingtone(_ ringtone : Ringtone, completion: @escaping (Bool) -> Void) {
-        BFLog("Delete was called for ringtone: \(ringtone)")
+        BFLog("Delete was called for ringtone: \(ringtone.name)")
         
         let installer = RingtoneInstaller(self)
         

@@ -37,8 +37,6 @@ final class RingtoneTableViewController : UITableViewController {
         super.init(coder: aDecoder)
     }
     
-    
-    
 }
 
 
@@ -60,8 +58,12 @@ extension RingtoneTableViewController {
 //MARK: UI Actions
 extension RingtoneTableViewController {
     
-    func cellMenuAction(_ cell: RingtoneTableCell) {
-
+    @IBAction func cellMenuTapped(_ sender: RingtoneCellButton) {
+        let row = sender.tag
+        guard let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? RingtoneTableCell else {
+            Bugfender.error("Error! Failed to get cell on menu tap")
+            return
+        }
         guard let ringtone = cell.ringtoneItem else { return }
         
         let actionController = ActionSheetController()
@@ -91,6 +93,12 @@ extension RingtoneTableViewController {
                 
             }))
         }
+        actionController.addAction(Action(ActionData(title: "Show details", image: ColorPalette.ringtoneCellMenuInfo!), style: .default, handler: { [weak self] action in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.performSegue(withIdentifier: "showDetailsFromCellLabel", sender: cell)
+            
+        }))
         actionController.addAction(Action(ActionData(title: "Delete", image: ColorPalette.ringtoneCellMenuDelete!), style: .destructive, handler: { action in
             
             RingtoneManager.deleteRingtone(inCell: cell) { [weak self] in
@@ -98,6 +106,10 @@ extension RingtoneTableViewController {
                 if let index = strongSelf.tableView.indexPath(for: cell) {
                     
                     strongSelf.tableView.deleteRows(at: [index], with: .automatic)
+
+                    strongSelf.ringtoneStore.allRingtones.lockArray()
+                    strongSelf.tableView.reloadData()
+                    strongSelf.ringtoneStore.allRingtones.unlockArray()
                 }
             }
             
@@ -406,10 +418,7 @@ extension RingtoneTableViewController {
             cell.nameLabel.text = ringtone?.name
             cell.fromAppLabel.text = ringtone?.appName
             cell.cellMenuButton.addedTouchArea = 10
-            cell.buttonAction = { [weak self] (cell) in
-                guard let strongSelf = self else { return }
-                strongSelf.cellMenuAction(cell)
-            }
+            cell.cellMenuButton.tag = indexPath.row
             
             cell.updateInstallStatus()
             
