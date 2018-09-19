@@ -22,6 +22,10 @@ ldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/BugfenderSDK.framework/Bu
 ldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/PKHUD.framework/PKHUD
 ldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/SideMenu.framework/SideMenu
 ldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/FileBrowser.framework/FileBrowser
+ldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/XLActionController.framework/XLActionController
+ldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/PopupDialog.framework/PopupDialog
+ldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/DynamicBlurView.framework/DynamicBlurView
+
 # Copy it over.
 
 #rm -r $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/libswift*
@@ -29,7 +33,7 @@ ldid -S $BUILT_PRODUCTS_DIR/${WRAPPER_NAME}/Frameworks/FileBrowser.framework/Fil
 echo "Copying to device"
 scp -P $PORT -r $BUILT_PRODUCTS_DIR/${WRAPPER_NAME} root@$IP:/Applications/
 
-if [[ "$RUN_UICACHE" == "YES"]]; then
+if [[ "$RUN_UICACHE" == "YES" ]]; then
 echo "Running uicache"
 ssh root@$IP -p $PORT "uicache"
 fi

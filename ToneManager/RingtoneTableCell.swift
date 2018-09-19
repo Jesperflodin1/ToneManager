@@ -16,8 +16,7 @@ final class RingtoneTableCell: UITableViewCell {
     /// Outlet for label showing which app ringtone was imported from
     @IBOutlet weak var fromAppLabel: UILabel!
     
-    /// Outlet for label showing install status
-    @IBOutlet weak var installedLabel: UILabel!
+    @IBOutlet weak var cellMenuButton: RingtoneCellButton!
     
     
     /// Outlet for UIButton with play/pause action
@@ -26,17 +25,10 @@ final class RingtoneTableCell: UITableViewCell {
     /// Outlet for "more info", segues to ’RingtoneDetailViewController’ on tap
     @IBOutlet weak var infoButton: UIButton!
     
-    /// Outlet for install button. Installs or uninstalls ringtone on tap
-    @IBOutlet weak var installButton: UIButton!
-    
-    /// Outlet for trash button. Deletes ringtone
-    @IBOutlet weak var deleteButton: UIButton!
-    
-    /// Outlet for install button constraint to the button left of it
-    @IBOutlet weak var installButtonHorizontalConstraint: NSLayoutConstraint!
-    
     /// Associated ringtone object
     var ringtoneItem : Ringtone? = nil
+    @IBAction func menuTapped(_ sender: RingtoneCellButton) {
+    }
 }
 
 //MARK: Cell UIView update actions
@@ -46,51 +38,43 @@ extension RingtoneTableCell {
     /// - Parameter state: Bool, true for shown and false for hidden
     public func updateButtons(_ state: Bool) {
         if state == true {
-            self.playButton.alpha = 0.7
-            self.playButton.isEnabled = true
+
+//            cellMenuButton.frame.size = CGSize(width: 44, height: 44)
+            if !playButton.isEnabled {
+                cellMenuButton.transform = CGAffineTransform(scaleX: 44/30, y: 44/30)
+            }
             
-            self.infoButton.alpha = 0.7
-            self.infoButton.isEnabled = true
+            playButton.alpha = 0.7
+            playButton.isEnabled = true
             
-            self.installButton.alpha = 0.7
-            self.installButton.isEnabled = true
-            
-            self.deleteButton.alpha = 0.7
-            self.deleteButton.isEnabled = true
+            infoButton.alpha = 0.7
+            infoButton.isEnabled = true
             
         } else {
-            self.playButton.alpha = 0.0
-            self.playButton.isEnabled = false
+
+//            cellMenuButton.frame.size = CGSize(width: 30, height: 30)
+            if playButton.isEnabled {
+                cellMenuButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
             
-            self.infoButton.alpha = 0.0
-            self.infoButton.isEnabled = false
+            playButton.alpha = 0.0
+            playButton.isEnabled = false
             
-            self.installButton.alpha = 0.0
-            self.installButton.isEnabled = false
+            infoButton.alpha = 0.0
+            infoButton.isEnabled = false
             
-            self.deleteButton.alpha = 0.0
-            self.deleteButton.isEnabled = false
         }
     }
     
     /// Updates UIImage for install button to show if button action is install or uninstall. Also updates installed label
     public func updateInstallStatus() {
         if !(ringtoneItem?.installed)! { // not installed
-            installButton.setImage(ColorPalette.ringtoneCellInstallImage, for: .normal)
-            installedLabel.isHidden = true
+            nameLabel.textColor = ColorPalette.ringtoneNotInstalledColor
             
             self.setNeedsLayout()
             self.layoutIfNeeded()
         } else { // installed
-            installButton.setImage(ColorPalette.ringtoneCellUninstallImage, for: .normal)
-            installedLabel.isHidden = false
-            
-            installedLabel.text = "Installed"
-            installedLabel.backgroundColor = ColorPalette.backgroundColor
-            installedLabel.layer.masksToBounds = true
-            installedLabel.layer.borderColor = ColorPalette.themeColor.cgColor
-            installedLabel.layer.borderWidth = 1
-            installedLabel.layer.cornerRadius = 6
+            nameLabel.textColor = ColorPalette.ringtoneInstalledColor
             
             self.setNeedsLayout()
             self.layoutIfNeeded()
@@ -104,7 +88,6 @@ extension RingtoneTableCell {
     override public func prepareForReuse() {
         nameLabel.text = ""
         fromAppLabel.text = ""
-        installedLabel.text = ""
         updateButtons(false)
         ringtoneItem = nil
     }

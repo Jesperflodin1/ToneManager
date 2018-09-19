@@ -10,6 +10,7 @@
 		1B7547485A56829ADA0E8A7C /* Pods_ToneManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87726A0BFD0B4E267CD5179 /* Pods_ToneManager.framework */; };
 		24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24496B22214991B40031E422 /* RingtoneInstaller.swift */; };
 		24496B25214AAF860031E422 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24496B24214AAF860031E422 /* AVFoundation.framework */; };
+		2477828221524D720058074F /* RingtoneCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828121524D720058074F /* RingtoneCellButton.swift */; };
 		247AFDF421511344007191E1 /* AppSetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF321511344007191E1 /* AppSetupManager.swift */; };
 		247AFDF6215122EC007191E1 /* FirstRun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 247AFDF5215122EC007191E1 /* FirstRun.storyboard */; };
 		247AFDF8215124D7007191E1 /* FirstRunPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */; };
@@ -50,7 +51,7 @@
 		24F7ECEE215023D900A46E72 /* RingtoneFileImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7ECED215023D900A46E72 /* RingtoneFileImporter.swift */; };
 		30F4C62E8F6AF1DA3B7B1D40 /* Pods_ToneManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56DFC59107A5F6111AB3E4A /* Pods_ToneManagerTests.framework */; };
 		3A0E0435786C44BF60985FC7 /* Pods_ToneManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */; };
-		479A22855526EC45CD8934E1 /* Pods_ToneManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB2F0288DA14F8204028D09 /* Pods_ToneManager.framework */; };
+		443EE3540A584C968F54C987 /* Pods_ToneManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB2F0288DA14F8204028D09 /* Pods_ToneManager.framework */; };
 		BE4E087C5B988C85CBA2F99B /* Pods_ToneManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787B7BD1ECCE5249CE75158F /* Pods_ToneManagerUITests.framework */; };
 		F7EECDE01BA83D5715DAFA5D /* Pods_ToneManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FB56436B5FE7D0AF8E042F /* Pods_ToneManagerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24496B22214991B40031E422 /* RingtoneInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneInstaller.swift; sourceTree = "<group>"; };
 		24496B24214AAF860031E422 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2477828121524D720058074F /* RingtoneCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneCellButton.swift; sourceTree = "<group>"; };
 		247AFDF321511344007191E1 /* AppSetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupManager.swift; sourceTree = "<group>"; };
 		247AFDF5215122EC007191E1 /* FirstRun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstRun.storyboard; sourceTree = "<group>"; };
 		247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunPageViewController.swift; sourceTree = "<group>"; };
@@ -148,7 +150,7 @@
 				249694AC21478E79009960D7 /* libapplist.dylib in Frameworks */,
 				24EE208A2142EB050045D678 /* MobileCoreServices.framework in Frameworks */,
 				1B7547485A56829ADA0E8A7C /* Pods_ToneManager.framework in Frameworks */,
-				479A22855526EC45CD8934E1 /* Pods_ToneManager.framework in Frameworks */,
+				443EE3540A584C968F54C987 /* Pods_ToneManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +226,7 @@
 				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
 				2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */,
 				24EE2074214295480045D678 /* RingtoneTableCell.swift */,
+				2477828121524D720058074F /* RingtoneCellButton.swift */,
 				2497A6672142537B00597B5C /* Ringtone.swift */,
 				2497A6692142538500597B5C /* RingtoneStore.swift */,
 				249694A621454F96009960D7 /* RingtoneScanner.swift */,
@@ -496,16 +499,22 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ToneManager/Pods-ToneManager-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BugfenderSDK/BugfenderSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/FileBrowser/FileBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/XLActionController/XLActionController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BugfenderSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FileBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLActionController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -542,6 +551,7 @@
 				2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */,
 				249694AE214799F0009960D7 /* AppListViewController.swift in Sources */,
 				249694A921456804009960D7 /* SynchronizedArray.swift in Sources */,
+				2477828221524D720058074F /* RingtoneCellButton.swift in Sources */,
 				24F7ECEA214FD84C00A46E72 /* Notification+Name.swift in Sources */,
 				2491B38D214E49B6001B36DE /* SideMenuTableViewController.swift in Sources */,
 				24F7ECEE215023D900A46E72 /* RingtoneFileImporter.swift in Sources */,
@@ -750,13 +760,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ToneManager/Frameworks",
 				);
-				OPEN_APP = NO;
+				OPEN_APP = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_UICACHE = NO;
 				SDKROOT = iphoneos;
 				SEPARATE_SYMBOL_EDIT = NO;
-				SSH_CONNECTION_MODE = NET;
+				SSH_CONNECTION_MODE = USB;
 				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -788,13 +798,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ToneManager/Frameworks",
 				);
-				OPEN_APP = NO;
+				OPEN_APP = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = fi.flodin.ToneManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_UICACHE = NO;
 				SDKROOT = iphoneos;
 				SEPARATE_SYMBOL_EDIT = NO;
-				SSH_CONNECTION_MODE = NET;
+				SSH_CONNECTION_MODE = USB;
 				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

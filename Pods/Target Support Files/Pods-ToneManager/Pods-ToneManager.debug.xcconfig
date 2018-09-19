@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BugfenderSDK" "${PODS_CONFIGURATION_BUILD_DIR}/FileBrowser" "${PODS_CONFIGURATION_BUILD_DIR}/PKHUD" "${PODS_CONFIGURATION_BUILD_DIR}/SideMenu"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BugfenderSDK" "${PODS_CONFIGURATION_BUILD_DIR}/DynamicBlurView" "${PODS_CONFIGURATION_BUILD_DIR}/FileBrowser" "${PODS_CONFIGURATION_BUILD_DIR}/PKHUD" "${PODS_CONFIGURATION_BUILD_DIR}/PopupDialog" "${PODS_CONFIGURATION_BUILD_DIR}/SideMenu" "${PODS_CONFIGURATION_BUILD_DIR}/XLActionController"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/BugfenderSDK/BugfenderSDK.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/FileBrowser/FileBrowser.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/PKHUD/PKHUD.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SideMenu/SideMenu.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -ObjC -framework "BugfenderSDK" -framework "FileBrowser" -framework "PKHUD" -framework "SideMenu"
+OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/BugfenderSDK/BugfenderSDK.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/DynamicBlurView/DynamicBlurView.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/FileBrowser/FileBrowser.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/PKHUD/PKHUD.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/PopupDialog/PopupDialog.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SideMenu/SideMenu.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/XLActionController/XLActionController.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -ObjC -framework "BugfenderSDK" -framework "DynamicBlurView" -framework "FileBrowser" -framework "PKHUD" -framework "PopupDialog" -framework "SideMenu" -framework "XLActionController"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

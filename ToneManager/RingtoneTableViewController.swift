@@ -21,7 +21,7 @@ final class RingtoneTableViewController : UITableViewController {
     private let cellId = "RingtoneTableCell"
     
     /// Height for each row
-    private let rowHeight : CGFloat = 55
+    private let rowHeight : CGFloat = 60
     
     /// Userdefaults object
     let defaults = UserDefaults.standard
@@ -401,6 +401,8 @@ extension RingtoneTableViewController {
             cell.ringtoneItem = ringtone
             cell.nameLabel.text = ringtone?.name
             cell.fromAppLabel.text = ringtone?.appName
+            cell.cellMenuButton.addedTouchArea = 10
+            
             cell.updateInstallStatus()
             
             let selectedRow: IndexPath? = tableView.indexPathForSelectedRow

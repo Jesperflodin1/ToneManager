@@ -12,11 +12,13 @@ import BugfenderSDK
 /// Global variable for application data folder
 public let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
 
+public let plistURL = URL(fileURLWithPath: "/var/mobile/Library/ToneManager/tones.plist")
+
 /// Model class for ringtones
 final class RingtoneStore {
     
     /// Path to local plist for ringtone metadata
-    let plistURL = URL(fileURLWithPath: "/var/mobile/Library/ToneManager/tones.plist")
+    
     
     var finishedLoading : Bool = false
     
@@ -44,7 +46,8 @@ final class RingtoneStore {
             
             allRingtones.append(newTone)
         }
-        
+        self.finishedLoading = true
+        NotificationCenter.default.post(name: .ringtoneStoreDidFinishLoading, object: nil)
     }
     
     static let sharedInstance = RingtoneStore()
@@ -93,7 +96,7 @@ extension RingtoneStore {
             
             NSLog("Trying to read plist")
             do {
-                let data = try Data(contentsOf: self.plistURL)
+                let data = try Data(contentsOf: plistURL)
                 
                 let decoder = PropertyListDecoder()
                 let ringtonesArray = try decoder.decode(Array<Ringtone>.self, from: data)
@@ -114,13 +117,16 @@ extension RingtoneStore {
                 })
                 self.allRingtones = WriteLockableSynchronizedArray(with: sortedTones)
             } catch {
+                #if targetEnvironment(simulator)
+                self.createTestRingtones()
+                #endif
                 NSLog("Error when reading ringtones from plist: \(error)")
                 Bugfender.error("Error when reading ringtones from plist: \(error)")
                 return
             }
             
             
-            //          self.createTestRingtones()
+            
             
             //            DispatchQueue.main.sync {
             
@@ -148,7 +154,7 @@ extension RingtoneStore {
             encoder.outputFormat = .binary
             do {
                 let data = try encoder.encode(ringtonesArrayCopy)
-                try data.write(to: self.plistURL)
+                try data.write(to: plistURL)
                 BFLog("Done writing plist")
             } catch {
                 Bugfender.error("Error when writing ringtones to plist: \(error)")
