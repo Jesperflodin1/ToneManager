@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -200,7 +200,7 @@
 		00BFB0BE8B0A22CE825DBECCE583B619 /* WindowRootViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WindowRootViewController.swift; path = PKHUD/WindowRootViewController.swift; sourceTree = "<group>"; };
 		01E6ABBE431B1AA42CC9007A56BF0C8F /* UIImageView+Calculations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+Calculations.swift"; path = "PopupDialog/Classes/UIImageView+Calculations.swift"; sourceTree = "<group>"; };
 		03608B53B8281A781E90D5BF6396E2BE /* UISideMenuNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UISideMenuNavigationController.swift; path = Pod/Classes/UISideMenuNavigationController.swift; sourceTree = "<group>"; };
-		064021A2BD360B6CB888FDACC2A097E0 /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		064021A2BD360B6CB888FDACC2A097E0 /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SideMenu.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		066B532E622EF3A73E073A4E832A0B86 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06B4BD65A758EA5C53F882A77478ED6A /* UIView+Animations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Animations.swift"; path = "PopupDialog/Classes/UIView+Animations.swift"; sourceTree = "<group>"; };
 		073914A04BF8642E504DAAB0418B8A25 /* ActionCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActionCell.swift; path = Source/ActionCell.swift; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 		2355E847D3E97667476F13E92B12378B /* PopupDialogDefaultButtons.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupDialogDefaultButtons.swift; path = PopupDialog/Classes/PopupDialogDefaultButtons.swift; sourceTree = "<group>"; };
 		239F409EA68DC09D2ED82A47F755BBC8 /* FileListPreview.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileListPreview.swift; path = FileBrowser/FileListPreview.swift; sourceTree = "<group>"; };
 		24A2703EEBB7656A1A3FD048F119884A /* PresentationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PresentationManager.swift; path = PopupDialog/Classes/PresentationManager.swift; sourceTree = "<group>"; };
-		24B52E458EB6FF005241733E95020EB6 /* XLActionController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XLActionController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24B52E458EB6FF005241733E95020EB6 /* XLActionController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = XLActionController.framework; path = XLActionController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E0D45E791873A9BFFDE71EF66F9890 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26A043E4CE6D3A07F71854690D278258 /* FileListTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileListTableView.swift; path = FileBrowser/FileListTableView.swift; sourceTree = "<group>"; };
 		26B2688750C939F8B132158400601F60 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
@@ -254,7 +254,7 @@
 		4D54C76A90EB48BBAE247042D8B94B2B /* PreviewTransitionViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = PreviewTransitionViewController.xib; path = FileBrowser/Resources/PreviewTransitionViewController.xib; sourceTree = "<group>"; };
 		4EF711BD77504A033E5DDAEEB984AE9A /* Window.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Window.swift; path = PKHUD/Window.swift; sourceTree = "<group>"; };
 		5143985604796D98FA0668AFF9B45681 /* Pods-ToneManager-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ToneManager-acknowledgements.plist"; sourceTree = "<group>"; };
-		51818B4B8686F60887A56D131E69A742 /* PKHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PKHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51818B4B8686F60887A56D131E69A742 /* PKHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PKHUD.framework; path = PKHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B6191EE2F09B0A3E6E8BF9660D0316 /* Pods-ToneManagerTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManagerTests-resources.sh"; sourceTree = "<group>"; };
 		5721EEA03431C131533008B017A2EBF0 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		5749109E5B930FE60DE19B331E15429A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -279,24 +279,24 @@
 		789D29B40312D0B1924E72BB9F0ADFD4 /* DynamicBlurView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DynamicBlurView-dummy.m"; sourceTree = "<group>"; };
 		797F6883D6BABCBE51512B6EE9A1A36E /* Pods-ToneManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ToneManager-umbrella.h"; sourceTree = "<group>"; };
 		7C5D870321AF43A82C1F5A3F98427F99 /* PKHUDTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDTextView.swift; path = PKHUD/PKHUDTextView.swift; sourceTree = "<group>"; };
-		7F22CB35C67919035FC5DA0F7BACD3EE /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F22CB35C67919035FC5DA0F7BACD3EE /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ToneManagerTests.framework; path = "Pods-ToneManagerTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85A0A7507D568F02571D1CA8FC395635 /* PopupDialogOverlayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupDialogOverlayView.swift; path = PopupDialog/Classes/PopupDialogOverlayView.swift; sourceTree = "<group>"; };
 		86F1148BFE59ED41784FA7D2562E97F3 /* ActionCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = ActionCell.xib; path = Resource/ActionCell.xib; sourceTree = "<group>"; };
 		8A90B9C4C6D0C18EEEE63694CE91C23F /* BlurLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlurLayer.swift; path = DynamicBlurView/BlurLayer.swift; sourceTree = "<group>"; };
 		8DD34C143FAF720E5370DBBDB3F6F001 /* PreviewTransitionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PreviewTransitionViewController.swift; path = FileBrowser/PreviewTransitionViewController.swift; sourceTree = "<group>"; };
 		8E8EA0DB7B87A9F719F60D1A1E3515EC /* PKHUDRotatingImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDRotatingImageView.swift; path = PKHUD/PKHUDRotatingImageView.swift; sourceTree = "<group>"; };
 		9323D8775CE75FFDBA13452021B555B6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		966D4C565D31A9E4C5D67F9B3B149BD9 /* PopupDialog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PopupDialog.modulemap; sourceTree = "<group>"; };
 		96BF6070626A75C8AB0E0A118B7D205E /* XLActionController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XLActionController-dummy.m"; sourceTree = "<group>"; };
 		98173183B3AC3A048F58C2CE46473942 /* XLActionController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XLActionController-prefix.pch"; sourceTree = "<group>"; };
 		98513781FEE9664916FB1A0A29D0150F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9859362605DB2FC0048D281E64A4D1F4 /* Pods-ToneManagerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ToneManagerUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		985F528E9183EB258D4DBD1CDEB8E8B5 /* DynamicBlurView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DynamicBlurView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		985F528E9183EB258D4DBD1CDEB8E8B5 /* DynamicBlurView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DynamicBlurView.framework; path = DynamicBlurView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A482A60466EC9A5CC8C3259FA2F8913 /* SideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-umbrella.h"; sourceTree = "<group>"; };
 		9A82287436B200C2495EF767430DD4D2 /* UIImage+Blur.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+Blur.swift"; path = "DynamicBlurView/UIImage+Blur.swift"; sourceTree = "<group>"; };
 		9BDA54141A19DC5D779C4119FD8D3E5D /* Pods-ToneManagerUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManagerUITests-resources.sh"; sourceTree = "<group>"; };
-		9C6FD264C5B8D7C3AEFECBF54921B226 /* BugfenderSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BugfenderSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C6FD264C5B8D7C3AEFECBF54921B226 /* BugfenderSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BugfenderSDK.framework; path = BugfenderSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DE7BDA5FBC322D26E6F8ECA3E2FDB8A /* PopupDialogButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupDialogButton.swift; path = PopupDialog/Classes/PopupDialogButton.swift; sourceTree = "<group>"; };
 		9FB73137640AD23E790D18D7B8643028 /* PKHUDSuccessView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDSuccessView.swift; path = PKHUD/PKHUDSuccessView.swift; sourceTree = "<group>"; };
 		A0C8CA0DD0678C2DA5FBA251FFBBC19A /* WebviewPreviewViewContoller.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebviewPreviewViewContoller.swift; path = FileBrowser/WebviewPreviewViewContoller.swift; sourceTree = "<group>"; };
@@ -317,7 +317,7 @@
 		AF9DFE1F53F7152BCC41480FABC01C3D /* TransitionAnimations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionAnimations.swift; path = PopupDialog/Classes/TransitionAnimations.swift; sourceTree = "<group>"; };
 		AFE8529B219012B5E733502363E7EF36 /* FileListViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileListViewController.swift; path = FileBrowser/FileListViewController.swift; sourceTree = "<group>"; };
 		B587B0FEFCE03C5C670DC9F9F34D8194 /* PKHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PKHUD.h; path = PKHUD/PKHUD.h; sourceTree = "<group>"; };
-		B6BE55000489D703899C539D55A4294E /* Pods_ToneManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6BE55000489D703899C539D55A4294E /* Pods_ToneManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ToneManager.framework; path = "Pods-ToneManager.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7AE0EB43D9A841E88D39A85C974AD5D /* FBFile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FBFile.swift; path = FileBrowser/FBFile.swift; sourceTree = "<group>"; };
 		BA8E40AAF3B94389C6C89C7A1253E9F0 /* FileBrowser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FileBrowser.xcconfig; sourceTree = "<group>"; };
 		BABAECA6711E83F6B5617E1B69C28059 /* image@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "image@2x.png"; path = "FileBrowser/Resources/image@2x.png"; sourceTree = "<group>"; };
@@ -338,7 +338,7 @@
 		CE0B7597EA15941E9A24D77176121DAF /* PKHUDWideBaseView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDWideBaseView.swift; path = PKHUD/PKHUDWideBaseView.swift; sourceTree = "<group>"; };
 		CF20C26CEFE46E0732D3FCD009687F94 /* PopupDialogContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupDialogContainerView.swift; path = PopupDialog/Classes/PopupDialogContainerView.swift; sourceTree = "<group>"; };
 		CFD34A932C7F92F3425E7BF089DF3372 /* PKHUD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUD.swift; path = PKHUD/PKHUD.swift; sourceTree = "<group>"; };
-		D00D8AD2FF2D6B26E3BDC66D8DCFAFEB /* Pods_ToneManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D00D8AD2FF2D6B26E3BDC66D8DCFAFEB /* Pods_ToneManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ToneManagerUITests.framework; path = "Pods-ToneManagerUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37A873C7073C971848911B94DF21D38 /* Pods-ToneManagerTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ToneManagerTests-frameworks.sh"; sourceTree = "<group>"; };
 		D43EA4E807B14B1F444E07E44790442B /* PKHUDAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKHUDAnimation.swift; path = PKHUD/PKHUDAnimation.swift; sourceTree = "<group>"; };
 		D754A30DE278F8BD21A1D96FB3917600 /* ActionControllerSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActionControllerSettings.swift; path = Source/ActionControllerSettings.swift; sourceTree = "<group>"; };
@@ -357,8 +357,8 @@
 		EBE007EF83B7D95439DC695990D46BF6 /* ActionController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActionController.swift; path = Source/ActionController.swift; sourceTree = "<group>"; };
 		ECD5442E83F66261E9FD72EFD92B63C2 /* zip@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "zip@2x.png"; path = "FileBrowser/Resources/zip@2x.png"; sourceTree = "<group>"; };
 		EFBD40FC910A07FFBEC67F33EA9A1A95 /* FileBrowser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileBrowser.swift; path = FileBrowser/FileBrowser.swift; sourceTree = "<group>"; };
-		F0DFC964209403403A7556751617B505 /* PopupDialog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PopupDialog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F2CF08C428DB105F2025ABBCDA2A84A8 /* FileBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FileBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0DFC964209403403A7556751617B505 /* PopupDialog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PopupDialog.framework; path = PopupDialog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2CF08C428DB105F2025ABBCDA2A84A8 /* FileBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FileBrowser.framework; path = FileBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6535D39D51B61D7197C159F5EB30875 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		FA219B4B3330177252C672B55828D9C0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA94475416CC6520CA1FE3A4BA2B2D3C /* Pods-ToneManagerTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ToneManagerTests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -475,6 +475,7 @@
 				75B2E09A131EB72ED9206B17A707AFA0 /* Support Files */,
 				F66A9AEB37AE8E3236700998B36B922E /* Swift */,
 			);
+			name = BugfenderSDK;
 			path = BugfenderSDK;
 			sourceTree = "<group>";
 		};
@@ -666,6 +667,7 @@
 				ED282C764FED1A47B71C0723073A42FB /* Core */,
 				8C26399E69392F2BF272CBBDE81074B5 /* Support Files */,
 			);
+			name = XLActionController;
 			path = XLActionController;
 			sourceTree = "<group>";
 		};
@@ -709,6 +711,7 @@
 				8FC86407BB157DD45ED7627E45C6B1DE /* Resources */,
 				C9616C3C99CD3160A7D924856AEF7AF4 /* Support Files */,
 			);
+			name = FileBrowser;
 			path = FileBrowser;
 			sourceTree = "<group>";
 		};
@@ -751,6 +754,7 @@
 				EC8F07E61022ED60F15B8DCD6855EDDC /* Resources */,
 				9CC3A98D774D6D35F6F108B0D6FD0660 /* Support Files */,
 			);
+			name = PKHUD;
 			path = PKHUD;
 			sourceTree = "<group>";
 		};
@@ -789,6 +793,7 @@
 				588F70877B717ACAF94C496528C8E5A5 /* UIViewController+Visibility.swift */,
 				5B39A8AF36367465C1E4D87E1E16254C /* Support Files */,
 			);
+			name = PopupDialog;
 			path = PopupDialog;
 			sourceTree = "<group>";
 		};
@@ -823,6 +828,7 @@
 				9A82287436B200C2495EF767430DD4D2 /* UIImage+Blur.swift */,
 				33DF4D2499659625273625366F6DD36E /* Support Files */,
 			);
+			name = DynamicBlurView;
 			path = DynamicBlurView;
 			sourceTree = "<group>";
 		};
@@ -866,6 +872,7 @@
 				21978E2D08653CC1E26A5720D2FDBF0C /* UITableViewVibrantCell.swift */,
 				919AE11A056F2AA47C61B8D9CB44A41E /* Support Files */,
 			);
+			name = SideMenu;
 			path = SideMenu;
 			sourceTree = "<group>";
 		};
@@ -1156,7 +1163,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1491,7 +1498,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManager/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManager/Pods-ToneManager.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1501,7 +1512,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1526,14 +1538,19 @@
 				INFOPLIST_FILE = "Target Support Files/BugfenderSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/BugfenderSDK/BugfenderSDK.modulemap";
 				PRODUCT_MODULE_NAME = BugfenderSDK;
 				PRODUCT_NAME = BugfenderSDK;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1559,7 +1576,11 @@
 				INFOPLIST_FILE = "Target Support Files/FileBrowser/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/FileBrowser/FileBrowser.modulemap";
 				PRODUCT_MODULE_NAME = FileBrowser;
 				PRODUCT_NAME = FileBrowser;
@@ -1591,7 +1612,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManagerTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManagerTests/Pods-ToneManagerTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1624,7 +1649,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManagerUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManagerUITests/Pods-ToneManagerUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1658,7 +1687,11 @@
 				INFOPLIST_FILE = "Target Support Files/BugfenderSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/BugfenderSDK/BugfenderSDK.modulemap";
 				PRODUCT_MODULE_NAME = BugfenderSDK;
 				PRODUCT_NAME = BugfenderSDK;
@@ -1690,7 +1723,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManagerTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManagerTests/Pods-ToneManagerTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1788,7 +1825,11 @@
 				INFOPLIST_FILE = "Target Support Files/XLActionController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/XLActionController/XLActionController.modulemap";
 				PRODUCT_MODULE_NAME = XLActionController;
 				PRODUCT_NAME = XLActionController;
@@ -1820,7 +1861,11 @@
 				INFOPLIST_FILE = "Target Support Files/PopupDialog/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/PopupDialog/PopupDialog.modulemap";
 				PRODUCT_MODULE_NAME = PopupDialog;
 				PRODUCT_NAME = PopupDialog;
@@ -1852,7 +1897,11 @@
 				INFOPLIST_FILE = "Target Support Files/DynamicBlurView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/DynamicBlurView/DynamicBlurView.modulemap";
 				PRODUCT_MODULE_NAME = DynamicBlurView;
 				PRODUCT_NAME = DynamicBlurView;
@@ -1884,7 +1933,11 @@
 				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
 				PRODUCT_MODULE_NAME = SideMenu;
 				PRODUCT_NAME = SideMenu;
@@ -1916,14 +1969,19 @@
 				INFOPLIST_FILE = "Target Support Files/DynamicBlurView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/DynamicBlurView/DynamicBlurView.modulemap";
 				PRODUCT_MODULE_NAME = DynamicBlurView;
 				PRODUCT_NAME = DynamicBlurView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1949,14 +2007,19 @@
 				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
 				PRODUCT_MODULE_NAME = SideMenu;
 				PRODUCT_NAME = SideMenu;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1982,14 +2045,19 @@
 				INFOPLIST_FILE = "Target Support Files/FileBrowser/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/FileBrowser/FileBrowser.modulemap";
 				PRODUCT_MODULE_NAME = FileBrowser;
 				PRODUCT_NAME = FileBrowser;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2015,7 +2083,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManagerUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManagerUITests/Pods-ToneManagerUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -2086,7 +2158,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -2108,14 +2179,19 @@
 				INFOPLIST_FILE = "Target Support Files/PopupDialog/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/PopupDialog/PopupDialog.modulemap";
 				PRODUCT_MODULE_NAME = PopupDialog;
 				PRODUCT_NAME = PopupDialog;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2141,7 +2217,11 @@
 				INFOPLIST_FILE = "Target Support Files/PKHUD/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/PKHUD/PKHUD.modulemap";
 				PRODUCT_MODULE_NAME = PKHUD;
 				PRODUCT_NAME = PKHUD;
@@ -2173,14 +2253,19 @@
 				INFOPLIST_FILE = "Target Support Files/PKHUD/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/PKHUD/PKHUD.modulemap";
 				PRODUCT_MODULE_NAME = PKHUD;
 				PRODUCT_NAME = PKHUD;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2206,14 +2291,19 @@
 				INFOPLIST_FILE = "Target Support Files/XLActionController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/XLActionController/XLActionController.modulemap";
 				PRODUCT_MODULE_NAME = XLActionController;
 				PRODUCT_NAME = XLActionController;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2239,7 +2329,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ToneManager/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ToneManager/Pods-ToneManager.modulemap";
 				OTHER_LDFLAGS = "";
