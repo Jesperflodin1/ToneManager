@@ -38,7 +38,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Preferences.registerDefaults()
         enableRemoteLogging()
-        AppSetupManager.doSetupIfNeeded()
+        let result = UIApplication.shared.canOpenURL(URL(string: "tonemanager://test")!)
+        NSLog("URLTEST: \(result)")
+//        AppSetupManager.doSetupIfNeeded()
         
         BFLog("App start")
         

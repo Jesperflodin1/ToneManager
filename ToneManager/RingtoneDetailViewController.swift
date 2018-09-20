@@ -53,9 +53,12 @@ final class RingtoneDetailViewController : UITableViewController {
     /// Timer object used for showing play duration
     var timer : Timer?
     
-    required init?(coder aDecoder: NSCoder) {
-        self.ringtoneStore = RingtoneStore.sharedInstance
-        super.init(coder: aDecoder)
+    @IBAction func openSourceAppTapped(_ sender: UITapGestureRecognizer) {
+
+        if !LSApplicationWorkspaceHandler.openApplication(withBundleID: ringtone.bundleID) {
+            Bugfender.error("Failed to open app with LSApplicationWorkspace")
+            HUD.flash(.labeledError(title: "Error", subtitle: "Failed to open app, is it installed?"), delay: 1.0)
+        }
     }
 }
 

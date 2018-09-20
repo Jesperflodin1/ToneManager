@@ -640,10 +640,43 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="LT8-tE-0MQ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="X67-e0-08s">
+                                        <rect key="frame" x="0.0" y="411.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X67-e0-08s" id="4lQ-CC-Gai">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open source app" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhe-FT-yoq">
+                                                    <rect key="frame" x="16" y="11" width="343" height="22"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="jhe-FT-yoq" firstAttribute="leading" secondItem="4lQ-CC-Gai" secondAttribute="leadingMargin" id="3qD-ms-wOU"/>
+                                                <constraint firstItem="jhe-FT-yoq" firstAttribute="bottom" secondItem="4lQ-CC-Gai" secondAttribute="bottomMargin" id="DAp-Ye-2vG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jhe-FT-yoq" secondAttribute="trailing" id="DL3-AY-xHK"/>
+                                                <constraint firstItem="jhe-FT-yoq" firstAttribute="centerX" secondItem="4lQ-CC-Gai" secondAttribute="centerX" id="HU9-Ss-dbA"/>
+                                                <constraint firstItem="jhe-FT-yoq" firstAttribute="centerY" secondItem="4lQ-CC-Gai" secondAttribute="centerY" id="SmE-0o-pLu"/>
+                                                <constraint firstItem="jhe-FT-yoq" firstAttribute="top" secondItem="4lQ-CC-Gai" secondAttribute="topMargin" id="e3Q-gY-Sm2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="dpO-vX-Gcy" appends="YES" id="YzW-Qk-NGh"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="cgu-Nc-Ip5">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jmA-vc-qgK">
-                                        <rect key="frame" x="0.0" y="411.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="491.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jmA-vc-qgK" id="0DU-wn-cRG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -672,7 +705,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Qq2-YZ-8Ud">
-                                        <rect key="frame" x="0.0" y="455.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="535.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qq2-YZ-8Ud" id="7fr-Jm-Lkh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -736,6 +769,11 @@
                 <tapGestureRecognizer id="eUZ-hu-V8N">
                     <connections>
                         <action selector="deleteRowTapped:" destination="Ufq-Kt-sAC" id="Jyx-QK-AjQ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="dpO-vX-Gcy">
+                    <connections>
+                        <action selector="openSourceAppTapped:" destination="Ufq-Kt-sAC" id="wWo-6L-sQ4"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
