@@ -121,6 +121,32 @@ extension RingtoneTableViewController {
             strongSelf.performSegue(withIdentifier: "showDetailsFromCellLabel", sender: cell)
             
         }))
+        actionController.addAction(Action(ActionData(title: "Open source app", image: ColorPalette.actionSheetMenuExternallink!), style: .default, handler: { action in
+            
+            if !LSApplicationWorkspaceHandler.openApplication(withBundleID: ringtone.bundleID) {
+                Bugfender.error("Failed to open app with LSApplicationWorkspace")
+                HUD.flash(.labeledError(title: "Error", subtitle: "Failed to open app, is it installed?"), delay: 1.0)
+            }
+            
+        }))
+        actionController.addAction(Action(ActionData(title: "Assign to contact", image: ColorPalette.actionSheetMenuAddressbook!), style: .default, handler: { action in
+            
+
+            
+            
+        }))
+        actionController.addAction(Action(ActionData(title: "Assign as default ringtone", image: ColorPalette.actionSheetMenuMobile!), style: .default, handler: { action in
+            
+            
+            
+            
+        }))
+        actionController.addAction(Action(ActionData(title: "Assign as default message tone", image: ColorPalette.actionSheetMenuMessage!), style: .default, handler: { action in
+            
+            
+            
+            
+        }))
         actionController.addAction(Action(ActionData(title: "Delete", image: ColorPalette.actionSheetMenuDelete!), style: .destructive, handler: { action in
             
             RingtoneManager.deleteRingtone(inCell: cell) { [weak self] in

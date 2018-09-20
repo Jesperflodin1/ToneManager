@@ -28,9 +28,6 @@ final class RingtoneDetailViewController : UITableViewController {
     /// Outlet for file size label
     @IBOutlet weak var sizeLabel: UILabel!
     
-    /// Outlet for ringtone path label
-    @IBOutlet weak var pathLabel: UILabel!
-    
     /// Outlet for duration label in ringtone player
     @IBOutlet weak var ringtonePlayerDurationLabel: UILabel!
     
@@ -289,7 +286,6 @@ extension RingtoneDetailViewController {
             self.appLabel.text = ringtone.appName
             self.lengthLabel.text = "\(humanReadableDuration(ringtone.rawDuration)) s"
             self.sizeLabel.text = "\(ringtone.humanReadableSize())"
-            self.pathLabel.text = ringtone.fileURL.path
             
             self.ringtonePlayerDurationLabel.text = "0.0 / \(humanReadableDuration(ringtone.rawDuration)) s"
             

@@ -42,6 +42,11 @@ extension ColorPalette {
     static let actionSheetMenuDelete = UIImage(named: "trash")
     static let actionSheetMenuInfo = UIImage(named: "info")
     static let actionSheetMenuCancel = UIImage(named: "cross")
+    static let actionSheetMenuAddressbook = UIImage(named: "address-book20")
+    static let actionSheetMenuExternallink = UIImage(named: "external-link20")
+    static let actionSheetMenuMobile = UIImage(named: "mobile20")
+    static let actionSheetMenuMessage = UIImage(named: "comment-dots20")
+
     
     static let alertBackground = UIImage(named: "alertBackground")
 }

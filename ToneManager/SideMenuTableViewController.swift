@@ -19,6 +19,11 @@ final class SideMenuTableViewController: UITableViewController {
     @IBOutlet weak var openAudikoLiteLabel: UILabel!
     @IBOutlet weak var openAudikoPaidLabel: UILabel!
     
+    var cellHeight : CGFloat = 36
+    var footerHeight : CGFloat = 10
+    
+    @IBAction func openPrefsTapped(_ sender: UITapGestureRecognizer) {
+    }
     @IBAction func reloadRingtonesTapped(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
         RingtoneManager.updateRingtones {
@@ -110,6 +115,30 @@ extension SideMenuTableViewController {
         imageView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         tableView.backgroundView = imageView
     }
+    
+    override func viewDidLoad() {
+        let bounds: CGRect = UIScreen.main.bounds
+        let height = bounds.size.height
+        
+        if height < 500 { //4s
+            cellHeight = 36
+            footerHeight = 10
+        } else if height < 600 { //5s, se
+            cellHeight = 40
+            footerHeight = 30
+        } else if height < 700 { // 6s, 7, 8
+            cellHeight = 44
+            footerHeight = 60
+        } else if height < 800 {
+            cellHeight = 44
+            footerHeight = 75
+        } else {
+            cellHeight = 44
+            footerHeight = 75
+        }
+        tableView.reloadData()
+        
+    }
 }
 
 //MARK: App store methods (SKStoreProductViewControllerDelegate)
@@ -140,4 +169,14 @@ extension SideMenuTableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return footerHeight
+    }
+    
+    
 }
