@@ -10,6 +10,7 @@ import UIKit
 import PKHUD
 import PopupDialog
 import BugfenderSDK
+import FileBrowser
 
 class RingtoneManager {
     //  /// Storage for Ringtones
@@ -27,14 +28,21 @@ extension RingtoneManager {
         
         //        HUD.show(.labeledProgress(title: "Updating", subtitle: "Scanning for new ringtones"))
         
-        RingtoneStore.sharedInstance.updateRingtones { (needsUpdate: Bool)  in
+        RingtoneStore.sharedInstance.updateRingtones { (needsUpdate: Bool, newRingtones: [Ringtone]?)  in
             
             NSLog("updateringtones callback")
             if (needsUpdate) {
                 NSLog("updateringtones callback, got true for needsupdate")
                 HUD.allowsInteraction = true
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Updated available ringtones"), delay: 0.5)
-                completionHandler?()
+                
+                guard let importedTones = newRingtones else { return }
+                if !Preferences.autoInstall {
+                    completionHandler?()
+                    return
+                } else {
+                    installAllRingtones(inArray: importedTones, withAlert: false, onSuccess: completionHandler)
+                }
             }
         }
     }
@@ -43,14 +51,53 @@ extension RingtoneManager {
 //MARK: Install methods
 extension RingtoneManager {
     
-    class func installRingtone(inCell: RingtoneTableCell, onSuccess: (() -> Void)? = nil) {
-        guard let ringtone = inCell.ringtoneItem else { return }
+    class func importRingtoneFile(_ file : FBFile, onSuccess: @escaping (() -> Void)) {
+        RingtoneStore.sharedInstance.importFile(file, completionHandler: { (success, error, ringtone) in
+            if !success {
+                guard let errorType = error else { return }
+                if errorType.code == ErrorCode.invalidRingtoneFile.rawValue {
+                    HUD.flash(.labeledError(title: "Error", subtitle: "File is not a valid ringtone"), delay: 1.0)
+                    return
+                }
+            } else { // import success
+                
+                HUD.flash(.labeledSuccess(title: "Success", subtitle: "Imported 1 Ringtone"), delay: 0.7)
+                
+                
+                if !Preferences.autoInstall {
+                    onSuccess()
+                    return
+                } else {
+                    installRingtone(ringtoneObject: ringtone, onSuccess: onSuccess)
+                }
+            }
+        })
+    }
+    
+    class func installRingtone(inCell: RingtoneTableCell? = nil, ringtoneObject: Ringtone? = nil, onSuccess: (() -> Void)? = nil) {
+
+        let ringtone : Ringtone
+        let cell : RingtoneTableCell?
+        if let celltemp = inCell, let ringtonetemp = celltemp.ringtoneItem {
+            ringtone = ringtonetemp
+            cell = celltemp
+        } else if let ringtonetemp = ringtoneObject {
+            ringtone = ringtonetemp
+            cell = nil
+        } else {
+            DispatchQueue.main.async {
+                HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when installing ringtone"), delay: 0.7)
+            }
+            return
+        }
 
         RingtoneStore.sharedInstance.installRingtone(ringtone, completionHandler: { (installedRingtone, success) in
             if (success) {
                 
                 BFLog("Got success in callback from ringtone install")
-                inCell.updateInstallStatus()
+                if let cellNotNil = cell {
+                    cellNotNil.updateInstallStatus()
+                }
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed ringtone"), delay: 0.7)
                 onSuccess?()
             } else {
@@ -62,52 +109,63 @@ extension RingtoneManager {
     }
     
     
-    class func installAllRingtones(withAlert : Bool = true, onSuccess: (() -> Void)? = nil) {
-        let toneCount = RingtoneStore.sharedInstance.notInstalledRingtones.count
-        if toneCount == 0 {
-            HUD.allowsInteraction = true
-            HUD.flash(.label("All available ringtones are already installed"), delay: 1.0)
-            return
+    class func installAllRingtones(inArray ringtoneArray : [Ringtone]? = nil, withAlert : Bool = true, onSuccess: (() -> Void)? = nil) {
+        let toneCount : Int
+        if ringtoneArray == nil {
+            toneCount = RingtoneStore.sharedInstance.notInstalledRingtones.count
+        
+            if toneCount == 0 {
+                HUD.allowsInteraction = true
+                HUD.flash(.label("All available ringtones are already installed"), delay: 1.0)
+                return
+            }
+        } else {
+            toneCount = ringtoneArray!.count
+        }
+        
+        let completionHandler = { (installedTones : Int, failedTones : Int) in
+            
+            if installedTones > 0, failedTones == 0 {
+                HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed \(installedTones) ringtones"), delay: 1.0)
+            } else if installedTones > 0, failedTones > 0 {
+                HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed \(installedTones) ringtones, however \(failedTones) failed to install"), delay: 1.0)
+            } else if installedTones == 0 {
+                HUD.flash(.labeledError(title: "Error", subtitle: "No ringtones were imported because of an unknown error"), delay: 1.0)
+                return
+            } else {
+                HUD.flash(.labeledError(title: "Super Mega Error", subtitle: "Well, this is embarassing. This should not happen"), delay: 2.0)
+                return
+            }
+            
+            onSuccess?()
         }
         
         if withAlert {
-            
-            let title = "Install all available ringtones"
-            let message = "This will install \(toneCount) ringtones. Are you sure you want to continue?"
-            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            ac.addAction(cancelAction)
-            
-            let installAction = UIAlertAction(title: "Install All", style: .default, handler: { (action) -> Void in
+            let title = "Install \(toneCount) ringtones?"
+            let message = "Are you sure you want to install \(toneCount) ringtones?"
+            let popup = PopupDialog(title: title, message: message, image: ColorPalette.alertBackground)
+            let buttonOne = CancelButton(title: "Cancel", action: nil)
+            let buttonTwo = DefaultButton(title: "Install") {
+                HUD.show(.labeledProgress(title: "Installing", subtitle: "Installing ringtones"))
                 
-                HUD.show(.labeledProgress(title: "Installing", subtitle: "Installing all ringtones"))
+                BFLog("Calling install for multiple ringtones")
                 
-                BFLog("Calling install for all ringtones")
-                
-                RingtoneStore.sharedInstance.installAllRingtones(completionHandler: { (installedTones : Int, failedTones : Int) in
-                    
-                    if installedTones > 0, failedTones == 0 {
-                        HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed \(installedTones) ringtones"), delay: 1.0)
-                    } else if installedTones > 0, failedTones > 0 {
-                        HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed \(installedTones) ringtones, however \(failedTones) failed to install"), delay: 1.0)
-                    } else if installedTones == 0 {
-                        HUD.flash(.labeledError(title: "Error", subtitle: "No ringtones were imported because of an unknown error"), delay: 1.0)
-                    } else {
-                        HUD.flash(.labeledError(title: "Super Mega Error", subtitle: "Well, this is embarassing. This should not happen"), delay: 2.0)
-                    }
-                    
-                    onSuccess?()
-                })
-                
-            })
-            ac.addAction(installAction)
+                RingtoneStore.sharedInstance.installAllRingtones(inArray: ringtoneArray, completionHandler: completionHandler)
+            }
+
+            popup.addButtons([buttonOne, buttonTwo])
             
             guard let topVC = UIApplication.topViewController() else {
                 Bugfender.error("Could not get top view controller when trying to display alert")
                 return
             }
-            topVC.present(ac, animated: true, completion: nil)
+            topVC.present(popup, animated: true, completion: nil)
+        } else {
+            HUD.show(.labeledProgress(title: "Installing", subtitle: "Installing ringtones"))
+            
+            BFLog("Calling install for multiple ringtones")
+            
+            RingtoneStore.sharedInstance.installAllRingtones(inArray: ringtoneArray, completionHandler: completionHandler)
         }
     }
 }
@@ -137,43 +195,47 @@ extension RingtoneManager {
             return
         }
         
+        let completionHandler = { (uninstalledTones : Int, failedTones : Int) in
+            
+            if uninstalledTones > 0, failedTones == 0 {
+                HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Uninstalled \(uninstalledTones) ringtones"), delay: 1.0)
+            } else if uninstalledTones > 0, failedTones > 0 {
+                HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Uninstalled \(uninstalledTones) ringtones, however \(failedTones) failed to install"), delay: 1.0)
+            } else if uninstalledTones == 0 {
+                HUD.flash(.labeledError(title: "Error", subtitle: "No ringtones were uninstalled because of an unknown error"), delay: 1.0)
+            } else {
+                HUD.flash(.labeledError(title: "Super Mega Error", subtitle: "Well, this is embarassing. This should not happen"), delay: 2.0)
+            }
+            
+            onSuccess?()
+        }
+        
         if withAlert {
+            let title = "Uninstall \(toneCount) ringtones?"
+            let message = "Are you sure you want to uninstall \(toneCount) ringtones?"
+            let popup = PopupDialog(title: title, message: message, image: ColorPalette.alertBackground)
+            let buttonOne = CancelButton(title: "Cancel", action: nil)
+            let buttonTwo = DestructiveButton(title: "Uninstall") {
+                HUD.show(.labeledProgress(title: "Uninstalling", subtitle: "Uninstalling ringtones"))
+                
+                BFLog("Calling uninstall for multiple ringtones")
+                
+                RingtoneStore.sharedInstance.uninstallAllRingtones(completionHandler: completionHandler)
+            }
             
-            let title = "Uninstall all installed ringtones"
-            let message = "This will uninstall \(toneCount) ringtones. Are you sure you want to continue?"
-            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+            popup.addButtons([buttonOne, buttonTwo])
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            ac.addAction(cancelAction)
-            
-            let installAction = UIAlertAction(title: "Uninstall All", style: .default, handler: { (action) -> Void in
-                
-                HUD.show(.labeledProgress(title: "Uninstalling", subtitle: "Uninstalling all ringtones"))
-                
-                BFLog("Calling uninstall for all ringtones")
-                
-                RingtoneStore.sharedInstance.uninstallAllRingtones(completionHandler: { (uninstalledTones : Int, failedTones : Int) in
-                    
-                    if uninstalledTones > 0, failedTones == 0 {
-                        HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Uninstalled \(uninstalledTones) ringtones"), delay: 1.0)
-                    } else if uninstalledTones > 0, failedTones > 0 {
-                        HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Uninstalled \(uninstalledTones) ringtones, however \(failedTones) failed to install"), delay: 1.0)
-                    } else if uninstalledTones == 0 {
-                        HUD.flash(.labeledError(title: "Error", subtitle: "No ringtones were uninstalled because of an unknown error"), delay: 1.0)
-                    } else {
-                        HUD.flash(.labeledError(title: "Super Mega Error", subtitle: "Well, this is embarassing. This should not happen"), delay: 2.0)
-                    }
-                    
-                    onSuccess?()
-                })
-                
-            })
-            ac.addAction(installAction)
             guard let topVC = UIApplication.topViewController() else {
                 Bugfender.error("Could not get top view controller when trying to display alert")
                 return
             }
-            topVC.present(ac, animated: true, completion: nil)
+            topVC.present(popup, animated: true, completion: nil)
+        } else {
+            HUD.show(.labeledProgress(title: "Uninstalling", subtitle: "Uninstalling all ringtones"))
+            
+            BFLog("Calling uninstall for all ringtones")
+            
+            RingtoneStore.sharedInstance.uninstallAllRingtones(completionHandler: completionHandler)
         }
     }
 }
@@ -189,7 +251,7 @@ extension RingtoneManager {
                 
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Deleted ringtone"), delay: 0.7)
             } else {
-                HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when deletin ringtone"), delay: 1.0)
+                HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when deleting ringtone"), delay: 1.0)
             }
             
             onSuccess?()

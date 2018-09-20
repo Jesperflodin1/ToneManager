@@ -787,7 +787,7 @@
 				RUN_UICACHE = NO;
 				SDKROOT = iphoneos;
 				SEPARATE_SYMBOL_EDIT = NO;
-				SSH_CONNECTION_MODE = NET;
+				SSH_CONNECTION_MODE = USB;
 				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -826,7 +826,7 @@
 				RUN_UICACHE = NO;
 				SDKROOT = iphoneos;
 				SEPARATE_SYMBOL_EDIT = NO;
-				SSH_CONNECTION_MODE = NET;
+				SSH_CONNECTION_MODE = USB;
 				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

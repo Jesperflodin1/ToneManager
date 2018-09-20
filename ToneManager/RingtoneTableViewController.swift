@@ -44,24 +44,12 @@ final class RingtoneTableViewController : UITableViewController {
         fileBrowser.excludesFileExtensions = Preferences.defaultExcludedFileExtensions
         
         fileBrowser.didSelectFile = { [weak self] (file: FBFile) -> Void in
-            RingtoneStore.sharedInstance.importFile(file, completionHandler: { (success, error) in
-                if !success {
-                    guard let errorType = error else { return }
-                    if errorType.code == ErrorCode.invalidRingtoneFile.rawValue {
-                        HUD.flash(.labeledError(title: "Error", subtitle: "File is not a valid ringtone"), delay: 1.0)
-                        return
-                    } else {
-                        guard let strongSelf = self else { return }
-                        
-                        HUD.flash(.labeledSuccess(title: "Success", subtitle: "Imported 1 Ringtone"), delay: 0.7)
-                        
-                        strongSelf.ringtoneStore.allRingtones.lockArray()
-                        strongSelf.tableView.reloadData()
-                        strongSelf.ringtoneStore.allRingtones.unlockArray()
-                    }
-                }
-                
-                
+            
+            RingtoneManager.importRingtoneFile(file, onSuccess: {
+                guard let strongSelf = self else { return }
+                strongSelf.ringtoneStore.allRingtones.lockArray()
+                strongSelf.tableView.reloadData()
+                strongSelf.ringtoneStore.allRingtones.unlockArray()
             })
         }
         present(fileBrowser, animated: true, completion: nil)
@@ -73,12 +61,15 @@ final class RingtoneTableViewController : UITableViewController {
 extension RingtoneTableViewController {
     
     func updateAvailableRingtones() {
+        ringtonePlayer?.stopPlaying()
+        
         RingtoneManager.updateRingtones { [weak self] in
             guard let strongSelf = self else { return }
             
             strongSelf.ringtoneStore.allRingtones.lockArray()
             strongSelf.tableView.reloadData()
             strongSelf.ringtoneStore.allRingtones.unlockArray()
+            
         }
     }
 }
@@ -100,7 +91,7 @@ extension RingtoneTableViewController {
         ringtonePlayer?.stopPlaying()
         
         if ringtone.installed {
-            actionController.addAction(Action(ActionData(title: "Uninstall", image: ColorPalette.ringtoneCellMenuUninstall!), style: .default, handler: { action in
+            actionController.addAction(Action(ActionData(title: "Uninstall", image: ColorPalette.actionSheetMenuUninstall!), style: .default, handler: { action in
                 
                 RingtoneManager.uninstallRingtone(inCell: cell) { [weak self] in
                     guard let strongSelf = self else { return }
@@ -111,7 +102,7 @@ extension RingtoneTableViewController {
                 
             }))
         } else {
-            actionController.addAction(Action(ActionData(title: "Install", image: ColorPalette.ringtoneCellMenuInstall!), style: .default, handler: { action in
+            actionController.addAction(Action(ActionData(title: "Install", image: ColorPalette.actionSheetMenuInstall!), style: .default, handler: { action in
                 
                 RingtoneManager.installRingtone(inCell: cell) { [weak self] in
                     guard let strongSelf = self else { return }
@@ -122,13 +113,13 @@ extension RingtoneTableViewController {
                 
             }))
         }
-        actionController.addAction(Action(ActionData(title: "Show details", image: ColorPalette.ringtoneCellMenuInfo!), style: .default, handler: { [weak self] action in
+        actionController.addAction(Action(ActionData(title: "Show details", image: ColorPalette.actionSheetMenuInfo!), style: .default, handler: { [weak self] action in
             guard let strongSelf = self else { return }
             
             strongSelf.performSegue(withIdentifier: "showDetailsFromCellLabel", sender: cell)
             
         }))
-        actionController.addAction(Action(ActionData(title: "Delete", image: ColorPalette.ringtoneCellMenuDelete!), style: .destructive, handler: { action in
+        actionController.addAction(Action(ActionData(title: "Delete", image: ColorPalette.actionSheetMenuDelete!), style: .destructive, handler: { action in
             
             RingtoneManager.deleteRingtone(inCell: cell) { [weak self] in
                 guard let strongSelf = self else { return }
@@ -143,7 +134,7 @@ extension RingtoneTableViewController {
             }
             
         }))
-        actionController.addAction(Action(ActionData(title: "Cancel", image: ColorPalette.ringtoneCellMenuCancel!), style: .cancel, handler: nil))
+        actionController.addAction(Action(ActionData(title: "Cancel", image: ColorPalette.actionSheetMenuCancel!), style: .cancel, handler: nil))
         
         present(actionController, animated: true, completion: nil)
     }

@@ -54,7 +54,7 @@ echo "Installing deb"
 ssh root@$IP -p $PORT "mkdir -p /var/mobile/Documents/tmpdeb"
 scp -P $PORT -r ToneManager/*.deb root@$IP:/var/mobile/Documents/tmpdeb/
 ssh root@$IP -p $PORT "dpkg -i /var/mobile/Documents/tmpdeb/*.deb"
-ssh root@$IP -p $PORT "apt-get install -f"
+ssh root@$IP -p $PORT "apt-get install -f -y"
 ssh root@$IP -p $PORT "rm -r /var/mobile/Documents/tmpdeb"
 
 #repo

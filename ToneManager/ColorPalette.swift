@@ -37,13 +37,13 @@ extension ColorPalette {
     static let ringtoneCellPlayImage = UIImage(named: "play-circle44")
     static let ringtoneCellStopImage = UIImage(named: "stop-circle44")
     
-    static let ringtoneCellMenuInstall = UIImage(named: "plus")
-    static let ringtoneCellMenuUninstall = UIImage(named: "minus")
-    static let ringtoneCellMenuDelete = UIImage(named: "trash")
-    static let ringtoneCellMenuInfo = UIImage(named: "info")
-    static let ringtoneCellMenuCancel = UIImage(named: "cross")
+    static let actionSheetMenuInstall = UIImage(named: "plus")
+    static let actionSheetMenuUninstall = UIImage(named: "minus")
+    static let actionSheetMenuDelete = UIImage(named: "trash")
+    static let actionSheetMenuInfo = UIImage(named: "info")
+    static let actionSheetMenuCancel = UIImage(named: "cross")
     
-    
+    static let alertBackground = UIImage(named: "alertBackground")
 }
 
 //MARK: Fonts

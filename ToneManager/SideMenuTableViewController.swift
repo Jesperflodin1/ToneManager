@@ -32,21 +32,8 @@ final class SideMenuTableViewController: UITableViewController {
         fileBrowser.excludesFileExtensions = Preferences.defaultExcludedFileExtensions
         
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
-            RingtoneStore.sharedInstance.importFile(file, completionHandler: { (success, error) in
-                if !success {
-                    guard let errorType = error else { return }
-                    if errorType.code == ErrorCode.invalidRingtoneFile.rawValue {
-                        HUD.flash(.labeledError(title: "Error", subtitle: "File is not a valid ringtone"), delay: 1.0)
-                        return
-                    } else {
-                        
-                        HUD.flash(.labeledSuccess(title: "Success", subtitle: "Imported 1 Ringtone"), delay: 0.7)
-                        
-                         NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
-                    }
-                }
-                
-                
+            RingtoneManager.importRingtoneFile(file, onSuccess: {
+                NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
             })
         }
         guard let topVC = UIApplication.topViewController() else { return }

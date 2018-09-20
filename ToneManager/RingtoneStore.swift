@@ -187,8 +187,13 @@ extension RingtoneStore {
         
     }
     
-    func installAllRingtones(completionHandler: @escaping (Int, Int) -> Void) {
-        let tonesToInstall = self.notInstalledRingtones
+    func installAllRingtones(inArray ringtoneArray: [Ringtone]? = nil, completionHandler: @escaping (Int, Int) -> Void) {
+        let tonesToInstall : [Ringtone]
+        if let ringtones = ringtoneArray {
+            tonesToInstall = ringtones
+        } else {
+            tonesToInstall = self.notInstalledRingtones
+        }
         
         let installer = RingtoneInstaller(self)
         BFLog("install all ringtones, count = \(tonesToInstall.count)")
@@ -241,7 +246,7 @@ extension RingtoneStore {
     ///
     /// - Parameter completionHandler: completion block that should run when import is done, a Bool indicating if new ringtones
     /// was imported is passed to it.
-    func updateRingtones(completionHandler: @escaping (Bool) -> Void) {
+    func updateRingtones(completionHandler: @escaping (Bool, [Ringtone]?) -> Void) {
         NSLog("Update called, finishedloading=\(self.finishedLoading)")
         if !finishedLoading { return }
         
@@ -263,32 +268,32 @@ extension RingtoneStore {
                         })
                         self.allRingtones = WriteLockableSynchronizedArray(with: sortedTones)
                         
-                        completionHandler(true)
+                        completionHandler(true, newArray)
                     }
                 } else {
                     BFLog("Scan did not find anything new")
                     DispatchQueue.main.async {
-                        completionHandler(false)
+                        completionHandler(false, nil)
                     }
                 }
                 
             } else {
                 BFLog("0 paths to scan, skipping scan")
                 DispatchQueue.main.async {
-                    completionHandler(false)
+                    completionHandler(false, nil)
                 }
             }
             self.writeToPlist()
         }
     }
     
-    func importFile(_ file : FBFile, completionHandler: @escaping (Bool, NSError?) -> Void) {
+    func importFile(_ file : FBFile, completionHandler: @escaping (Bool, NSError?, Ringtone?) -> Void) {
         queue.async {
             let fileImporter = RingtoneFileImporter()
             if !fileImporter.isFileValidRingtone(file) {
                 let error = NSError(domain: "", code: ErrorCode.invalidRingtoneFile.rawValue, userInfo: nil)
                 DispatchQueue.main.async {
-                    completionHandler(false, error)
+                    completionHandler(false, error, nil)
                 }
                 return
             }
@@ -297,7 +302,7 @@ extension RingtoneStore {
                 let error = NSError(domain: "", code: ErrorCode.unknownImportError.rawValue, userInfo: nil)
                 Bugfender.error("Got error when trying to import single FBFile, errorcode=\(error)")
                 DispatchQueue.main.async {
-                    completionHandler(false, error)
+                    completionHandler(false, error, nil)
                 }
                 return
             }
@@ -307,7 +312,8 @@ extension RingtoneStore {
                     return initial.name.lowercased().compare(next.name.lowercased()) == .orderedAscending
                 })
                 self.allRingtones = WriteLockableSynchronizedArray(with: sortedTones)
-                completionHandler(true, nil)
+                self.writeToPlist()
+                completionHandler(true, nil, newRingtone)
             }
             
         }
