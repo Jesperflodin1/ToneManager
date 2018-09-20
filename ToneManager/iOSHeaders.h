@@ -85,4 +85,5 @@
 -(BOOL)registerBundleWithInfo:(id)arg1 options:(id)arg2 type:(unsigned long long)arg3 progress:(id)arg4;
 -(BOOL)_LSPrivateRebuildApplicationDatabasesForSystemApps:(BOOL)arg1 internal:(BOOL)arg2 user:(BOOL)arg3;
 -(BOOL)invalidateIconCache:(id)arg1 ;
+-(BOOL)openSensitiveURL:(id)arg1 withOptions:(id)arg2 ;
 @end

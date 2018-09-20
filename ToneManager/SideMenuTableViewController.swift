@@ -23,6 +23,7 @@ final class SideMenuTableViewController: UITableViewController {
     var footerHeight : CGFloat = 10
     
     @IBAction func openPrefsTapped(_ sender: UITapGestureRecognizer) {
+        LSApplicationWorkspaceHandler.openSensitiveURL(URL(string: "prefs:root=Sounds"))
     }
     @IBAction func reloadRingtonesTapped(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
@@ -89,7 +90,7 @@ extension SideMenuTableViewController {
         super.viewWillAppear(animated)
         
         if !Preferences.zedgeRingtonesInstalled {
-            openZedgeLabel.text = "Install Zedge Ringtones"
+            openZedgeLabel.text = "Install Zedge"
         }
         if !Preferences.audikoLiteInstalled {
             openAudikoLiteLabel.text = "Install Audiko Lite"
@@ -171,7 +172,11 @@ extension SideMenuTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeight
+        if indexPath.row == 0, indexPath.section == 0 {
+            return 10
+        } else {
+            return cellHeight
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

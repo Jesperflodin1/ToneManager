@@ -30,20 +30,23 @@
 
 +(BOOL)invalidateIconCache:(NSString *)bundleID {
     PrivateApi_LSApplicationWorkspace* _workspace = [NSClassFromString(@"LSApplicationWorkspace") performSelector:@selector(defaultWorkspace)];
-    NSLog(@"JFLOG: invalidate icon cache");
+
     return [_workspace invalidateIconCache:bundleID];
 }
 
 +(BOOL)unregisterApplication:(NSURL *)url {
     PrivateApi_LSApplicationWorkspace* _workspace = [NSClassFromString(@"LSApplicationWorkspace") performSelector:@selector(defaultWorkspace)];
-    NSLog(@"JFLOG: unregister app");
+
     return [_workspace unregisterApplication:url];
 }
 +(BOOL)registerApplication:(NSURL *)url {
     PrivateApi_LSApplicationWorkspace* _workspace = [NSClassFromString(@"LSApplicationWorkspace") performSelector:@selector(defaultWorkspace)];
-    NSLog(@"JFLOG: register app");
-    
-    
+
     return [_workspace registerApplication:url];
+}
+    
++(BOOL)openSensitiveURL:(NSURL *)url {
+    PrivateApi_LSApplicationWorkspace* _workspace = [NSClassFromString(@"LSApplicationWorkspace") performSelector:@selector(defaultWorkspace)];
+    return [_workspace openSensitiveURL:url withOptions:nil];
 }
 @end

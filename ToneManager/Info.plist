@@ -53,9 +53,13 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>135</string>
+	<string>149</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>prefs</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>

@@ -16,4 +16,6 @@
 +(BOOL)registerApplication:(NSURL *)url;
 
 +(BOOL)invalidateIconCache:(NSString *)bundleID;
-  @end
+    
++(BOOL)openSensitiveURL:(NSURL *)url;
+@end

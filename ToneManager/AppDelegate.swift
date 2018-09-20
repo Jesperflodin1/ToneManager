@@ -40,7 +40,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         enableRemoteLogging()
         let result = UIApplication.shared.canOpenURL(URL(string: "tonemanager://test")!)
         NSLog("URLTEST: \(result)")
-//        AppSetupManager.doSetupIfNeeded()
+        AppSetupManager.doSetupIfNeeded()
         
         BFLog("App start")
         
@@ -91,6 +91,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         UserDefaults.standard.synchronize()
     }
+    
+    
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
