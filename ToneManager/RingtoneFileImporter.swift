@@ -55,14 +55,6 @@ final class RingtoneFileImporter: RingtoneScanner {
         return newRingtone
     }
     
-    func importFile(atPath path : String) {
-        
-    }
-    
-    func isFileNameValid(_ name : String) {
-        
-    }
-    
     func isFileValidRingtone(_ file : FBFile) -> Bool {
         if file.isDirectory { return false }
         guard let attributes = file.fileAttributes else { return false }

@@ -23,6 +23,7 @@ final class SideMenuTableViewController: UITableViewController {
     var footerHeight : CGFloat = 10
     
     @IBAction func openPrefsTapped(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
         LSApplicationWorkspaceHandler.openSensitiveURL(URL(string: "prefs:root=Sounds"))
     }
     @IBAction func reloadRingtonesTapped(_ sender: UITapGestureRecognizer) {

@@ -9,6 +9,7 @@
 import UIKit
 import BugfenderSDK
 import SafariServices
+import PKHUD
 
 /// View controller for main settings page
 final class SettingsViewController : UITableViewController {
@@ -31,6 +32,8 @@ final class SettingsViewController : UITableViewController {
     @IBAction func resetSettingsTapped(_ sender: UITapGestureRecognizer) {
         Preferences.reset()
         updateUIStates()
+        HUD.allowsInteraction = true
+        HUD.flash(.label("Settings are now reset to defaults"), delay: 1.0)
     }
     
     func updateUIStates() {

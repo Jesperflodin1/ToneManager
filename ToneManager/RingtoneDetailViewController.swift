@@ -51,11 +51,35 @@ final class RingtoneDetailViewController : UITableViewController {
     var timer : Timer?
     
     @IBAction func openSourceAppTapped(_ sender: UITapGestureRecognizer) {
-
+        stopPlaying()
         if !LSApplicationWorkspaceHandler.openApplication(withBundleID: ringtone.bundleID) {
             Bugfender.error("Failed to open app with LSApplicationWorkspace")
             HUD.flash(.labeledError(title: "Error", subtitle: "Failed to open app, is it installed?"), delay: 1.0)
         }
+    }
+    @IBAction func assignDefaultTapped(_ sender: UITapGestureRecognizer) {
+        stopPlaying()
+        let actionController = ActionSheetController()
+        
+        actionController.addAction(Action(ActionData(title: "Assign as default ringtone", image: ColorPalette.actionSheetMenuMobile!), style: .default, handler: { action in
+            
+            
+            
+            
+        }))
+        actionController.addAction(Action(ActionData(title: "Assign as default message tone", image: ColorPalette.actionSheetMenuMessage!), style: .default, handler: { action in
+            
+            
+            
+            
+        }))
+        actionController.addAction(Action(ActionData(title: "Cancel", image: ColorPalette.actionSheetMenuCancel!), style: .cancel, handler: nil))
+        
+        present(actionController, animated: true, completion: nil)
+        
+    }
+    @IBAction func assignToContactTapped(_ sender: UITapGestureRecognizer) {
+        stopPlaying()
     }
 }
 
@@ -79,6 +103,7 @@ extension RingtoneDetailViewController {
 extension RingtoneDetailViewController {
     
     @IBAction func installRowTapped(_ sender: UITapGestureRecognizer) {
+        stopPlaying()
         if !ringtone.installed { // is not installed
             
             installRingtone(ringtone: ringtone)
@@ -91,6 +116,7 @@ extension RingtoneDetailViewController {
     
     
     @IBAction func deleteRowTapped(_ sender: UITapGestureRecognizer) {
+        stopPlaying()
         deleteRingtone(ringtone: self.ringtone)
     }
     

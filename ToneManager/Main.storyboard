@@ -59,7 +59,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="344" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -80,7 +80,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="344" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -101,7 +101,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="344" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -127,7 +127,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="FLA-kI-OXr" appends="YES" id="tV9-t7-MBn"/>
@@ -149,7 +149,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="fOe-l9-6YY" appends="YES" id="eZL-ob-9t9"/>
@@ -171,7 +171,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="Oyi-mZ-EyV" appends="YES" id="MPq-4Z-Gse"/>
@@ -196,7 +196,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="344" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -217,7 +217,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="344" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -659,14 +659,17 @@
                                             </subviews>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="1hZ-1z-mni" firstAttribute="centerY" secondItem="DNa-TX-Sth" secondAttribute="centerY" id="LEk-2o-E2t"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="1hZ-1z-mni" secondAttribute="bottom" constant="0.5" id="NWn-uR-9uQ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="1hZ-1z-mni" secondAttribute="bottom" constant="0.5" id="8GG-DS-gRm"/>
+                                                <constraint firstItem="1hZ-1z-mni" firstAttribute="centerY" secondItem="hnQ-JT-3mv" secondAttribute="centerY" id="HMF-tv-RhG"/>
                                                 <constraint firstItem="DNa-TX-Sth" firstAttribute="centerY" secondItem="hnQ-JT-3mv" secondAttribute="centerY" id="Nhf-kr-Zez"/>
                                                 <constraint firstItem="1hZ-1z-mni" firstAttribute="leading" secondItem="DNa-TX-Sth" secondAttribute="trailing" constant="10" id="lwu-qU-A5u"/>
                                                 <constraint firstItem="DNa-TX-Sth" firstAttribute="leading" secondItem="hnQ-JT-3mv" secondAttribute="leadingMargin" id="zQV-nX-l43"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="YGw-M1-njc" appends="YES" id="SpY-QZ-Sd4"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZhQ-4k-rWp">
                                         <rect key="frame" x="0.0" y="411.5" width="375" height="44"/>
@@ -675,8 +678,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assign as default ringtone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G3K-3F-sZ7">
-                                                    <rect key="frame" x="56" y="12" width="198.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assign as default... (show menu)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G3K-3F-sZ7">
+                                                    <rect key="frame" x="56" y="12" width="249" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -691,52 +694,20 @@
                                             </subviews>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="G3K-3F-sZ7" firstAttribute="centerY" secondItem="zcf-aK-uz9" secondAttribute="centerY" id="FXS-LU-3VS"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="G3K-3F-sZ7" secondAttribute="bottom" constant="0.5" id="H8J-jN-KJN"/>
                                                 <constraint firstItem="iiQ-DK-oDk" firstAttribute="centerY" secondItem="zcf-aK-uz9" secondAttribute="centerY" id="TWw-hn-6Tg"/>
-                                                <constraint firstItem="G3K-3F-sZ7" firstAttribute="centerY" secondItem="iiQ-DK-oDk" secondAttribute="centerY" id="iZl-Uo-pEG"/>
                                                 <constraint firstItem="G3K-3F-sZ7" firstAttribute="leading" secondItem="iiQ-DK-oDk" secondAttribute="trailing" constant="10" id="jre-nQ-B70"/>
                                                 <constraint firstItem="iiQ-DK-oDk" firstAttribute="leading" secondItem="zcf-aK-uz9" secondAttribute="leadingMargin" id="s0Z-eW-rH0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="X67-e0-08s">
-                                        <rect key="frame" x="0.0" y="455.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X67-e0-08s" id="4lQ-CC-Gai">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assign as default text tone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jhe-FT-yoq">
-                                                    <rect key="frame" x="56" y="12" width="202.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment-dots30" translatesAutoresizingMaskIntoConstraints="NO" id="Ywq-F0-fY8">
-                                                    <rect key="frame" x="16" y="7" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="As9-kT-saf"/>
-                                                        <constraint firstAttribute="width" constant="30" id="TWs-OB-977"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstItem="jhe-FT-yoq" firstAttribute="leading" secondItem="Ywq-F0-fY8" secondAttribute="trailing" constant="10" id="00v-SM-He1"/>
-                                                <constraint firstItem="Ywq-F0-fY8" firstAttribute="leading" secondItem="4lQ-CC-Gai" secondAttribute="leadingMargin" id="5qU-bW-0Ag"/>
-                                                <constraint firstItem="jhe-FT-yoq" firstAttribute="centerY" secondItem="Ywq-F0-fY8" secondAttribute="centerY" id="HGI-yR-uBP"/>
-                                                <constraint firstItem="Ywq-F0-fY8" firstAttribute="centerY" secondItem="4lQ-CC-Gai" secondAttribute="centerY" id="dYI-Xy-bwE"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="jhe-FT-yoq" secondAttribute="bottom" constant="0.5" id="uhf-M2-Cto"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <gestureRecognizers/>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="dpO-vX-Gcy" appends="YES" id="YzW-Qk-NGh"/>
+                                            <outletCollection property="gestureRecognizers" destination="jL7-ie-dNI" appends="YES" id="AxD-t7-wx2"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="7hP-yg-BnM">
-                                        <rect key="frame" x="0.0" y="499.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="455.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7hP-yg-BnM" id="dPy-mX-cCV">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -760,19 +731,22 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="iTF-on-xIW" secondAttribute="bottom" constant="0.5" id="44v-9Z-yIR"/>
                                                 <constraint firstItem="mhi-dV-YW1" firstAttribute="centerY" secondItem="dPy-mX-cCV" secondAttribute="centerY" id="AFc-3b-n4U"/>
+                                                <constraint firstItem="iTF-on-xIW" firstAttribute="centerY" secondItem="dPy-mX-cCV" secondAttribute="centerY" id="Br9-Us-rzQ"/>
                                                 <constraint firstItem="iTF-on-xIW" firstAttribute="leading" secondItem="mhi-dV-YW1" secondAttribute="trailing" constant="10" id="POq-pl-kyH"/>
                                                 <constraint firstItem="mhi-dV-YW1" firstAttribute="leading" secondItem="dPy-mX-cCV" secondAttribute="leadingMargin" id="Rvu-yr-iwa"/>
-                                                <constraint firstItem="iTF-on-xIW" firstAttribute="centerY" secondItem="mhi-dV-YW1" secondAttribute="centerY" id="he6-zC-YqS"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="dpO-vX-Gcy" appends="YES" id="QGT-FY-7mz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="cgu-Nc-Ip5">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="jmA-vc-qgK">
-                                        <rect key="frame" x="0.0" y="579.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="535.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jmA-vc-qgK" id="0DU-wn-cRG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -799,7 +773,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="Qq2-YZ-8Ud">
-                                        <rect key="frame" x="0.0" y="623.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="579.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qq2-YZ-8Ud" id="7fr-Jm-Lkh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -865,6 +839,16 @@
                 <tapGestureRecognizer id="dpO-vX-Gcy">
                     <connections>
                         <action selector="openSourceAppTapped:" destination="Ufq-Kt-sAC" id="wWo-6L-sQ4"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="jL7-ie-dNI">
+                    <connections>
+                        <action selector="assignDefaultTapped:" destination="Ufq-Kt-sAC" id="qdm-tl-8yG"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="YGw-M1-njc">
+                    <connections>
+                        <action selector="assignToContactTapped:" destination="Ufq-Kt-sAC" id="Oxm-e7-7gd"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -1537,7 +1521,6 @@
         <image name="AudikoPro" width="28" height="28"/>
         <image name="Zedge" width="28" height="28"/>
         <image name="address-book30" width="26" height="30"/>
-        <image name="comment-dots30" width="30" height="30"/>
         <image name="dots" width="44" height="44"/>
         <image name="external-link30" width="30" height="27"/>
         <image name="folder" width="24" height="21"/>
@@ -1554,7 +1537,7 @@
         <image name="twitter" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qXT-DA-gkR"/>
+        <segue reference="4pd-C6-I03"/>
         <segue reference="PTZ-6q-gtg"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

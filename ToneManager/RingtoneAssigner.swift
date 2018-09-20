@@ -7,9 +7,34 @@
 //
 
 import Foundation
+import ContactsUI
 
-class RingtoneAssigner {
+class RingtoneAssigner: NSObject {
     
+    let ringtone : Ringtone
+    
+    init(ringtone : Ringtone) {
+        self.ringtone = ringtone
+    }
+    
+    func assignDefaultRingtone() {
+        
+        
+    }
+    
+    func assignDefaultTextTone() {
+        
+    }
+    
+    func openContactPicker() {
+        
+    }
+    
+    
+}
+
+extension RingtoneAssigner : CNContactPickerDelegate {
+
     
     
 }
