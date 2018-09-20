@@ -96,6 +96,7 @@ extension RingtoneManager {
                 if let cellNotNil = cell {
                     cellNotNil.updateInstallStatus()
                 }
+                HUD.allowsInteraction = true
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed ringtone"), delay: 0.7)
                 onSuccess?()
             } else {
@@ -124,13 +125,17 @@ extension RingtoneManager {
         let completionHandler = { (installedTones : Int, failedTones : Int) in
             
             if installedTones > 0, failedTones == 0 {
+                HUD.allowsInteraction = true
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed \(installedTones) ringtones"), delay: 1.0)
             } else if installedTones > 0, failedTones > 0 {
+                HUD.allowsInteraction = true
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed \(installedTones) ringtones, however \(failedTones) failed to install"), delay: 1.0)
             } else if installedTones == 0 {
+                HUD.allowsInteraction = true
                 HUD.flash(.labeledError(title: "Error", subtitle: "No ringtones were imported because of an unknown error"), delay: 1.0)
                 return
             } else {
+                HUD.allowsInteraction = true
                 HUD.flash(.labeledError(title: "Super Mega Error", subtitle: "Well, this is embarassing. This should not happen"), delay: 2.0)
                 return
             }
@@ -171,12 +176,26 @@ extension RingtoneManager {
 //MARK: Uninstall methods
 extension RingtoneManager {
     
-    class func uninstallRingtone(inCell: RingtoneTableCell, onSuccess: (() -> Void)? = nil) {
-        guard let ringtone = inCell.ringtoneItem else { return }
+    class func uninstallRingtone(inCell: RingtoneTableCell? = nil, ringtoneObject: Ringtone? = nil, onSuccess: (() -> Void)? = nil) {
+        let ringtone : Ringtone
+        let cell : RingtoneTableCell?
+        if let celltemp = inCell, let ringtonetemp = celltemp.ringtoneItem {
+            ringtone = ringtonetemp
+            cell = celltemp
+        } else if let ringtonetemp = ringtoneObject {
+            ringtone = ringtonetemp
+            cell = nil
+        } else {
+            HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when uninstalling ringtone"), delay: 0.7)
+            return
+        }
             
         RingtoneStore.sharedInstance.uninstallRingtone(ringtone, completionHandler: { (success) in
             if success {
-                inCell.updateInstallStatus()
+                if let cellNotNil = cell {
+                    cellNotNil.updateInstallStatus()
+                }
+                HUD.allowsInteraction = true
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Uninstalled ringtone"), delay: 0.7)
                 onSuccess?()
             } else {
@@ -196,12 +215,16 @@ extension RingtoneManager {
         let completionHandler = { (uninstalledTones : Int, failedTones : Int) in
             
             if uninstalledTones > 0, failedTones == 0 {
+                HUD.allowsInteraction = true
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Uninstalled \(uninstalledTones) ringtones"), delay: 1.0)
             } else if uninstalledTones > 0, failedTones > 0 {
+                HUD.allowsInteraction = true
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Uninstalled \(uninstalledTones) ringtones, however \(failedTones) failed to install"), delay: 1.0)
             } else if uninstalledTones == 0 {
+                HUD.allowsInteraction = true
                 HUD.flash(.labeledError(title: "Error", subtitle: "No ringtones were uninstalled because of an unknown error"), delay: 1.0)
             } else {
+                HUD.allowsInteraction = true
                 HUD.flash(.labeledError(title: "Super Mega Error", subtitle: "Well, this is embarassing. This should not happen"), delay: 2.0)
             }
             
@@ -241,12 +264,20 @@ extension RingtoneManager {
 //MARK: Delete methods
 extension RingtoneManager {
     
-    class func deleteRingtone(inCell: RingtoneTableCell, onSuccess: (() -> Void)? = nil) {
-        guard let ringtone = inCell.ringtoneItem else { return }
+    class func deleteRingtone(inCell: RingtoneTableCell? = nil, ringtoneObject: Ringtone? = nil, onSuccess: (() -> Void)? = nil) {
+        let ringtone : Ringtone
+        if let celltemp = inCell, let ringtonetemp = celltemp.ringtoneItem {
+            ringtone = ringtonetemp
+        } else if let ringtonetemp = ringtoneObject {
+            ringtone = ringtonetemp
+        } else {
+            HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when uninstalling ringtone"), delay: 0.7)
+            return
+        }
         
         RingtoneStore.sharedInstance.removeRingtone(ringtone, completion: { (success) in
             if success {
-                
+                HUD.allowsInteraction = true
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Deleted ringtone"), delay: 0.7)
             } else {
                 HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when deleting ringtone"), delay: 1.0)

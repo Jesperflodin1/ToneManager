@@ -39,21 +39,7 @@ final class RingtoneTableViewController : UITableViewController {
         super.init(coder: aDecoder)
     }
     
-    @IBAction func importFileTapped(_ sender: UIBarButtonItem) {
-        let fileBrowser = FileBrowser(initialPath: URL(fileURLWithPath: Preferences.fileBrowserDefaultPath), allowEditing: false, showCancelButton: true)
-        fileBrowser.excludesFileExtensions = Preferences.defaultExcludedFileExtensions
-        
-        fileBrowser.didSelectFile = { [weak self] (file: FBFile) -> Void in
-            
-            RingtoneManager.importRingtoneFile(file, onSuccess: {
-                guard let strongSelf = self else { return }
-                strongSelf.ringtoneStore.allRingtones.lockArray()
-                strongSelf.tableView.reloadData()
-                strongSelf.ringtoneStore.allRingtones.unlockArray()
-            })
-        }
-        present(fileBrowser, animated: true, completion: nil)
-    }
+    
 }
 
 
@@ -77,6 +63,22 @@ extension RingtoneTableViewController {
 
 //MARK: UI Actions
 extension RingtoneTableViewController {
+    
+    @IBAction func importFileTapped(_ sender: UIBarButtonItem) {
+        let fileBrowser = FileBrowser(initialPath: URL(fileURLWithPath: Preferences.fileBrowserDefaultPath), allowEditing: false, showCancelButton: true)
+        fileBrowser.excludesFileExtensions = Preferences.defaultExcludedFileExtensions
+        
+        fileBrowser.didSelectFile = { [weak self] (file: FBFile) -> Void in
+            
+            RingtoneManager.importRingtoneFile(file, onSuccess: {
+                guard let strongSelf = self else { return }
+                strongSelf.ringtoneStore.allRingtones.lockArray()
+                strongSelf.tableView.reloadData()
+                strongSelf.ringtoneStore.allRingtones.unlockArray()
+            })
+        }
+        present(fileBrowser, animated: true, completion: nil)
+    }
     
     @IBAction func cellMenuTapped(_ sender: RingtoneCellButton) {
         let row = sender.tag

@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import XLActionController
+import PopupDialog
 import BugfenderSDK
 import PKHUD
 
@@ -45,8 +46,6 @@ final class RingtoneDetailViewController : UITableViewController {
     
     /// Associated ringtone object to show in this view
     var ringtone : Ringtone!
-    
-    var ringtoneStore : RingtoneStore!
     
     /// AVAudioPlayer object, used for playing audio
     var audioPlayer : AVAudioPlayer?
@@ -121,84 +120,58 @@ extension RingtoneDetailViewController {
 extension RingtoneDetailViewController {
     func installRingtone(ringtone: Ringtone) {
         
-        let title = "Install \(ringtone.name)"
-        let message = "Are you sure you want to add this ringtone to device ringtones?"
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        ac.addAction(cancelAction)
-        
-        let installAction = UIAlertAction(title: "Install", style: .default, handler:
-        { (action) -> Void in
+        let actionController = ActionSheetController()
+        actionController.addAction(Action(ActionData(title: "Install", image: ColorPalette.actionSheetMenuInstall!), style: .default, handler: { action in
             
-            self.ringtoneStore.installRingtone(ringtone, completionHandler: { [weak self] (installedRingtone, success) in
-                if (success) {
-                    guard let strongSelf = self else { return }
-                    
-                    BFLog("Got success in callback from ringtone install")
-                    strongSelf.updateInstallStatus()
-                    HUD.allowsInteraction = true
-                    HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed ringtone"), delay: 0.7)
-                    strongSelf.ringtoneStore.writeToPlist()
-                } else {
-                    
-                    BFLog("Got failure in callback from ringtone install")
-                    HUD.allowsInteraction = true
-                    HUD.flash(.labeledError(title: "Error", subtitle: "Error when installing ringtone"), delay: 0.7)
-                }
-            })
-        })
-        ac.addAction(installAction)
-        present(ac, animated: true, completion: nil)
+            RingtoneManager.installRingtone(ringtoneObject: ringtone) { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.updateInstallStatus()
+            }
+            
+        }))
+        
+        actionController.addAction(Action(ActionData(title: "Cancel", image: ColorPalette.actionSheetMenuCancel!), style: .cancel, handler: nil))
+        
+        present(actionController, animated: true, completion: nil)
     }
     
     
     func uninstallRingtone(ringtone: Ringtone) {
         
-        let title = "Uninstall \(ringtone.name)"
-        let message = "Are you sure you want to uninstall this ringtone?"
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        ac.addAction(cancelAction)
-        
-        let installAction = UIAlertAction(title: "Uninstall", style: .destructive, handler:
-        { [weak self] (action) -> Void in
-            guard let strongSelf = self else { return }
+        let actionController = ActionSheetController()
+        actionController.addAction(Action(ActionData(title: "Uninstall", image: ColorPalette.actionSheetMenuUninstall!), style: .destructive, handler: { action in
             
-            strongSelf.ringtoneStore.uninstallRingtone(ringtone, completionHandler: { (uninstalledRingtone) in
+            RingtoneManager.uninstallRingtone(ringtoneObject: ringtone) { [weak self] in
+                guard let strongSelf = self else { return }
                 strongSelf.updateInstallStatus()
-                HUD.allowsInteraction = true
-                HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Uninstalled ringtone"), delay: 0.7)
-            })
-        })
-        ac.addAction(installAction)
-        present(ac, animated: true, completion: nil)
+            }
+            
+        }))
+        
+        actionController.addAction(Action(ActionData(title: "Cancel", image: ColorPalette.actionSheetMenuCancel!), style: .cancel, handler: nil))
+        
+        present(actionController, animated: true, completion: nil)
     }
     
     
     func deleteRingtone(ringtone: Ringtone) {
-        
-        let title = "Delete \(ringtone.name)"
-        let message = "Are you sure you want to delete this ringtone from this app? It will also be removed from the devices ringtones if installed. If you do not remove it from the source app it will get imported again at next refresh."
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        ac.addAction(cancelAction)
-        
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler:
-        { [weak self] (action) -> Void in
+        let title = "Really delete this ringtone?"
+        let message = "Are you sure you want to delete this ringtone? It will also be uninstalled if installed on the device. If you do not remove it from the source app it will get imported again at next reload."
+        let popup = PopupDialog(title: title, message: message, image: ColorPalette.alertBackground)
+        let buttonTwo = CancelButton(title: "Cancel", action: nil)
+        let buttonOne = DestructiveButton(title: "Delete") { [weak self] in
             guard let strongSelf = self else { return }
             
-            strongSelf.ringtoneStore.removeRingtone(ringtone, completion: { (deletedRingtone) in
+            RingtoneManager.deleteRingtone(ringtoneObject: ringtone, onSuccess: {
                 _ = strongSelf.navigationController?.popViewController(animated: true)
-                HUD.allowsInteraction = true
-                HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Deleted ringtone"), delay: 0.7)
-                
             })
-        })
-        ac.addAction(deleteAction)
-        present(ac, animated: true, completion: nil)
+            
+        }
+        
+        popup.addButtons([buttonOne, buttonTwo])
+        
+        present(popup, animated: true, completion: nil)
+ 
     }
 }
 
