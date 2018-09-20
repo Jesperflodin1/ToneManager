@@ -328,8 +328,8 @@
 				2497A633214251D200597B5C /* Sources */,
 				2497A634214251D200597B5C /* Frameworks */,
 				2497A635214251D200597B5C /* Resources */,
-				249694A321450A59009960D7 /* ShellScript */,
 				6152E5909BFF4496799113E7 /* [CP] Embed Pods Frameworks */,
+				249694A321450A59009960D7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -765,6 +765,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
+				CREATE_DEB = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6VG5GK3UD7;
 				HEADER_SEARCH_PATHS = /Users/jesper/theos/include/;
@@ -803,6 +804,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
+				CREATE_DEB = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6VG5GK3UD7;
 				HEADER_SEARCH_PATHS = /Users/jesper/theos/include/;
