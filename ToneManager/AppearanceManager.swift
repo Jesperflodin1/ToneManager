@@ -17,7 +17,7 @@ class AppearanceManager {
         
         setupNavBar(nvc)
         setupSideMenu(nvc)
-        setupPopups()
+//        setupPopups()
     }
     fileprivate class func setupNavBar(_ nvc : UINavigationController) {
         UINavigationBar.appearance().setBackgroundImage(ColorPalette.navBarBackground?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: .stretch), for: .default)

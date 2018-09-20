@@ -88,6 +88,8 @@
 		2477828721525CF50058074F /* ActionSheetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetCell.swift; sourceTree = "<group>"; };
 		2477828921525D840058074F /* ActionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionData.swift; sourceTree = "<group>"; };
 		2477828B215298980058074F /* ErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
+		247782912153C0DB0058074F /* changelog.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = changelog.xml; path = ../../../../GitHub/jesperflodin1.github.io/depictions/fi.flodin.tonemanager/changelog.xml; sourceTree = "<group>"; };
+		247782922153C0DB0058074F /* info.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = info.xml; path = ../../../../GitHub/jesperflodin1.github.io/depictions/fi.flodin.tonemanager/info.xml; sourceTree = "<group>"; };
 		247AFDF321511344007191E1 /* AppSetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupManager.swift; sourceTree = "<group>"; };
 		247AFDF5215122EC007191E1 /* FirstRun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstRun.storyboard; sourceTree = "<group>"; };
 		247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunPageViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +227,8 @@
 		2497A639214251D200597B5C /* ToneManager */ = {
 			isa = PBXGroup;
 			children = (
+				247782912153C0DB0058074F /* changelog.xml */,
+				247782922153C0DB0058074F /* info.xml */,
 				24969498214406FE009960D7 /* assets.xcassets */,
 				2496949E2144EBB9009960D7 /* Main.storyboard */,
 				247AFDF5215122EC007191E1 /* FirstRun.storyboard */,

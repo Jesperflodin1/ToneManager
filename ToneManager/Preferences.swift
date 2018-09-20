@@ -26,6 +26,18 @@ struct Preferences {
         case isUpdated = "IsUpdated"
     }
     
+    static let defaultSettings : [String:Any] = [
+        Preferences.keys.autoInstall.rawValue : true,
+        Preferences.keys.remoteLogging.rawValue : true,
+        Preferences.keys.audikoLite.rawValue : true,
+        Preferences.keys.audikoPro.rawValue : true,
+        Preferences.keys.zedgeRingtones.rawValue : true,
+        Preferences.keys.version.rawValue : "0.5.0",
+        Preferences.keys.build.rawValue : "1",
+        Preferences.keys.firstRun.rawValue : true,
+        Preferences.keys.isUpdated.rawValue : false
+    ]
+    
     static let zedgeItunesId : NSNumber = 584485870
     static let audikoLiteItunesId : NSNumber = 878910012
     static let audikoProItunesId : NSNumber = 725401575
@@ -160,17 +172,13 @@ extension Preferences {
     
     /// Sets default user settings for UserDefaults
     static func registerDefaults() {
-        Preferences.defaults.register(defaults: [
-            Preferences.keys.autoInstall.rawValue : true,
-            Preferences.keys.remoteLogging.rawValue : true,
-            Preferences.keys.audikoLite.rawValue : true,
-            Preferences.keys.audikoPro.rawValue : true,
-            Preferences.keys.zedgeRingtones.rawValue : true,
-            Preferences.keys.version.rawValue : "0.5.0",
-            Preferences.keys.build.rawValue : "1",
-            Preferences.keys.firstRun.rawValue : true,
-            Preferences.keys.isUpdated.rawValue : false
-            ])
+        Preferences.defaults.register(defaults: defaultSettings)
+    }
+    
+    static func reset() {
+        for (key, value) in defaultSettings {
+            Preferences.defaults.set(value, forKey: key)
+        }
     }
     
     static func compareVersions() {

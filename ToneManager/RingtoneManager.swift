@@ -85,9 +85,7 @@ extension RingtoneManager {
             ringtone = ringtonetemp
             cell = nil
         } else {
-            DispatchQueue.main.async {
-                HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when installing ringtone"), delay: 0.7)
-            }
+            HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when installing ringtone"), delay: 0.7)
             return
         }
 
@@ -144,8 +142,8 @@ extension RingtoneManager {
             let title = "Install \(toneCount) ringtones?"
             let message = "Are you sure you want to install \(toneCount) ringtones?"
             let popup = PopupDialog(title: title, message: message, image: ColorPalette.alertBackground)
-            let buttonOne = CancelButton(title: "Cancel", action: nil)
-            let buttonTwo = DefaultButton(title: "Install") {
+            let buttonTwo = CancelButton(title: "Cancel", action: nil)
+            let buttonOne = DefaultButton(title: "Install") {
                 HUD.show(.labeledProgress(title: "Installing", subtitle: "Installing ringtones"))
                 
                 BFLog("Calling install for multiple ringtones")
@@ -214,8 +212,8 @@ extension RingtoneManager {
             let title = "Uninstall \(toneCount) ringtones?"
             let message = "Are you sure you want to uninstall \(toneCount) ringtones?"
             let popup = PopupDialog(title: title, message: message, image: ColorPalette.alertBackground)
-            let buttonOne = CancelButton(title: "Cancel", action: nil)
-            let buttonTwo = DestructiveButton(title: "Uninstall") {
+            let buttonTwo = CancelButton(title: "Cancel", action: nil)
+            let buttonOne = DestructiveButton(title: "Uninstall") {
                 HUD.show(.labeledProgress(title: "Uninstalling", subtitle: "Uninstalling ringtones"))
                 
                 BFLog("Calling uninstall for multiple ringtones")

@@ -28,6 +28,15 @@ final class SettingsViewController : UITableViewController {
     }
     @IBAction func deleteAllTapped(_ sender: UITapGestureRecognizer) {
     }
+    @IBAction func resetSettingsTapped(_ sender: UITapGestureRecognizer) {
+        Preferences.reset()
+        updateUIStates()
+    }
+    
+    func updateUIStates() {
+        autoInstallSwitch.isOn = Preferences.autoInstall
+        remoteLoggingSwitch.isOn = Preferences.remoteLogging
+    }
 }
 
 //MARK: SFSafariViewController methods
@@ -56,9 +65,8 @@ extension SettingsViewController {
     ///
     /// - Parameter animated: true if view will appear with animation
     override public func viewWillAppear(_ animated: Bool) {
-        BFLog("autoScan = \(Preferences.autoInstall)")
-        autoInstallSwitch.isOn = Preferences.autoInstall
-        remoteLoggingSwitch.isOn = Preferences.remoteLogging
+
+        updateUIStates()
         super.viewWillAppear(animated)
     }
 }
