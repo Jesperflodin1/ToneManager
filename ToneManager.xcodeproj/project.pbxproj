@@ -54,6 +54,7 @@
 		2497A66A2142538500597B5C /* RingtoneStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497A6692142538500597B5C /* RingtoneStore.swift */; };
 		2497F65B21557F1300324FF1 /* libapplist.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2497F65A21557F1300324FF1 /* libapplist.dylib */; };
 		2497F65E2155816600324FF1 /* AppListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497F65D2155816600324FF1 /* AppListCellDelegate.swift */; };
+		2497F6602155907A00324FF1 /* AdvancedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497F65F2155907A00324FF1 /* AdvancedSettingsViewController.swift */; };
 		24982BD2214CE12B00DD0474 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24982BD1214CE12B00DD0474 /* ColorPalette.swift */; };
 		24982BD4214CE16700DD0474 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24982BD3214CE16700DD0474 /* Preferences.swift */; };
 		24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE206A214276CF0045D678 /* SettingsViewController.swift */; };
@@ -148,6 +149,7 @@
 		2497A6692142538500597B5C /* RingtoneStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneStore.swift; sourceTree = "<group>"; };
 		2497F65A21557F1300324FF1 /* libapplist.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libapplist.dylib; sourceTree = "<group>"; };
 		2497F65D2155816600324FF1 /* AppListCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListCellDelegate.swift; sourceTree = "<group>"; };
+		2497F65F2155907A00324FF1 /* AdvancedSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsViewController.swift; sourceTree = "<group>"; };
 		24982BD1214CE12B00DD0474 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		24982BD3214CE16700DD0474 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		24EE206A214276CF0045D678 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				2491B392214FA681001B36DE /* RingtoneManager.swift */,
 				2491B390214F8FB1001B36DE /* RingtonePlayer.swift */,
 				24EE206A214276CF0045D678 /* SettingsViewController.swift */,
+				2497F65F2155907A00324FF1 /* AdvancedSettingsViewController.swift */,
 				249694AF2147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift */,
 				249694AD214799F0009960D7 /* AppListViewController.swift */,
 				244DD1572155782000C995E7 /* AppListCell.swift */,
@@ -650,6 +653,7 @@
 				24F7ECEC214FF17600A46E72 /* UIApplication+TopViewController.swift in Sources */,
 				2496949B214409E2009960D7 /* RingtoneDetailViewController.swift in Sources */,
 				249694B02147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift in Sources */,
+				2497F6602155907A00324FF1 /* AdvancedSettingsViewController.swift in Sources */,
 				24982BD4214CE16700DD0474 /* Preferences.swift in Sources */,
 				24EE2075214295480045D678 /* RingtoneTableCell.swift in Sources */,
 			);

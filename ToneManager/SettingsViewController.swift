@@ -20,25 +20,16 @@ final class SettingsViewController : UITableViewController {
     
     /// Outlet for autoinstall UISwitch
     @IBOutlet public weak var autoInstallSwitch: UISwitch!
-    /// Outlet for remote logging UISwitch
-    @IBOutlet public weak var remoteLoggingSwitch: UISwitch!
+    
     
     required init?(coder aDecoder: NSCoder) {
         self.ringtoneStore = RingtoneStore.sharedInstance
         super.init(coder: aDecoder)
     }
-    @IBAction func deleteAllTapped(_ sender: UITapGestureRecognizer) {
-    }
-    @IBAction func resetSettingsTapped(_ sender: UITapGestureRecognizer) {
-        Preferences.reset()
-        updateUIStates()
-        HUD.allowsInteraction = true
-        HUD.flash(.label("Settings are now reset to defaults"), delay: 1.0)
-    }
+
     
     func updateUIStates() {
         autoInstallSwitch.isOn = Preferences.autoInstall
-        remoteLoggingSwitch.isOn = Preferences.remoteLogging
     }
 }
 
@@ -100,14 +91,7 @@ extension SettingsViewController {
     /// - Parameter sender: UISwitch that initiated this
     @IBAction public func autoInstallChanged(_ sender: UISwitch) {
         Preferences.autoInstall = sender.isOn
-        BFLog("autoScan changed, new value = \(Preferences.autoInstall)")
-    }
-    
-    /// Remote logging switch changed state. Saves state to userdefaults
-    ///
-    /// - Parameter sender: UISwitch that initiated this
-    @IBAction public func remoteLoggingChanged(_ sender: UISwitch) {
-        Preferences.remoteLogging = sender.isOn
+        BFLog("autoinstall changed, new value = \(Preferences.autoInstall)")
     }
 }
 
