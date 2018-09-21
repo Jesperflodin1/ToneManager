@@ -79,4 +79,8 @@ static TLToneManagerHandler *_helper = nil;
     [_toneManager importTone:data metadata:dict completionBlock:completionBlock];
 }
 
+-(void)setCurrentToneIdentifier:(NSString *)identifier forAlertType:(long long)alertType {
+    [_toneManager setCurrentToneIdentifier:identifier forAlertType:alertType];
+}
+    
 @end

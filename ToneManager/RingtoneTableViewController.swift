@@ -12,6 +12,7 @@ import PKHUD
 import AVFoundation
 import XLActionController
 import FileBrowser
+import ContactsUI
 
 
 /// Shows available and installed ringtones
@@ -39,6 +40,8 @@ final class RingtoneTableViewController : UITableViewController {
         super.init(coder: aDecoder)
     }
     
+    var contactPicker : CNContactPickerViewController? = nil
+    var ringtoneAssigner : RingtoneAssigner? = nil
     
 }
 
@@ -58,6 +61,59 @@ extension RingtoneTableViewController {
             
         }
     }
+}
+
+extension RingtoneTableViewController : CNContactPickerDelegate {
+    
+    func openContactPicker() {
+        contactPicker = CNContactPickerViewController()
+        contactPicker!.delegate = self
+
+        present(contactPicker!, animated: true, completion: nil)
+    }
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        BFLog("contactpicker didselect")
+        NSLog("Contactpicker didselect")
+        
+        let actionController = ActionSheetController()
+        
+        actionController.addAction(Action(ActionData(title: "Set as default ringtone for contact", image: ColorPalette.actionSheetMenuMobile!), style: .default, handler: { [weak self] action in
+            
+            guard let strongSelf = self else { return }
+            guard let assigner = strongSelf.ringtoneAssigner else { return }
+            
+            assigner.assignDefaultRingtone(forContact: contact)
+            
+            strongSelf.contactPicker = nil
+            
+        }))
+        actionController.addAction(Action(ActionData(title: "Set as default text tone for contact", image: ColorPalette.actionSheetMenuMessage!), style: .default, handler: { [weak self] action in
+            
+            guard let strongSelf = self else { return }
+            guard let assigner = strongSelf.ringtoneAssigner else { return }
+            
+            assigner.assignDefaultTextTone(forContact: contact)
+            
+            strongSelf.contactPicker = nil
+            
+        }))
+        actionController.addAction(Action(ActionData(title: "Cancel", image: ColorPalette.actionSheetMenuCancel!), style: .cancel, handler: nil))
+        
+        picker.dismiss(animated: true) {
+            self.present(actionController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        BFLog("contactpicker didcancel")
+        NSLog("Contactpicker didcancel")
+        picker.dismiss(animated: true, completion: nil)
+        
+        contactPicker = nil
+    }
+    
 }
 
 
@@ -86,83 +142,10 @@ extension RingtoneTableViewController {
             Bugfender.error("Error! Failed to get cell on menu tap")
             return
         }
-        guard let ringtone = cell.ringtoneItem else { return }
-        
-        let actionController = ActionSheetController()
         
         ringtonePlayer?.stopPlaying()
         
-        if ringtone.installed {
-            actionController.addAction(Action(ActionData(title: "Uninstall", image: ColorPalette.actionSheetMenuUninstall!), style: .default, handler: { action in
-                
-                RingtoneManager.uninstallRingtone(inCell: cell) { [weak self] in
-                    guard let strongSelf = self else { return }
-                    strongSelf.ringtoneStore.allRingtones.lockArray()
-                    strongSelf.tableView.reloadData()
-                    strongSelf.ringtoneStore.allRingtones.unlockArray()
-                }
-                
-            }))
-        } else {
-            actionController.addAction(Action(ActionData(title: "Install", image: ColorPalette.actionSheetMenuInstall!), style: .default, handler: { action in
-                
-                RingtoneManager.installRingtone(inCell: cell) { [weak self] in
-                    guard let strongSelf = self else { return }
-                    strongSelf.ringtoneStore.allRingtones.lockArray()
-                    strongSelf.tableView.reloadData()
-                    strongSelf.ringtoneStore.allRingtones.unlockArray()
-                }
-                
-            }))
-        }
-        actionController.addAction(Action(ActionData(title: "Show details", image: ColorPalette.actionSheetMenuInfo!), style: .default, handler: { [weak self] action in
-            guard let strongSelf = self else { return }
-            
-            strongSelf.performSegue(withIdentifier: "showDetailsFromCellLabel", sender: cell)
-            
-        }))
-        actionController.addAction(Action(ActionData(title: "Open source app", image: ColorPalette.actionSheetMenuExternallink!), style: .default, handler: { action in
-            
-            if !LSApplicationWorkspaceHandler.openApplication(withBundleID: ringtone.bundleID) {
-                Bugfender.error("Failed to open app with LSApplicationWorkspace")
-                HUD.flash(.labeledError(title: "Error", subtitle: "Failed to open app, is it installed?"), delay: 1.0)
-            }
-            
-        }))
-        actionController.addAction(Action(ActionData(title: "Assign to contact", image: ColorPalette.actionSheetMenuAddressbook!), style: .default, handler: { action in
-            
-
-            
-            
-        }))
-        actionController.addAction(Action(ActionData(title: "Assign as default ringtone", image: ColorPalette.actionSheetMenuMobile!), style: .default, handler: { action in
-            
-            
-            
-            
-        }))
-        actionController.addAction(Action(ActionData(title: "Assign as default message tone", image: ColorPalette.actionSheetMenuMessage!), style: .default, handler: { action in
-            
-            
-            
-            
-        }))
-        actionController.addAction(Action(ActionData(title: "Delete", image: ColorPalette.actionSheetMenuDelete!), style: .destructive, handler: { action in
-            
-            RingtoneManager.deleteRingtone(inCell: cell) { [weak self] in
-                guard let strongSelf = self else { return }
-                if let index = strongSelf.tableView.indexPath(for: cell) {
-                    
-                    strongSelf.tableView.deleteRows(at: [index], with: .automatic)
-
-                    strongSelf.ringtoneStore.allRingtones.lockArray()
-                    strongSelf.tableView.reloadData()
-                    strongSelf.ringtoneStore.allRingtones.unlockArray()
-                }
-            }
-            
-        }))
-        actionController.addAction(Action(ActionData(title: "Cancel", image: ColorPalette.actionSheetMenuCancel!), style: .cancel, handler: nil))
+        guard let actionController = ActionSheetCreator.ringtoneCellMenu(ringtoneCell: cell, ringtoneTableController: self) else { return }
         
         present(actionController, animated: true, completion: nil)
     }

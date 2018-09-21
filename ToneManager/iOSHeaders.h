@@ -8,6 +8,7 @@
 
 #import <UIKit/UIApplication.h>
 
+
 //#import <MobileCoreServices/MobileCoreServices.h>
 
 /**
@@ -72,6 +73,8 @@
  @return <#return value description#>
  */
 -(BOOL)toneWithIdentifierIsValid:(NSString *)toneIdentifier;
+    
+-(void)setCurrentToneIdentifier:(NSString *)arg1 forAlertType:(long long)arg2;
 @end
 
 
@@ -87,3 +90,8 @@
 -(BOOL)invalidateIconCache:(id)arg1 ;
 -(BOOL)openSensitiveURL:(id)arg1 withOptions:(id)arg2 ;
 @end
+
+@interface CNActivityAlert : NSObject
+-(id)initWithSound:(id)arg1 vibration:(id)arg2 ignoreMute:(BOOL)arg3 ;
+@end
+

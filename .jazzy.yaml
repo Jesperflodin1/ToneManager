@@ -7,3 +7,5 @@ module_version: 0.5
 copyright: '© 2018 Jesper Flodin under [open source license](https://github.com/Jesperflodin1/ToneManager/blob/master/LICENSE)'
 root_url: https://jesperflodin1.github.io/ToneManager/
 min_acl: private
+clean: true
+xcodebuild_arguments: [-workspace,ToneManager.xcworkspace,-scheme,ToneManager]

@@ -10,6 +10,7 @@
 		1B7547485A56829ADA0E8A7C /* Pods_ToneManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87726A0BFD0B4E267CD5179 /* Pods_ToneManager.framework */; };
 		24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24496B22214991B40031E422 /* RingtoneInstaller.swift */; };
 		24496B25214AAF860031E422 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24496B24214AAF860031E422 /* AVFoundation.framework */; };
+		244DD1542154F3D200C995E7 /* ActionSheetCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DD1532154F3D200C995E7 /* ActionSheetCreator.swift */; };
 		2477828221524D720058074F /* RingtoneCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828121524D720058074F /* RingtoneCellButton.swift */; };
 		2477828521525CE10058074F /* ActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828321525CE00058074F /* ActionSheetController.swift */; };
 		2477828621525CE10058074F /* ActionSheetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2477828421525CE00058074F /* ActionSheetCell.xib */; };
@@ -19,7 +20,14 @@
 		24778296215414C40058074F /* RingtoneAssigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24778295215414C40058074F /* RingtoneAssigner.swift */; };
 		2477829821542E590058074F /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2477829721542E590058074F /* ContactsUI.framework */; };
 		2477829B215432360058074F /* CNActivityAlertHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2477829A215432360058074F /* CNActivityAlertHandler.m */; };
-		2477829E215432490058074F /* CNContactHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2477829D215432490058074F /* CNContactHandler.m */; };
+		2477829E215432490058074F /* CNMutableContactHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2477829D215432490058074F /* CNMutableContactHandler.m */; };
+		247782A0215434430058074F /* BugfenderSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2477829F215434430058074F /* BugfenderSDK.framework */; };
+		247782A22154344F0058074F /* FileBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247782A12154344F0058074F /* FileBrowser.framework */; };
+		247782A42154344F0058074F /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247782A32154344F0058074F /* PKHUD.framework */; };
+		247782A62154344F0058074F /* PopupDialog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247782A52154344F0058074F /* PopupDialog.framework */; };
+		247782A82154344F0058074F /* SideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247782A72154344F0058074F /* SideMenu.framework */; };
+		247782AA2154344F0058074F /* XLActionController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247782A92154344F0058074F /* XLActionController.framework */; };
+		247782AC215434CA0058074F /* DynamicBlurView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247782AB215434CA0058074F /* DynamicBlurView.framework */; };
 		247AFDF421511344007191E1 /* AppSetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF321511344007191E1 /* AppSetupManager.swift */; };
 		247AFDF6215122EC007191E1 /* FirstRun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 247AFDF5215122EC007191E1 /* FirstRun.storyboard */; };
 		247AFDF8215124D7007191E1 /* FirstRunPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */; };
@@ -86,6 +94,7 @@
 		17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24496B22214991B40031E422 /* RingtoneInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneInstaller.swift; sourceTree = "<group>"; };
 		24496B24214AAF860031E422 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		244DD1532154F3D200C995E7 /* ActionSheetCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetCreator.swift; sourceTree = "<group>"; };
 		2477828121524D720058074F /* RingtoneCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneCellButton.swift; sourceTree = "<group>"; };
 		2477828321525CE00058074F /* ActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetController.swift; sourceTree = "<group>"; };
 		2477828421525CE00058074F /* ActionSheetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionSheetCell.xib; sourceTree = "<group>"; };
@@ -98,8 +107,15 @@
 		2477829721542E590058074F /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		24778299215432360058074F /* CNActivityAlertHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNActivityAlertHandler.h; sourceTree = "<group>"; };
 		2477829A215432360058074F /* CNActivityAlertHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CNActivityAlertHandler.m; sourceTree = "<group>"; };
-		2477829C215432490058074F /* CNContactHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNContactHandler.h; sourceTree = "<group>"; };
-		2477829D215432490058074F /* CNContactHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CNContactHandler.m; sourceTree = "<group>"; };
+		2477829C215432490058074F /* CNMutableContactHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNMutableContactHandler.h; sourceTree = "<group>"; };
+		2477829D215432490058074F /* CNMutableContactHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CNMutableContactHandler.m; sourceTree = "<group>"; };
+		2477829F215434430058074F /* BugfenderSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BugfenderSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		247782A12154344F0058074F /* FileBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FileBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		247782A32154344F0058074F /* PKHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PKHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		247782A52154344F0058074F /* PopupDialog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PopupDialog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		247782A72154344F0058074F /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		247782A92154344F0058074F /* XLActionController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = XLActionController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		247782AB215434CA0058074F /* DynamicBlurView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DynamicBlurView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		247AFDF321511344007191E1 /* AppSetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupManager.swift; sourceTree = "<group>"; };
 		247AFDF5215122EC007191E1 /* FirstRun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstRun.storyboard; sourceTree = "<group>"; };
 		247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunPageViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +183,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				247782AC215434CA0058074F /* DynamicBlurView.framework in Frameworks */,
+				247782A22154344F0058074F /* FileBrowser.framework in Frameworks */,
+				247782A42154344F0058074F /* PKHUD.framework in Frameworks */,
+				247782A62154344F0058074F /* PopupDialog.framework in Frameworks */,
+				247782A82154344F0058074F /* SideMenu.framework in Frameworks */,
+				247782AA2154344F0058074F /* XLActionController.framework in Frameworks */,
+				247782A0215434430058074F /* BugfenderSDK.framework in Frameworks */,
 				2477829821542E590058074F /* ContactsUI.framework in Frameworks */,
 				2491B38F214EE1FA001B36DE /* StoreKit.framework in Frameworks */,
 				24496B25214AAF860031E422 /* AVFoundation.framework in Frameworks */,
@@ -201,6 +224,13 @@
 		249694AA21478E79009960D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				247782AB215434CA0058074F /* DynamicBlurView.framework */,
+				247782A12154344F0058074F /* FileBrowser.framework */,
+				247782A32154344F0058074F /* PKHUD.framework */,
+				247782A52154344F0058074F /* PopupDialog.framework */,
+				247782A72154344F0058074F /* SideMenu.framework */,
+				247782A92154344F0058074F /* XLActionController.framework */,
+				2477829F215434430058074F /* BugfenderSDK.framework */,
 				2477829721542E590058074F /* ContactsUI.framework */,
 				2491B38E214EE1FA001B36DE /* StoreKit.framework */,
 				24496B24214AAF860031E422 /* AVFoundation.framework */,
@@ -250,6 +280,7 @@
 				2477828921525D840058074F /* ActionData.swift */,
 				2477828321525CE00058074F /* ActionSheetController.swift */,
 				2477828721525CF50058074F /* ActionSheetCell.swift */,
+				244DD1532154F3D200C995E7 /* ActionSheetCreator.swift */,
 				2497A63A214251D200597B5C /* AppDelegate.swift */,
 				247AFDF321511344007191E1 /* AppSetupManager.swift */,
 				2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */,
@@ -287,8 +318,8 @@
 				24EE20862142D9A30045D678 /* FBApplicationInfoHandler.m */,
 				2491B396214FA8D1001B36DE /* LSApplicationWorkspaceHandler.h */,
 				2491B397214FA8D1001B36DE /* LSApplicationWorkspaceHandler.m */,
-				2477829C215432490058074F /* CNContactHandler.h */,
-				2477829D215432490058074F /* CNContactHandler.m */,
+				2477829C215432490058074F /* CNMutableContactHandler.h */,
+				2477829D215432490058074F /* CNMutableContactHandler.m */,
 				24778299215432360058074F /* CNActivityAlertHandler.h */,
 				2477829A215432360058074F /* CNActivityAlertHandler.m */,
 				249694A421450AC6009960D7 /* entitlements.xml */,
@@ -605,10 +636,11 @@
 				247AFDFA21515846007191E1 /* AppearanceManager.swift in Sources */,
 				2497A6682142537B00597B5C /* Ringtone.swift in Sources */,
 				247AFDF8215124D7007191E1 /* FirstRunPageViewController.swift in Sources */,
+				244DD1542154F3D200C995E7 /* ActionSheetCreator.swift in Sources */,
 				24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */,
 				2477828C215298980058074F /* ErrorCode.swift in Sources */,
 				24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */,
-				2477829E215432490058074F /* CNContactHandler.m in Sources */,
+				2477829E215432490058074F /* CNMutableContactHandler.m in Sources */,
 				24778296215414C40058074F /* RingtoneAssigner.swift in Sources */,
 				24F7ECE8214FD7F600A46E72 /* URL+RingtoneName.swift in Sources */,
 				24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */,

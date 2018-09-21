@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 /**
  <#Description#>
  */
@@ -43,5 +42,7 @@
 -(BOOL)toneWithIdentifierIsValid:(NSString *)toneIdentifier;
 
 -(BOOL)canImport;
+    
+-(void)setCurrentToneIdentifier:(NSString *)identifier forAlertType:(long long)alertType ;
 
 @end
