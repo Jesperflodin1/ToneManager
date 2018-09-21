@@ -13,29 +13,49 @@ import PopupDialog
 /// Table view controller that uses Applist to show list of apps
 final class AppListViewController : UITableViewController {
     
-    var tabView : UITableView = UITableView()
-    var appNames : [String] = []
-    var theApps : [String:String] = [:]
+    var appInfo : [String:String] = [:]
     
-    private var dataSource : AppListViewDataSource
+
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.dataSource = dataSource
-        dataSource.tableView = self.tableView
-        
         
         guard let _ : AnyClass = NSClassFromString("ALApplicationList") else {
             errorAlert("Failed to load AppList. Is AppList really installed?")
             return
         }
-        guard (ALApplicationList.shared()) != nil else {
+        guard let appList = ALApplicationList.shared() else {
             errorAlert("Error occured when loading apps with AppList.")
             return
         }
+//        if Preferences.zedgeRingtones {
+//            apps.append("com.zedge.Zedge")
+//        }
+//        if Preferences.audikoLite {
+//            apps.append("com.908.AudikoFree")
+//        }
+//        if Preferences.audikoPro {
+//            apps.append("com.908.Audiko")
         
+        let excludedApps = [
+            "com.zedge.Zedge",
+            "com.908.AudikoFree",
+            "com.908.Audiko"]
         
+        let apps = appList.applicationsFiltered(using: NSPredicate(format: "isSystemApplication = FALSE")) as! [String : String]
         
+        for (identifier, displayName) in apps {
+            if appList.application(withDisplayIdentifierIsHidden: identifier) {
+                continue // skip hidden apps
+            }
+            if identifier == Bundle.main.bundleIdentifier { continue }
+            if excludedApps.contains(identifier) { continue }
+            
+            appInfo.updateValue(displayName, forKey: identifier)
+        }
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.reloadData()
     }
     
     /// Shows an alert with a back button that pops back to the latest view controller (settings)
@@ -58,36 +78,29 @@ final class AppListViewController : UITableViewController {
         present(popup, animated: true, completion: nil)
     }
     
-    
-    /// Init method that gets called when storyboard initiates this view controller
-    ///
-    /// - Parameter aDecoder: not used here
-    required public init?(coder aDecoder: NSCoder) {
-        dataSource = AppListViewDataSource(WithController: self)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AppListCell") as! AppListCell
         
-        let iconSize = NSNumber(value: ALApplicationIconSizeSmall)
-        dataSource.sectionDescriptors = [
-            [ALSectionDescriptorTitleKey:"User Applications",
-             ALSectionDescriptorPredicateKey:"isSystemApplication = FALSE",
-             ALSectionDescriptorCellClassNameKey:"ALSwitchCell",
-             ALSectionDescriptorIconSizeKey:iconSize,
-             ALSectionDescriptorSuppressHiddenAppsKey:kCFBooleanTrue],
-            [ALSectionDescriptorTitleKey:"System Applications",
-             ALSectionDescriptorPredicateKey:"isSystemApplication = TRUE",
-             ALSectionDescriptorCellClassNameKey:"ALSwitchCell",
-             ALSectionDescriptorIconSizeKey:iconSize,
-             ALSectionDescriptorSuppressHiddenAppsKey:kCFBooleanTrue]
-            ]
-//        dataSource.sectionDescriptors = ALApplicationTableDataSource.standardSectionDescriptors()
-        super.init(coder: aDecoder)
+        
+        
+        cell.delegate = self
+        
     }
     
-    func value(ForCellAtIndexPath indexPath : IndexPath) -> Any {
-        let cellDescriptor = dataSource.cellDescriptor(for: indexPath)
-        if let cellDescript = cellDescriptor as? NSDictionary {
-            
-        }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
     
+}
+
+extension AppListViewController: AppListCellDelegate {
+    
+    func valueDidChange(_ value: Bool, appIdentifier: String) {
+        <#code#>
+    }
 }
