@@ -8,6 +8,7 @@
 
 import UIKit
 import BugfenderSDK
+import PopupDialog
 
 /// Table view controller that uses Applist to show list of apps
 final class AppListViewController : UITableViewController {
@@ -16,7 +17,7 @@ final class AppListViewController : UITableViewController {
     var appNames : [String] = []
     var theApps : [String:String] = [:]
     
-    private var dataSource : ALApplicationTableDataSource
+    private var dataSource : AppListViewDataSource
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -41,14 +42,20 @@ final class AppListViewController : UITableViewController {
     ///
     /// - Parameter message: Message to show in alert
     private func errorAlert(_ message : String) {
-        let ac = UIAlertController(title: "AppList Error", message: message, preferredStyle: .alert)
         
-        let backAction = UIAlertAction(title: "Back", style: .cancel, handler:
-        { (action) -> Void in
-            self.navigationController?.popViewController(animated: true)
-        })
-        ac.addAction(backAction)
-        present(ac, animated: true, completion: nil)
+        let title = "AppList Error"
+
+        let popup = PopupDialog(title: title, message: message, image: ColorPalette.alertBackground)
+        let buttonOne = DefaultButton(title: "Back") { [weak self] in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.navigationController?.popViewController(animated: true)
+            
+        }
+        
+        popup.addButton(buttonOne)
+        
+        present(popup, animated: true, completion: nil)
     }
     
     
@@ -56,9 +63,30 @@ final class AppListViewController : UITableViewController {
     ///
     /// - Parameter aDecoder: not used here
     required public init?(coder aDecoder: NSCoder) {
-        dataSource = ALApplicationTableDataSource()
-        dataSource.sectionDescriptors = ALApplicationTableDataSource.standardSectionDescriptors()
+        dataSource = AppListViewDataSource(WithController: self)
+        
+        let iconSize = NSNumber(value: ALApplicationIconSizeSmall)
+        dataSource.sectionDescriptors = [
+            [ALSectionDescriptorTitleKey:"User Applications",
+             ALSectionDescriptorPredicateKey:"isSystemApplication = FALSE",
+             ALSectionDescriptorCellClassNameKey:"ALSwitchCell",
+             ALSectionDescriptorIconSizeKey:iconSize,
+             ALSectionDescriptorSuppressHiddenAppsKey:kCFBooleanTrue],
+            [ALSectionDescriptorTitleKey:"System Applications",
+             ALSectionDescriptorPredicateKey:"isSystemApplication = TRUE",
+             ALSectionDescriptorCellClassNameKey:"ALSwitchCell",
+             ALSectionDescriptorIconSizeKey:iconSize,
+             ALSectionDescriptorSuppressHiddenAppsKey:kCFBooleanTrue]
+            ]
+//        dataSource.sectionDescriptors = ALApplicationTableDataSource.standardSectionDescriptors()
         super.init(coder: aDecoder)
+    }
+    
+    func value(ForCellAtIndexPath indexPath : IndexPath) -> Any {
+        let cellDescriptor = dataSource.cellDescriptor(for: indexPath)
+        if let cellDescript = cellDescriptor as? NSDictionary {
+            
+        }
     }
     
     

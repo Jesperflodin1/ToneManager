@@ -20,6 +20,7 @@ struct Preferences {
         case audikoLite = "AudioLite"
         case audikoPro = "AudikoPro"
         case zedgeRingtones = "ZedgeRingtones"
+        case extraApps = "ExtraApps"
         case version = "Version"
         case build = "Build"
         case firstRun = "FirstRun"
@@ -32,6 +33,7 @@ struct Preferences {
         Preferences.keys.audikoLite.rawValue : true,
         Preferences.keys.audikoPro.rawValue : true,
         Preferences.keys.zedgeRingtones.rawValue : true,
+        Preferences.keys.extraApps.rawValue : [String](),
         Preferences.keys.version.rawValue : "0.5.0",
         Preferences.keys.build.rawValue : "1",
         Preferences.keys.firstRun.rawValue : true,
@@ -91,6 +93,15 @@ extension Preferences {
         }
         set {
             Preferences.defaults.set(newValue, forKey: Preferences.keys.zedgeRingtones.rawValue)
+        }
+    }
+    
+    static var extraApps : [String] {
+        get {
+            return Preferences.defaults.stringArray(forKey: Preferences.keys.extraApps.rawValue) ?? [String]()
+        }
+        set {
+            Preferences.defaults.set(newValue, forKey: Preferences.keys.extraApps.rawValue)
         }
     }
     

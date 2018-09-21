@@ -11,6 +11,7 @@
 		24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24496B22214991B40031E422 /* RingtoneInstaller.swift */; };
 		24496B25214AAF860031E422 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24496B24214AAF860031E422 /* AVFoundation.framework */; };
 		244DD1542154F3D200C995E7 /* ActionSheetCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DD1532154F3D200C995E7 /* ActionSheetCreator.swift */; };
+		244DD156215533C200C995E7 /* AppListViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DD155215533C200C995E7 /* AppListViewDataSource.swift */; };
 		2477828221524D720058074F /* RingtoneCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828121524D720058074F /* RingtoneCellButton.swift */; };
 		2477828521525CE10058074F /* ActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828321525CE00058074F /* ActionSheetController.swift */; };
 		2477828621525CE10058074F /* ActionSheetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2477828421525CE00058074F /* ActionSheetCell.xib */; };
@@ -94,6 +95,7 @@
 		24496B22214991B40031E422 /* RingtoneInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneInstaller.swift; sourceTree = "<group>"; };
 		24496B24214AAF860031E422 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		244DD1532154F3D200C995E7 /* ActionSheetCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetCreator.swift; sourceTree = "<group>"; };
+		244DD155215533C200C995E7 /* AppListViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListViewDataSource.swift; sourceTree = "<group>"; };
 		2477828121524D720058074F /* RingtoneCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneCellButton.swift; sourceTree = "<group>"; };
 		2477828321525CE00058074F /* ActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetController.swift; sourceTree = "<group>"; };
 		2477828421525CE00058074F /* ActionSheetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionSheetCell.xib; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				24EE206A214276CF0045D678 /* SettingsViewController.swift */,
 				249694AF2147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift */,
 				249694AD214799F0009960D7 /* AppListViewController.swift */,
+				244DD155215533C200C995E7 /* AppListViewDataSource.swift */,
 				249694A821456804009960D7 /* SynchronizedArray.swift */,
 				247AFDF921515846007191E1 /* AppearanceManager.swift */,
 				24982BD1214CE12B00DD0474 /* ColorPalette.swift */,
@@ -618,6 +621,7 @@
 				24F7ECEA214FD84C00A46E72 /* Notification+Name.swift in Sources */,
 				2477828821525CF50058074F /* ActionSheetCell.swift in Sources */,
 				2491B38D214E49B6001B36DE /* SideMenuTableViewController.swift in Sources */,
+				244DD156215533C200C995E7 /* AppListViewDataSource.swift in Sources */,
 				2477828521525CE10058074F /* ActionSheetController.swift in Sources */,
 				24F7ECEE215023D900A46E72 /* RingtoneFileImporter.swift in Sources */,
 				2497A66A2142538500597B5C /* RingtoneStore.swift in Sources */,

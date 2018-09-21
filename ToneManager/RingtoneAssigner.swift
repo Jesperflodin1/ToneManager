@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import ContactsUI
 import Contacts
-import PKHUD
 import BugfenderSDK
+import PKHUD
 
 class RingtoneAssigner: NSObject {
     
