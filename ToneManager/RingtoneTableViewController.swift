@@ -86,6 +86,7 @@ extension RingtoneTableViewController : CNContactPickerDelegate {
             assigner.assignDefaultRingtone(forContact: contact)
             
             strongSelf.contactPicker = nil
+            strongSelf.ringtoneAssigner = nil
             
         }))
         actionController.addAction(Action(ActionData(title: "Set as default text tone for contact", image: ColorPalette.actionSheetMenuMessage!), style: .default, handler: { [weak self] action in
@@ -96,6 +97,7 @@ extension RingtoneTableViewController : CNContactPickerDelegate {
             assigner.assignDefaultTextTone(forContact: contact)
             
             strongSelf.contactPicker = nil
+            strongSelf.ringtoneAssigner = nil
             
         }))
         actionController.addAction(Action(ActionData(title: "Cancel", image: ColorPalette.actionSheetMenuCancel!), style: .cancel, handler: nil))

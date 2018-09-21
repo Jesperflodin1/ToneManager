@@ -6,5 +6,4 @@
 #import "TLToneManagerHandler.h"
 #import <AppList/AppList.h>
 #import "LSApplicationWorkspaceHandler.h"
-#import "CNActivityAlertHandler.h"
 #import "CNMutableContactHandler.h"

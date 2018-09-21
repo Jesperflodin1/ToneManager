@@ -19,7 +19,6 @@
 		2477828C215298980058074F /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828B215298980058074F /* ErrorCode.swift */; };
 		24778296215414C40058074F /* RingtoneAssigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24778295215414C40058074F /* RingtoneAssigner.swift */; };
 		2477829821542E590058074F /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2477829721542E590058074F /* ContactsUI.framework */; };
-		2477829B215432360058074F /* CNActivityAlertHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2477829A215432360058074F /* CNActivityAlertHandler.m */; };
 		2477829E215432490058074F /* CNMutableContactHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2477829D215432490058074F /* CNMutableContactHandler.m */; };
 		247782A0215434430058074F /* BugfenderSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2477829F215434430058074F /* BugfenderSDK.framework */; };
 		247782A22154344F0058074F /* FileBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247782A12154344F0058074F /* FileBrowser.framework */; };
@@ -105,8 +104,6 @@
 		247782922153C0DB0058074F /* info.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = info.xml; path = ../../../../GitHub/jesperflodin1.github.io/depictions/fi.flodin.tonemanager/info.xml; sourceTree = "<group>"; };
 		24778295215414C40058074F /* RingtoneAssigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneAssigner.swift; sourceTree = "<group>"; };
 		2477829721542E590058074F /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
-		24778299215432360058074F /* CNActivityAlertHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNActivityAlertHandler.h; sourceTree = "<group>"; };
-		2477829A215432360058074F /* CNActivityAlertHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CNActivityAlertHandler.m; sourceTree = "<group>"; };
 		2477829C215432490058074F /* CNMutableContactHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNMutableContactHandler.h; sourceTree = "<group>"; };
 		2477829D215432490058074F /* CNMutableContactHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CNMutableContactHandler.m; sourceTree = "<group>"; };
 		2477829F215434430058074F /* BugfenderSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BugfenderSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,8 +317,6 @@
 				2491B397214FA8D1001B36DE /* LSApplicationWorkspaceHandler.m */,
 				2477829C215432490058074F /* CNMutableContactHandler.h */,
 				2477829D215432490058074F /* CNMutableContactHandler.m */,
-				24778299215432360058074F /* CNActivityAlertHandler.h */,
-				2477829A215432360058074F /* CNActivityAlertHandler.m */,
 				249694A421450AC6009960D7 /* entitlements.xml */,
 			);
 			path = ToneManager;
@@ -651,7 +646,6 @@
 				249694B02147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift in Sources */,
 				24982BD4214CE16700DD0474 /* Preferences.swift in Sources */,
 				24EE2075214295480045D678 /* RingtoneTableCell.swift in Sources */,
-				2477829B215432360058074F /* CNActivityAlertHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

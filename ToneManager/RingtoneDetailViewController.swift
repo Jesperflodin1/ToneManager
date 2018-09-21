@@ -12,6 +12,7 @@ import XLActionController
 import PopupDialog
 import BugfenderSDK
 import PKHUD
+import ContactsUI
 
 /// View controller that shows details page for ringtone
 final class RingtoneDetailViewController : UITableViewController {
@@ -50,6 +51,9 @@ final class RingtoneDetailViewController : UITableViewController {
     /// Timer object used for showing play duration
     var timer : Timer?
     
+    var contactPicker : CNContactPickerViewController? = nil
+    var ringtoneAssigner : RingtoneAssigner? = nil
+    
     @IBAction func openSourceAppTapped(_ sender: UITapGestureRecognizer) {
         stopPlaying()
         if !LSApplicationWorkspaceHandler.openApplication(withBundleID: ringtone.bundleID) {
@@ -61,15 +65,27 @@ final class RingtoneDetailViewController : UITableViewController {
         stopPlaying()
         let actionController = ActionSheetController()
         
-        actionController.addAction(Action(ActionData(title: "Assign as default ringtone", image: ColorPalette.actionSheetMenuMobile!), style: .default, handler: { action in
+        actionController.addAction(Action(ActionData(title: "Assign as default ringtone", image: ColorPalette.actionSheetMenuMobile!), style: .default, handler: { [weak self] action in
             
+            guard let strongSelf = self else { return }
             
+            guard let assigner = RingtoneAssigner(ringtone: strongSelf.ringtone) else { return }
+            assigner.assignDefaultRingtone()
+            
+            HUD.allowsInteraction = true
+            HUD.flash(.label("Set ringtone as default ringtone"), delay: 1.0)
             
             
         }))
-        actionController.addAction(Action(ActionData(title: "Assign as default message tone", image: ColorPalette.actionSheetMenuMessage!), style: .default, handler: { action in
+        actionController.addAction(Action(ActionData(title: "Assign as default message tone", image: ColorPalette.actionSheetMenuMessage!), style: .default, handler: { [weak self] action in
             
+            guard let strongSelf = self else { return }
             
+            guard let assigner = RingtoneAssigner(ringtone: strongSelf.ringtone) else { return }
+            assigner.assignDefaultTextTone()
+            
+            HUD.allowsInteraction = true
+            HUD.flash(.label("Set ringtone as default ringtone"), delay: 1.0)
             
             
         }))
@@ -80,8 +96,69 @@ final class RingtoneDetailViewController : UITableViewController {
     }
     @IBAction func assignToContactTapped(_ sender: UITapGestureRecognizer) {
         stopPlaying()
+        
+        guard let assigner = RingtoneAssigner(ringtone: ringtone) else { return }
+        
+        ringtoneAssigner = assigner
+        openContactPicker()
     }
 }
+
+extension RingtoneDetailViewController : CNContactPickerDelegate {
+    
+    func openContactPicker() {
+        contactPicker = CNContactPickerViewController()
+        contactPicker!.delegate = self
+        
+        present(contactPicker!, animated: true, completion: nil)
+    }
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        BFLog("contactpicker didselect")
+        NSLog("Contactpicker didselect")
+        
+        let actionController = ActionSheetController()
+        
+        actionController.addAction(Action(ActionData(title: "Set as default ringtone for contact", image: ColorPalette.actionSheetMenuMobile!), style: .default, handler: { [weak self] action in
+            
+            guard let strongSelf = self else { return }
+            guard let assigner = strongSelf.ringtoneAssigner else { return }
+            
+            assigner.assignDefaultRingtone(forContact: contact)
+            
+            strongSelf.contactPicker = nil
+            strongSelf.ringtoneAssigner = nil
+            
+        }))
+        actionController.addAction(Action(ActionData(title: "Set as default text tone for contact", image: ColorPalette.actionSheetMenuMessage!), style: .default, handler: { [weak self] action in
+            
+            guard let strongSelf = self else { return }
+            guard let assigner = strongSelf.ringtoneAssigner else { return }
+            
+            assigner.assignDefaultTextTone(forContact: contact)
+            
+            strongSelf.contactPicker = nil
+            strongSelf.ringtoneAssigner = nil
+            
+        }))
+        actionController.addAction(Action(ActionData(title: "Cancel", image: ColorPalette.actionSheetMenuCancel!), style: .cancel, handler: nil))
+        
+        picker.dismiss(animated: true) {
+            self.present(actionController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        BFLog("contactpicker didcancel")
+        NSLog("Contactpicker didcancel")
+        picker.dismiss(animated: true, completion: nil)
+        
+        contactPicker = nil
+    }
+    
+}
+
 
 //MARK: UITableViewCell updating methods
 extension RingtoneDetailViewController {
