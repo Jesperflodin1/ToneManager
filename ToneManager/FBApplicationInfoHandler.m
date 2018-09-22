@@ -81,10 +81,10 @@
     }
     if ( ![NSClassFromString(@"LSApplicationProxy") respondsToSelector:@selector(applicationProxyForIdentifier:)]) {
         NSLog(@"JFTM: ERROR: applicationProxyForIdentifier: not responding");
-        return nil;
+        return false;
     }
     LSApplicationProxy *appProxy = [NSClassFromString(@"LSApplicationProxy") performSelector:@selector(applicationProxyForIdentifier:) withObject:bundleID];
-    return [appProxy performSelector:@selector(isInstalled)];
+    return (BOOL)[appProxy performSelector:@selector(isInstalled)];
 }
 
 @end

@@ -1,6 +1,6 @@
 Package: fi.flodin.tonemanager
 Name: ToneManager
-Depends: applist, com.modmyi.libswift4
+Depends: applist, com.modmyi.libswift4 (>= 4.1.2-3), com.rpetrich.rocketbootstrap (>= 1.0.3)
 Architecture: iphoneos-arm
 Description: Install ringtones from Audiko, Zedge and more!
 Maintainer: Jesper Flodin <jesper@flodin.fi>

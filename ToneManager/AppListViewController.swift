@@ -9,12 +9,13 @@
 import UIKit
 import BugfenderSDK
 import PopupDialog
+import PKHUD
 
 /// Table view controller that uses Applist to show list of apps
 final class AppListViewController : UITableViewController {
     
     var appInfo : [String:String] = [:]
-    
+    var appNames : [String] = []
 
     
     override public func viewDidLoad() {
@@ -28,14 +29,6 @@ final class AppListViewController : UITableViewController {
             errorAlert("Error occured when loading apps with AppList.")
             return
         }
-//        if Preferences.zedgeRingtones {
-//            apps.append("com.zedge.Zedge")
-//        }
-//        if Preferences.audikoLite {
-//            apps.append("com.908.AudikoFree")
-//        }
-//        if Preferences.audikoPro {
-//            apps.append("com.908.Audiko")
         
         let excludedApps = [
             "com.zedge.Zedge",
@@ -51,8 +44,17 @@ final class AppListViewController : UITableViewController {
             if identifier == Bundle.main.bundleIdentifier { continue }
             if excludedApps.contains(identifier) { continue }
             
+            let app = appInfo.first { (arg0) -> Bool in
+                let (key, _) = arg0
+                return identifier == key
+                }
+            if app != nil { continue }
+            
             appInfo.updateValue(displayName, forKey: identifier)
+            appNames.append(displayName)
         }
+        appNames = appNames.sorted(by: < )
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.reloadData()
@@ -81,19 +83,37 @@ final class AppListViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AppListCell") as! AppListCell
         
+        let appName = appNames[indexPath.row]
+        let appIdentifier = appInfo.first { (arg0) -> Bool in
+            let (_, value) = arg0
+            return appName == value
+        }?.key
         
-        
+        cell.appIdentifier = appIdentifier!
+        cell.appName.text = appName
+        cell.appImage.image = ALApplicationList.shared()?.icon(ofSize: UInt(ALApplicationIconSizeSmall), forDisplayIdentifier: appIdentifier)
+        if Preferences.extraAppIsEnabled(appIdentifier!) {
+            cell.appSwitch.isOn = true
+        } else {
+            cell.appSwitch.isOn = false
+        }
         cell.delegate = self
+        
+        return cell
         
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+//        let cell = tableView.cellForRow(at: indexPath) as? AppListCell
+//        HUD.allowsInteraction = true
+//        HUD.flash(.label(cell?.appIdentifier), delay: 0.5)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return appInfo.count
     }
+    
     
     
 }
@@ -101,6 +121,10 @@ final class AppListViewController : UITableViewController {
 extension AppListViewController: AppListCellDelegate {
     
     func valueDidChange(_ value: Bool, appIdentifier: String) {
-        <#code#>
+        if value {
+            Preferences.extraAppEnable(appIdentifier)
+        } else {
+            Preferences.extraAppDisable(appIdentifier)
+        }
     }
 }

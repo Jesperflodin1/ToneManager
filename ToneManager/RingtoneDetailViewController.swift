@@ -308,7 +308,7 @@ extension RingtoneDetailViewController {
             self.audioPlayer?.delegate = self
             
         } catch {
-            Bugfender.error("Error when preparing to play ringtone: \(ringtone) with error: \(error)")
+            Bugfender.error("Error when preparing to play ringtone: \(ringtone.name) with error: \(error)")
         }
     }
     

@@ -21,13 +21,6 @@
 		24778296215414C40058074F /* RingtoneAssigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24778295215414C40058074F /* RingtoneAssigner.swift */; };
 		2477829821542E590058074F /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2477829721542E590058074F /* ContactsUI.framework */; };
 		2477829E215432490058074F /* CNMutableContactHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2477829D215432490058074F /* CNMutableContactHandler.m */; };
-		247782A0215434430058074F /* BugfenderSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2477829F215434430058074F /* BugfenderSDK.framework */; };
-		247782A22154344F0058074F /* FileBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247782A12154344F0058074F /* FileBrowser.framework */; };
-		247782A42154344F0058074F /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247782A32154344F0058074F /* PKHUD.framework */; };
-		247782A62154344F0058074F /* PopupDialog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247782A52154344F0058074F /* PopupDialog.framework */; };
-		247782A82154344F0058074F /* SideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247782A72154344F0058074F /* SideMenu.framework */; };
-		247782AA2154344F0058074F /* XLActionController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247782A92154344F0058074F /* XLActionController.framework */; };
-		247782AC215434CA0058074F /* DynamicBlurView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247782AB215434CA0058074F /* DynamicBlurView.framework */; };
 		247AFDF421511344007191E1 /* AppSetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF321511344007191E1 /* AppSetupManager.swift */; };
 		247AFDF6215122EC007191E1 /* FirstRun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 247AFDF5215122EC007191E1 /* FirstRun.storyboard */; };
 		247AFDF8215124D7007191E1 /* FirstRunPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */; };
@@ -68,6 +61,7 @@
 		24F7ECEA214FD84C00A46E72 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7ECE9214FD84C00A46E72 /* Notification+Name.swift */; };
 		24F7ECEC214FF17600A46E72 /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7ECEB214FF17600A46E72 /* UIApplication+TopViewController.swift */; };
 		24F7ECEE215023D900A46E72 /* RingtoneFileImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7ECED215023D900A46E72 /* RingtoneFileImporter.swift */; };
+		2544D0FECB1B4F822D4DEB46 /* Pods_ToneManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB2F0288DA14F8204028D09 /* Pods_ToneManager.framework */; };
 		30F4C62E8F6AF1DA3B7B1D40 /* Pods_ToneManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56DFC59107A5F6111AB3E4A /* Pods_ToneManagerTests.framework */; };
 		3A0E0435786C44BF60985FC7 /* Pods_ToneManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */; };
 		BE4E087C5B988C85CBA2F99B /* Pods_ToneManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787B7BD1ECCE5249CE75158F /* Pods_ToneManagerUITests.framework */; };
@@ -186,18 +180,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2497F65B21557F1300324FF1 /* libapplist.dylib in Frameworks */,
-				247782AC215434CA0058074F /* DynamicBlurView.framework in Frameworks */,
-				247782A22154344F0058074F /* FileBrowser.framework in Frameworks */,
-				247782A42154344F0058074F /* PKHUD.framework in Frameworks */,
-				247782A62154344F0058074F /* PopupDialog.framework in Frameworks */,
-				247782A82154344F0058074F /* SideMenu.framework in Frameworks */,
-				247782AA2154344F0058074F /* XLActionController.framework in Frameworks */,
-				247782A0215434430058074F /* BugfenderSDK.framework in Frameworks */,
 				2477829821542E590058074F /* ContactsUI.framework in Frameworks */,
 				2491B38F214EE1FA001B36DE /* StoreKit.framework in Frameworks */,
 				24496B25214AAF860031E422 /* AVFoundation.framework in Frameworks */,
 				24EE208A2142EB050045D678 /* MobileCoreServices.framework in Frameworks */,
 				1B7547485A56829ADA0E8A7C /* Pods_ToneManager.framework in Frameworks */,
+				2544D0FECB1B4F822D4DEB46 /* Pods_ToneManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,7 +371,7 @@
 				2497A634214251D200597B5C /* Frameworks */,
 				2497A635214251D200597B5C /* Resources */,
 				6152E5909BFF4496799113E7 /* [CP] Embed Pods Frameworks */,
-				249694A321450A59009960D7 /* ShellScript */,
+				249694A321450A59009960D7 /* Set build number and install to device */,
 			);
 			buildRules = (
 			);
@@ -530,13 +518,14 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		249694A321450A59009960D7 /* ShellScript */ = {
+		249694A321450A59009960D7 /* Set build number and install to device */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Set build number and install to device";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -852,7 +841,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7";
+				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
@@ -890,7 +879,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "ToneManager/ToneManager-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7";
+				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};

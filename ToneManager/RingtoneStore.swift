@@ -252,7 +252,6 @@ extension RingtoneStore {
         
         queue.async {
             let scanner = RingtoneScanner()
-            // TODO: Get extra apps to scan from preferences
             
             let apps = Preferences.ringtoneAppsToScan
             //            apps.append("/test")

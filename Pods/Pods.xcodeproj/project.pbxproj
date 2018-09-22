@@ -16,7 +16,7 @@
 		0B7C1F2C40AD02C808B55B69D9D0B9F4 /* Pods-ToneManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 797F6883D6BABCBE51512B6EE9A1A36E /* Pods-ToneManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		10DC7D4D6C1BDDDC17A135808F1C0F16 /* BugfenderSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC18959EB97E81953AEBD0FAE95637F1 /* BugfenderSDK-dummy.m */; };
 		127B50B3085439E7F58E1E94F16F0C61 /* WebviewPreviewViewContoller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 111E0A525AFFE13E04EA7FCBD5ECA94D /* WebviewPreviewViewContoller.xib */; };
-		12CB4DCA79CC1401B42D7D639E7F512E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61D7C2EAA6D282C37B6DDD3CE8F2974 /* SystemConfiguration.framework */; };
+		12CB4DCA79CC1401B42D7D639E7F512E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61D7C2EAA6D282C37B6DDD3CE8F2974 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		1A40F72F64FBB95395A9A7929E5F3E49 /* SideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0828B8F7B7B32A96FD70DFE2C1648A /* SideMenu-dummy.m */; };
 		1AB346192ECB8AED65276F083ED7CF50 /* PopupDialog+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8A218F0E50FF2EDF5811B0FB67284F /* PopupDialog+Keyboard.swift */; };
 		2197FC2C6D433B58D930AE3F3AC00365 /* TransitionAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DFE1F53F7152BCC41480FABC01C3D /* TransitionAnimations.swift */; };
@@ -53,7 +53,7 @@
 		5B8437965913274A42B48AC0423028DA /* CGImage+Accelerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384B74692A9E913E093EA66DA2249BF9 /* CGImage+Accelerate.swift */; };
 		6114163B00D1FD616EABAD9AC380A351 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5721EEA03431C131533008B017A2EBF0 /* WebKit.framework */; };
 		612BA9FBF7D8439728E832D1E52A759D /* DynamicCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306D63E32EED28467A874EEE475BC6F9 /* DynamicCollectionViewFlowLayout.swift */; };
-		621F371A23517A4AC49A9C476A6E2925 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1A810C031FCCAC9F0AC46274F24EB9 /* Foundation.framework */; };
+		621F371A23517A4AC49A9C476A6E2925 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1A810C031FCCAC9F0AC46274F24EB9 /* Foundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		648A4E34800415420FDEEF7F883E340E /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4965205E5C087887923051458213BC /* FrameView.swift */; };
 		685FBADCB2FE7B8939FB5EFB8E9B2EDF /* PopupDialogDefaultButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355E847D3E97667476F13E92B12378B /* PopupDialogDefaultButtons.swift */; };
 		69C16362114E92CCFEDF707ED2280565 /* FBFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AE0EB43D9A841E88D39A85C974AD5D /* FBFile.swift */; };
@@ -82,7 +82,7 @@
 		B1154C077DA285CE7B47AB0E84585267 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF711BD77504A033E5DDAEEB984AE9A /* Window.swift */; };
 		B15DB010D8137EB6D50756939635A8B8 /* PopupDialogDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0941EB79F8CF9F64DA6071ADCC689C0C /* PopupDialogDefaultView.swift */; };
 		B6F1F83E44F70DC813876852DF813CA8 /* PKHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A45DE6952DB4E547743D46000022CA12 /* PKHUD-dummy.m */; };
-		B73889A2D01BB3C2D2B33C8C543ADE15 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9323D8775CE75FFDBA13452021B555B6 /* Security.framework */; };
+		B73889A2D01BB3C2D2B33C8C543ADE15 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9323D8775CE75FFDBA13452021B555B6 /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B94EABCDF5B09E4DE587F746C739EE7E /* ActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE007EF83B7D95439DC695990D46BF6 /* ActionController.swift */; };
 		BB0F3214E82EE8EBC87FB57B7A74C598 /* InteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E980FF6E98E84DCE707F103F628104 /* InteractiveTransition.swift */; };
 		BE66F5864469EA44E806820E3C705EA0 /* FileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE8529B219012B5E733502363E7EF36 /* FileListViewController.swift */; };
@@ -119,7 +119,7 @@
 		FA2C4F1B00AF51C78688A2E9726F7343 /* file@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4633FF60118492C9B1806F744BF4DD2D /* file@2x.png */; };
 		FBB45284F403AEF0F156E2B86B6ACFE2 /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A2703EEBB7656A1A3FD048F119884A /* PresentationManager.swift */; };
 		FBEF405595849771F639712CC0F7B3BD /* PKHUDSquareBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3714ECA8490BA71292CBFBBD292E63FF /* PKHUDSquareBaseView.swift */; };
-		FE2BD01ADAA8FEF092FF348DE06F6205 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334BF29142B405E2DCAB6B9D0D78B5CE /* MobileCoreServices.framework */; };
+		FE2BD01ADAA8FEF092FF348DE06F6205 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334BF29142B405E2DCAB6B9D0D78B5CE /* MobileCoreServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FF623DF6F230A815C1F9B1960C2A6418 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16A502BDD4C5FB95F30491BE23885CF /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -1156,7 +1156,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1000;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1525,7 +1525,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/BugfenderSDK/BugfenderSDK-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/BugfenderSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/BugfenderSDK/BugfenderSDK.modulemap";
 				PRODUCT_MODULE_NAME = BugfenderSDK;
@@ -1558,7 +1558,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/FileBrowser/FileBrowser-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/FileBrowser/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FileBrowser/FileBrowser.modulemap";
 				PRODUCT_MODULE_NAME = FileBrowser;
@@ -1657,7 +1657,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/BugfenderSDK/BugfenderSDK-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/BugfenderSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/BugfenderSDK/BugfenderSDK.modulemap";
 				PRODUCT_MODULE_NAME = BugfenderSDK;
@@ -1765,8 +1765,10 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
@@ -1851,7 +1853,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/DynamicBlurView/DynamicBlurView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/DynamicBlurView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/DynamicBlurView/DynamicBlurView.modulemap";
 				PRODUCT_MODULE_NAME = DynamicBlurView;
@@ -1883,7 +1885,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SideMenu/SideMenu-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
 				PRODUCT_MODULE_NAME = SideMenu;
@@ -1915,7 +1917,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/DynamicBlurView/DynamicBlurView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/DynamicBlurView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/DynamicBlurView/DynamicBlurView.modulemap";
 				PRODUCT_MODULE_NAME = DynamicBlurView;
@@ -1948,7 +1950,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SideMenu/SideMenu-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
 				PRODUCT_MODULE_NAME = SideMenu;
@@ -1981,7 +1983,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/FileBrowser/FileBrowser-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/FileBrowser/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FileBrowser/FileBrowser.modulemap";
 				PRODUCT_MODULE_NAME = FileBrowser;
@@ -2085,8 +2087,10 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 4.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -2140,7 +2144,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/PKHUD/PKHUD-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/PKHUD/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PKHUD/PKHUD.modulemap";
 				PRODUCT_MODULE_NAME = PKHUD;
@@ -2172,7 +2176,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/PKHUD/PKHUD-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/PKHUD/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PKHUD/PKHUD.modulemap";
 				PRODUCT_MODULE_NAME = PKHUD;

@@ -11,6 +11,10 @@ import UIKit
 /// View controller used in settings which shows switches for default supported ringtone apps
 final class SettingsRingtoneAppsViewController : UITableViewController {
     
+    @IBOutlet weak var zedgeImage: UIImageView!
+    @IBOutlet weak var audikoLiteImage: UIImageView!
+    @IBOutlet weak var audikoProImage: UIImageView!
+    
     /// Outlet for UISwitch for Zedge Ringtones
     @IBOutlet weak var zedgeSwitch: UISwitch!
     /// Outlet for UISwitch for Audiko Lite
@@ -53,6 +57,7 @@ extension SettingsRingtoneAppsViewController {
         
         if Preferences.zedgeRingtonesInstalled {
             zedgeSwitch.isEnabled = true
+            zedgeImage.image = ALApplicationList.shared().icon(ofSize: UInt(ALApplicationIconSizeSmall), forDisplayIdentifier: Preferences.defaultApps[Preferences.keys.zedgeRingtones.rawValue]!)
         } else {
             zedgeSwitch.isEnabled = false
             
@@ -60,18 +65,23 @@ extension SettingsRingtoneAppsViewController {
         
         if Preferences.audikoLiteInstalled {
             audikoLiteSwitch.isEnabled = true
+            audikoLiteImage.image = ALApplicationList.shared().icon(ofSize: UInt(ALApplicationIconSizeSmall), forDisplayIdentifier: Preferences.defaultApps[Preferences.keys.audikoLite.rawValue]!)
         } else {
             audikoLiteSwitch.isEnabled = false
         }
         
         if Preferences.audikoProInstalled {
             audikoProSwitch.isEnabled = true
+            audikoProImage.image = ALApplicationList.shared().icon(ofSize: UInt(ALApplicationIconSizeSmall), forDisplayIdentifier: Preferences.defaultApps[Preferences.keys.audikoPro.rawValue]!)
         } else {
             audikoProSwitch.isEnabled = false
         }
         zedgeSwitch.isOn = Preferences.zedgeRingtones
         audikoLiteSwitch.isOn = Preferences.audikoLite
         audikoProSwitch.isOn = Preferences.audikoPro
+        
+        
+        
         super.viewWillAppear(animated)
     }
 }

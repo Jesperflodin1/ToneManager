@@ -40,6 +40,12 @@ struct Preferences {
         Preferences.keys.isUpdated.rawValue : false
     ]
     
+    static let defaultApps : [String:String] = [
+        Preferences.keys.zedgeRingtones.rawValue : "com.zedge.Zedge",
+        Preferences.keys.audikoLite.rawValue : "com.908.AudikoFree",
+        Preferences.keys.audikoPro.rawValue : "com.908.Audiko"
+    ]
+    
     static let zedgeItunesId : NSNumber = 584485870
     static let audikoLiteItunesId : NSNumber = 878910012
     static let audikoProItunesId : NSNumber = 725401575
@@ -152,29 +158,57 @@ extension Preferences {
         var apps : Array<String> = []
         
         if Preferences.zedgeRingtones {
-            apps.append("com.zedge.Zedge")
+            apps.append(Preferences.defaultApps[Preferences.keys.zedgeRingtones.rawValue]!)
         }
         if Preferences.audikoLite {
-            apps.append("com.908.AudikoFree")
+            apps.append(Preferences.defaultApps[Preferences.keys.audikoLite.rawValue]!)
         }
         if Preferences.audikoPro {
-            apps.append("com.908.Audiko")
+            apps.append(Preferences.defaultApps[Preferences.keys.audikoPro.rawValue]!)
+        }
+        
+        if extraApps.count > 0 {
+            apps.append(contentsOf: extraApps)
         }
         
         return apps
     }
+    
+    static func extraAppIsEnabled(_ appIdentifier : String) -> Bool {
+        if extraApps.contains(appIdentifier) {
+            return true
+        }
+        return false
+    }
+    
+    static func extraAppEnable(_ appIdentifier : String) {
+        var apps = extraApps
+        if !apps.contains(appIdentifier) {
+            apps.append(appIdentifier)
+            extraApps = apps
+        }
+    }
+    
+    static func extraAppDisable(_ appIdentifier : String) {
+        var apps = extraApps
+        if let index = apps.index(of: appIdentifier) {
+            apps.remove(at: index)
+            extraApps = apps
+        }
+    }
+    
 }
 
 //MARK: Install status
 extension Preferences {
     static var audikoLiteInstalled : Bool {
-        return FBApplicationInfoHandler.installedStatus(forBundleId: "com.908.AudikoFree")
+        return FBApplicationInfoHandler.installedStatus(forBundleId: Preferences.defaultApps[Preferences.keys.audikoLite.rawValue]!)
     }
     static var audikoProInstalled : Bool {
-        return FBApplicationInfoHandler.installedStatus(forBundleId: "com.908.Audiko")
+        return FBApplicationInfoHandler.installedStatus(forBundleId: Preferences.defaultApps[Preferences.keys.audikoPro.rawValue]!)
     }
     static var zedgeRingtonesInstalled : Bool {
-        return FBApplicationInfoHandler.installedStatus(forBundleId: "com.zedge.Zedge")
+        return FBApplicationInfoHandler.installedStatus(forBundleId: Preferences.defaultApps[Preferences.keys.zedgeRingtones.rawValue]!)
     }
 }
 

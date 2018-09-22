@@ -16,7 +16,10 @@ class AppListCell : UITableViewCell {
     
     weak var delegate : AppListCellDelegate!
     
+    var appIdentifier : String!
+    
     @IBAction func appSwitchChanged(_ sender: UISwitch) {
+        delegate.valueDidChange(sender.isOn, appIdentifier: appIdentifier)
     }
     
 }

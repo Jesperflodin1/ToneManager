@@ -53,7 +53,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>165</string>
+	<string>178</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -62,6 +62,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<false/>
 	<key>NSHumanReadableCopyright</key>
 	<string>2018 Jesper Flodin</string>
 	<key>UIFileSharingEnabled</key>
