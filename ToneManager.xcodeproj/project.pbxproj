@@ -50,6 +50,8 @@
 		24982BD2214CE12B00DD0474 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24982BD1214CE12B00DD0474 /* ColorPalette.swift */; };
 		24982BD4214CE16700DD0474 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24982BD3214CE16700DD0474 /* Preferences.swift */; };
 		24B5E29C21568A7700A8A70A /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24B5E29B21568A7700A8A70A /* assets.xcassets */; };
+		24B5E29E2156ADAE00A8A70A /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B5E29D2156ADAE00A8A70A /* HelpTableViewController.swift */; };
+		24B5E2A02156ADB700A8A70A /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B5E29F2156ADB700A8A70A /* HelpTableViewCell.swift */; };
 		24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE206A214276CF0045D678 /* SettingsViewController.swift */; };
 		24EE2075214295480045D678 /* RingtoneTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE2074214295480045D678 /* RingtoneTableCell.swift */; };
 		24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EE20822142C9590045D678 /* TLToneManagerHandler.m */; };
@@ -146,6 +148,8 @@
 		24982BD1214CE12B00DD0474 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		24982BD3214CE16700DD0474 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		24B5E29B21568A7700A8A70A /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
+		24B5E29D2156ADAE00A8A70A /* HelpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
+		24B5E29F2156ADB700A8A70A /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
 		24EE206A214276CF0045D678 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		24EE2074214295480045D678 /* RingtoneTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneTableCell.swift; sourceTree = "<group>"; };
 		24EE207E2142C7E60045D678 /* ToneManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ToneManager-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 				2497A63A214251D200597B5C /* AppDelegate.swift */,
 				247AFDF321511344007191E1 /* AppSetupManager.swift */,
 				2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */,
+				24B5E29D2156ADAE00A8A70A /* HelpTableViewController.swift */,
+				24B5E29F2156ADB700A8A70A /* HelpTableViewCell.swift */,
 				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
 				2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */,
 				24EE2074214295480045D678 /* RingtoneTableCell.swift */,
@@ -606,6 +612,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2491B391214F8FB1001B36DE /* RingtonePlayer.swift in Sources */,
+				24B5E29E2156ADAE00A8A70A /* HelpTableViewController.swift in Sources */,
 				249694A721454F96009960D7 /* RingtoneScanner.swift in Sources */,
 				2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */,
 				249694AE214799F0009960D7 /* AppListViewController.swift in Sources */,
@@ -634,6 +641,7 @@
 				244DD1582155782000C995E7 /* AppListCell.swift in Sources */,
 				24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */,
 				2477829E215432490058074F /* CNMutableContactHandler.m in Sources */,
+				24B5E2A02156ADB700A8A70A /* HelpTableViewCell.swift in Sources */,
 				24778296215414C40058074F /* RingtoneAssigner.swift in Sources */,
 				24F7ECE8214FD7F600A46E72 /* URL+RingtoneName.swift in Sources */,
 				24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */,

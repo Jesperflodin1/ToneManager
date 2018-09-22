@@ -57,6 +57,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         application.statusBarStyle = .lightContent // .default
         
         if let options = launchOptions, let url = options[.url] as? URL, url.isFileURL {
+            BFLog("Got url for file in appdidfinishlaunching")
             RingtoneManager.importRingtoneURL(url, onSuccess: {
                 NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
             })
@@ -103,6 +104,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.isFileURL {
+            BFLog("Got url for file from another app")
             RingtoneManager.importRingtoneURL(url, onSuccess: {
                 NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
             })
