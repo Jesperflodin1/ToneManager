@@ -65,7 +65,7 @@ dpkg-scanpackages -m ./debs > Packages
 bzip2 -fks Packages
 
 echo "Updating depiction version"
-xmlstarlet ed -O -P -u "/package/version" -v "${version}-${build}" "depictions/fi.flodin.tonemanager/info.xml"
+xmlstarlet ed --inplace -O -P -u "/package/version" -v "${version}-${build}" "depictions/fi.flodin.tonemanager/info.xml"
 
 git add .
 git commit -m 'updated ToneManager'
