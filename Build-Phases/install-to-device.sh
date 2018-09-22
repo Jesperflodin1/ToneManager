@@ -69,7 +69,7 @@ xmlstarlet ed --inplace -O -P -u "/package/version" -v "${version}-${build}" "de
 
 git add .
 git commit -m 'updated ToneManager'
-git push
+#git push
 cd -
 
 rm ToneManager/*.deb

@@ -271,6 +271,7 @@ extension RingtoneTableViewController {
             ringtoneStore.allRingtones.lockArray()
             tableView.reloadData()
             ringtoneStore.allRingtones.unlockArray()
+            updateAvailableRingtones()
         }
         
         deselectCurrentRow()
