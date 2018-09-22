@@ -9,6 +9,7 @@
 import Foundation
 import FileBrowser
 import BugfenderSDK
+import AVFoundation
 
 final class RingtoneFileImporter: RingtoneScanner {
     
@@ -17,16 +18,15 @@ final class RingtoneFileImporter: RingtoneScanner {
     
     let knownExtensions : [String] = ["m4r"]
     
-    func importFile(_ file : FBFile) -> Ringtone? {
-        guard let fileExt = file.fileExtension else { return nil }
-        if fileExt != "m4r" {
+    func importFile(_ file : URL) -> Ringtone? {
+        BFLog("Trying to import file: \(file)")
+        if file.pathExtension != "m4r" {
+            BFLog("File is not m4r")
             //TODO: Try to convert
             return nil
         }
         
-        let fileURL = file.filePath
-        
-        return importm4r(fileURL)
+        return importm4r(file)
     }
     
     fileprivate func importm4r(_ fileURL : URL) -> Ringtone? {
@@ -56,12 +56,32 @@ final class RingtoneFileImporter: RingtoneScanner {
     }
     
     func isFileValidRingtone(_ file : FBFile) -> Bool {
+        BFLog("is file valid called")
         if file.isDirectory { return false }
-        guard let attributes = file.fileAttributes else { return false }
-        if attributes.fileSize() < 1 { return false }
         
-        guard let fileExt = file.fileExtension else { return false }
-        if !knownExtensions.contains(fileExt) {
+        return isURLValidRingtone(file.filePath)
+    }
+    
+    func isURLValidRingtone(_ fileURL : URL) -> Bool {
+        BFLog("is fileurl valid called")
+        
+        if !knownExtensions.contains(fileURL.pathExtension) {
+            return false
+        }
+        
+        do
+        {
+            let attribute = try FileManager.default.attributesOfItem(atPath: fileURL.path)
+            if let size = attribute[FileAttributeKey.size] as? Int {
+                if size < 1 { return false }
+            }
+            
+            let avAudioPlayer = try AVAudioPlayer(contentsOf: fileURL)
+            let duration = avAudioPlayer.duration
+            if NSNumber(value: round(duration)).intValue > 40 { return false }
+        }
+        catch{
+            Bugfender.error("Error when retrieving duration or size of file: \(fileURL), error: \(error)")
             return false
         }
         

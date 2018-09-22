@@ -1447,6 +1447,8 @@
                             <outlet property="delegate" destination="ydC-u4-FOW" id="tS4-BQ-xQQ"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="autoInstallSwitch" destination="ydB-Tw-Tfa" id="MGD-bx-mhJ"/>
                     </connections>

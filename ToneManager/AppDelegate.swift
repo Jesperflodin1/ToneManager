@@ -39,7 +39,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         Preferences.registerDefaults()
         enableRemoteLogging()
         let result = UIApplication.shared.canOpenURL(URL(string: "tonemanager://test")!)
-        NSLog("URLTEST: \(result)")
+        BFLog("URLTEST: \(result)")
         AppSetupManager.doSetupIfNeeded()
         
         BFLog("App start")
@@ -55,6 +55,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.makeKeyAndVisible()
         
         application.statusBarStyle = .lightContent // .default
+        
+        if let options = launchOptions, let url = options[.url] as? URL, url.isFileURL {
+            RingtoneManager.importRingtoneURL(url, onSuccess: {
+                NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
+            })
+        }
+        
         
         return true
     }
@@ -95,9 +102,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        
-        return true
+        if url.isFileURL {
+            RingtoneManager.importRingtoneURL(url, onSuccess: {
+                NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
+            })
+        }
+        return true // if successful
     }
 }
 

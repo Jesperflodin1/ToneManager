@@ -52,7 +52,11 @@ extension RingtoneManager {
 extension RingtoneManager {
     
     class func importRingtoneFile(_ file : FBFile, onSuccess: @escaping (() -> Void)) {
-        RingtoneStore.sharedInstance.importFile(file, completionHandler: { (success, error, ringtone) in
+        importRingtoneURL(file.filePath, onSuccess: onSuccess)
+    }
+    
+    class func importRingtoneURL(_ fileURL : URL, onSuccess: @escaping (() -> Void)) {
+        RingtoneStore.sharedInstance.importFile(fileURL, completionHandler: { (success, error, ringtone) in
             if !success {
                 guard let errorType = error else { return }
                 if errorType.code == ErrorCode.invalidRingtoneFile.rawValue {

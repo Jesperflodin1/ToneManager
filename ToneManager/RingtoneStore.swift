@@ -8,7 +8,6 @@
 
 import Foundation
 import BugfenderSDK
-import FileBrowser
 
 /// Global variable for application data folder
 public let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
@@ -92,7 +91,7 @@ extension RingtoneStore {
     ///
     /// - Parameter shouldVerifyRingtones: will verify ringtones if true, is by default true
     public func loadFromPlist(_ shouldVerifyRingtones : Bool = true) {
-        queue.async {
+        queue.sync {
             //TODO: Check if tones.plist exist. If it does and reading failes, try to rebuild database!
             
             BFLog("Trying to read plist")
@@ -295,10 +294,10 @@ extension RingtoneStore {
         }
     }
     
-    func importFile(_ file : FBFile, completionHandler: @escaping (Bool, NSError?, Ringtone?) -> Void) {
+    func importFile(_ fileURL : URL, completionHandler: @escaping (Bool, NSError?, Ringtone?) -> Void) {
         queue.async {
             let fileImporter = RingtoneFileImporter()
-            if !fileImporter.isFileValidRingtone(file) {
+            if !fileImporter.isURLValidRingtone(fileURL) {
                 let error = NSError(domain: "", code: ErrorCode.invalidRingtoneFile.rawValue, userInfo: nil)
                 DispatchQueue.main.async {
                     completionHandler(false, error, nil)
@@ -306,7 +305,7 @@ extension RingtoneStore {
                 return
             }
             
-            guard let newRingtone = fileImporter.importFile(file) else {
+            guard let newRingtone = fileImporter.importFile(fileURL) else {
                 let error = NSError(domain: "", code: ErrorCode.unknownImportError.rawValue, userInfo: nil)
                 Bugfender.error("Got error when trying to import single FBFile, errorcode=\(error)")
                 DispatchQueue.main.async {
