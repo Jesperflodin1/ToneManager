@@ -44,11 +44,7 @@ final class AppListViewController : UITableViewController {
             if identifier == Bundle.main.bundleIdentifier { continue }
             if excludedApps.contains(identifier) { continue }
             
-            let app = appInfo.first { (arg0) -> Bool in
-                let (key, _) = arg0
-                return identifier == key
-                }
-            if app != nil { continue }
+            if appNames.contains(displayName) { continue }
             
             appInfo.updateValue(displayName, forKey: identifier)
             appNames.append(displayName)

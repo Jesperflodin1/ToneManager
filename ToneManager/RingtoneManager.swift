@@ -30,9 +30,9 @@ extension RingtoneManager {
         
         RingtoneStore.sharedInstance.updateRingtones { (needsUpdate: Bool, newRingtones: [Ringtone]?)  in
             
-            NSLog("updateringtones callback")
+            BFLog("updateringtones callback")
             if (needsUpdate) {
-                NSLog("updateringtones callback, got true for needsupdate")
+                BFLog("updateringtones callback, got true for needsupdate")
                 HUD.allowsInteraction = true
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Updated available ringtones"), delay: 0.5)
                 
@@ -271,7 +271,7 @@ extension RingtoneManager {
         } else if let ringtonetemp = ringtoneObject {
             ringtone = ringtonetemp
         } else {
-            HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when uninstalling ringtone"), delay: 0.7)
+            HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when deleting ringtone"), delay: 0.7)
             return
         }
         
@@ -285,5 +285,61 @@ extension RingtoneManager {
             
             onSuccess?()
         })
+    }
+    
+    class func deleteAllRingtones(withAlert : Bool = true, onSuccess: (() -> Void)? = nil) {
+        let toneCount = RingtoneStore.sharedInstance.allRingtones.count
+        if toneCount == 0 {
+            HUD.allowsInteraction = true
+            HUD.flash(.label("No ringtones are imported"), delay: 1.0)
+            return
+        }
+        
+        let completionHandler = { (uninstalledTones : Int, failedTones : Int) in
+            
+            if uninstalledTones > 0, failedTones == 0 {
+                HUD.allowsInteraction = true
+                HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Deleted \(uninstalledTones) ringtones"), delay: 1.0)
+            } else if uninstalledTones > 0, failedTones > 0 {
+                HUD.allowsInteraction = true
+                HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Deleted \(uninstalledTones) ringtones, however \(failedTones) failed to delete"), delay: 1.0)
+            } else if uninstalledTones == 0 {
+                HUD.allowsInteraction = true
+                HUD.flash(.labeledError(title: "Error", subtitle: "No ringtones were deleted because of an unknown error"), delay: 1.0)
+            } else {
+                HUD.allowsInteraction = true
+                HUD.flash(.labeledError(title: "Super Mega Error", subtitle: "Well, this is embarassing. This should not happen"), delay: 2.0)
+            }
+            
+            onSuccess?()
+        }
+        
+        if withAlert {
+            let title = "Delete \(toneCount) ringtones?"
+            let message = "Are you sure you want to delete \(toneCount) ringtones?"
+            let popup = PopupDialog(title: title, message: message, image: ColorPalette.alertBackground)
+            let buttonTwo = CancelButton(title: "Cancel", action: nil)
+            let buttonOne = DestructiveButton(title: "Delete all") {
+                HUD.show(.labeledProgress(title: "Deleting", subtitle: "Deleting ringtones"))
+                
+                BFLog("Calling delete for multiple ringtones")
+                
+                RingtoneStore.sharedInstance.removeAllRingtones(completionHandler: completionHandler)
+            }
+            
+            popup.addButtons([buttonOne, buttonTwo])
+            
+            guard let topVC = UIApplication.topViewController() else {
+                Bugfender.error("Could not get top view controller when trying to display alert")
+                return
+            }
+            topVC.present(popup, animated: true, completion: nil)
+        } else {
+            HUD.show(.labeledProgress(title: "Deleting", subtitle: "Deleting all ringtones"))
+            
+            BFLog("Calling delete for all ringtones")
+            
+            RingtoneStore.sharedInstance.removeAllRingtones(completionHandler: completionHandler)
+        }
     }
 }

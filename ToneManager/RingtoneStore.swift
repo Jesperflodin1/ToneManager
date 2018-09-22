@@ -95,7 +95,7 @@ extension RingtoneStore {
         queue.async {
             //TODO: Check if tones.plist exist. If it does and reading failes, try to rebuild database!
             
-            NSLog("Trying to read plist")
+            BFLog("Trying to read plist")
             do {
                 let data = try Data(contentsOf: plistURL)
                 
@@ -238,6 +238,16 @@ extension RingtoneStore {
         
         installer.removeRingtone(ringtone, deleteFile: true, shouldCallBackToStore: true, completionHandler: completion)
     }
+    
+    func removeAllRingtones(completionHandler: @escaping (Int, Int) -> Void) {
+        guard let tonesToUninstall = self.allRingtones.array else { return }
+        
+        let installer = RingtoneInstaller(self)
+        
+        BFLog("Delete all ringtones, count = \(tonesToUninstall.count)")
+        
+        installer.removeRingtones(inArray: tonesToUninstall, deleteFiles: true, completionHandler: completionHandler)
+    }
 }
 
 //MARK: Ringtone Scanning methods
@@ -247,7 +257,7 @@ extension RingtoneStore {
     /// - Parameter completionHandler: completion block that should run when import is done, a Bool indicating if new ringtones
     /// was imported is passed to it.
     func updateRingtones(completionHandler: @escaping (Bool, [Ringtone]?) -> Void) {
-        NSLog("Update called, finishedloading=\(self.finishedLoading)")
+        BFLog("Update called, finishedloading=\(self.finishedLoading)")
         if !finishedLoading { return }
         
         queue.async {

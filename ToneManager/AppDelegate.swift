@@ -77,6 +77,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     /// - Parameter application: Current UIApplication
     func applicationWillEnterForeground(_ application: UIApplication) {
         BFLog("App returning from background")
+        RingtoneStore.sharedInstance.loadFromPlist()
     }
     
     /// UIApplicationDelegate method. Called when application returns from background

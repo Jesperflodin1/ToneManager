@@ -50,6 +50,7 @@ final class RingtoneTableViewController : UITableViewController {
 extension RingtoneTableViewController {
     
     func updateAvailableRingtones() {
+        BFLog("update called in ringtonetableview")
         ringtonePlayer?.stopPlaying()
         
         RingtoneManager.updateRingtones { [weak self] in
@@ -234,10 +235,12 @@ extension RingtoneTableViewController {
     }
     
     @objc func dataFinishedLoading(notification: NSNotification) {
+        BFLog("store finished loading")
         tableView.reloadData()
         updateAvailableRingtones()
     }
     @objc func storeDidReload(notification: NSNotification) {
+        BFLog("store did reload")
         ringtoneStore.allRingtones.lockArray()
         tableView.reloadData()
         ringtoneStore.allRingtones.unlockArray()

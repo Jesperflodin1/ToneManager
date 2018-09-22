@@ -30,6 +30,9 @@ extension AdvancedSettingsViewController {
         Preferences.remoteLogging = sender.isOn
     }
     @IBAction func deleteAllTapped(_ sender: UITapGestureRecognizer) {
+        RingtoneManager.deleteAllRingtones(withAlert: true) {
+            NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
+        }
     }
     @IBAction func resetSettingsTapped(_ sender: UITapGestureRecognizer) {
         Preferences.reset()
