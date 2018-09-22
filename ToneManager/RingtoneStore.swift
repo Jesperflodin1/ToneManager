@@ -123,7 +123,6 @@ extension RingtoneStore {
                 #endif
                 NSLog("Error when reading ringtones from plist: \(error)")
                 Bugfender.error("Error when reading ringtones from plist: \(error)")
-                return
             }
             
             
