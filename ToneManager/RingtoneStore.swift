@@ -297,13 +297,6 @@ extension RingtoneStore {
     func importFile(_ fileURL : URL, completionHandler: @escaping (Bool, NSError?, Ringtone?) -> Void) {
         queue.async {
             let fileImporter = RingtoneFileImporter()
-            if !fileImporter.isURLValidRingtone(fileURL) {
-                let error = NSError(domain: "", code: ErrorCode.invalidRingtoneFile.rawValue, userInfo: nil)
-                DispatchQueue.main.async {
-                    completionHandler(false, error, nil)
-                }
-                return
-            }
             fileImporter.importFile(fileURL, completionHandler: { (success, ringtone) in
                 if !success {
                     let error = NSError(domain: "", code: ErrorCode.unknownImportError.rawValue, userInfo: nil)

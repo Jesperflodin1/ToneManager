@@ -126,10 +126,16 @@ extension RingtoneScanner {
     ///   - path: path to file to copy
     ///   - forBundleID: bundleid to use as subfolder
     /// - Returns: path file was copied to
-    func copyRingtoneToApp(_ path : String, forBundleID : String) -> String? {
+    func copyRingtoneToApp(_ path : String, forBundleID : String, changeFileExtension : Bool = false) -> String? {
         let fileManager = FileManager.default
-        
-        let fileName = URL(fileURLWithPath: path).lastPathComponent
+
+        let fileName : String
+        if changeFileExtension {
+            fileName = URL(fileURLWithPath: path).deletingPathExtension().appendingPathExtension("m4r").lastPathComponent
+            BFLog("changed path extension, old path: \(path) new filename: \(fileName)")
+        } else {
+            fileName = URL(fileURLWithPath: path).lastPathComponent
+        }
         
         let appDataSubfolder = appDataDir.appendingPathComponent(forBundleID, isDirectory: true)
         let toFilePath = appDataSubfolder.appendingPathComponent(fileName, isDirectory: false)

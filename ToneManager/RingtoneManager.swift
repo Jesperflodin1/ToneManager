@@ -62,6 +62,9 @@ extension RingtoneManager {
                 if errorType.code == ErrorCode.invalidRingtoneFile.rawValue {
                     HUD.flash(.labeledError(title: "Error", subtitle: "File is not a valid ringtone"), delay: 1.0)
                     return
+                } else { //TODO: Error codes
+                    HUD.flash(.labeledError(title: "Error", subtitle: "File is not a valid ringtone"), delay: 1.0)
+                    return
                 }
             } else { // import success
                 

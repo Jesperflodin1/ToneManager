@@ -19,7 +19,7 @@ import ContactsUI
 final class RingtoneTableViewController : UITableViewController {
     
     /// Storage for Ringtones
-    fileprivate var ringtoneStore : RingtoneStore!
+    fileprivate var ringtoneStore : RingtoneStore = RingtoneStore.sharedInstance
     
     /// Identifier for Cell used to show a ringtone
     private let cellId = "RingtoneTableCell"
@@ -34,11 +34,6 @@ final class RingtoneTableViewController : UITableViewController {
     var ringtoneFilter : Int = 0
     
     var ringtonePlayer : RingtonePlayer?
-    
-    public required init?(coder aDecoder: NSCoder) {
-        ringtoneStore = RingtoneStore.sharedInstance
-        super.init(coder: aDecoder)
-    }
     
     var contactPicker : CNContactPickerViewController? = nil
     var ringtoneAssigner : RingtoneAssigner? = nil
@@ -254,7 +249,7 @@ extension RingtoneTableViewController {
 extension RingtoneTableViewController {
     
     /// Called when view has finished loading
-    override public func viewDidLoad() {
+    override func viewDidLoad() {
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -266,23 +261,26 @@ extension RingtoneTableViewController {
     /// Called when view will appear
     ///
     /// - Parameter animated: true if view appears with animation
-    override public func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        deselectCurrentRow()
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if ringtoneStore.finishedLoading {
             ringtoneStore.allRingtones.lockArray()
             tableView.reloadData()
             ringtoneStore.allRingtones.unlockArray()
             updateAvailableRingtones()
         }
-        
-        deselectCurrentRow()
-        super.viewWillAppear(animated)
     }
     
     /// Called whe view will disappear. Deselects a selected row, if any is selected. Also makes sure the buttons in the
     /// selected cell is hidden
     ///
     /// - Parameter animated: true if view will disappear with animation
-    override public func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         ringtonePlayer?.stopPlaying()
         
         deselectCurrentRow()
