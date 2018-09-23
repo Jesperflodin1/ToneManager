@@ -28,7 +28,6 @@ final class RingtoneFileImporter: RingtoneScanner {
             if !self.isURLValidRingtone(file) {
                 BFLog("File is not valid ringtone, got extension: \(file.pathExtension)")
                 
-                //TODO: Try to convert
                 completionHandler(false, nil)
                 return
             }
@@ -39,7 +38,10 @@ final class RingtoneFileImporter: RingtoneScanner {
                 tone = self.importm4r(file, isReallym4a: true)
             } else if file.pathExtension == "m4r" {
                 tone = self.importm4r(file)
-            } else { tone = nil }
+            } else {
+                tone = nil
+                //TODO: Try to convert
+            }
             
             if let importedTone = tone {
                 completionHandler(true, importedTone)
