@@ -12,14 +12,15 @@ import BugfenderSDK
 class AppSetupManager {
     
     class func doSetupIfNeeded() {
+        Preferences.compareVersions()
         BFLog("App version: \(Preferences.version) Build: \(Preferences.build)")
         if Preferences.firstRun {
             BFLog("First run setup")
             registerAppWithSystem()
-            
+            Preferences.firstRunDone()
         } else if Preferences.isUpdated {
             BFLog("App has been updated")
-            
+            Preferences.updateDone()
         }
     }
     

@@ -10,6 +10,7 @@ import UIKit
 import BugfenderSDK
 import SafariServices
 import PKHUD
+import MessageUI
 
 /// View controller for main settings page
 final class SettingsViewController : UITableViewController {
@@ -31,6 +32,7 @@ final class SettingsViewController : UITableViewController {
     func updateUIStates() {
         autoInstallSwitch.isOn = Preferences.autoInstall
     }
+   
 }
 
 //MARK: SFSafariViewController methods
@@ -49,6 +51,22 @@ extension SettingsViewController: SFSafariViewControllerDelegate {
     ///
     /// - Parameter controller: SFSafariViewController this was initiated from.
     public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case .cancelled:
+            BFLog("Mail cancelled")
+        case .saved:
+            BFLog("Mail saved")
+        case .sent:
+            BFLog("Mail sent")
+        case .failed:
+            BFLog("Mail sent failure: \(String(describing: error?.localizedDescription))")
+        }
         controller.dismiss(animated: true, completion: nil)
     }
 }
@@ -97,6 +115,30 @@ extension SettingsViewController {
 
 //MARK: Button Actions
 extension SettingsViewController {
+    @IBAction func sendEmailTapped(_ sender: UITapGestureRecognizer) {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        let os = ProcessInfo().operatingSystemVersion
+        let osString = String(os.majorVersion) + "." + String(os.minorVersion) + "." + String(os.patchVersion)
+        
+        let appVersion = "\(Preferences.version)-\(Preferences.build)"
+        
+        let emailTitle = "[ToneManager \(appVersion)] Email from App"
+        let messageBody = "\n\nDevice: \(identifier), iOS \(osString)\n\nFeature request or bug report?"
+        let toRecipents = ["jesper@flodin.fi"]
+        let mc: MFMailComposeViewController = MFMailComposeViewController()
+        mc.mailComposeDelegate = self
+        mc.setSubject(emailTitle)
+        mc.setMessageBody(messageBody, isHTML: false)
+        mc.setToRecipients(toRecipents)
+        
+        present(mc, animated: true, completion: nil)
+    }
     
     /// Opens github page
     ///

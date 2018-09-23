@@ -304,25 +304,25 @@ extension RingtoneStore {
                 }
                 return
             }
-            
-            guard let newRingtone = fileImporter.importFile(fileURL) else {
-                let error = NSError(domain: "", code: ErrorCode.unknownImportError.rawValue, userInfo: nil)
-                Bugfender.error("Got error when trying to import single FBFile, errorcode=\(error)")
-                DispatchQueue.main.async {
-                    completionHandler(false, error, nil)
+            fileImporter.importFile(fileURL, completionHandler: { (success, ringtone) in
+                if !success {
+                    let error = NSError(domain: "", code: ErrorCode.unknownImportError.rawValue, userInfo: nil)
+                    Bugfender.error("Got error when trying to import single FBFile, errorcode=\(error)")
+                    DispatchQueue.main.async {
+                        completionHandler(false, error, nil)
+                    }
+                } else if let tone = ringtone {
+                    DispatchQueue.main.async {
+                        self.allRingtones.append(tone)
+                        let sortedTones = self.allRingtones.sorted(by: { (initial, next) -> Bool in
+                            return initial.name.lowercased().compare(next.name.lowercased()) == .orderedAscending
+                        })
+                        self.allRingtones = WriteLockableSynchronizedArray(with: sortedTones)
+                        self.writeToPlist()
+                        completionHandler(true, nil, tone)
+                    }
                 }
-                return
-            }
-            DispatchQueue.main.async {
-                self.allRingtones.append(newRingtone)
-                let sortedTones = self.allRingtones.sorted(by: { (initial, next) -> Bool in
-                    return initial.name.lowercased().compare(next.name.lowercased()) == .orderedAscending
-                })
-                self.allRingtones = WriteLockableSynchronizedArray(with: sortedTones)
-                self.writeToPlist()
-                completionHandler(true, nil, newRingtone)
-            }
-            
+            })
         }
     }
 }

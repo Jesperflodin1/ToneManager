@@ -14,19 +14,25 @@ import AVFoundation
 final class RingtoneFileImporter: RingtoneScanner {
     
     /// Serial queue for file importer tasks
-    fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.FileImporterSerialQueue")
+    fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.FileImporterQueue")
     
     let knownExtensions : [String] = ["m4r"]
     
-    func importFile(_ file : URL) -> Ringtone? {
-        BFLog("Trying to import file: \(file)")
-        if file.pathExtension != "m4r" {
-            BFLog("File is not m4r")
-            //TODO: Try to convert
-            return nil
+    func importFile(_ file : URL, completionHandler: @escaping (Bool, Ringtone?) -> ()) {
+        queue.async {
+            BFLog("Trying to import file: \(file)")
+            if !self.knownExtensions.contains(file.pathExtension) {
+                BFLog("File is not m4r, got extension: \(file.pathExtension)")
+                //TODO: Try to convert
+                completionHandler(false, nil)
+            }
+            
+            if let tone = self.importm4r(file) {
+                completionHandler(true, tone)
+            } else {
+                completionHandler(false, nil)
+            }
         }
-        
-        return importm4r(file)
     }
     
     fileprivate func importm4r(_ fileURL : URL) -> Ringtone? {
@@ -63,7 +69,7 @@ final class RingtoneFileImporter: RingtoneScanner {
     }
     
     func isURLValidRingtone(_ fileURL : URL) -> Bool {
-        BFLog("is fileurl valid called")
+        BFLog("is fileurl valid called, got extension: \(fileURL.pathExtension)")
         
         if !knownExtensions.contains(fileURL.pathExtension) {
             return false

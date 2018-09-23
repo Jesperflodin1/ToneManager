@@ -1356,7 +1356,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="question29" translatesAutoresizingMaskIntoConstraints="NO" id="3fy-lp-sOW">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="question29" translatesAutoresizingMaskIntoConstraints="NO" id="3fy-lp-sOW">
                                                     <rect key="frame" x="16" y="7.5" width="29" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="3fy-lp-sOW" secondAttribute="height" multiplier="1:1" id="5aY-v5-sfp"/>
@@ -1392,7 +1392,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paypal" translatesAutoresizingMaskIntoConstraints="NO" id="1Ea-FL-ldc">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paypal" translatesAutoresizingMaskIntoConstraints="NO" id="1Ea-FL-ldc">
                                                     <rect key="frame" x="16" y="7.5" width="29" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="29" id="YfL-v3-RdA"/>
@@ -1433,7 +1433,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitter" translatesAutoresizingMaskIntoConstraints="NO" id="eXh-TL-SpX">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitter" translatesAutoresizingMaskIntoConstraints="NO" id="eXh-TL-SpX">
                                                     <rect key="frame" x="16" y="7.5" width="29" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="eXh-TL-SpX" secondAttribute="height" multiplier="1:1" id="S5L-Tk-IW2"/>
@@ -1462,7 +1462,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reddit" translatesAutoresizingMaskIntoConstraints="NO" id="BhJ-4x-vMy">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reddit" translatesAutoresizingMaskIntoConstraints="NO" id="BhJ-4x-vMy">
                                                     <rect key="frame" x="16" y="7.5" width="29" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="29" id="WEL-yh-pnO"/>
@@ -1490,14 +1490,14 @@
                                             <outletCollection property="gestureRecognizers" destination="aCu-bd-Fiy" appends="YES" id="OPX-cz-HRP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="E7E-yG-dIl">
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="E7E-yG-dIl">
                                         <rect key="frame" x="0.0" y="602.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E7E-yG-dIl" id="kZ1-Bm-G3F">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="aeQ-PJ-4xX">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="aeQ-PJ-4xX">
                                                     <rect key="frame" x="16" y="7.5" width="29" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="29" id="Ne2-uO-hCi"/>
@@ -1524,6 +1524,42 @@
                                         <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="8Rq-IW-Sld" appends="YES" id="bBT-Xo-yMI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="q9T-Wm-uOW">
+                                        <rect key="frame" x="0.0" y="646.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q9T-Wm-uOW" id="MFR-nc-Zm4">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope" translatesAutoresizingMaskIntoConstraints="NO" id="1JC-fH-ox1">
+                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="4CW-rN-1HV"/>
+                                                        <constraint firstAttribute="width" constant="29" id="qaG-3u-Ka9"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vry-6e-F9N">
+                                                    <rect key="frame" x="60" y="10.5" width="84.5" height="22.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="1JC-fH-ox1" firstAttribute="leading" secondItem="MFR-nc-Zm4" secondAttribute="leading" constant="16" id="72a-uS-OUl"/>
+                                                <constraint firstItem="Vry-6e-F9N" firstAttribute="leading" secondItem="1JC-fH-ox1" secondAttribute="trailing" constant="15" id="Rft-JF-SEp"/>
+                                                <constraint firstItem="Vry-6e-F9N" firstAttribute="centerY" secondItem="MFR-nc-Zm4" secondAttribute="centerY" id="T4s-zO-EMY"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Vry-6e-F9N" secondAttribute="bottom" constant="2.5" id="W3D-5E-bqa"/>
+                                                <constraint firstItem="1JC-fH-ox1" firstAttribute="centerY" secondItem="MFR-nc-Zm4" secondAttribute="centerY" id="sXh-5a-mZY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="BCA-O1-6K9" appends="YES" id="r0C-JN-xHD"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1559,6 +1595,11 @@
                 <tapGestureRecognizer id="x4a-Cs-Zjn">
                     <connections>
                         <action selector="twitterTapped:" destination="ydC-u4-FOW" id="z9H-dA-BY9"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="BCA-O1-6K9">
+                    <connections>
+                        <action selector="sendEmailTapped:" destination="ydC-u4-FOW" id="SBW-VA-Xbq"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -1664,6 +1705,7 @@
         <image name="Zedge" width="28" height="28"/>
         <image name="address-book30" width="26" height="30"/>
         <image name="dots" width="44" height="44"/>
+        <image name="envelope" width="29" height="29"/>
         <image name="external-link30" width="30" height="27"/>
         <image name="folder" width="24" height="21"/>
         <image name="github" width="29" height="29"/>
