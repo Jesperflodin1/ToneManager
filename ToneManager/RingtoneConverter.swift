@@ -166,26 +166,8 @@ class RingtoneConverter: NSObject {
             }
         }
         
-        var format: AVFileType
-        var formatKey: AudioFormatID
-        
-        switch outputFormat {
-        case "m4a", "mp4", "m4r":
-            format = .m4a
-            formatKey = kAudioFormatMPEG4AAC
-        case "aif":
-            format = .aiff
-            formatKey = kAudioFormatLinearPCM
-        case "caf":
-            format = .caf
-            formatKey = kAudioFormatLinearPCM
-        case "wav":
-            format = .wav
-            formatKey = kAudioFormatLinearPCM
-        default:
-            BFLog("Unsupported output format: \(outputFormat)")
-            return
-        }
+        let format: AVFileType = .m4a
+        let formatKey: AudioFormatID = kAudioFormatMPEG4AAC
         
         var writer: AVAssetWriter
         do {
@@ -195,43 +177,22 @@ class RingtoneConverter: NSObject {
             return
         }
         
-        // 1. chosen option. 2. same as input file. 3. 16 bit
-        // optional in case of compressed audio. That said, the other conversion methods are actually used in
-        // that case
-        let bitDepth = (options.bitDepth ?? inputFile.fileFormat.settings[AVLinearPCMBitDepthKey] ?? 16) as Any
-        var isFloat = false
-        if let intDepth = bitDepth as? Int {
-            // 32 bit means it's floating point
-            isFloat = intDepth == 32
-        }
-        
         var sampleRate = options.sampleRate ?? inputFile.fileFormat.sampleRate
         let channels = options.channels ?? inputFile.fileFormat.channelCount
         
-        var outputSettings: [String: Any] = [
+        // Note: AVAssetReaderOutput does not currently support compressed output
+            
+        if sampleRate > 48_000 {
+            sampleRate = 44_100
+        }
+        
+        let outputSettings : [String:Any] = [
             AVFormatIDKey: formatKey,
             AVSampleRateKey: sampleRate,
             AVNumberOfChannelsKey: channels,
-            AVLinearPCMBitDepthKey: bitDepth,
-            AVLinearPCMIsFloatKey: isFloat,
-            AVLinearPCMIsBigEndianKey: format != .wav,
-            AVLinearPCMIsNonInterleaved: !(options.isInterleaved ?? inputFile.fileFormat.isInterleaved)
+            AVEncoderBitRateKey: options.bitRate
         ]
         
-        // Note: AVAssetReaderOutput does not currently support compressed output
-        if formatKey == kAudioFormatMPEG4AAC {
-            
-            if sampleRate > 48_000 {
-                sampleRate = 44_100
-            }
-            
-            outputSettings = [
-                AVFormatIDKey: formatKey,
-                AVSampleRateKey: sampleRate,
-                AVNumberOfChannelsKey: channels,
-                AVEncoderBitRateKey: options.bitRate
-            ]
-        }
         
         let writerInput = AVAssetWriterInput(mediaType: .audio, outputSettings: outputSettings)
         writer.add(writerInput)
@@ -295,12 +256,18 @@ class RingtoneConverter: NSObject {
             return
         }
         
+        if FileManager.default.fileExists(atPath: outputURL.path) {
+            try? FileManager.default.removeItem(at: outputURL)
+        }
+        
         let asset = AVURLAsset(url: inputURL)
+        
         guard let session = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetAppleM4A) else { return }
         session.outputURL = outputURL
         session.outputFileType = AVFileType.m4a
+        session.timeRange = CMTimeRange(start: kCMTimeZero, duration: CMTimeMakeWithSeconds(30, 600))
         session.exportAsynchronously {
-            completionHandler?(nil)
+            completionHandler?(session.error)
         }
     }
     

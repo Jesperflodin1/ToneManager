@@ -87,9 +87,9 @@ final class RingtoneFileImporter: RingtoneScanner {
     func isURLValidRingtone(_ fileURL : URL) -> Bool {
         BFLog("is fileurl valid called, got extension: \(fileURL.pathExtension)")
         
-        if !knownExtensions.contains(fileURL.pathExtension) {
-            return false
-        }
+//        if !knownExtensions.contains(fileURL.pathExtension) {
+//            return false
+//        }
         
         do
         {
