@@ -46,7 +46,9 @@ extension ColorPalette {
     static let actionSheetMenuExternallink = UIImage(named: "external-link20")
     static let actionSheetMenuMobile = UIImage(named: "mobile20")
     static let actionSheetMenuMessage = UIImage(named: "comment-dots20")
-
+    
+    static let cellUpArrow = UIImage(named: "chevron-up")
+    static let cellDownArrow = UIImage(named: "chevron-down")
     
     static let alertBackground = UIImage(named: "alertBackground")
 }

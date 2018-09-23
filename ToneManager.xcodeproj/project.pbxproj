@@ -12,6 +12,9 @@
 		24496B25214AAF860031E422 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24496B24214AAF860031E422 /* AVFoundation.framework */; };
 		244DD1542154F3D200C995E7 /* ActionSheetCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DD1532154F3D200C995E7 /* ActionSheetCreator.swift */; };
 		244DD1582155782000C995E7 /* AppListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DD1572155782000C995E7 /* AppListCell.swift */; };
+		245C728E21576BCF00D07410 /* UIImageView+Rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C728D21576BCF00D07410 /* UIImageView+Rotate.swift */; };
+		245C729021578A6A00D07410 /* HelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C728F21578A6A00D07410 /* HelpItem.swift */; };
+		245C729221578BD800D07410 /* HelpData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C729121578BD800D07410 /* HelpData.swift */; };
 		2477828221524D720058074F /* RingtoneCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828121524D720058074F /* RingtoneCellButton.swift */; };
 		2477828521525CE10058074F /* ActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477828321525CE00058074F /* ActionSheetController.swift */; };
 		2477828621525CE10058074F /* ActionSheetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2477828421525CE00058074F /* ActionSheetCell.xib */; };
@@ -93,6 +96,9 @@
 		24496B24214AAF860031E422 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		244DD1532154F3D200C995E7 /* ActionSheetCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetCreator.swift; sourceTree = "<group>"; };
 		244DD1572155782000C995E7 /* AppListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListCell.swift; sourceTree = "<group>"; };
+		245C728D21576BCF00D07410 /* UIImageView+Rotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Rotate.swift"; sourceTree = "<group>"; };
+		245C728F21578A6A00D07410 /* HelpItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpItem.swift; sourceTree = "<group>"; };
+		245C729121578BD800D07410 /* HelpData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpData.swift; sourceTree = "<group>"; };
 		2477828121524D720058074F /* RingtoneCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneCellButton.swift; sourceTree = "<group>"; };
 		2477828321525CE00058074F /* ActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetController.swift; sourceTree = "<group>"; };
 		2477828421525CE00058074F /* ActionSheetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionSheetCell.xib; sourceTree = "<group>"; };
@@ -278,6 +284,8 @@
 				247AFDF321511344007191E1 /* AppSetupManager.swift */,
 				2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */,
 				24B5E29D2156ADAE00A8A70A /* HelpTableViewController.swift */,
+				245C728F21578A6A00D07410 /* HelpItem.swift */,
+				245C729121578BD800D07410 /* HelpData.swift */,
 				24B5E29F2156ADB700A8A70A /* HelpTableViewCell.swift */,
 				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
 				2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */,
@@ -302,6 +310,7 @@
 				24982BD1214CE12B00DD0474 /* ColorPalette.swift */,
 				24982BD3214CE16700DD0474 /* Preferences.swift */,
 				2477828B215298980058074F /* ErrorCode.swift */,
+				245C728D21576BCF00D07410 /* UIImageView+Rotate.swift */,
 				24F7ECE3214FD78900A46E72 /* String+Version.swift */,
 				24F7ECE5214FD7C200A46E72 /* String+CondenseWhitespace.swift */,
 				24F7ECE7214FD7F600A46E72 /* URL+RingtoneName.swift */,
@@ -620,6 +629,7 @@
 				2477828221524D720058074F /* RingtoneCellButton.swift in Sources */,
 				2497F65E2155816600324FF1 /* AppListCellDelegate.swift in Sources */,
 				24F7ECEA214FD84C00A46E72 /* Notification+Name.swift in Sources */,
+				245C729221578BD800D07410 /* HelpData.swift in Sources */,
 				2477828821525CF50058074F /* ActionSheetCell.swift in Sources */,
 				2491B38D214E49B6001B36DE /* SideMenuTableViewController.swift in Sources */,
 				2477828521525CE10058074F /* ActionSheetController.swift in Sources */,
@@ -643,10 +653,12 @@
 				2477829E215432490058074F /* CNMutableContactHandler.m in Sources */,
 				24B5E2A02156ADB700A8A70A /* HelpTableViewCell.swift in Sources */,
 				24778296215414C40058074F /* RingtoneAssigner.swift in Sources */,
+				245C729021578A6A00D07410 /* HelpItem.swift in Sources */,
 				24F7ECE8214FD7F600A46E72 /* URL+RingtoneName.swift in Sources */,
 				24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */,
 				247AFDF421511344007191E1 /* AppSetupManager.swift in Sources */,
 				24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */,
+				245C728E21576BCF00D07410 /* UIImageView+Rotate.swift in Sources */,
 				24F7ECEC214FF17600A46E72 /* UIApplication+TopViewController.swift in Sources */,
 				2496949B214409E2009960D7 /* RingtoneDetailViewController.swift in Sources */,
 				249694B02147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift in Sources */,
