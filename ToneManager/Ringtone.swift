@@ -105,7 +105,7 @@ final class Ringtone : NSObject, Codable {
         if let app = FBApplicationInfoHandler.displayName(forBundleIdentifier: self.bundleID) {
             self.appName = app
         } else if self.bundleID == Bundle.main.bundleIdentifier {
-            self.appName = "Local import"
+            self.appName = "Manual import"
         } else {
             self.appName = self.bundleID
         }

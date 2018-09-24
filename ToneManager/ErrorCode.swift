@@ -8,10 +8,19 @@
 
 import Foundation
 
-public enum ErrorCode: Int {
+enum ErrorCode: Int {
     case invalidRingtoneFile = 9001
     case invalidRingtoneFileExtension = 9002
     case invalidRingtoneFileContent = 9003
     
+    case fileAlreadyImported = 8001
+    case copyFailure = 8002
+    
     case unknownImportError = 9004
+}
+
+enum ErrorDomain: String {
+    
+    case ringtoneFileImporter = "fi.flodin.tonemanager.RingtoneFileImporter"
+    case ringtoneStore = "fi.flodin.tonemanager.RingtoneStore"
 }

@@ -8,7 +8,6 @@
 
 import UIKit
 import BugfenderSDK
-import SideMenu
 
 /// Application execution start point
 @UIApplicationMain

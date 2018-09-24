@@ -180,7 +180,7 @@ extension RingtoneStore {
     ///   - completionHandler: Completion block to execute when import is done. Ringtone object is passed as argument, identifier will be set if import was successful
     func installRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone, Bool) -> Void) {
         let installer = RingtoneInstaller(self)
-        BFLog("Calling ringtone install for ringtone: \(ringtone)")
+        BFLog("Calling ringtone install for ringtone")
         installer.installRingtone(ringtone, completionHandler: completionHandler)
         
     }
@@ -299,8 +299,8 @@ extension RingtoneStore {
             let fileImporter = RingtoneFileImporter()
             fileImporter.importFile(fileURL, completionHandler: { (success, ringtone) in
                 if !success {
-                    let error = NSError(domain: "", code: ErrorCode.unknownImportError.rawValue, userInfo: nil)
-                    Bugfender.error("Got error when trying to import single FBFile, errorcode=\(error)")
+                    let error = fileImporter.importError ?? NSError(domain: ErrorDomain.ringtoneStore.rawValue, code: ErrorCode.unknownImportError.rawValue, userInfo: nil)
+                    Bugfender.error("Got error when trying to import single file, errorcode=\(String(describing: error))")
                     DispatchQueue.main.async {
                         completionHandler(false, error, nil)
                     }

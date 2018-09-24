@@ -59,15 +59,25 @@ extension RingtoneManager {
         RingtoneStore.sharedInstance.importFile(fileURL, completionHandler: { (success, error, ringtone) in
             if !success {
                 guard let errorType = error else { return }
+                Bugfender.error("Import failure")
                 if errorType.code == ErrorCode.invalidRingtoneFile.rawValue {
                     HUD.flash(.labeledError(title: "Error", subtitle: "File is not a valid ringtone"), delay: 1.0)
                     return
-                } else { //TODO: Error codes
-                    HUD.flash(.labeledError(title: "Error", subtitle: "File is not a valid ringtone"), delay: 1.0)
+                } else if errorType.code == ErrorCode.fileAlreadyImported.rawValue {
+                    
+                    
+                    HUD.flash(.labeledError(title: "Error", subtitle: "File is already imported"), delay: 1.0)
+                    return
+                } else if errorType.code == ErrorCode.copyFailure.rawValue {
+                    HUD.flash(.labeledError(title: "Error", subtitle: "Failed to copy file"), delay: 1.0)
+                    return
+                }
+                else {
+                    HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when importing ringtone"), delay: 1.0)
                     return
                 }
             } else { // import success
-                
+                BFLog("Import success")
                 HUD.flash(.labeledSuccess(title: "Success", subtitle: "Imported 1 Ringtone"), delay: 0.7)
                 
                 
@@ -79,6 +89,10 @@ extension RingtoneManager {
                 }
             }
         })
+    }
+    
+    class func handleAlreadyImportedError(forFile fileURL : URL, onSuccess: @escaping () -> Void) {
+        
     }
     
     class func installRingtone(inCell: RingtoneTableCell? = nil, ringtoneObject: Ringtone? = nil, onSuccess: (() -> Void)? = nil) {

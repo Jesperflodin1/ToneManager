@@ -107,7 +107,7 @@ extension RingtoneInstaller {
                 return
             }
             if ringtone.identifier != nil {
-                BFLog("Ringtone is already installed, tone: \(ringtone)")
+                BFLog("Ringtone is already installed, tone: \(ringtone.fileURL.path)")
                 DispatchQueue.main.async {
                     completionHandler(ringtone, false)
                 }
@@ -135,7 +135,7 @@ extension RingtoneInstaller {
                     }
                     
                 } else {
-                    Bugfender.error("Ringtone install failed, got success=\(success) and identifier=\(toneIdentifier ?? "nil")")
+                    Bugfender.error("Ringtone install failed")
                 }
                 DispatchQueue.main.async {
                     if shouldCallBackToStore {

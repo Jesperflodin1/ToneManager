@@ -143,7 +143,7 @@ extension RingtoneTableViewController {
         
         ringtonePlayer?.stopPlaying()
         
-        guard let actionController = ActionSheetCreator.ringtoneCellMenu(ringtoneCell: cell, ringtoneTableController: self) else { return }
+        guard let actionController = ActionSheetGenerator.ringtoneCellMenu(ringtoneCell: cell, ringtoneTableController: self) else { return }
         
         present(actionController, animated: true, completion: nil)
     }
