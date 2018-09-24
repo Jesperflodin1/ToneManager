@@ -241,7 +241,7 @@ extension Preferences {
         }
         guard let currentBuild = Int(buildString) else { return }
         
-        BFLog("Reading app bundle plist, version: \(version) build: \(buildString)")
+        BFLog("Reading app bundle plist, version: \(currentVersion) build: \(buildString)")
         
         if currentVersion.isVersion(greaterThan: Preferences.version) || currentBuild > Preferences.build {
             BFLog("Version or build has increased")
