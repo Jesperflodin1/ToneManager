@@ -26,16 +26,26 @@ final class RingtoneFileImporter: RingtoneScanner {
     
     fileprivate func convertFileAndImport(at file : URL, completionHandler: @escaping (Bool, Ringtone?) -> ()) {
         BFLog("File is not valid m4r ringtone, calling convert for: %@", file.path)
-        let outputFolder = appDataDir.appendingPathComponent("tmp", isDirectory: true)
+        
+        var sourceURL = file
+        let outputFolder = appDataDir.appendingPathComponent("tmp", isDirectory: true) //TODO: Clear tmp folder
         do {
             try FileManager.default.createDirectory(at: outputFolder, withIntermediateDirectories: true)
+            if file.m4r() {
+                // since we cant be sure that source is writable, move to tmp and change file extension to fool AVFoundation
+                // set sourceurl to appdata/tmp/converting/file.m4a and move there
+                sourceURL = outputFolder.appendingPathComponent("converting", isDirectory: true).appendingPathComponent(file.changingPathExtension("m4a").lastPathComponent, isDirectory: false)
+                
+                try FileManager.default.createDirectory(at: outputFolder.appendingPathComponent("converting", isDirectory: true), withIntermediateDirectories: true)
+                try FileManager.default.copyItem(at: file, to: sourceURL)
+            }
         } catch {
             BFLog("Temp folder already exists? Error when creating temp folder: %@", error as NSError)
         }
         // Make sure we get a m4r file
-        let outputURL = outputFolder.appendingPathComponent(file.deletingPathExtension().appendingPathExtension("m4r").lastPathComponent, isDirectory: false)
+        let outputURL = outputFolder.appendingPathComponent(sourceURL.changingPathExtension("m4r").lastPathComponent, isDirectory: false)
         
-        let converter = RingtoneConverter(inputURL: file, outputURL: outputURL)
+        let converter = RingtoneConverter(inputURL: sourceURL, outputURL: outputURL)
         converter.start(completionHandler: { (error) in
             if let convertError = error {
                 Bugfender.error("Got error from file converter: \(convertError as NSError)")
@@ -69,7 +79,7 @@ final class RingtoneFileImporter: RingtoneScanner {
             let duration = file.audioDurationOfFile()
             BFLog("Got duration: %d", duration)
             
-            if file.pathExtension == "m4r", duration <= 31 {
+            if file.m4r(), duration <= 31 {
                 BFLog("File is m4r, calling import: %@", file.path)
                 if let tone = self.importm4r(file) {
                     completionHandler(true, tone)

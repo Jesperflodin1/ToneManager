@@ -38,6 +38,7 @@ class RingtoneConverter: NSObject {
         self.inputURL = inputURL
         if outputURL.pathExtension == "m4r" {
             self.outputURL = outputURL.deletingPathExtension().appendingPathExtension("m4a")
+            BFLog("Converter called with extension: \(outputURL.pathExtension), but im really using: \(outputURL.deletingPathExtension().appendingPathExtension("m4a"))")
         } else {
             self.outputURL = outputURL
         }

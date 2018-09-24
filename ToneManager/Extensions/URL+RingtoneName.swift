@@ -21,5 +21,11 @@ extension URL {
     func fileNameWithoutExtension() -> String {
         return self.deletingPathExtension().lastPathComponent
     }
+    func changingPathExtension(_ pathExtension : String) -> URL {
+        return self.deletingPathExtension().appendingPathExtension(pathExtension)
+    }
+    func m4r() -> Bool {
+        return self.pathExtension == "m4r"
+    }
 }
 

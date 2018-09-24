@@ -121,8 +121,8 @@ extension SettingsViewController {
         let appVersion = "\(Preferences.version)-\(Preferences.build)"
         
         let importedTones = try? Data(contentsOf: plistURL)
-        let settings = UserDefaults.standard.dictionaryRepresentation()
-        let settingsData = try? PropertyListSerialization.data(fromPropertyList: settings, format: .xml, options: 0)
+
+        let settingsData = allSettingsAsData()
         
         let emailTitle = "[ToneManager \(appVersion)] Email from App"
         let messageBody = "\n\nDevice: \(identifier), iOS \(osString)\nApp Version: \(appVersion)\n\nFeature request or bug report?"
@@ -168,8 +168,8 @@ extension SettingsViewController {
     fileprivate func allSettingsAsData() -> Data? {
         let prefs = UserDefaults.standard.dictionaryRepresentation()
         if prefs.count < 1 { return nil }
-        
-        
+        let data = try? PropertyListSerialization.data(fromPropertyList: prefs, format: .xml, options: 0)
+        return data
     }
     
     /// Opens github page

@@ -7,6 +7,7 @@
 //
 
 #import "FBApplicationInfoHandler.h"
+#import <BugfenderSDK/BugfenderSDK.h>
 #import "iOSHeaders.h"
 
 /**
@@ -21,15 +22,15 @@
  */
 + (BOOL)loadFramework {
     if (NSClassFromString(@"FBApplicationInfo")) {
-        NSLog(@"JFTM: FrontBoard Loaded!");
+        BFLog(@"JFTM: FrontBoard Loaded!");
         return YES;
     } else {
         NSBundle *bundle = [NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/FrontBoard.framework"];
         if (![bundle load]) {
-            NSLog(@"JFTM: ERROR: Failed to load FrontBoard framework");
+            BFLogErr(@"JFTM: ERROR: Failed to load FrontBoard framework");
             return NO;
         } else {
-            NSLog(@"JFTM: FrontBoard Loaded from disk!");
+            BFLog(@"JFTM: FrontBoard Loaded from disk!");
             return YES;
         }
     }
@@ -47,11 +48,11 @@
     }
 //    SEL selector = NSSelectorFromString(@"applicationProxyForIdentifier:");
     if ( ![NSClassFromString(@"LSApplicationProxy") respondsToSelector:@selector(applicationProxyForIdentifier:)]) {
-        NSLog(@"JFTM: ERROR: applicationProxyForIdentifier: not responding");
+        BFLogErr(@"JFTM: ERROR: applicationProxyForIdentifier: not responding");
         return nil;
     }
     FBApplicationInfo *appInfo = [NSClassFromString(@"LSApplicationProxy") performSelector:@selector(applicationProxyForIdentifier:) withObject:bundleID];
-    NSLog(@"JFTM: appInfo = %@",appInfo);
+    BFLog(@"JFTM: appInfo = %@",appInfo);
     return [appInfo performSelector:@selector(dataContainerURL)];
 }
 
@@ -67,11 +68,11 @@
     }
     //    SEL selector = NSSelectorFromString(@"applicationProxyForIdentifier:");
     if ( ![NSClassFromString(@"LSApplicationProxy") respondsToSelector:@selector(applicationProxyForIdentifier:)]) {
-        NSLog(@"JFTM: ERROR: applicationProxyForIdentifier: not responding");
+        BFLogErr(@"JFTM: ERROR: applicationProxyForIdentifier: not responding");
         return nil;
     }
     LSApplicationProxy *appProxy = [NSClassFromString(@"LSApplicationProxy") performSelector:@selector(applicationProxyForIdentifier:) withObject:bundleID];
-    NSLog(@"JFTM: appProxy = %@",appProxy);
+    BFLog(@"JFTM: appProxy = %@",appProxy);
     return [appProxy performSelector:@selector(itemName)];
 }
     
@@ -80,7 +81,7 @@
         return false;
     }
     if ( ![NSClassFromString(@"LSApplicationProxy") respondsToSelector:@selector(applicationProxyForIdentifier:)]) {
-        NSLog(@"JFTM: ERROR: applicationProxyForIdentifier: not responding");
+        BFLogErr(@"JFTM: ERROR: applicationProxyForIdentifier: not responding");
         return false;
     }
     LSApplicationProxy *appProxy = [NSClassFromString(@"LSApplicationProxy") performSelector:@selector(applicationProxyForIdentifier:) withObject:bundleID];

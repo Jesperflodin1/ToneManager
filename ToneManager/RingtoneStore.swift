@@ -259,12 +259,14 @@ extension RingtoneStore {
         if !finishedLoading { return }
         
         queue.async {
+            BFLog("Zedge installed:\(Preferences.zedgeRingtonesInstalled), AudikoLite installed:\(Preferences.audikoLiteInstalled), AudikoPro installed:\(Preferences.audikoProInstalled)")
             let scanner = RingtoneScanner()
             
             let apps = Preferences.ringtoneAppsToScan
             //            apps.append("/test")
             if apps.count > 0 {
                 BFLog("Paths to scan: %@", apps)
+                
                 if let newArray = scanner.importRingtonesFrom(apps: apps) {
                     BFLog("Ringtone import success, got new ringtones")
                     
