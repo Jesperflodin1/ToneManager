@@ -120,7 +120,7 @@ extension SettingsViewController {
         let osString = String(os.majorVersion) + "." + String(os.minorVersion) + "." + String(os.patchVersion)
         let appVersion = "\(Preferences.version)-\(Preferences.build)"
         
-        let importedTones = try? Data(contentsOf: plistURL)
+        
 
         let settingsData = allSettingsAsData()
         
@@ -133,15 +133,30 @@ extension SettingsViewController {
         mc.setSubject(emailTitle)
         mc.setMessageBody(messageBody, isHTML: false)
         mc.addAttachmentData(installedPackages(), mimeType: "text/plain", fileName: "dpkgl.txt")
-        if let tonesplist = importedTones {
+        if let tonesplist = tonesPlistData() {
             mc.addAttachmentData(tonesplist, mimeType: "text/plain", fileName: "tones.plist")
         }
         if let settingsDataNotNil = settingsData {
             mc.addAttachmentData(settingsDataNotNil, mimeType: "text/plain", fileName: "settings.plist")
         }
         mc.setToRecipients(toRecipents)
+        mc.navigationBar.tintColor = ColorPalette.navBarTextColor
         
         present(mc, animated: true, completion: nil)
+    }
+    
+    fileprivate func tonesPlistData() -> Data? {
+        do {
+            let data = try Data(contentsOf: plistURL)
+            let decoder = PropertyListDecoder()
+            let ringtonesArray = try decoder.decode(Array<Ringtone>.self, from: data)
+            let encoder = PropertyListEncoder()
+            encoder.outputFormat = .xml
+            return try encoder.encode(ringtonesArray)
+        } catch {
+            Bugfender.error("Error when reading tones plist for email")
+            return nil
+        }
     }
     
     fileprivate func deviceModel() -> String {

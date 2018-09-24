@@ -22,7 +22,7 @@
  */
 + (BOOL)loadFramework {
     if (NSClassFromString(@"FBApplicationInfo")) {
-        BFLog(@"JFTM: FrontBoard Loaded!");
+//        BFLog(@"JFTM: FrontBoard Loaded!");
         return YES;
     } else {
         NSBundle *bundle = [NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/FrontBoard.framework"];
@@ -72,7 +72,7 @@
         return nil;
     }
     LSApplicationProxy *appProxy = [NSClassFromString(@"LSApplicationProxy") performSelector:@selector(applicationProxyForIdentifier:) withObject:bundleID];
-    BFLog(@"JFTM: appProxy = %@",appProxy);
+//    BFLog(@"JFTM: appProxy = %@",appProxy);
     return [appProxy performSelector:@selector(itemName)];
 }
     

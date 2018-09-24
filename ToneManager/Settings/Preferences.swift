@@ -235,17 +235,23 @@ extension Preferences {
         let build : Any! = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")
         
         guard let currentVersion = version as? String else { return }
-        guard let currentBuild = build as? String else { return }
+        guard let buildString = build as? String else {
+            Bugfender.error("Build is not string")
+            return
+        }
+        guard let currentBuild = Int(buildString) else { return }
         
-        if currentVersion.isVersion(greaterThan: Preferences.version) {
+        BFLog("Reading app bundle plist, version: \(version) build: \(buildString)")
+        
+        if currentVersion.isVersion(greaterThan: Preferences.version) || currentBuild > Preferences.build {
+            BFLog("Version or build has increased")
             if !firstRun {
                 Preferences.isUpdated = true
             } else {
                 Preferences.isUpdated = false
             }
             Preferences.version = currentVersion
-            guard let buildInt = Int(currentBuild) else { return }
-            Preferences.build = buildInt
+            Preferences.build = currentBuild
         }
     }
     

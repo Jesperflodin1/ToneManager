@@ -59,6 +59,7 @@
 		24B5E29C21568A7700A8A70A /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24B5E29B21568A7700A8A70A /* assets.xcassets */; };
 		24B5E29E2156ADAE00A8A70A /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B5E29D2156ADAE00A8A70A /* HelpTableViewController.swift */; };
 		24B5E2A02156ADB700A8A70A /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B5E29F2156ADB700A8A70A /* HelpTableViewCell.swift */; };
+		24C529FA21597E9700770587 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C529F921597E9700770587 /* Localizable.swift */; };
 		24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE206A214276CF0045D678 /* SettingsViewController.swift */; };
 		24EE2075214295480045D678 /* RingtoneTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE2074214295480045D678 /* RingtoneTableCell.swift */; };
 		24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EE20822142C9590045D678 /* TLToneManagerHandler.m */; };
@@ -165,6 +166,7 @@
 		24B5E29B21568A7700A8A70A /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		24B5E29D2156ADAE00A8A70A /* HelpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		24B5E29F2156ADB700A8A70A /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
+		24C529F921597E9700770587 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		24EE206A214276CF0045D678 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		24EE2074214295480045D678 /* RingtoneTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneTableCell.swift; sourceTree = "<group>"; };
 		24EE207E2142C7E60045D678 /* ToneManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ToneManager-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				247AFDF921515846007191E1 /* AppearanceManager.swift */,
 				24982BD1214CE12B00DD0474 /* ColorPalette.swift */,
 				2477828B215298980058074F /* Error.swift */,
+				24C529F921597E9700770587 /* Localizable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				249694AE214799F0009960D7 /* AppListViewController.swift in Sources */,
 				249694A921456804009960D7 /* SynchronizedArray.swift in Sources */,
 				2477828221524D720058074F /* RingtoneCellButton.swift in Sources */,
+				24C529FA21597E9700770587 /* Localizable.swift in Sources */,
 				2497F65E2155816600324FF1 /* AppListCellDelegate.swift in Sources */,
 				24F7ECEA214FD84C00A46E72 /* Notification+Name.swift in Sources */,
 				245C729221578BD800D07410 /* HelpData.swift in Sources */,
