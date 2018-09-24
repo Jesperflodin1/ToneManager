@@ -21,6 +21,14 @@
 + (id)applicationProxyForBundleURL:(NSURL *)arg1;
 - (NSString *)itemName;
 - (BOOL)isInstalled;
+
+-(id)iconDataForVariant:(int)arg1 ;
+-(BOOL)isRemoveableSystemApp;
+-(BOOL)isRestricted;
+-(BOOL)isLaunchProhibited; //ios 10+
+-(BOOL)isWhitelisted;
+-(BOOL)isRemovedSystemApp;
+-(NSString *)applicationType;
 @end
 
 /**
