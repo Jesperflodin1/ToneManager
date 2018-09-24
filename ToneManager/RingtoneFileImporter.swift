@@ -38,7 +38,7 @@ final class RingtoneFileImporter: RingtoneScanner {
         let converter = RingtoneConverter(inputURL: file, outputURL: outputURL)
         converter.start(completionHandler: { (error) in
             if let convertError = error {
-                Bugfender.error("Got error from file converter: %@", convertError)
+                Bugfender.error("Got error from file converter: \(convertError as NSError)")
                 self.importError = convertError as NSError
                 completionHandler(false, nil)
             } else {
@@ -58,7 +58,7 @@ final class RingtoneFileImporter: RingtoneScanner {
         queue.async {
             BFLog("Trying to import file")
             if !self.isURLValidRingtone(file) {
-                Bugfender.warning("File is not valid ringtone, got extension: %@", file.pathExtension)
+                Bugfender.warning("File is not valid ringtone, got extension: \(file.pathExtension)")
 //                self.importError = createError(domain: .ringtoneFileImporter, message: "File is not a valid ringtone", code: .invalidRingtoneFile)
                 completionHandler(false, nil)
                 return
@@ -103,7 +103,7 @@ final class RingtoneFileImporter: RingtoneScanner {
         }
         
         guard let path = copyRingtoneToApp(fileURL.path, forBundleID: currentApp) else {
-            Bugfender.error("Error when getting new filepath for ringtone")
+            Bugfender.error("Error when getting new filepath for ringtone at path: \(fileURL.path)")
             importError = NSError(domain: ErrorDomain.ringtoneFileImporter.rawValue, code: ErrorCode.copyFailure.rawValue, userInfo: nil)
             return nil
         }
@@ -122,7 +122,7 @@ final class RingtoneFileImporter: RingtoneScanner {
     func isURLValidRingtone(_ fileURL : URL) -> Bool {
         BFLog("is fileurl valid called, got extension: %@", fileURL.pathExtension)
         
-        if !knownExtensions.contains(fileURL.pathExtension) || !convertExtensions.contains(fileURL.pathExtension) {
+        if !knownExtensions.contains(fileURL.pathExtension), !convertExtensions.contains(fileURL.pathExtension) {
             importError = createError(domain: .ringtoneFileImporter, message: "Unknown file extension", code: .invalidRingtoneFileExtension)
             return false
         }

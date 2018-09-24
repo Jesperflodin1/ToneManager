@@ -156,7 +156,7 @@ extension RingtoneStore {
                 try data.write(to: plistURL)
                 BFLog("Done writing plist")
             } catch {
-                Bugfender.error("Error when writing ringtones to plist: %@", error)
+                Bugfender.error("Error when writing ringtones to plist: \(error)")
             }
         }
     }
@@ -300,7 +300,7 @@ extension RingtoneStore {
             fileImporter.importFile(fileURL, completionHandler: { (success, ringtone) in
                 if !success {
                     let error = fileImporter.importError ?? NSError(domain: ErrorDomain.ringtoneStore.rawValue, code: ErrorCode.unknownImportError.rawValue, userInfo: nil)
-                    Bugfender.error("Got error when trying to import single file, errorcode=\(String(describing: error))")
+                    Bugfender.error("Got error when trying to import single file, errorcode=\(error as NSError)")
                     DispatchQueue.main.async {
                         completionHandler(false, error, nil)
                     }

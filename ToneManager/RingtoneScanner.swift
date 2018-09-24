@@ -52,11 +52,11 @@ extension RingtoneScanner {
                 filesArray = try fileManager.contentsOfDirectory(atPath: currentPath.path)
                 BFLog("Found %d files", filesArray.count)
             } catch {
-                Bugfender.error("Error: Could not enumerate path: %@ Error: %@", currentPath.path, error)
+                Bugfender.error("Error: Could not enumerate path: \(error as NSError)")
                 continue // go to next iteration/folder
             }
             guard filesArray.count > 0 else {
-                Bugfender.warning("No files found for path: %@", currentPath.path)
+                Bugfender.warning("No files found for path: \(currentPath.path)")
                 continue // go to next iteration/folder
             }
             
@@ -144,7 +144,7 @@ extension RingtoneScanner {
             BFLog("Copied file to path: %@", toFilePath.path)
             return toFilePath.path
         } catch {
-            Bugfender.error("Error when copying file: %@", error)
+            Bugfender.error("Error when copying file: \(error as NSError)")
         }
         return nil
     }

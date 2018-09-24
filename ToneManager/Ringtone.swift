@@ -78,7 +78,7 @@ final class Ringtone : NSObject, Codable {
                 self.rawDuration = duration
             }
             catch{
-                Bugfender.error("Error when retrieving duration of file: %@, error: %@", self.fileURL, error)
+                Bugfender.error("Error when retrieving duration of ringtone: \(error)")
                 self.rawDuration = 0
             }
         }
@@ -119,7 +119,7 @@ final class Ringtone : NSObject, Codable {
                 fileSize = size
             }
         } catch {
-            Bugfender.error("Could not get file size for path: %@ Error: %@", fileURL.path, error)
+            Bugfender.error("Could not get file size for path: \(error)")
         }
         self.size = fileSize
         
@@ -222,7 +222,7 @@ extension Ringtone {
     func isValid() -> Bool {
         let fileManager = FileManager.default
         if !fileManager.fileExists(atPath: fileURL.path) {
-            Bugfender.warning("ringtone does not exist, path: %@", fileURL.path)
+            Bugfender.warning("ringtone does not exist, path: \(fileURL.path)")
             return false // file does not exist
         }
         
@@ -230,7 +230,7 @@ extension Ringtone {
         guard let toneManager = TLToneManagerHandler.sharedInstance() else { return true }
         
         let result = toneManager.tone(withIdentifierIsValid: toneIdentifier)
-        BFLog("verify, result: %d", result)
+        BFLog("Verifing ringtone: %@, result: %d", self, result)
         if !result {
             try? fileManager.removeItem(atPath: fileURL.path)
         }
@@ -264,7 +264,7 @@ extension Ringtone {
             let data = try Data(contentsOf: self.fileURL)
             return data
         } catch {
-            Bugfender.error("Error when retrieving data for ringtone. Error: %@", error)
+            Bugfender.error("Error when retrieving data for ringtone. Error: \(error)")
             return nil
         }
     }
@@ -274,7 +274,7 @@ extension Ringtone {
         do {
             try FileManager.default.removeItem(at: self.fileURL)
         } catch {
-            Bugfender.error("Error when deleting ringtone file from path (%@) with error: %@", self.fileURL, error)
+            Bugfender.error("Error when deleting ringtone file: \(error)")
         }
     }
 }

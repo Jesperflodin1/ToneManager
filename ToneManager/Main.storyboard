@@ -753,6 +753,7 @@
                                                 <constraint firstItem="DNa-TX-Sth" firstAttribute="leading" secondItem="hnQ-JT-3mv" secondAttribute="leadingMargin" id="zQV-nX-l43"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="YGw-M1-njc" appends="YES" id="SpY-QZ-Sd4"/>
@@ -788,6 +789,7 @@
                                                 <constraint firstItem="iiQ-DK-oDk" firstAttribute="leading" secondItem="zcf-aK-uz9" secondAttribute="leadingMargin" id="s0Z-eW-rH0"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="jL7-ie-dNI" appends="YES" id="AxD-t7-wx2"/>
@@ -823,6 +825,7 @@
                                                 <constraint firstItem="mhi-dV-YW1" firstAttribute="leading" secondItem="dPy-mX-cCV" secondAttribute="leadingMargin" id="Rvu-yr-iwa"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="dpO-vX-Gcy" appends="YES" id="QGT-FY-7mz"/>
@@ -1490,47 +1493,11 @@
                                             <outletCollection property="gestureRecognizers" destination="aCu-bd-Fiy" appends="YES" id="OPX-cz-HRP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="E7E-yG-dIl">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="q9T-Wm-uOW">
                                         <rect key="frame" x="0.0" y="602.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E7E-yG-dIl" id="kZ1-Bm-G3F">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="aeQ-PJ-4xX">
-                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="29" id="Ne2-uO-hCi"/>
-                                                        <constraint firstAttribute="height" constant="29" id="bEx-mq-Dtx"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visit my Github" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lw2-mC-pvU">
-                                                    <rect key="frame" x="60" y="13" width="116" height="17.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstItem="aeQ-PJ-4xX" firstAttribute="centerY" secondItem="kZ1-Bm-G3F" secondAttribute="centerY" id="5F7-OH-zDm"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Lw2-mC-pvU" secondAttribute="bottom" constant="2.5" id="hJk-pm-miK"/>
-                                                <constraint firstItem="Lw2-mC-pvU" firstAttribute="leading" secondItem="aeQ-PJ-4xX" secondAttribute="trailing" constant="15" id="lai-Ti-8wG"/>
-                                                <constraint firstItem="aeQ-PJ-4xX" firstAttribute="leading" secondItem="kZ1-Bm-G3F" secondAttribute="leading" constant="16" id="yqf-fp-FJm"/>
-                                                <constraint firstItem="Lw2-mC-pvU" firstAttribute="centerY" secondItem="kZ1-Bm-G3F" secondAttribute="centerY" id="zja-0M-mNv"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <gestureRecognizers/>
-                                        <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="8Rq-IW-Sld" appends="YES" id="bBT-Xo-yMI"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="q9T-Wm-uOW">
-                                        <rect key="frame" x="0.0" y="646.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q9T-Wm-uOW" id="MFR-nc-Zm4">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope" translatesAutoresizingMaskIntoConstraints="NO" id="1JC-fH-ox1">
@@ -1560,6 +1527,43 @@
                                         <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="BCA-O1-6K9" appends="YES" id="r0C-JN-xHD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="E7E-yG-dIl">
+                                        <rect key="frame" x="0.0" y="646.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E7E-yG-dIl" id="kZ1-Bm-G3F">
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="aeQ-PJ-4xX">
+                                                    <rect key="frame" x="16" y="7.5" width="29" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="29" id="Ne2-uO-hCi"/>
+                                                        <constraint firstAttribute="height" constant="29" id="bEx-mq-Dtx"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visit my Github" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lw2-mC-pvU">
+                                                    <rect key="frame" x="60" y="10.5" width="116" height="22.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="aeQ-PJ-4xX" firstAttribute="centerY" secondItem="kZ1-Bm-G3F" secondAttribute="centerY" id="5F7-OH-zDm"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Lw2-mC-pvU" secondAttribute="bottom" constant="2.5" id="hJk-pm-miK"/>
+                                                <constraint firstItem="Lw2-mC-pvU" firstAttribute="leading" secondItem="aeQ-PJ-4xX" secondAttribute="trailing" constant="15" id="lai-Ti-8wG"/>
+                                                <constraint firstItem="aeQ-PJ-4xX" firstAttribute="leading" secondItem="kZ1-Bm-G3F" secondAttribute="leading" constant="16" id="yqf-fp-FJm"/>
+                                                <constraint firstItem="Lw2-mC-pvU" firstAttribute="centerY" secondItem="kZ1-Bm-G3F" secondAttribute="centerY" id="zja-0M-mNv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
+                                        <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="8Rq-IW-Sld" appends="YES" id="bBT-Xo-yMI"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

@@ -97,10 +97,12 @@ class RingtoneConverter: NSObject {
                 do {
                     try FileManager.default.moveItem(at: outputURL, to: newURL)
                 } catch {
-                    Bugfender.error("Error when changing file extension, error: %@", error)
+                    Bugfender.error("Error when changing file extension, error: \(error as NSError)")
                 }
             } else {
-                Bugfender.error("Error during file conversion: %@", session.error ?? "nil")
+                if let error = session.error {
+                    Bugfender.error("Error during file conversion: \(error as NSError)")
+                }
             }
             completionHandler?(session.error)
         }

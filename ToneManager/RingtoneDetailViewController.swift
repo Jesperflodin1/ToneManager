@@ -370,7 +370,9 @@ extension RingtoneDetailViewController: AVAudioPlayerDelegate {
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
-        Bugfender.warning("Audio playback error: %@", error ?? "nil")
+        if let realError = error {
+            Bugfender.warning("Audio playback error: \(realError as NSError)")
+        }
         stopPlaying()
     }
 }

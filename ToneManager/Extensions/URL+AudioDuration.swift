@@ -17,7 +17,7 @@ extension URL {
             let duration = avAudioPlayer.duration
             return NSNumber(value: round(duration)).intValue
         } catch {
-            Bugfender.error("Error retrieving duration of file at URL: %@ ERROR: %@", self, error)
+            Bugfender.error("Error retrieving duration of file: \(error)")
         }
         return 0
     }

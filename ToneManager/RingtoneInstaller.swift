@@ -120,7 +120,7 @@ extension RingtoneInstaller {
             toneLibraryMetaData["Protected Content"] = ringtone.protectedContent
             
             guard let toneData = ringtone.getData() else {
-                Bugfender.error("Could not get data for ringtone with path (%@)", ringtone.fileURL.path)
+                Bugfender.error("Could not get data for ringtone with path \(ringtone.fileURL.path)")
                 DispatchQueue.main.async {
                     completionHandler(ringtone, false)
                 }
