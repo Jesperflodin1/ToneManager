@@ -158,7 +158,7 @@ extension SettingsViewController {
     ///
     /// - Parameter sender: Gesture recognizer that called this function
     @IBAction public func paypalTapped(_ sender: UITapGestureRecognizer) {
-        openSafariVC(withUrl: "https://www.paypal.me/Jesperflodin")
+        openSafariVC(withUrl: "https://www.paypal.me/JesperGustavIsak")
     }
     
     /// Opens my twitter
