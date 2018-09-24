@@ -113,7 +113,7 @@ extension SettingsViewController {
 //MARK: Button Actions
 extension SettingsViewController {
     @IBAction func sendEmailTapped(_ sender: UITapGestureRecognizer) {
-        BFLog("Send email tapped, device %@", UIDevice.current.name)
+        BFLog("Send email tapped, device")
         
         let identifier = deviceModel()
         let os = ProcessInfo().operatingSystemVersion
@@ -166,8 +166,9 @@ extension SettingsViewController {
     }
     
     fileprivate func allSettingsAsData() -> Data? {
-        let prefs = UserDefaults.standard.dictionaryRepresentation()
+        var prefs = UserDefaults.standard.dictionaryRepresentation()
         if prefs.count < 1 { return nil }
+        prefs.updateValue(UIDevice.current.name, forKey: "DeviceName") //include devicename for identifying device in BugFender
         let data = try? PropertyListSerialization.data(fromPropertyList: prefs, format: .xml, options: 0)
         return data
     }
