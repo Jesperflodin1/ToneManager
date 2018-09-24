@@ -115,17 +115,14 @@ extension SettingsViewController {
     @IBAction func sendEmailTapped(_ sender: UITapGestureRecognizer) {
         BFLog("Send email tapped, device %@", UIDevice.current.name)
         
-        var systemInfo = utsname()
-        uname(&systemInfo)
-        let machineMirror = Mirror(reflecting: systemInfo.machine)
-        let identifier = machineMirror.children.reduce("") { identifier, element in
-            guard let value = element.value as? Int8, value != 0 else { return identifier }
-            return identifier + String(UnicodeScalar(UInt8(value)))
-        }
+        let identifier = deviceModel()
         let os = ProcessInfo().operatingSystemVersion
         let osString = String(os.majorVersion) + "." + String(os.minorVersion) + "." + String(os.patchVersion)
-        
         let appVersion = "\(Preferences.version)-\(Preferences.build)"
+        
+        let importedTones = try? Data(contentsOf: plistURL)
+        let settings = UserDefaults.standard.dictionaryRepresentation()
+        let settingsData = try? PropertyListSerialization.data(fromPropertyList: settings, format: .xml, options: 0)
         
         let emailTitle = "[ToneManager \(appVersion)] Email from App"
         let messageBody = "\n\nDevice: \(identifier), iOS \(osString)\nApp Version: \(appVersion)\n\nFeature request or bug report?"
@@ -136,9 +133,26 @@ extension SettingsViewController {
         mc.setSubject(emailTitle)
         mc.setMessageBody(messageBody, isHTML: false)
         mc.addAttachmentData(installedPackages(), mimeType: "text/plain", fileName: "dpkgl.txt")
+        if let tonesplist = importedTones {
+            mc.addAttachmentData(tonesplist, mimeType: "text/plain", fileName: "tones.plist")
+        }
+        if let settingsDataNotNil = settingsData {
+            mc.addAttachmentData(settingsDataNotNil, mimeType: "text/plain", fileName: "settings.plist")
+        }
         mc.setToRecipients(toRecipents)
         
         present(mc, animated: true, completion: nil)
+    }
+    
+    fileprivate func deviceModel() -> String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        return identifier
     }
     
     fileprivate func installedPackages() -> Data {
@@ -149,6 +163,13 @@ extension SettingsViewController {
         task.setStandardOutput(pipe)
         task.launch()
         return pipe.fileHandleForReading.readDataToEndOfFile()
+    }
+    
+    fileprivate func allSettingsAsData() -> Data? {
+        let prefs = UserDefaults.standard.dictionaryRepresentation()
+        if prefs.count < 1 { return nil }
+        
+        
     }
     
     /// Opens github page

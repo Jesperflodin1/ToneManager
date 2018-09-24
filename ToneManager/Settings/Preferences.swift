@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BugfenderSDK
 
 /// Preferences struct, uses Userdefaults
 struct Preferences {
@@ -218,6 +219,9 @@ extension Preferences {
     /// Sets default user settings for UserDefaults
     static func registerDefaults() {
         Preferences.defaults.register(defaults: defaultSettings)
+        if defaults.dictionaryRepresentation().count > 0 {
+            BFLog("Current settings: %@", defaults.dictionaryRepresentation().description)
+        }
     }
     
     static func reset() {
