@@ -37,9 +37,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Preferences.registerDefaults()
         enableRemoteLogging()
-        let result = UIApplication.shared.canOpenURL(URL(string: "tonemanager://test")!)
-        BFLog("URLTEST: \(result)")
-        AppSetupManager.doSetupIfNeeded()
         
         BFLog("App start")
         
@@ -54,6 +51,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.makeKeyAndVisible()
         
         application.statusBarStyle = .lightContent // .default
+        
+        let result = UIApplication.shared.canOpenURL(URL(string: "tonemanager://test")!)
+        BFLog("URLTEST: %d", result)
+        AppSetupManager.doSetupIfNeeded()
         
         if let options = launchOptions, let url = options[.url] as? URL, url.isFileURL {
             BFLog("Got url for file in appdidfinishlaunching")

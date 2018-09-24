@@ -55,31 +55,32 @@ extension RingtoneManager {
         importRingtoneURL(file.filePath, onSuccess: onSuccess)
     }
     
+    fileprivate class func handleError(_ errorType: NSError) {
+        switch errorType.code {
+        case ErrorCode.invalidRingtoneFile.rawValue:
+            HUD.flash(.labeledError(title: "Error", subtitle: "File is not a valid ringtone"), delay: 1.0)
+            return
+        case ErrorCode.fileAlreadyImported.rawValue:
+            HUD.flash(.labeledError(title: "Error", subtitle: "File is already imported"), delay: 1.0)
+            return
+        case ErrorCode.copyFailure.rawValue:
+            HUD.flash(.labeledError(title: "Error", subtitle: "Failed to copy file"), delay: 1.0)
+            return
+        default:
+            HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when importing ringtone"), delay: 1.0)
+            return
+        }
+    }
+    
     class func importRingtoneURL(_ fileURL : URL, onSuccess: @escaping (() -> Void)) {
         RingtoneStore.sharedInstance.importFile(fileURL, completionHandler: { (success, error, ringtone) in
             if !success {
                 guard let errorType = error else { return }
                 Bugfender.error("Import failure")
-                if errorType.code == ErrorCode.invalidRingtoneFile.rawValue {
-                    HUD.flash(.labeledError(title: "Error", subtitle: "File is not a valid ringtone"), delay: 1.0)
-                    return
-                } else if errorType.code == ErrorCode.fileAlreadyImported.rawValue {
-                    
-                    
-                    HUD.flash(.labeledError(title: "Error", subtitle: "File is already imported"), delay: 1.0)
-                    return
-                } else if errorType.code == ErrorCode.copyFailure.rawValue {
-                    HUD.flash(.labeledError(title: "Error", subtitle: "Failed to copy file"), delay: 1.0)
-                    return
-                }
-                else {
-                    HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when importing ringtone"), delay: 1.0)
-                    return
-                }
+                return handleError(errorType)
             } else { // import success
                 BFLog("Import success")
                 HUD.flash(.labeledSuccess(title: "Success", subtitle: "Imported 1 Ringtone"), delay: 0.7)
-                
                 
                 if !Preferences.autoInstall {
                     onSuccess()
@@ -343,7 +344,7 @@ extension RingtoneManager {
             let buttonOne = DestructiveButton(title: "Delete all") {
                 HUD.show(.labeledProgress(title: "Deleting", subtitle: "Deleting ringtones"))
                 
-                BFLog("Calling delete for multiple ringtones")
+                BFLog("Calling delete for all ringtones")
                 
                 RingtoneStore.sharedInstance.removeAllRingtones(completionHandler: completionHandler)
             }

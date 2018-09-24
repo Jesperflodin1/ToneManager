@@ -16,11 +16,24 @@ enum ErrorCode: Int {
     case fileAlreadyImported = 8001
     case copyFailure = 8002
     
+    case nilFileURL = 7001
+    case invalidFormat = 7002
+    
     case unknownImportError = 9004
+    
+    case unknownError = 1001
 }
 
 enum ErrorDomain: String {
     
     case ringtoneFileImporter = "fi.flodin.tonemanager.RingtoneFileImporter"
     case ringtoneStore = "fi.flodin.tonemanager.RingtoneStore"
+    case ringtoneConverter = "fi.flodin.tonemanager.RingtoneConverter"
+    
+    case defaultDomain = "fi.flodin.tonemanager"
+}
+
+func createError(domain: ErrorDomain = .defaultDomain, message: String, code: ErrorCode = .unknownError) -> NSError {
+    let userInfo: [String: Any] = [NSLocalizedDescriptionKey: message]
+    return NSError(domain: domain.rawValue, code: code.rawValue, userInfo: userInfo)
 }

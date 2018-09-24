@@ -24,18 +24,52 @@ final class RingtoneFileImporter: RingtoneScanner {
     
     var importError : NSError?
     
+    fileprivate func convertFileAndImport(at file : URL, completionHandler: @escaping (Bool, Ringtone?) -> ()) {
+        BFLog("File is not valid m4r ringtone, calling convert for: %@", file.path)
+        let outputFolder = appDataDir.appendingPathComponent("tmp", isDirectory: true)
+        do {
+            try FileManager.default.createDirectory(at: outputFolder, withIntermediateDirectories: true)
+        } catch {
+            BFLog("Temp folder already exists? Error when creating temp folder: %@", error as NSError)
+        }
+        // Make sure we get a m4r file
+        let outputURL = outputFolder.appendingPathComponent(file.deletingPathExtension().appendingPathExtension("m4r").lastPathComponent, isDirectory: false)
+        
+        let converter = RingtoneConverter(inputURL: file, outputURL: outputURL)
+        converter.start(completionHandler: { (error) in
+            if let convertError = error {
+                Bugfender.error("Got error from file converter: %@", convertError)
+                self.importError = convertError as NSError
+                completionHandler(false, nil)
+            } else {
+                //converter will always output m4r file
+                BFLog("File converter success")
+                if let tone = self.importm4r(outputURL) {
+                    completionHandler(true, tone)
+                } else {
+                    completionHandler(false, nil)
+                }
+                
+            }
+        })
+    }
+    
     func importFile(_ file : URL, completionHandler: @escaping (Bool, Ringtone?) -> ()) {
         queue.async {
             BFLog("Trying to import file")
             if !self.isURLValidRingtone(file) {
                 Bugfender.warning("File is not valid ringtone, got extension: %@", file.pathExtension)
-                
+//                self.importError = createError(domain: .ringtoneFileImporter, message: "File is not a valid ringtone", code: .invalidRingtoneFile)
                 completionHandler(false, nil)
                 return
             }
             BFLog("File is valid ringtone, got extension: %@", file.pathExtension)
             
-            if file.pathExtension == "m4r" {
+            // m4r shorter than 31 seconds, else convert to 30 seconds
+            let duration = file.audioDurationOfFile()
+            BFLog("Got duration: %d", duration)
+            
+            if file.pathExtension == "m4r", duration <= 31 {
                 BFLog("File is m4r, calling import: %@", file.path)
                 if let tone = self.importm4r(file) {
                     completionHandler(true, tone)
@@ -43,31 +77,7 @@ final class RingtoneFileImporter: RingtoneScanner {
                     completionHandler(false, nil)
                 }
             } else {
-                BFLog("File is not m4r, calling convert for: %@", file.path)
-                let outputFolder = appDataDir.appendingPathComponent("tmp", isDirectory: true)
-                do {
-                    try FileManager.default.createDirectory(at: outputFolder, withIntermediateDirectories: true)
-                } catch {
-                    Bugfender.warning("Error when creating temp folder: %@", error)
-                }
-                // Make sure we get a m4a file
-                let outputURL = outputFolder.appendingPathComponent(file.deletingPathExtension().appendingPathExtension("m4a").lastPathComponent, isDirectory: false)
-                
-                let converter = RingtoneConverter(inputURL: file, outputURL: outputURL)
-                converter.start(completionHandler: { (error) in
-                    if let convertError = error {
-                        Bugfender.error("Got error from file converter: %@", convertError)
-                    } else {
-                        //converter will always output m4r file
-                        BFLog("File converter success")
-                        if let tone = self.importm4r(outputURL.deletingPathExtension().appendingPathExtension("m4r")) {
-                            completionHandler(true, tone)
-                        } else {
-                            completionHandler(false, nil)
-                        }
-                        
-                    }
-                })
+                self.convertFileAndImport(at: file, completionHandler: completionHandler)
             }
         }
     }
@@ -82,7 +92,7 @@ final class RingtoneFileImporter: RingtoneScanner {
         // Skip ringtones with same filename from same app
         if (RingtoneStore.sharedInstance.allRingtones.contains(where: { ($0.fileURL.lastPathComponent ==  fileURL.lastPathComponent) && ($0.bundleID == currentApp) } )) {
             BFLog("File already exists: %@ for app: %@", fileURL.path, currentApp)
-            importError = NSError(domain: ErrorDomain.ringtoneFileImporter.rawValue, code: ErrorCode.fileAlreadyImported.rawValue, userInfo: nil)
+            importError = createError(domain: .ringtoneFileImporter, message: "File already imported", code: .fileAlreadyImported)
             return nil
         }
         
@@ -113,6 +123,7 @@ final class RingtoneFileImporter: RingtoneScanner {
         BFLog("is fileurl valid called, got extension: %@", fileURL.pathExtension)
         
         if !knownExtensions.contains(fileURL.pathExtension) || !convertExtensions.contains(fileURL.pathExtension) {
+            importError = createError(domain: .ringtoneFileImporter, message: "Unknown file extension", code: .invalidRingtoneFileExtension)
             return false
         }
         
@@ -120,19 +131,18 @@ final class RingtoneFileImporter: RingtoneScanner {
         {
             let attribute = try FileManager.default.attributesOfItem(atPath: fileURL.path)
             if let size = attribute[FileAttributeKey.size] as? Int {
-                if size < 1 { return false }
+                if size < 1 {
+                    importError = createError(domain: .ringtoneFileImporter, message: "No file content", code: .invalidRingtoneFileContent)
+                    return false
+                }
             }
-            
-            let avAudioPlayer = try AVAudioPlayer(contentsOf: fileURL)
-            let duration = avAudioPlayer.duration
-            if NSNumber(value: round(duration)).intValue > 40 { return false }
         }
         catch{
-            Bugfender.error("Error when retrieving duration or size of file: %@, error: %@", fileURL, error)
+            Bugfender.error("Error when retrieving size of file: %@, error: %@", fileURL, error)
+            importError = error as NSError
             return false
         }
         
         return true
     }
-    
 }

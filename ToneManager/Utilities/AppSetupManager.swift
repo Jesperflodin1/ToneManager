@@ -13,7 +13,7 @@ class AppSetupManager {
     
     class func doSetupIfNeeded() {
         Preferences.compareVersions()
-        BFLog("App version: \(Preferences.version) Build: \(Preferences.build)")
+        BFLog("App version: %@ Build: %@",Preferences.version,String(Preferences.build))
         if Preferences.firstRun {
             BFLog("First run setup")
             registerAppWithSystem()

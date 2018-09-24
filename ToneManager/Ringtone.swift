@@ -16,16 +16,16 @@ final class Ringtone : NSObject, Codable {
     private(set) var name: String
     
     /// Identifier used by tonelibrary
-    public var identifier: String?
+    var identifier: String?
     
     /// Length of ringtone as Int, calculated from ’Ringtone.rawDuration’
-    public var totalTime: Int {
+    var totalTime: Int {
         get {
             return NSNumber(value: round(self.rawDuration)).intValue
         }
     }
     
-    public var installed: Bool {
+    var installed: Bool {
         get {
             guard identifier != nil else { return false }
             return true
@@ -33,25 +33,25 @@ final class Ringtone : NSObject, Codable {
     }
     
     /// duration in seconds, as double
-    public let rawDuration : Double
+    let rawDuration : Double
     
     /// Bundle ID it was imported from
-    public let bundleID: String
+    let bundleID: String
     
     /// Location for ringtone as URL
-    public let fileURL: URL
+    let fileURL: URL
     
     /// Always false
-    public let protectedContent: Bool
+    let protectedContent: Bool
     
     /// Always false
-    public let purchased: Bool
+    let purchased: Bool
     
     /// Appname (from bundle id) to show in the RingtoneTableView
-    public let appName: String
+    let appName: String
     
     /// File size of ringtone
-    public let size: Int
+    let size: Int
     
     
     //MARK: Initializers
@@ -66,7 +66,6 @@ final class Ringtone : NSObject, Codable {
     ///   - protectedContent: Required by tonelibrary. Defaults to false
     ///   - purchased: Required by tonelibrary. Defaults to false
     init(name: String, identifier: String?, duration: Double?, bundleID: String?, fileURL: URL, protectedContent: Bool? = nil, purchased: Bool? = nil) {
-        NSLog("Ringtone init")
         self.fileURL = fileURL
         
         if let time = duration {
@@ -79,7 +78,7 @@ final class Ringtone : NSObject, Codable {
                 self.rawDuration = duration
             }
             catch{
-                Bugfender.error("Error when retrieving duration of file: \(self.fileURL), error: \(error)")
+                Bugfender.error("Error when retrieving duration of file: %@, error: %@", self.fileURL, error)
                 self.rawDuration = 0
             }
         }
@@ -120,7 +119,7 @@ final class Ringtone : NSObject, Codable {
                 fileSize = size
             }
         } catch {
-            Bugfender.error("Could not get file size for path: \(fileURL) Error: \(error)")
+            Bugfender.error("Could not get file size for path: %@ Error: %@", fileURL.path, error)
         }
         self.size = fileSize
         
@@ -134,7 +133,6 @@ final class Ringtone : NSObject, Codable {
     ///   - bundleID: bundleid this ringtone was imported from
     ///   - appendRandomToName: true if a short random string should be appended to ringtone name
     convenience init(filePath: String, bundleID: String, appendRandomToName : Bool = false) {
-        NSLog("Ringtone convenience init")
         let url = URL(fileURLWithPath: filePath)
         var generatedName = url.nameFromFilePath()
         if appendRandomToName {
@@ -157,7 +155,7 @@ final class Ringtone : NSObject, Codable {
         self.init(name: generatedName, identifier:nil , duration: nil, bundleID: bundleID, fileURL: url)
     }
     
-    public required init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         name = try values.decode(String.self, forKey: .name)
         identifier = try values.decodeIfPresent(String.self, forKey: .identifier)
@@ -184,7 +182,7 @@ final class Ringtone : NSObject, Codable {
         case size
     }
     
-    public func encode(to encoder: Encoder) throws {
+    func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(identifier, forKey: .identifier)
@@ -206,7 +204,7 @@ extension Ringtone: NSCopying {
     ///
     /// - Parameter zone: ?
     /// - Returns: New ringtone with same values as this ringtone
-    public func copy(with zone: NSZone? = nil) -> Any {
+    func copy(with zone: NSZone? = nil) -> Any {
         return Ringtone(name: self.name, identifier: self.identifier, duration: self.rawDuration, bundleID: self.bundleID, fileURL: self.fileURL, protectedContent: self.protectedContent, purchased: self.purchased)
     }
     
@@ -221,10 +219,10 @@ extension Ringtone {
     /// ( if file exists)
     ///
     /// - Returns: true if valid
-    public func isValid() -> Bool {
+    func isValid() -> Bool {
         let fileManager = FileManager.default
         if !fileManager.fileExists(atPath: fileURL.path) {
-            NSLog("ringtone does not exist")
+            Bugfender.warning("ringtone does not exist, path: %@", fileURL.path)
             return false // file does not exist
         }
         
@@ -232,7 +230,7 @@ extension Ringtone {
         guard let toneManager = TLToneManagerHandler.sharedInstance() else { return true }
         
         let result = toneManager.tone(withIdentifierIsValid: toneIdentifier)
-        NSLog("verify, result: \(result)")
+        BFLog("verify, result: %d", result)
         if !result {
             try? fileManager.removeItem(atPath: fileURL.path)
         }
@@ -241,13 +239,13 @@ extension Ringtone {
     }
     
     /// Returns description string for this ringtone
-    override public var description: String {
+    override var description: String {
         get {
-            return "<Ringtone name:\(self.name), identifier: \(self.identifier ?? "nil"), URL: \(self.fileURL)>"
+            return "<Ringtone name:\(self.name), identifier: \(self.identifier ?? "nil"), Path: \(self.fileURL.path)>"
         }
     }
     
-    public func humanReadableSize() -> String {
+    func humanReadableSize() -> String {
         let byteCount = self.size
         let bcf = ByteCountFormatter()
         bcf.allowedUnits = [.useAll]
@@ -261,22 +259,22 @@ extension Ringtone {
     /// Returns data object with data from ringtone file
     ///
     /// - Returns: Data from ringtone file
-    public func getData() -> Data? {
+    func getData() -> Data? {
         do {
             let data = try Data(contentsOf: self.fileURL)
             return data
         } catch {
-            Bugfender.error("Error when retrieving data for ringtone. Error: \(error)")
+            Bugfender.error("Error when retrieving data for ringtone. Error: %@", error)
             return nil
         }
     }
     
     /// Deletes the file this ringtone object is associated with
-    public func deleteFile() {
+    func deleteFile() {
         do {
             try FileManager.default.removeItem(at: self.fileURL)
         } catch {
-            Bugfender.error("Error when deleting ringtone file from path (\(self.fileURL)) with error: \(error)")
+            Bugfender.error("Error when deleting ringtone file from path (%@) with error: %@", self.fileURL, error)
         }
     }
 }

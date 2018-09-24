@@ -26,7 +26,7 @@ extension RingtoneScanner {
     /// - Returns: sorted array of all new imported ringtones. Nil if nothing was imported
     public func importRingtonesFrom(apps appsArray : Array<String>) -> Array<Ringtone>? {
         
-        //        BFLog("Starting scan for apps: \(appsArray)")
+        BFLog("Starting scan for apps: %@", appsArray)
         
         //        guard let tempArray = delegate.allRingtones.array else {
         //            Bugfender.error("Failed to get ringtones array")
@@ -45,18 +45,18 @@ extension RingtoneScanner {
             
             currentPath.appendPathComponent("Documents")
             
-            BFLog("Scanning path: \(currentPath)")
+            BFLog("Scanning path: %@", currentPath.path)
             
             var filesArray : Array<String>
             do {
                 filesArray = try fileManager.contentsOfDirectory(atPath: currentPath.path)
-                BFLog("Found \(filesArray.count) files")
+                BFLog("Found %d files", filesArray.count)
             } catch {
-                Bugfender.error("Error: Could not enumerate path: \(currentPath.path) Error: \(error)")
+                Bugfender.error("Error: Could not enumerate path: %@ Error: %@", currentPath.path, error)
                 continue // go to next iteration/folder
             }
             guard filesArray.count > 0 else {
-                Bugfender.warning("No files found for path: \(currentPath.path)")
+                Bugfender.warning("No files found for path: %@", currentPath.path)
                 continue // go to next iteration/folder
             }
             
@@ -72,13 +72,13 @@ extension RingtoneScanner {
                 
                 // Skip ringtones with same filename from same app
                 if (RingtoneStore.sharedInstance.allRingtones.contains(where: { ($0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent) && ($0.bundleID == currentApp) } )) {
-                    BFLog("File already exists: \(fileUrl.path) for app: \(currentApp)")
+                    BFLog("File already exists: %@ for app: %@", fileUrl.path, currentApp)
                     continue
                 }
                 
                 // if filename already exists, but different app, prepare to set a different ringtone name
                 if (RingtoneStore.sharedInstance.allRingtones.contains(where: { $0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent } )) {
-                    BFLog("File already exists but different app, importing anyway: \(fileUrl.path)")
+                    BFLog("File already exists but different app, importing anyway: %@", fileUrl.path)
                     appendRandomToRingtoneName = true
                 }
                 
@@ -138,13 +138,13 @@ extension RingtoneScanner {
             try fileManager.createDirectory(at: appDataSubfolder, withIntermediateDirectories: true)
             if fileManager.fileExists(atPath: toFilePath.path) {
                 try fileManager.removeItem(atPath: toFilePath.path)
-                BFLog("Removed existing file at path: \(toFilePath.path)")
+                BFLog("Removed existing file at path: %@", toFilePath.path)
             }
             try fileManager.copyItem(atPath: path, toPath: toFilePath.path)
-            BFLog("Copied file to path: \(toFilePath.path)")
+            BFLog("Copied file to path: %@", toFilePath.path)
             return toFilePath.path
         } catch {
-            Bugfender.error("Error when copying file: \(error)")
+            Bugfender.error("Error when copying file: %@", error)
         }
         return nil
     }

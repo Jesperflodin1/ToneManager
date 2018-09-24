@@ -107,7 +107,7 @@ extension RingtoneInstaller {
                 return
             }
             if ringtone.identifier != nil {
-                BFLog("Ringtone is already installed, tone: \(ringtone.fileURL.path)")
+                BFLog("Ringtone is already installed, tone: %@", ringtone.fileURL.path)
                 DispatchQueue.main.async {
                     completionHandler(ringtone, false)
                 }
@@ -120,7 +120,7 @@ extension RingtoneInstaller {
             toneLibraryMetaData["Protected Content"] = ringtone.protectedContent
             
             guard let toneData = ringtone.getData() else {
-                Bugfender.error("Could not get data for ringtone with path (\(ringtone.fileURL.path))")
+                Bugfender.error("Could not get data for ringtone with path (%@)", ringtone.fileURL.path)
                 DispatchQueue.main.async {
                     completionHandler(ringtone, false)
                 }
@@ -129,7 +129,7 @@ extension RingtoneInstaller {
             
             TLToneManagerHandler.sharedInstance().importTone(toneData, metadata: toneLibraryMetaData) { (success : Bool, toneIdentifier : String?) in
                 if success && (toneIdentifier != nil) {
-                    BFLog("Import success, got identifier: \(toneIdentifier ?? "nil")")
+                    BFLog("Import success, got identifier: %@", toneIdentifier ?? "nil")
                     DispatchQueue.main.sync { // to make sure tableview is not reloading
                         ringtone.identifier = toneIdentifier
                     }

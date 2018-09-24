@@ -7,3 +7,4 @@
 #import <AppList/AppList.h>
 #import "LSApplicationWorkspaceHandler.h"
 #import "CNMutableContactHandler.h"
+#import "Task.h"

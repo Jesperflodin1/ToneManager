@@ -46,8 +46,8 @@
     [request updateContact:contact];
     NSError *error;
     if ( ![store executeSaveRequest:request error:&error] ) {
-        BFLogErr(@"Error when send save request for contact, error: %@", error);
-        NSLog(@"Error when send save request for contact, error: %@", error);
+        BFLogErr(@"Error when sending save request for contact, error: %@", error);
+        NSLog(@"Error when sending save request for contact, error: %@", error);
         return NO;
     }
     

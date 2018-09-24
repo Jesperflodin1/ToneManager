@@ -225,7 +225,7 @@ extension RingtoneTableViewController {
     
     /// Called from notification observer when app will enter foreground. Updates available ringtones
     @objc func willEnterForeground() {
-        BFLog("did become active, autoinstall = \(Preferences.autoInstall)")
+        BFLog("did become active, autoinstall = %d", Preferences.autoInstall)
         updateAvailableRingtones()
     }
     

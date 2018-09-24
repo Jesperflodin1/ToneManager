@@ -156,7 +156,7 @@ extension RingtoneStore {
                 try data.write(to: plistURL)
                 BFLog("Done writing plist")
             } catch {
-                Bugfender.error("Error when writing ringtones to plist: \(error)")
+                Bugfender.error("Error when writing ringtones to plist: %@", error)
             }
         }
     }
@@ -194,7 +194,7 @@ extension RingtoneStore {
         }
         
         let installer = RingtoneInstaller(self)
-        BFLog("install all ringtones, count = \(tonesToInstall.count)")
+        BFLog("install all ringtones, count = %d", tonesToInstall.count)
         
         installer.installRingtones(inArray: tonesToInstall, completionHandler: completionHandler)
     }
@@ -208,7 +208,7 @@ extension RingtoneStore {
         
         let installer = RingtoneInstaller(self)
         
-        BFLog("calling uninstall for ringtone: \(ringtone.name)")
+        BFLog("calling uninstall for ringtone: %@", ringtone.name)
         
         installer.removeRingtone(ringtone, deleteFile: false, completionHandler: completionHandler)
         
@@ -219,7 +219,7 @@ extension RingtoneStore {
         
         let installer = RingtoneInstaller(self)
         
-        BFLog("Uninstall all ringtones, count = \(tonesToUninstall.count)")
+        BFLog("Uninstall all ringtones, count = %d", tonesToUninstall.count)
         
         installer.removeRingtones(inArray: tonesToUninstall, deleteFiles: false, completionHandler: completionHandler)
     }
@@ -230,7 +230,7 @@ extension RingtoneStore {
     ///   - ringtone: Ringtone to remove
     ///   - completion: Optional completion block to run when done. Runs in main queue
     func removeRingtone(_ ringtone : Ringtone, completion: @escaping (Bool) -> Void) {
-        BFLog("Delete was called for ringtone: \(ringtone.name)")
+        BFLog("Delete was called for ringtone: %@", ringtone)
         
         let installer = RingtoneInstaller(self)
         
@@ -242,7 +242,7 @@ extension RingtoneStore {
         
         let installer = RingtoneInstaller(self)
         
-        BFLog("Delete all ringtones, count = \(tonesToUninstall.count)")
+        BFLog("Delete all ringtones, count = %d", tonesToUninstall.count)
         
         installer.removeRingtones(inArray: tonesToUninstall, deleteFiles: true, completionHandler: completionHandler)
     }
@@ -255,7 +255,7 @@ extension RingtoneStore {
     /// - Parameter completionHandler: completion block that should run when import is done, a Bool indicating if new ringtones
     /// was imported is passed to it.
     func updateRingtones(completionHandler: @escaping (Bool, [Ringtone]?) -> Void) {
-        BFLog("Update called, finishedloading=\(self.finishedLoading)")
+        BFLog("Update called, finishedloading=%d", self.finishedLoading)
         if !finishedLoading { return }
         
         queue.async {
@@ -264,7 +264,7 @@ extension RingtoneStore {
             let apps = Preferences.ringtoneAppsToScan
             //            apps.append("/test")
             if apps.count > 0 {
-                BFLog("Paths to scan: \(apps)")
+                BFLog("Paths to scan: %@", apps)
                 if let newArray = scanner.importRingtonesFrom(apps: apps) {
                     BFLog("Ringtone import success, got new ringtones")
                     

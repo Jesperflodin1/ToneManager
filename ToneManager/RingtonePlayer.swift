@@ -46,7 +46,7 @@ extension RingtonePlayer {
             self.audioPlayer?.delegate = self
             return true
         } catch {
-            Bugfender.error("Error when preparing to play ringtone: \(ringtone) with error: \(error)")
+            Bugfender.error("Error when preparing to play ringtone: %@ with error: %@", ringtone, error as NSError)
             return false
         }
     }
@@ -109,7 +109,7 @@ extension RingtonePlayer: AVAudioPlayerDelegate {
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
-        Bugfender.warning("Audio playback error: \(String(describing: error))")
+        Bugfender.warning("Audio playback error: %@", (error as NSError?) ?? "nil")
         stopPlaying()
         audioPlayer = nil
     }

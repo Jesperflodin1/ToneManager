@@ -9,20 +9,6 @@
 import AVFoundation
 import BugfenderSDK
 
-/**
- AKConverter wraps the more complex AVFoundation and CoreAudio audio conversions in an easy to use format.
- ```
- let options = AKConverter.Options()
- // any options left nil will assume the value of the input file
- options.format = "wav"
- options.sampleRate == 48000
- options.bitDepth = 24
- let converter = AKConverter(inputURL: oldURL, outputURL: newURL, options: options)
- converter.start(completionHandler: { error in
- // check to see if error isn't nil, otherwise you're good
- })
- ```
- */
 class RingtoneConverter: NSObject {
     /**
      RingtoneConverterCallback is the callback format for start()
@@ -47,7 +33,7 @@ class RingtoneConverter: NSObject {
     private var reader: AVAssetReader?
     
     // MARK: - initialization
-    /// init with input, output and options - then start()
+    /// init with input, output - then start()
     public init(inputURL: URL, outputURL: URL) {
         self.inputURL = inputURL
         if outputURL.pathExtension == "m4r" {
@@ -64,14 +50,14 @@ class RingtoneConverter: NSObject {
      */
     open func start(completionHandler: RingtoneConverterCallback? = nil) {
         guard let inputURL = self.inputURL else {
-            completionHandler?(createError(message: "Input file can't be nil."))
+            completionHandler?(createError(domain: .ringtoneConverter, message: "Input file can't be nil.", code: .nilFileURL))
             return
         }
         
         let inputFormat = inputURL.pathExtension.lowercased()
         // verify inputFormat
         guard RingtoneConverter.inputFormats.contains(inputFormat) else {
-            completionHandler?(createError(message: "The input file format isn't able to be processed."))
+            completionHandler?(createError(domain: .ringtoneConverter, message: "The input file format isn't able to be processed.", code: .invalidFormat))
             return
         }
 
@@ -84,11 +70,11 @@ class RingtoneConverter: NSObject {
     // With this approach you can't really specify any settings other than the limited presets.
     private func convert(completionHandler: RingtoneConverterCallback? = nil) {
         guard let inputURL = self.inputURL else {
-            completionHandler?(createError(message: "Input file can't be nil."))
+            completionHandler?(createError(domain: .ringtoneConverter, message: "Input file can't be nil.", code: .nilFileURL))
             return
         }
         guard let outputURL = self.outputURL else {
-            completionHandler?(createError(message: "Output file can't be nil."))
+            completionHandler?(createError(domain: .ringtoneConverter, message: "Output file can't be nil.", code: .nilFileURL))
             return
         }
         
@@ -111,17 +97,12 @@ class RingtoneConverter: NSObject {
                 do {
                     try FileManager.default.moveItem(at: outputURL, to: newURL)
                 } catch {
-                    Bugfender.error("Error when changing file extension, error: \(error)")
+                    Bugfender.error("Error when changing file extension, error: %@", error)
                 }
             } else {
-                Bugfender.error("Error during file conversion: \(String(describing: session.error))")
+                Bugfender.error("Error during file conversion: %@", session.error ?? "nil")
             }
             completionHandler?(session.error)
         }
-    }
-    
-    private func createError(message: String, code: Int = 1) -> NSError {
-        let userInfo: [String: Any] = [NSLocalizedDescriptionKey: message]
-        return NSError(domain: "fi.flodin.tonemanager.RingtoneConverter.error", code: code, userInfo: userInfo)
     }
 }

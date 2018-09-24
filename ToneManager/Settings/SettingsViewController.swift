@@ -65,7 +65,7 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
         case .sent:
             BFLog("Mail sent")
         case .failed:
-            BFLog("Mail sent failure: \(String(describing: error?.localizedDescription))")
+            BFLog("Mail sent failure: %@", (error as NSError?) ?? "nil")
         }
         controller.dismiss(animated: true, completion: nil)
     }
@@ -89,15 +89,12 @@ extension SettingsViewController {
         if section != 3 {
             return super.tableView(tableView, titleForFooterInSection: section)
         } else {
-            let version : Any! = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
-            let build : Any! = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")
+            let version = Preferences.version
+            let build = String(Preferences.build)
             
             let footerText = super.tableView(tableView, titleForFooterInSection: section)
             
-            guard let versionString = version, let buildString = build else {
-                return footerText!
-            }
-            return "ToneManager \(versionString)-\(buildString)\n" + footerText!
+            return "ToneManager \(version)-\(build)\n" + footerText!
         }
     }
 }
@@ -109,13 +106,15 @@ extension SettingsViewController {
     /// - Parameter sender: UISwitch that initiated this
     @IBAction public func autoInstallChanged(_ sender: UISwitch) {
         Preferences.autoInstall = sender.isOn
-        BFLog("autoinstall changed, new value = \(Preferences.autoInstall)")
+        BFLog("autoinstall changed, new value = %d", Preferences.autoInstall)
     }
 }
 
 //MARK: Button Actions
 extension SettingsViewController {
     @IBAction func sendEmailTapped(_ sender: UITapGestureRecognizer) {
+        BFLog("Send email tapped, device %@", UIDevice.current.name)
+        
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
@@ -129,15 +128,27 @@ extension SettingsViewController {
         let appVersion = "\(Preferences.version)-\(Preferences.build)"
         
         let emailTitle = "[ToneManager \(appVersion)] Email from App"
-        let messageBody = "\n\nDevice: \(identifier), iOS \(osString)\n\nFeature request or bug report?"
+        let messageBody = "\n\nDevice: \(identifier), iOS \(osString)\nApp Version: \(appVersion)\n\nFeature request or bug report?"
         let toRecipents = ["jesper@flodin.fi"]
         let mc: MFMailComposeViewController = MFMailComposeViewController()
+        
         mc.mailComposeDelegate = self
         mc.setSubject(emailTitle)
         mc.setMessageBody(messageBody, isHTML: false)
+        mc.addAttachmentData(installedPackages(), mimeType: "text/plain", fileName: "dpkgl.txt")
         mc.setToRecipients(toRecipents)
         
         present(mc, animated: true, completion: nil)
+    }
+    
+    fileprivate func installedPackages() -> Data {
+        let task = NSTask()
+        task.setLaunchPath("/bin/sh")
+        task.setArguments(["-c","dpkg -l"])
+        let pipe = Pipe()
+        task.setStandardOutput(pipe)
+        task.launch()
+        return pipe.fileHandleForReading.readDataToEndOfFile()
     }
     
     /// Opens github page
