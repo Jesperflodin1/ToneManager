@@ -122,7 +122,7 @@ extension RingtoneManager {
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed ringtone"), delay: 0.7)
                 onSuccess?()
             } else {
-                //TODO: retry once with appendrandom to name
+                
                 BFLog("Got failure in callback from ringtone install")
                 HUD.flash(.labeledError(title: "Error", subtitle: "Error when installing ringtone"), delay: 1.0)
             }

@@ -94,7 +94,7 @@ extension RingtoneInstaller {
                                    shouldCallBackToStore: Bool,
                                    retryOnFailure: Bool = false,
                                    completionHandler: @escaping (Ringtone, Bool) -> Void) {
-        
+        BFLog("handleinstall success=%@ identifier=%@",success,toneIdentifier ?? "nil")
         if success, let identifierSuccess = toneIdentifier {
             BFLog("Import success, got identifier: %@", identifierSuccess)
             DispatchQueue.main.async { // to make sure tableview is not reloading
@@ -209,11 +209,10 @@ extension RingtoneInstaller {
                 toneLibraryTuple = toneLibraryInfo
             }
             
-            TLToneManagerHandler.sharedInstance().importTone(toneLibraryTuple.toneData, metadata: toneLibraryTuple.metaData) { [weak self] (success : Bool, toneIdentifier : String?) in
+            TLToneManagerHandler.sharedInstance().importTone(toneLibraryTuple.toneData, metadata: toneLibraryTuple.metaData) { (success : Bool, toneIdentifier : String?) in
                 BFLog("Ringtone install completionblock")
-                guard let strongSelf = self else { return }
                 
-                strongSelf.handleInstall(status: success,
+                self.handleInstall(status: success,
                                          toneIdentifier: toneIdentifier,
                                          ringtone: ringtone,
                                          toneLibraryData: toneLibraryTuple,
