@@ -174,9 +174,9 @@ extension RingtoneStore {
     ///   - ringtone: Ringtone object to install
     ///   - completionHandler: Completion block to execute when import is done. Ringtone object is passed as argument, identifier will be set if import was successful
     func installRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Ringtone, Bool) -> Void) {
-        let installer = RingtoneInstaller(self)
+        let installer = RingtoneInstaller()
         BFLog("Calling ringtone install for ringtone")
-        installer.installRingtone(ringtone, completionHandler: completionHandler)
+        installer.installRingtone(ringtone, retryOnFailure: true, completionHandler: completionHandler)
         
     }
     
@@ -188,7 +188,7 @@ extension RingtoneStore {
             tonesToInstall = self.notInstalledRingtones
         }
         
-        let installer = RingtoneInstaller(self)
+        let installer = RingtoneInstaller()
         BFLog("install all ringtones, count = %d", tonesToInstall.count)
         
         installer.installRingtones(inArray: tonesToInstall, completionHandler: completionHandler)
@@ -201,7 +201,7 @@ extension RingtoneStore {
     ///   - completionHandler: Completion block to execute when uninstall is done. Ringtone object is passed as argument, identifier will be set if it was successful
     func uninstallRingtone(_ ringtone : Ringtone, completionHandler: @escaping (Bool) -> Void) {
         
-        let installer = RingtoneInstaller(self)
+        let installer = RingtoneInstaller()
         
         BFLog("calling uninstall for ringtone: %@", ringtone.name)
         
@@ -212,7 +212,7 @@ extension RingtoneStore {
     func uninstallAllRingtones(completionHandler: @escaping (Int, Int) -> Void) {
         let tonesToUninstall = self.installedRingtones
         
-        let installer = RingtoneInstaller(self)
+        let installer = RingtoneInstaller()
         
         BFLog("Uninstall all ringtones, count = %d", tonesToUninstall.count)
         
@@ -227,7 +227,7 @@ extension RingtoneStore {
     func removeRingtone(_ ringtone : Ringtone, completion: @escaping (Bool) -> Void) {
         BFLog("Delete was called for ringtone: %@", ringtone)
         
-        let installer = RingtoneInstaller(self)
+        let installer = RingtoneInstaller()
         
         installer.removeRingtone(ringtone, deleteFile: true, shouldCallBackToStore: true, completionHandler: completion)
     }
@@ -235,7 +235,7 @@ extension RingtoneStore {
     func removeAllRingtones(completionHandler: @escaping (Int, Int) -> Void) {
         guard let tonesToUninstall = self.allRingtones.array else { return }
         
-        let installer = RingtoneInstaller(self)
+        let installer = RingtoneInstaller()
         
         BFLog("Delete all ringtones, count = %d", tonesToUninstall.count)
         

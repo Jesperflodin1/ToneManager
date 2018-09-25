@@ -13,7 +13,7 @@ import AVFoundation
 final class Ringtone : NSObject, Codable {
     
     /// Name visible in the ringtone picker
-    private(set) var name: String
+    var name: String
     
     /// Identifier used by tonelibrary
     var identifier: String?
