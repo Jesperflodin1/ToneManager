@@ -367,6 +367,8 @@
 		2497A639214251D200597B5C /* ToneManager */ = {
 			isa = PBXGroup;
 			children = (
+				24AB6594215A4F4600A91C7A /* TableViewControllers */,
+				24AB6593215A4EFE00A91C7A /* Ringtone */,
 				245C729F21591BBA00D07410 /* Utilities */,
 				245C729E21591B9800D07410 /* Help */,
 				245C729D21591B7400D07410 /* Settings */,
@@ -378,21 +380,6 @@
 				2496949E2144EBB9009960D7 /* Main.storyboard */,
 				2497A63E214251D300597B5C /* LaunchScreen.storyboard */,
 				2497A63A214251D200597B5C /* AppDelegate.swift */,
-				2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */,
-				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
-				2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */,
-				24EE2074214295480045D678 /* RingtoneTableCell.swift */,
-				2477828121524D720058074F /* RingtoneCellButton.swift */,
-				2497A6672142537B00597B5C /* Ringtone.swift */,
-				24778295215414C40058074F /* RingtoneAssigner.swift */,
-				2497A6692142538500597B5C /* RingtoneStore.swift */,
-				249694A621454F96009960D7 /* RingtoneScanner.swift */,
-				24F7ECED215023D900A46E72 /* RingtoneFileImporter.swift */,
-				245C72952157D63B00D07410 /* RingtoneConverter.swift */,
-				24496B22214991B40031E422 /* RingtoneInstaller.swift */,
-				24DFBB4F215A27D9009B4C30 /* ToneLibraryProxy.swift */,
-				2491B392214FA681001B36DE /* RingtoneManager.swift */,
-				2491B390214F8FB1001B36DE /* RingtonePlayer.swift */,
 				247782912153C0DB0058074F /* changelog.xml */,
 				247782922153C0DB0058074F /* info.xml */,
 				2497A641214251D300597B5C /* Info.plist */,
@@ -418,6 +405,35 @@
 				2497A657214251D400597B5C /* Info.plist */,
 			);
 			path = ToneManagerUITests;
+			sourceTree = "<group>";
+		};
+		24AB6593215A4EFE00A91C7A /* Ringtone */ = {
+			isa = PBXGroup;
+			children = (
+				2497A6672142537B00597B5C /* Ringtone.swift */,
+				24778295215414C40058074F /* RingtoneAssigner.swift */,
+				2497A6692142538500597B5C /* RingtoneStore.swift */,
+				249694A621454F96009960D7 /* RingtoneScanner.swift */,
+				24F7ECED215023D900A46E72 /* RingtoneFileImporter.swift */,
+				245C72952157D63B00D07410 /* RingtoneConverter.swift */,
+				24496B22214991B40031E422 /* RingtoneInstaller.swift */,
+				24DFBB4F215A27D9009B4C30 /* ToneLibraryProxy.swift */,
+				2491B392214FA681001B36DE /* RingtoneManager.swift */,
+				2491B390214F8FB1001B36DE /* RingtonePlayer.swift */,
+			);
+			path = Ringtone;
+			sourceTree = "<group>";
+		};
+		24AB6594215A4F4600A91C7A /* TableViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */,
+				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
+				2496949A214409E2009960D7 /* RingtoneDetailViewController.swift */,
+				24EE2074214295480045D678 /* RingtoneTableCell.swift */,
+				2477828121524D720058074F /* RingtoneCellButton.swift */,
+			);
+			path = TableViewControllers;
 			sourceTree = "<group>";
 		};
 		24EE20882142EB040045D678 /* Frameworks */ = {
