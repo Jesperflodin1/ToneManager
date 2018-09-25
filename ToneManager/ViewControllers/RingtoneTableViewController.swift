@@ -18,9 +18,6 @@ import ContactsUI
 /// Shows available and installed ringtones
 final class RingtoneTableViewController : UITableViewController {
     
-    /// Storage for Ringtones
-    fileprivate var ringtoneStore : RingtoneStore = RingtoneStore.sharedInstance
-    
     /// Identifier for Cell used to show a ringtone
     private let cellId = "RingtoneTableCell"
     
@@ -51,9 +48,9 @@ extension RingtoneTableViewController {
         RingtoneManager.updateRingtones { [weak self] in
             guard let strongSelf = self else { return }
             
-            strongSelf.ringtoneStore.allRingtones.lockArray()
+            RingtoneStore.sharedInstance.allRingtones.lockArray()
             strongSelf.tableView.reloadData()
-            strongSelf.ringtoneStore.allRingtones.unlockArray()
+            RingtoneStore.sharedInstance.allRingtones.unlockArray()
             
         }
     }
@@ -126,9 +123,9 @@ extension RingtoneTableViewController {
             
             RingtoneManager.importRingtoneFile(file, onSuccess: {
                 guard let strongSelf = self else { return }
-                strongSelf.ringtoneStore.allRingtones.lockArray()
+                RingtoneStore.sharedInstance.allRingtones.lockArray()
                 strongSelf.tableView.reloadData()
-                strongSelf.ringtoneStore.allRingtones.unlockArray()
+                RingtoneStore.sharedInstance.allRingtones.unlockArray()
             })
         }
         present(fileBrowser, animated: true, completion: nil)
@@ -161,9 +158,9 @@ extension RingtoneTableViewController {
         ringtonePlayer?.stopPlaying()
         RingtoneManager.installAllRingtones(withAlert: true) { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.ringtoneStore.allRingtones.lockArray()
+            RingtoneStore.sharedInstance.allRingtones.lockArray()
             strongSelf.tableView.reloadData()
-            strongSelf.ringtoneStore.allRingtones.unlockArray()
+            RingtoneStore.sharedInstance.allRingtones.unlockArray()
         }
     }
     
@@ -172,9 +169,9 @@ extension RingtoneTableViewController {
         ringtonePlayer?.stopPlaying()
         RingtoneManager.uninstallAll(withAlert: true) { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.ringtoneStore.allRingtones.lockArray()
+            RingtoneStore.sharedInstance.allRingtones.lockArray()
             strongSelf.tableView.reloadData()
-            strongSelf.ringtoneStore.allRingtones.unlockArray()
+            RingtoneStore.sharedInstance.allRingtones.unlockArray()
         }
     }
     
@@ -185,9 +182,9 @@ extension RingtoneTableViewController {
         ringtonePlayer?.stopPlaying()
         
         ringtoneFilter = sender.selectedSegmentIndex
-        ringtoneStore.allRingtones.lockArray()
+        RingtoneStore.sharedInstance.allRingtones.lockArray()
         tableView.reloadData()
-        ringtoneStore.allRingtones.unlockArray()
+        RingtoneStore.sharedInstance.allRingtones.unlockArray()
     }
     
     /// Refresh button was tapped. Rescans apps to find new ringtones
@@ -236,9 +233,9 @@ extension RingtoneTableViewController {
     }
     @objc func storeDidReload(notification: NSNotification) {
         BFLog("store did reload")
-        ringtoneStore.allRingtones.lockArray()
+        RingtoneStore.sharedInstance.allRingtones.lockArray()
         tableView.reloadData()
-        ringtoneStore.allRingtones.unlockArray()
+        RingtoneStore.sharedInstance.allRingtones.unlockArray()
     }
 }
 
@@ -268,10 +265,10 @@ extension RingtoneTableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if ringtoneStore.finishedLoading {
-            ringtoneStore.allRingtones.lockArray()
+        if RingtoneStore.sharedInstance.finishedLoading {
+            RingtoneStore.sharedInstance.allRingtones.lockArray()
             tableView.reloadData()
-            ringtoneStore.allRingtones.unlockArray()
+            RingtoneStore.sharedInstance.allRingtones.unlockArray()
             updateAvailableRingtones()
         }
     }
@@ -416,14 +413,14 @@ extension RingtoneTableViewController {
     ///   - section: Current section
     /// - Returns: Returns number of rows in this section (usually number of ringtones)
     override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if ringtoneStore.finishedLoading {
+        if RingtoneStore.sharedInstance.finishedLoading {
             switch ringtoneFilter {
             case 0:
-                return ringtoneStore.allRingtones.count
+                return RingtoneStore.sharedInstance.allRingtones.count
             case 1:
-                return ringtoneStore.installedRingtones.count
+                return RingtoneStore.sharedInstance.installedRingtones.count
             case 2:
-                return ringtoneStore.notInstalledRingtones.count
+                return RingtoneStore.sharedInstance.notInstalledRingtones.count
             default:
                 return 0
             }
@@ -439,22 +436,22 @@ extension RingtoneTableViewController {
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RingtoneTableCell
         
-        if ringtoneStore.finishedLoading {
-            ringtoneStore.allRingtones.lockArray()
+        if RingtoneStore.sharedInstance.finishedLoading {
+            RingtoneStore.sharedInstance.allRingtones.lockArray()
             
             let ringtone : Ringtone?
             switch ringtoneFilter {
             case 0:
-                ringtone = ringtoneStore.allRingtones[indexPath.row]
+                ringtone = RingtoneStore.sharedInstance.allRingtones[indexPath.row]
             case 1:
-                ringtone = ringtoneStore.installedRingtones[indexPath.row]
+                ringtone = RingtoneStore.sharedInstance.installedRingtones[indexPath.row]
             case 2:
-                ringtone = ringtoneStore.notInstalledRingtones[indexPath.row]
+                ringtone = RingtoneStore.sharedInstance.notInstalledRingtones[indexPath.row]
             default:
-                ringtoneStore.allRingtones.unlockArray()
+                RingtoneStore.sharedInstance.allRingtones.unlockArray()
                 return cell
             }
-            ringtoneStore.allRingtones.unlockArray()
+            RingtoneStore.sharedInstance.allRingtones.unlockArray()
             cell.ringtoneItem = ringtone
             cell.nameLabel.text = ringtone?.name
             cell.fromAppLabel.text = ringtone?.appName
