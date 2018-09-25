@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "iOSHeaders.h"
 
 
 /**
@@ -37,5 +38,17 @@
  @return <#return value description#>
  */
 + (BOOL)loadFramework;
++(LSApplicationProxy *)applicationProxyForBundleIdentifier:(NSString *)bundleID;
+
+//+(NSString *)itemName;
+//+(BOOL)isInstalled;
+//
+//+(NSData *)iconDataForVariant:(int)variant;
+//+(BOOL)isRemoveableSystemApp;
+//+(BOOL)isRestricted;
+//+(BOOL)isLaunchProhibited; //ios 10+
+//+(BOOL)isWhitelisted;
+//+(BOOL)isRemovedSystemApp;
+//+(NSString *)applicationType;
 
 @end

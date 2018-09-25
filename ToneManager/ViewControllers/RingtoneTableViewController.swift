@@ -253,6 +253,7 @@ extension RingtoneTableViewController {
         registerObservers()
         
         super.viewDidLoad()
+        AppSetupManager.report_memory()
     }
     
     /// Called when view will appear
@@ -271,7 +272,7 @@ extension RingtoneTableViewController {
             RingtoneStore.sharedInstance.allRingtones.lockArray()
             tableView.reloadData()
             RingtoneStore.sharedInstance.allRingtones.unlockArray()
-            updateAvailableRingtones()
+//            updateAvailableRingtones()
         }
     }
     
@@ -283,6 +284,7 @@ extension RingtoneTableViewController {
         ringtonePlayer?.stopPlaying()
         
         deselectCurrentRow()
+        AppSetupManager.report_memory()
         super.viewWillDisappear(animated)
     }
 }
@@ -295,6 +297,7 @@ extension RingtoneTableViewController {
     ///   - segue: segue that was triggered. Has a unique identifier.
     ///   - sender: sender that initiated the segue
     override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        AppSetupManager.report_memory()
         switch segue.identifier {
         case "showDetailsFromCellLabel"?:
             let cell = sender as! RingtoneTableCell

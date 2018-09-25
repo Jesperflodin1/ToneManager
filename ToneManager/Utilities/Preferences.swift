@@ -196,6 +196,7 @@ extension Preferences {
             apps.remove(at: index)
             extraApps = apps
         }
+        
     }
     
 }

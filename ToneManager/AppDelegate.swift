@@ -63,7 +63,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         }
         
-        
+        let app = FBApplicationInfoHandler.applicationProxy(forBundleIdentifier: "com.908.Audiko")
+        BFLog("Approxy test: %@", (app?.applicationType())!)
+        AppSetupManager.report_memory()
         return true
     }
     
@@ -100,8 +102,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.synchronize()
     }
     
-    
-    
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.isFileURL {
             BFLog("Got url for file from another app")
@@ -111,5 +111,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true // if successful
     }
+    
+    
 }
 

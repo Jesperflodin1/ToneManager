@@ -88,4 +88,20 @@
     return (BOOL)[appProxy performSelector:@selector(isInstalled)];
 }
 
+
+
+//newerbetterfasterstronger
++(LSApplicationProxy *)applicationProxyForBundleIdentifier:(NSString *)bundleID {
+    if (![FBApplicationInfoHandler loadFramework]) {
+        return false;
+    }
+    if ( ![NSClassFromString(@"LSApplicationProxy") respondsToSelector:@selector(applicationProxyForIdentifier:)]) {
+        BFLogErr(@"JFTM: ERROR: applicationProxyForIdentifier: not responding");
+        return false;
+    }
+    LSApplicationProxy *appProxy = [NSClassFromString(@"LSApplicationProxy") performSelector:@selector(applicationProxyForIdentifier:) withObject:bundleID];
+    return appProxy;
+}
+
+
 @end

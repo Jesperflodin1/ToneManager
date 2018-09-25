@@ -57,6 +57,7 @@ final class RingtoneStore {
         createAppDir()
         
         loadFromPlist()
+        AppSetupManager.report_memory()
     }
     
     /// Creates application data directory if possible and needed
@@ -140,6 +141,7 @@ extension RingtoneStore {
             } catch {
                 Bugfender.error("Error when writing ringtones to plist: \(error)")
             }
+            AppSetupManager.report_memory()
         }
     }
     
@@ -160,6 +162,7 @@ extension RingtoneStore {
                 BFLog("Successfully set identifier for ringtone: %@", tone.description)
             }
         }
+        AppSetupManager.report_memory()
     }
 }
 
