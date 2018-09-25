@@ -301,7 +301,6 @@
 		245C729F21591BBA00D07410 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				2477828421525CE00058074F /* ActionSheetCell.xib */,
 				2477828921525D840058074F /* ActionData.swift */,
 				2477828321525CE00058074F /* ActionSheetController.swift */,
 				2477828721525CF50058074F /* ActionSheetCell.swift */,
@@ -367,6 +366,7 @@
 		2497A639214251D200597B5C /* ToneManager */ = {
 			isa = PBXGroup;
 			children = (
+				24AB6595215A4F9F00A91C7A /* UI */,
 				24AB6594215A4F4600A91C7A /* TableViewControllers */,
 				24AB6593215A4EFE00A91C7A /* Ringtone */,
 				245C729F21591BBA00D07410 /* Utilities */,
@@ -376,9 +376,6 @@
 				245C729C21591A8900D07410 /* PrivateAPIHelpers */,
 				24B5E29B21568A7700A8A70A /* assets.xcassets */,
 				247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */,
-				247AFDF5215122EC007191E1 /* FirstRun.storyboard */,
-				2496949E2144EBB9009960D7 /* Main.storyboard */,
-				2497A63E214251D300597B5C /* LaunchScreen.storyboard */,
 				2497A63A214251D200597B5C /* AppDelegate.swift */,
 				247782912153C0DB0058074F /* changelog.xml */,
 				247782922153C0DB0058074F /* info.xml */,
@@ -434,6 +431,17 @@
 				2477828121524D720058074F /* RingtoneCellButton.swift */,
 			);
 			path = TableViewControllers;
+			sourceTree = "<group>";
+		};
+		24AB6595215A4F9F00A91C7A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2477828421525CE00058074F /* ActionSheetCell.xib */,
+				247AFDF5215122EC007191E1 /* FirstRun.storyboard */,
+				2496949E2144EBB9009960D7 /* Main.storyboard */,
+				2497A63E214251D300597B5C /* LaunchScreen.storyboard */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		24EE20882142EB040045D678 /* Frameworks */ = {
@@ -800,8 +808,8 @@
 				2497A63F214251D300597B5C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			path = ToneManager;
-			sourceTree = SOURCE_ROOT;
+			path = ..;
+			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
