@@ -107,7 +107,7 @@ extension RingtoneManager {
             ringtone = ringtonetemp
             cell = nil
         } else {
-            HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when installing ringtone"), delay: 0.7)
+            HUD.flash(.labeledError(title: "Error", subtitle: "Invalid arguments when installing ringtone"), delay: 1.0)
             return
         }
 
@@ -122,9 +122,9 @@ extension RingtoneManager {
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed ringtone"), delay: 0.7)
                 onSuccess?()
             } else {
-                
+                //TODO: retry once with appendrandom to name
                 BFLog("Got failure in callback from ringtone install")
-                HUD.flash(.labeledError(title: "Error", subtitle: "Error when installing ringtone"), delay: 0.7)
+                HUD.flash(.labeledError(title: "Error", subtitle: "Error when installing ringtone"), delay: 1.0)
             }
         })
     }
@@ -154,7 +154,7 @@ extension RingtoneManager {
                 HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed \(installedTones) ringtones, however \(failedTones) failed to install"), delay: 1.0)
             } else if installedTones == 0 {
                 HUD.allowsInteraction = true
-                HUD.flash(.labeledError(title: "Error", subtitle: "No ringtones were imported because of an unknown error"), delay: 1.0)
+                HUD.flash(.labeledError(title: "Error", subtitle: "No ringtones were installed because of an unknown error"), delay: 1.0)
                 return
             } else {
                 HUD.allowsInteraction = true

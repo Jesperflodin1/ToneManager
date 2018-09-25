@@ -82,5 +82,26 @@ static TLToneManagerHandler *_helper = nil;
 -(void)setCurrentToneIdentifier:(NSString *)identifier forAlertType:(long long)alertType {
     [_toneManager setCurrentToneIdentifier:identifier forAlertType:alertType];
 }
-    
+
+-(NSString * __nullable)filePathForToneIdentifier:(NSString * __nonnull)identifier  {
+    return [_toneManager filePathForToneIdentifier:identifier];
+}
+-(NSString * __nullable)currentToneIdentifierForAlertType:(long long)alertType {
+    return [_toneManager currentToneIdentifierForAlertType:alertType];
+}
+
+-(NSString * __nullable)nameForToneIdentifier:(NSString * __nonnull)identifier {
+    return [_toneManager nameForToneIdentifier:identifier];
+}
+
+-(NSString * __nullable)_toneIdentifierForFileAtPath:(NSString * __nonnull)path; {
+    BOOL valid;
+    NSString *identifier = [_toneManager _toneIdentifierForFileAtPath:path isValid:&valid];
+    if (valid) {
+        return identifier;
+    }
+    else {
+        return nil;
+    }
+}
 @end

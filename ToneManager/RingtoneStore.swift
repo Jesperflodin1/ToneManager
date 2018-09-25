@@ -9,11 +9,6 @@
 import Foundation
 import BugfenderSDK
 
-/// Global variable for application data folder
-public let appDataDir = URL(fileURLWithPath: "/var/mobile/Library/ToneManager")
-
-public let plistURL = URL(fileURLWithPath: "/var/mobile/Library/ToneManager/tones.plist")
-
 /// Model class for ringtones
 final class RingtoneStore {
     

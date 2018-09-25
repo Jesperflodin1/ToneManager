@@ -45,4 +45,11 @@
     
 -(void)setCurrentToneIdentifier:(NSString *)identifier forAlertType:(long long)alertType ;
 
+-(NSString * __nullable)filePathForToneIdentifier:(NSString * __nonnull)identifier;
+-(NSString * __nullable)currentToneIdentifierForAlertType:(long long)alertType;
+
+-(NSString * __nullable)nameForToneIdentifier:(NSString * __nonnull)identifier;
+
+-(NSString * __nullable)_toneIdentifierForFileAtPath:(NSString * __nonnull)path;
+
 @end

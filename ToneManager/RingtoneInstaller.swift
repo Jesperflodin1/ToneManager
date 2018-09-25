@@ -14,12 +14,7 @@ final class RingtoneInstaller {
     
     /// Serial queue where import calls are placed
     fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SerialRingtoneInstallerQueue", attributes: .concurrent)
-    
-    var ringtoneStore : RingtoneStore
-    
-    init(_ ringtoneStore: RingtoneStore) {
-        self.ringtoneStore = ringtoneStore
-    }
+
 }
 
 //MARK: Uninstall methods
@@ -50,10 +45,10 @@ extension RingtoneInstaller {
             DispatchQueue.main.async {
                 
                 if deleteFile {
-                    self.ringtoneStore.allRingtones.remove(where: { $0 == ringtone })
+                    RingtoneStore.sharedInstance.allRingtones.remove(where: { $0 == ringtone })
                 }
                 if shouldCallBackToStore {
-                    self.ringtoneStore.writeToPlist()
+                    RingtoneStore.sharedInstance.writeToPlist()
                 }
                 completionHandler(true)
             }
@@ -82,7 +77,7 @@ extension RingtoneInstaller {
         }
         
         group.notify(queue: .main) {
-            self.ringtoneStore.writeToPlist()
+            RingtoneStore.sharedInstance.writeToPlist()
             completionHandler(uninstalledTones, failedTones)
         }
         
@@ -92,12 +87,87 @@ extension RingtoneInstaller {
 //MARK: Install methods
 extension RingtoneInstaller {
     
+    fileprivate func handleInstall(status success: Bool,
+                                   toneIdentifier: String?,
+                                   ringtone: Ringtone,
+                                   toneLibraryData: (metaData: [String:Any], toneData: Data),
+                                   shouldCallBackToStore: Bool,
+                                   completionHandler: @escaping (Ringtone, Bool) -> Void) {
+        
+        if success, let identifierSuccess = toneIdentifier {
+            BFLog("Import success, got identifier: %@", identifierSuccess)
+            DispatchQueue.main.async { // to make sure tableview is not reloading
+                ringtone.identifier = identifierSuccess
+                if shouldCallBackToStore {
+                    RingtoneStore.sharedInstance.writeToPlist()
+                }
+                
+                completionHandler(ringtone, success)
+            }
+            
+        } else if !success, handleInstallError(ringtone) {
+            //not success, check if name already installed and equals this tone
+            Bugfender.warning("Ringtone install failed for ringtone: \(ringtone.description) Will search tonelibrary for matching name...")
+            DispatchQueue.main.async { // to make sure tableview is not reloading
+                if shouldCallBackToStore {
+                    RingtoneStore.sharedInstance.writeToPlist()
+                }
+                
+                completionHandler(ringtone, true)
+            }
+        } else {
+            // Failed
+            Bugfender.error("Ringtone install failed, could not find installed ringtone with matching name and size/duration for tone: \(ringtone.description)")
+            DispatchQueue.main.async { // to make sure tableview is not reloading
+                if shouldCallBackToStore {
+                    RingtoneStore.sharedInstance.writeToPlist()
+                }
+                
+                completionHandler(ringtone, success)
+            }
+        }
+    }
+    
+    fileprivate func handleInstallError(_ ringtone : Ringtone) -> Bool {
+        // does tone with this name already exist in tonelibrary?
+        let library = ToneLibraryProxy()
+        if library.setIdentifierIfToneIsInstalled(ringtone) {
+            BFLog("Successfully set identifier for ringtone: %@", ringtone.description)
+            return true
+        }
+        Bugfender.error("Current ringtone could not be installed and does not seem to already be installed, retry with different name")
+        
+        
+        return false
+    }
+    
+    fileprivate func prepareToneLibraryData(forRingtone ringtone: Ringtone) -> (metaData: [String:Any], toneData: Data)? {
+        if ringtone.identifier != nil {
+            BFLog("Ringtone is already installed, tone: %@", ringtone.fileURL.path)
+            return nil
+        }
+        var toneLibraryMetaData = [String:Any]()
+        toneLibraryMetaData["Name"] = ringtone.name
+        toneLibraryMetaData["Total Time"] = NSNumber(value: ringtone.rawDuration*1000).intValue
+        toneLibraryMetaData["Purchased"] = ringtone.purchased
+        toneLibraryMetaData["Protected Content"] = ringtone.protectedContent
+        
+        guard let toneData = ringtone.getData() else {
+            Bugfender.error("Could not get data for ringtone with path \(ringtone.fileURL.path)")
+            return nil
+        }
+        
+        return (toneLibraryMetaData, toneData)
+    }
+    
     /// Installs ringtone in tonelibrary
     ///
     /// - Parameters:
     ///   - ringtone: Ringtone object to install
     ///   - completionHandler: Gets executed after import, ringtone object is passed to it. identifier is set if import was successful
-    func installRingtone(_ ringtone : Ringtone, shouldCallBackToStore: Bool = true, completionHandler: @escaping (Ringtone, Bool) -> Void)  {
+    func installRingtone(_ ringtone : Ringtone,
+                         shouldCallBackToStore: Bool = true,
+                         completionHandler: @escaping (Ringtone, Bool) -> Void)  {
         queue.async {
             if !TLToneManagerHandler.sharedInstance().canImport() {
                 Bugfender.error("TLToneManager does not respond to required selectors, unknown error")
@@ -106,44 +176,20 @@ extension RingtoneInstaller {
                 }
                 return
             }
-            if ringtone.identifier != nil {
-                BFLog("Ringtone is already installed, tone: %@", ringtone.fileURL.path)
-                DispatchQueue.main.async {
-                    completionHandler(ringtone, false)
-                }
-                return
-            }
-            var toneLibraryMetaData = [String:Any]()
-            toneLibraryMetaData["Name"] = ringtone.name
-            toneLibraryMetaData["Total Time"] = NSNumber(value: ringtone.rawDuration*1000).intValue
-            toneLibraryMetaData["Purchased"] = ringtone.purchased
-            toneLibraryMetaData["Protected Content"] = ringtone.protectedContent
             
-            guard let toneData = ringtone.getData() else {
-                Bugfender.error("Could not get data for ringtone with path \(ringtone.fileURL.path)")
-                DispatchQueue.main.async {
-                    completionHandler(ringtone, false)
-                }
-                return
-            }
+            guard let toneLibraryData = self.prepareToneLibraryData(forRingtone: ringtone) else { return }
             
-            TLToneManagerHandler.sharedInstance().importTone(toneData, metadata: toneLibraryMetaData) { (success : Bool, toneIdentifier : String?) in
-                if success && (toneIdentifier != nil) {
-                    BFLog("Import success, got identifier: %@", toneIdentifier ?? "nil")
-                    DispatchQueue.main.sync { // to make sure tableview is not reloading
-                        ringtone.identifier = toneIdentifier
-                    }
-                    
-                } else {
-                    Bugfender.error("Ringtone install failed")
-                }
-                DispatchQueue.main.async {
-                    if shouldCallBackToStore {
-                        self.ringtoneStore.writeToPlist()
-                    }
-                    
-                    completionHandler(ringtone, success)
-                }
+            
+            TLToneManagerHandler.sharedInstance().importTone(toneLibraryData.toneData, metadata: toneLibraryData.metaData) { [weak self] (success : Bool, toneIdentifier : String?) in
+                BFLog("Ringtone install completionblock")
+                guard let strongSelf = self else { return }
+                
+                strongSelf.handleInstall(status: success,
+                                         toneIdentifier: toneIdentifier,
+                                         ringtone: ringtone,
+                                         toneLibraryData: toneLibraryData,
+                                         shouldCallBackToStore: shouldCallBackToStore,
+                                         completionHandler: completionHandler)
             }
         }
     }
@@ -170,7 +216,7 @@ extension RingtoneInstaller {
         }
         
         group.notify(queue: .main) {
-            self.ringtoneStore.writeToPlist()
+            RingtoneStore.sharedInstance.writeToPlist()
             completionHandler(installedTones, failedTones)
         }
     }

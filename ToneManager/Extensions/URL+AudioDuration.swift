@@ -12,10 +12,12 @@ import AVFoundation
 
 extension URL {
     func audioDurationOfFile() -> Int {
+        return NSNumber(value: round(self.rawAudioDurationOfFile())).intValue
+    }
+    func rawAudioDurationOfFile() -> Double {
         do {
             let avAudioPlayer = try AVAudioPlayer(contentsOf: self)
-            let duration = avAudioPlayer.duration
-            return NSNumber(value: round(duration)).intValue
+            return avAudioPlayer.duration
         } catch {
             Bugfender.error("Error retrieving duration of file: \(error)")
         }

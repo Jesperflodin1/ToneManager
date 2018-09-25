@@ -56,10 +56,14 @@
 		2497F6602155907A00324FF1 /* AdvancedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497F65F2155907A00324FF1 /* AdvancedSettingsViewController.swift */; };
 		24982BD2214CE12B00DD0474 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24982BD1214CE12B00DD0474 /* ColorPalette.swift */; };
 		24982BD4214CE16700DD0474 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24982BD3214CE16700DD0474 /* Preferences.swift */; };
+		24AB6590215A38C900A91C7A /* URL+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB658F215A38C900A91C7A /* URL+Size.swift */; };
+		24AB6592215A4A3700A91C7A /* String+AppendRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB6591215A4A3700A91C7A /* String+AppendRandom.swift */; };
 		24B5E29C21568A7700A8A70A /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24B5E29B21568A7700A8A70A /* assets.xcassets */; };
 		24B5E29E2156ADAE00A8A70A /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B5E29D2156ADAE00A8A70A /* HelpTableViewController.swift */; };
 		24B5E2A02156ADB700A8A70A /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B5E29F2156ADB700A8A70A /* HelpTableViewCell.swift */; };
 		24C529FA21597E9700770587 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C529F921597E9700770587 /* Localizable.swift */; };
+		24DFBB50215A27D9009B4C30 /* ToneLibraryProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DFBB4F215A27D9009B4C30 /* ToneLibraryProxy.swift */; };
+		24DFBB52215A285B009B4C30 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DFBB51215A285B009B4C30 /* GlobalConstants.swift */; };
 		24EE206B214276CF0045D678 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE206A214276CF0045D678 /* SettingsViewController.swift */; };
 		24EE2075214295480045D678 /* RingtoneTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE2074214295480045D678 /* RingtoneTableCell.swift */; };
 		24EE20842142C9590045D678 /* TLToneManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EE20822142C9590045D678 /* TLToneManagerHandler.m */; };
@@ -163,10 +167,14 @@
 		2497F65F2155907A00324FF1 /* AdvancedSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsViewController.swift; sourceTree = "<group>"; };
 		24982BD1214CE12B00DD0474 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		24982BD3214CE16700DD0474 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		24AB658F215A38C900A91C7A /* URL+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Size.swift"; sourceTree = "<group>"; };
+		24AB6591215A4A3700A91C7A /* String+AppendRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AppendRandom.swift"; sourceTree = "<group>"; };
 		24B5E29B21568A7700A8A70A /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		24B5E29D2156ADAE00A8A70A /* HelpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		24B5E29F2156ADB700A8A70A /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
 		24C529F921597E9700770587 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		24DFBB4F215A27D9009B4C30 /* ToneLibraryProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneLibraryProxy.swift; sourceTree = "<group>"; };
+		24DFBB51215A285B009B4C30 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		24EE206A214276CF0045D678 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		24EE2074214295480045D678 /* RingtoneTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneTableCell.swift; sourceTree = "<group>"; };
 		24EE207E2142C7E60045D678 /* ToneManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ToneManager-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -236,10 +244,12 @@
 			isa = PBXGroup;
 			children = (
 				245C728D21576BCF00D07410 /* UIImageView+Rotate.swift */,
+				24AB6591215A4A3700A91C7A /* String+AppendRandom.swift */,
 				24F7ECE3214FD78900A46E72 /* String+Version.swift */,
 				24F7ECE5214FD7C200A46E72 /* String+CondenseWhitespace.swift */,
 				24F7ECE7214FD7F600A46E72 /* URL+RingtoneName.swift */,
 				245C729921591A1000D07410 /* URL+AudioDuration.swift */,
+				24AB658F215A38C900A91C7A /* URL+Size.swift */,
 				24F7ECEB214FF17600A46E72 /* UIApplication+TopViewController.swift */,
 				24F7ECE9214FD84C00A46E72 /* Notification+Name.swift */,
 			);
@@ -303,6 +313,7 @@
 				24982BD1214CE12B00DD0474 /* ColorPalette.swift */,
 				2477828B215298980058074F /* Error.swift */,
 				24C529F921597E9700770587 /* Localizable.swift */,
+				24DFBB51215A285B009B4C30 /* GlobalConstants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -359,8 +370,8 @@
 				245C729F21591BBA00D07410 /* Utilities */,
 				245C729E21591B9800D07410 /* Help */,
 				245C729D21591B7400D07410 /* Settings */,
-				245C729C21591A8900D07410 /* PrivateAPIHelpers */,
 				245C729B21591A6100D07410 /* Extensions */,
+				245C729C21591A8900D07410 /* PrivateAPIHelpers */,
 				24B5E29B21568A7700A8A70A /* assets.xcassets */,
 				247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */,
 				247AFDF5215122EC007191E1 /* FirstRun.storyboard */,
@@ -379,6 +390,7 @@
 				24F7ECED215023D900A46E72 /* RingtoneFileImporter.swift */,
 				245C72952157D63B00D07410 /* RingtoneConverter.swift */,
 				24496B22214991B40031E422 /* RingtoneInstaller.swift */,
+				24DFBB4F215A27D9009B4C30 /* ToneLibraryProxy.swift */,
 				2491B392214FA681001B36DE /* RingtoneManager.swift */,
 				2491B390214F8FB1001B36DE /* RingtonePlayer.swift */,
 				247782912153C0DB0058074F /* changelog.xml */,
@@ -682,6 +694,8 @@
 				24B5E29E2156ADAE00A8A70A /* HelpTableViewController.swift in Sources */,
 				249694A721454F96009960D7 /* RingtoneScanner.swift in Sources */,
 				2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */,
+				24DFBB52215A285B009B4C30 /* GlobalConstants.swift in Sources */,
+				24DFBB50215A27D9009B4C30 /* ToneLibraryProxy.swift in Sources */,
 				245C72982158E4A900D07410 /* PopupGenerator.swift in Sources */,
 				249694AE214799F0009960D7 /* AppListViewController.swift in Sources */,
 				249694A921456804009960D7 /* SynchronizedArray.swift in Sources */,
@@ -710,6 +724,7 @@
 				24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */,
 				2477828C215298980058074F /* Error.swift in Sources */,
 				244DD1582155782000C995E7 /* AppListCell.swift in Sources */,
+				24AB6590215A38C900A91C7A /* URL+Size.swift in Sources */,
 				24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */,
 				2477829E215432490058074F /* CNMutableContactHandler.m in Sources */,
 				24B5E2A02156ADB700A8A70A /* HelpTableViewCell.swift in Sources */,
@@ -726,6 +741,7 @@
 				249694B02147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift in Sources */,
 				2497F6602155907A00324FF1 /* AdvancedSettingsViewController.swift in Sources */,
 				24982BD4214CE16700DD0474 /* Preferences.swift in Sources */,
+				24AB6592215A4A3700A91C7A /* String+AppendRandom.swift in Sources */,
 				24EE2075214295480045D678 /* RingtoneTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

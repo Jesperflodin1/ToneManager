@@ -83,6 +83,12 @@
 -(BOOL)toneWithIdentifierIsValid:(NSString *)toneIdentifier;
     
 -(void)setCurrentToneIdentifier:(NSString *)arg1 forAlertType:(long long)arg2;
+
+-(id)filePathForToneIdentifier:(id)arg1 ;
+-(id)currentToneIdentifierForAlertType:(long long)arg1 ;
+-(id)nameForToneIdentifier:(id)arg1 ;
+
+-(id)_toneIdentifierForFileAtPath:(id)arg1 isValid:(BOOL*)arg2 ;
 @end
 
 

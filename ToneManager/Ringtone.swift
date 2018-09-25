@@ -136,20 +136,7 @@ final class Ringtone : NSObject, Codable {
         let url = URL(fileURLWithPath: filePath)
         var generatedName = url.nameFromFilePath()
         if appendRandomToName {
-            let allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-            let allowedCharsCount = UInt32(allowedChars.count)
-            var randomString = ""
-            
-            let length = 4
-            
-            for _ in 0..<length {
-                let randomNum = Int(arc4random_uniform(allowedCharsCount))
-                let randomIndex = allowedChars.index(allowedChars.startIndex, offsetBy: randomNum)
-                let newCharacter = allowedChars[randomIndex]
-                randomString += String(newCharacter)
-            }
-            
-            generatedName += " (\(randomString))"
+            generatedName.appendRandom()
         }
         
         self.init(name: generatedName, identifier:nil , duration: nil, bundleID: bundleID, fileURL: url)
@@ -238,10 +225,31 @@ extension Ringtone {
         return result
     }
     
+    func isDefaultRingtone() -> Bool {
+        if !isValid() {
+            return false
+        }
+        if TLToneManagerHandler.sharedInstance().currentToneIdentifier(forAlertType: 1) == self.identifier {
+            BFLog("I am default ringtone, woohoo! %@",self.description)
+            return true
+        }
+        return false
+    }
+    func isDefaultTextTone() -> Bool {
+        if !isValid() {
+            return false
+        }
+        if TLToneManagerHandler.sharedInstance().currentToneIdentifier(forAlertType: 2) == self.identifier {
+            BFLog("I am default texttone, woohoo! %@",self.description)
+            return true
+        }
+        return false
+    }
+    
     /// Returns description string for this ringtone
     override var description: String {
         get {
-            return "<Ringtone name:\(self.name), identifier: \(self.identifier ?? "nil"), Path: \(self.fileURL.path)>"
+            return String(format: "<Ringtone name: %@, identifier: %@, Path: %@>", self.name, self.identifier ?? "nil", self.fileURL.path)
         }
     }
     
