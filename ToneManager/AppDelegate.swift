@@ -59,7 +59,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         if let options = launchOptions, let url = options[.url] as? URL, url.isFileURL {
             BFLog("Got url for file in appdidfinishlaunching")
             RingtoneManager.importRingtoneURL(url, onSuccess: {
-                NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
+                NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
             })
         }
         
@@ -106,7 +106,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         if url.isFileURL {
             BFLog("Got url for file from another app")
             RingtoneManager.importRingtoneURL(url, onSuccess: {
-                NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
+                NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
             })
         }
         return true // if successful

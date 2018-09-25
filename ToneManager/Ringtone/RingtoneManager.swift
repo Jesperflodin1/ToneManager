@@ -43,7 +43,7 @@ extension RingtoneManager {
                 } else {
                     installAllRingtones(inArray: importedTones, withAlert: false, onSuccess: completionHandler)
                 }
-            }
+            } 
         }
     }
 }

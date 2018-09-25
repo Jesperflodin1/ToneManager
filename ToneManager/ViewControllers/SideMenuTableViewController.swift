@@ -29,7 +29,7 @@ final class SideMenuTableViewController: UITableViewController {
     @IBAction func reloadRingtonesTapped(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
         RingtoneManager.updateRingtones {
-            NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
+            NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
         }
     }
     
@@ -40,7 +40,7 @@ final class SideMenuTableViewController: UITableViewController {
         
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
             RingtoneManager.importRingtoneFile(file, onSuccess: {
-                NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
+                NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
             })
         }
         guard let topVC = UIApplication.topViewController() else { return }

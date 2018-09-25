@@ -31,7 +31,7 @@ extension AdvancedSettingsViewController {
     }
     @IBAction func deleteAllTapped(_ sender: UITapGestureRecognizer) {
         RingtoneManager.deleteAllRingtones(withAlert: true) {
-            NotificationCenter.default.post(name: .ringtoneStoreDidReload, object: nil)
+            NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
         }
     }
     @IBAction func resetSettingsTapped(_ sender: UITapGestureRecognizer) {

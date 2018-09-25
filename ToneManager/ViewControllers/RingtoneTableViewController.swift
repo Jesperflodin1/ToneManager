@@ -247,7 +247,7 @@ extension RingtoneTableViewController {
     
     /// Called when view has finished loading
     override func viewDidLoad() {
-        
+        BFLog("ringtonetableview didload called")
         self.tableView.dataSource = self
         self.tableView.delegate = self
         registerObservers()
@@ -259,11 +259,13 @@ extension RingtoneTableViewController {
     ///
     /// - Parameter animated: true if view appears with animation
     override func viewWillAppear(_ animated: Bool) {
+        BFLog("ringtonetableview willappear called")
         deselectCurrentRow()
         super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        BFLog("ringtonetableview didappear called")
         super.viewDidAppear(animated)
         if RingtoneStore.sharedInstance.finishedLoading {
             RingtoneStore.sharedInstance.allRingtones.lockArray()

@@ -12,3 +12,4 @@ extension Notification.Name {
     static let ringtoneStoreDidFinishLoading = Notification.Name("RingtoneStoreDidFinishLoading")
     static let ringtoneStoreDidReload = Notification.Name("RingtoneStoreDidReload")
 }
+

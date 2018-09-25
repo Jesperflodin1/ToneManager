@@ -12,8 +12,7 @@ import BugfenderSDK
 /// Model class for ringtones
 final class RingtoneStore {
     
-    /// Path to local plist for ringtone metadata
-    
+    static let sharedInstance = RingtoneStore()
     
     var finishedLoading : Bool = false
     
@@ -35,22 +34,20 @@ final class RingtoneStore {
     /// Serial queue for reading/writing plist
     fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SerialRingtoneStorePListReaderWriterQueue")
     
-    public func createTestRingtones() {
+    func createTestRingtones() {
         for i in 1...5 {
             let newTone = Ringtone(filePath: "/var/Containers/something/Documents/ringtone\(i)    pls--   åäö!.m4r", bundleID: "com.908.AudikoFree")
             
             allRingtones.append(newTone)
         }
-        self.finishedLoading = true
-        NotificationCenter.default.post(name: .ringtoneStoreDidFinishLoading, object: nil)
     }
     
-    static let sharedInstance = RingtoneStore()
+    
     
     var backgroundTaskIdentifier : UIBackgroundTaskIdentifier!
     
     /// Init method. Checks folder existence and if necessary creates application data folder
-    init() {
+    fileprivate init() {
         BFLog("RingtoneStore init")
         NSLog("RingtoneStore init")
         
@@ -85,7 +82,7 @@ extension RingtoneStore {
     /// Loads ringtones from plist. Will also verify all loaded ringtones if shouldVerifyRingtones=true (defaults to true). Dispatches work to serial queue.
     ///
     /// - Parameter shouldVerifyRingtones: will verify ringtones if true, is by default true
-    public func loadFromPlist(_ shouldVerifyRingtones : Bool = true) {
+    func loadFromPlist(_ shouldVerifyRingtones : Bool = true) {
         queue.sync {
             //TODO: Check if tones.plist exist. If it does and reading failes, try to rebuild database!
             
@@ -118,23 +115,13 @@ extension RingtoneStore {
                 NSLog("Error when reading ringtones from plist: \(error)")
                 Bugfender.error("Error when reading ringtones from plist: \(error)")
             }
-            
-            
-            
-            
-            //            DispatchQueue.main.sync {
-            
-            
-            //            }
             self.finishedLoading = true
-            NotificationCenter.default.post(name: .ringtoneStoreDidFinishLoading, object: nil)
+            NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidFinishLoading))
         }
-        
-        
     }
     
     /// Writes all currently known ringtones to local plist. Dispatches work to serial queue
-    public func writeToPlist() {
+    func writeToPlist() {
         if !finishedLoading { return }
         
         queue.async {
@@ -160,7 +147,7 @@ extension RingtoneStore {
     ///
     /// - Parameter ringtonesArray: Array with ringtones to verify
     /// - Returns: Array which only contains valid ringtones
-    public func verifyRingtones(inArray ringtonesArray : Array<Ringtone>) -> Array<Ringtone> {
+    func verifyRingtones(inArray ringtonesArray : Array<Ringtone>) -> Array<Ringtone> {
         NSLog("Verifying ringtones")
         return ringtonesArray.filter { $0.isValid() }
     }
