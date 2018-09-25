@@ -42,6 +42,7 @@ class ToneLibraryProxy {
     }
     
     func setIdentifierIfToneIsInstalled(_ ringtone : Ringtone) -> Bool {
+        BFLog("set identifier called for ringtone: %@", ringtone.description)
         if ringtone.identifier != nil { return true }
         
         guard let identifier = identifierFromName(ringtone.name), let filePath = TLToneManagerHandler.sharedInstance().filePath(forToneIdentifier: identifier) else { return false }

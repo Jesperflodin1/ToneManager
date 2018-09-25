@@ -92,7 +92,7 @@ extension RingtoneStore {
                 
                 let decoder = PropertyListDecoder()
                 let ringtonesArray = try decoder.decode(Array<Ringtone>.self, from: data)
-                
+                self.setMissingIdentifiers(forRingtones: ringtonesArray)
                 if shouldVerifyRingtones {
                     let newRingtonesArray = self.verifyRingtones(inArray: ringtonesArray)
                     
@@ -148,8 +148,18 @@ extension RingtoneStore {
     /// - Parameter ringtonesArray: Array with ringtones to verify
     /// - Returns: Array which only contains valid ringtones
     func verifyRingtones(inArray ringtonesArray : Array<Ringtone>) -> Array<Ringtone> {
-        NSLog("Verifying ringtones")
+        
+        BFLog("Verifying ringtones in array: %@", ringtonesArray.description)
         return ringtonesArray.filter { $0.isValid() }
+    }
+    
+    func setMissingIdentifiers(forRingtones ringtonesArray : [Ringtone]) {
+        let library = ToneLibraryProxy()
+        ringtonesArray.forEach { (tone) in
+            if library.setIdentifierIfToneIsInstalled(tone) {
+                BFLog("Successfully set identifier for ringtone: %@", tone.description)
+            }
+        }
     }
 }
 
@@ -251,7 +261,7 @@ extension RingtoneStore {
                 
                 if let newArray = scanner.importRingtonesFrom(apps: apps) {
                     BFLog("Ringtone import success, got new ringtones")
-                    
+                    self.setMissingIdentifiers(forRingtones: newArray)
                     DispatchQueue.main.async {
                         self.allRingtones.append(newArray)
                         let sortedTones = self.allRingtones.sorted(by: { (initial, next) -> Bool in

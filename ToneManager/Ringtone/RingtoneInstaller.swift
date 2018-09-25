@@ -13,8 +13,8 @@ import BugfenderSDK
 final class RingtoneInstaller {
     
     /// Serial queue where import calls are placed
-    fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SerialRingtoneInstallerQueue", attributes: .concurrent)
-
+    fileprivate let queue = DispatchQueue(label: "fi.flodin.tonemanager.SerialRingtoneInstallerQueue")
+    
 }
 
 //MARK: Uninstall methods
@@ -94,8 +94,9 @@ extension RingtoneInstaller {
                                    shouldCallBackToStore: Bool,
                                    retryOnFailure: Bool = false,
                                    completionHandler: @escaping (Ringtone, Bool) -> Void) {
-        BFLog("handleinstall success=%@ identifier=%@",success,toneIdentifier ?? "nil")
-        if success, let identifierSuccess = toneIdentifier {
+        
+        BFLog("handleinstall success=%d identifier=%@",success,toneIdentifier ?? "nil")
+        if let identifierSuccess = toneIdentifier {
             BFLog("Import success, got identifier: %@", identifierSuccess)
             DispatchQueue.main.async { // to make sure tableview is not reloading
                 ringtone.identifier = identifierSuccess
@@ -106,7 +107,7 @@ extension RingtoneInstaller {
                 completionHandler(ringtone, success)
             }
             
-        } else if !success, handleInstallError(ringtone) {
+        } else if handleInstallError(ringtone) {
             //not success, check if name already installed and equals this tone
             Bugfender.warning("Ringtone install failed for ringtone: \(ringtone.description) Will search tonelibrary for matching name...")
             DispatchQueue.main.async { // to make sure tableview is not reloading
@@ -120,24 +121,24 @@ extension RingtoneInstaller {
             // Failed
             Bugfender.error("Ringtone install failed (retryonfailure=\(retryOnFailure), could not find installed ringtone with matching name and size/duration for tone: \(ringtone.description)")
             if retryOnFailure {
-                queue.async {
-                    guard let oldName = toneLibraryData.metaData["Name"] as? String else { return }
-                    var newName = oldName
-                    newName.appendRandom()
-                    BFLog("Retrying ringtone install, oldname=%@, newname=%@",oldName,newName)
-                    var newMetaData = toneLibraryData
-                    newMetaData.metaData.updateValue(newName, forKey: "Name")
-                    
-                    self.installRingtone(ringtone, toneLibraryData: newMetaData, retryOnFailure: false, completionHandler: { (tone, installStatus) in
-                        DispatchQueue.main.async {
-                            if installStatus {
-                                ringtone.name = newName
-                                RingtoneStore.sharedInstance.writeToPlist()
-                            }
-                            completionHandler(tone, installStatus)
+                
+                let oldName = ringtone.name
+                var newName = oldName
+                newName.appendRandom()
+                BFLog("Retrying ringtone install, oldname=%@, newname=%@",oldName,newName)
+                var newMetaData = toneLibraryData
+                newMetaData.metaData.updateValue(newName, forKey: "Name")
+                
+                self.installRingtone(ringtone, toneLibraryData: newMetaData, retryOnFailure: false, completionHandler: { (tone, installStatus) in
+                    DispatchQueue.main.async {
+                        if installStatus {
+                            ringtone.name = newName
+                            RingtoneStore.sharedInstance.writeToPlist()
                         }
-                    })
-                }
+                        completionHandler(tone, installStatus)
+                    }
+                })
+                
             } else {
                 DispatchQueue.main.async { // to make sure tableview is not reloading
                     if shouldCallBackToStore {
@@ -200,7 +201,7 @@ extension RingtoneInstaller {
                 }
                 return
             }
-            
+            BFLog("Install called for ringtone: %@",ringtone.description)
             let toneLibraryTuple: (metaData: [String:Any], toneData: Data)
             if let metaData = toneLibraryData {
                 toneLibraryTuple = metaData
@@ -209,18 +210,22 @@ extension RingtoneInstaller {
                 toneLibraryTuple = toneLibraryInfo
             }
             
+            BFLog("Calling importTone with data: %@ metadata: %@", toneLibraryTuple.toneData.description, toneLibraryTuple.metaData)
             TLToneManagerHandler.sharedInstance().importTone(toneLibraryTuple.toneData, metadata: toneLibraryTuple.metaData) { (success : Bool, toneIdentifier : String?) in
-                BFLog("Ringtone install completionblock")
+                
+                BFLog("Ringtone install completionblock, success: %d toneidentifier: %@", success, toneIdentifier ?? "nil")
                 
                 self.handleInstall(status: success,
-                                         toneIdentifier: toneIdentifier,
-                                         ringtone: ringtone,
-                                         toneLibraryData: toneLibraryTuple,
-                                         shouldCallBackToStore: shouldCallBackToStore,
-                                         retryOnFailure: retryOnFailure,
-                                         completionHandler: completionHandler)
+                                   toneIdentifier: toneIdentifier,
+                                   ringtone: ringtone,
+                                   toneLibraryData: toneLibraryTuple,
+                                   shouldCallBackToStore: shouldCallBackToStore,
+                                   retryOnFailure: retryOnFailure,
+                                   completionHandler: completionHandler)
+                
             }
         }
+        
     }
     
     func installRingtones(inArray ringtonesArray: Array<Ringtone>, completionHandler: @escaping (Int, Int) -> Void) {

@@ -92,10 +92,6 @@ extension RingtoneManager {
         })
     }
     
-    class func handleAlreadyImportedError(forFile fileURL : URL, onSuccess: @escaping () -> Void) {
-        
-    }
-    
     class func installRingtone(inCell: RingtoneTableCell? = nil, ringtoneObject: Ringtone? = nil, onSuccess: (() -> Void)? = nil) {
 
         let ringtone : Ringtone
