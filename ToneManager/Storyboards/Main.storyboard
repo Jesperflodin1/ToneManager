@@ -902,7 +902,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Ringtone details" id="VCe-h1-CKI">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" image="edit24" id="x0W-aX-fsJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" image="edit24" id="x0W-aX-fsJ">
+                            <connections>
+                                <action selector="editTapped:" destination="Ufq-Kt-sAC" id="Kni-D5-4hR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="appLabel" destination="CjS-5Y-p6D" id="ddP-ob-Gdu"/>

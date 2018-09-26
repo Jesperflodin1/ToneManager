@@ -75,7 +75,13 @@ final class RingtoneDetailViewController : UITableViewController {
     var contactPicker : CNContactPickerViewController? = nil
     var ringtoneAssigner : RingtoneAssigner? = nil
     
+    @IBAction func editTapped(_ sender: UIBarButtonItem) {
+        showNameChangePopup()
+    }
     @IBAction func nameCellTapped(_ sender: UITapGestureRecognizer) {
+        showNameChangePopup()
+    }
+    func showNameChangePopup() {
         let textVC = PopupTextInputViewController(nibName: "PopupTextInputViewController", bundle: nil)
         
         let popup = PopupDialog(viewController: textVC,
