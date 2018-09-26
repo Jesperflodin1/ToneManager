@@ -68,7 +68,7 @@ class HelpData {
             "Tap Tonemanager in the Open in menu that shows up. The ringtone should import and also install (if automatic installation is enabled in settings for this app)"]
         data.append(HelpItem(
 title: "How to import ringtone file with Filza",
-attributedText: NSAttributedString(string: "This will also apply to most other file manager app you may have. \n ", attributes: [.paragraphStyle:paragraphStyle]) + bulletPointList(strings: filzaImport) ))
+attributedText: NSAttributedString(string: "This will also apply to most other file manager apps you may have. \n ", attributes: [.paragraphStyle:paragraphStyle]) + bulletPointList(strings: filzaImport) ))
         
         //TODO: Image
         let voiceStrings = [
@@ -81,7 +81,7 @@ attributedText: NSAttributedString(string: "This will also apply to most other f
             attributedText: bulletPointList(strings: voiceStrings)))
         
         
-        let fileTypes = ["wav", "aif", "caf", "mp3", "mp4", "snd", "au", "sd2", "aiff", "aifc", "aac"]
+        let fileTypes = ["m4r", "wav", "aif", "caf", "mp3", "mp4", "snd", "au", "sd2", "aiff", "aifc", "aac"]
         data.append(HelpItem(
             title: "File formats this app can convert to ringtones",
             attributedText: NSAttributedString(string: "You need to do a manual import using the built-in filebrowser or 'open in' from another app. The following file types can be converted by this app: \n", attributes: [.paragraphStyle:paragraphStyle]) + bulletPointList(strings: fileTypes) ))

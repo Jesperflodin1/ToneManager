@@ -45,6 +45,8 @@ class RingtoneAssigner: NSObject {
         if !ringtone.installed {
             BFLog("ringtone not install in assigner, installing before assigning")
             RingtoneManager.installRingtone(ringtoneObject: ringtone, useHUD: false) {
+                NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
+                
                 TLToneManagerHandler.sharedInstance().setCurrentToneIdentifier(self.ringtone.identifier, forAlertType: 1)
             }
         } else {
@@ -56,6 +58,7 @@ class RingtoneAssigner: NSObject {
         if !ringtone.installed {
             BFLog("ringtone not install in assigner, installing before assigning")
             RingtoneManager.installRingtone(ringtoneObject: ringtone, useHUD: false) {
+                NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
                 
                 if CNMutableContactHandler.init(contact: forContact).setCallAlert(self.ringtone.identifier) {
                     HUD.flash(.label("Set ringtone to contact successfully"), delay: 1.0)
@@ -78,6 +81,7 @@ class RingtoneAssigner: NSObject {
         if !ringtone.installed {
             BFLog("ringtone not install in assigner, installing before assigning")
             RingtoneManager.installRingtone(ringtoneObject: ringtone, useHUD: false) {
+                NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
                 
                 TLToneManagerHandler.sharedInstance().setCurrentToneIdentifier(self.ringtone.identifier, forAlertType: 2)
             }
@@ -90,6 +94,7 @@ class RingtoneAssigner: NSObject {
         if !ringtone.installed {
             BFLog("ringtone not install in assigner, installing before assigning")
             RingtoneManager.installRingtone(ringtoneObject: ringtone, useHUD: false) {
+                NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
                 
                 if CNMutableContactHandler.init(contact: forContact).setTextAlert(self.ringtone.identifier) {
                     HUD.flash(.label("Set text tone to contact successfully"), delay: 1.0)
