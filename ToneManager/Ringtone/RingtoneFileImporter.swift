@@ -45,6 +45,24 @@ final class RingtoneFileImporter: RingtoneScanner {
     
     var importError : NSError?
     
+    func clearTempFolder() {
+        let fileManager = FileManager.default
+        let tempFolderPath = appDataDir.appendingPathComponent("tmp", isDirectory: true)
+        do {
+            let filePaths = try fileManager.contentsOfDirectory(atPath: tempFolderPath.path)
+            for filePath in filePaths {
+                try fileManager.removeItem(atPath: tempFolderPath.appendingPathComponent(filePath).path)
+            }
+            let tempConvertingPath = tempFolderPath.appendingPathComponent("converting", isDirectory: true)
+            let convertingFilePaths = try fileManager.contentsOfDirectory(atPath: tempFolderPath.path)
+            for filePath in convertingFilePaths {
+                try fileManager.removeItem(atPath: tempConvertingPath.appendingPathComponent(filePath).path)
+            }
+        } catch {
+            BFLog("Could not clear temp folder: \(error as NSError)")
+        }
+    }
+    
     fileprivate func convertFileAndImport(at file : URL, completionHandler: @escaping (Bool, Ringtone?) -> ()) {
         BFLog("File is not valid m4r ringtone, calling convert for: %@", file.path)
         
