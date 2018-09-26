@@ -33,11 +33,17 @@ class HelpItem {
     
     var title: String?
     var text: String?
+    var attributedText: NSAttributedString?
     var textShown = false
     
-    init(title: String, text: String) {
+    init(title: String, text: String? = nil, attributedText: NSAttributedString? = nil) {
         self.title = title
-        self.text = text
+        if let attributed = attributedText {
+            self.attributedText = attributed
+        } else if let regular = text {
+            self.text = regular
+        }
+        
     }
     
 }

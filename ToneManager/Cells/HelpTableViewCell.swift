@@ -68,7 +68,11 @@ class HelpTableViewCell : UITableViewCell {
     
     func setValues(_ data : HelpItem) {
         cellHeaderTitle.text = data.title
-        cellBodyText.text = data.text
+        if let text = data.text {
+            cellBodyText.text = text
+        } else if let attributed = data.attributedText {
+            cellBodyText.attributedText = attributed
+        }
         
         let shown = data.textShown
         

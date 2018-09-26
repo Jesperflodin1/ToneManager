@@ -41,10 +41,10 @@ final class Ringtone : NSObject, Codable {
         BFLog("Changing name to: %@ for ringtone: %@", self.name, self.description)
         
         var uniqueName = newName
+        uniqueName.appendRandom()
         if RingtoneStore.sharedInstance.containsRingtoneWith(name: newName) {
             BFLog("There is already a ringtone with this name")
-            uniqueName.appendRandom()
-        }
+        } else { uniqueName = newName }
         
         if ignoreInstalledStatus {
             self.name = uniqueName

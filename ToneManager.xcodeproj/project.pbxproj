@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B7547485A56829ADA0E8A7C /* Pods_ToneManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87726A0BFD0B4E267CD5179 /* Pods_ToneManager.framework */; };
+		2413E551215BE1570048AD46 /* NSAttributedString+Concatenate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2413E550215BE1570048AD46 /* NSAttributedString+Concatenate.swift */; };
 		24312BD9215B63EB004E2ADB /* PopupTextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24312BD7215B63EB004E2ADB /* PopupTextInputViewController.swift */; };
 		24312BDA215B63EB004E2ADB /* PopupTextInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24312BD8215B63EB004E2ADB /* PopupTextInputViewController.xib */; };
 		24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24496B22214991B40031E422 /* RingtoneInstaller.swift */; };
@@ -104,6 +105,7 @@
 
 /* Begin PBXFileReference section */
 		17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2413E550215BE1570048AD46 /* NSAttributedString+Concatenate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Concatenate.swift"; sourceTree = "<group>"; };
 		24312BD7215B63EB004E2ADB /* PopupTextInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupTextInputViewController.swift; sourceTree = "<group>"; };
 		24312BD8215B63EB004E2ADB /* PopupTextInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupTextInputViewController.xib; sourceTree = "<group>"; };
 		24496B22214991B40031E422 /* RingtoneInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneInstaller.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				24F7ECEB214FF17600A46E72 /* UIApplication+TopViewController.swift */,
 				24F7ECE9214FD84C00A46E72 /* Notification+Name.swift */,
 				248CADB5215A8DB50082FA1F /* NotificationCenter+PostOnMainThread.swift */,
+				2413E550215BE1570048AD46 /* NSAttributedString+Concatenate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 				248CADB6215A8DB50082FA1F /* NotificationCenter+PostOnMainThread.swift in Sources */,
 				24AB6592215A4A3700A91C7A /* String+AppendRandom.swift in Sources */,
 				24EE2075214295480045D678 /* RingtoneTableCell.swift in Sources */,
+				2413E551215BE1570048AD46 /* NSAttributedString+Concatenate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
