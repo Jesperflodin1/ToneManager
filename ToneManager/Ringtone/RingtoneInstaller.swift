@@ -143,10 +143,11 @@ extension RingtoneInstaller {
             Bugfender.error("Ringtone install failed (retryonfailure=\(retryOnFailure), could not find installed ringtone with matching name and size/duration for tone: \(ringtone.description)")
             if retryOnFailure {
                 
-                let oldName = ringtone.name
-                var newName = oldName
+                var newName = ringtone.name
                 newName.appendRandom()
-                BFLog("Retrying ringtone install, oldname=%@, newname=%@",oldName,newName)
+                if RingtoneStore.sharedInstance.containsRingtoneWith(name: newName) { newName.appendRandom() }
+                
+                BFLog("Retrying ringtone install, oldname=%@, newname=%@",ringtone.name,newName)
                 var newMetaData = toneLibraryData
                 newMetaData.metaData.updateValue(newName, forKey: "Name")
                 
@@ -154,7 +155,8 @@ extension RingtoneInstaller {
                     DispatchQueue.main.async {
                         if installStatus {
                             ringtone.changeName(newName, ignoreInstalledStatus: true)
-
+                        }
+                        if shouldCallBackToStore {
                             RingtoneStore.sharedInstance.writeToPlist()
                         }
                         completionHandler(tone, installStatus)

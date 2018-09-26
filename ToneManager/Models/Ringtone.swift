@@ -39,22 +39,33 @@ final class Ringtone : NSObject, Codable {
     
     func changeName(_ newName: String, ignoreInstalledStatus: Bool) {
         BFLog("Changing name to: %@ for ringtone: %@", self.name, self.description)
+        
+        var uniqueName = newName
+        if RingtoneStore.sharedInstance.containsRingtoneWith(name: newName) {
+            BFLog("There is already a ringtone with this name")
+            uniqueName.appendRandom()
+        }
+        
         if ignoreInstalledStatus {
-            self.name = newName
+            self.name = uniqueName
+            RingtoneStore.sharedInstance.writeToPlist()
             NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
             return
         }
+        
         if self.installed {
             BFLog("ringtone is installed, uninstalling first")
             RingtoneManager.uninstallRingtone(ringtoneObject: self, useHUD: false) {
-                self.name = newName
+                self.name = uniqueName
                 NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
                 RingtoneManager.installRingtone(ringtoneObject: self, useHUD: false, onSuccess: {
+                    
                     NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
                 })
             }
         } else {
-            self.name = newName
+            self.name = uniqueName
+            RingtoneStore.sharedInstance.writeToPlist()
             NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
         }
         

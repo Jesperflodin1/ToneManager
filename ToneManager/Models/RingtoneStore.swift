@@ -336,6 +336,14 @@ extension RingtoneStore {
             })
         }
     }
+    
+    func ringtonesWith(name ringtoneName: String) -> [Ringtone] {
+         return allRingtones.filter { $0.name == ringtoneName }
+    }
+    
+    func containsRingtoneWith(name ringtoneName: String) -> Bool {
+        return allRingtones.contains(where: { $0.name == ringtoneName })
+    }
 }
 
 //MARK: Notification observers

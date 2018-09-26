@@ -84,6 +84,7 @@ final class RingtoneDetailViewController : UITableViewController {
     func showNameChangePopup() {
         let textVC = PopupTextInputViewController(nibName: "PopupTextInputViewController", bundle: nil)
         
+        
         let popup = PopupDialog(viewController: textVC,
                                 buttonAlignment: .horizontal,
                                 transitionStyle: .bounceDown,
@@ -93,13 +94,15 @@ final class RingtoneDetailViewController : UITableViewController {
         
         // Create second button
         let buttonTwo = DefaultButton(title: "CHANGE", height: 60) {
-            self.nameLabel.text = String(format: "%@", textVC.nameTextField)
-            guard let newName = self.nameLabel.text else { return }
+            guard let newName = textVC.nameTextField.text else { return }
             self.ringtone.changeName(newName, ignoreInstalledStatus: false)
         }
         
         // Add buttons to dialog
         popup.addButtons([buttonOne, buttonTwo])
+        
+        let vc = popup.viewController as! PopupTextInputViewController
+        vc.nameTextField.text = ringtone.name
         
         // Present dialog
         present(popup, animated: true, completion: nil)
@@ -151,6 +154,25 @@ final class RingtoneDetailViewController : UITableViewController {
         
         ringtoneAssigner = assigner
         openContactPicker()
+    }
+    
+    func registerObservers() {
+        NotificationCenter.default.addObserver(self, selector:#selector(self.storeDidReload(notification:)), name: .ringtoneStoreDidReload, object: nil)
+    }
+    
+    @objc func storeDidReload(notification: NSNotification) {
+        BFLog("store did reload in detailview")
+        if ringtone != nil {
+            self.nameLabel.text = ringtone.name
+            self.appLabel.text = ringtone.appName
+            self.lengthLabel.text = "\(humanReadableDuration(ringtone.rawDuration)) s"
+            self.sizeLabel.text = "\(ringtone.humanReadableSize())"
+            
+            self.ringtonePlayerDurationLabel.text = "0.0 / \(humanReadableDuration(ringtone.rawDuration)) s"
+            
+            updateInstallStatus()
+            
+        }
     }
 }
 
@@ -445,7 +467,7 @@ extension RingtoneDetailViewController {
             self.ringtonePlayerDurationLabel.text = "0.0 / \(humanReadableDuration(ringtone.rawDuration)) s"
             
             updateInstallStatus()
-            
+            registerObservers()
             super.viewWillAppear(animated)
         }
     }
