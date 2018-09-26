@@ -62,9 +62,12 @@ class HelpTableViewCell : UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         cellHeaderTitle.text = nil
-        cellBodyText.text = nil
-        cellBodyText.attributedText = nil
         cellHeaderImage.image = ColorPalette.cellDownArrow
+        cellBodyText.text = nil
+        cellBodyText.font = nil
+        cellBodyText.textColor = nil
+        cellBodyText.textAlignment = .left
+        cellBodyText.attributedText = nil
     }
     
     func setValues(_ data : HelpItem) {

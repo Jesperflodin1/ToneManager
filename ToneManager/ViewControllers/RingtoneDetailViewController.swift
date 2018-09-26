@@ -122,7 +122,7 @@ final class RingtoneDetailViewController : UITableViewController {
             
             guard let strongSelf = self else { return }
             
-            guard let assigner = RingtoneAssigner(ringtone: strongSelf.ringtone) else { return }
+            let assigner = RingtoneAssigner(ringtone: strongSelf.ringtone)
             assigner.assignDefaultRingtone()
             
             HUD.allowsInteraction = true
@@ -134,7 +134,7 @@ final class RingtoneDetailViewController : UITableViewController {
             
             guard let strongSelf = self else { return }
             
-            guard let assigner = RingtoneAssigner(ringtone: strongSelf.ringtone) else { return }
+            let assigner = RingtoneAssigner(ringtone: strongSelf.ringtone)
             assigner.assignDefaultTextTone()
             
             HUD.allowsInteraction = true
@@ -150,7 +150,7 @@ final class RingtoneDetailViewController : UITableViewController {
     @IBAction func assignToContactTapped(_ sender: UITapGestureRecognizer) {
         stopPlaying()
         
-        guard let assigner = RingtoneAssigner(ringtone: ringtone) else { return }
+        let assigner = RingtoneAssigner(ringtone: ringtone)
         
         ringtoneAssigner = assigner
         openContactPicker()

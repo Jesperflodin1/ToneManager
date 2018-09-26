@@ -75,21 +75,21 @@ class ActionSheetGenerator {
             
         }))
         actionController.addAction(Action(ActionData(title: "Assign to contact", image: ColorPalette.actionSheetMenuAddressbook!), style: .default, handler: { action in
-            guard let assigner = RingtoneAssigner(ringtone: ringtone) else { return }
+            let assigner = RingtoneAssigner(ringtone: ringtone)
             
             ringtoneTableController.ringtoneAssigner = assigner
             ringtoneTableController.openContactPicker()
             
         }))
         actionController.addAction(Action(ActionData(title: "Assign as default ringtone", image: ColorPalette.actionSheetMenuMobile!), style: .default, handler: { action in
-            guard let assigner = RingtoneAssigner(ringtone: ringtone) else { return }
+            let assigner = RingtoneAssigner(ringtone: ringtone)
             assigner.assignDefaultRingtone()
             
             HUD.allowsInteraction = true
             HUD.flash(.label("Set ringtone as default ringtone"), delay: 1.0)
         }))
         actionController.addAction(Action(ActionData(title: "Assign as default text tone", image: ColorPalette.actionSheetMenuMessage!), style: .default, handler: { action in
-            guard let assigner = RingtoneAssigner(ringtone: ringtone) else { return }
+            let assigner = RingtoneAssigner(ringtone: ringtone)
             assigner.assignDefaultTextTone()
             
             HUD.flash(.label("Set ringtone as default text tone"), delay: 1.0)
