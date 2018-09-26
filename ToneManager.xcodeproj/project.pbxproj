@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1B7547485A56829ADA0E8A7C /* Pods_ToneManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87726A0BFD0B4E267CD5179 /* Pods_ToneManager.framework */; };
+		24312BD9215B63EB004E2ADB /* PopupTextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24312BD7215B63EB004E2ADB /* PopupTextInputViewController.swift */; };
+		24312BDA215B63EB004E2ADB /* PopupTextInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24312BD8215B63EB004E2ADB /* PopupTextInputViewController.xib */; };
 		24496B23214991B40031E422 /* RingtoneInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24496B22214991B40031E422 /* RingtoneInstaller.swift */; };
 		24496B25214AAF860031E422 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24496B24214AAF860031E422 /* AVFoundation.framework */; };
 		244B0C4E215A747A00E0C69E /* RingtoneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244B0C4D215A747A00E0C69E /* RingtoneManager.swift */; };
@@ -102,6 +104,8 @@
 
 /* Begin PBXFileReference section */
 		17550D99DF4A1C51678E878B /* Pods_ToneManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToneManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24312BD7215B63EB004E2ADB /* PopupTextInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupTextInputViewController.swift; sourceTree = "<group>"; };
+		24312BD8215B63EB004E2ADB /* PopupTextInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupTextInputViewController.xib; sourceTree = "<group>"; };
 		24496B22214991B40031E422 /* RingtoneInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtoneInstaller.swift; sourceTree = "<group>"; };
 		24496B24214AAF860031E422 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		244B0C49215A73DE00E0C69E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -439,6 +443,7 @@
 		24AB6594215A4F4600A91C7A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				24312BD7215B63EB004E2ADB /* PopupTextInputViewController.swift */,
 				2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */,
 				2497A6652142533600597B5C /* RingtoneTableViewController.swift */,
 				24B5E29D2156ADAE00A8A70A /* HelpTableViewController.swift */,
@@ -455,6 +460,7 @@
 		24AB6595215A4F9F00A91C7A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				24312BD8215B63EB004E2ADB /* PopupTextInputViewController.xib */,
 				2477828421525CE00058074F /* ActionSheetCell.xib */,
 				247AFDF5215122EC007191E1 /* FirstRun.storyboard */,
 				244B0C48215A73DE00E0C69E /* LaunchScreen.storyboard */,
@@ -606,6 +612,7 @@
 				24B5E29C21568A7700A8A70A /* assets.xcassets in Resources */,
 				2477828621525CE10058074F /* ActionSheetCell.xib in Resources */,
 				244B0C50215A749200E0C69E /* Main.storyboard in Resources */,
+				24312BDA215B63EB004E2ADB /* PopupTextInputViewController.xib in Resources */,
 				249694A521450AC6009960D7 /* entitlements.xml in Resources */,
 				247AFDF6215122EC007191E1 /* FirstRun.storyboard in Resources */,
 			);
@@ -734,6 +741,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2491B391214F8FB1001B36DE /* RingtonePlayer.swift in Sources */,
+				24312BD9215B63EB004E2ADB /* PopupTextInputViewController.swift in Sources */,
 				24B5E29E2156ADAE00A8A70A /* HelpTableViewController.swift in Sources */,
 				249694A721454F96009960D7 /* RingtoneScanner.swift in Sources */,
 				2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */,

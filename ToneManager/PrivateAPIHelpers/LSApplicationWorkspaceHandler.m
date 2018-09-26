@@ -70,4 +70,12 @@
     PrivateApi_LSApplicationWorkspace* _workspace = [NSClassFromString(@"LSApplicationWorkspace") performSelector:@selector(defaultWorkspace)];
     return [_workspace openSensitiveURL:url withOptions:nil];
 }
++(NSArray* __nullable)allInstalledApplications {
+    PrivateApi_LSApplicationWorkspace* _workspace = [NSClassFromString(@"LSApplicationWorkspace") performSelector:@selector(defaultWorkspace)];
+    return [_workspace allInstalledApplications];
+}
++(NSArray* __nullable)applicationsOfType:(unsigned long long)arg1 {
+    PrivateApi_LSApplicationWorkspace* _workspace = [NSClassFromString(@"LSApplicationWorkspace") performSelector:@selector(defaultWorkspace)];
+    return [_workspace applicationsOfType:arg1];
+}
 @end

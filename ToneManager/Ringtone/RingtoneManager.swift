@@ -113,7 +113,7 @@ extension RingtoneManager {
         })
     }
     
-    class func installRingtone(inCell: RingtoneTableCell? = nil, ringtoneObject: Ringtone? = nil, onSuccess: (() -> Void)? = nil) {
+    class func installRingtone(inCell: RingtoneTableCell? = nil, ringtoneObject: Ringtone? = nil, useHUD: Bool = true, onSuccess: (() -> Void)? = nil) {
 
         let ringtone : Ringtone
         let cell : RingtoneTableCell?
@@ -124,7 +124,7 @@ extension RingtoneManager {
             ringtone = ringtonetemp
             cell = nil
         } else {
-            HUD.flash(.labeledError(title: "Error", subtitle: "Invalid arguments when installing ringtone"), delay: 1.0)
+            if useHUD { HUD.flash(.labeledError(title: "Error", subtitle: "Invalid arguments when installing ringtone"), delay: 1.0) }
             return
         }
 
@@ -136,12 +136,12 @@ extension RingtoneManager {
                     cellNotNil.updateInstallStatus()
                 }
                 HUD.allowsInteraction = true
-                HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed ringtone"), delay: 0.7)
+                if useHUD { HUD.flash(.labeledSuccess(title: "Success!", subtitle: "Installed ringtone"), delay: 0.7) }
                 onSuccess?()
             } else {
                 
                 BFLog("Got failure in callback from ringtone install")
-                HUD.flash(.labeledError(title: "Error", subtitle: "Error when installing ringtone"), delay: 1.0)
+                if useHUD { HUD.flash(.labeledError(title: "Error", subtitle: "Error when installing ringtone"), delay: 1.0) }
             }
         })
     }

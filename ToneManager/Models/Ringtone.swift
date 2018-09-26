@@ -38,14 +38,24 @@ final class Ringtone : NSObject, Codable {
     private(set) var name: String
     
     func changeName(_ newName: String, ignoreInstalledStatus: Bool) {
+        BFLog("Changing name to: %@ for ringtone: %@", self.name, self.description)
         if ignoreInstalledStatus {
             self.name = newName
+            NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
             return
         }
         if self.installed {
+            BFLog("ringtone is installed, uninstalling first")
             RingtoneManager.uninstallRingtone(ringtoneObject: self, useHUD: false) {
+                self.name = newName
                 NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
+                RingtoneManager.installRingtone(ringtoneObject: self, useHUD: false, onSuccess: {
+                    NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
+                })
             }
+        } else {
+            self.name = newName
+            NotificationCenter.default.postMainThreadNotification(notification: Notification(name: .ringtoneStoreDidReload))
         }
         
     }

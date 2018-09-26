@@ -75,6 +75,29 @@ final class RingtoneDetailViewController : UITableViewController {
     var contactPicker : CNContactPickerViewController? = nil
     var ringtoneAssigner : RingtoneAssigner? = nil
     
+    @IBAction func nameCellTapped(_ sender: UITapGestureRecognizer) {
+        let textVC = PopupTextInputViewController(nibName: "PopupTextInputViewController", bundle: nil)
+        
+        let popup = PopupDialog(viewController: textVC,
+                                buttonAlignment: .horizontal,
+                                transitionStyle: .bounceDown,
+                                tapGestureDismissal: true,
+                                panGestureDismissal: false)
+        let buttonOne = CancelButton(title: "CANCEL", height: 60, action: nil)
+        
+        // Create second button
+        let buttonTwo = DefaultButton(title: "CHANGE", height: 60) {
+            self.nameLabel.text = String(format: "%@", textVC.nameTextField)
+            guard let newName = self.nameLabel.text else { return }
+            self.ringtone.changeName(newName, ignoreInstalledStatus: false)
+        }
+        
+        // Add buttons to dialog
+        popup.addButtons([buttonOne, buttonTwo])
+        
+        // Present dialog
+        present(popup, animated: true, completion: nil)
+    }
     @IBAction func openSourceAppTapped(_ sender: UITapGestureRecognizer) {
         stopPlaying()
         if !LSApplicationWorkspaceHandler.openApplication(withBundleID: ringtone.bundleID) {

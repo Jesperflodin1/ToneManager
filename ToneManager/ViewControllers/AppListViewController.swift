@@ -55,8 +55,10 @@ final class AppListViewController : UITableViewController {
             "com.zedge.Zedge",
             "com.908.AudikoFree",
             "com.908.Audiko"]
-        
+
         guard let apps = appList.applicationsFiltered(using: NSPredicate(format: "isSystemApplication = FALSE")) as? [String : String] else { return }
+        
+        
         
         for (identifier, displayName) in apps {
             if appList.application(withDisplayIdentifierIsHidden: identifier) {

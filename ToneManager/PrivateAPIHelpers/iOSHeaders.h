@@ -50,6 +50,7 @@
 -(BOOL)isWhitelisted;
 -(BOOL)isRemovedSystemApp;
 -(NSString *)applicationType;
+-(NSString *)applicationIdentifier;
 @end
 
 /**
@@ -116,6 +117,7 @@
 @interface PrivateApi_LSApplicationWorkspace : NSObject
 +(id)defaultWorkspace;
 - (NSArray*)allInstalledApplications;
+-(NSArray*)applicationsOfType:(unsigned long long)arg1 ;
 - (bool)openApplicationWithBundleID:(id)arg1;
 -(BOOL)unregisterApplication:(NSURL *)url;
 -(BOOL)registerApplication:(NSURL *)url;

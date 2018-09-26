@@ -39,4 +39,6 @@
 +(BOOL)invalidateIconCache:(NSString *)bundleID;
     
 +(BOOL)openSensitiveURL:(NSURL *)url;
++(NSArray* __nullable)allInstalledApplications;
++(NSArray* __nullable)applicationsOfType:(unsigned long long)arg1 ;
 @end
