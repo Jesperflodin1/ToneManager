@@ -56,13 +56,14 @@ class HelpTableViewCell : UITableViewCell {
         cellBodyText.layer.masksToBounds = false;
         cellBodyText.clipsToBounds = false;
         cellBodyText.layer.cornerRadius = 12
-        cellBodyText.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        cellBodyText.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 5)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        cellHeaderTitle.text = ""
-        cellBodyText.text = ""
+        cellHeaderTitle.text = nil
+        cellBodyText.text = nil
+        cellBodyText.attributedText = nil
         cellHeaderImage.image = ColorPalette.cellDownArrow
     }
     
