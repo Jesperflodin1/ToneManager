@@ -36,9 +36,8 @@
 		2477829E215432490058074F /* CNMutableContactHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2477829D215432490058074F /* CNMutableContactHandler.m */; };
 		24797419215CD15300BC2E74 /* URL+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24797418215CD15300BC2E74 /* URL+Directories.swift */; };
 		2479741B215D2CF900BC2E74 /* NSTextAttachment+setImageHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2479741A215D2CF900BC2E74 /* NSTextAttachment+setImageHeight.swift */; };
+		2479741D215D6FB600BC2E74 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2479741C215D6FB600BC2E74 /* assets.xcassets */; };
 		247AFDF421511344007191E1 /* AppSetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF321511344007191E1 /* AppSetupManager.swift */; };
-		247AFDF6215122EC007191E1 /* FirstRun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 247AFDF5215122EC007191E1 /* FirstRun.storyboard */; };
-		247AFDF8215124D7007191E1 /* FirstRunPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */; };
 		247AFDFA21515846007191E1 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF921515846007191E1 /* AppearanceManager.swift */; };
 		248CADB6215A8DB50082FA1F /* NotificationCenter+PostOnMainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248CADB5215A8DB50082FA1F /* NotificationCenter+PostOnMainThread.swift */; };
 		2491B38D214E49B6001B36DE /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */; };
@@ -64,7 +63,6 @@
 		24982BD4214CE16700DD0474 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24982BD3214CE16700DD0474 /* Preferences.swift */; };
 		24AB6590215A38C900A91C7A /* URL+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB658F215A38C900A91C7A /* URL+Size.swift */; };
 		24AB6592215A4A3700A91C7A /* String+AppendRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB6591215A4A3700A91C7A /* String+AppendRandom.swift */; };
-		24B5E29C21568A7700A8A70A /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24B5E29B21568A7700A8A70A /* assets.xcassets */; };
 		24B5E29E2156ADAE00A8A70A /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B5E29D2156ADAE00A8A70A /* HelpTableViewController.swift */; };
 		24B5E2A02156ADB700A8A70A /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B5E29F2156ADB700A8A70A /* HelpTableViewCell.swift */; };
 		24C529FA21597E9700770587 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C529F921597E9700770587 /* Localizable.swift */; };
@@ -146,9 +144,8 @@
 		247782AB215434CA0058074F /* DynamicBlurView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DynamicBlurView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24797418215CD15300BC2E74 /* URL+Directories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Directories.swift"; sourceTree = "<group>"; };
 		2479741A215D2CF900BC2E74 /* NSTextAttachment+setImageHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+setImageHeight.swift"; sourceTree = "<group>"; };
+		2479741C215D6FB600BC2E74 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		247AFDF321511344007191E1 /* AppSetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupManager.swift; sourceTree = "<group>"; };
-		247AFDF5215122EC007191E1 /* FirstRun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstRun.storyboard; sourceTree = "<group>"; };
-		247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunPageViewController.swift; sourceTree = "<group>"; };
 		247AFDF921515846007191E1 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		248CADB5215A8DB50082FA1F /* NotificationCenter+PostOnMainThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+PostOnMainThread.swift"; sourceTree = "<group>"; };
 		2491B38C214E49B6001B36DE /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -181,7 +178,6 @@
 		24982BD3214CE16700DD0474 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		24AB658F215A38C900A91C7A /* URL+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Size.swift"; sourceTree = "<group>"; };
 		24AB6591215A4A3700A91C7A /* String+AppendRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AppendRandom.swift"; sourceTree = "<group>"; };
-		24B5E29B21568A7700A8A70A /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		24B5E29D2156ADAE00A8A70A /* HelpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		24B5E29F2156ADB700A8A70A /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
 		24C529F921597E9700770587 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
@@ -405,13 +401,13 @@
 				245C729F21591BBA00D07410 /* Utilities */,
 				245C729B21591A6100D07410 /* Extensions */,
 				245C729C21591A8900D07410 /* PrivateAPIHelpers */,
-				24B5E29B21568A7700A8A70A /* assets.xcassets */,
 				2497A63A214251D200597B5C /* AppDelegate.swift */,
 				247782912153C0DB0058074F /* changelog.xml */,
 				247782922153C0DB0058074F /* info.xml */,
 				2497A641214251D300597B5C /* Info.plist */,
 				24EE207E2142C7E60045D678 /* ToneManager-Bridging-Header.h */,
 				249694A421450AC6009960D7 /* entitlements.xml */,
+				2479741C215D6FB600BC2E74 /* assets.xcassets */,
 			);
 			path = ToneManager;
 			sourceTree = "<group>";
@@ -461,7 +457,6 @@
 				2497F65F2155907A00324FF1 /* AdvancedSettingsViewController.swift */,
 				249694AF2147ECEF009960D7 /* SettingsRingtoneAppsViewController.swift */,
 				249694AD214799F0009960D7 /* AppListViewController.swift */,
-				247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -471,7 +466,6 @@
 			children = (
 				24312BD8215B63EB004E2ADB /* PopupTextInputViewController.xib */,
 				2477828421525CE00058074F /* ActionSheetCell.xib */,
-				247AFDF5215122EC007191E1 /* FirstRun.storyboard */,
 				244B0C48215A73DE00E0C69E /* LaunchScreen.storyboard */,
 				244B0C4F215A749200E0C69E /* Main.storyboard */,
 			);
@@ -618,12 +612,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				244B0C51215A78EE00E0C69E /* LaunchScreen.storyboard in Resources */,
-				24B5E29C21568A7700A8A70A /* assets.xcassets in Resources */,
 				2477828621525CE10058074F /* ActionSheetCell.xib in Resources */,
+				2479741D215D6FB600BC2E74 /* assets.xcassets in Resources */,
 				244B0C50215A749200E0C69E /* Main.storyboard in Resources */,
 				24312BDA215B63EB004E2ADB /* PopupTextInputViewController.xib in Resources */,
 				249694A521450AC6009960D7 /* entitlements.xml in Resources */,
-				247AFDF6215122EC007191E1 /* FirstRun.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,7 +773,6 @@
 				245C729A21591A1000D07410 /* URL+AudioDuration.swift in Sources */,
 				2497A6682142537B00597B5C /* Ringtone.swift in Sources */,
 				244B0C4E215A747A00E0C69E /* RingtoneManager.swift in Sources */,
-				247AFDF8215124D7007191E1 /* FirstRunPageViewController.swift in Sources */,
 				244DD1542154F3D200C995E7 /* ActionSheetGenerator.swift in Sources */,
 				24EE20872142D9A30045D678 /* FBApplicationInfoHandler.m in Sources */,
 				2477828C215298980058074F /* Error.swift in Sources */,

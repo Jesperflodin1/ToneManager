@@ -57,14 +57,62 @@ class HelpData {
         data.append(HelpItem(title: "What this app CAN do", attributedText: bulletPointList(strings: canStrings)))
         
         
-        //TODO: image
-        data.append(HelpItem(title: "How to import ringtones from Audiko", text: "PLACEHOLDER: How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko"))
+        let audiko0Attachment = NSTextAttachment()
+        audiko0Attachment.image = UIImage(named: "audiko0")
+        audiko0Attachment.setImageHeight(height: 90)
+        let audiko1Attachment = NSTextAttachment()
+        audiko1Attachment.image = UIImage(named: "audiko1")
+        audiko1Attachment.setImageHeight(height: 120)
+        let audiko0AttString = NSAttributedString(attachment: audiko0Attachment)
+        let audiko1AttString = NSAttributedString(attachment: audiko1Attachment)
         
-        //TODO: image
-        data.append(HelpItem(title: "How to import ringtones from Zedge", text: "PLACEHOLDER: How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko"))
+        let audiko = NSMutableAttributedString()
+        audiko.append(bulletPointList(strings: ["Tap the ringtone you want"]))
+        audiko.append(lineBreak+lineBreak)
+        audiko.append(audiko0AttString)
+        audiko.append(lineBreak)
+        audiko.append(bulletPointList(strings: ["Tap the red button that says add to favorites or similar (depending on your device language)"]))
+        audiko.append(lineBreak+lineBreak)
+        audiko.append(audiko1AttString)
+        audiko.append(lineBreak)
+        data.append(HelpItem(title: "How to import ringtones from Audiko", attributedText: audiko))
         
-        //TODO: Image
-        data.append(HelpItem(title: "How to import ringtone file from filesystem", text: "PLACEHOLDER: How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko"))
+        
+        
+        let zedgeAttachment = NSTextAttachment()
+        zedgeAttachment.image = UIImage(named: "zedge0")
+        zedgeAttachment.setImageHeight(height: 90)
+        let zedge = NSMutableAttributedString()
+        let zedgeAttString = NSAttributedString(attachment: zedgeAttachment)
+        zedge.append(bulletPointList(strings: [
+            "Choose a ringtone in zedge",
+            "Tap download button"]))
+        zedge.append(lineBreak+lineBreak)
+        zedge.append(zedgeAttString)
+        zedge.append(lineBreak)
+        zedge.append(bulletPointList(strings: [
+            "Open ToneManager and the ringtone should import and install (if automatic installation is enabled in settings for this app)"]))
+        data.append(HelpItem(title: "How to import ringtones from Zedge", attributedText: zedge))
+        
+        
+        
+        let filebrowser0Attachment = NSTextAttachment()
+        filebrowser0Attachment.image = UIImage(named: "filebrowser0")
+        filebrowser0Attachment.setImageHeight(height: 170)
+        let filebrowser = NSMutableAttributedString()
+        let filebrowserAttString = NSAttributedString(attachment: filebrowser0Attachment)
+        filebrowser.append(bulletPointList(strings: [
+            "Tap the folder button in the toolbar",
+            "Navigate to the file you want to import",
+            "Tap it and the file should import. If it's not an m4r file, the app will try to convert it first."]))
+        filebrowser.append(lineBreak+lineBreak)
+        filebrowser.append(filebrowserAttString)
+        filebrowser.append(lineBreak)
+        
+        data.append(HelpItem(title: "How to import ringtone file from filesystem", attributedText: filebrowser))
+        
+        
+        
         
         let filza0Attachment = NSTextAttachment()
         filza0Attachment.image = UIImage(named: "filza0")
@@ -76,9 +124,9 @@ class HelpData {
         filza2Attachment.image = UIImage(named: "filza2")
         filza2Attachment.setImageHeight(height: 250)
         let filza = NSMutableAttributedString()
-        let filza0AttString = NSMutableAttributedString(attributedString: NSAttributedString(attachment: filza0Attachment))
-        let filza1AttString = NSMutableAttributedString(attributedString: NSAttributedString(attachment: filza1Attachment))
-        let filza2AttString = NSMutableAttributedString(attributedString: NSAttributedString(attachment: filza2Attachment))
+        let filza0AttString = NSAttributedString(attachment: filza0Attachment)
+        let filza1AttString = NSAttributedString(attachment: filza1Attachment)
+        let filza2AttString = NSAttributedString(attachment: filza2Attachment)
 
         filza.append(NSAttributedString(string: "This will also apply to most other file manager apps you may have. \n", attributes: [.paragraphStyle:paragraphStyle]))
         filza.append(bulletPointList(strings: [
@@ -96,15 +144,58 @@ class HelpData {
         filza.append(lineBreak)
         data.append(HelpItem(title: "How to import ringtone file with Filza", attributedText: filza))
         
-        //TODO: Image
-        let voiceStrings = [
+        
+        
+        let voice0Attachment = NSTextAttachment()
+        voice0Attachment.image = UIImage(named: "voice0")
+        voice0Attachment.setImageHeight(height: 180)
+        let voice1Attachment = NSTextAttachment()
+        voice1Attachment.image = UIImage(named: "voice1")
+        voice1Attachment.setImageHeight(height: 230)
+        let voice0AttString = NSAttributedString(attachment: voice0Attachment)
+        let voice1AttString = NSAttributedString(attachment: voice1Attachment)
+        let voice = NSMutableAttributedString()
+        voice.append(bulletPointList(strings: [
             "Record whatever you want and tap the share button for the recording you want to import",
-            "The length should be less than 30 seconds, if longer it will be modified on import so only the first 30 seconds are included",
+            "The length should be less than 30 seconds, if longer it will be modified on import so only the first 30 seconds are included"]))
+        voice.append(lineBreak+lineBreak)
+        voice.append(voice0AttString)
+        voice.append(lineBreak)
+        voice.append(bulletPointList(strings: [
             "Choose ToneManager in the Open in menu that shows up",
-            "The recording should import and install (if automatic installation is enabled in settings for this app)"]
+            "The recording should import and install (if automatic installation is enabled in settings for this app)"]))
+        voice.append(lineBreak+lineBreak)
+        voice.append(voice1AttString)
+        voice.append(lineBreak)
+
         data.append(HelpItem(
             title: "How to import ringtone from built-in voice recorder",
-            attributedText: bulletPointList(strings: voiceStrings)))
+            attributedText: voice))
+        
+        
+        
+        
+        let setdefault0Attachment = NSTextAttachment()
+        setdefault0Attachment.image = UIImage(named: "setdefault0")
+        setdefault0Attachment.setImageHeight(height: 70)
+        let setdefault1Attachment = NSTextAttachment()
+        setdefault1Attachment.image = UIImage(named: "setdefault1")
+        setdefault1Attachment.setImageHeight(height: 260)
+        let setdefault0AttString = NSAttributedString(attachment: setdefault0Attachment)
+        let setdefault1AttString = NSAttributedString(attachment: setdefault1Attachment)
+        let setDefault = NSMutableAttributedString()
+        
+        setDefault.append(bulletPointList(strings: [
+            "Tap the menu button on the ringtone you want to import"]))
+        setDefault.append(lineBreak+lineBreak)
+        setDefault.append(setdefault0AttString)
+        setDefault.append(lineBreak)
+        setDefault.append(bulletPointList(strings: [
+            "Tap assign to contact to get a window where you can choose a contact to assign it to, then choose either to apply it as ringtone or text tone in the menu that shows up",
+            "You can do the same by opening the ringtone details page in the same menu or tap the Info button on the row for the ringtone. There you will get the same assign as options as in this menu"]))
+        setDefault.append(lineBreak+lineBreak)
+        setDefault.append(setdefault1AttString)
+        setDefault.append(lineBreak)
         
         
         let fileTypes = ["m4r", "wav", "aif", "caf", "mp3", "mp4", "snd", "au", "sd2", "aiff", "aifc", "aac"]
@@ -112,7 +203,10 @@ class HelpData {
             title: "File formats this app can convert to ringtones",
             attributedText: NSAttributedString(string: "You need to do a manual import using the built-in filebrowser or 'open in' from another app. The following file types can be converted by this app: \n", attributes: [.paragraphStyle:paragraphStyle]) + bulletPointList(strings: fileTypes) ))
         
+        
+        
         data.append(HelpItem(title: "Can this app be sideloaded on a non-jailbroken iphone?", attributedText: NSAttributedString(string: "No. The private frameworks this app uses also requires private entitlements. As far as i know it is not possible to set these entitlements without a jailbreak.", attributes: [.paragraphStyle:paragraphStyle])))
+        
         
         
         data.append(HelpItem(title: "Found a bug? Have another problem or a suggestion?", attributedText: NSAttributedString(string: "Use the email button in settings in this app or create an issue on github. The email button will create an email with several useful files that include your current settings, imported ringtones and values associated with them, version of this app, your iOS version, device model and a device identifier which helps me find logs from your device.", attributes: [.paragraphStyle:paragraphStyle])))

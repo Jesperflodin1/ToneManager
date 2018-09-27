@@ -1132,6 +1132,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection id="dcz-gO-j75">
+                                <mutableString key="footerTitle">Recursive scan will scan the whole data folder and ALL subfolders in each app. This have a higher chance of finding ringtones if they are not in the Documents folder.  Note: This will make each scan take longer and may be noticable if several extra apps are enabled</mutableString>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="rXe-7D-jsg">
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
@@ -1227,7 +1228,7 @@
                             <tableViewSection id="gYB-dQ-5Lt">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="65t-Cp-Cxo">
-                                        <rect key="frame" x="0.0" y="203" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="295" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="65t-Cp-Cxo" id="Mwr-9M-zDL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1253,7 +1254,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="4Lc-Fb-h9b">
-                                        <rect key="frame" x="0.0" y="247" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="339" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Lc-Fb-h9b" id="6VG-xs-COv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>

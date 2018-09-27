@@ -61,7 +61,7 @@ struct Preferences {
         Preferences.keys.build.rawValue : "1",
         Preferences.keys.firstRun.rawValue : true,
         Preferences.keys.isUpdated.rawValue : false,
-        Preferences.keys.scanRecursively.rawValue : true
+        Preferences.keys.scanRecursively.rawValue : false
     ]
     
     static let defaultApps : [String:String] = [
