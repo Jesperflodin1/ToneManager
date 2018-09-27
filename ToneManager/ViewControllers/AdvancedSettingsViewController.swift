@@ -34,11 +34,14 @@ final class AdvancedSettingsViewController : UITableViewController {
     /// Outlet for remote logging UISwitch
     @IBOutlet public weak var remoteLoggingSwitch: UISwitch!
     
+    @IBOutlet weak var recursiveScanSwitch: UISwitch!
+    
 }
 
 extension AdvancedSettingsViewController {
     override func viewWillAppear(_ animated: Bool) {
         remoteLoggingSwitch.isOn = Preferences.remoteLogging
+        recursiveScanSwitch.isOn = Preferences.scanRecursively
         super.viewWillAppear(animated)
     }
 }
@@ -49,6 +52,9 @@ extension AdvancedSettingsViewController {
     /// - Parameter sender: UISwitch that initiated this
     @IBAction public func remoteLoggingChanged(_ sender: UISwitch) {
         Preferences.remoteLogging = sender.isOn
+    }
+    @IBAction func recursiveScanChanged(_ sender: UISwitch) {
+        Preferences.scanRecursively = sender.isOn
     }
     @IBAction func deleteAllTapped(_ sender: UITapGestureRecognizer) {
         RingtoneManager.deleteAllRingtones(withAlert: true) {

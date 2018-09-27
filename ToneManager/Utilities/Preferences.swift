@@ -47,6 +47,7 @@ struct Preferences {
         case build = "Build"
         case firstRun = "FirstRun"
         case isUpdated = "IsUpdated"
+        case scanRecursively = "ScanRecursively"
     }
     
     static let defaultSettings : [String:Any] = [
@@ -59,7 +60,8 @@ struct Preferences {
         Preferences.keys.version.rawValue : "0.5.0",
         Preferences.keys.build.rawValue : "1",
         Preferences.keys.firstRun.rawValue : true,
-        Preferences.keys.isUpdated.rawValue : false
+        Preferences.keys.isUpdated.rawValue : false,
+        Preferences.keys.scanRecursively.rawValue : true
     ]
     
     static let defaultApps : [String:String] = [
@@ -166,6 +168,15 @@ extension Preferences {
         }
         set {
             Preferences.defaults.set(newValue, forKey: Preferences.keys.isUpdated.rawValue)
+        }
+    }
+    
+    static var scanRecursively : Bool {
+        get {
+            return Preferences.defaults.bool(forKey: Preferences.keys.scanRecursively.rawValue)
+        }
+        set {
+            Preferences.defaults.set(newValue, forKey: Preferences.keys.scanRecursively.rawValue)
         }
     }
 }

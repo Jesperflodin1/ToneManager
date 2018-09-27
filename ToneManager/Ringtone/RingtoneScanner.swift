@@ -56,8 +56,12 @@ extension RingtoneScanner {
             Bugfender.warning("No files found for path: \(currentPath.path)")
             return newRingtones // go to next iteration/folder
         }
-
-        let enumerator = FileManager.default.enumerator(at: currentPath, includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles])
+        let enumerator : FileManager.DirectoryEnumerator?
+        if !Preferences.scanRecursively {
+            enumerator = FileManager.default.enumerator(at: currentPath, includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
+        } else { //only scan documents
+            enumerator = FileManager.default.enumerator(at: currentPath.appendingPathComponent("Documents"), includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles])
+        }
         
         while let fileUrl = enumerator?.nextObject() as? URL {
             

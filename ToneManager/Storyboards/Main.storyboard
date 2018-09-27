@@ -1165,8 +1165,41 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                     </tableViewCell>
-                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingsAppListLinkCell" rowHeight="44" id="jWM-bH-gdt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="wdJ-r5-bOC">
                                         <rect key="frame" x="0.0" y="79" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wdJ-r5-bOC" id="jKq-s4-JJf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan recursively (slower)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFI-vf-eNB">
+                                                    <rect key="frame" x="16" y="11" width="191.5" height="22"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fd4-J3-sCV">
+                                                    <rect key="frame" x="312" y="6.5" width="51" height="31"/>
+                                                    <color key="tintColor" red="0.30980392159999998" green="0.56078431370000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="recursiveScanChanged:" destination="gvg-No-xnN" eventType="valueChanged" id="PO1-u2-37c"/>
+                                                        <action selector="remoteLoggingChanged:" destination="gvg-No-xnN" eventType="valueChanged" id="cqS-1w-OSl"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="fd4-J3-sCV" firstAttribute="centerY" secondItem="jKq-s4-JJf" secondAttribute="centerY" id="9EX-1L-4xd"/>
+                                                <constraint firstItem="kFI-vf-eNB" firstAttribute="leading" secondItem="jKq-s4-JJf" secondAttribute="leadingMargin" id="LaE-wI-6UC"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="kFI-vf-eNB" secondAttribute="bottom" id="aiI-o3-NsU"/>
+                                                <constraint firstAttribute="trailing" secondItem="fd4-J3-sCV" secondAttribute="trailing" constant="14" id="mtA-Vb-1Dc"/>
+                                                <constraint firstItem="kFI-vf-eNB" firstAttribute="top" secondItem="jKq-s4-JJf" secondAttribute="topMargin" id="ows-3w-9ui"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                    </tableViewCell>
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingsAppListLinkCell" rowHeight="44" id="jWM-bH-gdt">
+                                        <rect key="frame" x="0.0" y="123" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jWM-bH-gdt" id="xYD-Q1-2aN">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -1194,7 +1227,7 @@
                             <tableViewSection id="gYB-dQ-5Lt">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="65t-Cp-Cxo">
-                                        <rect key="frame" x="0.0" y="159" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="203" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="65t-Cp-Cxo" id="Mwr-9M-zDL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1220,7 +1253,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="4Lc-Fb-h9b">
-                                        <rect key="frame" x="0.0" y="203" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="247" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Lc-Fb-h9b" id="6VG-xs-COv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1254,6 +1287,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="recursiveScanSwitch" destination="fd4-J3-sCV" id="qru-Nc-YL7"/>
                         <outlet property="remoteLoggingSwitch" destination="xOQ-mF-Zqs" id="udq-RT-hsA"/>
                     </connections>
                 </tableViewController>
