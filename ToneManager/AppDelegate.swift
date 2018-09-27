@@ -84,8 +84,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         }
         
-        let app = FBApplicationInfoHandler.applicationProxy(forBundleIdentifier: "com.908.Audiko")
-        BFLog("Approxy test: %@", (app?.applicationType())!)
+//        let app = FBApplicationInfoHandler.applicationProxy(forBundleIdentifier: "com.908.Audiko")
+//        BFLog("Approxy test: %@", (app?.applicationType())!)
         AppSetupManager.report_memory()
         return true
     }

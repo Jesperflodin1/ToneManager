@@ -27,6 +27,10 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+
+//**** Warning: The following might make your eyes bleed...
+
+
 import Foundation
 
 class HelpData {
@@ -34,6 +38,7 @@ class HelpData {
     static func getHelpData() -> [HelpItem] {
         var data = [HelpItem]()
         
+        let lineBreak = NSAttributedString(string: "\n")
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.headIndent = 15
         paragraphStyle.minimumLineHeight = 22
@@ -61,14 +66,35 @@ class HelpData {
         //TODO: Image
         data.append(HelpItem(title: "How to import ringtone file from filesystem", text: "PLACEHOLDER: How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko How to import ringtones from Audiko"))
         
-        
-        let filzaImport = [
+        let filza0Attachment = NSTextAttachment()
+        filza0Attachment.image = UIImage(named: "filza0")
+        filza0Attachment.setImageHeight(height: 130)
+        let filza1Attachment = NSTextAttachment()
+        filza1Attachment.image = UIImage(named: "filza1")
+        filza1Attachment.setImageHeight(height: 130)
+        let filza2Attachment = NSTextAttachment()
+        filza2Attachment.image = UIImage(named: "filza2")
+        filza2Attachment.setImageHeight(height: 250)
+        let filza = NSMutableAttributedString()
+        let filza0AttString = NSMutableAttributedString(attributedString: NSAttributedString(attachment: filza0Attachment))
+        let filza1AttString = NSMutableAttributedString(attributedString: NSAttributedString(attachment: filza1Attachment))
+        let filza2AttString = NSMutableAttributedString(attributedString: NSAttributedString(attachment: filza2Attachment))
+
+        filza.append(NSAttributedString(string: "This will also apply to most other file manager apps you may have. \n", attributes: [.paragraphStyle:paragraphStyle]))
+        filza.append(bulletPointList(strings: [
             "Navigate to the ringtone file (m4r file or a format this app can convert to m4r) you want to import.",
-            "Tap it and tap the share button",
-            "Tap Tonemanager in the Open in menu that shows up. The ringtone should import and also install (if automatic installation is enabled in settings for this app)"]
-        data.append(HelpItem(
-title: "How to import ringtone file with Filza",
-attributedText: NSAttributedString(string: "This will also apply to most other file manager apps you may have. \n ", attributes: [.paragraphStyle:paragraphStyle]) + bulletPointList(strings: filzaImport) ))
+            "Tap it and tap the share button"]))
+        filza.append(lineBreak+lineBreak)
+        filza.append(filza0AttString)
+        filza.append(lineBreak+lineBreak)
+        filza.append(filza1AttString)
+        filza.append(lineBreak)
+        filza.append(bulletPointList(strings: [
+            "Tap Tonemanager in the Open with menu that shows up. The ringtone should import and also install (if automatic installation is enabled in settings for this app)"]))
+        filza.append(lineBreak+lineBreak)
+        filza.append(filza2AttString)
+        filza.append(lineBreak)
+        data.append(HelpItem(title: "How to import ringtone file with Filza", attributedText: filza))
         
         //TODO: Image
         let voiceStrings = [
