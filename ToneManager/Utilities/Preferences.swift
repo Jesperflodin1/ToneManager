@@ -179,13 +179,13 @@ extension Preferences {
     static var ringtoneAppsToScan : Array<String> {
         var apps : Array<String> = []
         
-        if Preferences.zedgeRingtones, Preferences.zedgeRingtonesInstalled {
+        if Preferences.zedgeRingtonesInstalled {
             apps.append(Preferences.defaultApps[Preferences.keys.zedgeRingtones.rawValue]!)
         }
-        if Preferences.audikoLite, Preferences.audikoLiteInstalled {
+        if Preferences.audikoLiteInstalled {
             apps.append(Preferences.defaultApps[Preferences.keys.audikoLite.rawValue]!)
         }
-        if Preferences.audikoPro, Preferences.audikoProInstalled {
+        if Preferences.audikoProInstalled {
             apps.append(Preferences.defaultApps[Preferences.keys.audikoPro.rawValue]!)
         }
         

@@ -178,11 +178,14 @@ extension RingtoneStore {
     
     func setMissingIdentifiers(forRingtones ringtonesArray : [Ringtone]) {
         let library = ToneLibraryProxy()
-        ringtonesArray.forEach { (tone) in
+        let missingIdentifiers = ringtonesArray.filter { !$0.installed }
+        BFLog("setMissingIdentifiers called, filtered ringtones = %@", missingIdentifiers.description)
+        missingIdentifiers.forEach { (tone) in
             if library.setIdentifierIfToneIsInstalled(tone) {
                 BFLog("Successfully set identifier for ringtone: %@", tone.description)
             }
         }
+        BFLog("setMissingIdentifiers done, result = %@", missingIdentifiers.description)
         AppSetupManager.report_memory()
     }
 }
@@ -316,7 +319,7 @@ extension RingtoneStore {
         queue.async {
             let fileImporter = RingtoneFileImporter()
             fileImporter.importFile(fileURL, completionHandler: { (success, ringtone) in
-                if !success {
+                if !success, fileImporter.importError != nil {
                     let error = fileImporter.importError ?? NSError(domain: ErrorDomain.ringtoneStore.rawValue, code: ErrorCode.unknownImportError.rawValue, userInfo: nil)
                     Bugfender.error("Got error when trying to import single file, errorcode=\(error as NSError)")
                     DispatchQueue.main.async {

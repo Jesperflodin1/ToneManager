@@ -64,6 +64,10 @@
 - (NSString *)bundleType;
 - (NSString *)bundleVersion;
 - (id)initWithApplicationProxy:(id)arg1;
+
+-(NSURL *)sandboxURL;
+-(NSArray *)folderNames;
+-(NSString *)fallbackFolderName;
 @end
 
 /**

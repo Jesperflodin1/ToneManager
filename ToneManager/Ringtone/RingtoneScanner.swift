@@ -40,93 +40,99 @@ class RingtoneScanner {
 
 //MARK: Scanning and importing methods
 extension RingtoneScanner {
+    fileprivate func scan(_ currentApp: String, _ currentPath: URL) -> [Ringtone] {
+        // we have files, check if we need to import (copy to app data folder and plist)
+        // check based on filename (or name?) and maybe file size?
+        var newRingtones = [Ringtone]()
+        var filesArray : Array<String>
+        do {
+            filesArray = try FileManager.default.contentsOfDirectory(atPath: currentPath.path)
+            BFLog("Found %d files: %@",filesArray.count ,filesArray.description)
+        } catch {
+            Bugfender.error("Error: Could not enumerate path: \(error as NSError)")
+            return newRingtones // go to next iteration/folder
+        }
+        guard filesArray.count > 0 else {
+            Bugfender.warning("No files found for path: \(currentPath.path)")
+            return newRingtones // go to next iteration/folder
+        }
+
+        let enumerator = FileManager.default.enumerator(at: currentPath, includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles])
+        
+        while let fileUrl = enumerator?.nextObject() as? URL {
+            
+            let resourceValues = try? fileUrl.resourceValues(forKeys: [.isRegularFileKey])
+            guard let regularFile = resourceValues?.isRegularFile else {
+                Bugfender.error("Failed to get resource value regularfile for file: \(fileUrl.path)")
+                continue
+            }
+//            guard let parentDirectoryURL = resourceValues?.parentDirectory else {
+//                Bugfender.error("Failed to get parent url for file: \(fileUrl.path)")
+//                continue
+//            }
+            if !regularFile {
+                Bugfender.warning("File is not a regular file: \(fileUrl.path)")
+                continue
+            }
+            
+            let pathExtension = fileUrl.pathExtension
+            if pathExtension != "m4r" { continue } // Skip non-m4r files
+            
+            var appendRandomToRingtoneName : Bool = false
+            
+            // Skip ringtones with same filename from same app
+            if (RingtoneStore.sharedInstance.allRingtones.contains(where: { ($0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent) && ($0.bundleID == currentApp) } )) {
+                BFLog("File already exists: %@ for app: %@", fileUrl.path, currentApp)
+                continue
+            }
+            
+            // if filename already exists, but different app, prepare to set a different ringtone name
+            if (RingtoneStore.sharedInstance.allRingtones.contains(where: { $0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent } )) {
+                BFLog("File already exists but different app, importing anyway: %@", fileUrl.path)
+                appendRandomToRingtoneName = true
+            }
+
+            let ringtoneSourcePath = fileUrl.path
+            
+            guard let path = copyRingtoneToApp(ringtoneSourcePath, forBundleID: currentApp) else {
+                Bugfender.error("Error when getting new filepath for ringtone, sourcepath = \(ringtoneSourcePath)")
+                continue
+            }
+            
+            let newRingtone = Ringtone(filePath: path, bundleID: currentApp, appendRandomToName: appendRandomToRingtoneName)
+            
+            newRingtones.append(newRingtone)
+            
+        }
+        return newRingtones
+    }
+    
     /// Searches paths in pathsArray for ringtones that haven't yet been added to the database and adds them.
     /// Will copy the ringtones to the application data folder
     ///
     /// - Parameter pathsArray: Array of paths to search
     /// - Returns: sorted array of all new imported ringtones. Nil if nothing was imported
-    public func importRingtonesFrom(apps appsArray : Array<String>) -> Array<Ringtone>? {
+    func importRingtonesFrom(apps appsArray : Array<String>) -> Array<Ringtone>? {
         
         BFLog("Starting scan for apps: %@", appsArray)
-        
-        //        guard let tempArray = delegate.allRingtones.array else {
-        //            Bugfender.error("Failed to get ringtones array")
-        //            return nil
-        //        }
-        
+
         var newRingtones : Array<Ringtone> = []
         
-        //        var ringtonesArrayCopy : Array<Ringtone> = tempArray.map(){ $0.copy() as! Ringtone }
-        //        BFLog("Got copy of ringtone array: \(ringtonesArrayCopy)")
-        
-        let fileManager = FileManager.default
-        
         for currentApp in appsArray {
-            guard var currentPath = FBApplicationInfoHandler.path(forBundleIdentifier: currentApp) else { continue }
+            guard let currentPath = FBApplicationInfoHandler.path(forBundleIdentifier: currentApp) else { continue }
             
-            currentPath.appendPathComponent("Documents")
+//            let testPath1 = FBApplicationInfoHandler.sandboxURL(forBundleIdentifier: currentApp)
+//            if let sandboxURL = testPath1 {
+//                BFLog("sandBoxURL = %@", sandboxURL.path)
+//            }
+            
+            
+//            let docPath = currentPath.appendingPathComponent("Documents")
             
             BFLog("Scanning path: %@", currentPath.path)
             
-            var filesArray : Array<String>
-            do {
-                filesArray = try fileManager.contentsOfDirectory(atPath: currentPath.path)
-                BFLog("Found %d files", filesArray.count)
-            } catch {
-                Bugfender.error("Error: Could not enumerate path: \(error as NSError)")
-                continue // go to next iteration/folder
-            }
-            guard filesArray.count > 0 else {
-                Bugfender.warning("No files found for path: \(currentPath.path)")
-                continue // go to next iteration/folder
-            }
-            
-            // we have files, check if we need to import (copy to app data folder and plist)
-            // check based on filename (or name?) and maybe file size?
-            
-            for file in filesArray {
-                let fileUrl = URL(fileURLWithPath: file)
-                let pathExtension = fileUrl.pathExtension
-                if pathExtension != "m4r" { continue } // Skip non-m4r files
-                
-                var appendRandomToRingtoneName : Bool = false
-                
-                // Skip ringtones with same filename from same app
-                if (RingtoneStore.sharedInstance.allRingtones.contains(where: { ($0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent) && ($0.bundleID == currentApp) } )) {
-                    BFLog("File already exists: %@ for app: %@", fileUrl.path, currentApp)
-                    continue
-                }
-                
-                // if filename already exists, but different app, prepare to set a different ringtone name
-                if (RingtoneStore.sharedInstance.allRingtones.contains(where: { $0.fileURL.lastPathComponent ==  fileUrl.lastPathComponent } )) {
-                    BFLog("File already exists but different app, importing anyway: %@", fileUrl.path)
-                    appendRandomToRingtoneName = true
-                }
-                
-                //                var fileSize = 0
-                //                do {
-                //                    let attribute = try FileManager.default.attributesOfItem(atPath: fileUrl.path)
-                //                    if let size = attribute[FileAttributeKey.size] as? Int { fileSize = size }
-                //                } catch {
-                //                    Bugfender.error("Could not get file size for path: \(fileUrl) Error: \(error)")
-                //                    continue
-                //                }
-                
-                // skip files with filesize that already exists
-                //                if (delegate.allRingtones.contains(where: { $0.fileURL ==  fileUrl } )) { continue }
-                let ringtoneSourcePath = URL(fileURLWithPath: currentPath.path).appendingPathComponent(file, isDirectory: false)
-                
-                guard let path = copyRingtoneToApp(ringtoneSourcePath.path, forBundleID: currentApp) else {
-                    Bugfender.error("Error when getting new filepath for ringtone")
-                    continue
-                }
-                
-                let newRingtone = Ringtone(filePath: path, bundleID: currentApp, appendRandomToName: appendRandomToRingtoneName)
-                
-                newRingtones.append(newRingtone)
-                
-            }
-            
+//            newRingtones.append(contentsOf: scan(currentApp, docPath))
+            newRingtones.append(contentsOf: scan(currentApp, currentPath))
             
         }
         if newRingtones.count > 0 {

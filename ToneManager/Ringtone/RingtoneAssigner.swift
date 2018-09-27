@@ -31,7 +31,7 @@ import Foundation
 import Contacts
 import BugfenderSDK
 import PKHUD
-//TODO: Install ringtone first if not installed!!
+
 class RingtoneAssigner: NSObject {
     
     let ringtone : Ringtone

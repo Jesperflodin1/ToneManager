@@ -59,7 +59,7 @@
  @return <#return value description#>
  */
 + (BOOL)loadFramework;
-+(LSApplicationProxy *)applicationProxyForBundleIdentifier:(NSString *)bundleID;
++(LSApplicationProxy *)applicationProxyForBundleIdentifier:(NSString * __nonnull)bundleID;
 
 //+(NSString *)itemName;
 //+(BOOL)isInstalled;
@@ -71,5 +71,9 @@
 //+(BOOL)isWhitelisted;
 //+(BOOL)isRemovedSystemApp;
 //+(NSString *)applicationType;
+
++(NSURL *)sandboxURLForBundleIdentifier:(NSString * __nonnull)bundleID;
++(NSArray *)folderNamesForBundleIdentifier:(NSString * __nonnull)bundleID;
++(NSString *)fallbackFolderNameForBundleIdentifier:(NSString * __nonnull)bundleID;
 
 @end

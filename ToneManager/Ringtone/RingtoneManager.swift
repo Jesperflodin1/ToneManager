@@ -88,7 +88,7 @@ extension RingtoneManager {
             HUD.flash(.labeledError(title: "Error", subtitle: "Failed to copy file"), delay: 1.0)
             return
         default:
-            HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when importing ringtone"), delay: 1.0)
+//            HUD.flash(.labeledError(title: "Error", subtitle: "Unknown error when importing ringtone"), delay: 1.0)
             return
         }
     }
@@ -97,7 +97,7 @@ extension RingtoneManager {
         RingtoneStore.sharedInstance.importFile(fileURL, completionHandler: { (success, error, ringtone) in
             if !success {
                 guard let errorType = error else { return }
-                Bugfender.error("Import failure")
+                Bugfender.error("Import failure, error: \(errorType)")
                 return handleError(errorType)
             } else { // import success
                 BFLog("Import success")

@@ -34,6 +34,7 @@
 		24778296215414C40058074F /* RingtoneAssigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24778295215414C40058074F /* RingtoneAssigner.swift */; };
 		2477829821542E590058074F /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2477829721542E590058074F /* ContactsUI.framework */; };
 		2477829E215432490058074F /* CNMutableContactHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2477829D215432490058074F /* CNMutableContactHandler.m */; };
+		24797419215CD15300BC2E74 /* URL+Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24797418215CD15300BC2E74 /* URL+Directories.swift */; };
 		247AFDF421511344007191E1 /* AppSetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF321511344007191E1 /* AppSetupManager.swift */; };
 		247AFDF6215122EC007191E1 /* FirstRun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 247AFDF5215122EC007191E1 /* FirstRun.storyboard */; };
 		247AFDF8215124D7007191E1 /* FirstRunPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */; };
@@ -142,6 +143,7 @@
 		247782A72154344F0058074F /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		247782A92154344F0058074F /* XLActionController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = XLActionController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		247782AB215434CA0058074F /* DynamicBlurView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DynamicBlurView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24797418215CD15300BC2E74 /* URL+Directories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Directories.swift"; sourceTree = "<group>"; };
 		247AFDF321511344007191E1 /* AppSetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupManager.swift; sourceTree = "<group>"; };
 		247AFDF5215122EC007191E1 /* FirstRun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstRun.storyboard; sourceTree = "<group>"; };
 		247AFDF7215124D7007191E1 /* FirstRunPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunPageViewController.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				24F7ECE9214FD84C00A46E72 /* Notification+Name.swift */,
 				248CADB5215A8DB50082FA1F /* NotificationCenter+PostOnMainThread.swift */,
 				2413E550215BE1570048AD46 /* NSAttributedString+Concatenate.swift */,
+				24797418215CD15300BC2E74 /* URL+Directories.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -747,6 +750,7 @@
 				24312BD9215B63EB004E2ADB /* PopupTextInputViewController.swift in Sources */,
 				24B5E29E2156ADAE00A8A70A /* HelpTableViewController.swift in Sources */,
 				249694A721454F96009960D7 /* RingtoneScanner.swift in Sources */,
+				24797419215CD15300BC2E74 /* URL+Directories.swift in Sources */,
 				2497A6662142533600597B5C /* RingtoneTableViewController.swift in Sources */,
 				24DFBB52215A285B009B4C30 /* GlobalConstants.swift in Sources */,
 				24DFBB50215A27D9009B4C30 /* ToneLibraryProxy.swift in Sources */,

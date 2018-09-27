@@ -70,4 +70,23 @@ class AppSetupManager {
                 (String(cString: mach_error_string(kerr), encoding: String.Encoding.ascii) ?? "unknown error"))
         }
     }
+    
+    class func clearTempFolder() {
+        let fileManager = FileManager.default
+        let tempFolderURL = appDataDir.appendingPathComponent("tmp", isDirectory: true)
+        let tempConvertingURL = tempFolderURL.appendingPathComponent("converting", isDirectory: true)
+        let inboxPathURL = URL(fileURLWithPath: "/var/mobile/Library/Application Support/Containers/fi.flodin.ToneManager/Documents/Inbox/")
+        let URLs = [tempFolderURL, tempConvertingURL, inboxPathURL]
+        
+        for url in URLs {
+            do {
+                let filePaths = try fileManager.contentsOfDirectory(atPath: url.path)
+                for filePath in filePaths {
+                    try fileManager.removeItem(atPath: filePath)
+                }
+            } catch {
+                BFLog("Could not clear temp folder: %@ Error: \(error as NSError)", url.path)
+            }
+        }
+    }
 }

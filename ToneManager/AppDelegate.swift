@@ -101,6 +101,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     ///
     /// - Parameter application: Current UIApplication
     func applicationDidEnterBackground(_ application: UIApplication) {
+        AppSetupManager.clearTempFolder()
     }
     
     /// UIApplicationDelegate method. Called when application will return from background
@@ -121,6 +122,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     /// - Parameter application: Current UIApplication
     func applicationWillTerminate(_ application: UIApplication) {
         UserDefaults.standard.synchronize()
+        AppSetupManager.clearTempFolder()
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

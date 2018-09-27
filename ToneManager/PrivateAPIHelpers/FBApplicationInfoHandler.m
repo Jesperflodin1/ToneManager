@@ -72,9 +72,26 @@
         BFLogErr(@"JFTM: ERROR: applicationProxyForIdentifier: not responding");
         return nil;
     }
-    FBApplicationInfo *appInfo = [NSClassFromString(@"LSApplicationProxy") performSelector:@selector(applicationProxyForIdentifier:) withObject:bundleID];
-    BFLog(@"JFTM: appInfo = %@",appInfo);
+    LSApplicationProxy *appProxy = [LSApplicationProxy performSelector:@selector(applicationProxyForIdentifier:) withObject:bundleID];
+    BFLog(@"JFTM: appProxy = %@",appProxy);
+    FBApplicationInfo *appInfo = [[NSClassFromString(@"FBApplicationInfo") alloc] initWithApplicationProxy:appProxy];
     return [appInfo performSelector:@selector(dataContainerURL)];
+}
+
++(NSURL *)sandboxURLForBundleIdentifier:(NSString * __nonnull)bundleID {
+    LSApplicationProxy *appProxy = [self applicationProxyForBundleIdentifier:bundleID];
+    FBApplicationInfo *appInfo = [[NSClassFromString(@"FBApplicationInfo") alloc] initWithApplicationProxy:appProxy];
+    return [appInfo performSelector:@selector(sandboxURL)];
+}
++(NSArray *)folderNamesForBundleIdentifier:(NSString * __nonnull)bundleID {
+    LSApplicationProxy *appProxy = [self applicationProxyForBundleIdentifier:bundleID];
+    FBApplicationInfo *appInfo = [[NSClassFromString(@"FBApplicationInfo") alloc] initWithApplicationProxy:appProxy];
+    return [appInfo performSelector:@selector(folderNames)];
+}
++(NSString *)fallbackFolderNameForBundleIdentifier:(NSString * __nonnull)bundleID {
+    LSApplicationProxy *appProxy = [self applicationProxyForBundleIdentifier:bundleID];
+    FBApplicationInfo *appInfo = [[NSClassFromString(@"FBApplicationInfo") alloc] initWithApplicationProxy:appProxy];
+    return [appInfo performSelector:@selector(fallbackFolderName)];
 }
 
 /**
@@ -121,6 +138,7 @@
         return false;
     }
     LSApplicationProxy *appProxy = [NSClassFromString(@"LSApplicationProxy") performSelector:@selector(applicationProxyForIdentifier:) withObject:bundleID];
+    BFLog(@"Appproxy = %@", appProxy);
     return appProxy;
 }
 

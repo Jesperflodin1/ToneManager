@@ -60,7 +60,7 @@ class RingtoneConverter: NSObject {
         self.inputURL = inputURL
         if outputURL.pathExtension == "m4r" {
             self.outputURL = outputURL.deletingPathExtension().appendingPathExtension("m4a")
-            BFLog("Converter called with extension: \(outputURL.pathExtension), but im really using: \(outputURL.deletingPathExtension().appendingPathExtension("m4a"))")
+            BFLog("Converter called with filen: \(outputURL.path), but im really using: \(outputURL.deletingPathExtension().appendingPathExtension("m4a").path)")
         } else {
             self.outputURL = outputURL
         }
@@ -101,33 +101,36 @@ class RingtoneConverter: NSObject {
             return
         }
         
-        if FileManager.default.fileExists(atPath: outputURL.deletingPathExtension().appendingPathExtension("m4a").path) {
-            try? FileManager.default.removeItem(at: outputURL.deletingPathExtension().appendingPathExtension("m4a"))
-        }
-        if FileManager.default.fileExists(atPath: outputURL.deletingPathExtension().appendingPathExtension("m4r").path) {
-            try? FileManager.default.removeItem(at: outputURL.deletingPathExtension().appendingPathExtension("m4r"))
-        }
         
-        let asset = AVURLAsset(url: inputURL)
+        try? FileManager.default.removeItem(atPath: outputURL.deletingPathExtension().appendingPathExtension("m4a").path)
+        try? FileManager.default.removeItem(atPath: outputURL.deletingPathExtension().appendingPathExtension("m4r").path)
+        
+        
+        let asset = AVAsset(url: inputURL)
         
         guard let session = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetAppleM4A) else { return }
         session.outputURL = outputURL
         session.outputFileType = AVFileType.m4a
         session.timeRange = CMTimeRange(start: kCMTimeZero, duration: CMTimeMakeWithSeconds(30, 600))
         session.exportAsynchronously {
-            if session.error == nil {
+            if session.status == .completed {
                 let newURL = outputURL.deletingPathExtension().appendingPathExtension("m4r")
                 do {
                     try FileManager.default.moveItem(at: outputURL, to: newURL)
+                    try? FileManager.default.removeItem(at: inputURL) //remove from tmp
+                    completionHandler?(nil)
                 } catch {
                     Bugfender.error("Error when changing file extension, error: \(error as NSError)")
+                    completionHandler?(error)
                 }
-            } else {
+            } else if session.status == .failed {
                 if let error = session.error {
-                    Bugfender.error("Error during file conversion: \(error as NSError)")
+                    Bugfender.error("status: \(session.status.rawValue) Error during file conversion: \(error as NSError)")
+                    completionHandler?(error)
                 }
             }
-            completionHandler?(session.error)
+            BFLog("converter callback, status: \(session.status.rawValue) error:\(String(describing: session.error))")
+            
         }
     }
 }
