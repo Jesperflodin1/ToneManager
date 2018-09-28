@@ -57,10 +57,10 @@ extension RingtoneScanner {
             return newRingtones // go to next iteration/folder
         }
         let enumerator : FileManager.DirectoryEnumerator?
-        if !Preferences.scanRecursively {
-            enumerator = FileManager.default.enumerator(at: currentPath, includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
-        } else { //only scan documents
-            enumerator = FileManager.default.enumerator(at: currentPath.appendingPathComponent("Documents"), includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles])
+        if !Preferences.scanRecursively { //only scan documents
+            enumerator = FileManager.default.enumerator(at: currentPath.appendingPathComponent("Documents"), includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
+        } else {
+            enumerator = FileManager.default.enumerator(at: currentPath, includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles])
         }
         
         while let fileUrl = enumerator?.nextObject() as? URL {
