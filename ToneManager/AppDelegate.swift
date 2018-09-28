@@ -115,6 +115,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     ///
     /// - Parameter application: Current UIApplication
     func applicationDidBecomeActive(_ application: UIApplication) {
+        UserDefaults.standard.synchronize()
     }
     
     /// UIApplicationDelegate method.

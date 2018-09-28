@@ -52,6 +52,7 @@ final class SettingsViewController : UITableViewController {
     
     func updateUIStates() {
         autoInstallSwitch.isOn = Preferences.autoInstall
+        BFLog("autoInstall=%d",Preferences.autoInstall)
     }
    
 }

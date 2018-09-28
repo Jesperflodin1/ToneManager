@@ -30,20 +30,6 @@
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>label</key>
-			<string>Reset All App Settings</string>
-			<key>id</key>
-			<string>resetButton</string>
-			<key>action</key>
-			<string>resetButton</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
 			<string>Follow @JesperFlodin</string>
 			<key>icon</key>
 			<string>twitter.png</string>
