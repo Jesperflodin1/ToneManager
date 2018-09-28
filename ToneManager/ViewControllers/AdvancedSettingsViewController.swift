@@ -65,5 +65,7 @@ extension AdvancedSettingsViewController {
         Preferences.reset()
         HUD.allowsInteraction = true
         HUD.flash(.label("Settings are now reset to defaults"), delay: 1.0)
+        remoteLoggingSwitch.isOn = Preferences.remoteLogging
+        recursiveScanSwitch.isOn = Preferences.scanRecursively
     }
 }

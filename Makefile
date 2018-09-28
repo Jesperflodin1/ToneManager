@@ -27,3 +27,5 @@ include $(THEOS_MAKE_PATH)/application.mk
 
 after-install::
 	install.exec "killall \"ToneManager\"" || true
+SUBPROJECTS += tonemanagersettings
+include $(THEOS_MAKE_PATH)/aggregate.mk

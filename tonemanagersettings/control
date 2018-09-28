@@ -1,0 +1,9 @@
+Package: fi.flodin.tonemanagersettings
+Name: ToneManager
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: Install ringtones from Audiko, Zedge and more!
+Maintainer: Jesper Flodin <jesper@flodin.fi>
+Author: Jesper Flodin <jesper@flodin.fi>
+Section: Utilities
+Depiction: https://jesperflodin1.github.io/depictions/?p=fi.flodin.tonemanager

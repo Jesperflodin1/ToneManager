@@ -34,6 +34,7 @@ rm -r BUILD
 mkdir -p BUILD/Applications
 cp -R $BUILT_PRODUCTS_DIR/${WRAPPER_NAME} BUILD/Applications/
 cp -R ToneManager/layout/DEBIAN BUILD/
+cp -R ToneManager/layout/Library BUILD/
 
 INFO_PLIST_PATH=BUILD/Applications/ToneManager.app/Info.plist
 version=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "${INFO_PLIST_PATH}")

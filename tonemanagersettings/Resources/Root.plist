@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>headerCellClass</key>
+			<string>ToneManagerTitleCell</string>
+			<key>footerText</key>
+			<string>Go to settings in the app for more settings</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Open App</string>
+			<key>id</key>
+			<string>openAppButton</string>
+			<key>action</key>
+			<string>openAppButton</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Reset All App Settings</string>
+			<key>id</key>
+			<string>resetButton</string>
+			<key>action</key>
+			<string>resetButton</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Follow @JesperFlodin</string>
+			<key>icon</key>
+			<string>twitter.png</string>
+			<key>id</key>
+			<string>twitterButton</string>
+			<key>action</key>
+			<string>twitterButton</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>ToneManagerSettings</string>
+</dict>
+</plist>

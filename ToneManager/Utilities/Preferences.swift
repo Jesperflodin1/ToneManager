@@ -39,7 +39,7 @@ struct Preferences {
     enum keys : String {
         case autoInstall = "AutoInstall"
         case remoteLogging = "RemoteLogging"
-        case audikoLite = "AudioLite"
+        case audikoLite = "AudikoLite"
         case audikoPro = "AudikoPro"
         case zedgeRingtones = "ZedgeRingtones"
         case extraApps = "ExtraApps"
