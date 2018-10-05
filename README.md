@@ -1,5 +1,5 @@
-# ToneManager
-Automatic installation of ringtones from popular ringtone apps on iOS. This is based on a tweak i made but I couldn't get it working reliably as a tweak. I've also disassembled Guitarband for iOS and analyzed the code that is doing the ringtone export. By doing this i've learned how to use ToneLibrary to import ringtones. This increases compatibility of my code for ios 11-10 (possibly 9), theoretically (not tested on anything else than 11.3.1 for now). Testers are welcome! Only available on my development repo during the beta phase: https://jesperflodin1.github.io
+# ToneManainstallationger
+Installation from popular ringtone apps on iOS without iTunes. Can also import manually. See instructions in app. This is based on a tweak i made but I couldn't get it working reliably as a tweak. I've also disassembled Guitarband for iOS and analyzed the code that is doing the ringtone export. By doing this i've learned how to use ToneLibrary to import ringtones. This increases compatibility of my code for ios 11-10 (possibly 9), theoretically (not tested on anything else than 11.3.1 for now). Testers are welcome! Only available on my development repo during the beta phase: https://jesperflodin1.github.io
 
 Please report bugs you may be experencing, it's the only way i can improve this app!
 
