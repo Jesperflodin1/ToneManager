@@ -8,7 +8,8 @@ See instructions in app.
 This is based on a tweak i made but I couldn't get it working reliably as a tweak so i rewrote it as an app. I've disassembled and reverse engineered the ringtone handling parts of Guitarband for iOS and reimplemented it in swift as closely as possible. This includes using undocumented private frameworks, mainly ToneLibrary. 
 This should increase compatibility of my code for ios 11-10 (possibly 9), theoretically (*not thoroughly tested on anything else than 11.3.1 for now*). Testers are welcome! Only available on my development repo during the beta phase: https://jesperflodin1.github.io
 
-Compatibility for iOS 12 is planned but development won't start until there's a public jailbreak available.
+## iOS 12 Compatibility
+I am currently testing it under iOS 12. Haven't found any major bugs yet, everything seems to work.
 
 ## Jailbreak required!
 This requires your iphone to be jailbroken! Installed ringtones will stay even if you reboot to a non-jailbroken state. Your ringtones will also be backed up to iCloud and restored if you ever update your iPhone, even if you update to an iOS version that can't be jailbroken. (In that case you wont be able to uninstall the ringtones without jailbreaking again...)
